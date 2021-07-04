@@ -1,0 +1,27 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title class="pageTitile">{{this.about?.pageTitle}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <!-- <div class="spinner-container">
+    <ion-spinner class="loader" *ngIf="loading$ | async"></ion-spinner>
+  </div> -->
+
+  <div *ngIf="!(loading$ | async)">
+
+    <div class="version">Version Number: {{versionNumber}} (Release : {{this.about?.releaseNo}})</div>
+    <div>
+      <p class="about" [innerHTML]="this.about?.pageText">
+      </p>
+
+    </div>
+
+    </div>
+
+</ion-content>

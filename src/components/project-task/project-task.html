@@ -1,0 +1,66 @@
+<div class="formheader">
+  <form [formGroup]="projectForm" (ngSubmit)="addTask()">
+    <ion-list>
+      <ion-item no-lines class="borderColor">
+        <ion-select formControlName="projectId" placeholder="Select Project" interface="action-sheet"
+          (ionChange)="onProjectSelect($event)">
+          <ion-option *ngFor="let item of projectData" [value]="item.projectId">{{item.projectName}}
+          </ion-option>
+        </ion-select>
+      </ion-item>
+      <span class="error-msg" *ngIf="projectForm.controls.projectId.errors  && isSubmitted">
+        <p>* Please select Project Name.</p>
+      </span>
+
+      <ion-grid no-padding margin-top>
+        <ion-row>
+          <ion-col no-padding class="dateBorderColor marginRight"> 
+            <ion-datetime formControlName="startDate" displayFormat="DD-MMM-YYYY"
+              pickerFormat="DD MMM YYYY" placeholder="Start Date" [(ngModel)]="dates.Currentdate" [min]="dates.Currentdate" [max]="dates.Currentdate">
+            </ion-datetime>
+          </ion-col>
+          <ion-col no-padding class="dateBorderColor">
+            <ion-datetime formControlName="endDate" displayFormat="DD-MMM-YYYY" pickerFormat="DD MMM YYYY"
+              placeholder="End Date" [min]="dates.Currentdate" [max]="dates.maxEndDate" (ionChange)="onTaskEndDateSelect($event)"></ion-datetime>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <span float-right class="error-msg" *ngIf="projectForm.controls.endDate.errors  && isSubmitted">
+        <p>* Please select End Date.</p>
+      </span>
+
+      <ion-item no-lines class="borderColor" margin-top>
+        <ion-select formControlName="serviceId" placeholder="Select Service" interface="action-sheet"
+          (ionChange)="onServiceSelect($event)">
+          <ion-option *ngFor="let item of serviceList" [value]="item.serviceId">{{item.serviceName}}
+          </ion-option>
+        </ion-select>
+      </ion-item>
+      <span class="error-msg"
+        *ngIf="isSubmitted && projectForm.controls.serviceId.errors && !projectForm.controls.endDate.errors">
+        <p>* Please select service name.</p>
+      </span>
+
+      <ion-item no-lines class="borderColor" margin-top>
+        <ion-select formControlName="taskId" placeholder="Select Task" interface="action-sheet"
+          (ionChange)="onTaskSelect($event)">
+          <ion-option *ngFor="let item of taskList" [value]="item.taskId">{{item.taskName}}</ion-option>
+        </ion-select>
+      </ion-item>
+      <span class="error-msg"
+        *ngIf="isSubmitted && projectForm.controls.taskId.errors && !projectForm.controls.endDate.errors">
+        <p>* Please select task name.</p>
+      </span>
+
+      <ion-item no-lines class="borderColor remarks" margin-top>
+        <ion-textarea (keypress)="utility.omit_special_char($event)" formControlName="taskAlias1"
+          placeholder="Task Alias" rows="6" cols="6"></ion-textarea>
+      </ion-item>
+    </ion-list>
+
+    <div class="submitBtn" float-right>
+      <button ion-button round type="submit"> Add Task</button>
+    </div>
+
+  </form>
+</div>

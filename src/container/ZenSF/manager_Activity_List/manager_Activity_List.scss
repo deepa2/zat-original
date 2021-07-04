@@ -1,0 +1,134 @@
+managerActivityList-page {
+    .container-bg {
+        background-color: #ebecff;
+        padding: 2px;
+    }
+    .diag-list {
+        display: flex;
+        // align-items: center;
+        width: 100%;
+        border-bottom: 1px solid lightgray;
+        padding: 12px 8px;
+        align-items: center;
+        background-color: white;
+    }
+    .dig-icon {
+        width: 15%;
+        padding: 4px;
+    }
+    .list-section {
+        width: 85%;
+        padding-left: 5px;
+    }
+    .dig-list-title {
+        padding-bottom: 5px;
+        font-size: 1.1em;
+        font-weight: 600;
+    }
+    .catg-styl {
+        display: flex;
+        justify-content: space-between;
+        font-size: 1em;
+        padding-right: 5px;
+        align-items: center;
+    }
+    .no-data-msg {
+        text-align: center;
+        margin: 10px;
+        font-weight: 600;
+    }
+    .catg-title {
+        width: 40%;
+        display: flex;
+        align-items: center;
+        color: #9d9d9d;
+    }
+    .date-styl {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        color: #9d9d9d;
+        font-size: 1em;
+    }
+    .calender-styl {
+        padding-right: 3px;
+    }
+    .icon-styl {
+        font-size: 2em;
+        color: white;
+        padding-right: 6px;
+    }
+    .flex-align-center {
+        display: flex;
+        align-items: center;
+    }
+    .error-msg {
+        text-align: center;
+        font-size: 15px;
+        color: gray;
+    }
+    .list-align {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 6px;
+        border-bottom: 1px solid lightgray;
+        background: white;
+        margin: 5px;
+        border-radius: 5px;
+    }
+    .profile-section {
+        display: flex;
+        align-items: center;
+        width: 80%;
+    }
+    .profile-icon {
+        width: 15%;
+        padding-left: 3px;
+    }
+    .avtar-styl {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        border: 2px solid #0e82c7;
+    }
+    .flex-clum {
+        display: flex;
+        flex-direction: column;
+    }
+    .paddding-left8 {
+        padding-left: 8px;
+    }
+    .padding-btm6 {
+        padding-bottom: 6px;
+    }
+    .activity-part {
+        display: flex;
+        align-items: center;
+        // background: #ebecff;
+        padding: 14px 16px;
+        border-radius: 6px;
+    }
+    .padding-left16 {
+        padding-left: 16px;
+    }
+    .space-btwn-align {
+        display: flex;
+        justify-content: space-between;
+        /* padding: 6px; */
+        align-items: center;
+    }
+    .arrow-styl {
+        padding-right: 9px;
+        font-size: 1.2em;
+    }
+    // .toolbar-md {
+    //     padding: 0px !important;
+    //     min-height: 0px !important;
+    //     padding-top: 0 !important;
+    //     min-height: 56px !important;
+    // }
+    .searchbar-md {
+        padding: 0px;
+    }
+}

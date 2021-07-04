@@ -1,0 +1,57 @@
+<ion-header>
+    <!-- <div class="modal-header">
+        <div class="width80 font18">Timesheet status</div>
+        <ion-icon name="close" (click)="_dismiss()"></ion-icon>
+    </div> -->
+    <ion-navbar>
+        <ion-title>
+            Selected <span text-capitalize>{{listFrom}}</span>
+        </ion-title>
+        <ion-buttons end (click)="_dismiss()">
+            <button ion-button icon-only>
+                <ion-icon ios="ios-close" md="md-close"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+<ion-content>
+    <div [ngSwitch]="listFrom">
+
+        <ion-list *ngSwitchCase="'Customers'">
+
+            <ion-item class="item-border-bottom" *ngFor="let asso of selectedList">
+                <ion-label>{{asso.customerName}}</ion-label>
+            </ion-item>
+        </ion-list>
+        <ion-list *ngSwitchCase="'Projects'">
+
+            <ion-item class="item-border-bottom" *ngFor="let project of selectedList">
+                <ion-label>{{project.projectName}}</ion-label>
+            </ion-item>
+        </ion-list>
+        <ion-list *ngSwitchCase="'Associates'">
+
+            <ion-item class="item-border-bottom" *ngFor="let project of selectedList">
+                <ion-label>{{project.associateName}}</ion-label>
+            </ion-item>
+        </ion-list>
+
+        <ion-list *ngSwitchCase="'Locations'">
+            <ion-item class="item-border-bottom" *ngFor="let location of selectedList">
+                <ion-label>{{location.locationName}}</ion-label>
+            </ion-item>
+        </ion-list>
+
+        <ion-list *ngSwitchCase="'Payrolls'">
+            <ion-item class="item-border-bottom" *ngFor="let payroll of selectedList">
+                <ion-label>{{payroll?.payrollName}}</ion-label>
+            </ion-item>
+        </ion-list>
+
+        <ion-list *ngSwitchCase="'customer'">
+            <ion-item class="item-border-bottom" *ngFor="let payroll of selectedList">
+                <ion-label>{{payroll?.payrollName}}</ion-label>
+            </ion-item>
+        </ion-list>
+    </div>
+</ion-content>

@@ -1,0 +1,155 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title class="pageTitile">{{pageTitle}}</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="presentOptions($event)">
+        <ion-icon name="more"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+
+  <ion-spinner *ngIf="loading$ | async"></ion-spinner>
+
+  <div class="dashboard" *ngIf="!(loading$ | async)">
+
+    <div *ngIf="showDashboard" class="grid-full">
+
+      <div *ngIf="dashboardDetail" (click)="goToProfile(dashboardDetail.type)" class="backgroudcard">
+        <!-- start top card -->
+        <ion-card class="faq-card" no-padding>
+          <div class="background-img">
+            <div class="justify-spac-ar-align-cent margin20-0-28-8">
+              <div class="display-flex">
+                <div class="cardImage-outer"> <img class="cardImage" [src]="dashboardDetail.employeeProfilePic" /></div>
+                <div class="heading margin-top12">
+                  <div>Hello, <span class="font-weight500">{{dashboardDetail.employeeName}}</span></div>
+                  <div class="heading-text">{{dashboardDetail.type}}</div>
+                </div>
+              </div>
+              <div>
+                <img class="arrowImage" src="assets/imgs/Arrow-forward.svg" />
+                <!-- <ion-icon src="/assets/imgs/Arrow-forward.svg"></ion-icon> -->
+              </div>
+            </div>
+          </div>
+        </ion-card>
+        <!--ends top card -->
+      </div>
+
+      <div class="card-cont margin-top5">
+        <div *ngFor="let dashboardItem of dashboardData" [hidden]="dashboardItem.isMydashboard">
+          <ion-card color="light" class="ion-card ion-text-center margin5 ">
+            <div class="right semi-circle"></div>
+            <div class="left semi-circle"></div>
+            <ion-card-header class="padding10 padding-left20 padding-top15">
+              <div class="profile-cont-asso margin-left15"><img class="profile-asso" [src]="dashboardItem.dashboardIcon"
+                  onerror="this.src='assets/imgs/dummy-profile.png'"></div>
+            </ion-card-header>
+            <ion-card-content class="padding-left20 padding-top10">
+              <div class="font16">{{dashboardItem.dashboardValue}}</div>
+              <div class="heading-text">{{dashboardItem.dashBoardKey}}</div>
+
+            </ion-card-content>
+          </ion-card>
+        </div>
+      </div>
+    </div>
+
+    <!-- <div *ngIf="!showDashboard" class="grid-full">
+      <div class="card-cont">
+        <div *ngFor="let udashboardItem of userDashboardData">
+          <ion-card color="light" class="ion-card ion-text-center margin5 ">
+            <div class="right semi-circle"></div>
+            <div class="left semi-circle"></div>
+            <ion-card-header class="padding10">
+              <div class="profile-cont-asso margin-left15"><img class="profile-asso" [src]="udashboardItem.dashboardIcon"
+                  onerror="this.src='assets/imgs/dummy-profile.png'"></div>
+            </ion-card-header>
+            <ion-card-content >
+              <div class="font12">{{udashboardItem.dashBoardKey}}</div>
+              <div class="heading-text">{{udashboardItem.dashboardValue}}</div>
+            </ion-card-content>
+          </ion-card>
+        </div>
+      </div>
+    </div> -->
+  </div>
+
+
+
+
+</ion-content>
+
+
+
+
+<!-- delete after use-->
+
+<!--<div *ngFor="let dashboardItem of dashboardData" (click)="goToProfile(dashboardItem)">
+        <!- start top card ->
+        <ion-card *ngIf="dashboardItem.isMydashboard" class="faq-card background-img" no-padding>
+            <div class="justify-spac-ar-align-cent  margin20-15-25">
+              <div class="display-flex">
+                <div class="cardImage-outer"> <img class="cardImage" [src]="dashboardItem.dashboardIcon" /></div>
+                <div class="heading margin-top5">
+                  <div>Hello <span class="font-weight500">{{userDetails}}</span></div>
+                  <div class="heading-text">{{dashboardItem.dashBoardKey}}</div>
+                </div>
+              </div>
+              <div class="arrowImage" col-2 text-right>
+                <ion-icon name="arrow-forward"></ion-icon>
+              </div>
+            </div>
+          </ion-card>
+          <!-ends top card ->
+        </div>-->
+
+
+
+<!-- <ion-spinner *ngIf="loading$ | async"></ion-spinner>
+
+<div class="dashboard" *ngIf="!(loading$ | async)">
+
+  <div *ngIf="showDashboard" class="grid-full">
+    <ion-row class="row-full">
+
+      <ion-col class="col-full" *ngFor="let dashboardItem of dashboardData"
+        (click)="getUserDashboardData(dashboardItem)">
+        <ion-card class="card">
+          <div padding class="dash-content">
+            <p class="card-value">{{dashboardItem.dashBoardKey}}</p>
+            <p class="card-key">{{dashboardItem.dashboardValue}}</p>
+          </div>
+          <div class="dash-img">
+            <img class="card-img" [src]="dashboardItem.dashboardIcon" />
+          </div>
+        </ion-card>
+      </ion-col>
+
+    </ion-row>
+  </div>
+
+  <div *ngIf="!showDashboard" class="grid-full">
+    <ion-row class="row-full">
+      <ion-col class="col-full" *ngFor="let udashboardItem of userDashboardData">
+        <ion-card class="card">
+
+          <div padding class="dash-content">
+            <p class="card-value">{{udashboardItem.dashBoardKey}}</p>
+            <p class="card-key">{{udashboardItem.dashboardValue}}</p>
+          </div>
+          <div class="dash-img">
+            <img class="card-img" [src]="udashboardItem.dashboardIcon" />
+          </div>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </div>
+
+
+</div> -->

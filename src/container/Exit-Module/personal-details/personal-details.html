@@ -1,0 +1,78 @@
+<!--
+  Generated template for the PersonalDetailsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Personal Details</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+  <div class="personal-details">
+    <div class="personal-section">
+      <!-- <img src="assets/imgs/Person.png" class="imgStyle"> -->
+      <img src="assets/ZenExit-Imgs/outerImg.svg" style="height: 100px;">
+      <img class="userPic" [src]="profileData">
+    </div>
+    <div class="personal-details-container">
+      <div class="textPadding fontWeight">{{personalDetailedData?.userName}}</div>
+      <div class="textPadding">Designation &nbsp; &nbsp;&nbsp; :&nbsp;{{personalDetailedData?.designation}}</div>
+      <div class="textPadding">Employee ID &nbsp; &nbsp;:&nbsp;{{personalDetailedData?.userId}}</div>
+      <div class="textPadding">Geo HR Name : {{personalDetailedData?.geoARName}}</div>
+    </div>
+  </div>
+
+  <div class="detailed-list">
+    <div class="detailed-list-note">
+      <span class="annexture-flex-note">
+        <img class="imgMrgin" src="assets/ZenExit-Imgs/papers.svg">
+        <span class="fontStyle">
+          Note: <span style="font-weight: 300;">{{personalDetailedData?.userProfileNote}}</span>
+        </span>
+        
+      </span> </div>
+    <ion-list>
+      <ion-item class="itemPadding" *ngFor="let userIfo of personalDetailedData?.userPersonalInfo">
+        <ion-icon class="icon-margin" item-start><img [src]="userIfo?.icon"></ion-icon>
+        <p>{{userIfo?.key}}</p>
+        <p>{{userIfo?.value}}</p>
+        <!-- <ion-icon name="rose" item-end></ion-icon> -->
+      </ion-item>
+    </ion-list>
+    <div class="annexture" *ngIf="personalDetailedData?.isAnnexureEnable">
+      <div class="annexture-container border-btm">
+        <span class="annexture-flex">
+          <span class="imgMrgin"> <img src="assets/ZenExit-Imgs/papers.svg"></span>
+          <span class="fontColor">Exit Annexure</span>
+        </span>
+        <span class="annexture-download" (click)="downloadDoc(personalDetailedData?.annexureDocumentUrl)">
+          Download Template
+        </span>
+      </div>
+      <div class="annexture-container">
+        <span class="fontStyle note-width">Note: <span style="font-weight: 300;">Please upload and submit the signed copy of the annexure.</span> </span>
+        <span class="annexture-upload" (click)="uploadDoc()">
+          Upload and Submit
+        </span>
+      </div>
+      <div class="annexture-container" *ngIf="uploadedDocumentUrl">
+        <span class="annexture-flex">
+          <span class="imgMrgin"><img src="assets/ZenExit-Imgs/papers.svg"></span>
+          <span class="fontColor">Exit-Annexure</span>
+        </span>
+        <span>
+          <span class="fileMargin" (click)="downloadDoc(uploadedDocumentUrl)"><img
+              src="assets/ZenExit-Imgs/view.svg"></span>
+          <span class="fileMargin" (click)="removeDoc()"><img src="assets/ZenExit-Imgs/delete.svg"></span>
+        </span>
+      </div>
+    </div>
+  </div>
+</ion-content>

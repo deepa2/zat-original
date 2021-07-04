@@ -1,0 +1,135 @@
+<!-- <ion-header>
+    <ion-navbar>
+        <ion-title>
+            <div class="calendar-header center justify-content-space-btw">
+                <div class="text-white">
+                    <ion-icon name="close" (click)="dismiss()"></ion-icon>
+                </div>
+                <ion-row class="calendar-month center justify-content-space-btw font-size16">
+                    <button ion-button icon-only [disabled]="isThisPreviousMonth" (click)="goToLastMonth()" clear class="fontSize1">
+                        <ion-icon name="arrow-back"></ion-icon>
+                    </button>
+                    <ion-col col-4>{{currentMonth}} {{currentYear}}</ion-col>
+                    <button ion-button icon-only [disabled]="isThisCurrentMonth" (click)="goToNextMonth()" clear  class="fontSize1">
+                        <ion-icon name="arrow-forward"></ion-icon>
+                    </button>
+                </ion-row>
+                <div>
+                    <ion-icon name="close" (click)="dismiss()"></ion-icon>
+                </div>
+            </div>
+
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+    <div class="calendar-body">
+        <ion-grid>
+            <ion-row class="calendar-weekday">
+                <ion-col>Su</ion-col>
+                <ion-col>Mo</ion-col>
+                <ion-col>Tu</ion-col>
+                <ion-col>We</ion-col>
+                <ion-col>Th</ion-col>
+                <ion-col>Fr</ion-col>
+                <ion-col>Sa</ion-col>
+            </ion-row>
+            <ion-row class="calendar-date">
+                <ion-col col-1 *ngFor="let lastDayItem of daysInLastMonth" class="last-month">{{lastDayItem.day}}
+                </ion-col>
+                <ion-col col-1 *ngFor="let dayItem of daysInThisMonth">
+                    <span class="currentDate" *ngIf="dayItem.isMissed; else otherDate">{{dayItem.day}}</span>
+                    <ng-template #otherDate class="otherDate">{{dayItem.day}}</ng-template>
+                </ion-col>
+                <ion-col col-1 *ngFor="let nextDayItem of daysInNextMonth" class="next-month">{{nextDayItem.day}}
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+        <div class="justify-cont-center margin-top8">
+            <button ion-button round (click)="Openswipmiss()" class="font13 font-weight400">Apply Swip Miss</button>
+        </div>
+    </div>
+</ion-content> -->
+
+
+<ion-header>
+
+    <ion-toolbar [ngClass]="{'ts-calendar-header-bg': type == 'time-entry' || type == 'add-hrs' || type == 'chat-bot'}">
+        <div>
+            <div class="calendar-header center justify-content-space-btw">
+                <div class="per" [ngStyle]="{'display': (type == 'time-entry' || type == 'add-hrs' || type == 'chat-bot') ? 'block':'none' }">
+                    <span>{{currentMonth}}<span *ngIf="type == 'time-entry' || type == 'chat-bot'">:</span></span>
+                    <!-- {{currentYear}} -->
+                    <strong *ngIf="type == 'time-entry' || type == 'chat-bot'">{{percentage}}%</strong>
+                </div>
+                <ion-row *ngIf="type == 'profile'" class="calendar-month center justify-content-center font-size16">
+                    <button ion-button icon-only [disabled]="isThisPreviousMonth" (click)="goToLastMonth()" clear
+                        class="fontSize1">
+                        <ion-icon name="arrow-back"></ion-icon>
+                    </button>
+                    <ion-col col-4>{{currentMonth}} {{currentYear}}</ion-col>
+                    <button ion-button icon-only [disabled]="isThisCurrentMonth" (click)="goToNextMonth()" clear
+                        class="fontSize1">
+                        <ion-icon name="arrow-forward"></ion-icon>
+                    </button>
+                </ion-row>
+                <div text-right class="cross-icon"
+                    [ngClass]="{'cross-color-ts': type == 'time-entry' || type == 'add-hrs' || type == 'chat-bot'}">
+                    <ion-icon name="close" (click)="dismiss()"></ion-icon>
+                </div>
+            </div>
+
+        </div>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="bgTransparent">
+
+    <div class="calendar-body">
+        <ion-grid>
+            <ion-row class="calendar-weekday" [ngClass]="{'ts-color': type == 'time-entry' || type == 'add-hrs'}">
+                <ion-col>Su</ion-col>
+                <ion-col>Mo</ion-col>
+                <ion-col>Tu</ion-col>
+                <ion-col>We</ion-col>
+                <ion-col>Th</ion-col>
+                <ion-col>Fr</ion-col>
+                <ion-col>Sa</ion-col>
+            </ion-row>
+            <ion-row class="calendar-date">
+                <ion-col col-1 *ngFor="let lastDayItem of daysInLastMonth" class="last-month"
+                    [ngClass]="{'hideDate': type == 'time-entry' || type == 'add-hrs' || type == 'chat-bot'}">{{lastDayItem.day}}
+                </ion-col>
+                <ion-col col-1 *ngFor="let dayItem of daysInThisMonth"
+                    [ngClass]="{'ts-color': type == 'time-entry' || type == 'add-hrs'}">
+                    <span [ngClass]="{'currentDate' : dayItem.isMissed,'pendingDate' : dayItem.isPending,
+                     'rejectedDate' : dayItem.isRejected,'selectedDateColor': (dayItem.day == selectedDate && monthseq == 'currentMonth')}"
+                        *ngIf="dayItem.showColor" (click)="redirectToTimeEntry(dayItem)">{{dayItem.day}}</span>
+                    <span *ngIf="!dayItem.showColor"
+                        [ngClass]="{'disabled': !dayItem?.isEnabled,'selectedDateColor': (dayItem.day == selectedDate && monthseq == 'currentMonth')}"
+                        (click)="redirectToTimeEntry(dayItem)">{{dayItem.day}}</span>
+                    <!-- <ng-template #otherDate [ngClass]="{'disabled': !dayItem?.isEnabled}">{{dayItem.day}}</ng-template> -->
+                </ion-col>
+                <ion-col col-1 *ngFor="let nextDayItem of daysInNextMonth" class="next-month"
+                    [ngClass]="{'hideDate': type == 'time-entry' || type == 'add-hrs' || type == 'chat-bot'}">{{nextDayItem.day}}
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+        <div class="legends" *ngIf="type == 'time-entry' || type == 'add-hrs' || type == 'chat-bot'">
+            <div class="legend-section" *ngIf="type == 'time-entry' || type == 'chat-bot'">
+                <div class="circle grey"></div>
+                <span>Pending Timesheets</span>
+            </div>
+            <div class="legend-section">
+                <div class="circle red"></div>
+                <span>Rejected Timesheets</span>
+            </div>
+        </div>
+
+        <div *ngIf="type == 'profile'" class="justify-cont-center">
+            <button ion-button round (click)="Openswipmiss()" class="font13 font-weight400">Apply Swip Miss</button>
+        </div>
+    </div>
+</ion-content>

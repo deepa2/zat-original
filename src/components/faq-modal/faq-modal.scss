@@ -1,0 +1,25 @@
+faq-modal {
+    .title{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    ion-list{
+        ion-list-header{
+            ion-label{
+                color: black;
+                font-size: 1.1em;
+                font-weight: bold;
+                padding: 16px;
+                border-bottom: 1px dotted #999;
+                margin: 0 !important;
+                padding-left: 0;
+            }
+        }
+        ion-item{
+            .item-inner{
+                border-bottom: 1px dotted #999 !important;
+            }
+        }
+    }
+}

@@ -1,0 +1,39 @@
+<ion-header class="header-container">
+  <ion-navbar>
+    <ion-title>Skill(s) List</ion-title>
+    <ion-buttons end>
+      <div class="title-container">
+        <ion-icon slot="start" name="close" (click)="dismiss()" class="cancel-btn"></ion-icon>
+      </div>
+    </ion-buttons>
+  </ion-navbar>
+  <ion-toolbar>
+    <ion-searchbar debounce="500" animated placeholder="Search" (ionInput)="_searchItems($event)"
+      [(ngModel)]="searchText">
+    </ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-item *ngFor="let item of responseList;let i =index;">
+    <!-- <ion-radio [value]="item.skillId" ></ion-radio> -->
+    <ion-label [ngClass]="{'disabled-skill': !item?.isPracticeMatched}" class="ion-text-wrap"
+      (click)="checkSkill(item)">
+      {{item.skillName}}</ion-label>
+  </ion-item>
+  <ion-infinite-scroll threshold="300px" (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>
+<ion-footer *ngIf="skillTypeId == 1">
+  <div class="indicator-container">
+    <div class="disabled-item">
+      <div class="indicator"></div>
+      <span>
+        Primary skills are mapped to your practice and only those mapped skills, can be added as Primary skill. For
+        changing
+        your practice, send request to TSC_Fulfilment@zensar.com with manager approval.
+      </span>
+    </div>
+  </div>
+</ion-footer>

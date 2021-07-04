@@ -1,0 +1,130 @@
+<!--
+  Generated template for the RtoHomePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>Dashboard - Overall</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="contentBackgroud">
+    <div>
+        <div>
+            <ion-card class="cardSize" *ngIf="combinedData">
+                <ion-card-header class="rtoCardHeader">
+                    <span class="cardHeader">
+            <img class="rtoHeadImage" [src]="combinedData?.icon">
+          </span>
+                    <span class="fontStyle">
+            {{combinedData?.key}}
+          </span>
+                    <ion-icon *ngIf="combinedData?.covidToolTip" [tooltip]="combinedData?.covidToolTip" positionV="bottom" [duration]="duration" hideOthers="true" [event]="tooltipEvent" color="dark" item-right arrow=true>
+                        <img class="toolTipImg" src="assets/imgs/info.svg" />
+                    </ion-icon>
+                </ion-card-header>
+                <ion-card-content class="cardPadding">
+                    <div class="combinedGridContent">
+                        <div class="margin1 border10" [ngClass]="{'bdIndia':country.key == 'INDIA','bdUS':country.key == 'US','bdUK':country.key == 'UK','bdSA':country.key == 'SA'}" *ngFor="let country of combinedData?.countryWiseDetails" (click)="getCountryDetails(country)">
+                            <div class="countryFlex">
+                                <span class="rtoGridData">
+                  <img class="countryIcon" [src]="country?.icon">
+                  <span>{{country?.key}}</span>
+                                </span>
+                                <span style="padding: 5px;">
+                  <img class="arrImg" src="assets/menu_icons/arrow-right.svg">
+                </span>
+                            </div>
+                            <div *ngFor="let countryDetails of country.value;index as i">
+                                <span class="countryDetails">
+                  <span class="mrLeft"> {{countryDetails?.key}}</span>
+                                <span class="mrRight">{{countryDetails?.value | number}}</span>
+                                </span>
+                                <div *ngIf="country.value.length > i+1" class="borderBtm"> </div>
+                            </div>
+                        </div>
+                    </div>
+                </ion-card-content>
+            </ion-card>
+        </div>
+        <div>
+            <ion-card *ngIf="rtoPopulation" class="border10" (click)="goToPage('RTO')">
+                <ion-card-header class="countryFlex populationHeader">
+                    <div class="rtoCardHeader">
+                        <img class="rtoImage" [src]="rtoPopulation?.icon">
+                        <span class="fontStyle">{{rtoPopulation?.key}}</span>
+                        <ion-icon *ngIf="rtoPopulation?.rtoPopulationToolTip" [tooltip]="rtoPopulation?.rtoPopulationToolTip" positionV="bottom" [duration]="duration" hideOthers="true" [event]="tooltipEvent" color="dark" item-right arrow=true (click)="goToPage('',$event)">
+                            <img class="toolTipImg" src="assets/imgs/info.svg" />
+                        </ion-icon>
+                    </div>
+                    <div class="mr5 font9">
+                        <span class="circleImg" [ngStyle]="{'background-color':rtoPopulation?.rtopopulationData.overAllRTOPopulationData.plannedColor }"></span><span class="pd3">Planned</span>
+                        <span class="circleImg" [ngStyle]="{'background-color':rtoPopulation?.rtopopulationData.overAllRTOPopulationData.actualColor }"></span>
+                        <span class="pd3">Actual</span>
+                    </div>
+                </ion-card-header>
+                <ion-card-content class="flexDisplay">
+                    <div class="rtoGraph">
+                        <circle-progress [percent]="rtoPopulation?.rtopopulationData.overAllRTOPopulationData.actualPercentage" [radius]="100" [outerStrokeWidth]="10" [innerStrokeWidth]="15" [space]="-15" [outerStrokeColor]="rtoPopulation?.rtopopulationData.overAllRTOPopulationData.actualColor"
+                            [innerStrokeColor]="rtoPopulation?.rtopopulationData.overAllRTOPopulationData.plannedColor" [titleFontSize]="24" [unitsFontSize]="24" [showSubtitle]="false" [animation]="true" [animationDuration]="300" [showTitle]=false [showSubtitle]=false
+                            [showUnits]=false startFromZero=false [responsive]="true" outerStrokeLinecap="square"></circle-progress>
+                        <div class="rtoGraphData">
+                            <span><img class="rtoGraphIcon"
+                  [src]="rtoPopulation?.rtopopulationData.overAllRTOPopulationData.icon"></span>
+                            <span class="rtoPoplutionData">
+                <span>{{rtoPopulation?.rtopopulationData.overAllRTOPopulationData.key}}</span>
+                            <span class="fontWeight600">{{rtoPopulation?.rtopopulationData.overAllRTOPopulationData.value}}</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="width40">
+                        <div class="rtoBUWiseData" [ngClass]="{'corporate':populationData?.key == 'CORPORATE','ads':populationData?.key == 'ADS','cis':populationData?.key == 'CIS'}" *ngFor="let populationData of rtoPopulation.rtopopulationData.rtopopulationDataBUWise">
+                            <span lass="width40"><img class="rtoPopulationIcon" [src]="populationData.icon"> </span>
+                            <span class="rtoBUWiseDetails textColor">
+                <span class="fontWeight600">{{populationData.value}}</span>
+                            <span>{{populationData.key}}</span>
+                            </span>
+                        </div>
+                    </div>
+                </ion-card-content>
+            </ion-card>
+        </div>
+        <div>
+            <ion-card *ngIf="rtoEngagement" class="border10" (click)="goToPage('RTO Engagement')">
+                <ion-card-header class="rtoCardHeader">
+
+                    <span class="cardHeader">
+            <img class="rtoHeadImage" [src]="rtoEngagement?.icon">
+          </span>
+                    <span class="fontStyle">
+            {{rtoEngagement?.key}}
+          </span>
+                    <ion-icon *ngIf="rtoEngagement?.rtoEngagementToolTip" [tooltip]="rtoEngagement?.rtoEngagementToolTip" positionV="bottom" [duration]="duration" hideOthers="true" [event]="tooltipEvent" color="dark" item-right arrow=true (click)="goToPage('',$event)">
+                        <img class="toolTipImg" src="assets/imgs/info.svg" />
+                    </ion-icon>
+                </ion-card-header>
+                <ion-card-content class="cardPadding">
+                    <div class="rtoEngagement" *ngFor="let rtoEngagementData of rtoEngagement?.rtoengagementData.rtoengagementData">
+                        <div class="rtoEngagementList" *ngFor="let rtoEngagementDetails of rtoEngagementData.rtDataList">
+                            <div *ngIf="rtoEngagementDetails?.icon != null">
+                                <img class="rtoEngagementImg" [src]="rtoEngagementDetails?.icon">
+                            </div>
+                            <div class="rtoEnagegmentFlex">
+                                <span class="fontWeight500 font9">{{rtoEngagementDetails?.key}}</span>
+                                <span class="fontWeight600 font9 txtColor">{{rtoEngagementDetails?.value | number}}</span>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </ion-card-content>
+            </ion-card>
+        </div>
+    </div>
+
+</ion-content>

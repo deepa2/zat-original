@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title class="pageTitile">Team List</ion-title>
+
+  </ion-navbar>
+  <ion-toolbar>
+    <ion-searchbar [(ngModel)]="searchInput" animated placeholder="Search Associate"></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="backgrnd-white">
+  <div class="assosiate-list">
+    <div class="team-list-card" *ngFor="let item of teamData | sortJobs: searchInput" no-padding>
+
+     
+      <div class="associate-info" (click)="goToAssociateDetailPage(item.userId)">
+        <div class="profile-info">
+          <div class="profile-img-container">
+              <img class="ringImg-profile" src="assets/zenLearn-imgs/profile-ring-img.svg" onerror="this.src='assets/imgs/blank.png'" />
+              <img class="user-icon" [src]="item.profilePicURL" onerror="this.src='assets/imgs/blank.png'" />
+          </div>
+          <div class="user-details">
+            <div class="username">{{item.userName}}</div>
+            <div *ngFor="let userInfoitem of item.userDetails">
+
+              <label class="user-id">{{userInfoitem.value}}</label>
+            </div>
+
+          </div>
+        </div>
+        <div class="learming-info">
+          <div class="learning-item {{learningItem.sectionTitle}}" *ngFor="let learningItem of item.sectionDetails; let i=index " [ngClass]="{'middel-item': i==1}">
+            <div class="learning-type">{{learningItem.sectionTitle}}</div>
+            <div class="learning-percent">
+              <div class="required-percent">{{learningItem.sectionPercentage}}</div>
+              <div class="completed-percent {{learningItem.sectionTitle}}">{{learningItem.sectionValue}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="team-list-card" *ngIf="(teamData | sortJobs: searchInput).length ==0 && teamData.length>0" no-padding> No Data Available</div>
+  </div>
+</ion-content>

@@ -1,0 +1,158 @@
+page-pre-approval-timesheet-pending {
+
+    .approval-ts-title {
+        font-size: 0.88em;
+    }
+    .filterIcon{
+        width: 1.6em;
+    }
+
+    .associateHead{
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        border-bottom: 1px solid skyblue;
+         .associateDetails ion-list{
+             
+             p,h4{
+                margin-bottom: 0;
+                padding: 1%;
+             }
+    
+        }
+        
+    }
+    .profile{
+        margin-top:10px;
+        width: 15%;
+        display: flex;
+    }
+    .associateDetails{
+        width: 80%; 
+    }
+    .hourDetails {
+        width: 100%;
+        background: #ebecf1;
+        ion-grid{
+            padding: 0px;
+        }
+    
+        .leftPane{
+            border-right:1px solid #fff;
+        }
+        .rightPane{
+            display: flex;
+            justify-content: flex-end;
+        
+            ion-grid{
+                padding: 0px;
+            }
+        
+            ion-button{
+                padding: 0px;
+                width: 100%;
+                font-size: 0.6em;
+                
+            }
+        }
+    }
+    .hourDetails .leftPane {
+        width: 50%;
+        float: left;
+    }
+    .hourDetails  .rightPane{
+        width: 50%;
+    }
+    
+    .font-title{
+        font-size: 1em;
+    }
+    .font-subtitle{
+        font-size: 0.8em;
+    }
+    
+    .approveAllSection {
+        text-align: right;
+        button{
+            padding: 0px;
+            width: 100%;
+            font-size: 0.9em;
+            background:$ts-btn-green;
+            color: #ffffff;
+        }
+    }
+    .approvalCard{
+        padding: 0px;
+        width: 100%;
+        --border-style: none;
+        ion-card{
+            margin-left: 10px;
+        }
+        ion-card ion-card-content{
+            margin:0px;
+            padding:0px;
+        }
+    }
+    .selectProjectDropviewSection {
+    
+        ion-item {
+            font-size: 0.8em;
+            width: 100%;
+            border: 1px solid #e9ecef;
+           
+            color: grey;
+            height: 38px;
+        }
+        ion-select {
+            max-width: 100% !important;
+            width:100%;
+    
+            .select-text{
+                margin-left: -15px;
+            }
+        }
+    }
+    
+    .noRecords {
+        p{
+            text-align: center;
+        }
+    }
+    .approvAllbtn{
+        text-transform: capitalize;
+        font-size: 0.75em;
+        height: 30px;
+        width: 90px;
+        color: var(--ion-color-success-shade);
+        --border-color: var(--ion-color-success-shade);
+     
+    }
+    #buttonColor{
+        text-transform: capitalize;
+        width: 48%;
+        font-size: 0.8em;
+        height: 25px;
+        margin: 0;
+        border-style: none;
+    }
+    #buttonReject{
+
+    color: grey;
+    text-transform: capitalize;
+    width: 48%;
+    font-size: 0.8em;
+    height: 25px;
+    margin: 0;
+    --border-color: #80808099;
+    }
+    .user-name{
+        color: #768dff;
+    }
+    .user_details{
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+    .block-border{
+        border: 1px solid #e3e8fe;
+    }
+}

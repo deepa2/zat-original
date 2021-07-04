@@ -1,0 +1,47 @@
+<div *ngIf="chatListItem?.response?.responseList?.dataList?.length > 0">
+    <ion-row class="effort-details">
+        <ion-col col-9 class="total-efforts">
+            <div *ngIf="chatListItem?.response?.responseList?.data?.staffLoginLogoutDetails">
+                <div><strong>{{chatListItem?.response?.responseList?.data?.staffLoginLogoutDetails?.date}}</strong>
+                </div>
+                <strong>In: </strong>
+                <span>{{chatListItem?.response?.responseList?.data?.staffLoginLogoutDetails?.logInTimeHrsMin}}</span>
+                <strong>Out: </strong>
+                <span>{{chatListItem?.response?.responseList?.data?.staffLoginLogoutDetails?.logOutHrsMin}}</span>
+                <span>({{chatListItem?.response?.responseList?.data?.staffLoginLogoutDetails?.efforts}})</span>
+            </div>
+            <div><strong>Total Efforts:
+                    {{chatListItem?.response?.responseList?.totalCalculatedEfforts?.hour}}:{{chatListItem?.response?.responseList?.totalCalculatedEfforts?.minute}}
+                </strong></div>
+        </ion-col>
+        <ion-col col-3 class="submitBtn">
+            <button ion-button round small [disabled]="tsFlags?.disableSubmit"
+                (click)="showSubmitConfirmAlert(chatListItem?.response?.responseList?.data?.taskAndTimesheetDetails,chatListItem?.response?.responseList?.queryId,i)"
+                [ngStyle]="{'opacity': i < chatList?.length - 1 || tsFlags?.disableSubmit ? '0.5' : '1'}">Submit</button>
+        </ion-col>
+    </ion-row>
+</div>
+<div class="project-title" *ngIf="!chatListItem?.response?.responseList?.data?.staffLoginLogoutDetails">
+    <strong>For Date :
+    </strong> <span>{{tsFordate}}</span>
+</div>
+
+
+<div class="project-card"
+    *ngFor="let responseItem of chatListItem?.response?.responseList?.dataList;let parentIndex = index;">
+    <div class="project-title"> <strong>Project: </strong>
+        <span>{{responseItem.title | titlecase}}</span>
+    </div>
+    <ion-slides slidesPerView="1.2" spaceBetween="5px" (ionSlideWillChange)="onTaskDataSLideChange()">
+        <ion-slide *ngFor="let task of responseItem.taskList;let childIndex = index;">
+            <timesheet-data [taskData]="task" [timesheetData]="responseItem" [type]="tsTypes.taskAndTimesheetDetails"
+                [isTimesheetEditable]="chatListItem?.response?.responseList?.data?.isTimesheetEditable"
+                [isPayrollToBeFilledZeroHours]="canFillZeroHoursFlag()"
+                (edit)="editAndSaveTimesheet($event,task,chatListItem?.response?.responseList?.dataList,i,chatListItem?.response?.responseList?.actionId)"
+                (refresh)="refreshTimesheet(i)" (setSuggestionList)="setSuggestionList($event,i)"
+                [selData]="tsTypes.selData" [parentIndex]="parentIndex" [childIndex]="childIndex"
+                [indexToToggleForm]="indexToToggleForm" (setIndexTOUpdate)="setIndexTOUpdate($event)"
+                [chatListIndex]="i" [chatListLength]="chatList?.length"></timesheet-data>
+        </ion-slide>
+    </ion-slides>
+</div>

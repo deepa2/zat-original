@@ -1,0 +1,51 @@
+zendeavor-team-mean-modal {
+  .cancel-btn {
+    color: white;
+    padding: 10px;
+    font-size: 25px;
+  }
+  .manager-name {
+    color: white;
+    font-size: 1.2em;
+  }
+
+  .title-container {
+    display: flex;
+    align-items: center;
+  }
+  .mean-grid {
+    display: flex;
+    margin: 20px 10px;
+  }
+  .mean-container {
+    padding: 10px;
+    border: 1px dotted;
+    margin: 5px;
+  }
+  .fontSize1-3 {
+    font-size: 1.3em;
+  }
+  .fontWeight-600 {
+    font-weight: 600;
+  }
+
+  .applicable-score {
+    padding-top: 10px;
+  }
+  .permissible-score {
+    padding-top: 10px;
+  }
+  .info-icon {
+    width: 15px;
+  }
+  .tooltip-div {
+    display: flex;
+    flex-direction: row;
+  }
+  .width90-per {
+    width: 90%;
+  }
+  .width92-per{
+    width: 92%;
+  }
+}

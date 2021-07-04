@@ -1,0 +1,83 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title class="pageTitile">Job Insights</ion-title>
+    <ion-buttons end *ngIf="data.type!='upcoming' && data.type!='applied'">
+      <button style="text-transform: capitalize;" ion-button (click)="goToApplyJob()">
+        Apply
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+  <div class="navBg jobCodeBar" *ngIf="isDataAvailable">
+    <div class="display-flex align-item-center">
+      <div class="padding3 width22per">
+        <div><img class="icon-size" [src]="icon" /></div>
+      </div>
+      <div class="rightSection width54per">
+        <div class="alertCustomCss">{{jobDescription}}</div>
+
+        <div *ngIf="data.type!='upcoming'">Job Code : {{jobCode}}</div>
+      </div>
+      <div class="headerCirSize">
+        <circle-progress [percent]="currentMatch" [radius]="100" [outerStrokeWidth]="15" [innerStrokeWidth]="15"
+          [space]="-14" [outerStrokeColor]="filledColor" [innerStrokeColor]="nonFilledColor" [showSubtitle]="false"
+          [animation]="true" [animationDuration]="300" [responsive]="true">
+        </circle-progress>
+      </div>
+    </div>
+  </div>
+
+  <ion-card *ngFor="let skills of moreDetails ; index as i">
+
+    <div *ngIf="skills.matchingPercentage != null" class="display-flex align-item-center width100per">
+      <div class="padding3 width22per">
+        <div class="skillImg"><img class="skillIcon" [src]="skills.icon" /></div>
+      </div>
+      <div class="rightSection width54per">
+        <div *ngFor="let item of skills.skill">
+          <div class="lightgrey">{{item.key}}:</div>
+          <div *ngIf="item.value != ''" class="darkgrey">{{item.value}}</div>
+          <div *ngIf="item.value == ''" class="darkgrey">N/A</div>
+        </div>
+      </div>
+      <div class="circleSize">
+        <circle-progress [percent]="skills.matchingPercentage" [radius]="100" [outerStrokeWidth]="15"
+          [innerStrokeWidth]="15" [space]="-14" [outerStrokeColor]="skills.filledColor"
+          [innerStrokeColor]="skills.nonfilledColor" [titleFontSize]="26" [unitsFontSize]="24" [showSubtitle]="false"
+          [animation]="true" [animationDuration]="300" [responsive]="true">
+        </circle-progress>
+      </div>
+    </div>
+    <ion-card-content *ngIf="skills?.jobCourseList?.length > 0" class="courseListBG">
+      <div class="courseListSt">
+        <span class="courseListSkill">{{skills?.jobSkill}}</span>
+        <!-- <span><span style="color:grey">Expected match increase :</span>
+          <span style="color: green">{{skills?.expectedMatchIncrease}}%</span></span> -->
+      </div>
+      <ion-slides slidesPerView="1.3" spaceBetween="10">
+        <ion-slide *ngFor="let courseList of skills.jobCourseList;index as i">
+
+          <div class="courseListDspFlx">
+            <div>
+              <img class="courseImg" [src]="courseList.courseImage"> </div>
+            <div class="courseDetails">
+              <p class="courseTitle">{{courseList.courseText}}</p>
+              <p class="courselistDetails">{{formatDate(courseList.courseDate) | date}}</p>
+              <p class="fcourselistDetails">{{courseList.duration}} Hrs </p>
+
+              <span (click)="enrollNow()" class="enrollNow">
+                Enroll Now</span>
+            </div>
+          </div>
+        </ion-slide>
+
+
+
+      </ion-slides>
+
+    </ion-card-content>
+  </ion-card>
+</ion-content>

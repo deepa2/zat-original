@@ -1,0 +1,80 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title class="pageTitile">
+      {{title}} {{type}} {{pageTitle}}
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="goToPage('SearchPage')">
+        <img class="headerSearchIcon" src="assets/imgs/Search.svg" />
+      </button>
+      <button class="notification-counter" ion-button icon-only (click)="goToPage('NotificationPage')">
+        <div *ngIf="notificationCount > 0" class="notificationCount">
+          <span class="count">{{notificationCount}}</span>
+          <!-- <span class="count">34</span>
+         -->
+        </div>
+
+        <!-- notification count new -->
+
+        <!-- <div *ngIf="notificationCount > 9 " class="notificationCountRevised">
+          <span>{{notificationCount}}</span>
+        </div>  -->
+
+        <img class="headerIcons" src="assets/imgs/Notification.svg" />
+      </button>
+      <button ion-button icon-only (click)="presentOptions($event)">
+        <ion-icon name="more"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+  <ion-toolbar>
+    <ion-row align-items-center>
+      <ion-col>
+        <div class="queryLength">{{totalResultCount}} Questions</div>
+      </ion-col>
+      <ion-col *ngIf="!unratedQuestion" center text-right>
+        <button class="filterIcon" ion-button icon-end clear small (click)="presentFilter($event)">Filter
+          <ion-icon name="options"></ion-icon>
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content>
+
+
+  <ion-spinner *ngIf="loading$ | async"></ion-spinner>
+  <div>
+  <div *ngIf="!(loading$ | async) && unratedQuestion && role == 'associates'" class="showUnratedMesage">
+      <img class="alert-img" src="assets/imgs/alert.svg" />
+    {{unratedMessage}}</div></div>
+
+  <div text-center class="no-question-msg" *ngIf="!(loading$ | async) && itemsLength == 0 ">No results found</div>
+
+  <!-- <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher> -->
+
+  <query-list *ngIf="!(loading$ | async)" [type]='pageName' (gotToDetail)="gotToListDetail($event)"
+    [(showOptions)]="showOptions" [items]="items$">
+  </query-list>
+
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+  <ion-fab *ngIf="!showOptions  && !unratedQuestion" right bottom (click)="add()">
+    <button ion-fab>
+      <ion-icon *ngIf="userType!='PRE-ONBOARDING'" name="add"></ion-icon>
+      <ion-icon *ngIf="userType=='PRE-ONBOARDING'" name="help"></ion-icon>
+    </button>
+  </ion-fab>
+
+
+
+
+</ion-content>

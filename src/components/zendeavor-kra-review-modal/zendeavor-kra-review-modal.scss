@@ -1,0 +1,79 @@
+zendeavor-kra-review-modal {
+    .card{
+        background: #efefef;
+        margin-bottom: 20px;
+    }
+    .title{
+        display: flex;
+        justify-content: space-between;
+        padding: 10px;
+        .pen-icon{
+            height: 20px;
+        }
+        .kra-title{
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+    }
+    
+    // card only html
+    
+    
+    .card-main{
+        padding: 10px;
+        background: #efefef;
+        .checkBox-card{
+    
+            border-bottom: 2px dotted #d8c9c9;
+            margin-bottom: 20px;
+            background: #efefef;
+            
+            ion-item{
+                padding: 0;
+                background: #efefef;
+            }
+            ion-checkbox.checkbox{
+                margin: 0;
+                margin-right: 10px;
+            }
+            ion-label{
+                white-space:initial;
+            }
+        }
+        
+    }
+    
+    // .kra-weightage{
+    //     border: 1px dotted #d8c9c9;
+    //     border-style: dotted;
+    //     font-weight: bold;
+    //     font-size: 1.2em;
+    // }
+    // ion-row{
+    //     margin-bottom: 20px;
+    // }
+    .capital{
+        text-transform: capitalize;
+    }
+    .card-row{
+        display: flex;
+        justify-content: start;    
+        margin-bottom: 20px;
+        .card-col-1{
+            width: 45%;
+        }
+        .card-col-2{
+        border: 1px dotted #d8c9c9;
+      padding: 5px 15px; 
+      font-weight: bold;
+        font-size: 1.2em;
+        }
+    }
+    
+    
+    
+    
+    
+    
+    }
+    

@@ -1,0 +1,71 @@
+<div *ngIf="type!='list' && type!='add'" [ngClass]="{'post-img-one': multimediaItems.length === 1 , 
+                        'post-img-two': multimediaItems.length === 2, 
+                        'post-img-three': multimediaItems.length === 3 }">
+
+
+  <div *ngFor="let item of multimediaItems;index as m" class="wrap">
+    <div class="grumpy-image-wrapper1">
+      <div class="grumpy-image loader-wrapper" class="grumpy-image loader-wrapper">
+      </div>
+     
+      <img [src]="item.multimediaUrl || item.attachmentURL || item" class="grumpy-image image-wrapper"
+        (click)="openModal(m)" onerror="this.src=''">
+    </div>
+
+  </div>
+
+  <!-- <ion-label class="iconwrapper">
+    <img class="searchIcon" src="assets/imgs/Search.svg" />
+    <ion-icon name="search"></ion-icon>
+  </ion-label> -->
+
+  <!-- <ion-slides class="image-slider" loop="true" effect="coverflow">
+    <ion-slide *ngFor="let item of multimediaItems" class="wrap">
+      <div class="grumpy-image-wrapper1">
+        <div class="grumpy-image loader-wrapper" class="grumpy-image loader-wrapper">
+        </div>
+        <img [src]="item.multimediaUrl" class="grumpy-image image-wrapper" (click)="openModal()" onerror="this.src='https://zenconversedev.zensar.com/zenverseupload/UPLOAD/Zenverse/wordcloud/wordcloud.jpeg'">
+      </div>
+    </ion-slide>
+  </ion-slides> -->
+
+</div>
+
+<div *ngIf="type=='add'">
+  <ion-row *ngFor="let item of multimediaItems;index as m" margin-vertical class="listImages">
+    <ion-col no-padding col-3>
+      <div class="grumpy-image-wrapper1">
+        <div class="grumpy-image loader-wrapper" class="grumpy-image loader-wrapper">
+        </div>
+        <img [src]="item?.multimediaUrl || item?.attachmentURL || item" class="grumpy-image image-wrapper"
+          (click)="openModal(m)" onerror="this.src=''">
+      </div>
+    </ion-col>
+    <ion-col class="imageName">
+      <div class="cut-text">{{getFileName(item)}}</div>
+    </ion-col>
+    <ion-col *ngIf="type=='list'" class="downloadIcon" (click)="downloadImage(item)" col-2>
+      <ion-icon name="download"></ion-icon>
+    </ion-col>
+    <ion-col *ngIf="type=='add'" class="downloadIcon" (click)="removeImage(m)" col-2>
+      <ion-icon name="close"></ion-icon>
+    </ion-col>
+  </ion-row>
+</div>
+
+<div *ngIf="type=='list'">
+  <ion-row margin-vertical>
+    <ion-col *ngFor="let item of multimediaItems;index as m" col-3>
+      <div class="grumpy-image-wrapper1">
+        <div class="grumpy-image loader-wrapper" class="grumpy-image loader-wrapper">
+        </div>
+        <div class="iconwrapper">
+          <img class="searchIcon" src="assets/imgs/full_screen.svg" />
+          
+        </div>
+        <img [src]="item?.multimediaUrl || item?.attachmentURL || item" class="grumpy-image image-wrapper multimediaImg"
+          (click)="openModal(m)" onerror="this.src=''">
+      </div>
+    </ion-col>
+  </ion-row>
+</div>

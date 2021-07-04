@@ -1,0 +1,201 @@
+timesheet-data {
+    .ts-dates {
+        padding: 0 8px 8px;
+        // margin: 8px;
+        border-radius: 5px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        h6 {
+            height: 30px;
+            width: 30px;
+            display: grid;
+            place-items: center;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+        h4 {
+            border-radius: 100%;
+            color: white;
+            font-size: 1em;
+            width: 30px;
+            text-align: center;
+            height: 30px;
+            display: grid;
+            place-items: center;
+        }
+    }
+    .task-card {
+        width: 100%;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        box-shadow: none;
+        border: 1px solid #e4f3ff;
+
+        // width: 240px;
+        // margin: 10px 5px;
+        .status {
+            align-items: center;
+            background-color: #e4f3ff;
+            padding: 5px;
+            border-bottom: 2px solid white;
+            .image {
+                border-radius: 5px;
+                text-align: center;
+                width: 30px;
+                height: 30px;
+                display: flex;
+                justify-content: center;
+                padding: 3px;
+            }
+            button {
+                height: 1em !important;
+                padding: 0px !important;
+            }
+        }
+        ion-grid {
+            p {
+                margin-bottom: 5px;
+                padding-left: 5px;
+            }
+            ion-select {
+                max-width: 100% !important;
+            }
+            button {
+                background: transparent !important;
+            }
+            span {
+                color: color($colors, primary);
+            }
+            .milestone {
+                padding-left: 12px;
+                white-space: initial;
+            }
+        }
+    }
+    .border-bottom {
+        border-bottom: 1px solid #e4f3ff;
+    }
+    .border-top {
+        border-top: 1px solid #e4f3ff;
+    }
+    .saved {
+        background-color: $ts-blue;
+    }
+    .approved {
+        background-color: $ts-btn-green;
+    }
+    .submitted {
+        background-color: $ts-orange;
+    }
+    .rejected {
+        background-color: $ts-red;
+    }
+    .task {
+        background-color: $ts-grey;
+    }
+    .selected {
+        // border: 2px solid black;
+        height: 5px;
+        width: 5px;
+        background-color: #0ea0c8;
+        border-radius: 100%;
+        margin-top: 2px;
+    }
+    .ts-edit-form {
+        background: #e4f3ff;
+        ion-list {
+            // padding-right:5px;
+            .first-item {
+                .item-inner {
+                    border-bottom: 2px dotted white !important;
+                }
+            }
+            ion-item {
+                background: transparent;
+                .item-inner {
+                    padding: 0 8px;
+                }
+            }
+            .saveBtn {
+                text-align: right;
+                padding: 8px;
+                button {
+                    padding: 0 0.9em;
+                    background: $ts-secondary;
+                    color: white;
+                    text-transform: capitalize;
+                }
+            }
+            .comments {
+                .item-inner {
+                    border-bottom: 1px solid white;
+                }
+                ion-textarea {
+                    textarea {
+                        border-bottom: 1px dotted grey;
+                        padding-left: 14px;
+                    }
+                }
+            }
+        }
+        .label {
+            margin-left: 12px !important;
+            font-size: 1.5rem;
+        }
+        .efforts {
+            //    padding: 0 8px;
+            padding: 0px 8px 8px;
+            border-bottom: 1px solid white;
+            .label {
+                text-align: left;
+                color: #999;
+            }
+            img {
+                height: 5px;
+                width: 5px;
+            }
+            .division {
+                display: flex;
+                align-items: center;
+                border-bottom: 1px dotted grey;
+                justify-content: space-between;
+                ion-input {
+                    .text-input {
+                        margin: 5px 0px !important;
+                    }
+                }
+                div {
+                    display: flex;
+                    align-items: center;
+                    margin-right: 10px;
+                    ion-input {
+                        width: 100px;
+                    }
+                    .hour {
+                        position: absolute;
+                        left: 45px;
+                    }
+                    .min {
+                        position: absolute;
+                        right: 60px;
+                    }
+                }
+            }
+            button {
+                background: transparent;
+                color: #0e90c7;
+                margin-top: 13px;
+            }
+        }
+    }
+
+    .error-msg {
+        color: red;
+        margin-top: 2px;
+        display: block;
+    }
+    .margin-top-bottom5 {
+        margin: 5px 0;
+    }
+}

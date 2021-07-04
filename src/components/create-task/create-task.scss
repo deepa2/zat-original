@@ -1,0 +1,213 @@
+create-task {
+    ion-segment {
+        // background-color: #EFF5FF !important;
+        background-color: $ts-light !important;
+        border-radius: 10px 10px 0 0;
+        .segment-button {
+            font-size: 1.1em !important;
+            text-transform: capitalize !important;
+            color: $ts-primary !important;
+            height: 5rem !important;
+            line-height: 5rem !important;
+        }
+        .segment-activated {
+            border-color: $ts-primary !important;
+        }
+    }
+    .std-task {
+        padding-top: 0px !important;
+    }
+
+    .header {
+        display: flex;
+        // padding: 2%;
+    }
+    .dateInput {
+        width: 107px;
+        border: none;
+    }
+
+    .borderColor {
+        width: 100%;
+        border-bottom: 1px solid $ts-tertiary !important;
+        padding-left: 0px;
+        font-size: 1em;
+    }
+    .dateBody {
+        width: 50%;
+        border: 1px solid #dee2e6;
+        padding: 5px;
+    }
+    .dateIcon {
+        float: right;
+        background: none;
+    }
+    .formBody {
+        // display: flex;
+        padding: 4%;
+    }
+    .popover-content.sc-ion-popover-md {
+        width: 92%;
+    }
+
+    .has-error {
+        border-color: rgb(216, 12, 12);
+    }
+
+    .submitBtn {
+        text-align: right;
+        float: none !important;
+        button {
+            background-color: $ts-secondary;
+            color: white;
+            text-transform: capitalize;
+        }
+        // .activated{
+        //     background-color: $ts-secondary;
+        // }
+    }
+
+    .hide {
+        display: none;
+    }
+
+    ion-button {
+        --background: linear-gradient(to right, var(--ion-color-primary-shade), var(--ion-color-primary-tint));
+
+        color: white;
+    }
+    #buttonColor {
+        --background: linear-gradient(to right, var(--ion-color-primary-shade), var(--ion-color-primary-tint));
+        color: white;
+        text-transform: capitalize;
+        width: 110px;
+        height: 40px;
+    }
+
+    .time {
+        display: flex;
+        ion-datetime {
+            width: 80%;
+            font-size: 1em;
+        }
+        .mic {
+            width: 20%;
+            .icon {
+                padding: 10%;
+                .iconify {
+                    font-size: 0.9em;
+                }
+                .disable {
+                    opacity: 0.3;
+                }
+            }
+        }
+    }
+
+    .add-task {
+        font-size: 1em;
+    }
+
+    //Newly added CSS
+    .list .item .item-inner {
+        border-bottom: none;
+    }
+    .error-msg {
+        color: red;
+        margin-top: 2px;
+        display: block;
+    }
+    ion-select {
+        width: 100%;
+        max-width: none;
+        .select-text {
+            white-space: initial;
+        }
+    }
+    .stdRemarks {
+        background-color: #f9fafb;
+        border-radius: 5px;
+        border: 1px solid $ts-tertiary !important;
+    }
+    ion-textarea {
+        .text-input {
+            margin: 13px !important;
+        }
+    }
+    .down-arrow {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: white;
+        color: #808080;
+        font-size: 1.2em;
+        padding-right: 5px !important;
+    }
+    .stdInput {
+        padding-left: 0%;
+        border-bottom: none !important;
+        box-shadow: none !important;
+        .item-inner {
+            border: none !important;
+            box-shadow: none !important;
+            ion-input {
+                padding-left: 2%;
+                font-size: 0.9em;
+                .text-input {
+                    text-overflow: ellipsis;
+                }
+            }
+        }
+    }
+    .stdTaskOption {
+        border-bottom: 1px solid $ts-tertiary;
+        ion-row {
+            // padding-right: 8px;
+        }
+    }
+    .create-task-list {
+        margin: 0;
+    }
+
+    .list {
+        margin: -1px 0 -10px;
+    }
+    .project-CT {
+        .list {
+            margin: -1px 0 8px;
+        }
+    }
+
+    .task-cont {
+        background: #eff5ff;
+        border-radius: 0 0 10px 10px;
+        padding: 16px 16px 10px;
+    }
+    .margin-top12 {
+        margin-top: 12px;
+    }
+    .mb-5n {
+        margin-bottom: -5px;
+    }
+    .std-date {
+        background: none;
+        width: 48%;
+        text-align: center;
+    }
+    .w-48 {
+        width: 48%;
+    }
+    .cancel-ct {
+        margin-top: -3.1em;
+        text-align: right;
+        margin-right: 9em;
+        .button {
+            background-color: $ts-secondary;
+            color: white;
+            text-transform: capitalize;
+        }
+    }
+    .margin10-16 {
+        margin: 10px 16px;
+    }
+}

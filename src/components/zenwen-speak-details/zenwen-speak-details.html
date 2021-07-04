@@ -1,0 +1,31 @@
+<div class="s_header" padding>
+  <div class="title" *ngIf="type == 'speak'">
+    Speak Details
+  </div>
+  <div class="title" *ngIf="type == 'safety'">
+    {{safetyObj?.title}}
+  </div>
+  <div class="cross-icon" (click)="closeModal()">
+    <ion-icon name="close"></ion-icon>
+  </div>
+</div>
+
+<!-- ZenWEN Speaks Detail content -->
+<div class="profile-details" *ngIf="type == 'speak'">
+  <div class="profile-img">
+    <img src="{{imgUrl + speakObj?.toUserPortraitUrl}}" onerror="this.src='assets/imgs/dummy-profile.png'" />
+  </div>
+  <h2>{{speakObj?.toUserName}}</h2>
+  <span>{{speakObj?.experience}}</span>
+</div>
+<div *ngIf="type == 'speak'" padding class="msg" [innerHTML]="speakObj?.description"></div>
+
+
+<!-- Safety@Zensar Detail content -->
+<div padding class="safety" *ngIf="type == 'safety'">
+  <img *ngIf="safetyObj.thumbnailUrl" src="{{imgUrl + safetyObj?.thumbnailUrl}}">
+  <p [innerHTML]="safetyObj?.description"></p>
+  <a *ngIf="safetyObj?.lstZenappRelatedAssetMediaModel?.fileUrl" (click)="openPdfFile()">Click
+    here to view
+    {{safetyObj?.lstZenappRelatedAssetMediaModel?.title}}</a>
+</div>

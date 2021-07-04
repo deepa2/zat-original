@@ -1,0 +1,69 @@
+<!--
+  Generated template for the PreApprovalTimesheetPendingPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header class="ts-header">
+
+  <ion-navbar hideBackButton="flag?.showSearchBox">
+    <ion-title *ngIf="!flag?.showSearchBox" class="approval-ts-title">
+      <span *ngIf="type == TYPE_PENDING">Pending Timesheets</span>
+      <span *ngIf="type == TYPE_APPROVED">Approved Timesheets</span>
+      <span *ngIf="type == TYPE_REJECTED">Rejected Timesheets</span>
+      <!-- Additional Hour Pre-Approval -->
+    </ion-title>
+
+    <ion-buttons *ngIf="!flag?.showSearchBox" end>
+      <button ion-button icon-only (click)="showSearchBar()">
+        <ion-icon name="search"></ion-icon>
+      </button>
+      <button ion-button icon-only (click)="openFilterModal()">
+        <img class="filterIcon" src="assets/imgs/filterIcon.svg" />
+      </button>
+    </ion-buttons>
+
+    <ion-searchbar *ngIf="flag?.showSearchBox" animated="true" [showCancelButton]="true" (ionClear)="onSearchClear()"
+      (ionCancel)="onSearchCancel()" (ionChange)="onSearchTextChange()" [(ngModel)]="searchText"></ion-searchbar>
+
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="isAnyRecord()" class="additionalHourPage">
+    <div *ngIf="filteredPendingTask.length > 0 && flag?.isDataAvailable" class="headSection">
+      <ion-grid>
+        <ion-row *ngIf="filteredPendingTask">
+          <ion-col col-9>
+            <!-- <div class="selectProjectDropviewSection">
+              <ion-item>
+                <ion-label>Select Project</ion-label>
+                <ion-select [(ngModel)]="selectedProject" [selectOptions]="customAlertOptions" interface="action-sheet"
+                  (ionCancel)="onProjectSelCancel()" placeholder="Select One">
+                  <ion-option *ngFor="let project of key" [value]="project">{{projects[project]}}</ion-option>
+                </ion-select>
+              </ion-item>
+            </div> -->
+          </ion-col>
+
+          <ion-col col-3>
+            <div class="approveAllSection">
+              <button ion-button round (click)="presentAlertConfirmDialog()" class="ion-float-right approvAllbtn">Approve
+                All</button>
+            </div>
+          </ion-col>
+        </ion-row>
+
+      </ion-grid>
+    </div>
+    <div *ngFor="let item of getDataSource()">
+      <pre-approval-timesheet-item [type]="type" (onRejectClicked)="onRejectClicked(item)" (onApproveClicked)="onApproveClicked(item)"
+        (openPreApprovalPendingTS)="openPendingDetailModalPage(item, false)" [item]="item"></pre-approval-timesheet-item>
+    </div>
+  </div>
+  <div *ngIf="!isAnyRecord() && flag?.isDataAvailable" class="noRecords">
+    <p>No records to show.</p>
+  </div>
+
+
+</ion-content>

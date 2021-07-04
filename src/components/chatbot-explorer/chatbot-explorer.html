@@ -1,0 +1,13 @@
+<div>
+  <div class="title-text">
+    <span>What's new</span>
+      <ion-icon ios="ios-close" md="md-close" class="close-icon" (click)="close()"></ion-icon>
+  </div>
+  <div class="explore-slide">
+    <ion-slides spaceBetween="5px" pager="true">
+      <ion-slide *ngFor="let suggestion of suggestionList">
+        {{suggestion.name}}
+      </ion-slide>
+    </ion-slides>
+  </div>
+</div>

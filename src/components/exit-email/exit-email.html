@@ -1,0 +1,25 @@
+<!-- Generated template for the ExitEmailComponent component -->
+<ion-content class="background">
+
+  <div class="header-container">
+    <span class="person-container">
+      <img class="person-img" [src]="managersDetails?.icon">
+      <span class="person-details">
+        <span>{{managersDetails?.contactPersonName}}</span>
+        <span class="ft-300">{{managersDetails?.key}}</span>
+      </span>
+    </span>
+    <span class="icon-margin" (click)="dismiss()">
+      <ion-icon ios="ios-close" md="md-close"></ion-icon>
+    </span>
+  </div>
+
+  <div class="middle-content">
+    <input class="input-field" type="text" [(ngModel)]="subject" placeholder="Subject" />
+    <textarea class="input-field textarea-height" placeholder="Message" [(ngModel)]="content"></textarea>
+  </div>
+  <div class="bottom-container">
+    <span  class="btn-style attachement" (click)="uploadDoc()"> <img src="assets/ZenExit-Imgs/attach-pin.svg"></span>
+    <button [disabled]="!(content && subject)" ion-button round class="btn-style" (click)="send()">Send</button>
+  </div>
+</ion-content>

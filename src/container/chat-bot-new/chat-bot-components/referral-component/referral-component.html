@@ -1,0 +1,103 @@
+<div class="">
+    <ion-slides [slidesPerView]="slidePerView" class="padding5-0" (ionSlideWillChange)="_ionSlideWillChange()">
+        <ion-slide *ngFor="let item of referralData | slice:start:end; let i = index">
+            <ion-card>
+                <div class="grid-bot text-left referral-header">
+                    <div>
+                        <div class="padding5-0">Job ID
+                        </div>
+                        <div class="text-black">
+                            {{item?.srfNo}}
+                        </div>
+                    </div>
+                    <div *ngIf="item?.candidateStatus">
+                        <div class="padding5-0">Status
+                        </div>
+                        <div class="text-black">
+                            {{item?.candidateStatus}}
+                        </div>
+                    </div>
+
+                    <div *ngIf="item?.postedDate">
+                        <div class="padding5-0">PostedDate
+                        </div>
+                        <div class="text-black">
+                            {{item?.postedDate}}
+                        </div>
+                    </div>
+                </div>
+
+                <div class=" text-left referral-detail">
+
+                    <ion-row *ngIf="item?.candidateName">
+                        <ion-col>
+                            <div>Referral</div>
+                            <div>
+                                {{item?.candidateName}}
+                                <span *ngIf="!item?.candidateName">N.A.</span>
+                            </div>
+                        </ion-col>
+                    </ion-row>
+                    <ion-row *ngIf="item?.jobTitle">
+                        <ion-col>
+                            <div>Job Title</div>
+                            <div>
+                                <details class="class-{{item.srfNo}} details-animated"
+                                    [ngClass]="{'showMore': item?.jobTitle.length > 10 }">
+                                    <summary>
+                                        <p [innerHTML]="item?.jobTitle?.substr(0,10)"></p><span
+                                            *ngIf="item?.jobTitle.length > 10">...</span>
+                                    </summary>
+                                    <p [innerHTML]=" item?.jobTitle?.substr(10)"></p>
+                                </details>
+                            </div>
+                        </ion-col>
+                    </ion-row>
+                    <ion-row *ngIf="item?.referredDate">
+                        <ion-col>
+                            <div>Referred Date</div>
+                            <div>{{item?.referredDate | date:'d MMM y'}}<span *ngIf="!item?.referredDate">N.A.</span>
+                            </div>
+                        </ion-col>
+                    </ion-row>
+                    <ion-row *ngIf="item?.skills">
+                        <ion-col>
+                            <div>Skills
+                            </div>
+                            <div>
+                                <p *ngIf="showMore"
+                                    [innerHtml]="item?.skills.length > 10 ? item?.skills?.substr(0,10)+'...':item?.skills">
+                                </p>
+                                <p *ngIf="!showMore" [innerHtml]="item?.skills"></p>
+                                <span class="more-less" *ngIf="showMore && item?.skills.length > 10"
+                                    (click)="_showMore(item?.srfNo)">More</span>
+                                <span class="more-less" *ngIf="!showMore && item?.skills.length > 10"
+                                    (click)="_showMore(item?.srfNo)">Less</span>
+                                <span *ngIf="!item?.skills">N.A.</span>
+                            </div>
+                        </ion-col>
+                    </ion-row>
+                    <ion-row *ngIf="item?.experience">
+                        <ion-col>
+                            <div>Experience</div>
+                            <div>{{item?.experience}}<span *ngIf="!item?.experience">N.A.</span>
+                            </div>
+                        </ion-col>
+                    </ion-row>
+                    <ion-row *ngIf="item?.location">
+                        <ion-col>
+                            <div>Location</div>
+                            <div>{{item?.location}}<span *ngIf="!item?.location">N.A.</span>
+                            </div>
+                        </ion-col>
+                    </ion-row>
+                </div>
+            </ion-card>
+        </ion-slide>
+    </ion-slides>
+
+    <div *ngIf="referralData?.length > 5 && dataOnly=='false' && showMoreReferral" class="text-wrapper more-refer"
+        (click)="moreReferral()">More Referral</div>
+
+    <div *ngIf="showError" class="text-wrapper">No Data Available</div>
+</div>

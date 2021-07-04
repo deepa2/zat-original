@@ -1,0 +1,29 @@
+
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Application Submitted
+    </ion-title>
+    <ion-buttons end (click)="dismiss()">
+      <button ion-button icon-only>
+        <ion-icon ios="ios-close" md="md-close"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+<!-- <p class="date" *ngIf="msg.status.statusCode !=1">{{msg?.status?.statusMessage}}</p> -->
+<div class="success-info">
+  <div class="success-wrap">
+  <img class="asterisck" src="assets/imgs/reffSuccess.svg" />
+  <ion-label class="success">Successful</ion-label>
+  </div>
+  <!-- <div class="success-msg">Your Referral has been submitted successfully . You can now track its status  in " My Referrals "  section/field /Tab.</div> -->
+  <div class="success-msg">{{msg}}</div>
+
+</div>
+<div class="submit-footer">
+  <img (click)="goToHome('home')" class="asterisck" src="assets/imgs/successHome.svg" />
+  <div class="home-screen" (click)="goToReferral('myReferrals')">My Referrals</div>
+</div>
+</ion-content>

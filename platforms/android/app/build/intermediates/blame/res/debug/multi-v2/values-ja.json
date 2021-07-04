@@ -1,0 +1,111 @@
+{
+    "logs": [
+        {
+            "outputFile": "D:\\ZenSar-Apps\\ZenTalent\\zenHelp\\platforms\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-ja\\values-ja.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\dn51437\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-basement-10.2.6.aar\\c2bc5595ff2d784b7950a7eae02b8cfc\\res\\values-ja\\values.xml",
+                    "from": {
+                        "startLines": "4",
+                        "startColumns": "0",
+                        "startOffsets": "285",
+                        "endColumns": "180",
+                        "endOffsets": "465"
+                    },
+                    "to": {
+                        "startLines": "20",
+                        "startColumns": "4",
+                        "startOffsets": "1840",
+                        "endColumns": "180",
+                        "endOffsets": "2016"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\dn51437\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.1.1.aar\\6e7b47fda2679ad0bc839cc711ebbf77\\res\\values-ja\\values-ja.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    },
+                    "to": {
+                        "startLines": "40",
+                        "startColumns": "4",
+                        "startOffsets": "3244",
+                        "endColumns": "100",
+                        "endOffsets": "3340"
+                    }
+                },
+                {
+                    "source": "D:\\ZenSar-Apps\\ZenTalent\\zenHelp\\platforms\\android\\app\\src\\main\\res\\values-ja\\multiimagechooser_strings_ja.xml",
+                    "from": {
+                        "startLines": "4,3,2,5",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "179,116,55,258",
+                        "endColumns": "78,62,60,73",
+                        "endOffsets": "253,174,111,327"
+                    },
+                    "to": {
+                        "startLines": "26,33,34,37",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "2284,2764,2827,3020",
+                        "endColumns": "78,62,60,73",
+                        "endOffsets": "2358,2822,2883,3089"
+                    }
+                },
+                {
+                    "source": "D:\\ZenSar-Apps\\ZenTalent\\zenHelp\\platforms\\android\\app\\src\\main\\res\\values-ja\\fpauth-strings.xml",
+                    "from": {
+                        "startLines": "17,19,21,22,23,24,27,25,20,26,18",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "691,781,878,948,1002,1078,1306,1136,844,1234,732",
+                        "endColumns": "40,62,69,53,75,57,79,97,33,71,48",
+                        "endOffsets": "727,839,943,997,1073,1131,1381,1229,873,1301,776"
+                    },
+                    "to": {
+                        "startLines": "19,27,28,29,30,31,32,35,36,39,41",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "1799,2363,2426,2496,2550,2626,2684,2888,2986,3172,3345",
+                        "endColumns": "40,62,69,53,75,57,79,97,33,71,48",
+                        "endOffsets": "1835,2421,2491,2545,2621,2679,2759,2981,3015,3239,3389"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\dn51437\\.gradle\\caches\\transforms-1\\files-1.1\\android-crop-1.0.0.aar\\9650a8940f0eee67bfae6670215f59db\\res\\values-ja\\values-ja.xml",
+                    "from": {
+                        "startLines": "4,5,6,7,8",
+                        "startColumns": "4,4,4,4,4",
+                        "startOffsets": "215,286,328,384,430",
+                        "endColumns": "70,41,55,45,47",
+                        "endOffsets": "281,323,379,425,473"
+                    },
+                    "to": {
+                        "startLines": "21,22,23,24,25",
+                        "startColumns": "4,4,4,4,4",
+                        "startOffsets": "2021,2092,2134,2190,2236",
+                        "endColumns": "70,41,55,45,47",
+                        "endOffsets": "2087,2129,2185,2231,2279"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\dn51437\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\d2d5b381a0b2d9b5d2dbe96252e1b5c3\\res\\values-ja\\values-ja.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "105,202,295,400,482,580,688,765,841,919,1021,1120,1215,1318,1413,1509,1657,1754",
+                        "endColumns": "96,92,104,81,97,107,76,75,77,101,98,94,102,94,95,147,96,77",
+                        "endOffsets": "197,290,395,477,575,683,760,836,914,1016,1115,1210,1313,1408,1504,1652,1749,1827"
+                    },
+                    "to": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,38",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "150,247,340,445,527,625,733,810,886,964,1066,1165,1260,1363,1458,1554,1702,3094",
+                        "endColumns": "96,92,104,81,97,107,76,75,77,101,98,94,102,94,95,147,96,77",
+                        "endOffsets": "242,335,440,522,620,728,805,881,959,1061,1160,1255,1358,1453,1549,1697,1794,3167"
+                    }
+                }
+            ]
+        }
+    ]
+}

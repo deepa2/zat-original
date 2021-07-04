@@ -1,0 +1,115 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title class="pageTitile" *ngIf="data?.title">{{data?.title}}</ion-title>
+    <ion-title class="pageTitile" *ngIf="!data?.title">{{section =='skills' ? 'Skill ': ''}}Details</ion-title>
+
+    <ion-buttons end *ngIf="isAvailableForSubmit">
+      <!-- for onboarding -->
+      <button *ngIf="showAddOptions" ion-button icon-only (click)="removeItem()">
+        <img class="headerIcons" src="assets/imgs/Delete.svg" />
+      </button>
+      <button class="submit" form="ngForm" ion-button (click)="save(obGroup)">
+        Save
+      </button>
+      <!-- <div class="submit" form="ngForm" ion-button (click)="save(obGroup)">
+        Save
+      </div> -->
+    </ion-buttons>
+    <!-- for userprofile(experience) -->
+
+    <ion-buttons end *ngIf="!isUserProfile && section == 'experience'">
+      <button *ngIf="showAddOptions" ion-button icon-only (click)="removeItem()">
+        <img class="headerIcons" src="assets/imgs/Delete.svg" />
+      </button>
+      <button class="submit" form="ngForm" ion-button (click)="save(obGroup)">
+        Save
+      </button>
+      <!-- <div class="submit" form="ngForm" ion-button (click)="save(obGroup)">
+        Save
+      </div> -->
+    </ion-buttons>
+
+    <ion-buttons end *ngIf="section =='personal' && !presonalSaveBtn">
+      <button *ngIf="showAddOptions" ion-button icon-only (click)="removeItem()">
+        <img class="headerIcons" src="assets/imgs/Delete.svg" />
+      </button>
+      <button class="submit" form="ngForm" ion-button (click)="save(obGroup)">
+        Save
+      </button>
+      <!-- <div class="submit" form="ngForm" ion-button (click)="save(obGroup)">
+          Save
+        </div> -->
+    </ion-buttons>
+
+    <!-- rejected docs -->
+    <ion-buttons end *ngIf="this.data?.isRejected">
+
+      <button class="submit" form="ngForm" ion-button (click)="save(obGroup)">
+        Save
+      </button>
+      <!-- <div class="submit" form="ngForm" ion-button (click)="save(obGroup)">
+            Save
+          </div> -->
+    </ion-buttons>
+
+    <ion-buttons end *ngIf="section =='skills' && !isSkillDataAvaliable">
+      <button [disabled]="btnDisabled" *ngIf="showAddOptions" ion-button  (click)="removeSkilss(obGroup)" class="submit headerBtn">
+        <!-- <img class="headerIcons" src="assets/imgs/Delete.svg" /> -->
+        Delete
+      </button>
+      <button [disabled]="btnDisabled" class="submit headerBtn" form="ngForm" ion-button (click)="save(obGroup)">
+        Save
+      </button>
+      <!-- <div class="submit" form="ngForm" ion-button (click)="save(obGroup)">
+          Save
+        </div> -->
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+
+  <ion-spinner *ngIf="loading$ | async"></ion-spinner>
+
+  <div class="alert-area">
+    <div *ngIf="!(loading$ | async) && formMessage" margin class="formMessage">
+      <img class="alert-image" src="assets/imgs/alert.svg">
+      {{formMessage}}</div>
+  </div>
+
+  <div *ngIf="showForm" [formGroup]="obGroup">
+
+    <div formArrayName="myprofile">
+
+      <div *ngFor="let p of obDetails.controls;index as i">
+        <form [formGroupName]="i">
+          <div margin class="experienceCard">
+            <div class="sectionDetails" *ngFor="let item of fieldArray">
+              <form-field (startFileUpload)="startFileUpload($event)" (dropDownListChange)="dropDownListChange($event)"
+                (focusSkillEvent)="toggleBtn($event)" [info]="item" [form]="obDetails.controls[i]" [type]='section'
+                [typeObject]='data' [mode]='data.mode' [highlightField]="highlightField">
+              </form-field>
+            </div>
+          </div>
+        </form>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div style="margin: 16px;" *ngIf="this.data?.isComingFromProfile && showForm">
+    <!-- [ngStyle]="{'border-bottom': data?.experienceData?.section === highlightField ? '1px solid #0e89c8' : 'none' }" -->
+    <!-- [ngStyle]="{'color': data?.experienceData?.section === highlightField ? '#0e89c8' : '#999' }" -->
+    <ion-item [ngClass]="{'fadeIn':data?.experienceData?.section === highlightField}">
+      <ion-label floating>
+        <span>{{expLabel}}</span>
+      </ion-label>
+      <ion-input type="text" readonly value={{expValue}} (click)='goToEditExp()'>
+      </ion-input>
+    </ion-item>
+  </div>
+
+</ion-content>

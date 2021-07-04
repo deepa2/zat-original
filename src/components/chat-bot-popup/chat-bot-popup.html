@@ -1,0 +1,19 @@
+<div class="align-center">
+    <div class="logo-name-container">
+        <img class="logo" src="../../assets/menu_icons/heart.svg"/>
+        <div class="welcome-block">
+            Welcome Back
+        </div>
+        <div class="name-container">
+            {{userDetails?.userName}}
+        </div>
+        <div class="msg-container"> We have done some improvements since you have last visited</div>
+    </div>
+    <div class="explore-container">
+        <div>
+            Would you last to explore?</div>
+        <div class="explore-btn" (click)="openExplorerPopup()" >
+            Explore
+        </div>
+    </div>
+</div>

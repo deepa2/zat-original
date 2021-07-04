@@ -1,0 +1,38 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>Notification/Announcements</ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content class="main-container-bg" *ngIf="notificationList">
+    <div *ngFor="let item of notificationList" class="list-align">
+        <div class="date-align">
+            <span>{{_getFormatDate(item?.notificationDateTime)}}</span>
+            <span>{{_getFormatMonth(item?.notificationDateTime)}}</span>
+        </div>
+        <div class="content-align">
+            <div class="heading-styl">{{item?.subject}}</div>
+            <div>
+                <div class="grid-align"> <span><img src="assets/imgs/route.svg" /></span>
+                    <span>Route:</span>
+                    <span>{{item?.busRouteName}}</span>
+                </div>
+                <div class="grid-align">
+                    <span><img src="assets/imgs/time.svg" /></span>
+                    <span>Time:</span><span>{{ _getFormatTime(item?.notificationDateTime)}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="no-data" *ngIf="notificationList?.length <=0 || notificationList.length <=0">
+        {{errorMessage}}
+    </div>
+    <ion-infinite-scroll threshold="300px" (ionInfinite)="loadData($event)" *ngIf="resultPending">
+        <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">
+        </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+</ion-content>
+<ion-fab right bottom>
+    <button ion-fab (click)="customNotification()">
+        <ion-icon name="add"></ion-icon>
+    </button>
+</ion-fab>

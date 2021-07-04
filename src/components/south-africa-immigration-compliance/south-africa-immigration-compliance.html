@@ -1,0 +1,27 @@
+<!-- <ion-header>
+  <ion-navbar>
+    <ion-title>
+      <div class="header-text">South Africa Immigration Compliance</div>
+    </ion-title>
+  </ion-navbar>
+</ion-header> -->
+<ion-content padding>
+  <div class="header-text">South Africa Immigration Compliance</div>
+  <div class="date-text" *ngIf="agreementDate"> You had last updated this on <span class="dateTime">{{submittedDateTime}}</span></div>
+  <div class="self-title" *ngIf="detailList"> Self-Declaration</div>
+  <div [innerHTML]="htmlData"></div>
+
+
+</ion-content>
+<ion-footer class="footerContainer">
+  <div class="checkBox-container padding10" (click)="checkboxParentClicked()" *ngIf="detailList">
+    <ion-checkbox color="dark" [(ngModel)]="checkBoxValue" [checked]="checkBoxValue"></ion-checkbox>
+    <span class="marleft-10">I, <span class="username">{{userName}}</span> accept and agree to abide by the above
+      statements. By way of this
+      acceptance I authorize an email acknowledgement of the above. </span>
+  </div>
+  <div class="submit-btn-container">
+    <button ion-button [disabled]="checkBoxValue?false:!checkboxStatus" (click)="submitAgreement()" class="submit-btn">Submit</button>
+  </div>
+
+</ion-footer>

@@ -1,0 +1,86 @@
+cap-page {
+
+    ion-content {
+        border-radius: 12px 12px 0 0;
+    }
+
+    .list-backgroung {
+        background: lightgray;
+        padding: 1px;
+    }
+    .list-item {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        border-bottom: 1px solid lightgray;
+        padding: 16px;
+    }
+    .list-icon {
+        width: 8%;
+    }
+    .icon-style {
+        width: 30px;
+    }
+    
+    .flex-clumn {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .list-backgroung {
+        background: lightgray;
+        padding: 1px;
+    }
+    .list-item {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        border-bottom: 1px solid lightgray;
+        padding: 16px;
+    }
+    .list-icon {
+        width: 10%;
+    }
+   
+    .flex-space-btwn {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .custom-header {
+        background-image: linear-gradient(to right, #3dd47f, #00aab7);
+        padding: 13px 6px;
+        display: flex;
+        justify-content: space-between;
+        border-radius: 12px 12px 0 0;
+    }
+    .pageTitile {
+        font-size: 1.2em;
+        padding-bottom: 4px;
+    }
+    .header-icon {
+        width: 30px;
+    }
+    .btn-style {
+        color: white;
+        font-size: 1.1em;
+        padding-right: 7px;
+        display: flex;
+        align-items: center;
+    }
+    
+    .header-styl {
+        padding-left: 12px;
+    }
+
+    .padding-left9{
+     padding-left: 9px;   
+    }
+
+    .toolbar-md {
+        padding: 0px !important;
+        min-height: 0px !important;
+        padding-top: 0 !important;
+        min-height: 56px !important;
+    }
+}

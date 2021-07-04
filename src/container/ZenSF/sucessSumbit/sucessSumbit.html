@@ -1,0 +1,28 @@
+<ion-header>
+    <ion-navbar>
+        <!-- <div class="flex-align-center"> -->
+        <ion-title>My Activity</ion-title>
+        <!-- <ion-icon class="icon-styl" name="search"></ion-icon> -->
+        <!-- </div> -->
+
+    </ion-navbar>
+</ion-header>
+<ion-content>
+    <div class="padding10">
+        <img class="width100" src="assets/imgs/Successful.svg" />
+        <div class="successImg">
+            <div class="display-flex">
+                <img class="success-icon" src="assets/imgs/submittedSuccessfully Icon.svg">
+                <span class="successful-text">
+                    <h1>Successful</h1>
+                </span>
+            </div>
+            <div class="successDialog">
+                <p class="success-response">{{successResponse}}</p>
+            </div>
+        </div>
+        <div class="text-center">
+            <button class="sumbit-btn" (click)="_okay()">Okay</button>
+        </div>
+    </div>
+</ion-content>

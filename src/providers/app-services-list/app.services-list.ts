@@ -1,0 +1,40 @@
+export var API_END_POINTS_REPORT = {
+    REPORT_ACCESS_FLAG: 'access/getAccessFlag',
+    TIMECARD_TERRITORY: 'timecard/getTerritory',
+    TIMECARD_CLIENT_CUSTOMER: 'timecard/getClient',
+    TIMECARD_PROJECTS: 'timecard/getProject',
+    TIMECARD_ASSOCIATES_ONSITE: 'timecard/getOnsiteAssociates',
+    TIMECARD_ASSOCIATES_OFFSHORE: 'timecard/getOffshoreAssociates',
+    TIMECARD_ASSOCIATE_ALL: 'timecard/getAllAssociates',
+    TIMECARD_PDF: 'timecard/getPDFTimecard',
+    TIMECARD_CSV: 'timecard/exportTimecardCSV',
+    APPROVAL_TS_PROJECT: 'approvalTimesheet/projectList',
+    APPROVAL_TS_CSV: 'approvalTimesheet/exportToCSV',
+    APPROVAL_TS_PDF: 'approvalTimesheet/exportToPDF',
+    TIMESHEET_STATUS_PROJECT: 'timesheetStatus/getProjectList',
+    TIMESHEET_STATUS_PDF: 'timesheetStatus/exportToPDF',
+    TIMESHEET_STATUS_CSV: 'timesheetStatus/exportToCsv',
+    TIMESHEET_STATUS_NOTFIllED_PDF: 'timesheetStatus/notFilledStatusexportToPDF',
+    TIMESHEET_STATUS_NOTFIllED_CSV: 'timesheetStatus/notFilledStatusexportToCsv',
+    MYPROJECT_EFFORTS_PDF: 'myProjectEfforts/exportToPDF',
+    MYPROJECT_EFFORTS_CSV: 'myProjectEfforts/exportToCSV',
+    MYTEAM_ATT_CSV: 'myTeamAttendace/exportToCSV',
+    MYTEAM_ATT_PDF: 'myTeamAttendace/exportToPDF',
+    IBU_CSV: 'ibu_report/exportToCsv',
+    IBU_PDF: 'ibu_report/exportToPDF',
+    ADDITIONAL_HOUR_PAYROLL: 'additionalHrsTimecard/getPayroll',
+    ADDITIONAL_HOUR_LOCATION: 'additionalHrsTimecard/getLocation',
+    ADDITIONAL_HOUR_ASSOCIATES: 'additionalHrsTimecard/getAssociates',
+    ADDITIONAL_HOUR_PDF: 'additionalHrsTimecard/exportAdditionalhrTimecardPDF',
+    ADDITIONAL_HOUR_CSV: 'additionalHrsTimecard/exportAdditionalhrTimecardCSV',
+    NOTFILLED_TS_CUSTOMER: 'notFilledTimesheet/getCustomers',
+    NOTFILLED_TS_ASSO_CSV: 'notFilledTimesheet/associateCsv',
+    NOTFILLED_TS_ASSO_PDF: 'notFilledTimesheet/associatePDF',
+    NOTFILLED_TS_CUST_CSV: 'notFilledTimesheet/byCustomer/exportToCsv',
+    NOTFILLED_TS_CUST_PDF: 'notFilledTimesheet/byCustomer/exportToPdf'
+}
+
+export var ZEN_REPORT_CONST = {
+    WAIT_ALERT_MSG: 'Report request successfully placed. The report will be sent to your Zensar email address within 10-15 minutes.',
+    ALERT_MSG: 'Report is sent to your Zensar email address.'
+}

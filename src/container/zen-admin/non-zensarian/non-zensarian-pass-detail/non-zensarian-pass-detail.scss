@@ -1,0 +1,499 @@
+page-non-zensarian-pass-detail {
+    .cancelBtn {
+        text-transform: capitalize;
+    }
+    .footer-content {
+        text-align: center;
+    }
+    .date-container {
+        align-items: center;
+        display: flex;
+        background: #5f5cdf;
+        // padding: 10px;
+        padding: 10px 0px;
+        color: white;
+        margin: 0 10px;
+    }
+    .nopass-date-container {
+        align-items: center;
+        display: flex;
+        background: #5f5cdf;
+        // padding: 10px;
+        padding: 10px 0px;
+        color: white;
+        margin: 0 10px;
+    }
+    .calendar-icon {
+        width: 40px;
+        margin-right: 4px;
+    }
+    .dateValue {
+        font-size: 0.96em;
+    }
+    .profile-cont-asso {
+        width: 80px;
+        height: 80px;
+        background-color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 0px 12px rgba(0, 0, 0, 0.19), 0 4px 8px rgba(0, 0, 0, 0.23);
+    }
+    .profile-asso {
+        width: 75px;
+        height: 75px;
+        border-radius: 50%;
+    }
+    .ion-card {
+        background-color: #ffffff;
+        border: none;
+        box-shadow: none;
+        border-radius: 5px;
+        margin: 0px;
+        width: 100%;
+        min-height: 60%;
+    }
+    // .semi-circle {
+    //   background: white;
+    //   display: inline-block;
+    // }
+    // .right,
+    // .left {
+    //   position: absolute;
+    //   top: 0;
+    //   bottom: 0;
+    //   margin: auto;
+    //   height: 15px * 2;
+    //   width: 15px;
+    //   border: none;
+    // }
+    // .right {
+    //   left: 0;
+    //   border-bottom-right-radius: 15px * 2;
+    //   border-top-right-radius: 15px * 2;
+    // }
+    // .left {
+    //   right: 0;
+    //   border-bottom-left-radius: 15px * 2;
+    //   border-top-left-radius: 15px * 2;
+    // }
+    .height50vh {
+        height: 50vh;
+    }
+    .default-bg-img {
+        width: 70%;
+        height: 100%;
+    }
+    .centerText {
+        padding: 0.3em 1em;
+        margin: 0;
+        color: gray;
+    }
+    .profile-wrapper {
+        position: relative;
+        text-align: center;
+        padding-bottom: 4px;
+        color: #e2e2e2;
+        font-size: 1.1em;
+        border-bottom: 1px dashed #b9c8e6;
+        &::after {
+            // content: "";
+            // position: absolute;
+            // right: -7px;
+            // bottom: -7px;
+            // width: 15px;
+            // height: 15px;
+            // border-radius: 50%;
+            // background: #5f5cdf;
+            content: "";
+            position: absolute;
+            right: -10px;
+            bottom: -15px;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: #e1e7f3;
+        }
+        &::before {
+            content: "";
+            // position: absolute;
+            // left: -7px;
+            // bottom: -7px;
+            // width: 15px;
+            // height: 15px;
+            // border-radius: 50%;
+            // background: #5f5cdf;
+            content: "";
+            position: absolute;
+            left: -10px;
+            bottom: -15px;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: #e1e7f3;
+        }
+        .designation {
+            font-size: 1em;
+            margin-top: 5px;
+        }
+        .prof-pic-con {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 130px;
+            position: relative;
+            img.outer-image {
+                position: absolute;
+                width: 110px;
+            }
+            img.profile-pic {
+                width: 70px;
+                height: 70px;
+                border-radius: 50%;
+                position: relative;
+            }
+        }
+    }
+    .month-pass-date {
+        // white-space: nowrap;
+        padding: 0px 5px;
+        font-size: 14px;
+        font-weight: 400;
+        margin-top: 4px;
+    }
+    .container-items {
+        background: #ffffff;
+        //  height: 170px;
+        display: flex;
+        // flex-direction: column;
+        padding: 10px 5px;
+        border-radius: 5px;
+        // margin: 10px;
+        margin: 5px 10px;
+    }
+    .img-style {
+        height: 45px;
+        width: 45px;
+        border-radius: 50%;
+        border: 3px solid lightblue;
+        padding: 2px;
+        position: relative;
+        z-index: 1;
+    }
+    .phone-image {
+        height: 45px;
+        width: 45px;
+        padding: 2px;
+    }
+    .userInfo-container {
+        background: #ffffff;
+        display: flex;
+        padding: 10px 5px;
+        border-radius: 5px;
+        margin: 5px 0px;
+    }
+    .user-pic {
+        width: 45px;
+        height: 45px;
+        margin-right: 10px;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        img.userpic-bg {
+            width: 60px;
+            position: absolute;
+            z-index: 0;
+        }
+    }
+    .associate-name {
+        font-size: 1em;
+        font-weight: 300;
+    }
+    .user-info-container {
+        .associate-name {
+            font-size: 1.1em;
+            font-weight: 400;
+        }
+    }
+    //   .no-mentor {
+    //     padding: 15px;
+    //     text-align: center;
+    //     font-size: 1.1em;
+    //     font-weight: 500;
+    //   }
+    //   .disabled {
+    //     background-color: #e2e2e2;
+    //   }
+    // .skills-container {
+    //   display: flex;
+    // }
+    // .key-title {
+    //   width: 45px;
+    //   font-size: 1em;
+    //   margin: 5px 0;
+    // }
+    .key-value {
+        width: calc(100% - 50px);
+        font-weight: 300;
+        font-size: 1.1em;
+        margin: 5px 0;
+    }
+    .route-img {
+        // width: 45px;
+        // height: 45px;
+        width: 25px;
+        height: 25px;
+        margin-right: 10px;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .clock-img {
+        // width: 45px;
+        // height: 45px;
+        width: 20px;
+        height: 20px;
+        margin-right: 10px;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .pickup-point-card {
+        display: flex;
+        margin: 5px 10px;
+        padding: 10px 5px;
+    }
+    .pickup-details {
+        display: flex;
+        align-items: center;
+        width: 68%;
+    }
+    .pickup-time-card {
+        display: flex;
+        align-items: center;
+        // width: 38%;
+    }
+    .displayFlex-col {
+        display: flex;
+        flex-direction: column;
+    }
+    .campus-name {
+        margin: 5px 0;
+    }
+    .ticket-parent {
+        background: #e1e7f3;
+        padding: 5px 10px;
+    }
+    .height-auto {
+        height: auto;
+    }
+    .bg-grey {
+        background: #e1e7f3;
+    }
+    .new-pass-btn {
+        text-align: center;
+        text-transform: capitalize;
+    }
+    .color-black {
+        color: black;
+    }
+    .position-absolute {
+        position: absolute;
+    }
+    .post-relative {
+        position: relative;
+    }
+    .ticket-status-parent {
+        top: 20%;
+        right: -2%;
+        // top: 16%;
+        // right: 0%;
+    }
+    .ticket-status-img {
+        width: 120px;
+        // height: 85px;
+    }
+    // .colorGrey {
+    //   color: grey;
+    // }
+    .busIDText {
+        padding: 0px 5px;
+        font-size: 1em;
+    }
+    .bus-passId {
+        padding: 0px 5px;
+        font-size: 1em;
+        font-weight: 400;
+        margin-top: 4px;
+    }
+    .monthly-pass-title {
+        padding: 0px 5px;
+        font-size: 1em;
+    }
+    .bus-details-parent {
+        display: flex;
+        // justify-content: space-around;
+    }
+    .user-info-container {
+        display: flex;
+        flex-direction: column;
+        padding-top: 8px;
+        width: 65%;
+    }
+    .fontWeight {
+        font-weight: 400;
+    }
+    .bus-info-container {
+        background: #ffffff;
+        //  height: 170px;
+        display: flex;
+        // flex-direction: column;
+        padding: 10px;
+        border-radius: 5px;
+        margin: 0px 10px;
+    }
+    .driver-info-container {
+        background: #ffffff;
+        display: flex;
+        padding: 0 10px 10px 0px;
+        margin: 0px 10px;
+    }
+    .day-value {
+        margin-bottom: 3px;
+        padding: 0 3px;
+        font-weight: 400;
+    }
+    .currDate {
+        padding: 0 3px;
+        font-size: 13px;
+    }
+    .blk-down-arrow {
+        width: 10px;
+    }
+    .no-pass-bg {
+        margin: 30px 0px;
+    }
+    .route-pic {
+        // width: 45px;
+        // height: 45px;
+        margin-right: 10px;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        // img.userpic-bg {
+        //   width: 60px;
+        //   position: absolute;
+        //   z-index: 0;
+        // }
+    }
+    .width40px {
+        width: 40px;
+    }
+    .amount-details {
+        display: flex;
+        flex-direction: column;
+        padding-top: 8px;
+        width: 80%;
+    }
+    .confirmation-card {
+        display: flex;
+        align-items: center;
+    }
+    .successTxt {
+        font-size: 1.1em;
+        margin-bottom: 5px;
+        font-weight: 400;
+    }
+    .success-msg-div {
+        width: 46%;
+        padding: 0px 5px 28px 5px;
+    }
+    .colorRed {
+        color: red;
+    }
+    .img-container {
+        // margin-right: 10px;
+        margin-right: 15px;
+    }
+    .userProfile-container {
+        background: #ffffff;
+        //  height: 170px;
+        display: flex;
+        // flex-direction: column;
+        // padding: 10px 5px;
+        border-radius: 5px;
+        // margin: 10px;
+        // margin: 5px 10px;
+        // padding: 0 0px 10px 0px;
+        margin: 5px;
+    }
+    img.user-icon {
+        width: 45px;
+        height: 45px;
+        margin-left: 5px;
+        border-radius: 50%;
+        border: 3px solid #c0e0ff;
+        overflow: hidden;
+        // width: 50px;
+        // height: 50px;
+        // margin-right: 10px;
+        // border-radius: 50%;
+        // border: 3px solid #c0e0ff;
+        // overflow: hidden;
+        // left: 5px;
+        // top: 5px;
+        // background: #c0e0ff;
+        // padding: 1px;
+    }
+    .bus-img {
+        width: 40px;
+        height: 40px;
+        margin-right: 10px;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .driver-img-container {
+        margin-right: 20px;
+    }
+    .pickupName-card {
+        width: 75%;
+    }
+    ion-footer {
+        background: #fff;
+        padding: 10px;
+    }
+    .scroll-content {
+        margin-bottom: 50px !important;
+    }
+    .bus-pass-info-container {
+        display: flex;
+        align-items: center;
+        padding: 0 0 6px 6px;
+        background: #e2e2e2;
+    }
+    .width-25 {
+        width: 25px;
+    }
+    .mr-6 {
+        margin-right: 6px;
+    }
+    .route-container {
+        display: flex;
+        flex-direction: column;
+        padding-top: 8px;
+        width: 80%;
+    }
+    .bus-pass-container {
+        display: flex;
+        align-items: center;
+        padding: 0 0 6px 6px;
+        background: #e2e2e2;
+    }
+}

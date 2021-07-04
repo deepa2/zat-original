@@ -1,0 +1,31 @@
+<!-- Generated template for the ReimbursmentDeclarationComponent component -->
+<ion-header>
+    <div class="declaration-title" no-lines>
+        <img class="dose-calnder" src="assets/imgs/reimbursment.svg" item-left/>
+        <ion-label text-wrap>Expense Reimbursement Declaration</ion-label>
+    </div>
+</ion-header>
+<ion-content>
+
+    <div class="declaration-body">
+        <div class="declaration-info mt-10">
+            <ion-label text-wrap>Declaration from Associate, confirming that business expenses incurred on behalf of the company and have been submitted through the company portal with the mandatory details</ion-label>
+        </div>
+        <div class="declaration-consent item-space-between">
+            <ion-checkbox [(ngModel)]="declaration"></ion-checkbox>
+            <ion-label text-wrap>I, hereby, declare that to the best of my knowledge, any and all business expenses incurred on behalf of the company, at least 45 days or more days ago, have been submited through the company portal. I further understand that this delclartion
+                must be electronically executed by me within seven (7) days of receipt, and that claims for business expense reimbursemts submitted beyond 60 days: (a) may not be reimbursed; and (b) may subject me to disciplinary action; and (c) will
+                result in my reimbursement(s) deemed as taxable income. I also understand that by not signing this declaration i will become ineligible for all benefits pertaining to expense reimbursements from the company</ion-label>
+        </div>
+        <div class="employee-signature item-space-between">
+            <ion-checkbox [(ngModel)]="signature"></ion-checkbox>
+            <div>
+                <ion-label class="signaute-heading" text-wrap>Associate's Signature</ion-label>
+                <ion-label class="signaute-text" text-wrap>(checking the checkbox is equivalent to a handwritten signature)</ion-label>
+            </div>
+        </div>
+    </div>
+</ion-content>
+<ion-footer>
+    <button class="submitBtn" ion-button round float-right (click)="submitDeclration()" [disabled]="!(signature && declaration)">Submit</button>
+</ion-footer>

@@ -1,0 +1,64 @@
+<form [formGroup]="reportForm" (ngSubmit)="onSubmit()">
+     <ion-list>
+        <!-- <ion-item no-lines no-padding class="borderColor">
+            <ion-select class="select-c" formControlName="projects" [disabled]="reportForm.controls.projects.disabled"
+                placeholder="Select Project" multiple="true"  interface="action-sheet" (ionChange)="_onProjectListChange($event)">
+                <ion-option *ngFor="let item of projectList" [value]="item.projectId">{{item?.projectName}}
+                </ion-option>
+            </ion-select>
+        </ion-item>
+        <span class="error-msg" *ngIf="reportForm.controls.projects.errors  && submitted">
+            <p>* Please select Project Name.</p>
+        </span> -->
+        <ion-item *ngIf="reportType?.accessId != 5" class="borderColor">
+            <div class="grid-form">
+                <div>
+                    <button id="projects" [disabled]="reportForm.controls.projects.disabled">Projects</button>
+                </div>
+                <div class="report-input active-input" (click)="_openSelectedListModal('Projects')">
+                    <input class="width90" for="projects" formControlName="projects" readonly
+                        [value]="selectedProjectList?.length > 0 ? selectedProjectList?.length + '/' + projectList.length + ' Selected' : 0 + '/' + projectList.length + ' Selected'">
+                    <ion-icon end name="ios-arrow-forward"></ion-icon>
+                </div>
+                <div>
+                    <div class="round-button active-button"
+                        (click)="_selectProject(reportForm.controls.projects.disabled)">Select
+                        <ion-icon name="md-add">
+                        </ion-icon>
+                    </div>
+                </div>
+            </div>
+
+            <!-- <ion-icon float-right text-right name="md-arrow-dropdown"></ion-icon> -->
+        </ion-item>
+
+        <div class="margin-top12">Export to:</div>
+        <ion-list *ngIf="reportType?.accessId != 5 && reportType?.accessId != 4" radio-group
+            class="align-cont-cent padding-left7 padding-top15" (ionChange)="_selectedFormat($event)">
+            <div class="center width30 format-icons" *ngFor="let item of sendFormat">
+                <ion-radio [checked]="item?.checked" [value]="item?.label"></ion-radio>
+                <img class="icon" src="assets/imgs/{{item?.label}}_icon.svg" />
+                <ion-label>{{item?.name}}</ion-label>
+            </div>
+        </ion-list>
+        <!-- commenting out as only want one radio button only for excel -->
+        <ion-list *ngIf="reportType?.accessId == 5 || reportType?.accessId == 4" radio-group
+            class="align-cont-cent padding-left7 padding-top15" (ionChange)="_selectedFormat($event)">
+            <div class="center width30 format-icons">
+                <ion-radio checked="true" value="excel"></ion-radio>
+                <img class="icon" src="assets/imgs/excel_icon.svg" />
+                <ion-label>Excel</ion-label>
+            </div>
+        </ion-list>
+    </ion-list>
+
+
+    <div class="submitBtn margin-top12" text-center>
+        <button ion-button round type="submit" *ngIf="reportType?.accessId != 5"
+            [disabled]="!(selectedProjectList?.length > 0 && !reportNA)"> Send Report</button>
+        <button ion-button round type="submit" [disabled]="reportNA" *ngIf="reportType?.accessId == 5"> Send
+            Report</button>
+    </div>
+
+
+</form>

@@ -1,0 +1,104 @@
+<ion-header class="ts-header">
+  <ion-navbar>
+    <ion-title>Add Task</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-segment [(ngModel)]="data.task">
+    <ion-segment-button value="project" [class.hide]="hideProjectTask">
+      Project Task
+    </ion-segment-button>
+    <ion-segment-button value="standard" (click)="getStdTasksData()">
+      Standard Task
+    </ion-segment-button>
+  </ion-segment>
+
+  <div [ngSwitch]="data?.task">
+    <div padding *ngSwitchCase="'project'">
+      <project-task [projectData]="data?.projectListForProjectTask" [selectedDate]="currentDate"
+        (selectedTaskData)="addTask($event)" [type]="data?.type">
+      </project-task>
+    </div>
+    <div class="std-task" padding *ngSwitchCase="'standard'">
+      <form [formGroup]="standardForm" (ngSubmit)="onSubmit(standardForm)">
+         <ion-list>
+          <ion-item no-lines class="borderColor">
+            <ion-select formControlName="stdProjectId" placeholder="Select Project" interface="action-sheet"
+              (ionChange)="onStdProjSelect($event)">
+              <ion-option *ngFor="let item of projectList" [value]="item.projectId">{{item.projectName}}
+              </ion-option>
+            </ion-select>
+          </ion-item>
+          <span class="error-msg" *ngIf="standardForm.controls.stdProjectId.errors  && submitted">
+            <p>* Please select Project Name.</p>
+          </span>
+            
+          <ion-grid no-padding class="stdTaskOption">
+            <ion-row>
+              <ion-col col-11>
+                <ion-item no-lines class="stdInput">
+                  <ion-input [readonly]="true" formControlName="stdTaskName" type="text"
+                    placeholder="Select Standard Task" [disabled]="standardForm.controls.stdTaskName.disabled"
+                    (click)="openStdTaskListModal()"></ion-input>
+                </ion-item>
+              </ion-col>
+              <ion-col col-1 class="down-arrow" (click)="openStdTaskListModal()"
+                [ngStyle]="{'opacity': selProjectObj ? 1 : 0.5}">
+                <ion-icon name="arrow-dropdown"></ion-icon>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+          <span class="error-msg" *ngIf="standardForm.controls.stdTaskName.errors  && submitted">
+            <p>* Please select Task Name.</p>
+          </span>
+
+          <ion-item no-lines class="borderColor" margin-top>
+            <ion-select formControlName="stdBillabilityName" placeholder="Select Billability" interface="action-sheet"
+              (ionChange)="onBillabilityChange($event)">
+              <ion-option [value]="billability.value" *ngFor="let billability of billabilityList">
+                {{billability.name}}</ion-option>
+            </ion-select>
+          </ion-item>
+          <span class="error-msg" *ngIf="standardForm.controls.stdBillabilityName.errors  && submitted">
+            <p>* Please select Billability Name.</p>
+          </span>
+
+          <ion-item no-lines class="borderColor" margin-top>
+            <ion-datetime #dateTime displayFormat="HH:mm" minuteValues="00,15,30,45" formControlName="stdTime">
+            </ion-datetime>
+          </ion-item>
+          <span class="error-msg"
+            *ngIf="standardForm.controls.stdTime.errors && standardForm.controls.stdTime.errors.min && submitted">
+            <p>* Please select valid hours.</p>
+          </span>
+
+          <ion-item *ngIf="isFixedBidProject == 'YES'" no-lines class="borderColor" margin-top>
+            <ion-select placeholder="Select Milestone" formControlName="stdMilestone" interface="action-sheet"
+              (ionChange)="onMilestoneChange($event)">
+              <ion-option [value]="milestone" *ngFor="let milestone of milestoneList">
+                {{milestone.milestoneName}}</ion-option>
+            </ion-select>
+          </ion-item>
+          <span class="error-msg" *ngIf="standardForm.controls.stdMilestone.errors  && submitted">
+            <p>* Please select Milestone Name.</p>
+          </span>
+
+          <ion-item margin-top no-lines class="borderColor stdRemarks">
+            <ion-textarea (keypress)="utility.omit_special_char($event)" formControlName="stdRemarks"
+              placeholder="Remarks" rows="6" cols="6"></ion-textarea>
+          </ion-item>
+          <span class="error-msg" *ngIf="standardForm.controls.stdRemarks.errors  && submitted">
+            <p>* Please add remarks.</p>
+          </span>
+             
+        </ion-list>
+
+        <div class="submitBtn" float-right>
+          <button ion-button round type="submit"> Add Task</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</ion-content>

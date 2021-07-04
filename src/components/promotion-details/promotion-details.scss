@@ -1,0 +1,57 @@
+promotion-details {
+.footer-style{
+    background: #ffff;
+    text-align: center;
+    padding: 10px;
+    box-shadow: 0px -4px 3px #D2D2D2;
+
+}
+
+.errorMsg{
+    color: red;
+    padding: 5px; 
+    margin-left: 10px;
+}
+.txtArea{
+    border: 1px solid  #D2D2D2;
+        border-radius: 5px;
+        padding: 5px;
+         margin-top: 5px ; font-size: .9em; font-weight: 100;
+}
+
+.footerBtn{
+    text-transform: capitalize;
+    background:#1586c7;
+    border-radius: 20px;
+    padding: 10px;
+    width: 75px;
+    color:white;
+}
+
+.bg{
+    background: whitesmoke;
+}
+
+    .list-md .item-input:last-child {
+        border-bottom: none !important;
+    }
+    .list-md .item-input{
+        box-shadow: none!important;
+    }
+
+    ion-label {
+        white-space: normal;
+    }
+    .list-md .item-block .item-inner{
+        border-bottom: none!important;
+    }
+
+    .item-md.item-input.ng-invalid.ng-touched:not(.input-has-focus):not(.item-input-has-focus) .item-inner{
+        box-shadow: none!important;
+    }
+    .item-inner{
+        box-shadow: none!important;
+    }
+   
+
+}

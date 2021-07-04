@@ -1,0 +1,216 @@
+chat-bot-suggestion-model {
+  .ion-page > ion-content {
+    position: relative !important;
+  }
+  .top8 {
+    top: 8px;
+  }
+  ion-header {
+    left: 0;
+    top: 0;
+    /* position: absolute; */
+    z-index: 10;
+    display: block;
+    width: 100%;
+  }
+
+  details {
+    border-radius: 5px;
+    // box-shadow: 0 4px 6px 0 #516efe1f, 0 3px 4px -7px #516efe1f, 0 0px 5px 0 #516efe1f;
+    margin: 5px 8px 8px;
+    // .card {
+    //   width: 100%;
+    //   margin: 2px 0;
+    //   box-shadow: 0px 0px 0px 0px #516efe11, 0px 0px 0px 2px #516efe11, 0px 0px 0px 0px #516efe11;
+    // }
+  }
+
+  summary::-webkit-details-marker {
+    display: none;
+  }
+
+  summary {
+    position: relative;
+    margin: 0px;
+  }
+  .forward-icon {
+    color: #0ea2c8;
+    font-size: 1.5em;
+  }
+
+  summary:after {
+    content: " ";
+    color: black;
+    position: absolute;
+    right: 5%;
+    width: 8px;
+    height: 8px;
+    border: solid #676666;
+    border-width: 0 2px 2px 0;
+    padding: 0px;
+    transform: rotate(45deg);
+    top: 40%;
+  }
+
+  details[open] summary ~ * {
+    animation: sweep 0.5s ease-in-out;
+  }
+
+  details[open] summary:after {
+    top: 45%;
+    transform: rotate(-135deg);
+  }
+
+  .card-background {
+    background: #f7f6f6;
+    border-bottom: 1px solid #cec7c7;
+  }
+  .summary-header {
+    // background: url("../assets/imgs/other.svg");
+    // background-size: cover;
+    padding: 4px 5px;
+    border-radius: 5px;
+    background-color: $chat-contentBg;
+  }
+
+  .horizontal-scroll {
+    white-space: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    vertical-align: top;
+    -webkit-overflow-scrolling: touch;
+  }
+  .suggestion,
+  .more {
+    padding: 7px;
+    display: inline-block;
+    /* margin-bottom: 0; */
+    margin: 5px;
+    border-radius: 20px;
+  }
+  // .suggestion,
+  // .all-sug {
+  //   border: 1px solid #dfdfdf;
+  //   color: #6f6f6f;
+  // }
+
+  .category-name {
+    font-weight: 500;
+    width: 78%;
+    padding-left: 12px;
+    font-size: 1.1em;
+    color: #3b3b3b;
+  }
+  // .list-bg {
+  //   padding: 10px;
+  //   margin: 0 5px;
+  //   background: white;
+  // }
+  .slide-zoom {
+    text-align: left;
+    display: block;
+    width: 100%;
+    height: 100%;
+    overflow: scroll;
+  }
+  .suggestion-list,
+  .more {
+    margin: 0 4px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    background: white;
+    border: 1px solid #dfdfdf;
+  }
+  .more {
+    border: 1px solid #0e7ac7;
+    color: #0e7ac7;
+  }
+  .new-item {
+    height: 20px;
+    width: 20px;
+    max-width: fit-content;
+    margin-right: 5px;
+  }
+  .margin10 {
+    margin: 10px;
+  }
+
+  // .all-sug {
+  //   width: calc(100% - 20px);
+  //   padding: 10px;
+  //   margin: 10px;
+  //   border-radius: 20px;
+  // }
+  .searchbar-input-container {
+    border: 1px solid $chatBot-borderColor;
+    border-radius: 20px;
+  }
+  .searchbar-md .searchbar-input {
+    border-radius: 20px;
+    background-color: #f6f9fb;
+    box-shadow: none;
+  }
+  .sugesstion-cont {
+    background: #f9fbfd;
+    padding: 8px 5px;
+  }
+  .scroll-content,
+  .fixed-content {
+    margin-top: 62px !important;
+  }
+  // .one {
+  //   background: url("../assets/imgs/allowance.svg");
+  //   background-size: cover;
+  // }
+  // .two {
+  //   background: url("../assets/imgs/learningDevelopment.svg");
+  //   background-size: cover;
+  // }
+  // .three {
+  //   background: url("../assets/imgs/benefits.svg");
+  //   background-size: cover;
+  // }
+  // .four {
+  //   background: url("../assets/imgs/personals.svg");
+  //   background-size: cover;
+  // }
+  // .five {
+  //   background: url("../assets/imgs/referrals.svg");
+  //   background-size: cover;
+  // }
+  // .six {
+  //   background: url("../assets/imgs/leaveAttendance.svg");
+  //   background-size: cover;
+  // }
+  // .seven {
+  //   background: url("../assets/imgs/other.svg");
+  //   background-size: cover;
+  // }
+  // .eight {
+  //   background: url("../assets/imgs/payroll.svg");
+  //   background-size: cover;
+  // }
+
+  @keyframes sweep {
+    0% {
+      opacity: 0;
+      margin-left: -10px;
+    }
+    100% {
+      opacity: 1;
+      margin-left: 0px;
+    }
+  }
+
+  // @media only screen and (max-width: 767px) {
+  //   .md .modal-wrapper > .ion-page > ion-header > .toolbar.statusbar-padding:first-child {
+  //     padding-top: calc(20px + 4px) !important;
+  //     padding-top: calc(constant(safe-area-inset-top) + 4px) !important;
+  //     padding-top: calc(env(safe-area-inset-top) + 4px) !important;
+  //     min-height: calc(56px + 20px) !important;
+  //     min-height: calc(56px + constant(safe-area-inset-top)) !important;
+  //     min-height: calc(56px + env(safe-area-inset-top)) !important;
+  //   }
+  // }
+}

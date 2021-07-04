@@ -1,0 +1,116 @@
+page-job-skill-data {
+  .icon-size {
+    width: 60px;
+    // height: 45px;
+  }
+  .jobCodeBar {
+    margin: 12px 0px 0px 0px;
+    padding: 0px 12px 0px 12px;
+  }
+  .rightSection {
+    margin: 0 0 0 10px;
+    padding: 12px 0px 12px 0px;
+  }
+  .imgBg {
+    background: white;
+    padding: 8px;
+  }
+  .skillImg {
+    // background: #dbdbdb;
+    padding: 3px;
+    // border-radius: 50px 50px;
+  }
+  .lightgrey {
+    color: darkgray;
+    font-size: 1em;
+  }
+  .darkgrey {
+    color: #000000cf;
+    margin-bottom: 3px;
+    font-size: 0.9em;
+    line-height: 1.3;
+  }
+  .circleSize {
+    width: 20%;
+    height: 20%;
+  }
+  .footerCircleSize {
+    width: 40%;
+    height: 40%;
+  }
+  .skillIcon {
+    width: 70px;
+    // height: 70px;
+  }
+  .headerCirSize {
+    width: 20%;
+    height: 20%;
+  }
+  tspan {
+    font-size: 3.5em !important;
+  }
+  .pageTitile {
+    margin-left: -15px;
+  }
+  .alertCustomCss {
+    color: #222222;
+    font-size: 1em;
+    line-height: 1.3;
+  }
+  .navBg {
+    background: #eff5ff;
+  }
+
+  .courseListBG {
+    background: #f5f5f5;
+    padding: 0px;
+  }
+  .courseListSt {
+    display: flex;
+    padding: 5px;
+    justify-content: space-between;
+  }
+  .courseListSkill {
+    margin-left: 10px;
+    color: #605f5f;
+    font-weight: 500;
+  }
+  .courseListDspFlx {
+    background: white;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    height: 100px;
+  }
+
+  .courseDetails {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding-left: 10px;
+  }
+  .courseImg {
+    width: 80px;
+    height: 80px;
+  }
+  .courseTitle {
+    font-size: 0.8em;
+    margin: 0px;
+    text-align: left;
+  }
+  .courselistDetails {
+    font-size: 0.7em;
+    margin: 0px;
+  }
+  .enrollNow {
+    background: transparent;
+    color: #a7464d;
+    font-size: 0.8em;
+    margin: 0px;
+  }
+}

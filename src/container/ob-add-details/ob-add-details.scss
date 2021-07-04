@@ -1,0 +1,147 @@
+page-ob-add-details {
+  
+  .item.item-input.ng-valid.item-input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner,
+  .item.item-input.ng-valid.input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner {
+    border-bottom-color: transparent;
+    box-shadow: inset 0 -1px 0 0 #dedede;
+  }
+
+  ion-content {
+    background-color: white !important;
+  }
+
+  .error-msg p {
+    color: red;
+    font-size: 12px;
+  }
+
+  ion-select {
+    max-width: 100%;
+  }
+
+  .expand-wrapper {
+    transition: 0.2s linear;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
+
+  .collapsed {
+    height: 0 !important;
+    display: none;
+  }
+
+  .item.item-input {
+    background-color: transparent;
+  }
+
+  ion-card {
+    border-radius: 10px !important;
+  }
+
+  // .experienceCard {
+  //   border: 1px solid lightgray;
+  //   border-radius: 8px;
+  //   box-shadow: 0px 2px 1px 1px lightgrey;
+  //   line-height: 2;
+  //   border-top-left-radius: 8px;
+  //   border-top-right-radius: 8px;
+  //   overflow: hidden;
+  // }
+
+  .section {
+    background-color: #eaeaea;
+    .title {
+      color: color($colors, secondary);
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: start;
+      padding-left: 16px;
+    }
+  }
+
+  .dropDownIcon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+  }
+
+  .submit {
+    color: white;
+    // background-color: #b74f53;
+    border-radius: 10px;
+    margin-right: 12px;
+  }
+
+  .headerIcons {
+    width: 35px;
+    height: 22px;
+  }
+  .alert-area{
+    margin-top: 20px;
+  }
+
+  .alert-image{
+    width: 18px;
+    height: 18px;
+    margin-right: 16px;
+  }
+
+  .formMessage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #F2F4F5 ;
+    // border-radius: 8px;
+    padding: 8px;
+    margin-top: 0 !important;
+  }
+
+  .pageTitile{
+    margin-left: -15px;
+  }
+
+  .fadeIn {
+    .item-inner{
+      padding-left: 8px !important;
+      background-color: #0e89c8 !important;
+      animation: fadeIn 1s steps(5, start) infinite;
+      -webkit-animation: fadeIn 1s steps(5, start) infinite;
+      ion-label,ion-input{
+        color: white !important;
+      }
+    }
+  }
+  // @keyframes blink-animation {
+  //   to {
+  //     visibility: hidden;
+  //   }
+  // }
+  // @-webkit-keyframes blink-animation {
+  //   to {
+  //     visibility: hidden;
+  //   }
+  // }
+
+ 
+ @-webkit-keyframes fadeIn {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+ }
+ 
+ @keyframes fadeIn {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+ }
+
+ .headerBtn{
+  background: white;
+  color: color($colors, primary);
+  border-radius: 5px;
+  padding: 5px;
+  text-transform: capitalize;
+ }
+ 
+
+}

@@ -1,0 +1,310 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title *ngIf="!showUsername">Review : {{processType}} Appraisal</ion-title>
+    <ion-title *ngIf="showUsername">Review : {{userName}}</ion-title>
+    <!-- <ion-buttons end>
+      <button ion-button icon-only (click)="closeModal()">
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons> -->
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+  <!-- *ngIf="managerComment" -->
+  <div class="bttmMargin">
+    <!-- <div class="cmnt-area padding6 margin8" *ngIf="userRole == 2||userRole == 3">
+      <textarea rows="5" cols="40" placeholder="Overall performance comments" style="border: 0;" [(ngModel)]='cmmtData'></textarea>
+    </div> -->
+    <div *ngIf="userRole == 2||userRole == 3">
+      <!-- <ion-card class="preview-card" > -->
+      <div class="card margin8">
+        <div class="kra-header">
+          <span class="kra-title" *ngIf="userRole == 2">Appraiser Comments</span>
+          <span class="kra-title" *ngIf="userRole == 3">Reviewer Comments</span>
+        </div>
+        <div style="padding: 3px;">
+          <textarea rows="5" cols="50" placeholder="Overall performance comments" style="border: 0; width: -webkit-fill-available;"
+            [(ngModel)]='cmmtData'></textarea>
+        </div>
+
+      </div>
+      <!-- </ion-card> -->
+    </div>
+
+
+    <ion-card class="preview-card" *ngIf="processType=='Annual'">
+      <!-- <ion-card-header class="preview-header">Performance Review Score</ion-card-header> -->
+      <div class="preview-cont">
+        <div class="padding-bottom10per width100">
+          <div class="displayFlex  fontSize1p2">
+            <div col-5>Status</div>
+            <div col-7 class="fontSize9">{{previewResponse?.displayStatus}}</div>
+          </div>
+        </div>
+      </div>
+    </ion-card>
+    <!-- tracker content -->
+    <ion-card style="padding: 0 0 23px 0;" *ngIf="previewResponse?.kraActivity">
+      <div class="justify-spac-bt-align-cent padding10-20 font-weight500 fontSize1p1">
+        <span class="align-cont-cent">
+          <img class="status-icon mrginRt" src="assets/imgs/annual-status.svg" />
+          <span>Status</span>
+        </span>
+      </div>
+      <div class="padng0to5">
+        <ion-row class="align-item-center margin0-5 position-relative"
+          *ngFor="let activity of previewResponse?.kraActivity"
+          [ngClass]="{'completed-status': (activity.colorCode == 'green'),'pending-status': (activity.colorCode == 'red') ,'incomplete-status': (activity.colorCode == 'grey')}">
+          <span class="tracker center">
+            <div class="tracker-inner-circle"></div>
+          </span>
+          <ion-col col-10>
+            <div class="marginBtm">{{activity.status}}</div>
+            <div class="color-blue fontSize9">{{activity.statusValue}}</div>
+          </ion-col>
+        </ion-row>
+      </div>
+    </ion-card>
+
+    <div class="card margin8" *ngIf="scoreList">
+      <div class="kra-header">
+        <span class="kra-title">Performance Review Score</span>
+
+      </div>
+      <ion-grid>
+        <ion-row justify-content-start *ngFor="let scoreItem of scoreList">
+          <ion-col col-5>{{scoreItem.key}}</ion-col>
+          <ion-col col-7>{{scoreItem.value}}</ion-col>
+        </ion-row>
+      </ion-grid>
+
+    </div>
+
+    <!-- KRA details card -->
+    <div class="card margin8 kraDetailsCard" *ngFor="let item of kraListDetails">
+      <div class="kra-header">
+        <span class="kra-title">{{item.kraTitle}}</span>
+        <span>
+          <img class="pen-icon" *ngIf="showSubmitEditForEmp()" src="assets/imgs/ZenDeavour/edit-icon.svg"
+            (click)="editKra(item)" />
+          <img class="pen-icon" *ngIf="showSubmitEditForMgr()" src="assets/imgs/ZenDeavour/edit-icon.svg"
+            (click)="editKra(item)" />
+          <img class="pen-icon" *ngIf="showSubmitEditForReviewer()" src="assets/imgs/ZenDeavour/edit-icon.svg"
+            (click)="editKra(item)" />
+        </span>
+      </div>
+      <!-- <ion-grid *ngIf="processType=='Annual'">
+        <ion-row justify-content-start *ngFor="let subItem of item.kradetailList">
+          <ion-col *ngIf="subItem.value != '' " col-5>{{subItem.key}}</ion-col>
+          <ion-col *ngIf="subItem.value != '' " col-7>{{subItem.value}}</ion-col>
+        </ion-row>
+      </ion-grid> -->
+      <!-- djdfjdf fdhjfd -->
+
+      <!-- KRA details card -->
+      <ion-grid *ngIf="processType=='Mid-Term' || processType=='Annual'">
+        <div *ngIf="item.kraId !='1'">
+          <div *ngFor="let subItem of item?.kradetailList;let indexOfelement=index;last as islast">
+            <ion-row justify-content-start *ngIf="subItem.key && subItem.key!='Competency'">
+              <ion-col *ngIf="subItem.value != '' " class="keyValueCol fontWtBold">{{subItem.key}}</ion-col>
+              <!-- <ion-col *ngIf="subItem.value != '' " >{{subItem.value}}</ion-col> -->
+            </ion-row>
+            <ion-row justify-content-start
+              *ngIf="subItem.value && subItem.value!= 'Competency' &&  subItem.key!= 'Reviewer Promotion Details'&& subItem.key!= 'Appraiser Promotion Details'">
+
+              <ion-col *ngIf="subItem.value != '' " class="titleValueCol "
+                [ngClass]="{'border-bottomGray': subItem.key !='Title' && !islast}">{{subItem.value}}</ion-col>
+            </ion-row>
+            <ion-row *ngIf="subItem.key== 'Reviewer Promotion Details' || subItem.key== 'Appraiser Promotion Details'">
+              <div class="viewMore" (click)="openDetails(subItem.promotionFields)"> View promotion details</div>
+            </ion-row>
+            <!-- <ion-row  *ngIf="subItem.key== 'Appraiser Promotion Details'">
+              <div style="padding: 5px 10px;
+              color: blue;
+              text-decoration: underline;" (click)="openDetails(subItem.promotionFields)"> View promotion details</div>
+            </ion-row> -->
+            <ion-row *ngFor="let itemDetails of subItem.competencyList">
+              <div class="subItems">{{itemDetails.key}}</div>
+              <div class="subItemDetails" *ngFor="let items of itemDetails.keyValueList">
+                <span class="sub-head">{{items.key}}
+                </span>
+                <span >{{items.value}}
+                </span>
+              </div>
+
+            </ion-row>
+
+            <ion-row *ngIf="subItem?.keyValueList">
+              <ion-col class="dottedBorder padding10" col-4 *ngFor="let dateItem of subItem?.keyValueList">
+                <div class="padding-bottom5 fontWtBold">{{dateItem.key}}</div>
+                <div>{{dateItem.value}}</div>
+              </ion-col>
+
+            </ion-row>
+            <ion-row class="border-bottomGray" *ngIf="subItem?.midTermValueList">
+              <ion-col class=" padding10" *ngFor="let midtermItem of subItem?.midTermValueList">
+                <div class="padding-bottom5 fontWtBold">{{midtermItem.key}}</div>
+                <div>{{midtermItem.value}}</div>
+              </ion-col>
+            </ion-row>
+            <ion-row class="border-bottomGray" *ngIf="subItem?.annualValueList">
+              <ion-col class="padding10" *ngFor="let endtermItem of subItem?.annualValueList">
+                <div class="padding-bottom5 fontWtBold">{{endtermItem.key}}</div>
+                <div>{{endtermItem.value}}</div>
+              </ion-col>
+            </ion-row>
+          </div>
+        </div>
+        <!-- css for KRA1 preview -->
+        <div *ngIf="item.kraId =='1' && item?.kradetailList">
+
+
+          <div *ngFor="let kraListItem of item?.kradetailList ;let indexOfelement=index;last as islast">
+            <div>
+              <!-- css for new preview screen -->
+              <ion-row justify-content-start *ngIf="kraListItem.key">
+                <ion-col *ngIf="kraListItem.value != '' " class="keyValueCol fontWtBold">{{kraListItem.key}}</ion-col>
+                <!-- <ion-col *ngIf="subItem.value != '' " >{{subItem.value}}</ion-col> -->
+              </ion-row>
+              <ion-row justify-content-start *ngIf="kraListItem.value">
+                <!-- <ion-col *ngIf="subItem.value != '' " >{{subItem.key}}</ion-col> -->
+                <ion-col *ngIf="kraListItem.value != '' " class="titleValueCol"
+                  [ngClass]="{'border-bottomGray': kraListItem.key !='Title' && !islast}">{{kraListItem.value}}
+                </ion-col>
+              </ion-row>
+              <ion-row *ngIf="kraListItem?.keyValueList">
+                <ion-col class="dottedBorder padding10" col-4 *ngFor="let dateItem of kraListItem?.keyValueList">
+                  <div class="padding-bottom5 fontWtBold">{{dateItem.key}}</div>
+                  <div>{{dateItem.value}}</div>
+                </ion-col>
+
+              </ion-row>
+              <ion-row class="border-bottomGray" *ngIf="kraListItem?.midTermValueList">
+                <ion-col class=" padding10" *ngFor="let midtermItem of kraListItem?.midTermValueList">
+                  <div class="padding-bottom5 fontWtBold">{{midtermItem.key}}</div>
+                  <div>{{midtermItem.value}}</div>
+                </ion-col>
+              </ion-row>
+              <ion-row class="border-bottomGray" *ngIf="kraListItem?.annualValueList">
+                <ion-col class="padding10" *ngFor="let endtermItem of kraListItem?.annualValueList">
+                  <div class="padding-bottom5 fontWtBold">{{endtermItem.key}}</div>
+                  <div>{{endtermItem.value}}</div>
+                </ion-col>
+              </ion-row>
+            </div>
+            <div *ngIf="kraListItem?.subKraDetailList">
+              <div *ngFor="let subkraItem1 of kraListItem?.subKraDetailList;let indexOfelement=index;"
+                class="marginBottom-25px">
+                <div class="subKRAtitle">Sub KRA {{indexOfelement + 1}}</div>
+                <div *ngIf="subkraItem1?.subKraList" class="margin10 dottedBorder">
+
+                  <div *ngFor="let subItem of subkraItem1?.subKraList;last as islast">
+
+
+
+                    <ion-row justify-content-start *ngIf="subItem.key">
+                      <ion-col *ngIf='subItem.value != "" &&  subItem.value != null' class="keyValueCol fontWtBold">
+                        {{subItem.key}}</ion-col>
+                      <!-- <ion-col *ngIf="subItem.value != '' " >{{subItem.value}}</ion-col> -->
+                    </ion-row>
+                    <ion-row justify-content-start *ngIf="subItem.value">
+                      <!-- <ion-col *ngIf="subItem.value != '' " >{{subItem.key}}</ion-col> -->
+                      <ion-col *ngIf="subItem.value != '' &&  subItem.value != null" class="titleValueCol"
+                        [ngClass]="{'border-bottomGray': subItem.key !='Title' && !islast}">{{subItem.value}}</ion-col>
+                    </ion-row>
+                    <ion-row *ngIf="subItem?.keyValueList">
+                      <ion-col class="dottedBorder-leftNone padding10" col-6
+                        *ngFor="let dateItem of subItem?.keyValueList">
+                        <div class="padding-bottom5 fontWtBold">{{dateItem.key}}</div>
+                        <div>{{dateItem.value}}</div>
+                      </ion-col>
+
+                    </ion-row>
+                    <ion-row class="border-bottomGray" *ngIf="subItem?.midTermValueList">
+                      <ion-col class=" padding10" *ngFor="let midtermItem of subItem?.midTermValueList">
+                        <div class="padding-bottom5 fontWtBold">{{midtermItem.key}}</div>
+                        <div>{{midtermItem.value}}</div>
+                      </ion-col>
+                    </ion-row>
+                    <ion-row class="border-bottomGray" *ngIf="subItem?.annualValueList">
+                      <ion-col class="padding10" *ngFor="let endtermItem of subItem?.annualValueList">
+                        <div class="padding-bottom5 fontWtBold">{{endtermItem.key}}</div>
+                        <div>{{endtermItem.value}}</div>
+                      </ion-col>
+                    </ion-row>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- css for KRA1 preview ends-->
+      </ion-grid>
+
+
+    </div>
+  </div>
+</ion-content>
+
+<ion-footer *ngIf="!hideFooter()"
+  [ngClass]="(consentStatus && userRole=='1' && (finalStatus=='PENDING FOR CONSENT' || finalStatus=='PENDING FOR TWO UP CONSENT'))?'agreeDisgreeFooter':'footerBg'">
+  <!-- *ngIf="!consentStatus && (finalStatus=='CLOSED' || finalStatus=='COMPLETED'|| finalStatus=='PENDING FOR CLOSE')" -->
+  <div *ngIf="consentStatus && userRole=='1' && finalStatus!='CLOSED'" style="margin-top: 10px;">
+    <ion-list class="associate-submitCheckbox-container"
+      *ngIf="consentStatus && userRole=='1' && finalStatus=='PENDING FOR CONSENT'">
+
+      <ion-item class="appraiser-checkbox-container">
+        <ion-label text-wrap>I had a discussion with my appraiser for the rating/comments
+          <img class="asterisk" src="assets/imgs/asterisk.svg" />
+        </ion-label>
+        <ion-checkbox [(ngModel)]="appraiserDiscussionmodel" checked="true" disabled></ion-checkbox>
+      </ion-item>
+      <ion-item class="appraiser-checkbox-container" *ngIf="processType=='Annual'">
+        <ion-label>Request discussion with my reviewer
+        </ion-label>
+        <ion-checkbox [(ngModel)]="reviewerdiscusionReqmodel"></ion-checkbox>
+      </ion-item>
+    </ion-list>
+    <ion-list class="associate-submitCheckbox-container"
+      *ngIf="consentStatus && userRole=='1'  && finalStatus=='PENDING FOR TWO UP CONSENT'">
+      <ion-item class="appraiser-checkbox-container">
+        <ion-label>I had a discussion with my reviewer
+        </ion-label>
+        <ion-checkbox [(ngModel)]="reviewerDiscussionModel"></ion-checkbox>
+      </ion-item>
+    </ion-list>
+    <div class="align-end">
+      <button class="approvebtn" (click)="selectConsent('agree',true)" [ngClass]="{'btn-background': isapprove}"
+        ion-button round>Agree</button>
+      <button class="approvebtn" (click)="selectConsent('disagree',false)" ion-button round
+        [ngClass]="{'btn-background': !isapprove}">Disagree</button>
+    </div>
+
+  </div>
+
+  <!-- <ion-toolbar> -->
+  <button class="nextBtn" (click)="presentConfirm(submit)" ion-button round
+    *ngIf="userRole=='2'  && (finalStatus=='Pending With 1up For Moderation'  || finalStatus=='PENDING AT APPRAISER') && !isAppraisalDateExpired">Submit</button>
+
+  <button class="nextBtn" (click)="presentConfirm(submit)" ion-button round
+    *ngIf="showSubmitEditForEmp()">Submit</button>
+
+  <!-- <div class="align-end" *ngIf="consentStatus && userRole=='1' && finalStatus!='CLOSED'">
+    <button class="approvebtn" (click)="selectConsent('agree',true)" [ngClass]="{'btn-background': isapprove}"
+      ion-button round>Agree</button>
+    <button class="approvebtn" (click)="selectConsent('disagree',false)" ion-button round [ngClass]="{'btn-background': !isapprove}">Disagree</button>
+  </div> -->
+  <button class="nextBtn" (click)="presentConfirm(submit)" ion-button round
+    *ngIf="userRole=='3'  && (finalStatus =='Pending With 2up For Moderation'  || finalStatus == 'PENDING AT REVIEWER') && !isAppraisalDateExpired">Submit</button>
+  <!-- Pending With 2up For Moderation -->
+  <!-- </ion-toolbar> -->
+
+  <!-- <button class="nextBtn" (click)="presentConfirm(submit)" ion-button round *ngIf="!consentStatus  && userRole=='3'  && finalStatus!='CLOSED'  && finalStatus!='COMPLETED'">Submit</button> -->
+  <!-- <button class="nextBtn" (click)="presentConfirm(submit)" ion-button round *ngIf="!consentStatus  && userRole=='2'  && finalStatus!='CLOSED'  && finalStatus!='COMPLETED'">Submit</button> -->
+
+</ion-footer>

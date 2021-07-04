@@ -1,0 +1,84 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Registration</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <form *ngIf="showForm" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <ion-grid>
+      <ion-row>
+        <ion-col col-4 align-self-center class="font1p2em">First Name<span class="color-red">*</span></ion-col>
+        <ion-col>
+          <input class="input-style" type="text" formControlName="firstName"
+            [ngClass]="{ 'is-invalid': submitted && form.firstName.errors }" />
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col *ngIf="submitted && form.firstName.errors" class="padding0">
+          <span class="required" *ngIf="form.firstName.errors.required">First Name is required</span>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-grid>
+      <ion-row>
+        <ion-col col-4 align-self-center class="font1p2em">Last Name<span class="color-red">*</span></ion-col>
+        <ion-col>
+          <input class="input-style" type="text" formControlName="lastName"
+            [ngClass]="{ 'is-invalid': submitted && form.lastName.errors }" />
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col *ngIf="submitted && form.lastName.errors" class="padding0">
+          <span class="required" *ngIf="form.lastName.errors.required">Last Name is required</span>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-grid>
+      <ion-row>
+        <ion-col col-4 align-self-center class="font1p2em">Username<span class="color-red">*</span></ion-col>
+        <ion-col>
+          <input class="input-style" type="text" formControlName="username"
+            [ngClass]="{ 'is-invalid': submitted && form.username.errors }" />
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col *ngIf="submitted && form.username.errors" class="padding0">
+          <div class="required" *ngIf="form.username.errors.required">Username is required</div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-grid>
+      <ion-row>
+        <ion-col col-4 align-self-center class="font1p2em">Password<span class="color-red">*</span></ion-col>
+        <ion-col>
+          <input class="input-style" type="password" formControlName="password"
+            [ngClass]="{ 'is-invalid': submitted && form.password.errors }" />
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col *ngIf="submitted && form.password.errors" class="padding0">
+          <div class="required" *ngIf="form.password.errors.required">Password is required</div>
+          <div class="required" *ngIf="form.password.errors.minlength">Password must be at least 6 characters</div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-grid>
+      <ion-row>
+        <ion-col col-4 align-self-center class="font1p2em">Company<span class="color-red">*</span></ion-col>
+        <ion-col>
+          <input class="input-style" type="text" formControlName="companyName"
+            [ngClass]="{ 'is-invalid': submitted && form.companyName.errors }" />
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col *ngIf="submitted && form.companyName.errors" class="padding0">
+          <div class="required" *ngIf="form.companyName.errors.required">Company Name is required</div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <div class="text-center margin-top10">
+      <button class="register-btn" ion-button round>Register</button>
+    </div>
+  </form>
+</ion-content>

@@ -1,0 +1,63 @@
+<!--
+  Generated template for the RtoCountryWisePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Covid Safety & Teleworking - {{selectedCountry}}</ion-title>
+    <ion-buttons end (click)="presentOption($event)">
+      <button ion-button class="headerText">
+        <img class="mr5" style="height: 15px; width: 15px;" src="assets/menu_icons/popUpCalender.svg"> <span style="margin-top: 3px;font-size: .9em;">{{selectedMonth}}</span>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="contentBackgroud">
+  <div>
+    <ion-card>
+      <canvas #myChart baseChart width="300" height="300" [datasets]="lineChartData" [labels]="lineChartLabels"
+        [colors]="lineChartColors" [legend]="" [options]="chartoptions" [chartType]="lineChartType">
+      </canvas>
+    </ion-card>
+  </div>
+
+  <div>
+    <ion-card *ngFor=" let weekWiseDetails of weekWiseData" class="cardBorder">
+      <ion-card-header class="cardHeader" style="display: flex;align-items: center;position: relative;">
+        <div class="bgFlex">
+          <img class="parentImg" [src]="weekWiseDetails?.bgImg">
+          <!-- <img  class="parentImg" src="assets/menu_icons/newIcon.svg"> -->
+          <span class="bgFlex calenderImgPos">
+            <img class="calenderImg" [src]="weekWiseDetails?.icon">
+            <span class="monthName">{{weekWiseDetails?.month}}</span>
+          </span>
+        </div>
+        <span class="headerFonts mrLeft">{{weekWiseDetails?.key}}</span>
+      </ion-card-header>
+      <ion-card-content class="contentPadding">
+
+        <div class="cardContainer" [ngClass]=" (i+1)%2!=0 ?'greenBG':'redBG'"
+          [ngStyle]="{'float': i%2 == 0 ?'left':'right'}"
+          *ngFor="let weekDataDetails of weekWiseDetails.value; index as i">
+          <span class="conatinerFlex">
+            <img class="childImg" [src]="weekDataDetails?.icon">
+            <!-- <img class="childImg" src="assets/menu_icons/need.svg"> -->
+            <span style="margin-left: 4px; display: flex; flex-direction: column;"><span>{{weekDataDetails?.key}}</span>
+              <span>{{weekDataDetails?.value}} / {{weekDataDetails?.activeAssociates}} <span class="conatinerDetails"
+                  [ngClass]="(i+1)%2!=0 ?'greenText':'redText'">
+                  {{weekDataDetails?.percentage}}
+                </span> </span>
+            </span>
+          </span>
+          <!-- <span class="conatinerDetails" [ngClass]="(i+1)%2!=0 ?'greenText':'redText'">
+            {{weekDataDetails?.percentage}}
+          </span> -->
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

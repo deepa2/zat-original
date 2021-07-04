@@ -1,0 +1,39 @@
+<!-- Generated template for the KraConsentComponent component -->
+<ion-content>
+  <div class="header-fixed">
+    <ion-navbar>
+      <ion-title>Consent</ion-title>
+      <ion-buttons end>
+        <button ion-button icon-only (click)="dismiss()">
+          <ion-icon slot="end" name="close"></ion-icon>
+        </button>
+      </ion-buttons>
+    </ion-navbar>
+  </div>
+  <!-- <ion-card class="no-shadow" >
+    <div class="padding10 fontSize1p1">sdhhs</div>
+  </ion-card> -->
+
+  <div *ngIf="consentType=='disagree'">
+    <div *ngIf="showBtnForGoalspage" style=" font-size: 0.98em;color: #7f8080;padding: 10px;">
+      Note: As you have disagreed, your KRAs will be set to editable mode again and you need to resubmit for manager's
+      approval.
+    </div>
+    <div class="cmnt-area padding6 margin8">
+      <textarea rows="10" cols="40" placeholder="Comments" style="width: 100%;
+    border:0;" [(ngModel)]='cmmtData'></textarea>
+    </div>
+    <div class="nextBtn">
+      <button class="submit-btn" (click)="submit(cmmtData,'2')" ion-button round *ngIf="!showBtnForGoalspage">Submit</button>
+      <button class="goalsSubmiBtn" (click)="submitConsentForGoals(cmmtData,'2')" ion-button round *ngIf="showBtnForGoalspage">Submit</button>
+    </div>
+
+  </div>
+
+  <div *ngIf="consentType=='agree'">
+    <div>Are you sure you want to submit?</div>
+    <button class="nextBtn" (click)="submit('','1')" ion-button round *ngIf="!showBtnForGoalspage">Submit</button>
+    <!-- <button class="goalsSubmiBtn" (click)="submit('','1')" ion-button round *ngIf="showBtnForGoalspage">Submit</button> -->
+
+  </div>
+</ion-content>

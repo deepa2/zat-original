@@ -1,0 +1,92 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title class="pageTitile">{{mode}}</ion-title>
+    <ion-buttons end>
+      <!-- <ion-col > -->
+        <!-- <button  class="send" (click)="postComment()" ion-button round [disabled]="comment==''"> -->
+          <!-- <ion-icon name="arrow-round-forward" ></ion-icon> -->
+        <!-- <ion-icon name="md-send"></ion-icon>
+        </button> -->
+      <!-- </ion-col> -->
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+
+  <ion-spinner *ngIf="loading$ | async"></ion-spinner>
+
+  <!-- <div text-center *ngIf="!(loading$ | async) && itemsLength == 0 ">No results found</div> -->
+
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <ion-list>
+
+    <ion-card no-padding class="comment-card" *ngFor="let item of comments$">
+
+      <ion-item *ngIf="item.user">
+
+        <profile-item [user]="item.user"></profile-item>
+
+      </ion-item>
+
+      <ion-card-content *ngIf="item.commentText">
+
+        <p class="title">{{item.commentText}}</p>
+
+      </ion-card-content>
+      <!-- <div padding-top class="queryInfo">   
+        <ion-row>
+          <ion-col col-5 *ngIf="item.rowAddStp" padding-left>
+            <div class="date">{{formatDate(item.rowAddStp) | date}}</div>
+          </ion-col>
+          <ion-col col-4 *ngIf="item.rowAddStp">
+            <div class="date">{{formatDate(item.rowAddStp) | date:'shortTime' }}</div>    
+          </ion-col>
+
+
+        </ion-row>
+      </div> -->
+
+
+      <div class="flex">
+        <div class="flex" *ngIf="item.rowAddStp"  center text-left>
+            <span> <img class="imageSize" src="assets/imgs/Calender.svg" /></span>
+            <div class="date">{{formatDate(item.rowAddStp) | date}}</div>
+        </div>
+            <div class="date"  *ngIf="item.rowAddStp">
+              {{formatDate(item.rowAddStp) | date:'shortTime' }}
+            </div>
+    </div>
+  
+
+    </ion-card>
+
+  </ion-list>
+
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+</ion-content>
+
+<ion-footer class="cmt-footer" *ngIf='mode == "comment"'>
+  <ion-toolbar>
+    <ion-row>
+      <ion-col>
+        <ion-textarea [(ngModel)]="comment" placeholder="Write a comment">
+        </ion-textarea>
+      </ion-col>
+      <ion-col col-2  (click)="postComment()">
+        <button ion-button  [disabled]="comment==''">
+         <!-- <ion-icon name="arrow-round-forward" ></ion-icon>  -->
+        <ion-icon class="send"  name="md-send"></ion-icon>
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-footer>

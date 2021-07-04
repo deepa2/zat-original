@@ -1,0 +1,114 @@
+page-selected-courses {
+  .scroll-content {
+    margin-bottom: 56px;
+  }
+
+  .titleName {
+    font-size: 1.2em;
+    color: gray;
+  }
+  .subTitle {
+    font-size: 1.1em;
+    color: #1586c7;
+    padding: 2% 0;
+  }
+  .padding2-0 {
+    padding: 2% 0;
+  }
+  .padding-right8 {
+    padding-right: 8px;
+  }
+  .ion-card {
+    width: calc(100% - 20px);
+    border-radius: 5px;
+    box-shadow: none;
+    // background: #edf9fc;
+    border: 1px solid #b5c5df;
+    padding: 10px;
+  }
+  .favdiv {
+    padding-top: 2%;
+    display: flex;
+    justify-content: space-between;
+  }
+  .fav {
+    height: 30px;
+    width: 100px;
+    background: white;
+    align-items: center;
+    display: flex;
+    border-radius: 5px;
+    justify-content: space-evenly;
+    color: #1586c7;
+  }
+  .changeColor {
+    background: #1586c7;
+    color: white;
+  }
+  .favImg {
+    height: 18px;
+    width: 18px;
+  }
+  .footerText {
+    font-weight: 500;
+    font-size: 1.1em;
+  }
+  .showMessage {
+    text-align: center;
+    margin: 25px;
+    font-size: 1.1em;
+  }
+  .saveBtn {
+    text-align: end;
+    margin: 10px;
+  }
+  .errorCls {
+    padding-left: 16px;
+    color: red;
+  }
+  .inputBox {
+    margin-top: 20px;
+  }
+  .dapLabel {
+    white-space: normal;
+  }
+  .noData {
+    text-align: center;
+    margin-top: 20px;
+  }
+  .card-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left;
+    width: 100%;
+  }
+  .card-header {
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  .V.Learn {
+    background: #fffaee;
+  }
+  .Classroom {
+    background: #f6f8ff;
+  }
+  .Online {
+    background: #f3fff8;
+  }
+  .titleName {
+    font-size: 1.1em;
+    color: gray;
+    img {
+      width: 55px;
+    }
+  }
+  .subTitle {
+    font-size: 1em;
+    color: #213643;
+    padding: 10px;
+  }
+
+}

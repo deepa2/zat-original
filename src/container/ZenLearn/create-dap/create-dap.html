@@ -1,0 +1,200 @@
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>Create DAP</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+    <form class="pad-16" #createDap="ngForm" (ngSubmit)="saveDap()" novalidate>
+        <div class="parentMargin">
+            <div *ngFor="let listValue of list;index as i">
+
+                <ion-item class="noColor" *ngIf="listValue.fieldType=='dropdown'">
+                    <ion-label floating>{{listValue.title}} <img class="asterisck" src="assets/imgs/asterisk.svg" />
+                    </ion-label>
+                    <!-- <ion-select [name]="listValue.key" [(ngModel)]="listValue.value"
+                        (ionChange)="getLearningID(listValue)">
+                        <ion-option *ngFor="let item of listValue.lov" [value]="item.key">{{item.value}}</ion-option>
+                    </ion-select> -->
+
+                    <ionic-selectable [name]="listValue.key" [(ngModel)]="listValue.value" item-content
+                        [items]="listValue.lov" itemValueField="key" itemTextField="value" [shouldStoreItemValue]="true"
+                        [canSearch]="true" (onChange)="getLearningID(listValue,$event)">
+                    </ionic-selectable>
+                </ion-item>
+
+                <ion-item *ngIf="listValue.fieldType=='textField'">
+                    <ion-label floating>{{listValue.title}} <img class="asterisck" src="assets/imgs/asterisk.svg" />
+                    </ion-label>
+
+                    <ion-input type='text' [name]="listValue.key" [(ngModel)]="listValue.value" required>
+                    </ion-input>
+                </ion-item>
+
+
+                <ion-item *ngIf="listValue.fieldType=='calendar'">
+                    <ion-label floating>{{listValue.title}}<img class="asterisck" src="assets/imgs/asterisk.svg" />
+                    </ion-label>
+
+                    <ion-datetime displayFormat="D-MMM-YYYY" [min]="listValue?.minValue" [max]="listValue?.maxValue"
+                        (ionChange)="selectedDate(listValue.value)" [name]="listValue.key" [(ngModel)]="listValue.value"
+                        required></ion-datetime>
+
+                    <button class="calenderIcon" (click)="openCalender(0)" ion-button clear color="dark" type="button"
+                        item-right>
+                        <img class="form-icon" style="height: 20px;" src="assets/imgs/new_calendar.svg" />
+                    </button>
+                </ion-item>
+
+                <ion-item class="noColor" *ngIf="listValue.fieldType=='textArea'">
+                    <ion-label stacked>{{listValue.title}} <img class="asterisck" src="assets/imgs/asterisk.svg" />
+                    </ion-label><br>
+
+                    <ion-textarea [placeholder]=" listValue?.placeHolder" class="textArea" [(ngModel)]="listValue.value"
+                        [name]="listValue.key" required>
+                    </ion-textarea>
+                </ion-item>
+
+                <div class="listErrorCls"
+                    *ngIf="(createDap.controls[listValue.key]?.touched && (createDap.controls[listValue.key]?.errors && createDap.controls[listValue.key]?.errors.required))">
+                    {{listValue.title}} is required</div>
+
+                <div class="listErrorCls"
+                    *ngIf="createDap.submitted && createDap.controls[listValue.key]?.value == null">
+                    {{listValue.title}} is required</div>
+
+                <div class="listErrorCls"
+                    *ngIf="(createDap.controls[listValue.key]?.touched && maxDateValidation &&listValue.fieldType=='calendar')">
+                    {{listValue.title}} date cannot be greater than the current financial year</div>
+
+
+            </div>
+        </div>
+
+
+        <div class="dapParentList" *ngFor="let dapItem of dapList; index as i">
+            <div>
+                <div class="dapList">
+                    <div class="dapSection">
+                        <span class="dapSectionId">{{dapItem.dapSectionId}}</span>
+                        <span class="dapSectionTitle">{{dapItem.sectionTitle}}</span>
+                    </div>
+                    <div class="dapSection">
+                        <span>{{dapItem.weightage}}%</span>
+                        <ion-icon *ngIf="dapItem.tooltip" [tooltip]="dapItem.tooltip" positionV="bottom"
+                            hideOthers="true" [arrow]="showArrow" [event]="tooltipEvent" [duration]="duration"
+                            class="showToolTip" color="dark" type="button">
+                            <img class="info-icon" src="assets/imgs/tooltipIcon.svg" />
+                        </ion-icon>
+                    </div>
+                </div>
+                <div *ngFor="let dapList of dapItem.list">
+
+                    <ion-item class="noColor" *ngIf="dapList.fieldType=='dropdown'">
+                        <ion-label floating>{{dapList.title}} <img class="asterisck" src="assets/imgs/asterisk.svg" />
+                        </ion-label>
+
+                        <!-- <ion-select [name]="dapList.key" [(ngModel)]="dapList.value">
+                            <ion-option *ngFor="let item of dapList.lov" [value]="item.key">{{item.value}}</ion-option>
+                        </ion-select> -->
+
+                        <ionic-selectable [name]="dapList.key" [(ngModel)]="dapList.value" item-content
+                            [items]="dapList.lov" itemValueField="key" itemTextField="value"
+                            [shouldStoreItemValue]="true" [canSearch]="true">
+                        </ionic-selectable>
+                    </ion-item>
+
+                    <ion-item class="noBorder noColor mentor" *ngIf="dapList.fieldType=='mentorList'" (click)="openLink()">
+                        Know more about Mentoring @ Zensar
+                    </ion-item>
+
+                    <ion-item class="noColor" *ngIf="dapList.fieldType=='mentorList'">
+                        <!-- <ion-label floating>{{dapList.title}} <img class="asterisck" src="assets/imgs/asterisk.svg" />
+                        </ion-label> -->
+
+                        <!-- <ion-select [name]="dapList.key" [(ngModel)]="dapList.value">
+                            <ion-option *ngFor="let item of dapList.lov" [value]="item.key">{{item.value}}</ion-option>
+                        </ion-select> -->
+                        <ion-label floating>{{dapList.title}} <img class="asterisck" src="assets/imgs/asterisk.svg" />
+                        </ion-label>
+
+                        <ion-input readonly [(ngModel)]="dapList.titleKey" [name]="dapList.key"
+                            (ionFocus)="selectMentor()"></ion-input>
+                    </ion-item>
+
+                    <ion-item class="noColor" *ngIf="dapList.fieldType=='textField'">
+                        <ion-label stacked class="dapLabel">{{dapList.title}} <img class="asterisck"
+                                src="assets/imgs/asterisk.svg" />
+                        </ion-label>
+                        <ion-input type='number' [(ngModel)]="dapList.value" [name]="dapList.key" required>
+
+                        </ion-input>
+                    </ion-item>
+
+                    <ion-item *ngIf="dapList.fieldType=='calendar'">
+                        <ion-label floating>{{dapList.title}} <img class="asterisck" src="assets/imgs/asterisk.svg" />
+                        </ion-label>
+                        <ion-datetime displayFormat="D-MMM-YYYY" [min]="dapList?.minValue" [max]="dapList?.maxValue"
+                            [(ngModel)]="dapList.value" [name]="dapList.key" required>
+
+                        </ion-datetime>
+                        <button class="calenderIconDap" (click)="openCalender(i+1)" ion-button clear color="dark"
+                            type="button" item-right>
+                            <img class="form-icon" style="height: 20px;" src="assets/imgs/new_calendar.svg" />
+                        </button>
+
+                    </ion-item>
+
+                    <ion-item *ngIf="dapList.fieldType=='textArea' && dapList.bindWith=='messageForMentor'" class="noBorder noColor">
+                        <ion-label stacked class="dapLabel">{{dapList.title}}<img style="position: absolute;
+                            height: 12px;padding: 2px;" src="assets/imgs/asterisk.svg" /> </ion-label><br>
+                        <ion-textarea class="textArea mentorMessage" (ionBlur)="updateMentorMsg(dapList.value)" [(ngModel)]="dapList.value" [name]="dapList.key" required>
+                        </ion-textarea>
+
+                    </ion-item>
+                    <ion-item *ngIf="dapList.fieldType=='textArea' && dapList.bindWith !='messageForMentor'" class="noBorder noColor">
+                        <ion-label stacked class="dapLabel">{{dapList.title}}<img style="position: absolute;
+                            height: 12px;padding: 2px;" src="assets/imgs/asterisk.svg" /> </ion-label><br>
+                        <ion-textarea class="textArea mentorMessage" [(ngModel)]="dapList.value" [name]="dapList.key" required>
+                        </ion-textarea>
+
+                    </ion-item>
+
+                    <ion-item *ngIf="dapList.fieldType=='button'" class="noBorder">
+                        <div class="addProgramParent">
+                            <div (click)="getCourseList(dapItem)" class="dapAddProgram">
+                                <span><img src="assets/menu_icons/plus.svg"></span>
+                                <span class="addprogramTitle"> Add programs</span>
+                            </div>
+
+                            <div *ngIf="isCourseListAvaliable" (click)="showCourses(dapItem);$event.stopPropagation();"
+                                class="dapAddProgram selectedProgram">
+                                <span class="selectedProgramDetails"> Selected :
+                                    {{addProgram}}</span>
+                                <span class="addprogramTitle">View All </span>
+                            </div>
+                        </div>
+                    </ion-item>
+
+                    <div class="dapErrorCls"
+                        *ngIf="(createDap.controls[dapList.key]?.touched && (createDap.controls[dapList.key]?.errors && createDap.controls[dapList.key]?.errors.required))">
+                        {{dapItem.sectionTitle}} is required</div>
+
+                    <div class="dapErrorCls"
+                        *ngIf="(createDap.submitted && createDap.controls[dapList.key]?.value == null) &&(dapList.fieldType != 'button')">
+                        {{dapList.title}} is required</div>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="isDataAvailable" class="buttonParent" style="margin-bottom: 10px;">
+            <button *ngIf="dapStatus == 'Pending Manager Approval'" class="btnStyle" ion-button
+                [disabled]="!createDap.form.valid">Pending manager approval</button>
+            <button *ngIf="dapStatus == 'Not Approved' || dapStatus == 'Manager Rejected'" class="btnStyle" ion-button
+                [disabled]="!createDap.form.valid">Pending for re-submission</button>
+            <button *ngIf="!dapStatus" class="btnStyle" ion-button [disabled]="!createDap.form.valid">send for
+                approval </button>
+        </div>
+    </form>
+</ion-content>

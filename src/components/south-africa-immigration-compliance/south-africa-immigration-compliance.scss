@@ -1,0 +1,90 @@
+south-africa-immigration-compliance {
+  ion-content {
+    background: #ebebeb!important;
+  }
+  ul {
+    padding: 0;
+  }
+  .checkBox-container {
+    display: flex;
+  }
+  .marleft-10 {
+    margin-left: 10px;
+  }
+  .header-text {
+    font-weight: 700;
+    // padding: 5px 10px;
+    font-size: 1.2em;
+    color: #0e7ac7;
+  }
+  .date-text {
+    margin-top: 5px;
+  }
+  .self-title {
+    margin-top: 5px;
+  }
+  .footerCss {
+    text-align: center;
+  }
+  .date-text {
+    // font-weight: 700;
+    margin-top: 10px;
+  }
+  .self-title {
+    font-weight: 700;
+    margin-top: 15px;
+    font-size: 1.1em;
+  }
+  .submit-btn-container {
+    text-align: right;
+  }
+  .submit-btn {
+    border-radius: 30px;
+    /* overflow: hidden; */
+    margin: 0 15px 15px 0;
+  }
+  li.listItem {
+    text-align: justify;
+  }
+//   ul.intro-para {
+//     padding: 10px;
+//     margin-top: 5px;
+//   }
+  ol {
+    list-style: none;
+    padding: 0;
+    li {
+      margin-bottom: 8px;
+      background: #fff;
+      padding: 10px;
+      //   padding-left: 30px;
+      border-radius: 3px;
+      position: relative;
+    }
+    li::before {
+      content: "";
+      position: absolute;
+      // left: 7px;
+      // width: 25px;
+      height: 25px;
+      left: -12px;
+      width: 25px;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+      //   background: url("../assets/imgs/guide-user.svg") no-repeat,
+      //     linear-gradient(-45deg, #ffee7f, #ff9f68);
+      //   background-position: center;
+    }
+  }
+  .footerContainer{
+      background: white;
+      box-shadow: 0px 0px 9px 0px grey;
+  }
+  .dateTime{
+      font-weight: bold;
+  }
+  .username{
+    font-weight: bold;
+}
+}

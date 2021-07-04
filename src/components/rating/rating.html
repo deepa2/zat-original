@@ -1,0 +1,51 @@
+<div *ngIf="!fromReportModule?.fromReport">
+    <ion-row *ngIf="!ratingData">
+        <ion-col text-center>
+
+            <ion-icon (click)="rate(num)" *ngFor="let num of [1,2,3,4,5];" name="star" [ngStyle]="{'color':getColor(num)}">
+            </ion-icon>
+
+        </ion-col>
+    </ion-row>
+
+    <div *ngIf="ratingData" class="rating-container">
+        <span>Feedback</span>
+        <ion-icon (click)="closeModal()" ios="ios-close" md="md-close"></ion-icon>
+    </div>
+    <div class="ratin-box">
+        <span *ngFor="let subItem of [1,2,3,4,5]" (click)="rateStar(subItem)" [ngStyle]="{'color':'#F4B432'}">
+            <ion-icon *ngIf="subItem < selectedStars" name="star">
+            </ion-icon>
+            <ion-icon [ngStyle]="{'color':'lightgray'}" *ngIf="subItem >= selectedStars" name="star">
+            </ion-icon>
+            <!-- <img [hidden]="!(subItem >= zenExitData.rating)" src="assets/imgs/emptyStar.svg" /> -->
+        </span>
+    </div>
+    <!-- <div style="padding: 0 10px;">
+        <textarea class="textarea-container" [placeholder]="placeholder" [(ngModel)]="comments"
+            (ngModelChange)="updateBtn()"></textarea>
+    </div>
+    <div class="feedback-msg" *ngIf="islowRating">Please give your comments against the rating.</div>
+    <div (click)="submitRating()" class="btm-container">
+        <button ion-button round [disabled]="isDisabled" class="btm-button">Submit</button>
+    </div> -->
+</div>
+<div *ngIf="fromReportModule?.fromReport">
+    <ion-header>
+
+        <ion-navbar>
+            <ion-title>Report Processed</ion-title>
+        </ion-navbar>
+
+    </ion-header>
+    <div class="margin-top-60 content">
+        <div class="width45 margin-right10">
+            <img src="assets/zents-imgs/report-alert.svg" />
+        </div>
+        <div class="fontSize1p1">{{fromReportModule?.alertMsg}}</div>
+    </div>
+    <!-- <ion-footer> -->
+    <div class="report-ok" (click)="closeModal()">
+        <button ion-button round class="btm-button">Ok</button>
+    </div>
+</div>

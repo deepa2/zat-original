@@ -1,0 +1,77 @@
+<ion-header>
+  <ion-navbar>
+
+    <ion-title class="pageTitile">Job Details</ion-title>
+  </ion-navbar>
+
+</ion-header>
+<ion-content>
+  <div class="jobs-wrapper">
+    <div class="jobs-list">
+
+      <div class="job-item" >
+        <div class="jobs-info-wrapper">
+          <div class="job-icon">
+            <img src="assets/imgs/jobicon.svg">
+          </div>
+          <div class="job-info">
+            <div class="job-title">{{jobsData.jobName}}</div>
+            <div class="job-info-item">
+              <div class="job-info-title">Job Code</div>
+              <div class="job-info-value">  {{jobsData.jobCode}}</div>
+            </div>
+            <div class="applicants" (click)="goToApplicantsPage(jobsData)">
+              <img class="file-icon" src="assets/imgs/information.svg">
+              <span>{{jobsData.applicants}} Applicants </span>
+              <img src="assets/imgs/Arrow-forward-blue.svg">
+            </div>
+          </div>
+         
+        </div>
+        
+      </div>
+      <div class="job-info-details">
+        <div class="job-info-item">
+          <div class="job-info-title">Posted Date</div>
+          <div class="job-info-value">  {{jobsData.postedDate}}</div>
+        </div>
+        <div class="job-info-item">
+          <div class="job-info-title">Experience</div>
+          <div class="job-info-value">  {{jobsDataDetail.experience}}</div>
+        </div>
+        <div class="job-info-item">
+          <div class="job-info-title">Location</div>
+          <div class="job-info-value">  {{jobsDataDetail.location}}</div>
+        </div>
+        <div class="job-info-item">
+          <div class="job-info-title">Project</div>
+          <div class="job-info-value">  {{jobsDataDetail.project}}</div>
+        </div>
+        <div class="job-info-item">
+          <div class="job-info-title">Primary Skils</div>
+          <div class="job-info-value">  {{jobsDataDetail.primarySkills}}</div>
+        </div>
+        <div class="job-info-item">
+          <div class="job-info-title">Secondary Skils</div>
+          <div class="job-info-value">  {{jobsDataDetail.secondarySkills}}</div>
+        </div>
+        <div class="job-info-item">
+          <div class="job-info-title">Tertiary Skils</div>
+          <div class="job-info-value">  {{jobsDataDetail.tertiarySkills}}</div>
+        </div>
+        <div class="job-info-item">
+          <div class="job-info-title">Brand/Grade</div>
+          <div class="job-info-value">  {{jobsDataDetail.gradeBrand}}</div>
+        </div>
+        <div class="job-info-item">
+          <div class="job-info-title">Job Description</div>
+          <div class="job-info-value preview" (click)="previewDesc()">Preview</div>
+        </div>
+        <div class="job-info-item">
+          <div class="job-info-title">Roles and Responsibilites</div>
+          <div class="job-info-value roles-text">  {{jobsDataDetail.rolesResponsibiliteis}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

@@ -1,0 +1,109 @@
+<!--
+  Generated template for the ReturnToOfficePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar [hideBackButton]="!userData?.isBackButtonEnable">
+    <ion-title>Return to Office Guidelines</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content [ngClass]="{'footerContent':showfooter}">
+
+  <div class="video-wrapper videoMargin">
+    <!-- <video src="userData.videoUrl" ></video> -->
+    <video muted playsinline autoplay preload="false" controls controlsList="nodownload" #myVideo
+      style="width:100%; height: 230px;" (ended)="VideoEventInit($event)">
+
+      <source src="{{encodeURI(userData?.videoUrl)}}" type='video/mp4;codecs="avc1.42E01E, mp4a.40.2"' />
+    </video>
+  </div>
+  <div class="signin-wrapper">
+    <div class="signin-con">
+      <img src="assets/imgs/guidline-image.svg">
+      <div class="sign-text">
+        <span *ngIf="userData?.isEligibleForConsent">Please go through the Return to Office Declaration and provide your
+          acknowledgement stating that you have
+          read and understood the COVID-19 guidelines. You are committed to follow guidelines outlined in the
+          declaration.</span>
+        <span *ngIf="!userData?.isEligibleForConsent">Please go through the Return to Office Declaration and awareness
+          video. You are committed to follow guidelines outlined.</span>
+        <div class="rto-con">
+          <img src="assets/imgs/computer.svg">
+          <span class="rto">Return to Office</span>
+          <div class="guidlines" (click)="goToTermsGuidelines()">Declaration</div>
+        </div>
+      </div>
+
+    </div>
+    <div>
+
+      <!-- <div *ngIf="userData?.isAssociatePlayBook" class="viewPdf" (click)="openPDF(userData?.associatePlayBookDoc)">
+        <img class="pdfImg" src="assets/imgs/gatePass-red-pdf.svg">
+        <span>{{userData?.associatePlayBookDocName}}</span>
+        <span class="view">View</span>
+      </div> -->
+      <p>Please go through the Return to Office documents to understand the best practices and guidelines. </p>
+      <div *ngIf="userData?.isAssociatePlayBook" class="viewPdf" (click)="openPDF(userData?.associatePlayBookDoc)">
+        <img class="pdfImg" src="assets/imgs/gatePass-red-pdf.svg">
+        <span>{{userData?.associatePlayBookDocName}}</span>
+        <span class="view">View</span>
+      </div>
+      <div *ngIf="userData?.isCovidPolicy" class="viewPdf" (click)="openPDF(userData?.covid19PoliyDoc)">
+        <img class="pdfImg" src="assets/imgs/gatePass-red-pdf.svg">
+        <span>{{userData?.covid19PoliyDocName}}</span>
+        <span class="view">View</span>
+      </div>
+      <div *ngIf="userData?.isWorkPlacePlan1" class="viewPdf" (click)="openPDF(userData?.workPlacePlan1Doc)">
+        <img class="pdfImg" src="assets/imgs/gatePass-red-pdf.svg">
+        <span>{{userData?.workPlacePlan1DocName}}</span>
+        <span class="view">View</span>
+      </div>
+      <div *ngIf="userData?.isNoteAvaibale" class="viewPdf">
+        Note : You can also view the Covid-19 Policy and Workplace Plans on Zenlounge+
+      </div>
+    </div>
+  </div>
+
+  
+  <!-- <div style="padding:10px;" [innerHTML]="userData.htmlConsent"></div> -->
+</ion-content>
+<ion-footer *ngIf="!userData?.isSignAgreement && userData?.isEligibleForConsent" class="fotterBtn">
+  <div class="btmPara">
+    <div class="checkBox">
+      <ion-checkbox color="dark" (ionChange)="chnageCheckBoxStatus(checkboxStatus)" [(ngModel)]="checkboxStatus"
+        [checked]="checkBoxValue"></ion-checkbox>
+
+        <span class="marleft-5">{{userData?.decalartionContent}}<img class="more"
+          src="assets/imgs/asterisk.svg" /></span>
+      <!-- <span *ngIf="!userData?.isUKLocation" class="marleft-5"><img class="more" src="assets/imgs/asterisk.svg" /></span> -->
+      
+        <!-- <span *ngIf="userData?.isUKLocation" class="marleft-5"> <img class="more"
+          src="assets/imgs/asterisk.svg" /></span> -->
+    </div>
+  </div>
+  <button ion-button [disabled]="checkBoxValue?false:!checkboxStatus" (click)="submitServey()">Submit</button>
+
+</ion-footer>
+<ion-footer *ngIf="userData?.isSignAgreement" class="fotterBtn 2">
+  <div class="btmPara">
+    <div class="checkBox">
+      <ion-checkbox color="dark" [disabled]="true" [checked]="true"></ion-checkbox>
+      <span class="marleft-5">{{userData?.decalartionContent}}<img class="more"
+        src="assets/imgs/asterisk.svg" /></span>
+      <!-- <span *ngIf="!userData?.isUKLocation" class="marleft-5">I recognize that the obligations of this Declaration are ongoing, and I make this
+        Declaration truthfully, knowingly, and voluntarily.<img class="more" src="assets/imgs/asterisk.svg" /></span>
+
+        <span *ngIf="userData?.isUKLocation" class="marleft-5"> I have read, understand, and agree to abide by the
+          Covid-19 policy and Workplace Plan. I recognise that the obligations in the Declaration are ongoing and I make
+          the declaration, truthfully, knowingly and voluntarily.<img class="more"
+            src="assets/imgs/asterisk.svg" /></span> -->
+    </div>
+  </div>
+  <button ion-button [disabled]="true">Submit</button>
+</ion-footer>

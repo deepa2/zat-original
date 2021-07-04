@@ -1,0 +1,153 @@
+<!--
+  Generated template for the ZenwenDashboardPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>ZenWEN</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <div>
+    <div class="sub-header">
+      <div class="title">Events</div>
+      <div class="segments">
+        <ion-segment [(ngModel)]="events">
+          <ion-segment-button value="upcoming" class="seg-left">
+            Upcoming
+          </ion-segment-button>
+          <ion-segment-button value="past" class="seg-right">
+            Past
+          </ion-segment-button>
+        </ion-segment>
+      </div>
+    </div>
+
+    <div [ngSwitch]="events" class="sub-content">
+      <ion-slides *ngSwitchCase="'upcoming'" slidesPerView="1.4" zoom="false">
+        <ion-slide *ngFor="let upcomingData of upcomingEvents" (click)="redirectToZenWENEvent('upcoming')">
+          <div class="banner-img">
+            <img src="{{imgUrl + upcomingData?.coverPhotoUrl}}" />
+          </div>
+          <div class="e-details">
+            <div class="date">
+              <img src="assets/zents-imgs/calendar_white_icon.svg" />
+              <span>{{dateConversion(upcomingData?.startTime)}}</span>
+            </div>
+            <div class="desc">
+              <div class="title">{{upcomingData?.title}}</div>
+              <div class="location">
+                <!-- <ion-icon name="location-outline"></ion-icon> -->
+                <img src="assets/zenwen-imgs/location_white_icon.svg" />
+                <span class="city">{{upcomingData?.city}}</span>
+              </div>
+            </div>
+          </div>
+        </ion-slide>
+        <div class="noevent" *ngIf="upcomingEvents.length == 0">
+          <img  src="assets/zenwen-imgs/noEvent.png" />
+        </div>
+      </ion-slides>
+      
+
+      <ion-slides *ngSwitchCase="'past'" slidesPerView="1.2">
+        <ion-slide *ngFor="let pastData of pastEvents" (click)="redirectToZenWENEvent('past')">
+          <div class="banner-img">
+            <img src="{{imgUrl + pastData?.coverPhotoUrl}}" />
+          </div>
+          <div class="e-details">
+            <div class="date">
+              <img src="assets/zents-imgs/calendar_white_icon.svg" />
+              <span>{{dateConversion(pastData?.startTime)}}</span>
+            </div>
+            <div class="desc">
+              <div class="title">{{pastData?.title}}</div>
+              <div class="location">
+                <img src="assets/zenwen-imgs/location_white_icon.svg" />
+                <span class="city">{{pastData?.city}}</span>
+              </div>
+            </div>
+          </div>
+        </ion-slide>
+        <div padding *ngIf="pastEvents.length == 0">
+          No Events Found
+        </div>
+      </ion-slides>
+    </div>
+  </div>
+
+  <div class="wow">
+    <div class="sub-header">
+      <div class="title">World of Women</div>
+      <div class="segments">
+        <ion-segment [(ngModel)]="worldOfWomen">
+          <ion-segment-button value="wallOfFame" class="seg-left">
+            Wall Of Fame
+          </ion-segment-button>
+          <ion-segment-button value="zenwenSpeak" class="seg-right">
+            ZenWen Speak
+          </ion-segment-button>
+        </ion-segment>
+      </div>
+    </div>
+
+    <div [ngSwitch]="worldOfWomen" class="sub-content">
+      <ion-slides *ngSwitchCase="'wallOfFame'" slidesPerView="1.2">
+        <ion-slide *ngFor="let wof of wallOFameList" (click)="redirectToWOW('wallOfFame')">
+          <ion-card>
+            <ion-item no-padding>
+              <ion-avatar item-start>
+                <img src="{{imgUrl + wof?.worldOfWomen?.fromUserPortraitUrl}}" onerror="this.src = 'assets/imgs/dummy-profile.png'"/>
+             
+              </ion-avatar>
+              <p>{{wof?.worldOfWomen?.fromUserName}}</p>
+            </ion-item>
+            <!-- <div class="msg">{{wof?.worldOfWomen?.description}}</div> -->
+            <read-more class="msg" [desc]="wof?.worldOfWomen?.description"></read-more>
+            <div class="sendTo">
+              Send To :
+              <img src="{{imgUrl + wof?.worldOfWomen?.toUserPortraitUrl}}" onerror="this.src = 'assets/imgs/dummy-profile.png'"/>
+              {{wof?.worldOfWomen?.toUserName}}
+            </div>
+          </ion-card>
+        </ion-slide>
+      </ion-slides>
+
+      <ion-slides *ngSwitchCase="'zenwenSpeak'" slidesPerView="1.2">
+        <ion-slide *ngFor="let speakData of zenwenSpeaks" (click)="redirectToWOW('zenwenSpeak',speakData)">
+          <ion-card>
+            <ion-item>
+              <ion-avatar item-start>
+                <img src="{{imgUrl + speakData?.worldOfWomen?.toUserPortraitUrl}}">
+              </ion-avatar>
+              <p>{{speakData?.worldOfWomen?.toUserName}}</p>
+            </ion-item>
+            <!-- <div class="msg" [innerHTML]="speakData?.worldOfWomen?.description"></div> -->
+            <read-more class="msg" [desc]="speakData?.worldOfWomen?.description"></read-more>
+          </ion-card>
+        </ion-slide>
+      </ion-slides>
+    </div>
+  </div>
+
+  <div class="other-options">
+    <ion-slides slidesPerView="2.5">
+      <ion-slide *ngFor="let menu of headersMenuList;let i = index;" [ngStyle]="{'background-color':getColor(i)}" (click)="goToPage(menu)">
+        <div>
+          <img src="assets/zenwen-imgs/{{menu?.image}}.svg" />
+          <span>{{menu?.groupName}}</span>
+        </div>
+      </ion-slide>
+    </ion-slides>
+  </div>
+
+  <!-- <ion-fab right bottom (click)="confirmSOS()">
+    <button ion-fab>SOS</button>
+  </ion-fab> -->
+</ion-content>

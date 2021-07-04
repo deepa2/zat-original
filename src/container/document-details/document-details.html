@@ -1,0 +1,109 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Documents</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="presentOptions($event)">
+        <ion-icon name="more"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+
+  <div class="parent">
+    <div class="child" *ngFor="let tabs of type; index as i" (click)="selectTab(i)"
+      [class.selected]="selectedIndex == i">
+      <strong>{{tabs.type}}</strong>
+      <!--   <div class="span-Text" [ngStyle]="{'color':getColor(tabs.status)}">{{tabs.status}}</div> -->
+    </div>
+  </div>
+
+  <div *ngFor="let tabs of type; index as j">
+    <div *ngIf="selectedIndex == j">
+      <!-- <ion-card *ngFor="let data of tabs.documentsList">
+        <ion-card-header style="background-color: #feb07d;">
+          {{data.title}}
+        </ion-card-header>
+        <ion-card-content>
+          <ion-list style="margin: 0px;">
+            <ion-item *ngFor="let item of data.documentDetailsList">
+              {{ item.docValue }}
+
+              <button *ngIf="item.docURL" ion-button clear item-end (click)="viewDocument(item.docURL)"><img
+                  src="assets/imgs/new_showPassword.svg" class="downloadIcon" style="height: 20px;width:20px;"></button>
+            </ion-item>
+          </ion-list>
+        </ion-card-content>
+      </ion-card> -->
+
+      <div *ngFor="let data of tabs.documentsList" class="padding16 ">
+        <div class="titleBg padding16">
+          {{data.title}}
+        </div>
+        <div>
+          <ion-list style="margin: 0px;">
+            <ion-item *ngFor="let item of data.documentDetailsList">
+              {{ item.docValue }}
+
+              <button *ngIf="item.docURL" ion-button clear item-end (click)="viewDocument(item.docURL)"><img
+                  src="assets/imgs/new_showPassword.svg" class="downloadIcon" style="height: 20px;width:20px;"></button>
+            </ion-item>
+          </ion-list>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 
+    <div *ngIf="selectedIndex == 0">
+      <ion-card>
+        <ion-card-content>
+          <ion-list *ngFor="let data of personalDocs">
+            <ion-item *ngFor="let item of data.documentDetailsList">
+              {{ item.docValue }}
+              <button (click)="viewDocument(item.docURL)">Hello</button>
+
+              <button>Hii</button>
+              <div style="border-bottom: 2px solid"></div>
+            </ion-item>
+          </ion-list>
+        </ion-card-content>
+      </ion-card>
+    </div>
+
+    <div *ngIf="selectedIndex == 1">
+      <ion-card *ngFor="let data of educationaldocs">
+        <ion-card-header>
+          {{data.title}}
+        </ion-card-header>
+        <ion-card-content>
+          <ion-list>
+            <ion-item *ngFor="let item of data.documentDetailsList">
+              {{ item.docValue }}
+              <div style="border-bottom: 2px solid"></div>
+            </ion-item>
+          </ion-list>
+        </ion-card-content>
+      </ion-card>
+    </div>
+
+    <div *ngIf="selectedIndex == 2">
+      <ion-card *ngFor="let data of professionalDocs">
+        <ion-card-header>
+          {{data.title}}
+        </ion-card-header>
+        <ion-card-content>
+          <ion-list>
+            <ion-item *ngFor="let item of data.documentDetailsList">
+              {{ item.docValue }}
+              <div style="border-bottom: 2px solid"></div>
+            </ion-item>
+          </ion-list>
+        </ion-card-content>
+      </ion-card>
+    </div>
+  </div> -->
+</ion-content>

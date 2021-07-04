@@ -1,0 +1,225 @@
+page-zendeavor-consultation-request-detail {
+  .userDetails-container {
+    ion-card {
+      background: #edf9fc;
+    }
+  }
+  .rowCls {
+    display: flex;
+    align-items: center;
+  }
+  .colCls {
+    display: flex;
+    align-items: center;
+  }
+  .imgSize {
+    height: 25px;
+    width: 25px;
+  }
+  .mrginRt {
+    margin-right: 10px;
+  }
+  .color-blue {
+    color: color($colors, primary);
+  }
+  .color-gray {
+    color: gray;
+  }
+
+  .custom-segment {
+    text-transform: capitalize !important;
+    font-size: 1em !important;
+  }
+  .parentDiv {
+    width: 100%;
+  }
+
+  .infoClass {
+    display: flex;
+  }
+  .divFirst {
+    width: 70%;
+  }
+
+  .empName {
+    color: #488cfc;
+    font-weight: 500;
+    white-space: initial;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .divSecond {
+    width: 30%;
+    border-left: 1px solid #2c2f33;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+    padding-left: 10px;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .subDiv {
+    display: flex;
+    flex-direction: column;
+  }
+  .status {
+    font-weight: 500;
+    margin-bottom: 5px;
+  }
+  .statusColor {
+    color: #488cfc;
+  }
+  .iconSize {
+    font-size: 1.6em;
+  }
+  .imgCls {
+    border-radius: 50%;
+    overflow: hidden;
+    width: 50px !important;
+    height: 50px !important;
+    border: 4px solid #c5dcf3;
+  }
+  .msg-title {
+    padding: 10px;
+    background: #d5f1f8;
+    color: #488cfc;
+  }
+  .feedbackTitle {
+    // margin-left: 5px;
+    padding: 8px;
+    font-size: 1.1em;
+  }
+  .feedbackTextarea {
+    border: 1px solid grey;
+    // border-bottom: 1px solid grey;
+  }
+  .chat-container {
+    display: flex;
+    justify-content: flex-start;
+    padding: 10px;
+    // width: 80%;
+    align-content: center;
+    align-items: end;
+    margin: 15px 0;
+  }
+  .chat-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    // border: 1px solid #488cfc;
+    border: 4px solid #c5dcf3;
+    // padding: 2px;
+  }
+  .chat-imgContainer {
+    width: 13%;
+  }
+  .chat-message-container {
+    width: 80%;
+    /* background: red; */
+    display: flex;
+    flex-direction: column;
+  }
+  .chat-msg {
+    padding: 10px;
+    margin: 5px 0;
+    background: #c8d2e2;
+    /* border-top-right-radius: 10px; */
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    min-height: 45px;
+  }
+  .msg-date {
+    color: #bbb7b7;
+    text-align: left;
+  }
+  .chat-containerflex-end {
+    display: flex;
+    justify-content: flex-end;
+    // padding: 10px;
+    // width: 80%;
+    // align-content: center;
+    align-items: end;
+    margin: 15px 0;
+  }
+
+  // .chat-imgContainer-end {
+  //   // width: 18%;
+  // }
+  .chat-message-container-end {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+
+    align-items: flex-end;
+  }
+  .chat-msg-end {
+    padding: 10px;
+    margin: 5px 0;
+    background: #c8d2e2;
+    border-bottom-right-radius: 10px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    min-height: 45px;
+  }
+  .msg-date-end {
+    color: #bbb7b7;
+    text-align: right;
+    // margin: 0 10px;
+  }
+  .chat-username {
+    margin-bottom: 3px;
+    font-size: 1.1em;
+    color: gray;
+  }
+  .submitBtn {
+    text-align: center;
+    // background: #6363aa;
+    text-transform: capitalize;
+  }
+  .submitfooter {
+    text-align: center;
+  }
+  .textalignRight {
+    text-align: right;
+  }
+  .chat-img-end {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    // border: 1px solid #488cfc;
+    border: 4px solid #c5dcf3;
+    // padding: 2px;
+    margin: 0 10px;
+  }
+
+  .success-msgdiv {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    color: color($colors, primary);
+  }
+
+  .congratulation-bg-img {
+    background-image: url("../assets/imgs/congratulation.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-bottom: 90%;
+    border-radius: 10px;
+  }
+  .tick-img {
+    width: 40px;
+    height: 40px;
+  }
+  .dashboard-btn {
+    margin: 35px 0;
+  }
+
+  .consultMsg {
+    padding: 10px;
+    margin: 0 10px;
+    font-size: 1.1em;
+  }
+}

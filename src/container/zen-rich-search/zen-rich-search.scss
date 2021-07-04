@@ -1,0 +1,422 @@
+page-zen-rich-search {
+    .bgColor {
+        background: #e7e8ee;
+    }
+    .bgList{
+        background: #fff;
+    }
+    .textStyle{
+        margin-left: 5px;
+    }
+    // .opening-card {
+    //     margin: 10px;
+    //     border-radius: 7px;
+    //     background: #ffffff;
+
+    //     .job-wrapper {
+    //         display: flex;
+    //         padding: 10px 5px;
+    //     }
+    //     .save-job {
+    //         display: flex;
+    //         align-items: start;
+    //         margin-right: 5px;
+    //         //padding: 10px 5px;
+    //         ion-icon {
+    //             padding: 0px 8px;
+    //             font-size: 22px;
+    //             color: #6d6d6d;
+    //         }
+    //     }
+    //     .job-info {
+    //         width: 100%;
+    //         padding: 0 10px;
+    //         img {
+    //             height: 16px;
+    //             width: 16px;
+    //         }
+    //     }
+    //     .job-icon {
+    //         text-align: center;
+    //         margin-bottom: 10px;
+    //         flex-direction: column;
+    //         align-items: center;
+    //         background: linear-gradient(90deg, #79e893, #00c4c1);
+    //         color: #fff;
+    //         padding: 0;
+    //         font-size: 12px;
+    //         height: 50px;
+    //         border-radius: 5px;
+    //         img {
+    //             height: 20px;
+    //             width: 20px;
+    //         }
+    //     }
+    //     .job-footer {
+    //         display: flex;
+    //         justify-content: space-between;
+    //         border-top: 1px solid white;
+    //         background: #f5f9ff;
+    //         border-bottom-right-radius: 7px;
+    //         border-bottom-left-radius: 7px;
+    //         .experience {
+    //             border-right: 1.5px solid white;
+    //             width: 40%;
+    //             padding: 5px;
+    //             display: flex;
+    //             align-items: center;
+    //             justify-content: center;
+    //             .experience-icon {
+    //                 width: 20px;
+    //                 margin-right: 10px;
+    //             }
+    //             img {
+    //                 height: 18px;
+    //                 width: 18px;
+    //                 margin-right: 5px;
+    //             }
+    //         }
+    //         .referral-Bonus {
+    //             padding: 5px;
+    //             display: flex;
+    //             align-items: center;
+    //             justify-content: center;
+    //             width: 60%;
+    //             img {
+    //                 height: 18px;
+    //                 width: 18px;
+    //                 margin-right: 5px;
+    //             }
+    //         }
+    //     }
+    //     .job-title,
+    //     .title {
+    //         font-size: 12px;
+    //         width: calc(100% - 35px);
+    //         white-space: normal;
+    //         // font-weight: 600;
+    //         color: #000000;
+    //         text-transform: capitalize;
+    //     }
+    //     .inr{
+    //         color: #00a200;
+    //     }
+    //     .info {
+    //         font-size: 12px;
+    //         font-weight: 300;
+    //         margin: 10px 0;
+    //         display: flex;
+    //         align-items: center;
+    //         img {
+    //             width: 15px;
+    //             height: 15px;
+    //             margin-right: 5px;
+    //         }
+    //     }
+    // }
+
+    .opening-card {
+        margin: 10px;
+        border: 1px solid white;
+        border-radius: 7px;
+        background: #ffffff;
+
+        .job-wrapper {
+            display: flex;
+            padding: 5px;
+            position: relative;
+        }
+        .save-job {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: absolute;
+            top: 0;
+            right: 0;
+            z-index: 99;
+            padding: 5px 2px 10px 10px;
+            ion-icon {
+                padding: 0px 8px;
+                font-size: 22px;
+                color: #6d6d6d;
+            }
+        }
+        .job-info {
+            width: calc(100% - 60px);
+            padding: 0 10px;
+            img {
+                height: 16px;
+                width: 16px;
+            }
+            img.rupee-icon {
+                height: 11px;
+                width: 11px;
+            }
+            span.job-skills {
+                width: calc(100% - 15px);
+                margin-left: 5px;
+                font-weight: 300;
+            }
+            .skills.info span {
+                text-overflow: ellipsis;
+                overflow: hidden;
+                text-transform: capitalize;
+            }
+            .job-cancelled {
+                display: inline-block;
+                background: #FFE5D8;
+                color: #C96E40;
+                font-size: 12px;
+                padding: 2px 5px;
+            }
+            .job-expired {
+                display: inline-block;
+                background: #FFD8D8;
+                color: #C95966;
+                font-size: 12px;
+                padding: 2px 5px;
+            }
+            .job-onhold {
+                display: inline-block;
+                background: #FFF0CE;
+                color: #D6A12B;
+                font-size: 12px;
+                padding: 2px 5px;
+            }
+        }
+        .job-icon {
+            text-align: center;
+            margin-bottom: 10px;
+            flex-direction: column;
+            align-items: center;
+            background: linear-gradient(90deg, #79e893, #00c4c1);
+            color: #fff;
+            padding: 5px 0;
+            height: 50px;
+            font-size: 12px;
+            border-radius: 5px;
+            img {
+                height: 20px;
+                width: 20px;
+                margin-bottom: 5px;
+            }
+        }
+        .job-icon.hot-job{
+            height: 70px;
+            min-width: 65px;
+            font-size: 12px;
+            padding: 5px 10px;
+            border-radius: 5px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            .imgStyle {
+                margin-bottom: 5px;
+            }
+            .hot-con {
+                background: #D70D00;
+                position: absolute;
+                bottom: 0;
+                white-space: nowrap;
+                font-size: 11px;
+                padding: 2px 5px;
+                width: 100%;
+                img.hot-icon {
+                    height: auto;
+                    width: auto;
+                    margin-bottom: 0;
+                }
+            }
+        }
+        .job-footer {
+            display: flex;
+            font-size: 1.4rem;
+            justify-content: space-between;
+            border-top: 1px solid white;
+            background: #f5f9ff;
+            border-bottom-right-radius: 7px;
+            border-bottom-left-radius: 7px;
+            .experience {
+                border-right: 1px solid #fff;
+                width: 50%;
+                padding: 5px;
+                display: flex;
+                align-items: center;
+                .experience-icon {
+                    width: 15px;
+                    margin-right: 5px;
+                    
+                }
+                img{
+                    margin-right: 5px;
+                }
+                .inr{
+                    color: #00a200;
+                }
+            }
+            
+        }
+        .job-title,
+        .title {
+            font-size: 12px;
+            width: calc(100% - 40px);
+            white-space: normal;
+            // font-weight: 600;
+            color: #000000;
+        }
+        .job-info-footer{
+            // display: flex;
+            align-items: center;
+            .experience {
+                margin: 10px 0;
+                font-weight: 300;
+                display: flex;
+                span.bonus {
+                    text-decoration: line-through;
+                }
+                span.inr {
+                    margin-right: 5px;
+                }
+                .money-icon{
+                    margin-right: 5px;
+                }
+                span.hot-amount {
+                    color: #09A727;
+                }
+            }
+            .job-location {
+                display: flex;
+                align-items: center;
+                width: 50%;
+                white-space: normal;
+                padding: 0 5px;
+            }
+            .referral-Bonus {
+                width: 50%;
+                display: flex;
+                align-items: center;
+                img{
+                    height: 15px;
+                    width: 15px;
+                    min-width: 15px;
+                    margin-right: 5px;
+
+                }
+                
+            }
+        }
+        .job-title,
+        .title {
+            font-size: 13px;
+            width: calc(100% - 40px);
+            white-space: normal;
+            // font-weight: 600;
+            color: #000000;
+        }
+        .info {
+            margin: 10px 0;
+            display: flex;
+            align-items: start;
+            font-size: 0.9em;
+        }
+        .job-title-wrap{
+            display: inline-block;
+            vertical-align: middle;
+            width: 100%;
+            word-break: break-all;
+            img{
+                display: inline-block;
+                vertical-align: middle;
+                margin-right: 0;
+                margin-left: 10px;
+            }
+        }
+        .niche-skills{
+            color: #da8100;
+            margin-left: 5px;
+            margin-top: 1px;
+        }
+    }
+    .opening-card:nth-child(1) .job-icon {
+        background: linear-gradient(90deg, #79e893, #00c4c1);
+    }
+    .opening-card:nth-child(n + 2) .job-icon {
+        background: linear-gradient(90deg, #fe5897, #e459c6);
+    }
+    .opening-card:nth-child(n + 3) .job-icon {
+        background: linear-gradient(90deg, #c59dfe, #5b46dc);
+    }
+    .opening-card:nth-child(n + 4) .job-icon {
+        background: linear-gradient(90deg, #0fc1e7, #1e90ff);
+    }
+    .opening-card:nth-child(n + 5) .job-icon {
+        background: linear-gradient(90deg, #88a8ef, #4567c3);
+    }
+    .opening-card:nth-child(1n + 1) .job-icon {
+        background: linear-gradient(90deg, #79e893, #00c4c1);
+    }
+    .opening-card:nth-child(2n + 2) .job-icon {
+        background: linear-gradient(90deg, #fe5897, #e459c6);
+    }
+    .opening-card:nth-child(3n + 3) .job-icon {
+        background: linear-gradient(90deg, #c59dfe, #5b46dc);
+    }
+    .opening-card:nth-child(4n + 4) .job-icon {
+        background: linear-gradient(90deg, #0fc1e7, #1e90ff);
+    }
+    .opening-card:nth-child(5n + 5) .job-icon {
+        background: linear-gradient(90deg, #88a8ef, #4567c3);
+    }
+    .opening-card:nth-child(6n + 1) .job-icon {
+        background: linear-gradient(90deg, #fdcb5a, #ff861e);
+    }
+    .searchMessage {
+        font-weight: 600;
+        text-align: center;
+        margin: 10px;
+    }
+
+    .ft600 {
+        font-weight: 600;
+        padding-top: 15px;
+        padding-bottom: 10px;
+        display: flex;
+        align-items: center;
+        border-bottom: 1px dotted gray;
+        margin: 0 10px;
+    }
+    .listImg {
+        height: 25px;
+        width: 25px;
+        margin: 5px;
+    }
+    .pastSearchFlex {
+        display: flex;
+        justify-content: space-between;
+    }
+    .pastSearchText {
+        font-size: 0.9em;
+        color: gray;
+    }
+    .imgStyle {
+        height: 16px;
+        width: 16px;
+    }
+    .font9 {
+        font-size: 0.9em;
+    }
+    .roundedImg {
+        border-radius: 50%;
+    }
+    .width50 {
+        width: 50% !important;
+    }
+
+    .img-mar5 {
+        margin-right: 5px;
+    }
+
+    .calWidth {
+        width: calc(100% - 15px);
+    }
+}

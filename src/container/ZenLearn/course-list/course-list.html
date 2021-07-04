@@ -1,0 +1,97 @@
+<!--
+  Generated template for the CourseListPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{pagetitle}}</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="presentPopover($event)">
+        <img src="assets/imgs/dapFilterIcon.svg" />
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="offeringList!= null && offeringList?.length != 0 ">
+    <ion-card class="ion-card" *ngFor="let item of offeringList let i = index" (click)="offeringDetails(item)">
+      <div class="card-container">
+        <!-- <div class="titleName">{{item?.learningType}}</div> -->
+        <!-- <div class="titleName">{{item?.method}}</div>
+        <div class="subTitle">{{item?.title}}</div> -->
+        <div class="card-header {{item.method}}">
+          <div class="titleName">
+            <img *ngIf="item.method=='' || item.method==null" src="assets/zenLearn-imgs/dap-icon3.svg" />
+            <img *ngIf="item.method=='V Learn'" src="assets/imgs/virtual-icon.svg" />
+            <img *ngIf="item.method=='Classroom'" src="assets/imgs/classroom-icon.svg" />
+            <img *ngIf="item.method=='Online'" src="assets/imgs/online-icon.svg" />
+          </div>
+          <div class="subTitle">{{item?.title}}</div>
+        </div>
+        <div class="card-data">
+          <div class="align-cont-cent padding-top3per fontp9em" *ngIf="item?.facility">
+            <span class="padding-right8"><img src="assets/imgs/zenLearnlocation.svg" /></span>
+            
+                <span class="color-gray ftWT" *ngIf="item?.itemType && item?.itemType != 'CLASSROOM'">{{item?.facility}} - {{item?.itemType | titlecase}}</span>
+                <span class="color-gray ftWT" *ngIf="item?.itemType && item?.itemType == 'CLASSROOM'">{{item?.facility}}</span>
+                <span class="color-gray ftWT" *ngIf="!item?.itemType">{{item?.facility}}</span>
+            <!-- {{item.facility}} -->
+          </div>
+          <div class="flex fontp9em padding-top3per color-gray">
+            <span class="padding-right8"><img src="assets/imgs/zenLearnCredit_Hours.svg" /></span>
+            <span> Credit Hrs : {{item?.creditHours}}</span>
+          </div>
+          <div class="flex padding-top3per" *ngIf="item?.endDate != '' || item?.endTime != ''">
+            <span class="padding-right8"><img src="assets/imgs/zenLearnCalender.svg" /></span>
+            <span class="column fontp9em heading-color ">
+              <span class="padding-bottom4per">{{item?.startDate}} To {{item?.endDate}}</span>
+              <span class="color-gray">{{item?.startTime}} To
+                {{item?.endTime}}</span></span>
+          </div>
+          <div class="flex padding-top3per" *ngIf="item?.endDate == '' || item?.endTime == ''">
+            <span class="padding-right8"><img src="assets/imgs/zenLearnCalender.svg" /></span>
+            <span class="column fontp9em heading-color ">
+              <span class="padding-bottom4per">{{item?.startDate}}</span>
+              <span *ngIf="(item?.type =='Technical' || item?.type =='Behavioural')" class="column fontp9em heading-color">
+                <span class="padding-bottom4per">{{item?.completionDate}}</span>
+                </span>
+            </span>
+          </div>
+
+          <div class="flex fontp9em padding-top3per color-gray" *ngIf="item?.financialYear">
+            <span class="padding-right8"><img src="assets/imgs/zenLearnCredit_Hours.svg" /></span>
+            <span>{{item?.financialYear}}</span>
+          </div>
+          
+          <div class="like-dislike-wrapper" *ngIf="!isLearningHistory">
+            <div class="like" (click)="likeDislike('like',i,item?.isLike,item?.itemId);$event.stopPropagation()">
+              <img class="" *ngIf="item?.isLike==0 || item?.isLike==-1" src="assets/zenLearn-imgs/like.svg"
+              onerror="this.src='./assets/imgs/logo.png'" />
+              <img class="" *ngIf="item?.isLike==1" src="assets/zenLearn-imgs/likeBlue.svg"
+              onerror="this.src='./assets/imgs/logo.png'" />
+              
+            </div>
+            <div class="dislike" (click)="likeDislike('dislike',i,item?.isLike,item?.itemId);$event.stopPropagation()">
+              <img class="" *ngIf="item?.isLike==0 || item?.isLike==1" src="assets/zenLearn-imgs/disLike.svg"
+              onerror="this.src='./assets/imgs/logo.png'" />
+              <img class="" *ngIf="item?.isLike ==-1" src="assets/zenLearn-imgs/disLikeBlue.svg"
+              onerror="this.src='./assets/imgs/logo.png'" />
+              
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </ion-card>
+    <ion-infinite-scroll threshold="300px" (ionInfinite)="loadData($event)">
+      <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+    
+  </div>
+  <div class="nodata" *ngIf="resultPending">No data Available</div>
+</ion-content> 

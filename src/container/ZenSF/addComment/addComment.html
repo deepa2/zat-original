@@ -1,0 +1,38 @@
+<ion-content>
+    <div class="display-flex">
+        <ion-buttons end>
+            <button class="btn-style" (click)="dismiss()" end>
+                <ion-icon name="close"></ion-icon>
+            </button>
+        </ion-buttons>
+        <ion-item>
+            <ion-label class="colorGray" stacked>Comment<span class="red">*</span></ion-label>
+            <ion-textarea placeholder="Enter your comment" [(ngModel)]="title"></ion-textarea>
+        </ion-item>
+    </div>
+    <div class="space-btwn">
+        <ion-list lines="none">
+            <ion-item>
+                <ion-label class="checkbox-text">Mark as an action item</ion-label>
+                <ion-checkbox class="checkbox" color="dark" (ionChange)="checkboxClick($event)" checked="actionCheck"></ion-checkbox>
+            </ion-item>
+        </ion-list>
+
+        <button ion-button round (click)="showConfirm()">Submit</button>
+    </div>
+</ion-content>
+
+<!-- <ion-footer>
+    <ion-toolbar>
+        <div class="space-btwn">
+            <ion-list lines = "none">
+                <ion-item>
+                    <ion-label class="checkbox-text">Mark as action</ion-label>
+                    <ion-checkbox  class="checkbox" color="dark" (ionChange)="checkboxClick($event)" checked="actionCheck"></ion-checkbox>
+                </ion-item>
+            </ion-list>
+            
+            <button ion-button round (click)="showConfirm()">Submit</button>
+        </div>
+    </ion-toolbar>
+</ion-footer> -->

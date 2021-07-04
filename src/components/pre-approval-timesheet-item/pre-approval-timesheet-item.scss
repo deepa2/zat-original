@@ -1,0 +1,266 @@
+pre-approval-timesheet-item {
+
+    .pre-approval-pending{
+        .associateHead{
+            display: flex;
+            width: 100%;
+            justify-content: center;
+            border-bottom: 1px solid skyblue;
+             .associateDetails ion-list{
+                 
+                 p,h4{
+                    margin-bottom: 0;
+                    padding: 1%;
+                 }
+        
+            }
+            
+        }
+        .profile{
+            width: 15%;
+            margin-top: 10px;
+            display: flex; 
+            ion-avatar{
+                width: 50px;
+                height: 50px;
+                img{
+                    width: 50px;
+                    height: 50px;
+                    border-radius: 25px;
+               }
+    
+            }
+        }
+        .associateDetails{
+            width: 80%; 
+        }
+        .hourDetails {
+            width: 100%;
+            background: #ebecf1;
+            ion-grid{
+                padding: 0px;
+            }
+        
+            .leftPane{
+                border-right:1px solid #fff;
+            }
+            .rightPane{
+                display: flex;
+                justify-content: flex-end;
+            
+                ion-grid{
+                    padding: 0px;
+                }
+            
+                button{
+                    padding: 0px;
+                    font-size: 1em;
+                    width: 70px;
+                    text-transform: capitalize;
+                }
+           
+                .approve-btn{
+                    background:$ts-btn-green !important;
+                    color: #ffffff !important;
+                }
+                .pending-btn{
+                    background: #ffffff !important ;
+                    border-color: $ts-secondary !important;
+                    color:$ts-secondary !important;
+                    box-shadow: none !important;
+                    border: 1px solid;
+                }
+            }
+        }
+        .hourDetails .leftPane {
+            width: 50%;
+            float: left;
+        }
+        .hourDetails  .rightPane{
+            width: 50%;
+        }
+        
+        .font-title{
+            font-size: 1em;
+        }
+        .font-subtitle{
+            font-size: 0.8em;
+        }
+        
+        .approveAllSection {
+        
+            text-align: right;
+            ion-button{
+                padding: 0px;
+                width: 100%;
+                font-size: 0.6em;
+            }
+        }
+        .approvalCard{
+            padding: 0px;
+            width: 100%;
+            --border-style: none;
+            ion-card ion-card-content{
+                margin:0px;
+                padding:0px;
+            }
+        }
+        .selectProjectDropviewSection {
+        
+            ion-item {
+                font-size: 0.8em;
+                width: 100%;
+                border: 1px solid #e9ecef;
+               
+                color: grey;
+                height: 38px;
+            }
+            ion-select {
+                max-width: 100% !important;
+                margin-bottom: 48px;
+                width:100%;
+        
+                .select-text{
+                    margin-left: -18px;
+                }
+            }
+        }
+        
+        .noRecords {
+            p{
+                text-align: center;
+            }
+        }
+        .approvAllbtn{
+            text-transform: capitalize;
+            font-size: 0.75em;
+            height: 30px;
+            width: 90px;
+            color: var(--ion-color-success-shade);
+            --border-color: var(--ion-color-success-shade);
+         
+        }
+        #buttonColor{
+            text-transform: capitalize;
+            width: 48%;
+            font-size: 0.8em;
+            height: 25px;
+            margin: 0;
+        }
+        #buttonReject{
+    
+        color: grey;
+        text-transform: capitalize;
+        width: 48%;
+        font-size: 0.8em;
+        height: 25px;
+        margin: 0;
+        --border-color: #80808099;
+        }
+        .user-name{
+            color:$ts-secondary;
+        }
+        // .user_details{
+        //     // margin-left: 8px;
+        //     // margin-right: 0px;
+        // }
+        .block-border{
+            border: 1px solid #e3e8fe;
+        }
+        ion-card{
+            box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.07), 0 3px 1px -2px rgba(0, 0, 0, 0.1), 0 1px 5px 0 rgba(0, 0, 0, 0.06) !important; 
+    
+        }
+    }
+
+    .pre-approval-approved{
+        .approvalCard{
+            padding: 0px;
+            width:95%;
+            ion-card{
+                width: 100%;
+                box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.07), 0 3px 1px -2px rgba(0, 0, 0, 0.1), 0 1px 5px 0 rgba(0, 0, 0, 0.06) !important; 
+
+            }
+            ion-card ion-card-content{
+                margin:0px;
+                padding:0px;
+            }
+
+            .user-card{
+                width: 100%;
+                padding-top:5px;
+            }
+        }
+    
+        .user-details{
+            display: flex;
+            // align-items: center;
+            .user-img{
+                padding: 10px;
+                position: relative;
+            }
+            .user-avatar{
+        
+                width: 50px;
+                height: 50px;
+
+                img{
+                    width: 50px;
+                    height: 50px;
+                    border-radius: 25px;
+                }
+
+
+
+            
+            }
+            .additional_hour_tag{
+                position: absolute;
+                width: 20px;
+                right: 8px;
+                top: 45px;
+            }
+
+            .user-name{
+                color:$ts-secondary;
+                font-size: 1em;
+            }
+        }
+        
+        .efforts-info{
+            display: flex;
+            background: #EFF5FF;
+            .efforts-detail{
+                width: 50%;
+                border-right: 1px solid white;
+            }
+            .darkColor{
+                // color: black;       
+                // font-weight: 600;
+                color: black;
+                font-weight: 600;
+                font-size: 0.8em;
+            }
+        
+            .font-size{
+                font-size: 0.9em;
+            }
+            .font-small{
+                font-size: 0.8em;
+                padding-left: 0px;
+            }
+            .comment{
+                padding: 5px;
+                width: 50%;
+            }
+        }
+        .font-size{
+            font-size:0.9em;
+        }
+    }
+
+}
+
+
+

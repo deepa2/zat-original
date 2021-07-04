@@ -1,0 +1,53 @@
+query-list {
+    .answerFont {
+        padding: 5px !important;
+        margin-top: 0px;
+        font-size: 14px;
+        color: gray;
+    }
+    .queryInfo {
+        font-size: 14px;
+    }
+    .flex {
+        display: flex;
+    }
+    img.imageSize {
+        width: 16px;
+        margin-right: 4px;
+    }
+    .date {
+        color: grey;
+        margin-right: 9px;
+        font-size: 0.9em;
+    }
+    .horizontal-trail {
+        position: relative;
+    }
+    .horizontal-trail::after {
+        content: ".";
+        display: block;
+        position: absolute;
+        height: 13px;
+        background: #9e9c9c;
+        width: 3px;
+        left: 50%;
+        right: 50%;
+        top: calc(100% - 20px);
+    }
+    .mainContainer::after {
+        content: ".";
+        display: block;
+        position: absolute;
+        height: 13px;
+        background: #9e9c9c;
+        width: 3px;
+        left: 50%;
+        right: 50%;
+        top: calc(100% - 20px);
+    }
+    .trail {
+        height: 20px;
+        width: 50%;
+        border-right: 2px dotted grey;
+    }
+}

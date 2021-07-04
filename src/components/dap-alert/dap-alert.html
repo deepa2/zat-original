@@ -1,0 +1,23 @@
+<ion-content>
+  <div class="dismissBtn">
+    <img (click)="dismiss()" src="assets/imgs/close.svg">
+  </div>
+ <div class="pop-con ">
+  <div class="pop-item dap-bg" (click)="goToDetailPage('Dap')">
+    <span class="padding2per">
+      <!-- <img class="profile-round" [src]=item?.icon onerror="this.src='./assets/imgs/annual-status.svg'" /> -->
+      <img class="cartImg" src="assets/zenLearn-imgs/myDap.svg" onerror="this.src='./assets/imgs/annual-status.svg'" />
+    </span>
+    <div class="pop-heading">My DAP</div>
+  </div>
+  <div class="pop-item team-bg" (click)="goToDetailPage('Team')">
+    <span class="padding2per">
+      <!-- <img class="profile-round" [src]=item?.icon onerror="this.src='./assets/imgs/annual-status.svg'" /> -->
+      <img class="cartImg" src="assets/zenLearn-imgs/Team-icon.svg" onerror="this.src='./assets/imgs/annual-status.svg'" />
+    </span>
+    <div class="pop-heading">Team </div>
+  </div>
+  
+ </div>
+ 
+</ion-content>

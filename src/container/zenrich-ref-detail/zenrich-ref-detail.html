@@ -1,0 +1,107 @@
+<!--
+  Generated template for the WowPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Referral Application</ion-title>
+    <ion-buttons class="go-help" end (click)="goToHelp()">
+      <button ion-button icon-only>
+        <ion-icon name="ios-help-circle-outline"></ion-icon>
+      </button>
+      <span>Help</span>
+    </ion-buttons>
+    
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content class="wow_content">
+  <div class="job-wrapper" *ngIf="mainData">
+    <div class="job-icon" [ngClass]="{'hot-job': mainData.hotJobFlag != ''}">
+      <img class="titleImg" src="assets/imgs/job-item-icon.svg">
+      <span>{{mainData?.srfNo}}</span>
+      <div class="hot-con" *ngIf="mainData.hotJobFlag != ''"><img class="hot-icon" src="assets/imgs/hot-icon.svg"> {{mainData.hotJobFlag}}</div>
+      
+    </div>
+    <div class="job-info">
+      <div class="job-title">{{mainData?.jobTitle}}</div>
+      <div class="cand-name info joblocation"><img class="candidateProfileImg img-mar5"
+          src="assets/imgs/Person.png"><span>{{mainData?.candidateName}}</span></div>
+      <div class="post-date info joblocation"><img class="img-mar5"
+          src="assets/icon/dashboard-icons/ZenRich_calendar.svg"><span>Referred Date :
+          {{formatDate(mainData?.referredDate) | date}}</span>
+      </div>
+      <div class="post-date info joblocation"><img class="img-mar5"
+        src="assets/imgs/ID-blue.svg"><span>Candidate ID :
+        {{mainData?.candidateId}}</span>
+      </div>
+      <div class="skills detail-info joblocation">
+        <img class="info-icon img-mar5" src="assets/imgs/money.svg" />
+        <span class="info-title">Referral Bonus : Upto </span>
+        <img class="rupee-icon inr" src="assets/imgs/rupee.svg" /><span [ngClass]="{'bonus': ((mainData.hotJobReferralAmount != '' && mainData.hotJobFlag != '') &&  mainData.referralBonus != (mainData.hotJobReferralAmount | number))}" class="">{{mainData?.referralBonus}}</span>
+        <span *ngIf="mainData.hotJobFlag != '' && mainData.referralBonus != (mainData.hotJobReferralAmount | number)  && mainData.hotJobReferralAmount != ''" class="hot-amount inr"><img class="rupee-icon" src="assets/imgs/rupee-green.svg" />{{mainData?.hotJobReferralAmount}}</span>
+      </div>
+      
+    </div>
+  </div>
+  <div class="status" *ngIf="mainData">
+    <span class="title"><img class="img-mar5" src="assets/icon/dashboard-icons/ZenRich_process.svg">
+      <span>Status</span></span>
+    <div class="status-bar">
+      <div class="status-item"
+        [ngClass]="{active: item.completionStatus=='Completed',pending: item.completionStatus=='Pending'}"
+        *ngFor="let item of mainData?.statusFlow">
+        <div class="status-icon">
+          <img *ngIf="item.completionStatus=='Completed'" class="info-icon" src="assets/imgs/checked.png" />
+          <img *ngIf="item.completionStatus=='Incomplete'" class="info-icon"
+            src="assets/imgs/checked-gray.png" />
+            <img *ngIf="item.completionStatus=='Pending'" class="info-icon"
+            src="assets/icon/dashboard-icons/ZEnRich_pendings.svg" />
+            <img *ngIf="item.completionStatus=='Rejected'" class="info-icon"
+            src="assets/icon/dashboard-icons/ZenRich_rejected.svg" />
+        </div>
+        <div>
+          <label>{{item.statusKey}}</label>
+          <div>{{item.subStatus}}</div>
+        </div>
+      </div>
+    </div>
+    <div class="title fontStyle">
+      <img class=" info-icon img-mar5" src="assets/icon/dashboard-icons/ZenRich_file.svg"> <span
+        class="calcWidth">{{mainData?.note}}</span>
+    </div>
+  </div>
+  <div class="candidate-info" *ngIf="mainData">
+    <div class="job-icon" (click)="goToSavedProfile(mainData)">
+      <img class="info-icon" src="assets/imgs/new_information.svg" />
+      <span class="title">Candidate Information</span>
+    </div>
+    <div class="candidate-name job-location">
+      <img class="candidateProfileImg img-mar5" src="assets/imgs/Person.png">
+      <span>{{mainData?.candidateName}}</span>
+    </div>
+  </div>
+  <div class="job-details" *ngIf="mainData">
+    <div class="job-icon">
+      <img class="info-icon" src="assets/icon/dashboard-icons/ZenRich_file.svg" />
+      <span class="title">Job Details</span>
+    </div>
+    <div class="job-location">
+      <div class="job-title">{{mainData?.jobTitle}}</div>
+      <div class="joblocation">
+        <img class="info-icon" src="assets/icon/dashboard-icons/ZenRich_location.svg" />
+        <div class="info info-item">Location : {{mainData?.opening?.location}}</div>
+      </div>
+    </div>
+    <div class="joblocation job-location">
+      <img class="info-icon" src="assets/icon/dashboard-icons/ZenRich_skills.svg" />
+      <div class="info info-item">Skills : {{mainData?.opening?.skills}}</div>
+    </div>
+  </div>
+
+
+</ion-content>

@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar>
+
+    <div class="custom-header">
+      <div class="align-cont-cent padding-left9">
+        <div class="padding9">
+          <img class="header-icon" [src]=pageData.icon alt="header-icon" />
+        </div>
+        
+        <div class="text-white header-styl">
+          <div class="pageTitile ">{{pageData.key}}</div>
+          <div *ngIf="headerValue">{{headerValue | currency : 'INR' : 'symbol': '1.2-2' : 'en-IN'}}</div>
+        </div>
+      </div>
+      <div class="btn-style" (click)="dismiss()" end>
+        <ion-icon name="close"></ion-icon>
+      </div>
+    </div>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="model-border">
+  <div class="list-card-styl">
+    <div class="list-item" *ngFor="let item of paySlipData" (click)="movetoEarningDetails(item)">
+      <div class="list-icon">
+        <img class="icon-styl" [src]=item?.icon />
+      </div>
+      <div class="finance-list-subitem">
+        <div class="flex-space-betwn">
+          <span class="padding-bottom5">{{item?.key}}</span>
+          <span *ngIf="!item.isNumber">{{item?.decryptValue}}</span>
+          <span *ngIf="item.isNumber">{{item?.decryptValue | currency : 'INR' : 'symbol': '1.2-2' : 'en-IN'}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

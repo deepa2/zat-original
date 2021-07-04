@@ -1,0 +1,116 @@
+page-approval-timesheet-approved {
+    // ion-buttons{
+    //     display: flex;
+    //     align-items: center;
+    //     .allCheckbox{
+    //         padding: 0;
+    //         background: transparent;
+    //         color: white;
+    //         width: 65px;
+    //         display: flex;
+    //         align-items: center;
+    //         ion-checkbox{
+    //             border: 1px solid white;
+    //             .checkbox-icon{
+    //                 background: transparent;
+    //                 border: none;
+    //                 .checkbox-inner{
+    //                     left: 6px !important;
+    //                     top: 1px !important;
+    //                 }
+    //             }
+    //         }
+    //         ion-label{
+    //             display: inline-flex;
+    //             margin-left: 5px;
+    //         }
+    //     }
+    // }
+    .headSection{
+        ion-row{
+            padding: 8px;
+            background-color: #eff5ff;
+            // border-bottom: 1px dotted #666;
+            .selectAllSection{
+                display: flex;
+                align-items: center;
+                justify-content: flex-end;
+                font-size: 1em;
+                ion-checkbox{
+                    margin-right: 5px;
+                }
+            }
+        }
+    }
+    .grid{
+        padding: 0px !important;
+    }
+    .virtualItemsParent{
+        width: 98%;;
+    }
+    .font-size{
+        font-size:0.9em;
+    }
+    .noRecords {
+        p{
+            text-align: center;
+        }
+    }
+    .filterIcon{
+        width: 1.6em;
+    }
+
+    .approval-ts-title {
+        font-size: 0.88em;
+        
+    }
+    .approveAllSection {
+    
+        text-align: right;
+        button{
+            padding: 0px;
+            width: 60%;
+            font-size: 0.9em;
+            background:$ts-btn-green;
+            text-transform: none;
+        }
+  
+    }
+
+    .my-custom-modal-css .modal-wrapper {
+        height: 20%;
+        top: 80%;
+        position: absolute; 
+        display: block;  
+        
+     }
+    .item-inner{
+        border-bottom: none !important;
+        padding: 0 !important;
+    }
+
+    .approval-timesheet-filter-modal ion-backdrop {
+        visibility: visible !important;
+        z-index:0;
+    }
+    ion-modal.approval-timesheet-filter-modal .modal-wrapper{
+        bottom:0;
+        width:100%;
+        height:300px;
+        position:absolute;
+    }
+    .bottom-sheet-container{
+        background:#fff;
+        width: 100%;
+        height:300px;
+        // padding: 20px;
+    }
+    ion-footer{
+        box-shadow: 0px 0 1px rgba(0, 0, 0, 0.8);
+        padding: 10px;
+        .okayBtn{
+            background-color: #0e88c8;
+            text-transform: capitalize;
+          }
+    }
+ }

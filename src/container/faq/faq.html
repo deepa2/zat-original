@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title class="pageTitile">{{pageTitle}}</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="presentOptions($event)">
+        <ion-icon name="more"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<!-- <ion-content padding-vertical> -->
+<ion-content class="backgrnd-white">
+  <!-- <ion-spinner *ngIf="loading$ | async"></ion-spinner> -->
+  <ion-list *ngIf="!(loading$ | async)">
+    <!-- <ion-card class="faq-card" *ngFor="let item of information;" no-padding (click)="goToFaqDetails(item)"> -->
+    <ion-item class="faq-card" *ngFor="let item of information;" no-padding (click)="openModal(item)">
+      
+
+
+      <!-- <ion-row>
+        <ion-col no-padding>
+          <img class="cardImage" [src]="item.icon" />
+          <div class="cardHeading">{{item.departmentName}}</div>
+        </ion-col>
+        <ion-col class="arrowImage" col-2 text-right>
+          <ion-icon name="arrow-forward"></ion-icon>
+        </ion-col>
+      </ion-row> -->
+
+      <div class="display-flex padding12 {{item.departmentName}}">
+        <ion-col no-padding>
+          <div class="align-cont-cent">
+            <div class="width25"> <img class="cardImage" [src]="item.icon" /></div>
+            <div class="heading">{{item.departmentName}}</div>
+          </div>
+        </ion-col>
+        <ion-col col-2 text-right>
+          <!-- <ion-icon name="arrow-forward"></ion-icon> -->
+          <div><img class="arrowImage" src="assets/imgs/white-aarow.svg"/>
+          </div>
+        </ion-col>
+      </div>
+    </ion-item>
+  </ion-list>
+</ion-content>

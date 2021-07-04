@@ -1,0 +1,93 @@
+<!--
+  Generated template for the WowPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Job Detail</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content class="wow_content">
+  <div class="mainContainer" *ngIf="mainData">
+    <div class="job-wrapper">
+      <div class="job-icon" [ngClass]="{'hot-job': mainData.hotJobFlag != ''}">
+        <img class="titleImg" src="assets/imgs/job-item-icon.svg">
+        <!-- <img class="info-icon" [src]="mainData?.srfNoIcon" /> -->
+        <span>{{mainData?.srfNo}}</span>
+        <div class="hot-con" *ngIf="mainData.hotJobFlag != ''"><img class="hot-icon" src="assets/imgs/hot-icon.svg"> {{mainData.hotJobFlag}}</div>
+      </div>
+      <div class="job-info">
+        <div class="job-title">
+          <span class="job-title-wrap"> <span>{{mainData?.jobTitle}}</span> </span>
+          <div class="niche-wrap" *ngIf="mainData?.nicheSkillFlag">
+            <img  src="assets/imgs/nicheStar.svg"> 
+            <span class="niche-skills">Niche skill</span>
+          </div>
+        </div>
+        <div class="post-date info">
+          <img src="assets/icon/dashboard-icons/ZenRich_calendar.svg">
+          <span> Posted Date : {{formatDate(mainData?.postedDate) | date}}</span></div>
+        <div class="post-date info">
+          <img src="assets/icon/dashboard-icons/ZenRich_grade.svg">
+          <span> Grade : {{mainData?.grade}}</span></div>
+
+      </div>
+      <div class="save-job">
+        <img class="bookMarkIcon" (click)="$event.stopPropagation()"
+          (click)="bookMarked(mainData?.isBookmarked, mainData?.srfNo)" *ngIf="!mainData?.isBookmarked"
+          src="assets/icon/dashboard-icons/bookMarked.svg">
+        <img class="bookMarkIcon" (click)="$event.stopPropagation()"
+          (click)="bookMarked(mainData?.isBookmarked,mainData?.srfNo)" *ngIf="mainData?.isBookmarked"
+          src="assets/icon/dashboard-icons/bookMarkFilled.svg">
+        <ion-icon name="more" (click)="presentpopover($event,mainData?.srfNo, mainData?.jobTitle)"></ion-icon>
+      </div>
+
+    </div>
+    <div class="job-exp">
+      <div class="experience">
+        <span><img class="experience-icon" src="assets/imgs/experience.svg" /></span>
+        <span>Exp. : {{mainData?.experience}}</span></div>
+        <div class="experience">
+          <span><img class="experience-icon roundedImg" src="assets/imgs/Person.png" /></span>
+          <span>{{mainData?.profileMatchCount}}</span></div>
+      <!-- <div class="referral-Bonus">Referral Bonus : {{mainData?.referralBonus}}</div> -->
+    </div>
+    <div class="job-location detail-info">
+      <img class="info-icon" src="assets/icon/dashboard-icons/ZenRich_location.svg" />
+      <span class="info-title">Location : </span>
+      {{mainData?.location}}
+    </div>
+    <div class="skills detail-info">
+      <img class="info-icon" src="assets/icon/dashboard-icons/ZenRich_skills.svg" />
+      <span class="info-title">Skills : </span>
+      {{getMainSkills(mainData?.skills)}}
+    </div>
+    <div class="skills detail-info">
+      <img class="info-icon" src="assets/imgs/money.svg" />
+      <span class="info-title">Referral Bonus :  </span><span class="mr-5"> upto </span>  
+      <img class="rupee-icon" src="assets/imgs/rupee.svg" /><span [ngClass]="{'bonus': ((mainData.hotJobReferralAmount != '' && mainData.hotJobFlag != '') &&  mainData.referralBonus != (mainData.hotJobReferralAmount | number))}" class="">{{mainData?.referralBonus}}</span>
+      <span *ngIf="mainData.hotJobFlag != '' && mainData.referralBonus != (mainData.hotJobReferralAmount | number)  && mainData.hotJobReferralAmount != ''" class="hot-amount inr"> <img class="rupee-icon" src="assets/imgs/rupee-green.svg" />  {{mainData?.hotJobReferralAmount}}</span>
+    </div>
+    
+    
+    <div class="detail-info">
+      <img class="info-icon" src="assets/icon/dashboard-icons/ZenRich_file.svg" /><span class="job-desc">Job Description </span>
+    </div>
+    <div class="job-details-font disc-margin" [innerHTML]="mainData?.jobDescription"></div>
+  </div>
+  <!-- <div class="refer-friend-btn">
+      <button (click)="goToReferral()">Refer a Friend</button>
+    </div> -->
+
+</ion-content>
+<ion-footer>
+  <div class="refer-friend-btn">
+    <button *ngIf="isComingFromSavedProfile" (click)="goTOCandidateForm()">Refer</button>
+    <button *ngIf="!isComingFromSavedProfile" (click)="goToReferral()">Refer a Friend</button>
+  </div>
+</ion-footer>

@@ -1,0 +1,198 @@
+page-zenadmin-route-details {
+  .points-title-container {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+  }
+  .assetImg {
+    width: 35px;
+  }
+  .point-title {
+    padding: 5px;
+    font-size: 1.1em;
+    font-weight: 400;
+  }
+  .pickup-points-card {
+    padding-bottom: 10px;
+    border-radius: 6px;
+  }
+  /* The actual timeline (the vertical ruler) */
+  .timeline {
+    position: relative;
+  }
+  /* The actual timeline (the vertical ruler) */
+  .timeline::after {
+    content: "";
+    position: absolute;
+    width: 1px;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -1px;
+    border-left-style: dotted;
+    border-color: grey;
+    margin-bottom: 3px;
+  }
+  /* The actual timeline (the vertical ruler) */
+  div:nth-child(0) .timeline:nth-child(0)::after {
+    content: "";
+    position: absolute;
+    width: 1px;
+    height: 4ch;
+    top: 4vh;
+    bottom: 0;
+    left: 50%;
+    margin-left: -1px;
+    border-left-style: dotted;
+    border-color: grey;
+    margin-bottom: 3px;
+  }
+  /* Container around content */
+  .container {
+    // padding: 10px 40px;
+    position: relative;
+    background-color: inherit;
+    width: 50%;
+  }
+  /* The circles on the timeline */
+  .container::after {
+    content: "";
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    right: -12px;
+    background-color: #01c275;
+    border: 4px solid #dcf3e0;
+    top: 15px;
+    border-radius: 50%;
+    z-index: 1;
+  }
+  /* Place the container to the left */
+  .left {
+    left: 0;
+    padding: 2px 16px 2px 8px;
+  }
+  /* Place the container to the right */
+  .right {
+    left: 50%;
+    padding: 2px 8px 2px 16px;
+  }
+  /* Fix the circle for containers on the right side */
+  .right::after {
+    left: -12px;
+  }
+  /* The actual content */
+  .pickup-content {
+    // padding: 15px 0px;
+    padding: 10px 0 15px 0px;
+    background-color: white;
+    position: relative;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+  }
+  .align-item-end {
+    align-items: flex-end;
+  }
+  .text-left {
+    text-align: end;
+  }
+  .placeName {
+    font-size: 14px;
+    font-weight: 400;
+    margin-bottom: 5px;
+  }
+  .time-icon-container {
+    margin-right: 8px;
+  }
+  .time-icon {
+    font-size: 20px;
+  }
+  .time-parent {
+    display: flex;
+    align-items: center;
+  }
+  .vehicle-details-card {
+    display: flex;
+    margin: 10px;
+  }
+  .vehicle-numb-card {
+    display: flex;
+    align-items: center;
+    width: 50%;
+    background: #ebf1fd;
+    margin-right: 5px;
+    border-radius: 5px;
+    padding: 10px 5px;
+  }
+  .route-details-card {
+    display: flex;
+    align-items: center;
+    width: 50%;
+    background: #ebf1fd;
+    border-radius: 5px;
+    padding: 10px 5px;
+    justify-content: space-between;
+  }
+  .vehicleImg {
+    margin-right: 5px;
+    width: 45px;
+    height: 45px;
+  }
+  .routeImg {
+    margin-right: 5px;
+    width: 45px;
+    height: 45px;
+  }
+  .margin-bottom5 {
+    margin-bottom: 5px;
+  }
+  .color-grey {
+    color: grey;
+  }
+  .card-parent {
+    background: #e1e7f3;
+    padding: 10px 0;
+  }
+  .vehicle-name {
+    font-size: 1em;
+  }
+  .vehicle-number {
+    font-size: 1em;
+    font-weight: 400;
+  }
+  .route-title {
+    font-size: 1em;
+  }
+  .route-name {
+    font-size: 1em;
+    font-weight: 400;
+  }
+  .route-card {
+    padding-left: 5px;
+  }
+  .vehicleNo-card {
+    padding-left: 5px;
+  }
+  .clock-img {
+    width: 16px;
+  }
+  .custom-card {
+    width: calc(100% - 60px);
+  }
+  .width-51px {
+    width: calc(100% - 51px);
+  }
+  .content-container {
+    * {
+      font-family: "Roboto";
+    }
+  }
+
+  .show-charges {
+    padding: 5px 0;
+    text-decoration: underline;
+    color:$primary-color;
+  }
+}

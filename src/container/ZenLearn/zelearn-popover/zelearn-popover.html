@@ -1,0 +1,53 @@
+<ion-label class="filter-font">Filter </ion-label>
+<ion-list>
+    <!-- <ion-item>
+    <ion-label>ALL</ion-label>
+    <ion-checkbox slot="start" [(ngModel)]="checkedAll" (click)="_selectAll()"></ion-checkbox>
+  </ion-item> -->
+    <ion-list radio-group *ngIf="!showAllFilters && !isComingFromRecommendations">
+        <ion-item *ngFor="let filter of filterArray.offeringType">
+            <ion-label>{{filter?.value || 'N/A' | titlecase}}</ion-label>
+            <ion-radio class="radio-btn" slot="start" (ionSelect)="_radioCheck($event,filter?.checked)" [checked]="filter?.checked" [value]="filter?.value"></ion-radio>
+        </ion-item>
+    </ion-list>
+    <ion-list *ngIf="!showAllFilters && !isComingFromRecommendations">
+        <ion-item *ngFor="let filter of filterArray.learningType" [ngClass]="{'bottom-border': filter?.value == 'Behavioural'}">
+            <ion-label>{{filter?.value || 'N/A' | titlecase}}</ion-label>
+            <ion-checkbox slot="start" [(ngModel)]="filter.checked"></ion-checkbox>
+        </ion-item>
+    </ion-list>
+    <ion-list radio-group *ngIf="showAllFilters && !isComingFromRecommendations">
+        <ion-item *ngFor="let filter of filterArray.learningType">
+            <ion-label>{{filter?.value || 'N/A' | titlecase}}</ion-label>
+            <ion-radio class="radio-btn" slot="start" (ionSelect)="_getLearningHistory($event,filter?.checked)" [checked]="filter?.checked" [value]="filter?.value"></ion-radio>
+        </ion-item>
+    </ion-list>
+
+    <ion-list radio-group *ngIf="!showAllFilters && isComingFromRecommendations">
+        <ion-item *ngFor="let filter of filterArray.learningType">
+            <ion-label>{{filter?.value || 'N/A' | titlecase}}</ion-label>
+            <ion-checkbox slot="start" [(ngModel)]="filter.checked"></ion-checkbox>
+        </ion-item>
+    </ion-list>
+
+    <ion-item *ngFor="let filter of filterArray.learningMode" [ngClass]="{'bottom-border': filter?.value == 'Vlane'}">
+        <ion-label>{{filter?.value || 'N/A'}}</ion-label>
+        <ion-checkbox slot="start" [(ngModel)]="filter.checked" (ionChange)="updateValue(filter)"></ion-checkbox>
+
+    </ion-item>
+
+    <div *ngIf="showSubTYpe" class="subItems">
+        <ion-item *ngFor="let subFilter of filterArray.SubTypes">
+            <ion-label>{{subFilter?.value || 'N/A' | titlecase}}</ion-label>
+            <ion-checkbox slot="start" [(ngModel)]="subFilter.checked"></ion-checkbox>
+        </ion-item>
+    </div>
+
+
+
+
+
+    <ion-buttons class="justify-cont-center">
+        <button ion-button class="filter-button" (click)="_applyChanges()">Apply</button>
+    </ion-buttons>
+</ion-list>

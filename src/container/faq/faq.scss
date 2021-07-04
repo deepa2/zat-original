@@ -1,0 +1,136 @@
+page-faq {
+  .backgrnd-white {
+    background: white;
+  }
+  .accordion-list {
+    height: 100%;
+  }
+
+  .child {
+    background: #e8e7e6;
+    color: #000;
+    margin-bottom: 4px;
+  }
+  .child-item {
+    background: #f3f2f1;
+    padding: 10px;
+  }
+  .label {
+    margin: 0px;
+  }
+  .list {
+    margin-bottom: 50px;
+  }
+  .accordion-list .parentAccord {
+    border-bottom: 1px solid black;
+  }
+  .faq-card {
+    border-bottom: 1px solid lightgrey;
+    border-radius: 5px;
+    margin: 10px;
+    width: calc(100% - 20px);
+    // Css for department bg
+    .display-flex {
+      background: url("../assets/imgs/other.svg");
+      background-size: cover;
+      padding: 5px 5px 0;
+      justify-content: center;
+      align-items: center;
+    }
+    .Announcement {
+      background: url("../assets/imgs/allowance.svg");
+      background-size: cover;
+    }
+    .AskQuestion {
+      background: url("../assets/imgs/learningDevelopment.svg");
+      background-size: cover;
+    }
+    .Benefits {
+      background: url("../assets/imgs/benefits.svg");
+      background-size: cover;
+    }
+    .Allowance {
+      background: url("../assets/imgs/allowance.svg");
+      background-size: cover;
+    }
+    .Learning {
+      background: url("../assets/imgs/learningDevelopment.svg");
+      background-size: cover;
+    }
+    .Leave {
+      background: url("../assets/imgs/leaveAttendance.svg");
+      background-size: cover;
+    }
+    .Others {
+      background: url("../assets/imgs/other.svg");
+      background-size: cover;
+    }
+    .Payroll {
+      background: url("../assets/imgs/payroll.svg");
+      background-size: cover;
+    }
+    .Personal {
+      background: url(../assets/imgs/personals.svg);
+      background-size: cover;
+    }
+    .Referrals {
+      background: url("../assets/imgs/referrals.svg");
+      background-size: cover;
+    }
+    .Skill {
+      background: url("../assets/imgs/other.svg");
+      background-size: cover;
+    }
+  }
+  .cardBg {
+    position: relative;
+    display: flex;
+    justify-content: center;
+  }
+  .cardImage {
+    // opacity: 0.4;
+    width: 60px;
+    // height: 40px;
+    // border-radius: 50%;
+    // background-color: red;
+  }
+  .heading {
+    font-size: 1em;
+    color: #fff;
+    // font-weight: bold;
+  }
+  .cardHeading {
+    position: absolute;
+    top: 0px;
+    font-size: 18px;
+    color: #a7464d;
+    font-weight: bold;
+    line-height: 1.2;
+
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: 40%;
+
+    height: 100%;
+    left: 40%;
+    justify-content: flex-start;
+  }
+  .arrowImage {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 15px;
+    height: 15px;
+    margin-top: 0px;
+    margin-left: 37px;
+  }
+
+  .pageTitile {
+    margin-left: -15px;
+  }
+  .item-md.item-block .item-inner {
+    padding-right: 0 !important;
+    border-bottom: 0 !important;
+  }
+}

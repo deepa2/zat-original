@@ -1,0 +1,79 @@
+page-detail {
+  ion-spinner {
+    display: block;
+    margin: auto;
+  }
+
+  query-item .queryCard {
+    margin-bottom: 0;
+  }
+
+  .trailBackground {
+    // background-color: rgb(223, 227, 227);
+    background-color:#E9F2FF;
+    border-radius: 8px;
+    padding-bottom: 0 !important;
+  }
+
+  .horizontal-timeline {
+    border-right: 1px solid grey;
+  }
+
+  .ion-ios-timer-outline {
+    font-size: 30px;
+  }
+
+  button {
+    .button-inner {
+      font-size: 14px;
+    }
+  }
+
+  .notification-counter {
+    position: relative;
+  }
+
+  .notificationCount {
+    position: absolute;
+    right: 50%;
+    top: -13%;
+    font-size: 10px;
+    padding: 0.6em;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: white;
+    color: color($colors, secondary);
+    text-align: center;
+  }
+
+  .count {
+    position: absolute;
+    left: 0;
+    right: 0;
+  }
+
+  .header-btns {
+    padding: 6px 8px 9px 0px;
+  }
+
+  .headerIcons {
+    width: 35px;
+    height: 22px;
+  }
+
+  .headerSearchIcon {
+    width: 30px;
+    height: 19px;
+  }
+  .pageTitile {
+    margin-left: -15px;
+  }
+  //   .list-md {
+  //     margin-top: 8px;
+  // }
+
+  // query-list .trail {
+  //   display: none;
+  // }
+}

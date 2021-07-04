@@ -1,0 +1,50 @@
+add-competency{
+  ion-label {
+    display: flex;
+    align-items: self-end;
+}
+    background: #fff;
+    border-radius: 15px 15px 0 0;
+      overflow: hidden;
+    .two-form-item{
+      display: flex;
+      ion-label {
+        display: flex;
+        align-items: self-end;
+    }
+   }
+   img.asterisck {
+    width: 7px;
+    margin-left: 5px;
+    }
+    .back-btn{
+      margin-right: 10px;
+    }
+    .home-screen{
+        background: linear-gradient(to right, #0EA2C8, #0E7AC7);
+            padding: 10px 15px;
+            color: #fff;
+            border-radius: 20px;
+      }
+      .heading{
+        text-align: justify;
+      }
+      .paraPadding{
+        padding-left: 1px;
+        text-align: justify;
+      }
+      .paraTitle{
+        font-size: 1.1em;
+        font-weight: 600;
+      }
+        @media only screen and (max-width: 767px) {
+            .md .modal-wrapper > .ion-page > ion-header > .toolbar.statusbar-padding:first-child {
+              padding-top: calc(20px + 4px) !important;
+              padding-top: calc(constant(safe-area-inset-top) + 4px) !important;
+              padding-top: calc(env(safe-area-inset-top) + 4px) !important;
+              min-height: calc(56px + 20px) !important;
+              min-height: calc(56px + constant(safe-area-inset-top)) !important;
+              min-height: calc(56px + env(safe-area-inset-top)) !important;
+            }
+          }
+}

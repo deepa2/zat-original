@@ -1,0 +1,77 @@
+{
+    "logs": [
+        {
+            "outputFile": "D:\\ZenSar-Apps\\ZenTalent\\zenHelp\\platforms\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-zh-rCN\\values-zh-rCN.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\dn51437\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.1.1.aar\\6e7b47fda2679ad0bc839cc711ebbf77\\res\\values-zh-rCN\\values-zh-rCN.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    },
+                    "to": {
+                        "startLines": "31",
+                        "startColumns": "4",
+                        "startOffsets": "2557",
+                        "endColumns": "100",
+                        "endOffsets": "2653"
+                    }
+                },
+                {
+                    "source": "D:\\ZenSar-Apps\\ZenTalent\\zenHelp\\platforms\\android\\app\\src\\main\\res\\values-zh-rCN\\fpauth-strings.xml",
+                    "from": {
+                        "startLines": "17,19,21,22,23,24,27,25,20,26,18",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "691,773,870,930,980,1049,1253,1104,836,1189,729",
+                        "endColumns": "37,62,59,49,68,54,71,84,33,63,43",
+                        "endOffsets": "724,831,925,975,1044,1099,1320,1184,865,1248,768"
+                    },
+                    "to": {
+                        "startLines": "19,21,22,23,24,25,26,27,28,30,32",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "1731,1927,1990,2050,2100,2169,2224,2296,2381,2493,2658",
+                        "endColumns": "37,62,59,49,68,54,71,84,33,63,43",
+                        "endOffsets": "1764,1985,2045,2095,2164,2219,2291,2376,2410,2552,2697"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\dn51437\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-basement-10.2.6.aar\\c2bc5595ff2d784b7950a7eae02b8cfc\\res\\values-zh-rCN\\values.xml",
+                    "from": {
+                        "startLines": "4",
+                        "startColumns": "0",
+                        "startOffsets": "289",
+                        "endColumns": "157",
+                        "endOffsets": "446"
+                    },
+                    "to": {
+                        "startLines": "20",
+                        "startColumns": "4",
+                        "startOffsets": "1769",
+                        "endColumns": "157",
+                        "endOffsets": "1922"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\dn51437\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\d2d5b381a0b2d9b5d2dbe96252e1b5c3\\res\\values-zh-rCN\\values-zh-rCN.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "105,201,296,396,478,575,681,757,833,911,1007,1103,1198,1295,1390,1488,1637,1731",
+                        "endColumns": "95,94,99,81,96,105,75,75,77,95,95,94,96,94,97,148,93,77",
+                        "endOffsets": "196,291,391,473,570,676,752,828,906,1002,1098,1193,1290,1385,1483,1632,1726,1804"
+                    },
+                    "to": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,29",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "105,201,296,396,478,575,681,757,833,911,1007,1103,1198,1295,1390,1488,1637,2415",
+                        "endColumns": "95,94,99,81,96,105,75,75,77,95,95,94,96,94,97,148,93,77",
+                        "endOffsets": "196,291,391,473,570,676,752,828,906,1002,1098,1193,1290,1385,1483,1632,1726,2488"
+                    }
+                }
+            ]
+        }
+    ]
+}

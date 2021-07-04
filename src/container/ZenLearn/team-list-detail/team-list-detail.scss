@@ -1,0 +1,226 @@
+.assosiate-list-detail {
+  .team-list-card {
+    margin: 10px 0 0;
+    padding: 10px;
+    background: #fff;
+    border-radius: 5px;
+    .profile-info {
+      display: flex;
+      align-items: center;
+      img.user-icon {
+        width: 60px;
+        height: 60px;
+        min-width: 60px;
+        margin-right: 10px;
+        border-radius: 50%;
+        border: 3px solid #c0e0ff;
+        overflow: hidden;
+      }
+      .username {
+        font-size: 16px;
+        color: #1586c7;
+        margin-bottom: 5px;
+      }
+      label.user-id {
+        color: #2d2d2d;
+      }
+      .sub-title {
+        margin-bottom: 5px;
+        font-weight: 300;
+      }
+    }
+  }
+  .learming-info {
+    margin-top: 10px;
+    .learning-item {
+      width: calc(100% - 20px);
+      // background: #EDF9FC;
+      margin: 10px;
+      border-radius: 5px;
+      // border: 1px solid #B5C5DF;
+      display: flex;
+      padding: 10px;
+      align-items: flex-start;
+      background: #fff;
+      // margin: 9px 5px;
+    }
+    .learning-percent {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 10px;
+      padding: 0 10px;
+      img.tech-icon {
+        width: 50px;
+      }
+      .required-percent {
+        font-size: 16px;
+        font-weight: bold;
+      }
+      .completed-percent {
+        color: #21a7f5;
+      }
+    }
+    .dap-con {
+      display: flex;
+      align-items: flex-start;
+      padding: 10px;
+      img.tech-icon {
+        width: 40px;
+        margin: 15px 15px 10px 0;
+      }
+      .dap-info {
+        display: flex;
+        align-items: center;
+        color: #2d2d2d;
+        margin-bottom: 10px;
+        img.dap-icon {
+          width: 15px;
+          margin-right: 10px;
+        }
+        .dap-title {
+          text-transform: capitalize;
+          width: 135px;
+          display: inline-flex;
+          word-break: break-word;
+          margin-right: 10px;
+          min-width: 135px;
+        }
+        label.dap-value {
+          width: 100%;
+          color: #6f6f6f;
+        }
+      }
+    }
+
+    .learning-title-con {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 15px;
+      background: #d5f1f8;
+      padding: 15px 10px;
+      .learning-type {
+        font-size: 18px;
+      }
+      .completed-percent {
+        background: #1586c7;
+        color: #fff;
+        font-weight: 300;
+        padding: 5px;
+        border-radius: 3px;
+      }
+    }
+  }
+  .tabs-con {
+    display: flex;
+    box-shadow: none;
+    position: relative;
+  }
+  .tab {
+    text-align: center;
+    padding: 10px 20px;
+    color: #000;
+  }
+  .tab.selected {
+    border-bottom: 1px solid #0d7bc6;
+    color: #2d2d2d;
+  }
+  .tabs-content {
+    min-height: 300px;
+    padding-bottom: 50px;
+    .learning-tab {
+      padding: 10px;
+      box-shadow: 0 4px 7px #efecec;
+      .learning-card {
+        margin-bottom: 12px;
+        display: flex;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+        .learning-info-con {
+          width: 100%;
+          padding-left: 15px;
+        }
+        .icon-header {
+          height: 30px;
+          width: 30px;
+        }
+      }
+      .lerning-hr {
+        display: flex;
+        background: #1586c7;
+        padding: 4px 4px;
+        margin: 0 10px;
+        border-radius: 3px;
+        font-size: 1em;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: white;
+      }
+    }
+  }
+  .filter-icon {
+    position: absolute;
+    right: 20px;
+    top: 0;
+  }
+  .progress-outer {
+    position: relative;
+    // margin: 8px;
+    margin: 8px 0px;
+    top: -8px;
+    border-radius: 20px;
+  }
+  .progress-outer::after {
+    content: " ";
+    position: absolute;
+    width: 100%;
+    top: 8px;
+    border-top: 3px solid #c7c4c4;
+    z-index: 0;
+  }
+  .progress-inner {
+    height: 3px;
+    border-radius: 20px;
+    // background-color: green;
+    position: relative;
+    z-index: 9;
+    top: 8px;
+  }
+}
+.learning-item:nth-child(n) .containerItem-image {
+  background: url(../assets/zenLearn-imgs/dap-icon1.svg);
+  background-repeat: no-repeat;
+}
+.learning-item:nth-child(2n) .containerItem-image {
+  background: url(../assets/zenLearn-imgs/dap-icon2.svg);
+  background-repeat: no-repeat;
+}
+.learning-item:nth-child(3n) .containerItem-image {
+  background: url(../assets/zenLearn-imgs/dap-icon3.svg);
+  background-repeat: no-repeat;
+}
+.learning-item:nth-child(4n) .containerItem-image {
+  background: url(../assets/zenLearn-imgs/dap-icon4.svg);
+  background-repeat: no-repeat;
+}
+.containerItem-image {
+  width: 70px;
+  height: 70px;
+  // background: white;
+  // display: flex;
+  // align-items: center;
+  // justify-content: center;
+  margin: 5px;
+}
+.conatinerItem-list {
+  width: 80%;
+}
+.colorGrey{
+  color: grey;
+}
+.ion-page > ion-content.backgrnd-white {
+  background: #ffffff;
+}

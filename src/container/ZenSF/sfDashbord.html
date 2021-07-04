@@ -1,0 +1,76 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>My Dialog</ion-title>
+    </ion-navbar>
+
+</ion-header>
+<ion-content class="scroll-content">
+    <!-- segment part -->
+
+    <ion-segment (ionChange)="segmentChanged($event)" class="md" [(ngModel)]="currentTab" *ngIf="isManager">
+        <ion-segment-button class="center" value="Activities" checked>My Activities</ion-segment-button>
+        <ion-segment-button class="center" value="Teams">My Team</ion-segment-button>
+    </ion-segment>
+    <div [ngSwitch]="currentTab">
+        <div *ngSwitchCase="'Activities'">
+            <ion-searchbar debounce="500" animated placeholder="Search" (ionClear)="onCancel($event)" (ionInput)="_searchItems($event)">
+            </ion-searchbar>
+            
+            <div *ngFor="let item of renderList" class="diag-list" (click)="movetoDigDetails(item)" [ngStyle]="{'background': item?.userReadStatus ? 'white' : '#e7e2e2'}">
+                <div class="dig-icon">
+                    <img [src]="item.icon" />
+                </div>
+                <div class="list-section">
+                    <div class="dig-list-title">
+                        {{item?.dialogTitle}}
+                        <span class="right-arrow">
+                            <img src="assets/imgs/myActivityArrow.png">
+                        </span>
+                    </div>
+                    <div class="catg-styl">
+                        <span class="catg-title">{{item?.dialogCategoryName}}</span>
+                        <span class="date-styl">
+                            <span class="calender-styl"><img src="assets/imgs/digCalender.svg" /> </span>
+                        {{_getFormatDate(item.dialogCreatedDate)}}
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- get Teams List -->
+    <div [ngSwitch]="currentTab">
+        <div *ngSwitchCase="'Teams'" class="container-bg">
+            <div *ngFor="let item of teamsListData" class="list-align" (click)="moveToActivityList(item)">
+                <div class="profile-section">
+                    <div class="profile-icon"><img class="avtar-styl" [src]=item?.profilePicUrl />
+                    </div>
+                    <div class="flex-clum paddding-left8">
+                        <span class="padding-btm6">{{item?.userName}}</span>
+                        <span>{{item?.userId}}</span>
+                    </div>
+                </div>
+                <div class="activity-part">
+                    <div class="flex-clum">
+                        <span class="padding-btm6">{{item?.type}}</span>
+                        <span>{{item?.associate_activity}}</span>
+                    </div>
+                    <div class="padding-left16">
+                        <ion-icon name="ios-arrow-forward"></ion-icon>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="no-data-msg" *ngIf="renderList.length == 0">{{errorMessage}}</div>
+    <ion-infinite-scroll threshold="300px" (ionInfinite)="loadData($event)" *ngIf="resultPending">
+        <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">
+        </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+</ion-content>
+<ion-fab right bottom *ngIf="currentTab == 'Activities'">
+    <button ion-fab (click)="movetoaddDig()">
+        <ion-icon name="add"></ion-icon>
+    </button>
+</ion-fab>

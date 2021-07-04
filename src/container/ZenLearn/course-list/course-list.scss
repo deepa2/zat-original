@@ -1,0 +1,152 @@
+page-course-list {
+  .titleName {
+    font-size: 1.1em;
+    color: gray;
+    img {
+      width: 55px;
+    }
+  }
+  .ftWT{
+    font-weight: 700;
+  }
+  .subTitle {
+    width: calc(100% - 60px);
+    font-size: 1em;
+    color: #213643;
+    padding: 2% 0;
+  }
+  .font1p1 {
+    font-size: 1.1em;
+  }
+  .padding2-0 {
+    padding: 2% 0;
+  }
+  .padding-right8 {
+    padding-right: 8px;
+  }
+  .padding-top3per {
+    padding-top: 3%;
+  }
+  .ion-card {
+    width: calc(100% - 20px);
+    border-radius: 5px;
+    box-shadow: none;
+    // background: #edf9fc;
+    border: 1px solid #b5c5df;
+    // padding: 8px;
+    display: flex;
+    align-items: center;
+    .card-data {
+      padding: 10px;
+  }
+  }
+  .flex-justify-content-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .padding-bottom2per {
+    padding-bottom: 2%;
+  }
+  .font-weight500 {
+    font-weight: 500;
+  }
+  .color-gray {
+    color: gray;
+  }
+  .fontp9em{
+    font-size: .9em;
+  }
+  .nodata {
+    margin: 10px;
+    font-size: 1.2em;
+    background: white;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+  }
+  .image-style{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px;
+  }
+  .card-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left;
+    width: 100%;
+  }
+  .heading-color{
+    color: #383838;
+  }
+  .card-header {
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .V.Learn {
+    background: #fffaee;
+    span.learning-type {
+      background: #f5c656;
+    }
+    span.learning-type::before {
+      width: 0;
+      height: 0;
+      content: "";
+      border-style: solid;
+      border-width: 9px 0 9px 9px;
+      border-color: transparent transparent transparent #fffaee;
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+    }
+  }
+  .Classroom {
+    background: #f6f8ff;
+    span.learning-type {
+      background: #8db0f9;
+    }
+  }
+  .Online {
+    background: #e8ffe6;
+    span.learning-type {
+      background: #63d69b;
+    }
+  }
+  .card-data {
+    padding: 5px;
+  }
+  .card-header {
+    background: #b8edef;
+  }
+  
+  .like-dislike-wrapper {
+    display: flex;
+    color: #929292;
+    margin-top: 10px;
+    img {
+      width: 30px;
+      margin-right: 5px;
+    }
+    .like,
+    .dislike {
+      display: flex;
+      align-items: center;
+      margin-right: 15px;
+    }
+  }
+  .card-header.Online {
+    background: #e8ffe6;
+  }
+  .card-header.Classroom {
+    background: #f6f8ff;
+  }
+  
+}

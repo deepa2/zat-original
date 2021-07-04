@@ -1,0 +1,36 @@
+goalListModel-page {
+    .list-styl {
+        display: flex;
+        padding: 6px;
+        border-bottom: 1px solid lightgray;
+    }
+    .padding-right12 {
+        padding-right: 12px;
+    }
+    .sumbit-btn {
+        width: 30%;
+        -webkit-align-self: center;
+        -ms-flex-item-align: center;
+        align-self: center;
+        font-size: 1.2em;
+        padding: 3%;
+        border-radius: 40px;
+        background-color: #0e8bc7;
+        color: white;
+    }
+    .btn-style {
+        background: #0e83c7;
+        color: white;
+        font-size: 1.2em;
+    }
+    ion-label {
+        text-overflow: unset;
+        white-space: unset;
+        overflow: unset;
+    }
+    .error-msg {
+        text-align: center;
+        font-size: 15px;
+        color: gray;
+    }
+}

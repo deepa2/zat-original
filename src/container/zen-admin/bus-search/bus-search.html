@@ -1,0 +1,80 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title *ngIf="!searchOn">
+            <div class="left-header">Buses</div>
+        </ion-title>
+        <ion-buttons *ngIf="!searchOn" end>
+            <button ion-button icon-only (click)="searchClick()">
+                <img src="assets/zenAdmin/search-icon.svg" />
+            </button>
+        </ion-buttons>
+
+        <ion-searchbar *ngIf="searchOn" debounce="500" placeholder="Search Route" [(ngModel)]="searchInputText"></ion-searchbar>
+
+        <ion-buttons *ngIf="searchOn" end>
+            <button ion-button icon-only (click)="searchClick()">
+                <ion-icon name="close"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+
+</ion-header>
+<!-- body  -->
+<ion-content class="bus-search-conatiner">
+    <ng-container *ngIf="(busDetails | sort: [searchInputText, 'routeName']) as result">
+        <ion-card *ngFor="let item of (busDetails | sort: [searchInputText, 'routeName']) as result" (click)="gotoBusDetails(item.busId)">
+            <ion-card-content>
+                <div class="container-raw">
+                    <div class="bus-icon">
+                        <img src="assets/zenAdmin/bus-icon.svg" />
+                    </div>
+                    <div class="bus-info">
+                        <div class="common-alignmnt">
+                            <span class="bus-name">Bus</span>
+                        </div>
+                        <div class="common-alignmnt">
+                            <span class="bus-number">{{item.busNumber}}</span>
+                        </div>
+                    </div>
+                    <div class="available-seats">
+                        <div class="align-center">
+                            <img class="seatIcon" src="assets/zenAdmin/available_seats.svg" />
+                            <span class="seats">{{(item.reservedSeats ? item.reservedSeats : 0)}}/{{item.totalSeats}}</span>
+                        </div>
+                    </div>
+                    <div class="menu-icon">
+                        <img class="menudot-icon" src="assets/zenAdmin/3dot.svg" (click)="popOverMenu($event,item)" />
+                    </div>
+                </div>
+                <div class="container-raw">
+                    <div class="bus-icon">
+                    </div>
+                    <div class="common-alignmnt mt-5">
+                        <img class="small-icon" src="assets/zenAdmin/routeIcon.svg" />
+                        <span class="route-title">Route:</span>
+                        <span class="route-name">{{item.routeName}}</span>
+                    </div>
+                </div>
+                <div class="container-raw">
+                    <div class="bus-icon">
+                    </div>
+                    <div class="common-alignmnt">
+                        <img class="small-icon" src="assets/zenAdmin/seaticon.svg" />
+                        <span class="route-title">Seats:</span>
+                        <span class="route-name">{{item.totalSeats}}</span>
+                    </div>
+                </div>
+            </ion-card-content>
+        </ion-card>
+
+        <div class="no-data" *ngIf="result?.length <=0 || busDetails.length <=0">
+            No Data Found
+        </div>
+    </ng-container>
+
+    <ion-fab right bottom (click)="addBusDetails()">
+        <button ion-fab>
+            <ion-icon name="add"></ion-icon>
+        </button>
+    </ion-fab>
+</ion-content>

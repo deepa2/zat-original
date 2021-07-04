@@ -1,0 +1,62 @@
+<ion-content>
+  <div class="topics-header">
+    <div class="topics-title">
+      <img class="topics-icon" [src]=dapCardData?.icon onerror="this.src='assets/imgs/annual-status.svg'" />
+      <span class="topics-heading">Your preferences</span>
+    </div>
+   
+    <div *ngIf="!showPref" class="dismissBtn" (click)="dismiss()">
+      <img src="assets/imgs/close_white.svg">
+    </div>
+  </div>
+  <div class="pract" *ngIf="showPractice">
+    <div class="sub-heading">
+      <span class="sub-headings">01. Areas</span>
+      <div class="prefrence-tabs">
+        <div class="pref-tab" (click)="selecteCoures('Technical')" [ngClass]="{'active-tab': selectedType == 'Technical'}">Technical</div>
+        <div class="pref-tab" (click)="selecteCoures('Behavioural')" [ngClass]="{'active-tab': selectedType == 'Behavioural'}">Behavioural</div>
+      </div>
+      <div class="practice-search">
+        <ion-input [(ngModel)]="practiceKey" (ngModelChange)="serchPractice()" placeholder="Search Practice"></ion-input>
+      </div>
+    </div>
+  </div>
+<div class="practices" *ngIf="showPractice">
+  
+  
+  <div class="topic-item" *ngFor="let item of practicemainList">
+    <label class="filterItem">
+      <ion-checkbox class="checboxStyle" (ionChange)="changed(item)" [(ngModel)]="item.isPracticeSelected">
+      </ion-checkbox>
+      <span class="checkBoxText">{{item?.practiceName}}</span>
+    </label>
+  </div>
+  
+</div>
+<div class="topics" *ngIf="showTopics">
+  <span class="sub-heading">02. Sub Areas</span>
+  <div class="topic-item" *ngFor="let item of topicsList">
+    <label class="filterItem">
+      <ion-checkbox class="checboxStyle" (ionChange)="changed(item)" [(ngModel)]="item.isTopicSelected">
+      </ion-checkbox>
+      <span class="checkBoxText">{{item?.topicName}}</span>
+    </label>
+  </div>
+  <div *ngIf="topicsList == null">
+    <ion-label class="nodata">No topics available</ion-label>
+  </div>
+  
+</div>
+</ion-content>
+
+<ion-footer>
+  <div *ngIf="showPractice" class="dismissBtn-parent">
+    <button [disabled]="selectedPractice.length==0" ion-button round class="dismissBtn" (click)="next()">Next</button>
+
+  </div>
+  <div *ngIf="showTopics" class="dismissBtn-parent">
+    <button  ion-button round class="dismissBtn" (click)="goBack()">Back</button>
+    <button [disabled]="selectedTopics.length==0" ion-button round class="dismissBtn" (click)="saveTopicsData()">Submit</button>
+
+  </div>
+</ion-footer>

@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="375" height="37" viewBox="0 0 375 37">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_523" data-name="Rectangle 523" width="375" height="37" transform="translate(0 630)" fill="#fff"/>
+    </clipPath>
+    <filter id="Union_5" x="-5" y="3" width="387" height="80" filterUnits="userSpaceOnUse">
+      <feOffset dx="1" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <linearGradient id="linear-gradient" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#488cfc"/>
+      <stop offset="1" stop-color="#8264ff"/>
+    </linearGradient>
+  </defs>
+  <g id="Group_1078" data-name="Group 1078" transform="translate(0 -630)">
+    <g id="Mask_Group_4" data-name="Mask Group 4" clip-path="url(#clip-path)">
+      <g id="Group_841" data-name="Group 841" transform="translate(0 10.999)">
+        <g transform="matrix(1, 0, 0, 1, 0, 619)" filter="url(#Union_5)">
+          <path id="Union_5-2" data-name="Union 5" d="M64.993-2838H-123v-38a10,10,0,0,1,10-10H13.922a43.133,43.133,0,0,0,20.572-7.993c7.337-7.345,18.28-12.006,30.5-12.006,11.9,0,22.588,4.418,29.915,11.43A42.657,42.657,0,0,0,116.219-2886H242a10,10,0,0,1,10,10v38Z" transform="translate(123 2915)" fill="#fff"/>
+        </g>
+      </g>
+    </g>
+    <g id="Group_803" data-name="Group 803" transform="translate(122.422 595.511)">
+      <g id="Group_819" data-name="Group 819">
+        <path id="Path_10322" data-name="Path 10322" d="M49.678,59.679a1.1,1.1,0,1,1,0-2.2h3.886a1.1,1.1,0,1,1,0,2.2Z" fill="url(#linear-gradient)"/>
+        <path id="Path_10295" data-name="Path 10295" d="M53.565,59.479H49.678a.9.9,0,1,1,0-1.8h3.887a.9.9,0,0,1,0,1.8Z" fill="url(#linear-gradient)"/>
+      </g>
+      <g id="Group_820" data-name="Group 820">
+        <path id="Path_10323" data-name="Path 10323" d="M57.035,62.883a1.1,1.1,0,0,1-1.1-1.1V55.375a1.1,1.1,0,1,1,2.2,0v6.409A1.1,1.1,0,0,1,57.035,62.883Z" fill="url(#linear-gradient)"/>
+        <path id="Path_10296" data-name="Path 10296" d="M57.035,62.683a.9.9,0,0,1-.9-.9V55.375a.9.9,0,0,1,1.8,0v6.41a.9.9,0,0,1-.9.9Z" fill="url(#linear-gradient)"/>
+      </g>
+      <g id="Group_821" data-name="Group 821">
+        <path id="Path_10324" data-name="Path 10324" d="M61.529,67.77a1.1,1.1,0,0,1-1.1-1.1V50.489a1.1,1.1,0,1,1,2.2,0V66.671A1.1,1.1,0,0,1,61.529,67.77Z" fill="url(#linear-gradient)"/>
+        <path id="Path_10297" data-name="Path 10297" d="M61.53,67.57a.9.9,0,0,1-.9-.9h0V50.489a.9.9,0,0,1,1.8,0V66.671A.9.9,0,0,1,61.53,67.57Z" fill="url(#linear-gradient)"/>
+      </g>
+      <g id="Group_822" data-name="Group 822">
+        <path id="Path_10325" data-name="Path 10325" d="M66.023,68.669a1.1,1.1,0,0,1-1.1-1.1V49.589a1.1,1.1,0,0,1,1.1-1.1,1.1,1.1,0,0,1,1.1,1.1V67.569A1.1,1.1,0,0,1,66.023,68.669Z" fill="url(#linear-gradient)"/>
+        <path id="Path_10298" data-name="Path 10298" d="M66.024,68.469a.9.9,0,0,1-.9-.9h0V49.59a.9.9,0,0,1,1.8,0V67.57A.9.9,0,0,1,66.024,68.469Z" fill="url(#linear-gradient)"/>
+      </g>
+      <g id="Group_823" data-name="Group 823">
+        <path id="Path_10326" data-name="Path 10326" d="M78.42,59.679a1.1,1.1,0,0,1,0-2.2h3.888a1.1,1.1,0,0,1,0,2.2Z" fill="url(#linear-gradient)"/>
+        <path id="Path_10299" data-name="Path 10299" d="M82.308,59.479H78.42a.9.9,0,0,1,0-1.8h3.888a.9.9,0,0,1,0,1.8Z" fill="url(#linear-gradient)"/>
+      </g>
+      <g id="Group_824" data-name="Group 824">
+        <path id="Path_10327" data-name="Path 10327" d="M74.95,65.972a1.1,1.1,0,0,1-1.1-1.1V52.286a1.1,1.1,0,0,1,2.2,0V64.873A1.1,1.1,0,0,1,74.95,65.972Z" fill="url(#linear-gradient)"/>
+        <path id="Path_10300" data-name="Path 10300" d="M74.95,65.772a.9.9,0,0,1-.9-.9h0V52.287a.9.9,0,1,1,1.8,0V64.873A.9.9,0,0,1,74.95,65.772Z" fill="url(#linear-gradient)"/>
+      </g>
+      <g id="Group_825" data-name="Group 825">
+        <path id="Path_10328" data-name="Path 10328" d="M70.456,62.825a1.1,1.1,0,0,1-1.1-1.1V55.433a1.1,1.1,0,1,1,2.2,0v6.293A1.1,1.1,0,0,1,70.456,62.825Z" fill="url(#linear-gradient)"/>
+        <path id="Path_10301" data-name="Path 10301" d="M70.456,62.625a.9.9,0,0,1-.9-.9V55.433a.9.9,0,0,1,1.8,0v6.293A.9.9,0,0,1,70.456,62.625Z" fill="url(#linear-gradient)"/>
+      </g>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,63 @@
+<div class="chat-list suggestionItem queryContent" *ngIf="desc.length < 200">
+    <span *ngIf="actionName != 'successfactor.dialog'" [innerHTML]="text|linky" (click)="checkLink(desc)"></span>
+
+    <div *ngIf="UpdateProfileLinkData?.showLink">
+        Click
+        <span class="updateProfileLink" (click)="update(UpdateProfileLinkData)">here</span>
+        to update now.
+    </div>
+
+    <div *ngIf="moveToPage && actionName =='zenTalent.createDAP'">
+        Click <span class="updateProfileLink" (click)="_moveToPage()">here</span> to create
+        Development Action Plan
+    </div>
+
+    <div *ngIf="moveToPage && actionName =='zenTalent.ijp'">
+        Click <span class="updateProfileLink" (click)="_moveToPage()">here</span> to apply
+        for IJP
+    </div>
+
+    <div *ngIf="moveToPage && actionName =='referral.referYourFriend.yes.bonusPolicy.yes'">
+        Click <span class="updateProfileLink" (click)="_moveToPage()">here</span> to refer on
+        ZenRich
+    </div>
+
+    <div *ngIf="moveToPage && actionName =='referrals.FAQs'">
+        Click <span class="updateProfileLink" (click)="_moveToPage()">here</span> for FAQs
+    </div>
+
+    <div *ngIf="moveToPage && actionName =='referral.createFriendsProfile'">
+        Click <span class="updateProfileLink" (click)="_moveToPage()">here</span> to create friend's profile
+    </div>
+
+    <div *ngIf="moveToPage && actionName =='learning.technicalCalendar'">
+        Click <span class="updateProfileLink" (click)="_moveToPage()">here</span> to view Technical Calendar
+    </div>
+
+    <div *ngIf="moveToPage && actionName =='learning.behaviouralCalendar'">
+        Click <span class="updateProfileLink" (click)="_moveToPage()">here</span> to view Behavioural Calendar
+    </div>
+    <div *ngIf="moveToPage && actionName == 'successfactor.dialog'">
+        <span class="updateProfileLink" (click)="_moveToPage()"> Click here for Dialog</span>
+    </div>
+    <div *ngIf="moveToPage && actionName == 'getAssetDetails'">
+        Click <span class="updateProfileLink" (click)="_moveToPage()"> here </span>to check now
+    </div>
+
+    <span *ngIf="showMoreSection && showToggle">
+        <span class="readMore" (click)="showMore(desc.length)" *ngIf="readMore">Show more</span>
+        <span class="readMore" (click)="showLess(150)" *ngIf="!readMore">Show less</span>
+    </span>
+</div>
+
+<div class="chat-list read-more-bubble" *ngIf="desc.length > 200">
+    <div class="queryContent read-queryContent" [innerHTML]="text|linky" (click)="checkLink(desc)"></div>
+    <div class="read-toogle" *ngIf="showMoreSection && showToggle">
+        <!-- <span class="readMore" (click)="showMore(desc)">Read More</span> -->
+
+        <span class="readMore" (click)="showMore(desc.length)" *ngIf="readMore">Read More</span>
+        <span class="readMore" (click)="showLess(150)" *ngIf="!readMore">Show less</span>
+    </div>
+</div>
+
+<!-- <p (click)="preventClick($event)" no-margin text-justify [innerHTML]="text | linky | emoji "></p> -->

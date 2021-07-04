@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title class="pageTitile">My DAP</ion-title>
+    <ion-buttons end >
+      <button ion-button icon-only (click)="presentPopover($event)">
+        <img src="assets/imgs/dapFilterIcon.svg" />
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content class="backgrnd-white">
+  <div class="assosiate-list-detail">
+    <div class="Dap-tab">
+      <div class="learming-info">
+        <div class="learning-item" *ngFor="let dapItem of dapData; let i=index " (click)='goToDapPage(dapItem)'>
+          <div class="dap-con">
+            <!-- <img class="tech-icon" src="{{dapItem.icon}}" /> -->
+            <div class="dap-info-con">
+              <div class="dap-info" *ngFor="let listItem of dapItem.list">
+                <img class="dap-icon" src="{{listItem.icon}}">
+                <label class="dap-title">{{listItem.key}}</label>
+                <label class="dap-value">{{listItem.value}}</label>
+              </div>
+            </div>
+            <!-- <div class="required-percent">{{learningItem.sectionPercentage}}</div> -->
+
+          </div>
+
+        </div>
+        <div class="no-data" *ngIf="dapData==null">No Dap available</div>
+
+      </div>
+    </div>
+  </div>
+</ion-content>

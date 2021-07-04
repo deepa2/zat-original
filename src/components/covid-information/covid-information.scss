@@ -1,0 +1,302 @@
+covid-information {
+    .toolbar-md {
+        padding: 0 0 10px;
+    }
+    .scroll-content {
+        padding: 0 !important;
+        background: url("../assets/imgs/coronaBottomBg.svg");
+        background-position: center bottom;
+        background-repeat: no-repeat;
+        margin-bottom: 110px !important;
+    }
+    .corona-wrapper {
+        background: url("../assets/imgs/coronaBg.svg");
+        background-position: right top;
+        background-repeat: no-repeat;
+        padding: 10px;
+        min-height: 320px;
+    }
+    .vaccination-wrapper {
+        padding: 5px 10px;
+    }
+    .item-md {
+        background-color: transparent;
+        // width: 170px;
+    }
+    .datetime-md {
+        padding: 8px 5px 8px 5px;
+    }
+    .travellingDetails {
+        margin-top: 5px;
+    }
+    .radioBtnPos {
+        display: flex;
+        align-items: center;
+        // margin-bottom: 10px;
+        // margin-right: 5px;
+        .item-inner {
+            flex-direction: row-reverse;
+            border-bottom: 0!important;
+        }
+        .item-md {
+            padding-left: 0px;
+        }
+        .item-md .radio-md {
+            margin: 9px 5px 9px 0;
+        }
+    }
+    .btmPara {
+        // position: fixed;
+        //bottom: 56px;
+        padding: 0 10px;
+        bottom: 0px;
+        text-align: left;
+    }
+    .fotterBtn {
+        text-align: right;
+        // padding: 10px;
+        background: #fff;
+        button.button {
+            border-radius: 30px;
+            overflow: hidden;
+            margin: 0 15px 15px 0;
+        }
+    }
+    .txtMrgin {
+        margin: 3px;
+    }
+    .img {
+        height: 20px;
+        margin-top: 20px;
+    }
+    .more {
+        position: absolute;
+        height: 10px;
+        padding: 2px;
+    }
+    .textClick {
+        color: #0e7ac7;
+        border-bottom: 1px solid;
+    }
+    .note {
+        padding: 10px;
+        color: #ef1100;
+        text-align: justify;
+    }
+    .checkBox {
+        display: flex;
+        justify-content: baseline;
+        margin-top: 20px;
+        margin-bottom: 10px;
+        align-items: flex-start;
+    }
+    .checkBox .checkbox-md-dark .checkbox-checked {
+        border-color: #0e7ac7;
+        background-color: #0e7ac7;
+    }
+    .checkBox .item-md {
+        padding-left: 0px;
+    }
+    .checkBox .item.item-md .checkbox-md {
+        margin: 9px 10px 9px 4px;
+    }
+    .checkBox .item-md.item-block .item-inner {
+        border-bottom: none;
+    }
+    .marleft-5 {
+        margin-left: 5px;
+    }
+    .errorCls {
+        color: red;
+    }
+    .markYourSelf {
+        margin-top: 15px;
+    }
+    .markYourSelfText {
+        font-size: 1.1em;
+        font-weight: bold;
+        margin: 5px;
+    }
+    .date {
+        margin-top: 10px;
+    }
+    .travellingInfo {
+        font-size: 1.1em;
+        font-weight: bold;
+        margin-top: 5px;
+    }
+    .linear-background {
+        background: linear-gradient( 73deg, rgba(255, 255, 255, 0.6), rgba(189, 213, 253, 0.7));
+        padding: 5px 5px 5px 0px;
+    }
+    span.agreement {
+        color: #047cdc;
+        border-bottom: 1px solid;
+    }
+    .rtoGuideline {
+        margin-left: 10px;
+    }
+    .travelFrom {
+        width: 65% !important;
+    }
+    .travelDate {
+        width: 50% !important;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    ion-modal.infoModal .modal-wrapper>covid-information.ion-page>ion-header>.toolbar.statusbar-padding:first-child {
+        padding-top: calc(20px + 4px) !important;
+        padding-top: calc(constant(safe-area-inset-top) + 4px) !important;
+        padding-top: calc(env(safe-area-inset-top) + 4px) !important;
+        min-height: calc(56px + 20px) !important;
+        min-height: calc(0px + constant(safe-area-inset-top)) !important;
+        min-height: env(safe-area-inset-top) !important;
+    }
+    .btmPara {
+        padding: 0 10px;
+        bottom: 0px;
+        //margin-top: 100px;
+    }
+}
+
+@media only screen and (device-height: 812px) and (device-width: 375px) {
+    covid-information .scroll-content {
+        margin-top: 80px!important;
+    }
+}
+
+.need-help-container {
+    border: 1px dotted #7f7f7f;
+    margin-top: 10px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 5px 20px 15px 0px;
+    .item-input .label-md {
+        color: #000 !important;
+    }
+}
+
+.label-bold {
+    font-weight: bold;
+    color: #7f7f7f;
+    margin: 7px 0 2px !important;
+    overflow: inherit;
+    font-size: 1.5rem !important;
+}
+
+.required-field {
+    color: #ef1100;
+}
+
+.blue-txt {
+    color: #0ea2c8;
+}
+
+.need_more_help_img {
+    width: 30px;
+    height: 25px;
+    margin-right: 5px;
+}
+
+.txt-container {
+    display: flex;
+    align-items: center;
+}
+
+.custom-class {
+    .label {
+        margin: 5px 0px !important;
+    }
+}
+
+// Vaccination container
+.vaccination-details {
+    border: 1px dashed #93AAD3;
+    border-radius: 5px;
+    padding: 15px;
+    .vaccine-title {
+        display: flex;
+        align-items: flex-start;
+        margin-top: 15px;
+        .vaccine-info {
+            margin-left: 10px;
+            p {
+                font-weight: 500;
+                font-size: 1em;
+                margin-top: 0;
+                margin-bottom: 5px;
+                font-family: 'Roboto';
+            }
+        }
+    }
+    .vaccination-selector {
+        width: 100%;
+        max-width: 100% !important;
+        margin-left: 0;
+        padding-left: 0;
+        border: 1px solid #93AAD3;
+        padding: 7px;
+        border-radius: 5px;
+    }
+    .no-width {
+        width: 0px;
+        margin: 0px;
+    }
+    .padding-0 {
+        padding: 0px;
+    }
+    // dose form
+    .dose-details {
+        border: 1px dashed #93AAD3;
+        border-radius: 5px;
+        padding: 15px;
+        margin-top: 10px;
+        background: rgba(255, 255, 255, 0.8);
+        ion-item {
+            padding-left: 0px;
+            width: 50%;
+            max-width: 50%;
+            ion-datetime {
+                color: #0E7AC7;
+                font-size: 1.1em;
+                padding: 0px 0px 0px 5px;
+            }
+        }
+        .dose-calnder {
+            width: 20px;
+            height: 20px;
+            margin: 0px 0px 0px 5px;
+            padding: 0px;
+        }
+        .dose-date {
+            display: flex;
+            align-items: center;
+        }
+    }
+    .dose-sub-label,
+    .dose-taken {
+        font-family: 'Roboto';
+        color: #535353;
+        font-weight: 400;
+    }
+    .dose-taken {
+        margin-top: 25px;
+        margin-bottom: 10px;
+    }
+    .dose-info {
+        width: 100%;
+    }
+    .dose-button {
+        margin: 0px 0px 0px 5px;
+        padding: 0px 0px 0px 5px;
+    }
+    .disabled-item {
+        opacity: 0.6;
+        pointer-events: none;
+    }
+}
+
+.current-city {
+    margin-bottom: 20px !important;
+}

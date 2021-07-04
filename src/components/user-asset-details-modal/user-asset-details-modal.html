@@ -1,0 +1,47 @@
+<ion-header class="header-container">
+  <ion-navbar>
+
+    <div class="title-container">
+      <div>
+        <img class="assetImg" *ngIf="requestName == 'visaCount'" src="assets/imgs/visa-count-new.svg"
+          onerror="this.src='./assets/imgs/annual-status.svg'" />
+        <img class="assetImg" *ngIf="requestName == 'assetCount'" src="assets/imgs/asset-count-new.svg"
+          onerror="this.src='./assets/imgs/annual-status.svg'" />
+      </div>
+      <div class="pagetitle" *ngIf="requestName == 'assetCount'">Asset Details</div>
+      <div class="pagetitle" *ngIf="requestName == 'visaCount'">Visa Details</div>
+
+    </div>
+    <ion-buttons end>
+      <div class="title-container">
+        <ion-icon slot="start" name="close" (click)="dismiss()" class="cancel-btn"></ion-icon>
+      </div>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <ion-card *ngFor="let detail of detailList" class="card-container">
+
+
+    <ion-list *ngFor="let detail of detail.response">
+      <ion-item>
+
+        <div>
+          <ion-row style="align-items: center;">
+            <ion-col col-2>
+              <!-- <div style="width:20%"> -->
+              <img class="assetImg" [src]="detail?.icon" onerror="this.src='./assets/imgs/annual-status.svg'" />
+              <!-- </div> -->
+            </ion-col>
+            <ion-col col-4>
+              {{detail?.key}}
+            </ion-col>
+            <ion-col col-6 text-wrap>
+              {{detail?.value}}
+            </ion-col>
+          </ion-row>
+        </div>
+      </ion-item>
+    </ion-list>
+  </ion-card>
+</ion-content>

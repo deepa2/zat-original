@@ -1,0 +1,148 @@
+page-post-question {
+  .holder {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .border-bottom {
+    // border-bottom: 1px solid gray;
+  }
+
+  .growTextBox {
+    width: 85%; //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+    border-radius: 20px; //Instead of the line below you could use @include box-sizing($bs)
+    box-sizing: border-box;
+    background-color: color($colors, white);
+    border: 0;
+    outline: 0;
+    resize: none;
+    border-bottom: 1px solid color($colors, gray);
+  }
+
+  .questionArea {
+    width: 100%;
+    font-size: 15px; //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+    border-radius: 0;
+    background-color: color($colors, white);
+  }
+
+  .post {
+    margin: 10px;
+    background-color: color($colors, postBackgroundColor);
+  }
+
+  .confirmation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .redColor {
+    color: color($colors, white);
+    background: #fd6868;
+    transition: all 0.3s;
+  }
+  .btn {
+    color: color($colors, white);
+    background-color: color($colors, primary);
+    border-color: color($colors, primary);
+    &.slaCrossedButton {
+      padding: 2px 7px;
+      font-size: 11px;
+      background-color: color($colors, selectColor);
+      float: right;
+      border-color: color(
+        $colors,
+        selectColor
+      ); //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+      border-radius: 0;
+    }
+    &:focus {
+      outline: none;
+      border: 0;
+    }
+
+    margin: 5px;
+    padding: 8px;
+    border-radius: 3px;
+  }
+  .box-shadow {
+    box-shadow: 1px 1px 2px 1px #d4b2b5;
+  }
+  .postSuccess {
+    background-color: color($colors, lightGreen);
+    border-color: color($colors, lightGreen);
+    margin: 10px;
+    border-radius: 22px;
+    margin-left: 0px;
+  }
+
+  .listImages {
+    background-color: color($colors, light);
+  }
+
+  .image-wrapper {
+    object-fit: fill;
+    background-size: cover;
+    background-position: 50% 50%;
+  }
+
+  .imageName,
+  .downloadIcon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .downloadIcon {
+    font-size: 20px;
+  }
+
+  .frame-square {
+    background: #d8d5d5;
+    border: 2px solid #000;
+    display: inline-block;
+    vertical-align: top;
+    padding: 5px;
+    width: 130px;
+    height: 130px;
+    margin-right: 0.5em;
+  }
+
+  .crop {
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+
+    img {
+      display: block;
+      min-width: 100%;
+      min-height: 100%;
+      margin: auto;
+      position: absolute;
+      top: -100%;
+      right: -100%;
+      bottom: -100%;
+      left: -100%;
+    }
+  }
+
+  .display {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 30px;
+  }
+  .width-60 {
+    width: 60%;
+  }
+  .width-30 {
+    width: 30%;
+  }
+  .width-10 {
+    width: 10%;
+  }
+  .mg-30 {
+    margin-left: 30%;
+  }
+}

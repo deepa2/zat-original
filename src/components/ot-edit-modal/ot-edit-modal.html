@@ -1,0 +1,49 @@
+<ion-header class="ts-header">
+  <ion-toolbar class="modalPage">
+    <button navPop ion-button icon-only clear>
+      <ion-icon name="arrow-back"></ion-icon>
+    </button>
+    <ion-title>Project Task</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <div class=form>
+    <form [formGroup]="editTimesheetForm" (ngSubmit)="saveTimesheet()">
+      <ion-list>
+        <ion-list-header class="borderColor">
+          {{addHrsTaskObj.taskName}}
+        </ion-list-header>
+        <ion-item class="borderColor">
+          <ion-datetime displayFormat="HH:mm" minuteValues="00,15,30,45" formControlName="efforts"></ion-datetime>
+        </ion-item>
+
+        <ion-item margin-top class="borderColor">
+          <ion-select placeholder="Select Billability" formControlName="billability" interface="action-sheet"
+            (ionChange)="onBillabilityChange($event)">
+            <ion-option [value]="billability.value" *ngFor="let billability of billabiltyArray">
+              {{billability.name}}</ion-option>
+          </ion-select>
+        </ion-item>
+        <span class="error-msg" *ngIf="flag?.isSubmitted && editTimesheetForm.controls.billability.errors">
+          <p>* Billability is required.</p>
+        </span>
+
+        <ion-item margin-top class="borderColor remarks">
+          <ion-textarea rows="6" cols="20" placeholder="Remarks" formControlName="remarks"
+            (keypress)="utility.omit_special_char($event)"></ion-textarea>
+        </ion-item>
+        <span class="error-msg" *ngIf="flag?.isSubmitted && editTimesheetForm.controls.remarks.errors">
+          <p>* Remarks is required.</p>
+        </span>
+
+      </ion-list>
+
+      <div float-right class="submitBtn">
+        <button ion-button round type="submit" [disabled]="addHrsTaskObj?.approvalStatus == '1'"> Save
+          Task</button>
+      </div>
+
+    </form>
+  </div>
+</ion-content>

@@ -1,0 +1,274 @@
+<!-- Generated template for the ApprovalTimesheetItemComponent component -->
+<div>
+  <div *ngIf="type == 'approval-approved'" class="approval-approved">
+    <div class="approvalCard">
+      <ion-card (click)="openApprovalApproveDetailModal()">
+        <div class="user-details">
+          <div class="user-img">
+            <ion-avatar class="user-avatar">
+              <img [src]="item.profilePicURL" onError="this.src='assets/imgs/user.png'">
+            </ion-avatar>
+            <img class="additional_hour_tag" *ngIf="item.additionalHrsFlag == 'YES'" src="assets/zents-imgs/additional_hour_tag.svg">
+          </div>
+          <div class="user-card">
+            <ion-grid>
+              <ion-row>
+                <ion-col col-12>
+                  <span class="user-name">{{item.staffName |titlecase}}</span>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col col-4>
+                  <span class="font-size">Project Name</span>
+                </ion-col>
+                <ion-col col-8>
+                  <span class="font-size">{{item.projectName}}</span>
+                </ion-col>
+              </ion-row>
+
+              <ion-row>
+                <ion-col col-4>
+                  <span class="font-size">Taskname</span>
+                </ion-col>
+                <ion-col col-8>
+                  <span class="font-size">{{item.taskName |titlecase}}</span>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col col-4>
+                  <span class="font-size">Billability</span>
+                </ion-col>
+                <ion-col col-8>
+                  <span class="font-size">{{item.billablityFlag == 'YES' ? 'Billable' : 'Non Billable' }}</span>
+                </ion-col>
+              </ion-row>
+              <ion-row *ngIf="item.milestoneName != '0'">
+                <ion-col col-4>
+                  <span class="font-size">Milestone</span>
+                </ion-col>
+                <ion-col col-8>
+                  <span class="font-size">{{item.milestoneName ? item.milestoneName : '-' }}</span>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </div>
+        </div>
+        <div class="efforts-info">
+          <div class="efforts-detail">
+            <ion-grid style="padding: 0px">
+              <ion-row>
+                <ion-col col-6 style="padding-bottom: 0px">
+                  <span class="darkColor">Total Efforts</span>
+                </ion-col>
+                <ion-col col-6 style="padding-bottom: 0px"><span class="font-small">{{item.viewEfforts}}</span></ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col col-6>
+                  <span class="darkColor">Date</span>
+                </ion-col>
+                <ion-col col-6><span class="font-small">{{item.taskUpdatedDate}}</span></ion-col>
+              </ion-row>
+            </ion-grid>
+          </div>
+          <div *ngIf="item.comments?.length > 0" class="comment"><span class="darkColor">Comment </span> <span class="font-small">
+              {{
+              (item.comments?.length > 43 )? (item.comments | slice:0:43) :(item.comments) }} </span>
+            <span *ngIf="item.comments?.length > 43" class="more-text">...More</span>
+          </div>
+        </div>
+      </ion-card>
+    </div>
+  </div>
+
+  <div *ngIf="type == 'approval-pending'" class="approval-pending">
+    <div class="approvalCard">
+      <ion-card>
+        <div class="user-details">
+          <div class="user-img" (click)="toggleSelection(item)">
+            <ion-avatar class="user-avatar">
+                <img [src]="item.profilePicURL" onError="this.src='assets/imgs/user.png'" />
+              <div class="flip-box">
+                <div class="flip-box-inner" [ngStyle]="{'transform': item?.checked ? 'rotateY(180deg)' : 'rotateY(0deg)'}">
+                  <div class="flip-box-front">
+                    
+                  </div>
+                  <div class="flip-box-back">
+                    <img src="assets/zents-imgs/approve-tickGreen.svg" *ngIf="item?.checked" />
+                  </div>
+                </div>
+              </div>
+            </ion-avatar>
+            <img class="additional_hour_tag" *ngIf="item.additionalHrsFlag == 'YES'" src="assets/zents-imgs/additional_hour_tag.svg">
+          </div>
+          <div class="user-card" (click)="openApprovalPendingDetailModal()">
+            <ion-grid>
+              <ion-row>
+                <ion-col col-12>
+                  <span class="user-name">{{item.staffName |titlecase}}</span>
+                </ion-col>
+              </ion-row>
+
+              <ion-row>
+                <ion-col col-4>
+                  <span class="font-size">Project Name</span>
+                </ion-col>
+                <ion-col col-8>
+                  <span class="font-size">{{item.projectName}}</span>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col col-4>
+                  <span class="font-size">Taskname</span>
+                </ion-col>
+                <ion-col col-8>
+                  <span class="font-size">{{item.taskName |titlecase}}</span>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col col-4>
+                  <span class="font-size">Billability</span>
+                </ion-col>
+                <ion-col col-8>
+                  <span class="font-size">{{item.billablityFlag == 'YES' ? 'Billable' : 'Non Billable' }}</span>
+                </ion-col>
+              </ion-row>
+              <ion-row *ngIf="item.milestoneName != '0'">
+                <ion-col col-4>
+                  <span class="font-size">Milestone</span>
+                </ion-col>
+                <ion-col col-8>
+                  <span class="font-size">{{item.milestoneName ? item.milestoneName : '-' }}</span>
+                </ion-col>
+              </ion-row>
+              <ion-row *ngIf="item.associateComment">
+                <ion-col col-4>
+                  <span class="font-size">Comment</span>
+                </ion-col>
+                <ion-col col-8>
+                  <span class="font-size">{{item.associateComment ? item.associateComment : '-' }}</span>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+
+            <!-- <div class="font-size">Taskname {{item.taskName |titlecase}}</div>
+            <div class="font-size">Billability {{item.billablityFlag == 'NO' ? 'Non Billable' : 'Billable' }}</div> -->
+          </div>
+        </div>
+        <div class="efforts-info">
+          <div class="efforts-detail">
+
+            <ion-grid style="padding: 0px">
+              <ion-row>
+                <ion-col col-6 style="padding-bottom: 0px">
+                  <span class="darkColor">Total Efforts</span>
+                </ion-col>
+                <ion-col col-6 style="padding-bottom: 0px"><span class="font-small">{{item.viewEfforts}}</span></ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col col-6>
+                  <span class="darkColor">Date</span>
+                </ion-col>
+                <ion-col col-6><span class="font-small">{{item.taskUpdatedDate}}</span></ion-col>
+              </ion-row>
+
+            </ion-grid>
+          </div>
+          <div class="buttons" *ngIf="!item?.checked">
+            <span class="btn-padding">
+              <button class="approve-btn" ion-button round (click)="onApproved(); $event.stopPropagation()" id="buttonColor">Approve</button>
+            </span>
+            <span class="btn-padding">
+              <button class="pending-btn" ion-button round (click)="onReject(); $event.stopPropagation()" id="buttonColor">Reject</button>
+            </span>
+          </div>
+          <div class="viewDetails" *ngIf="item?.checked">
+            <div>
+                <button ion-button round small (click)="openApprovalPendingDetailModal()">View Details</button>
+            </div>
+          </div>
+        </div>
+      </ion-card>
+    </div>
+  </div>
+
+  <div *ngIf="type == 'approval-rejected'" class="approval-approved">
+    <div class="approvalCard">
+      <ion-card (click)="openApprovalApproveDetailModal()">
+        <div class="user-details">
+          <div class="user-img">
+            <ion-avatar class="user-avatar">
+              <img [src]="item.profilePicURL" onError="this.src='assets/imgs/user.png'">
+            </ion-avatar>
+            <img class="additional_hour_tag" *ngIf="item.additionalHrsFlag == 'YES'" src="assets/zents-imgs/additional_hour_tag.svg">
+          </div>
+          <div class="user-card">
+            <ion-grid>
+              <ion-row>
+                <ion-col col-12>
+                  <span class="user-name">{{item.staffName |titlecase}}</span>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col col-4>
+                  <span class="font-size">Project Name</span>
+                </ion-col>
+                <ion-col col-8>
+                  <span class="font-size">{{item.projectName}}</span>
+                </ion-col>
+              </ion-row>
+
+              <ion-row>
+                <ion-col col-4>
+                  <span class="font-size">Taskname</span>
+                </ion-col>
+                <ion-col col-8>
+                  <span class="font-size">{{item.taskName |titlecase}}</span>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col col-4>
+                  <span class="font-size">Billability</span>
+                </ion-col>
+                <ion-col col-8>
+                  <span class="font-size">{{item.billablityFlag == 'YES' ? 'Billable' : 'Non Billable' }}</span>
+                </ion-col>
+              </ion-row>
+              <ion-row *ngIf="item.milestoneName != '0'">
+                <ion-col col-4>
+                  <span class="font-size">Milestone</span>
+                </ion-col>
+                <ion-col col-8>
+                  <span class="font-size">{{item.milestoneName ? item.milestoneName : '-' }}</span>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </div>
+        </div>
+        <div class="efforts-info">
+          <div class="efforts-detail">
+            <ion-grid style="padding: 0px">
+              <ion-row>
+                <ion-col col-6 style="padding-bottom: 0px">
+                  <span class="darkColor">Total Efforts</span>
+                </ion-col>
+                <ion-col col-6 style="padding-bottom: 0px"><span class="font-small">{{item.viewEfforts}}</span></ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col col-6>
+                  <span class="darkColor">Date</span>
+                </ion-col>
+                <ion-col col-6><span class="font-small">{{item.taskUpdatedDate}}</span></ion-col>
+              </ion-row>
+            </ion-grid>
+          </div>
+          <div *ngIf="item.comments?.length > 0" class="comment"><span class="darkColor">Comment </span> <span class="font-small">
+              {{
+              (item.comments?.length > 43 )? (item.comments | slice:0:43) :(item.comments) }} </span>
+            <span *ngIf="item.comments?.length > 43" class="more-text">...More</span>
+          </div>
+        </div>
+      </ion-card>
+    </div>
+  </div>
+
+</div>

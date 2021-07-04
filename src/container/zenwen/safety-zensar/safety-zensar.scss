@@ -1,0 +1,34 @@
+page-safety-zensar {
+    ion-card{
+        border-radius: 5px !important;
+        box-shadow: none !important;
+        .card-bg{
+            // background-image: url("../../../assets/zenwen-imgs/buddy-cop-bg.svg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            align-items: center;
+            color: white;
+            position: relative;
+            [col-7] {
+                -webkit-box-flex: 0;
+                -webkit-flex: 0 0 58.33333%;
+                -ms-flex: 0 0 58.33333%;
+                flex: 0 0 calc(58.33333% + (25% - 80px));
+                width: calc(58.33333% + (25% - 80px));
+                max-width: calc(58.33333% + (25% - 80px));
+            }
+            .safety-icon{
+                height: 65px;
+                flex: 0 0 80px;
+                img{
+                    width: 70px;
+                }
+            }
+           
+           }
+           img.icon-texture {
+            width: 100%;
+            height: auto;
+        }
+    }
+}

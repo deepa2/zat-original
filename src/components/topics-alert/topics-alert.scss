@@ -1,0 +1,136 @@
+topics-alert.ion-page {
+  height: 80vh;
+  background: #fff;
+  ion-content.content-md:not([padding]) .scroll-content {
+    padding-bottom: 0 !important;
+    margin-bottom: 0 !important;
+    background: #E4EBF3;
+}
+  .topics-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 9px;
+    color: #fff;
+    background: linear-gradient(90deg, #0EA2C8, #0E7AC7);
+    padding: 5px 10px;
+    span.topics-heading {
+      font-size: 16px;
+      margin-left: 10px;
+      font-weight: 600;
+      display: inline-block;
+      width: 200px;
+    }
+  }
+  .practices,
+  .topics {
+    padding: 10px 0;
+    padding-top: 30px;
+    height: 355px;
+    height: calc(80vh - 125px);
+    overflow: scroll;
+    position: relative;
+  }
+  .practices{
+    padding-top: 125px;
+    
+  }
+  .pract .sub-heading {
+    padding: 0;
+    padding-bottom: 10px;
+  }
+  .topics-title{
+    display: flex;
+    align-items: center;
+}
+
+  .sub-heading {
+    font-size: 15px;
+    font-weight: bold;
+    position: fixed;
+    top: 45px;
+    width: 100%;
+    background: #fff;
+    z-index: 10;
+    padding: 10px 13px;
+    span.sub-headings {
+      padding: 10px;
+      display: inline-block;
+  }
+  }
+  .prefrence-tabs {
+    display: flex;
+    box-shadow: 0 2px 5px #b9b9b9;
+    font-weight: normal;
+    .pref-tab {
+      background: #fff;
+      padding: 10px;
+      width: 50%;
+      text-align: center;
+      font-size: 15px;
+    }
+    .pref-tab.active-tab {
+      background: #0d7ac7;
+      color: #fff;
+    }
+  }
+  .practice-search {
+    padding: 10px 10px 0;
+    font-weight: normal;
+    .text-input-md {
+      padding: 10px;
+      width: 100%;
+      height: 35px;
+      margin: 0;
+      background: #fff;
+      border: 1px solid #cacaca;
+      border-radius: 5px;
+  }
+}
+  .topic-item {
+    margin: 13px;
+    background: #fff;
+    padding: 10px;
+    border-radius: 5px;
+  }
+  .dismissBtn-parent {
+    text-align: center;
+    padding: 15px;
+    background: #fff;
+    box-shadow: 0 0px 5px #cecece;
+  }
+  
+  .header-text{
+    padding: 7px 10px;
+  }
+  label.filterItem {
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    font-size: 15px;
+
+    .checkbox {
+      margin-left: 10px;
+      .checkbox-icon {
+        border-radius: 50%;
+        position: relative;
+        width: 20px;
+        height: 20px;
+      }
+      .checkbox-checked .checkbox-inner {
+        left: 6px;
+        top: 2px;
+      }
+    }
+  }
+  .nodata{
+    padding: 10px;
+  }
+}
+ion-modal.topics-alert{
+  ion-backdrop{
+    visibility: visible;
+    z-index: 0;
+  }
+}

@@ -1,0 +1,14 @@
+kra-training {
+  .headerBackground {
+    background: linear-gradient(to right, #488cfc, #8264ff);
+  }
+  .card-md.no-shadow {
+    box-shadow: 0px 1px 1px 2px #dadfe0a8;
+  }
+  .header-fixed {
+    position: sticky;
+    width: 100%;
+    top: 0;
+    background: linear-gradient(to right, #488cfc, #8264ff);
+  }
+}

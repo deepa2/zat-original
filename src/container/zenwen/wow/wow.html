@@ -1,0 +1,144 @@
+<!--
+  Generated template for the WowPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>World of Women</ion-title>
+    <ion-buttons end *ngIf="worldOfWomen == 'wallOfFame'">
+      <button ion-button clear (click)="openAddCommentModal('post')">
+        <ion-icon name="create"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+  <div>
+    <ion-segment [(ngModel)]="worldOfWomen">
+      <ion-segment-button value="wallOfFame">
+        Wall of Fame
+      </ion-segment-button>
+      <ion-segment-button value="zenwenSpeak">
+        ZenWen Speak
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+
+</ion-header>
+
+
+<ion-content class="wow_content">
+  <div [ngSwitch]="worldOfWomen">
+    <div *ngSwitchCase="'wallOfFame'">
+      <ion-card *ngFor="let wof of wallOfFameData">
+
+        <ion-item>
+          <ion-avatar item-start>
+            <img src="{{imgUrl + wof?.toUserPortraitUrl}}" onerror="this.src='assets/imgs/dummy-profile.png'" />
+          </ion-avatar>
+          <h2>To : {{wof?.toUserName}}</h2>
+          <p>From : {{wof?.fromUserName}}</p>
+          <ion-card-content>
+            <p [innerHTML]="wof?.description | emoji"></p>
+          </ion-card-content>
+        </ion-item>
+
+        
+
+        <div class="option">
+          <div class="block" (click)="openAddCommentModal('comment',wof)">
+            <ion-icon name="text"></ion-icon>
+            <div>{{wof?.commentCount}} Comments</div>
+          </div>
+          <div class="block" (click)="performActionOnPost(wof,'like')">
+            <ion-icon name="thumbs-up" [ngClass]="{'like':wof.hasliked == 1}"></ion-icon>
+            <div>{{wof?.likeCount}} Like</div>
+          </div>
+          <div class="block" (click)="performActionOnPost(wof,'dislike')">
+            <ion-icon name="thumbs-down" [ngClass]="{'like':wof.hasliked == -1}"></ion-icon>
+            <div>{{wof?.disLikeCount}} Dislike</div>
+          </div>
+        </div>
+
+        <div class="comment-con" *ngIf="wof?.commnetList && isArray(wof.commnetList)">
+          <ion-item class="comment-section">
+            <ion-avatar item-start>
+              <img src="{{imgUrl + wof?.commnetList[0]?.profilePic}}" onerror="this.src='assets/imgs/dummy-profile.png'">
+            </ion-avatar>
+            
+          </ion-item>
+
+          <ion-card-content class="comment-section-card-content">
+            <h2>{{wof?.commnetList[0]?.fullName}}</h2>
+            <p [innerHTML]="wof?.commnetList[0]?.commentText | emoji"></p>
+            <ion-note >
+              {{dateConversion(wof?.commnetList[0]?.postDate)}}
+            </ion-note>
+          </ion-card-content>
+        </div>
+
+        <div class="comment-con" *ngIf="wof?.commnetList && !isArray(wof.commnetList)">
+          <ion-item class="comment-section">
+            <ion-avatar item-start>
+              <img src="{{imgUrl + wof?.commnetList?.profilePic}}" onerror="this.src='assets/imgs/dummy-profile.png'">
+            </ion-avatar>
+          </ion-item>
+          
+          <ion-card-content class="comment-section-card-content">
+            <h2>{{wof?.commnetList?.fullName}}</h2>
+            <p [innerHTML]="wof?.commnetList?.commentText | emoji"></p>
+            <ion-note>
+              {{dateConversion(wof?.commnetList?.postDate)}}
+            </ion-note>
+          </ion-card-content>
+        </div>
+
+
+        <!-- <ion-row>
+          <ion-col>
+            <button ion-button icon-start clear small>
+              <div>
+                <ion-icon name="text"></ion-icon>
+              </div>
+              <div>4 Comments</div>
+            </button>
+          </ion-col>
+          <ion-col>
+            <button ion-button icon-start clear small>
+              <ion-icon name="thumbs-up"></ion-icon>
+              <div>12 Likes</div>
+            </button>
+          </ion-col>
+          <ion-col>
+            <button ion-button icon-start clear small>
+              <ion-icon name="thumbs-down"></ion-icon>
+              <div>12 Likes</div>
+            </button>
+          </ion-col>
+          <ion-col align-self-center text-center>
+            <ion-note>
+              11h ago
+            </ion-note>
+          </ion-col>
+        </ion-row> -->
+
+      </ion-card>
+      <ion-infinite-scroll (ionInfinite)="loadData($event)">
+        <ion-infinite-scroll-content></ion-infinite-scroll-content>
+      </ion-infinite-scroll>
+    </div>
+    <div *ngSwitchCase="'zenwenSpeak'" class="speaks">
+      <ion-card *ngFor="let data of speaksData" (click)="openSpeakDetailModal(data)">
+        <div class="profile_img">
+          <img src="{{imgUrl + data?.toUserPortraitUrl}}" onerror="this.src='assets/imgs/dummy-profile.png'" />
+        </div>
+        <div class="profile-info">
+          <h2>{{data?.toUserName}}</h2>
+          <p>{{data?.experience}}</p>
+        </div>
+        
+      </ion-card>
+    </div>
+  </div>
+</ion-content>

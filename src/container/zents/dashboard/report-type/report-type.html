@@ -1,0 +1,84 @@
+<!--
+  Generated template for the ReportTypePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{params?.title}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <ion-card class="cust-card">
+    <ion-card-header class="header-card">
+      <p>Reports - {{params?.title}}</p>
+    </ion-card-header>
+    <ion-card-content>
+      <!-- <ion-grid no-padding>
+        <ion-row class="justify-content-space-btw">
+          <ion-col col-5 no-padding class="dateBorderColor marginRight">
+            <ion-datetime class="timeDate" [(ngModel)]="dates.startDate" displayFormat="DD MMM YYYY"
+              pickerFormat="DD MMM YYYY" placeholder="Start Date" [max]="dates.startDate"
+              (ionChange)="_getStartDate($event)">
+            </ion-datetime>
+          </ion-col>
+          <ion-col col-5 no-padding class="dateBorderColor">
+            <ion-datetime class="timeDate" readonly="true" [(ngModel)]="dates.endDate" [min]="dates.endDate"
+              [max]="dates.endDate" displayFormat="DD MMM YYYY" pickerFormat="DD MMM YYYY" placeholder="End Date">
+            </ion-datetime>
+          </ion-col>
+        </ion-row>
+      </ion-grid> -->
+
+      <ion-grid no-padding>
+        <ion-row class="justify-content-space-btw">
+          <ion-col col-5 no-padding class="dateBorderColor marginRight">
+            <ion-datetime class="timeDate" [(ngModel)]="dates.startDate" displayFormat="DD MMM YYYY"
+              pickerFormat="DD MMM YYYY" placeholder="Start Date" [min]="datesFromServer.threeMonthSatrtDate"
+              [max]="datesFromServer.weekEndDate" (ionChange)="_getStartDate($event)">
+            </ion-datetime>
+          </ion-col>
+          <ion-col col-5 no-padding class="dateBorderColor">
+            <ion-datetime class="timeDate" readonly="true" [(ngModel)]="dates.endDate"
+              [min]="dates.startDate" [max]="datesFromServer.weekEndDate"
+              displayFormat="DD MMM YYYY" pickerFormat="DD MMM YYYY" placeholder="End Date"
+              (ionChange)="_getEndDate($event)">
+            </ion-datetime>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+
+      <div *ngIf="params?.accessId == 1 || params?.accessId == 2 || params?.accessId == 4 || params?.accessId == 5">
+        <report-common [startDate]="dates.startDate" [reportNA]="reportNA" [endDate]="dates.endDate"
+          [reportType]="params"></report-common>
+      </div>
+
+      <div *ngIf="params?.accessId == 6">
+        <report-timecard [startDate]="dates.startDate" [reportNA]="reportNA" [endDate]="dates.endDate" [reportType]="params">
+        </report-timecard>
+      </div>
+
+      <div *ngIf="params?.accessId == 3">
+        <report-timesheet [startDate]="dates.startDate" [reportNA]="reportNA" [reportNA]="reportNA" [endDate]="dates.endDate" [reportType]="params">
+        </report-timesheet>
+      </div>
+
+      <div *ngIf="params?.accessId == 7">
+        <report-overtime [startDate]="dates.startDate" [reportNA]="reportNA" [endDate]="dates.endDate" [reportType]="params">
+        </report-overtime>
+      </div>
+      <div *ngIf="params?.accessId == 8">
+        <report-not-filledTS [startDate]="dates.startDate" [reportNA]="reportNA" [endDate]="dates.endDate" [reportType]="params">
+        </report-not-filledTS>
+      </div>
+
+    </ion-card-content>
+  </ion-card>
+  <div class="report-NA" *ngIf="reportNA">* Note report available only for a month</div>
+</ion-content>

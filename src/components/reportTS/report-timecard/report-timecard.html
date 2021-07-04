@@ -1,0 +1,134 @@
+<form [formGroup]="reportForm" (ngSubmit)="onSubmit()">
+     <ion-list>
+        <ion-item no-lines no-padding class="borderColor">
+            <ion-select class="select-c" formControlName="deliveryTerritory"
+                [disabled]="reportForm.controls.deliveryTerritory.disabled" placeholder="Territory"
+                interface="action-sheet" (ionChange)="onDeliveryTerritorySelect($event)">
+                <ion-option *ngFor="let item of territoryList" [value]="item.territory">{{item?.territory}}
+                </ion-option>
+            </ion-select>
+        </ion-item>
+        <!-- <span class="error-msg" *ngIf="reportForm.controls.deliveryTerritory.errors  && submitted">
+            <p>* Please select Project Name.</p>
+        </span> -->
+
+        <ion-item class="borderColor">
+            <!-- <button id="clientCustomers"
+                [disabled]="reportForm.controls.clientCustomers.disabled">Client/Customer</button>
+            <input for="clientCustomers" formControlName="clientCustomers" readonly
+                [value]="selectedList?.selectedclientCustomerList.length">
+            <ion-icon float-right text-right name="md-arrow-dropdown"></ion-icon> -->
+
+            <div class="grid-form">
+                <div>
+                    <button id="clientCustomers"
+                        [disabled]="reportForm.controls.clientCustomers.disabled">Customer</button>
+                </div>
+                <div class="report-input" [ngClass]="{'active-input': !reportForm.controls.clientCustomers.disabled}"
+                    (click)="_openSelectedListModal('Customers')">
+                    <input class="width90" for="clientCustomers" formControlName="clientCustomers" readonly
+                        [value]="selectedList?.selectedclientCustomerList.length > 0 ? selectedList?.selectedclientCustomerList.length + '/' + clientCustomerList.length + ' Selected' : 0 + '/' + clientCustomerList.length + ' Selected'">
+                    <ion-icon end name="ios-arrow-forward"></ion-icon>
+                </div>
+                <div>
+                    <div class="round-button"
+                        [ngClass]="{'active-button': !reportForm.controls.clientCustomers.disabled}"
+                        (click)="_selectCLientCustomer(reportForm.controls.clientCustomers.disabled)">Select
+                        <ion-icon name="md-add">
+                        </ion-icon>
+                    </div>
+                </div>
+            </div>
+        </ion-item>
+        <!-- {{reportForm.controls.clientCustomers.value|json}} -->
+        <!-- <span class="error-msg" *ngIf="reportForm.controls.customers.errors  && submitted">
+            <p>* Please select Project Name.</p>
+        </span> -->
+        <ion-item class="borderColor">
+            <!-- <button [disabled]="reportForm.controls.projects.disabled" id="projects">Projects</button>
+            <input for="projects" formControlName="projects" readonly
+                [value]="selectedList?.selectedprojectListFromModal.length">
+            <ion-icon float-right text-right name="md-arrow-dropdown"></ion-icon> -->
+
+            <div class="grid-form">
+                <div>
+                    <button id="projects" [disabled]="reportForm.controls.projects.disabled">Projects</button>
+                </div>
+                <div class="report-input" [ngClass]="{'active-input': !reportForm.controls.projects.disabled}"
+                    (click)="_openSelectedListModal('Projects')">
+                    <input class="width90" for="projects" formControlName="projects" readonly
+                        [value]="selectedList?.selectedprojectListFromModal.length > 0 ? selectedList?.selectedprojectListFromModal.length + '/' + projectList.length + ' Selected' : 0 + '/' + projectList.length + ' Selected'">
+                    <ion-icon end name="ios-arrow-forward"></ion-icon>
+                </div>
+                <div>
+                    <div class="round-button" [ngClass]="{'active-button': !reportForm.controls.projects.disabled}"
+                        (click)="_selectProjects(reportForm.controls.projects.disabled)">Select
+                        <ion-icon name="md-add">
+                        </ion-icon>
+                    </div>
+                </div>
+            </div>
+        </ion-item>
+        <!-- <span class="error-msg" *ngIf="reportForm.controls.projects.errors  && submitted">
+            <p>* Please select Project Name.</p>
+        </span> -->
+
+
+        <ion-list radio-group class="align-cont-cent padding-left7 padding-top15"
+            (ionChange)="_selectedSiteButtton($event)">
+            <div class="center width30" *ngFor="let item of siteList">
+                <ion-radio [checked]="item?.checked" [value]="item?.label"></ion-radio>
+                <ion-label class="radio-label">{{item?.name}}</ion-label>
+            </div>
+        </ion-list>
+
+        <ion-item class="borderColor">
+            <!-- <button id="associates" [disabled]="reportForm.controls.associates.disabled">Associate</button>
+            <input for="associates" formControlName="associates" readonly
+                [value]="selectedList?.associateListFromModal.length">
+            <ion-icon float-right text-right name="md-arrow-dropdown"></ion-icon> -->
+            <div class="grid-form">
+                <div>
+                    <button id="associates" [disabled]="reportForm.controls.associates.disabled">Associates</button>
+                </div>
+                <div class="report-input" [ngClass]="{'active-input': !reportForm.controls.associates.disabled}"
+                    (click)="_openSelectedListModal('Associates')">
+                    <input class="width90" for="associates" formControlName="associates" readonly
+                        [value]="selectedList.associateListFromModal.length > 0 ? selectedList.associateListFromModal.length + '/' + associateList.length + ' Selected' : 0 + '/' + associateList.length + ' Selected'">
+                    <ion-icon end name="ios-arrow-forward"></ion-icon>
+                </div>
+                <div>
+                    <div class="round-button" [ngClass]="{'active-button': !reportForm.controls.associates.disabled}"
+                        (click)="_selectAssociates(reportForm.controls.associates.disabled)">
+                        Select
+                        <ion-icon name="md-add">
+                        </ion-icon>
+                    </div>
+                </div>
+            </div>
+
+        </ion-item>
+        <span class="error-msg" *ngIf="reportForm.controls.associates.errors  && submitted">
+            <p>* Please select Project Name.</p>
+        </span>
+
+        <div class="margin-top12">Export to:</div>
+        <ion-list radio-group class="align-cont-cent padding-left7 padding-top15" (ionChange)="_selectedFormat($event)">
+            <div class="center width30 format-icons" *ngFor="let item of sendFormat">
+                <ion-radio [checked]="item?.checked" [value]="item?.label"></ion-radio>
+                <img class="icon" src="assets/imgs/{{item?.label}}_icon.svg" />
+                <ion-label>{{item?.name}}</ion-label>
+            </div>
+        </ion-list>
+    </ion-list>
+
+
+
+    <div class="submitBtn margin-top12  " text-center>
+        <button ion-button round type="submit"
+            [disabled]="!(selectedList?.associateListFromModal.length > 0   && !reportNA)"> Send
+            Report</button>
+    </div>
+
+
+</form>

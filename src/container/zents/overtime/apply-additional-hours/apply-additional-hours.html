@@ -1,0 +1,97 @@
+<!--
+  Generated template for the ApplyAdditionalHoursPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header class="ts-header">
+
+  <ion-navbar>
+    <ion-title>{{data?.pageTitle}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <form *ngIf="flags?.showForm" [formGroup]="projectForm" (ngSubmit)="addTaskConfirmAlert()">
+    <ion-list>
+      <ion-item no-lines class="borderColor">
+        <ion-select formControlName="ProjName" placeholder="Select Project" interface="action-sheet"
+          [disabled]="projectList.length == 1" (ionChange)="onProjectSelect($event)" *ngIf="projectList.length > 0">
+          <ion-option *ngFor="let project of projectList" [value]="project">{{project.projectName}}
+          </ion-option>
+        </ion-select>
+        <ion-select interface="action-sheet" disabled *ngIf="projectList.length == 0">
+          <ion-option selected>No project to select</ion-option>
+        </ion-select>
+      </ion-item>
+      <span class="error-msg" *ngIf="projectForm.controls.ProjName.errors  && flags?.isSubmitted">
+        <p>* Please select Project Name.</p>
+      </span>
+
+      <ion-grid no-padding margin-top>
+        <ion-row>
+          <ion-col no-padding class="dateBorderColor marginRight">
+            <ion-datetime formControlName="startDate" displayFormat="DD-MMM-YYYY" pickerFormat="DD MMM YYYY"
+              placeholder="Start Date" [min]="dates?.applyCalendarMinDate" [max]="dates?.applyCalendarMaxDate"
+              (ionChange)="onStartDateSelect($event)">
+            </ion-datetime>
+          </ion-col>
+          <ion-col no-padding class="dateBorderColor">
+            <ion-datetime formControlName="endDate" displayFormat="DD-MMM-YYYY" pickerFormat="DD MMM YYYY"
+              placeholder="End Date" [min]="dates?.applyCalendarMinDate" [max]="dates?.applyCalendarMaxDate"
+              (ionChange)="onEndDateSelect($event)">
+            </ion-datetime>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <span float-left class="error-msg width-50"
+        *ngIf="flags?.isSubmitted && !projectForm.controls.ProjName.errors && projectForm.controls.startDate.errors">
+        <p>* Please select Start Date.</p>
+      </span>
+      <span float-right class="error-msg width-50"
+        *ngIf="flags?.isSubmitted && !projectForm.controls.ProjName.errors && projectForm.controls.endDate.errors">
+        <p>* Please select end Date.</p>
+      </span>
+      <span class="error-msg" *ngIf="compareFlag">
+        <p>* End date should be greater than start date.</p>
+      </span>
+
+      <ion-item no-lines class="borderColor" margin-top>
+        <ion-datetime #dateTime displayFormat="HH:mm" minuteValues="00,15,30,45" formControlName="time"
+          (ionChange)="onTimeChange($event)">
+        </ion-datetime>
+      </ion-item>
+      <span class="error-msg" *ngIf="showTimeError">
+        <p>* Please select valid hours.</p>
+      </span>
+
+      <ion-grid no-padding class="taskOption" margin-top>
+        <ion-row>
+          <ion-col col-11>
+            <ion-item no-lines class="taskInput">
+              <ion-input [readonly]="true" formControlName="tname" type="text" placeholder="Select Task"
+                [disabled]="projectForm.controls.tname.disabled" (click)="openTaskListModal()"></ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-col col-1 class="down-arrow" (click)="openTaskListModal()">
+            <ion-icon name="arrow-dropdown"></ion-icon>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <span class="error-msg" *ngIf="flags?.isSubmitted && projectForm.controls.tname.errors">
+        <p>* Please select task name.</p>
+      </span>
+
+      <ion-item no-lines class="borderColor remarks" margin-top>
+        <ion-textarea (keypress)="utility.omit_special_char($event)" formControlName="Remarks" placeholder="Remarks"
+          rows="6" cols="6"></ion-textarea>
+      </ion-item>
+    </ion-list>
+    <div class="submitBtn" float-right>
+      <button ion-button round type="submit"> Add Task</button>
+    </div>
+
+  </form>
+</ion-content>

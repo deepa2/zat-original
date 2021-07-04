@@ -1,0 +1,88 @@
+<form [formGroup]="reportForm" (ngSubmit)="onSubmit()">
+     <ion-list>
+
+        <!-- <ion-list radio-group class="align-cont-cent padding-left7 padding-top15"
+            (ionChange)="_selectedNotFilledBy($event)">
+            <div class="center width30 format-icons">
+                <ion-radio checked="true" value="customer" #customer></ion-radio>
+                <span>
+                    <ion-label>By customer</ion-label>
+                </span>
+
+                <div class="ts-status" [ngClass]="{'disabled-css': !customer.checked}"
+                    (click)="_openModel(customer.checked)">
+                    <ion-icon class="align-cont-cent justify-content-flex-end" float-right text-right
+                        name="md-arrow-dropdown"></ion-icon>
+                    {{selectedStatusValue}}
+                </div>
+            </div>
+            <div class="center width30 format-icons">
+                <ion-radio value="associate"></ion-radio>
+                <ion-label>By associate</ion-label>
+            </div>
+        </ion-list> -->
+        <ion-list radio-group class="display-flex padding-left7 padding-top15"
+            (ionChange)="_selectedNotFilledBy($event)">
+            <div class="align-cont-cent  format-icons">
+                <ion-radio class="margin-right5" checked="true" value="By customer" #tsStatus></ion-radio>
+                <span>
+                    <ion-label>By customer</ion-label>
+                </span>
+            </div>
+            <div class="align-cont-cent format-icons">
+                <ion-radio class="margin-right5" value="By associate"></ion-radio>
+                <ion-label>By associate</ion-label>
+            </div>
+        </ion-list>
+
+        <ion-item *ngIf="reportType?.accessId != 5 && tsStatus.checked" class="borderColor">
+            <!-- <button id="clients" [disabled]="reportForm.controls.clients.disabled">Clients</button>
+            <input for="clients" formControlName="clients" readonly
+                [value]="selectedClientList?.length > 0 ? selectedClientList?.length : 0">
+            <ion-icon float-right text-right name="md-arrow-dropdown"></ion-icon> -->
+            <div class="grid-form">
+                <div>
+                    <button id="clients" [disabled]="reportForm.controls.clients.disabled">Customers</button>
+                </div>
+                <div class="report-input active-input" (click)="_openSelectedListModal('Customers')">
+                    <input class="width90" for="clients" formControlName="clients" readonly
+                        [value]="selectedClientList?.length > 0 ? selectedClientList?.length + '/' + clientList?.length + ' Selected' : 0 + '/' + clientList?.length + ' Selected'">
+                    <ion-icon end name="ios-arrow-forward"></ion-icon>
+                </div>
+                <div>
+                    <div class="round-button active-button"
+                        (click)="_selectProject(reportForm.controls.clients.disabled)">Select
+                        <ion-icon name="md-add">
+                        </ion-icon>
+                    </div>
+                </div>
+            </div>
+        </ion-item>
+
+        <ion-item *ngIf="!tsStatus.checked">
+            <div class="align-cont-cent">Associate ID <input for="associateId" class="asso-input"
+                    formControlName="associateId" type="number" [(ngModel)]="associateId">
+                <img class="icon margin-left10" [hidden]="!(associateId?.toString().length == 5)"
+                    src="assets/ZenExit-Imgs/approved.svg" /></div>
+        </ion-item>
+
+        <div class="margin-top12">Export to:</div>
+        <ion-list radio-group class="align-cont-cent padding-left7 padding-top15" (ionChange)="_selectedFormat($event)">
+            <div class="center width30 format-icons" *ngFor="let item of sendFormat">
+                <ion-radio [checked]="item?.checked" [value]="item?.label"></ion-radio>
+                <img class="icon" src="assets/imgs/{{item?.label}}_icon.svg" />
+                <ion-label>{{item?.name}}</ion-label>
+            </div>
+        </ion-list>
+    </ion-list>
+
+
+    <div class="submitBtn margin-top12" text-center>
+        <button ion-button round type="submit" *ngIf="reportType?.accessId != 5"
+            [disabled]="!((selectedClientList?.length > 0  && !reportNA) || (associateId?.toString().length == 5  && !reportNA))">
+            Send Report</button>
+        <button ion-button round type="submit" *ngIf="reportType?.accessId == 5"> Send Report</button>
+    </div>
+
+
+</form>

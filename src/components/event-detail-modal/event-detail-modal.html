@@ -1,0 +1,53 @@
+<ion-list>
+  <ion-list-header>
+    Event Registration
+  </ion-list-header>
+  <div padding>
+    Event: {{eventObj.title}}
+  </div>
+  <div class="event-modal-con {{eventType}}">
+    <ion-item>
+      <ion-avatar item-start>
+        <img src="assets/zenwen-imgs/date&time.svg">
+      </ion-avatar>
+      <h3>Date & time</h3>
+      <p>{{dateConversion(eventObj.startTime)}} TO {{dateConversion(eventObj.endTime)}}</p>
+    </ion-item>
+    <ion-item>
+      <ion-avatar item-start>
+        <img src="assets/zenwen-imgs/location.svg">
+      </ion-avatar>
+      <h3>Location!</h3>
+      <p>{{eventObj.city}}</p>
+    </ion-item>
+    <ion-item>
+      <ion-avatar item-start>
+        <img src="assets/zenwen-imgs/venue.svg">
+      </ion-avatar>
+      <h3>Venue</h3>
+      <p>{{eventObj.venue}}</p>
+    </ion-item>
+    <ion-item>
+      <ion-avatar item-start>
+        <img src="assets/zenwen-imgs/openFor.svg">
+      </ion-avatar>
+      <h3>Open for</h3>
+      <p>{{openFor}}</p>
+    </ion-item>
+    <ion-item>
+      <ion-avatar item-start>
+        <img src="assets/zenwen-imgs/speakers.svg">
+      </ion-avatar>
+      <h3>Speakers</h3>
+      <p>{{eventObj.presenter}}</p>
+    </ion-item>
+    <ion-item>
+      <ion-avatar item-start>
+        <img src="assets/zenwen-imgs/agenda.svg">
+      </ion-avatar>
+      <h3>Agenda</h3>
+      <p>{{eventObj.body}}</p>
+    </ion-item>
+  </div>
+  <button *ngIf="eventType == 'upcoming'" class="bookBtn" padding color="primary" (click)="showBookingConfirmAlert()">{{btnName}}</button>
+</ion-list>

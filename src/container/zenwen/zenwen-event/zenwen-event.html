@@ -1,0 +1,116 @@
+<!--
+  Generated template for the ZenwenEventPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>ZenWEN Events</ion-title>
+    <ion-item no-lines>
+      <ion-select [selectOptions]="selectOptions" [(ngModel)]="country" (ionChange)="onCountryChange($event)">
+        <ion-option *ngFor="let data of countries" [value]="data">{{data}}</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-navbar>
+  <div>
+    <ion-segment [(ngModel)]="eventType">
+      <ion-segment-button value="live" (click)="slideTo(0)">
+        Live
+      </ion-segment-button>
+      <ion-segment-button value="upcoming" (click)="slideTo(1)">
+        Upcoming
+      </ion-segment-button>
+      <ion-segment-button value="past" (click)="slideTo(2)">
+        Past
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+</ion-header>
+
+
+<ion-content>
+
+  <!-- <ion-slides [ngSwitch]="eventType">
+    <ion-slide *ngSwitchCase="'live'">
+      slide 1
+    </ion-slide>
+    <ion-slide *ngSwitchCase="'upcoming'">
+      slide 2
+    </ion-slide>
+    <ion-slide *ngSwitchCase="'past'">
+      slide 3
+    </ion-slide>
+  </ion-slides> -->
+  <ion-slides #slides (ionSlideWillChange)="slideChanged()">
+    <ion-slide>
+      <div padding class="card" *ngFor="let event of liveEventList">
+        <!-- <img class="banner_img" src="{{imgUrl + event.coverPhotoUrl}}" /> -->
+        <iframe [src]="event?.extraUrl | safe: 'resourceUrl'" height="350" allowfullscreen autoplay frameborder="0" style="width:100%;">
+        </iframe>
+        <div class="e-details">
+          <div class="date">
+            <div>{{dateConversion(event.startTime, 'day')}}</div>
+            <div>{{dateConversion(event.startTime, 'month')}}</div>
+          </div>
+          <div class="desc">
+            <div class="title">{{event.title}}</div>
+            <div class="location">
+              <!-- <ion-icon name="location-outline"></ion-icon> -->
+              <img src="assets/zenwen-imgs/location_white_icon.svg" />
+              <span class="city">{{event.city}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div padding *ngIf="liveEventList.length == 0">
+        <img *ngIf="isShowliveNoEvent" src="assets/zenwen-imgs/noEvent.png" />
+      </div>
+    </ion-slide>
+    <ion-slide>
+      <div padding class="card" *ngFor="let upcomingEvent of upcomingEventList;let i=index;" (click)="openEventDetailModal(upcomingEvent,i,'upcoming')">
+        <img class="banner_img" src="{{imgUrl + upcomingEvent.coverPhotoUrl}}" />
+        <div class="e-details">
+          <div class="date">
+            <div>{{dateConversion(upcomingEvent.startTime, 'day')}}</div>
+            <div>{{dateConversion(upcomingEvent.startTime, 'month')}}</div>
+          </div>
+          <div class="desc">
+            <div class="title">{{upcomingEvent.title}}</div>
+            <div class="location">
+              <!-- <ion-icon name="location-outline"></ion-icon> -->
+              <img src="assets/zenwen-imgs/location_white_icon.svg" />
+              <span class="city">{{upcomingEvent.city}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div padding *ngIf="upcomingEventList.length == 0">
+        <img  *ngIf="isShowupNoEvent" src="assets/zenwen-imgs/noEvent.png" />
+      </div>
+    </ion-slide>
+    <ion-slide>
+      <div padding class="card" *ngFor="let pastEvent of pastEventList" (click)="openEventDetailModal(pastEvent,null,'past')">
+        <img class="banner_img" src="{{imgUrl + pastEvent.coverPhotoUrl}}" />
+        <div class="e-details">
+          <div class="date">
+            <div>{{dateConversion(pastEvent.startTime, 'day')}}</div>
+            <div>{{dateConversion(pastEvent.startTime, 'month')}}</div>
+          </div>
+          <div class="desc">
+            <div class="title">{{pastEvent.title}}</div>
+            <div class="location">
+              <!-- <ion-icon name="location-outline"></ion-icon> -->
+              <img src="assets/zenwen-imgs/location_white_icon.svg" />
+              <span class="city">{{pastEvent.city}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div padding *ngIf="pastEventList.length == 0">
+        <img  *ngIf="isShowpastNoEvent" src="assets/zenwen-imgs/noEvent.png" />
+      </div>
+    </ion-slide>
+  </ion-slides>
+</ion-content>

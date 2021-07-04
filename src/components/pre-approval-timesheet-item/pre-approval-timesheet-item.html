@@ -1,0 +1,159 @@
+<div *ngIf="type == 'approval-pending'" class="pre-approval-pending">
+  <div class="approvalCard">
+    <ion-card no-lines (click)="openPreApprovalPendingModal()" class="user_details">
+      <ion-card-content>
+        <div class="cardContent">
+          <div class="associateHead">
+            <div class="profile">
+              <ion-avatar>
+                <img src="{{item.profilePicURL}}" onError="this.src='assets/imgs/user.png'"/>
+                <!-- assets/imgs/madison.jpg  style="width:100%;height:100%;display: block; margin-left: auto;margin-right: auto;"-->
+              </ion-avatar>
+            </div>
+            <div class="associateDetails">
+              <ion-list>
+                <ion-grid>
+                  <ion-row>
+                    <ion-col>
+                      <h2 class="font-title"><strong class="user-name">{{item.staffName | titlecase}}</strong></h2>
+                    </ion-col>
+                  </ion-row>
+                  <ion-row>
+                    <ion-col class="font-subtitle" col-3>Task Name</ion-col>
+                    <ion-col class="font-subtitle" col-9>{{item.taskName}}</ion-col>
+                  </ion-row>
+                  <ion-row>
+                    <ion-col class="font-subtitle" col-3>Project</ion-col>
+                    <ion-col class="font-subtitle" col-9>{{item.projectName}}</ion-col>
+                  </ion-row>
+                </ion-grid>
+              </ion-list>
+            </div>
+          </div>
+          <div class="hourDetails">
+            <ion-grid>
+              <ion-row>
+                <ion-col class="leftPane" col-6>
+                  <ion-grid>
+                    <ion-row>
+                      <ion-col no-padding class="font-subtitle" col-6>
+                        <span><strong>Applied Hours</strong></span>
+                      </ion-col>
+                      <ion-col no-padding class="font-subtitle" col-6>
+                        <span>{{item.appliedAddHrs}}</span>
+                      </ion-col>
+                    </ion-row>
+
+                    <ion-row>
+                      <ion-col no-padding class="font-subtitle" col-6>
+                        <strong>Applied Date</strong>
+                      </ion-col>
+                      <ion-col no-padding class="font-subtitle" col-6>
+                        <span>{{item.additionalHrsDate}}</span>
+                      </ion-col>
+                    </ion-row>
+
+                  </ion-grid>
+                </ion-col>
+
+                <ion-col class="rightPane" col-6>
+                  <ion-grid>
+                    <ion-row>
+                      <ion-col col-12>
+                        <button ion-button class="approve-btn" (click)="onApproved(); $event.stopPropagation() " round
+                          outline id="buttonColor"><span>Approve</span>
+                        </button>
+                        <button ion-button class="pending-btn" (click)="onReject(); $event.stopPropagation() " round
+                          fill="solid" color="light" id="buttonReject"><span>Reject</span>
+                        </button>
+                      </ion-col>
+                    </ion-row>
+                  </ion-grid>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </div>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</div>
+<div *ngIf="(type == 'approval-approved') || (type == 'approval-rejected') " class="pre-approval-approved">
+  <div class="approvalCard">
+    <ion-card (click)="openPreApprovalPendingModal()">
+      <div class="user-details">
+        <div class="user-img">
+          <ion-avatar class="user-avatar">
+            <img [src]="item.profilePicURL" onError="this.src='assets/imgs/user.png'">
+          </ion-avatar>
+          <img class="additional_hour_tag" *ngIf="item.additionalHrsFlag == 'YES'" src="assets/zents-imgs/additional_hour_tag.svg">
+        </div>
+        <div class="user-card">
+          <ion-grid>
+            <ion-row>
+              <ion-col col-12>
+                <span class="user-name">{{item.staffName |titlecase}}</span>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col col-4>
+                <span class="font-size">Project Name</span>
+              </ion-col>
+              <ion-col col-8>
+                <span class="font-size">{{item.projectName}}</span>
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col col-4>
+                <span class="font-size">Taskname</span>
+              </ion-col>
+              <ion-col col-8>
+                <span class="font-size">{{item.taskName |titlecase}}</span>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col col-4>
+                <span class="font-size">Billability</span>
+              </ion-col>
+              <ion-col col-8>
+                <span class="font-size">Billable</span>
+              </ion-col>
+            </ion-row>
+            <!-- <ion-row *ngIf="item.milestoneName != '0'">
+              <ion-col col-4>
+                <span class="font-size">Milestone</span>
+              </ion-col>
+              <ion-col col-8>
+                <span class="font-size">{{item.milestoneName ? item.milestoneName : '-' }}</span>
+              </ion-col>
+            </ion-row> -->
+          </ion-grid>
+        </div>
+      </div>
+      <div class="efforts-info">
+        <div class="efforts-detail">
+          <ion-grid style="padding: 0px">
+            <ion-row>
+              <ion-col col-6 style="padding-bottom: 0px">
+                <span class="darkColor">Applied Hours</span>
+              </ion-col>
+              <ion-col col-6 style="padding-bottom: 0px"><span class="font-small">{{item.appliedAddHrs}}</span></ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col col-6>
+                <span class="darkColor">Applied Date</span>
+              </ion-col>
+              <ion-col col-6><span class="font-small">{{item.additionalHrsDate}}</span></ion-col>
+            </ion-row>
+          </ion-grid>
+        </div>
+        <div *ngIf="item.comments?.length > 0" class="comment"><span class="darkColor">Comment </span> <span class="font-small">
+            {{
+            (item.comments?.length > 43 )? (item.comments | slice:0:43) :(item.comments) }} </span>
+          <span *ngIf="item.comments?.length > 43" class="more-text">...More</span>
+        </div>
+      </div>
+    </ion-card>
+  </div>
+</div>

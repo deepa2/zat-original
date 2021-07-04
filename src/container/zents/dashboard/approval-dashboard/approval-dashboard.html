@@ -1,0 +1,280 @@
+<!--
+  Generated template for the ApprovalDashboardPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header class="ts-header">
+
+  <ion-navbar>
+    <ion-title>Timesheet Approval</ion-title>
+
+    <!-- <ion-buttons end>
+      <button ion-button icon-only clear style="color: white" (click)="logout()">
+        <ion-icon name="log-out"></ion-icon>
+      </button>
+    </ion-buttons> -->
+
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+  <ion-segment *ngIf="data?.isApiCalled && this.isApprover == 'yes' && preApprovalPendingCount > 0" [(ngModel)]="data.selectedTab"
+    (ionChange)="segmentChanged(data?.selectedTab)">
+    <ion-segment-button value="approval-timesheet">Approval Timesheet</ion-segment-button>
+    <ion-segment-button value="pre-approval-timesheet">Pre-approval Timesheet</ion-segment-button>
+  </ion-segment>
+
+  <div *ngIf="data?.isApiCalled" [ngSwitch]="data?.selectedTab" class="parent">
+
+    <!-- Approval timesshet section -->
+    <div *ngSwitchCase="'approval-timesheet'">
+
+      <div class="chart-section-parent">
+        <div class="chart-section">
+          <div class="fusion-charts">
+            <fusioncharts width="100%" height="250" type="doughnut2d" [dataFormat]="json" [dataSource]="approvalDataSource">
+            </fusioncharts>
+          </div>
+
+          <div class="approvalStatus">
+            <div class="rounded-box-parent">
+              <div class="rounded-box">
+                <div class="parent">
+                  <div class="image">
+                    <img src="assets/zents-imgs/dash_approved_icon.svg">
+                  </div>
+                  <div class="text">
+                    <span class = "count-text" no-margin>{{approvalApprovedCount}}</span>
+                    <p class= "approve-text" no-margin>Approved</p>
+                  </div>
+                </div>
+              </div>
+              <div class="box-separator-line"></div>
+              <div class="rounded-box pending-box">
+                <div class="pending_status">
+                  <div class="image">
+                    <img src="assets/zents-imgs/dash_pending_icon.svg">
+                  </div>
+                  <div class="text ion-text-center">
+                    <span class = "count-text" no-margin>{{approvalPendingCount}}</span>
+                    <p class= "approve-text" no-margin>Pending</p>
+                  </div>
+                </div>
+              </div>
+              <div class="box-separator-line"></div>
+              <div class="rounded-box pending-box">
+                <div class="pending_status">
+                  <div class="image">
+                    <img src="assets/zents-imgs/dash_reject_icon.svg">
+                  </div>
+                  <div class="text ion-text-center">
+                    <span class = "count-text" no-margin>{{approvalRejectCount}}</span>
+                    <p class= "approve-text" no-margin>Rejected</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="filter-section-parent">
+        <div class="filter-section">
+          <ion-grid class="radio-group">
+            <ion-row radio-group [(ngModel)]="timesheet_type">
+              <ion-col col-4>
+                <ion-item lines="none">
+                  <ion-label>Pending</ion-label>
+                  <ion-radio item-left [checked]="true" value="pending"></ion-radio>
+                </ion-item>
+              </ion-col>
+              <ion-col col-4>
+                <ion-item lines="none">
+                  <ion-label>Approved</ion-label>
+                  <ion-radio item-left value="approved"></ion-radio>
+                </ion-item>
+              </ion-col>
+              <ion-col col-4>
+                <ion-item lines="none">
+                  <ion-label>Rejected</ion-label>
+                  <ion-radio item-left value="rejected"></ion-radio>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+
+          <div class="approval-filter-main">
+            <ion-list>
+              <ion-item class="borderColor" placeholder="Select Project">
+                <ion-select [(ngModel)]="selectedProject" interface="action-sheet">
+                  <ion-option *ngIf="projectAllocationList.length > 1" value="all">All Projects</ion-option>
+                  <ion-option *ngFor="let project of projectAllocationList" [value]="project.projectId" >{{project.projectName}}</ion-option>
+                </ion-select>
+              </ion-item>
+
+              <ion-grid no-padding margin-top>
+                <ion-row>
+                  <ion-col no-padding class="dateBorderColor marginRight">
+                    <ion-datetime displayFormat="DD-MMM-YYYY" pickerFormat="DD MMM YYYY" placeholder="Start Date"
+                      [(ngModel)]="tsStartDate" [min]="tsMinDate" [max]="tsMaxDate" (ionChange)="onStartDateSelect($event)">
+                    </ion-datetime>
+                  </ion-col>
+                  <ion-col no-padding class="dateBorderColor">
+                    <ion-datetime displayFormat="DD-MMM-YYYY" pickerFormat="DD MMM YYYY" [(ngModel)]="tsEndDate"
+                      placeholder="End Date" [min]="tsMinDate" [max]="tsMaxDate"  (ionChange)="onEndDateSelect($event)"></ion-datetime>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+              <div class="error-msg" *ngIf="compareFlag">
+                <sub>*</sub> End date should be greater than start date
+              </div>
+              <ion-item class="borderColor" margin-top>
+                <ion-select [(ngModel)]="selectedBillablity" placeholder="Select Category" interface="action-sheet">
+                  <ion-option value="ALL">All</ion-option>
+                  <ion-option value="YES">Billable</ion-option>
+                  <ion-option value="NO">Non Billable</ion-option>
+                  <ion-option value="OVERTIME">Overtime</ion-option>
+                </ion-select>
+              </ion-item>
+
+              <div class="submitBtn" float-center margin-top>
+                <button class="buttonColor" ion-button round outline (click)="ApprovalfilterList()">View Timesheets</button>
+              </div>
+            </ion-list>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+    <!-- Pre-Approval timesshet section -->
+    <div *ngSwitchCase="'pre-approval-timesheet'">
+      <div class="chart-section-parent">
+        <div class="chart-section">
+          <div class="fusion-charts">
+            <fusioncharts width="100%" height="250" type="doughnut2d" [dataFormat]="json" [dataSource]="preApprovalDataSource">
+            </fusioncharts>
+          </div>
+
+          <div class="approvalStatus">
+            <div class="rounded-box-parent">
+              <div class="rounded-box">
+                <div class="parent">
+                  <div class="image">
+                    <img src="assets/zents-imgs/dash_approved_icon.svg">
+                  </div>
+                  <div class="text">
+                    <span class = "count-text" no-margin>{{preApprovalApprovedCount}}</span>
+                    <p class= "approve-text" no-margin>Approved</p>
+                  </div>
+                </div>
+              </div>
+              <div class="box-separator-line"></div>
+              <div class="rounded-box pending-box">
+                <div class="pending_status">
+                  <div class="image">
+                    <img src="assets/zents-imgs/dash_pending_icon.svg">
+                  </div>
+                  <div class="text ion-text-center">
+                    <span class = "count-text" no-margin>{{preApprovalPendingCount}}</span>
+                    <p class= "approve-text" no-margin>Pending</p>
+                  </div>
+                </div>
+              </div>
+              <div class="box-separator-line"></div>
+              <div class="rounded-box pending-box">
+                <div class="pending_status">
+                  <div class="image">
+                    <img src="assets/zents-imgs/dash_reject_icon.svg">
+                  </div>
+                  <div class="text ion-text-center">
+                    <span class = "count-text" no-margin>{{preApprovalRejectCount}}</span>
+                    <p class= "approve-text" no-margin>Rejected</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="filter-section-parent">
+        <div class="filter-section">
+          <ion-grid class="radio-group">
+            <ion-row radio-group [(ngModel)]="pre_timesheet_type">
+              <ion-col col-4>
+                <ion-item lines="none">
+                  <ion-label>Pending</ion-label>
+                  <ion-radio item-left [checked]="true" value="pending"></ion-radio>
+                </ion-item>
+              </ion-col>
+              <ion-col col-4>
+                <ion-item lines="none">
+                  <ion-label>Approved</ion-label>
+                  <ion-radio item-left value="approved"></ion-radio>
+                </ion-item>
+              </ion-col>
+              <ion-col col-4>
+                <ion-item lines="none">
+                  <ion-label>Rejected</ion-label>
+                  <ion-radio item-left value="rejected"></ion-radio>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+
+          <div class="approval-filter-main">
+            <ion-list>
+              <ion-item class="borderColor" placeholder="Select Project">
+                <ion-select [(ngModel)]="preSelectedProject" interface="action-sheet">
+                  <!-- <ion-option *ngIf="preApprovalProjectAllocationList.length > 1 || true" value="all">All Projects</ion-option> -->
+                  <ion-option *ngFor="let project of preApprovalProjectAllocationList" [value]="project.projectId" >{{project.projectName}}</ion-option>
+                </ion-select>
+              </ion-item>
+
+              <ion-grid no-padding margin-top>
+                <ion-row>
+                  <ion-col no-padding class="dateBorderColor marginRight">
+                    <ion-datetime displayFormat="DD-MMM-YYYY" pickerFormat="DD MMM YYYY" placeholder="Start Date"
+                      [(ngModel)]="preTsStartDate" [min]="preTsMinDate" [max]="preTsMaxDate" (ionChange)="onPreStartDateSelect($event)">
+                    </ion-datetime>
+                  </ion-col>
+                  <ion-col no-padding class="dateBorderColor">
+                    <ion-datetime displayFormat="DD-MMM-YYYY" pickerFormat="DD MMM YYYY" [(ngModel)]="preTsEndDate"
+                      placeholder="End Date" [min]="preTsMinDate" [max]="preTsMaxDate"  (ionChange)="onPreEndDateSelect($event)"></ion-datetime>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+              <div class="error-msg" *ngIf="preCompareFlag">
+                <sub>*</sub> End date should be greater than start date
+              </div>
+              <ion-item class="borderColor" margin-top>
+                <ion-select [disabled] = "true" [(ngModel)]="preSelectedBillablity" placeholder="Select Category" interface="action-sheet">
+                  <ion-option  value="YES">Billable</ion-option>
+                </ion-select>
+              </ion-item>
+
+              <div class="submitBtn" float-center margin-top>
+                <button class="buttonColor" ion-button round outline (click)="preApprovalFilterList()">View Timesheets</button>
+              </div>
+            </ion-list>
+          </div>
+        </div>
+      </div>
+
+      <!-- <div class="pre-filter-section ">
+
+        <div class="approval-filter-main">
+          <div class="submitBtn">
+            <button ion-button round (click)="preApprovalFilterList()" class="buttonColor">View Pending Timesheets</button>
+          </div>
+        </div>
+      </div> -->
+    </div>
+  </div>
+
+</ion-content>

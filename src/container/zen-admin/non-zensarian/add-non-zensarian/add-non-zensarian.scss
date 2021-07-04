@@ -1,0 +1,38 @@
+page-add-non-zensarian {
+  .padding-10 {
+    padding: 10px;
+  }
+  .item-md {
+    padding-left: 0px;
+    border-right: 0px;
+  }
+  .form-container {
+    padding: 15px;
+  }
+  .form-label {
+    font-weight: 500;
+  }
+  .btn-style {
+    background: transparent;
+  }
+  .error-msg {
+    color: red;
+    margin-top: 2px;
+    display: block;
+    // padding: 0 10px;
+  }
+  .add-non-nz-img{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid #a6c5e3;
+    overflow: hidden;
+  }
+  .add-non-nz-logo{
+    border-bottom: 1px solid #dedede;
+  }
+  .border-btm-none .item-inner{
+    border-bottom: none!important;
+    
+  }
+}

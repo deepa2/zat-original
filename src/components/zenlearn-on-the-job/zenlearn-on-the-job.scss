@@ -1,0 +1,54 @@
+zenlearn-on-the-job {
+    .background{
+        background: white;
+    }
+    .container-header{
+        color: #fff;
+        background: linear-gradient(90deg, #0EA2C8, #0E7AC7);
+        padding: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .sectionHeading{
+        font-size: 1.1em;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        img{
+            width: 40px;
+        }
+    }
+   
+    .list-details{
+        padding: 13px;
+    }
+    .user-comments{
+        height: 150px;
+        padding: 13px;
+        background: #F6F8FF;
+        margin-bottom: 15px;
+    }
+    .commentsText{
+        margin-bottom: 5px;
+    }
+    .insideTextarea{
+        height: 120px;height: 100px;
+        background: #fff;
+        border: 1px solid #e7ecfd;
+    }
+    .btnDiv{
+        text-align: center;
+    }
+    .btnStyle{
+        border-radius: 25px;
+    }
+    ion-icon.close {
+        font-size: 26px;
+        margin-right: 10px;
+    }
+    ion-col.dap-value.col {
+        font-weight: 300;
+      }
+    
+}

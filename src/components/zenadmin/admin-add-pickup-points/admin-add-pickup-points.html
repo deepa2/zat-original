@@ -1,0 +1,80 @@
+<ion-header class="header-container">
+  <ion-navbar>
+    <ion-title>Pickup Points</ion-title>
+    <!-- <ion-buttons end>
+      <div class="title-container">
+        <ion-icon slot="start" name="close" (click)="dismiss()" class="cancel-btn"></ion-icon>
+      </div>
+    </ion-buttons> -->
+  </ion-navbar>
+</ion-header>
+<ion-content class="maincontent">
+  <div class="add-new-pickup-imgparent" (click)="gotoAddNewpickUpPt()">
+    <div>
+      <img class="add-new-pt-img" src="assets/zenAdmin/add-newpickup-img.svg" onerror="this.src='./assets/imgs/annual-status.svg'" />
+    </div>
+    <div class="add-pickup-pt-txt">
+      Add New Pickup Point
+    </div>
+  </div>
+  <ion-list>
+    <ion-item-group reorder="true" (ionItemReorder)="reorderItems($event)">
+      <ng-container *ngFor="let pickupItem of pickupPtList;let indexOfelement=index; let lastElement=last;">
+        <ion-item no-lines *ngIf="!lastElement">
+          <div>
+            <ion-row class="pickup-pts-list">
+              <ion-col col-3 class="timings-container">
+                <div>
+                  <img class="clock-img" src="assets/zenAdmin/clock-pickup-pt.svg" onerror="this.src='assets/imgs/annual-status.svg'" />
+                </div>
+                <div class="time-data">
+                  {{pickupItem?.arrivalTime}}
+                </div>
+              </ion-col>
+              <ion-col col-5 class="pickup-pt-details-col">
+                <div class="pickpt-name">
+                  {{pickupItem?.stopName}}
+                </div>
+                <div class="cost">
+                  {{pickupItem?.cost|currency:'INR'}}
+                </div>
+              </ion-col>
+              <ion-col col-1 class="more-icon-col">
+                <span class="iconSize" (click)="popOverMenu($event,pickupItem,indexOfelement)">
+                  <ion-icon name="more"></ion-icon>
+                </span>
+              </ion-col>
+            </ion-row>
+          </div>
+
+        </ion-item>
+      </ng-container>
+    </ion-item-group>
+    <ion-item no-lines>
+      <div>
+        <ion-row class="pickup-pts-list">
+          <ion-col col-3 class="timings-container">
+            <div>
+              <img class="clock-img" src="assets/zenAdmin/clock-pickup-pt.svg" onerror="this.src='assets/imgs/annual-status.svg'" />
+            </div>
+            <div class="time-data">8.30 AM</div>
+          </ion-col>
+          <ion-col col-5 class="pickup-pt-details-col">
+            <div class="pickpt-name">Zensar Campus</div>
+            <div class="cost"> {{"0.0"|currency:'INR'}}</div>
+          </ion-col>
+          <!-- <ion-col col-1 class="more-icon-col">
+            <span class="iconSize" (click)="popOverMenu($event,pickupItem,indexOfelement)">
+              <ion-icon name="more"></ion-icon>
+            </span>
+          </ion-col> -->
+        </ion-row>
+      </div>
+    </ion-item>
+  </ion-list>
+</ion-content>
+<ion-footer class="footer-container">
+  <div class="text-center">
+    <button class="submitBtn" ion-button round (click)="saveDetails()">Save</button>
+  </div>
+</ion-footer>

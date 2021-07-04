@@ -1,0 +1,27 @@
+<ion-slides slidesPerView="2" spaceBetween="5px" *ngIf="type == 'billability' || type == 'formBillability'">
+  <ion-slide *ngFor="let suggestion of suggestionList" (click)="selectedSuggestion(suggestion)">
+    <span [ngStyle]="{'color': selectedValue == suggestion.value ? '#0EA2C8' : 'black' }">{{suggestion.name}}</span>
+  </ion-slide>
+</ion-slides>
+
+<ion-slides slidesPerView="2.5" spaceBetween="5px" *ngIf="type == 'formMilestone'">
+  <ion-slide *ngFor="let suggestion of suggestionList | slice:0:2" (click)="selectedSuggestion(suggestion)">
+    <span [ngStyle]="{'color': matchMilestone(selectedValue,suggestion) ? '#0EA2C8' : 'black' }">{{suggestion.milestoneName}}</span>
+  </ion-slide>
+  <button class="moreBtn" (click)="openModal()" *ngIf="suggestionList?.length > 2">More</button>
+</ion-slides>
+
+<ion-slides slidesPerView="5.5" spaceBetween="5px" *ngIf="type == 'hour' || type == 'formHour'">
+  <ion-slide *ngFor="let suggestion of suggestionList  | slice:6:11" (click)="selectedSuggestion(suggestion)">
+    <span [ngStyle]="{'color': selectedValue == suggestion ? '#0EA2C8' : 'black' }">{{suggestion}}</span>
+  </ion-slide>
+  <ion-slide class="moreBtn" *ngIf="suggestionList.length > 0 && (type == 'hour' || type == 'formHour')">
+    <button (click)="openModal()">more</button>
+  </ion-slide>
+</ion-slides>
+
+<ion-slides slidesPerView="4" spaceBetween="5px" *ngIf="type == 'minute'|| type == 'formMinute'">
+  <ion-slide *ngFor="let suggestion of suggestionList" (click)="selectedSuggestion(suggestion)">
+    <span [ngStyle]="{'color': selectedValue == suggestion ? '#0EA2C8' : 'black' }">{{suggestion}}</span>
+  </ion-slide>
+</ion-slides>

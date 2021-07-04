@@ -1,0 +1,205 @@
+<!-- Generated template for the DirectReportiesComponent component -->
+<ion-header>
+  <ion-navbar>
+    <ion-title center *ngIf="(wholeData?.key == 'No. of Direct Reports' || wholeData?.key == 'Overall Experience')">
+      <img class="back-btn" (click)="close()" src="assets/imgs/back-arrow.svg" />
+
+      <span style="margin-left: 10px;">{{wholeData?.key}} : {{wholeData?.value}}</span>
+    </ion-title>
+    <ion-title center *ngIf="(wholeData?.key != 'No. of Direct Reports' &&  wholeData?.key != 'Overall Experience')">
+      <img class="back-btn" (click)="close()" src="assets/imgs/back-arrow.svg" />
+      <span style="margin-left: 10px;">{{wholeData?.key}}</span>
+    </ion-title>
+    <!-- <ion-buttons end>
+      <button ion-button icon-only (click)="close()">
+        <ion-icon ios="ios-close" md="md-close"></ion-icon>
+      </button>
+    </ion-buttons> -->
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="bg" [ngClass]="{'bgWhite':(type == 'talentMetric' || type == 'award')}">
+  <div *ngIf="type=='reportees'">
+    <main class="container" *ngFor="let associateData of detailedData">
+      <div class="user-details">
+        <img class="user-img" [src]="associateData?.profilePicUrl">
+        <div class="user">
+          <span class="user-name">{{associateData?.userName}}</span>
+          <span class="designation">{{associateData?.designation}}</span>
+        </div>
+
+      </div>
+      <div class="team">
+        <span class="teamSize"> Team Size </span>
+        <span class="associate-number">{{associateData?.teamSize}}</span>
+      </div>
+    </main>
+  </div>
+
+  <div *ngIf="type == 'education'">
+    <div class="education-details" *ngFor="let educationDetails of detailedData">
+      <img class="mainImg" [src]="educationDetails?.icon">
+      <div class="user">
+        <span class="degree">{{educationDetails?.key}}</span>
+        <span class="collage-name">{{educationDetails?.value}}</span>
+        <div class="collage-details">
+          <img class="childImg" src="assets/imgs/userprofile-calender.svg">
+          <span class="passing-year">{{educationDetails?.passingYear}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="type == 'overallExperience'">
+    <div class="overall-exp-heading">Prior 2 Companies Details</div>
+
+    <div class="education-details" *ngFor="let experienceData of detailedData">
+      <img class="mainImg" [src]="experienceData?.companyIcon">
+      <div class="user">
+        <span style="margin-left: 5px;">{{experienceData?.previousEmployer}}</span>
+
+        <div class="overall-exp-details">
+          <img class="childImg" src="assets/imgs/userprofile-calender.svg">
+          <span class="ft-9 mr-left-5">Duration: </span>
+          <div class="overall-exp-val">
+            <span>{{experienceData?.previousStartDate}} -
+              {{experienceData?.previousEndDate}}</span><span>{{experienceData?.previousExperience}}</span>
+          </div>
+
+        </div>
+        <div class="overall-exp-details">
+          <img class="childImg" src="assets/imgs/Userprofile-designation.svg">
+          <span class="ft-9 mr-left-5">Designation: </span> <span
+            class="overall-exp-previous">{{experienceData?.previousDesgination}}</span>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="type == 'talentMetric'">
+    <div class="talent-matric-conatiner">
+      <div *ngFor="let talentInfo of detailedData?.talent" class="main-data"
+        [ngClass]="{'bgtopTalent':talentInfo.key == 'Top Talent', 'bgcriticalTalent':talentInfo.key == 'Critical Talent'}">
+        <img [src]="talentInfo.icon" >
+        <div class="sub-container">
+          <span>{{talentInfo.key}}</span>
+          <span>{{talentInfo.value}}</span>
+        </div>
+
+
+      </div>
+
+    </div>
+
+    <div *ngIf="detailedData?.performance" class="performance-container">
+      <div *ngFor="let performance of detailedData?.performance?.peformanceDetail index as i"
+        class="performance-details" [ngClass]="{'performace-heading': i==0}">
+        <img [src]="performance.icon">
+        <div class="sub-section">
+          <span>{{performance.key}}</span>
+          <span class="talent-metric-ftColor">{{performance.value}}</span>
+        </div>
+
+      </div>
+
+      <div style="display: flex; ">
+
+        <div *ngFor="let rating of detailedData?.performance?.rating; index as i"
+          class="talent-metrix-performance"
+          [ngClass]="{'width-50':detailedData?.performance?.rating.length == 2}">
+          <div class="talent-metric-sub">
+            <div style="padding-left: 2px;">
+              {{rating.key}}
+            </div>
+            <div  class="talent-metric-values">
+              <img src="assets/imgs/userprofile-calender.svg">
+              <span style="margin-left: 7px; color: #535353;">{{rating.value}}</span>
+            </div>
+          </div>
+          <span *ngIf="detailedData?.performance?.rating.length != i+1" style="border: 1px dotted #E8E8E8;"></span>
+
+
+        </div>
+      </div>
+    </div>
+
+
+    <div *ngIf="detailedData?.award" class="award-conatiner">
+      <div class="award-details">
+        <img [src]="detailedData?.award.icon">
+        <div class="column-flex">
+          <span class="mr-btm-3">{{detailedData?.award.key}}</span>
+          <span style="font-weight: 100;">{{detailedData?.award.value}}</span>
+        </div>
+      </div>
+      <div *ngFor="let values of detailedData?.award.valueList" class="talent-metric-award">
+        <img src="assets/imgs/user-profile-award.svg" >
+        <p class=" mr-left-10 talent-metric-ftColor">{{values.key}}</p>
+      </div>
+
+    </div>
+  </div>
+
+
+  <div *ngIf="detailedData?.careerAspiration">
+    <div *ngFor="let aspiration of detailedData?.careerAspiration" class="career-aspiration-container">
+      <div class="aspiration-details">
+        <img [src]="aspiration.icon" >
+        <p>{{aspiration.key}}</p>
+      </div>
+     
+      <ion-row *ngIf="aspiration.shortTermCareerAspiration" class="talent-metric-pd-5">
+        <ion-col col-5>
+          Short Term
+        </ion-col>
+        <ion-col col-7 class="talent-metric-ftColor">
+          {{aspiration.shortTermCareerAspiration}}
+        </ion-col>
+      </ion-row>
+      <ion-row *ngIf="aspiration.longTermCareerAspiration" class="talent-metric-pd-5">
+        <ion-col col-5>
+          Long Term
+        </ion-col>
+        <ion-col col-7 class="talent-metric-ftColor">
+          {{aspiration.longTermCareerAspiration}}
+        </ion-col>
+      </ion-row>
+      <ion-row *ngIf="aspiration.apraiseeComment" class="talent-metric-pd-5">
+        <ion-col col-5>
+          Apraisee Comment
+        </ion-col>
+        <ion-col col-7 sclass="talent-metric-ftColor">
+          {{aspiration.apraiseeComment}}
+        </ion-col>
+      </ion-row>
+      <ion-row *ngIf="aspiration.mobilityConstraint" class="talent-metric-pd-5">
+        <ion-col col-5>
+          Mobility Constraint
+        </ion-col>
+        <ion-col col-7 class="talent-metric-ftColor">
+          {{aspiration.mobilityConstraint}}
+        </ion-col>
+      </ion-row>
+
+    </div>
+  </div>
+
+  <div *ngIf="type=='award'" class="award-page">
+   
+
+    <div class="award-details">
+      <img [src]="detailedData?.icon">
+      <div class="column-flex">
+        <span class="mr-btm-3">{{detailedData?.key}}</span>
+        <span class="award-value">{{detailedData?.value}}</span>
+      </div>
+    </div>
+    <div *ngFor="let values of detailedData?.valueList" class="awad-details">
+      <img src="assets/imgs/user-profile-award.svg">
+      <p class="mr-left-10">{{values.key}}</p>
+    </div>
+
+  </div>
+
+</ion-content>

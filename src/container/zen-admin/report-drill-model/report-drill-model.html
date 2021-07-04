@@ -1,0 +1,26 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>{{titleName}}</ion-title>
+        <ion-buttons end>
+            <button class="btn-style" (click)="dismiss()" end>
+                <ion-icon name="close"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+<ion-content>
+        <ion-item>
+            <ion-label>Year selection</ion-label>
+            <ion-datetime displayFormat="YYYY" pickerFormat="YYYY" [(ngModel)]="year" (ionChange)="_getYear($event)">
+            </ion-datetime>
+        </ion-item>
+    <ion-item>
+        <ion-label>Month selection</ion-label>
+        <ion-datetime displayFormat="MMMM" pickerFormat="MMMM" [(ngModel)]="month" [monthValues]="monthShow"
+            [disabled]="showMonth" (ionChange)="_geMonth($event)"></ion-datetime>
+    </ion-item>
+
+    <div class="text-center reportsubmitBtn" (click)="reportGenrationData()">
+        <button class="" ion-button round>Generate Report</button>
+    </div>
+</ion-content>

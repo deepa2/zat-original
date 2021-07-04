@@ -1,0 +1,74 @@
+<div class="mainContanier">
+    <ion-card class="queryCard">
+
+        <div class="padding2">
+
+            <div class="justify-spac-ar-align-cent attachContainer">
+                <div class="width90" *ngIf="item.userDetails && showOptions">
+                    <profile-item [user]="item.userDetails" [createdDate]="item.questionRaiseDate"></profile-item>
+                </div>
+                <div *ngIf="item.isAttachmentAvailable && !detail" class="attachmentIcon">
+                    <ion-icon class="attach" name="attach"></ion-icon>
+                </div>
+
+                <!-- <div *ngIf="item.isAttachmentAvailable && detail" class="attachmentIcon">
+            <ion-icon class="attach" name="attach"></ion-icon>
+        </div> -->
+
+            </div>
+
+        </div>
+
+        <div class="container">
+
+            <div>
+                <p class="queryContent" *ngIf="item.question" [class.noEllipsis]='detail'
+                    [innerHTML]="item.question | emoji">
+                </p>
+                <p class="queryContent" *ngIf="item.answer" [class.noEllipsis]='detail'
+                    [innerHTML]="item.answer | emoji  ">
+                </p>
+                <p class="queryContent" *ngIf="item.entityDesc" [class.noEllipsis]='detail'
+                    [innerHTML]="item.entityDesc | emoji">
+                </p>
+                <!-- <p class="queryContent" [class.noEllipsis]='detail' [innerHTML]= "item?.answer | emoji ">
+                    </p> -->
+            </div>
+
+
+            <div *ngIf="item.isAttachmentAvailable && detail">
+                <multimedia type="list" [multimediaItems]='item.attachmentList'></multimedia>
+            </div>
+
+        </div>
+
+        <div class="queryInfo">
+            <ion-row>
+                <div class="justify-spac-ar-align-cent width100 padding-bottom7">
+                    <div class="flex">
+                        <div class="flex" *ngIf="item.questionRaiseDate || item.entityDate" center text-left>
+                            <span> <img class="imageSize" src="assets/imgs/Calender.svg" /></span>
+                            <div class="date">{{formatDate(item.questionRaiseDate || item.entityDate) | date}}</div>
+                        </div>
+                        <div *ngIf="item.questionRaiseDate || item.entityDate">
+                            <div class="date">
+                                {{formatDate(item.questionRaiseDate || item.entityDate) | date:'shortTime' }}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div *ngIf="item.status" padding-right center text-right [ngStyle]="{'color':item.statusColor}">
+
+                        <div class="circle-cont">
+                            <div class="center outer-circle margin-right5" [ngStyle]="{'background': item.statusColor}">
+                                <div class="inner-circle"></div>
+                            </div>
+                            <div class="status">{{item.status}}</div>
+                        </div>
+                    </div>
+                </div>
+            </ion-row>
+        </div>
+
+    </ion-card>
+</div>

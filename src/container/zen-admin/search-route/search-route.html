@@ -1,0 +1,75 @@
+<ion-header>
+    <ion-navbar>
+        <ion-toolbar>
+            <ion-searchbar debounce="500" (ionInput)="onSearchRoute()" placeholder="Search Route/Pickup point"
+                [(ngModel)]="searchInputText" (ionClear)="onCancel($event)"></ion-searchbar>
+        </ion-toolbar>
+    </ion-navbar>
+</ion-header>
+
+<ion-content class="search-route-content" [ngClass]="{'mt-35': routeList?.length == '0'}">
+
+    <div *ngIf="routeList?.length > '0'" class="segment-header" slot="fixed">
+        <ion-segment [(ngModel)]="segmentModel">
+            <ion-segment-button value="route" class="custom-segment">Route</ion-segment-button>
+            <ion-segment-button value="pickupPoint" class="custom-segment">Pickup Point</ion-segment-button>
+        </ion-segment>
+    </div>
+
+    <ion-card class="no-data-parent" *ngIf="routeList?.length <= '0'">
+        <div class="no-data-found">
+            <span *ngIf="showNoDatatxt">No Route(s) or Pickup point(s) Found</span>
+        </div>
+        <div class="no-route-bg">
+            <img class="" src="assets/zenAdmin/search-route-bg.svg" onerror="this.src='assets/imgs/annual-status.svg'" />
+        </div>
+    </ion-card>
+
+    <div *ngIf="routeList?.length > '0'" class="route-details-parent">
+        <div [ngSwitch]="segmentModel">
+            <div *ngFor="let routeItem of routeList; index as i">
+                <div *ngSwitchCase="'route'" class="route-container" (click)="gotoRouteDetails(routeItem?.busRouteId,routeItem)">
+                    <div class="list-item">
+                        <img class="routeImg" *ngIf="i % 5 == '0'" src="assets/zenAdmin/route-{{i % 5}}.svg" onerror="this.src='assets/imgs/annual-status.svg'" />
+                        <img class="routeImg" *ngIf="i % 5 == '1'" src="assets/zenAdmin/route-{{i % 5}}.svg" onerror="this.src='assets/imgs/annual-status.svg'" />
+                        <img class="routeImg" *ngIf="i % 5 == '2'" src="assets/zenAdmin/route-{{i % 5}}.svg" onerror="this.src='assets/imgs/annual-status.svg'" />
+                        <img class="routeImg" *ngIf="i % 5 == '3'" src="assets/zenAdmin/route-{{i % 5}}.svg" onerror="this.src='assets/imgs/annual-status.svg'" />
+                        <img class="routeImg" *ngIf="i % 5 == '4'" src="assets/zenAdmin/route-{{i % 5}}.svg" onerror="this.src='assets/imgs/annual-status.svg'" />
+                        <div class="route-details">
+                            <div class="colorGrey route-title font14">Route:</div>
+                            <div class="padding-lftRt5 font15">{{routeItem?.routeName ? routeItem?.routeName: '-'}}<span *ngIf="routeItem?.isShuttleRoute" class="colorGrey">:Shuttle</span></div>
+                        </div>
+                        <div>
+                            <ion-icon name="ios-arrow-forward"></ion-icon>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div *ngSwitchCase="'pickupPoint'" class="pickup-container">
+                <div class="pickup-point-item" *ngFor="let pickupItem of routeList;index as i" (click)="gotoRouteDetails(pickupItem.busRouteId,pickupItem)">
+                    <img class="routeImg" *ngIf="i % 5 == '0'" src="assets/zenAdmin/pickup-{{i % 5}}.svg" onerror="this.src='assets/imgs/annual-status.svg'" />
+                    <img class="routeImg" *ngIf="i % 5 == '1'" src="assets/zenAdmin/pickup-{{i % 5}}.svg" onerror="this.src='assets/imgs/annual-status.svg'" />
+                    <img class="routeImg" *ngIf="i % 5 == '2'" src="assets/zenAdmin/pickup-{{i % 5}}.svg" onerror="this.src='assets/imgs/annual-status.svg'" />
+                    <img class="routeImg" *ngIf="i % 5 == '3'" src="assets/zenAdmin/pickup-{{i % 5}}.svg" onerror="this.src='assets/imgs/annual-status.svg'" />
+                    <img class="routeImg" *ngIf="i % 5 == '4'" src="assets/zenAdmin/pickup-{{i % 5}}.svg" onerror="this.src='assets/imgs/annual-status.svg'" />
+
+                    <div class="pickup-details">
+                        <div class="padding-lftRt5 font14">{{pickupItem?.stopName}} <span *ngIf="pickupItem?.isShuttleRoute" class="colorGrey">:Shuttle</span></div>
+                        <div class="colorGrey padding5">Route: {{pickupItem?.routeName ? pickupItem?.routeName: '-'}}</div>
+                    </div>
+
+                    <div class="time-details-container">
+                        <img class="clock-img" *ngIf="pickupItem?.arrivalTime && pickupItem?.departureTime && (pickupItem?.arrivalTime != '-' || pickupItem?.departureTime != '-')"
+                            src="assets/zenAdmin/wall-clock.svg" onerror="this.src='assets/imgs/annual-status.svg'" />
+                        <div class="time-value" *ngIf="pickupItem?.arrivalTime && pickupItem?.arrivalTime != '-'">{{pickupItem?.arrivalTime}}</div>
+                        <div class="time-value" *ngIf="pickupItem?.departureTime && pickupItem?.departureTime != '-'">{{pickupItem?.departureTime}}</div>
+                        <div>
+                            <ion-icon name="ios-arrow-forward" class="arrowForward"></ion-icon>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ion-content>

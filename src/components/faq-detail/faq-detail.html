@@ -1,0 +1,38 @@
+<ion-content padding-vertical>
+    
+    <div class="container">
+        <div class="demo">
+            <ion-header class="faq-modal-header">
+                <ion-navbar>
+                    <ion-title class="text-color">{{pageTitle}} FAQs</ion-title>
+                    <ion-buttons end>
+                        <button ion-button icon-only (click)="dismiss()">
+                            <ion-icon ios="ios-close" md="md-close"></ion-icon>
+                        </button>
+                    </ion-buttons>
+                </ion-navbar>
+            </ion-header>
+        </div>
+        <div class="sub-container">   
+            <!-- <ion-spinner *ngIf="loading$ | async"></ion-spinner> -->
+
+            <ion-list *ngIf="!(loading$ | async)">
+                <ion-item class="faqDetailCard" *ngFor="let cardDetail of information">
+                    <ion-row>
+                        <ion-col class="quesLabel">Question</ion-col>
+                    </ion-row>
+                    <ion-row>
+                        <ion-col><span class="quesAns">{{cardDetail.count}}{{cardDetail.question}}</span></ion-col>
+                    </ion-row>
+
+                    <ion-row>
+                        <ion-col class="ansLabel">Answer</ion-col>
+                    </ion-row>
+                    <ion-row>
+                        <ion-col><span class="quesAns">{{cardDetail.answer}}</span></ion-col>
+                    </ion-row>
+                </ion-item>
+            </ion-list>
+        </div>
+    </div>
+</ion-content>

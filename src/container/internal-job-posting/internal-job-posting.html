@@ -1,0 +1,99 @@
+<ion-header>
+  <ion-navbar>
+
+    <ion-title class="pageTitile" *ngIf="jobKeys.length > 1">{{pageTitle}}</ion-title>
+    <ion-title class="pageTitile" *ngIf="jobKeys.length == 1">{{pageTitle}} - {{jobTypeName}}</ion-title>
+
+    <ion-buttons end>
+
+      <button ion-button icon-only (click)="presentOptions($event)">
+        <ion-icon name="more"></ion-icon>
+      </button>
+    </ion-buttons>
+
+  </ion-navbar>
+  <ion-toolbar>
+    <ion-searchbar [(ngModel)]="searchInput" animated placeholder="Search job"
+      [formControl]="searchControl" (ionInput)="getItems($event)"></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+
+
+
+  <div ion-fixed class="parent" *ngIf="jobKeys.length > 1">
+    <div [ngClass]="{'child2':jobKeys.length == 2,'child3':jobKeys.length > 2}" *ngFor="let tabs of jobKeys;index as i"
+      (click)="selectTab(i,tabs)" [class.selected]="selectedTab == i">
+      {{tabs.key}}
+    </div>
+  </div>
+
+  <div *ngFor="let tabs of jobs ;index as j">
+    <div style="margin-top: 56px;" *ngIf="selectedTab ==j">
+      <!-- <div style="margin-top:5px" text-center *ngIf="tabs.value.length == 0 && isServiceCalled"> -->
+         <div style="margin-top:5px" text-center *ngIf="tabs.value.length == 0">
+        No Data Available
+      </div>
+      
+      <!-- <div style="margin-top:5px" text-center *ngIf="(tabs.value | sortJobs: searchInput).length === 0">
+        No Data Available
+      </div> -->
+
+      <!-- use this code for local search just replace ng for with '*ngFor="let item of tabs.value | sortJobs: searchInput"' -->
+      <ion-card *ngFor="let item of tabs.value" class="cardPosition" (click)="presentIjpModal(item)">
+        <div class="row navBg">
+          <div class="column1 left center">
+            <img src="{{item.icon}}" class="iconSize">
+          </div>
+          <div class="column1 middle column justify-content-space-evenly">
+            <span class="jobTitle">{{item?.jobTitle}}</span>
+            <span *ngIf="(item?.jobCode != null || item?.jobCode != '')&&(item?.type != 'upcoming')"
+              class="jobCode">JobCode : {{item?.jobCode}}</span>
+
+          </div>
+          <div class="column1 right text-center">
+            <div class="alLogo">
+              <div class="logoImg">
+                <img src="assets/imgs/Zensar_ERD.png" class="imgPadding">
+              </div>
+              <div class="progressBarDiv">
+                <circle-progress [percent]="item.matchPercentage" [radius]="100" [outerStrokeWidth]="15"
+                  [innerStrokeWidth]="15" [space]="-14" [outerStrokeColor]="item.filledColor"
+                  [innerStrokeColor]="'#DDDDDD'" [titleFontSize]="24" [unitsFontSize]="24" [showSubtitle]="false"
+                  [animation]="true" [animationDuration]="300" [responsive]="true">
+                </circle-progress>
+              </div>
+            </div>
+            <div>{{item?.matchPercentage}}%</div>
+          </div>
+
+        </div>
+        <ion-card-content class="cardPadding">
+          <ion-row *ngFor="let itemDetails of item.jobDetails" class="jobDetails">
+            <ion-col col-2>
+              <img [src]="itemDetails.key" class="imgHtWT">
+            </ion-col>
+            <ion-col col-10>
+              <span>{{itemDetails.value}}</span>
+            </ion-col>
+          </ion-row>
+          <ion-item *ngIf="item?.type == 'upcoming'" class="notify">
+            <ion-label>Notify Me</ion-label>
+            <ion-toggle checked={{item?.isInterested}} (click)="$event.stopPropagation();"
+              (ionChange)="markInterest(item)"></ion-toggle>
+          </ion-item>
+          <div class="btn" *ngIf="item?.type != 'upcoming'">
+            <button ion-button outline item-right (click)="$event.stopPropagation();"
+              class="btnPosition">{{item?.applicationStatus}}</button>
+          </div>
+        </ion-card-content>
+      </ion-card>
+    </div>
+  </div>
+
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+
+</ion-content>

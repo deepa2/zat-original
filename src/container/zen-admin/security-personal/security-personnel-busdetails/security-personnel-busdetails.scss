@@ -1,0 +1,624 @@
+page-security-personnel-busdetails {
+    /* The actual content */
+    .content {
+        background-color: white;
+    }
+    .card {
+        // margin: 0px;
+        // width: 100%;
+        // background-color: white;
+    }
+    ion-segment {
+        // background-color: white;
+    }
+    ion-segment-button.custom-segment.segment-button {
+        text-transform: capitalize;
+        font-family: "Roboto";
+    }
+    .pick-up-content {
+        // padding: 15px 0px;
+        padding: 10px 0 15px 0px;
+        // background-color: #e1e7f3;
+        position: relative;
+        border-radius: 6px;
+        display: flex;
+        flex-direction: column;
+        align-items: baseline;
+    }
+    .background-color-white {
+        padding: 10px, 0;
+        background-color: white;
+    }
+    .background-color-gray {
+        background-color: #e1e7f3;
+    }
+    .userProfile-container {
+        background: #ffffff;
+        display: flex;
+        border-radius: 5px;
+        // margin: 5px;
+        margin: 10px 5px 10px 5px;
+    }
+    .img-container {
+        margin-right: 18px;
+        display: flex;
+        align-items: center;
+    }
+    img.user-icon {
+        width: 40px;
+        height: 40px;
+        margin-left: 5px;
+        border-radius: 50%;
+        border: 3px solid #c0e0ff;
+        overflow: hidden;
+        background: #c0e0ff;
+        // padding: 1px;
+    }
+    
+    .key-value {
+        width: calc(100% - 50px);
+        margin: 2px 0;
+    }
+    .user-info-container {
+        display: flex;
+        flex-direction: column;
+        padding-top: 8px;
+        width: 65%;
+    }
+    .card-header {
+        display: flex;
+        align-items: center;
+        padding: 10px;
+        background: #e1e7f3;
+    }
+    .incharge-img {
+        width: 40px;
+        margin-right: 10px;
+    }
+    .card-parent {
+        border-radius: 5px;
+        box-shadow: none;
+        border: 1px solid #e1e7f3;
+    }
+    .driver-info-container {
+        background: #ffffff;
+        display: flex;
+        // padding: 0 0px 10px 0px;
+        // margin: 0px 10px;
+        margin: 10px 5px 10px 5px;
+    }
+    .driver-img-container {
+        margin-right: 20px;
+    }
+    .driver-info-card {
+        display: flex;
+        flex-direction: column;
+        padding-top: 8px;
+        // width: 80%;
+        width: 70%;
+        padding: 0 5px;
+    }
+    .fontWeight {
+        font-weight: 400;
+    }
+    .phone-image {
+        height: 35px;
+        width: 35px;
+        padding: 2px;
+    }
+    .contactNo-image {
+        width: 37px;
+        height: 28px;
+        margin-left: 5px;
+        padding: 3px;
+    }
+    .contactimg-container {
+        display: flex;
+        align-items: center;
+        margin-right: 18px;
+    }
+    .bus-search-conatiner {
+        background: #e1e7f3;
+    }
+    .left-header {
+        width: 90%;
+        display: inline-block;
+    }
+    .right-header {
+        width: 5%;
+        padding-top: 5px;
+        display: inline-block;
+    }
+    // body
+    ion-card-content {
+        width: 100%;
+        display: flex;
+    }
+    .card-content-md {
+        // overwrite slide class
+        padding: 0px;
+    }
+    ion-card.card {
+        box-shadow: none;
+    }
+    .bus-icon {
+        width: 15%;
+    }
+    .bus-info {
+        padding-left: 5px;
+        width: 55%;
+    }
+    .bus-number {
+       
+        font-size: 1.1em;
+        font-weight: 400;
+    }
+    .small-icon {
+        height: 25px;
+        width: 25px;
+        margin-right: 5px;
+    }
+    .route-title {
+        color: grey;
+        font-size: 1em;
+        padding-left: 5px;
+    }
+    .route-name {
+        font-size: 1em;
+        padding-left: 8px;
+    }
+    .seats {
+        padding-left: 5px;
+     }
+    .common-alignmnt {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        margin-bottom: 5px;
+    }
+    .bus-title-div {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        // margin-bottom: 5px;
+    }
+    .seatIcon {
+        height: 25px;
+        width: 25px;
+        margin: 5px;
+    }
+    .available-seats {
+        width: 25%;
+        height: 25%;
+        display: flex;
+        justify-content: flex-start;
+        padding-top: 10px;
+        align-items: center;
+    }
+    .menudot-icon {
+        height: 16px;
+        width: 16px;
+    }
+    .arrival-seats-parent {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 70%;
+        .arrival-icon {
+            height: 20px;
+            width: 20px;
+        }
+        .arrival-title {
+            font-size: 1.1em;
+            padding-left: 5px;
+        }
+    }
+    .seats-container {
+        width: 50%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        margin-bottom: 5px;
+    }
+    .arrival-container {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        margin-bottom: 5px;
+    }
+    .in-time-div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 50%;
+        padding: 5px 5px;
+        border: 1px solid #b9c8e6;
+        border-bottom-left-radius: 5px;
+        border-top-left-radius: 5px;
+        border-right: 0px;
+        background: #ecf2fe;
+        .intimeTxt {
+            font-weight: normal;
+        }
+        span {
+            font-weight: 600;
+        }
+    }
+    .item-cover {
+        width: 0;
+        height: 0;
+    }
+    .out-time-div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 50%;
+        padding: 5px 5px;
+        border: 1px solid #b9c8e6;
+        border-bottom-right-radius: 5px;
+        border-top-right-radius: 5px;
+        background: #ecf2fe;
+        .outTimeTxt {
+            font-weight: normal;
+        }
+        span {
+            font-weight: 600;
+        }
+    }
+    .time-details-container {
+        display: flex;
+        align-items: center;
+        background: #ecf2fe;
+        border-radius: 5px;
+        margin-top: 5px;
+    }
+    ion-datetime.datetime {
+        padding: 5px !important;
+        width: 88px;
+        .datetime-text {
+            text-decoration: underline;
+        }
+    }
+    // pickup point css
+    .points-title-container {
+        display: flex;
+        align-items: center;
+        padding: 10px 5px;
+    }
+    .assetImg {
+        width: 25px;
+    }
+    .point-title {
+        padding: 5px;
+        font-size: 1.1em;
+        font-weight: 400;
+    }
+    .pickup-points-card {
+        padding-bottom: 10px;
+        border-radius: 6px;
+    }
+    /* The actual timeline (the vertical ruler) */
+    .timeline {
+        position: relative;
+        // max-width: 1200px;
+        // margin: 0 auto;
+    }
+    /* The actual timeline (the vertical ruler) */
+    .timeline::after {
+        content: "";
+        position: absolute;
+        width: 1px;
+        /* background-color: #11118a; */
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        margin-left: -1px;
+        /* border-bottom-style: dotted; */
+        /* border: 2px dotted grey; */
+        border-left-style: dotted;
+        border-color: grey;
+        margin-bottom: 3px;
+    }
+    /* The actual timeline (the vertical ruler) */
+    div:nth-child(0) .timeline:nth-child(0)::after {
+        content: "";
+        position: absolute;
+        width: 1px;
+        height: 4ch;
+        top: 4vh;
+        bottom: 0;
+        left: 50%;
+        margin-left: -1px;
+        border-left-style: dotted;
+        border-color: grey;
+        margin-bottom: 3px;
+    }
+    /* Container around content */
+    .container {
+        // padding: 10px 40px;
+        // padding: 2px 30px;
+        position: relative;
+        background-color: inherit;
+        width: 50%;
+    }
+    /* The circles on the timeline */
+    .container::after {
+        // content: '';
+        // position: absolute;
+        // width: 25px;
+        // height: 25px;
+        // right: -17px;
+        // background-color: #60ce60;
+        // border: 4px solid #dad4d4;
+        // top: 15px;
+        // border-radius: 50%;
+        // z-index: 1;
+        content: "";
+        position: absolute;
+        width: 15px;
+        height: 15px;
+        right: -12px;
+        background-color: #01c275;
+        border: 4px solid #dcf3e0;
+        top: 15px;
+        border-radius: 50%;
+        z-index: 1;
+    }
+    /* Place the container to the left */
+    .left {
+        left: 0;
+        padding: 2px 24px 2px 2px;
+    }
+    /* Place the container to the right */
+    .right {
+        left: 50%;
+        padding: 2px 2px 2px 24px;
+    }
+    /* Fix the circle for containers on the right side */
+    .right::after {
+        // left: -16px;
+        left: -12px;
+    }
+    .align-item-end {
+        align-items: flex-end;
+    }
+    .text-left {
+        text-align: end;
+    }
+    .placeName {
+        font-size: 1em;
+        font-weight: 400;
+        margin-bottom: 5px;
+    }
+    .time-icon-container {
+        margin-right: 8px;
+    }
+    .time-icon {
+        font-size: 20px;
+    }
+    .time-parent {
+        display: flex;
+        align-items: center;
+    }
+    .vehicle-details-card {
+        display: flex;
+        /* justify-content: space-evenly; */
+        margin: 10px;
+    }
+    .vehicle-numb-card {
+        display: flex;
+        align-items: center;
+        /* justify-content: end; */
+        width: 50%;
+        background: #ebf1fd;
+        margin-right: 5px;
+        border-radius: 5px;
+        padding: 10px;
+        // width: calc(100% - 60%);
+    }
+    .route-details-card {
+        display: flex;
+        align-items: center;
+        /* justify-content: end; */
+        width: 50%;
+        background: #ebf1fd;
+        // margin-right: 5px;
+        border-radius: 5px;
+        padding: 10px;
+        justify-content: space-between;
+    }
+    .vehicleImg {
+        margin-right: 5px;
+        width: 45px;
+        height: 45px;
+    }
+    .routeImg {
+        margin-right: 5px;
+        width: 45px;
+        height: 45px;
+    }
+    .margin-bottom5 {
+        margin-bottom: 5px;
+    }
+    .color-grey {
+        color: grey;
+    }
+    .pickup-card-parent {}
+    .vehicle-name {
+        font-size: 1em;
+    }
+    .vehicle-number {
+        font-size: 1em;
+        font-weight: 400;
+    }
+    .route-title {
+        font-size: 1em;
+    }
+    // .route-name {
+    //   font-size: 1em;
+    //   font-weight: 400;
+    // }
+    .route-card {
+        padding-left: 5px;
+    }
+    .vehicleNo-card {
+        padding-left: 5px;
+    }
+    .clock-img {
+        width: 16px;
+    }
+    .custom-card {
+        width: calc(100% - 60px);
+    }
+    .width-51px {
+        width: calc(100% - 51px);
+    }
+    // cotraveller css
+    .cotraveller-img-container {
+        position: relative;
+        // margin-right: 10px;
+    }
+    .cotravellers-container {
+        // margin: 10px;
+        background: #e1e7f3;
+    }
+    .co-traveller-card {
+        display: flex;
+        justify-content: flex-end;
+        // margin-bottom: 10px;
+    }
+    .co-travller-info {
+        width: 76%;
+        /* text-align: end; */
+        display: flex;
+        align-items: center;
+    }
+    .profile-info {
+        display: flex;
+        align-items: center;
+        padding: 5px;
+        // margin-bottom: 3px;
+        border-radius: 5px;
+        border: 1px solid #b9c8e6;
+        background: white;
+        img.user-icon {
+            width: 30px;
+            height: 30px;
+            margin-right: 5px;
+            border-radius: 50%;
+            border: 2px solid #c0e0ff;
+            overflow: hidden;
+            left: 5px;
+            top: 5px;
+        }
+    }
+    .status-select {
+        padding: 0 !important;
+        // color: white;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        // padding: 10px;
+        max-width: none;
+        .select-text {
+            //   padding-right: 5px;
+            //   color: white;
+        }
+        .select-icon {
+            // color: white;
+            width: 20px;
+            height: 20px;
+        }
+        .select-icon-inner {
+            //   color: white !important;
+        }
+    }
+    .user-details {
+        padding-left: 5px;
+        width: 70%;
+    }
+    .username {
+        font-size: 1em;
+        margin-right: 5px;
+        font-weight: 400;
+        width: 70%;
+        text-overflow: ellipsis;
+        display: block;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+    .width-100 {
+        width: 100%;
+    }
+    .contact-id-container {
+        display: flex;
+        align-items: center;
+        font-family: "Roboto";
+    }
+    .id-icon {
+        width: 25px;
+        // margin-right: 5px;
+    }
+    .incharge {
+        background: #ee931d;
+        color: white;
+        padding: 2px;
+        border-radius: 3px;
+        font-size: 10px;
+        font-weight: 500;
+        font-family: "Roboto";
+    }
+    .id-card {
+        margin-right: 5px;
+    }
+    .call-users {
+        height: 36px;
+        width: 36px;
+        padding: 2px;
+    }
+    .segment-parent {
+        font-family: "Roboto";
+        margin-bottom: 20px;
+    }
+    .co-taveller-parent {
+        background: #e1e7f3;
+        padding: 10px;
+        font-family: "Roboto";
+        margin-bottom: 7em;
+    }
+    .busDetails-card-parent {
+        font-family: "Roboto";
+        background-color: white;
+        // padding: 10px;
+    }
+    .fontWt300 {
+        font-weight: 300;
+    }
+    .mt-10 {
+        margin-top: 10px;
+    }
+    .disabled-date {
+        pointer-events: none;
+        font-weight: 500;
+    }
+     .segment-md .segment-button {
+        text-transform: none;
+        font-size: 1em;
+        font-weight: 400;
+    }
+    .segment-md .segment-button.activated,
+    .segment-md .segment-button.segment-activated {
+        border-bottom: 2px solid #0e7ac7;
+        color: #0e7ac7;
+    }
+    .pickup-segment{
+        margin-bottom: 0px;
+    }
+    .pickup-container{
+        background: #e1e7f3;
+        padding: 10px 5px;
+        .card-md{
+            margin: 0px;
+            width: 100%;
+        }
+    }
+}

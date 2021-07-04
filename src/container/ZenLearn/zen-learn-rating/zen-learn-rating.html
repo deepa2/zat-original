@@ -1,0 +1,41 @@
+<!--
+  Generated template for the ZenLearnRatingPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>Rating</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+    <div *ngFor="let item of ratingData | slice:startlimit:endlimit;">
+        <div class="traning-rating">
+            <span class="traning-type">{{item?.learningType}}</span>
+            <span class="traning-desc">{{item?.title}} </span>
+
+        </div>
+        <!-- rating section -->
+        <div class="padding12-8">
+            <div class="rating-title">Rating</div>
+            <div class="flex-space-btwn padding4per rating-card">
+                <span *ngFor="let subItem of [1,2,3,4,5]" (click)="_rateStar(subItem)">
+          <ion-icon *ngIf="subItem < selectedStar" name="star" class="filledstar-size"
+            [ngClass]="{'yellow':selectedStar}">
+          </ion-icon>
+          <img *ngIf="subItem >= selectedStar" class="emptystar-size" src="assets/imgs/emptyStar.svg" />
+        </span>
+            </div>
+            <div class="review-title">Review</div>
+            <textarea class="textarea" [(ngModel)]="comment" rows="10" cols="60"></textarea>
+        </div>
+        <div class="sumbit-section">
+            <div class="later-section" (click)="popPage()">Not now later</div>
+            <button ion-button round (click)="_submitRating(item)">Submit</button>
+        </div>
+    </div>
+</ion-content>

@@ -1,0 +1,81 @@
+<!-- Generated template for the ApprovalTimesheetFilterModalComponent component -->
+<div class="approval-filter-main">
+  <ion-row class = "header-row">
+    <ion-col col-11>
+      <ion-item class = "modal-title">
+        <strong>Filter</strong>
+      </ion-item>
+    </ion-col>
+
+    <ion-col col-1 align-self-center class="filterIconHeader">
+      <img class="filterIcon" (click)="closeFilterModal()" src="assets/imgs/close.svg" />
+    </ion-col>
+  </ion-row>
+
+  <div class="form-content">
+    <ion-row radio-group [(ngModel)]="timesheet_type">
+      <ion-col no-padding col-4>
+        <ion-item class= "pending-radio">
+          <ion-label no-margin>Pending</ion-label>
+          <ion-radio item-left [checked]="true" value="approval-pending"></ion-radio>
+        </ion-item>
+      </ion-col>
+      <ion-col no-padding col-4>
+        <ion-item class= "approved-radio">
+          <ion-label no-margin>Approved</ion-label>
+          <ion-radio item-left value="approval-approved"></ion-radio>
+        </ion-item>
+      </ion-col>
+      <ion-col no-padding col-4>
+        <ion-item>
+          <ion-label no-margin>Rejected</ion-label>
+          <ion-radio item-left value="approval-rejected"></ion-radio>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <div class="borderColor">
+      <ion-item>
+        <!-- <ion-label>Select Project</ion-label> -->
+        <ion-select [(ngModel)]="selectedProject" interface="action-sheet">
+          <ion-option *ngIf="data?.projectAllocationList.length > 1" value="all">All Projects</ion-option>
+          <ion-option *ngFor="let project of data?.projectAllocationList" [value]="project.projectId">{{project.projectName}}</ion-option>
+        </ion-select>
+      </ion-item>
+    </div>
+    <div class="form-group formBody">
+      <div class="dateBody margin-right">
+        <ion-item>
+          <ion-datetime [(ngModel)]="startDate" [min]="tsDates?.tsMinDate" [max]="tsDates?.tsMaxDate" displayFormat="DD-MMM-YYYY" pickerFormat="DD MMM YYYY"
+            placeholder="Start Date" (ionChange)="onStartDateSelect($event)"></ion-datetime>
+        </ion-item>
+      </div>
+      <div class="dateBody">
+        <ion-item>
+          <ion-datetime displayFormat="DD-MMM-YYYY" pickerFormat="DD MMM YYYY" [min]="tsDates?.tsMinDate" [max]="tsDates?.tsMaxDate" [(ngModel)]="endDate" placeholder="End Date" (ionChange)="onEndDateSelect($event)"></ion-datetime>
+        </ion-item>
+      </div>
+    </div>
+    <div class="error-msg" *ngIf="compareFlag">
+      <sub>*</sub> End date should be greater than start date
+    </div>
+    <div class="borderColor" >
+      <ion-item>
+        <!-- <ion-label>Select Category</ion-label> -->
+        <ion-select [disabled] = "true" *ngIf= "dash_type == 'pre-approval-dashboard'" [(ngModel)]="selectedBillablity" interface="action-sheet" placeholder="Select Category">
+          <ion-option value="YES">Billable</ion-option>
+        </ion-select>
+        <ion-select *ngIf= "dash_type == 'approval-dashboard'" [(ngModel)]="selectedBillablity" interface="action-sheet" placeholder="Select Category">
+            <ion-option value="ALL">All</ion-option>
+            <ion-option value="YES">Billable</ion-option>
+            <ion-option value="NO">Non Billable</ion-option>
+            <ion-option value="OVERTIME">Overtime</ion-option>
+          </ion-select>
+  
+      </ion-item>
+    </div>
+    <div class="submitBtn" >
+      <button ion-button round (click)="ApprovalfilterList()" id="buttonColor">View Timesheets</button>
+    </div>
+  </div>
+</div>

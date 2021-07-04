@@ -1,0 +1,62 @@
+<ion-content>
+  <div class="outer-bg">
+    <div class="inner-curve">
+      <form [formGroup]="user" (ngSubmit)="checkLoginCredentials()">
+        <div class="center-align">
+          <div class="login-icon login-logo-center">
+            <img src="assets/imgs/talent-logo.svg" />
+            <img src="assets/imgs/login-bg-img.svg" />
+          </div>
+          <div class="login-form">
+
+
+            <div class="floating-label">
+              <input placeholder="Username" type="text" (keypress)="eventHandler($event)" formControlName="username">
+              <label for="email">Username</label>
+            </div>
+            <div class="floating-label">
+              <div>
+                <input placeholder="Password" type="{{type}}" (keypress)="eventHandler($event)" name="password"
+                  formControlName="password">
+                <label for="password">Password</label>
+              </div>
+
+              <div>
+                <button class="passwordIcon" *ngIf="!showPass" ion-button clear color="dark" type="button" item-right
+                  (click)="togglePassword()">
+                  <img class="eye-icon" src="assets/imgs/new_hide.svg" />
+                </button>
+
+                <button class="passwordIcon" *ngIf="showPass" ion-button clear color="dark" type="button" item-right
+                  (click)="togglePassword()">
+                  <img class="eye-icon" src="assets/imgs/new_hide_unhide.svg" />
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- <div padding class="login-div-con"
+          [ngClass]="user?.value?.username?.length > 0 && user?.value?.password?.length > 0 ? 'login-div' : 'hidden'">
+          <button class="submit-arrow">
+            <img src="assets/imgs/forward-arrow.svg" />
+          </button>
+        </div> -->
+        <div padding class="login-div-con login-div">
+          <button class="submit-arrow">
+            <img src="assets/imgs/forward-arrow.svg" />
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div *ngIf="showfooter" class="footer">
+    <span>Version</span> :
+    <span>{{versionNo}}</span>
+  </div>
+</ion-content>
+<!-- <ion-footer *ngIf="showfooter" class="footer">
+  <span>Version</span> :
+  <span>{{versionNo}}</span>
+</ion-footer> -->

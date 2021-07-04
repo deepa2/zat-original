@@ -1,0 +1,63 @@
+page-my-daplist {
+    .scroll-content {
+        background: #E4EBF3;
+    }
+    .dap-list-item{
+        display: flex;
+        padding: 10px;
+        align-items: flex-start;
+        background: #fff;
+        margin: 9px 5px;
+        border-radius: 5px;
+    }
+    ion-col.value{
+        font-weight: 300;
+    }
+    // .dap-list-item:nth-child(n) .containerItem-image{
+    //     background: url(../../../assets/zenLearn-imgs/dap-icon4.svg);
+    //     background-repeat: no-repeat;
+    // }
+    .dap-list-item:nth-child(n) .containerItem-image{
+        background: url(../assets/zenLearn-imgs/dap-icon1.svg);
+        background-repeat: no-repeat;
+    }
+    .dap-list-item:nth-child(2n) .containerItem-image{
+        background: url(../assets/zenLearn-imgs/dap-icon2.svg);
+        background-repeat: no-repeat;
+    }
+    .dap-list-item:nth-child(3n) .containerItem-image{
+        background: url(../assets/zenLearn-imgs/dap-icon3.svg);
+        background-repeat: no-repeat;
+    }
+    .dap-list-item:nth-child(4n) .containerItem-image{
+        background: url(../assets/zenLearn-imgs/dap-icon4.svg);
+        background-repeat: no-repeat;
+    }
+    .containerItem-image{
+        width: 70px;
+        height: 70px;
+        // background: white;
+        // display: flex;
+        // align-items: center;
+        // justify-content: center;
+        margin: 5px;
+    }
+    .conatinerItem-list{
+        width: 80%;
+    }
+
+    .noDataAvailable{
+        text-align: center;
+        font-weight: 500;
+        margin-top: 15px;
+    }
+    .not-aaproved {
+        background: #ffecec;
+        margin: -15px 5px 10px;
+        border-radius: 0 0 5px 5px;
+        padding: 10px 20px;
+        span.reason {
+            color: #d43b3b;
+        }
+    }
+}

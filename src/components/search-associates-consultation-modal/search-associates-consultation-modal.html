@@ -1,0 +1,62 @@
+<ion-header>
+
+  <ion-navbar>
+    <!-- <div class="title-container">
+      <ion-icon slot="start" name="close" (click)="dismiss()" class="cancel-btn"></ion-icon>
+      <div class="manager-name padding10">Saurabh Sharma</div>
+    </div> -->
+    <ion-searchbar debounce="500" (ionInput)="getItems($event)" placeholder="Search Associate" [(ngModel)]="searchInputText" (ionClear)="onCancel($event)"></ion-searchbar>
+    <ion-buttons end>
+
+
+      <button ion-button icon-only (click)="dismiss($event)">
+        <ion-icon name="close"></ion-icon>
+      </button>
+
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+<ion-content class="ionContent">
+
+  <!-- <ion-list>
+    <ion-item *ngFor="let item of items">
+      {{ item }}
+    </ion-item>
+  </ion-list> -->
+  <ion-spinner *ngIf="showLoader"></ion-spinner>
+  <div *ngIf="searchInputText=='' || searchInputText==undefined|| searchResult==''||searchResult==undefined" class="noData">
+    No Associate Found
+  </div>
+  <div class="container" *ngIf="!showLoader && searchResult">
+    <div class="item" *ngFor="let searchItem of searchResult" (click)="selectUser(searchItem)">
+      <div class="user-profile-pic"><img [src]="searchItem.employeeProfilePic">
+        <img class="selectedImg" *ngIf="searchItem?.isSelected" src="assets/imgs/ZenDeavour/selected.svg">
+
+      </div>
+      <div class="employ-name">{{searchItem?.employeeName}}</div>
+      <div>{{searchItem?.employeeId}}</div>
+    </div>
+    <!-- <div class="item">ewwe</div>
+      <div class="item">wewe</div> -->
+
+  </div>
+  <!-- <div padding text-center *ngIf="searchResult && ssearchResult?.length == 0">{{noResult}}</div> -->
+  <!-- <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data..."></ion-infinite-scroll-content>
+  </ion-infinite-scroll> -->
+
+
+
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>
+<ion-footer class="submitfooter">
+  <!-- <div class="btnsubmit-footer"> -->
+  <!-- <button class="nextBtn" ion-button round>Selected ({{selectedAssociateList?.length}})</button> -->
+  <button class="nextBtn" ion-button round (click)="sendAssociateDetails()">Select</button>
+
+  <!-- </div> -->
+</ion-footer>

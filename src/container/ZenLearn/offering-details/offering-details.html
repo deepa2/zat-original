@@ -1,0 +1,170 @@
+<!--
+  Generated template for the OfferingDetailsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Course Details</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <!-- <div *ngIf="offeringDetailsData"> -->
+  <div>
+    <div class="learming-info">
+      <div class="text-left">
+        <div class="card-header {{offeringDetails.method}}">
+          <div class="titleName">
+            <img *ngIf="offeringDetails?.method=='' || offeringDetails?.method==null"
+              src="assets/zenLearn-imgs/dap-icon3.svg" />
+            <img *ngIf="offeringDetails.method=='V Learn'" src="assets/imgs/virtual-icon.svg" />
+            <img *ngIf="offeringDetails.method=='Classroom'" src="assets/imgs/classroom-icon.svg" />
+            <img *ngIf="offeringDetails.method=='Online'" src="assets/imgs/online-icon.svg" />
+          </div>
+          <div class="subTitle">{{offeringDetails?.title}}</div>
+        </div>
+        <!-- <div class="titleName">{{offeringDetails?.method}}</div>
+        <div class="subTitle">{{offeringDetails?.title}}</div> -->
+        <div class="card-data">
+          <div class="flex fontp9em padding-top3per">
+            <span class="padding-right8"><img src="assets/imgs/zenLearnlocation.svg" /></span>
+            <!-- <span class="color-gray">{{offeringDetails?.facility}}</span> -->
+
+            <span class="color-gray ftWT"
+              *ngIf="offeringDetails?.itemType && offeringDetails?.itemType != 'CLASSROOM'">{{offeringDetails?.facility}}
+              -
+              {{offeringDetails?.itemType | titlecase}}</span>
+            <span class="color-gray ftWT"
+              *ngIf="offeringDetails?.itemType && offeringDetails?.itemType == 'CLASSROOM'">{{offeringDetails?.facility}}</span>
+            <span class="color-gray ftWT" *ngIf="!offeringDetails?.itemType">{{offeringDetails?.facility}}</span>
+          </div>
+          <div class="flex fontp9em padding-top3per">
+            <span class="padding-right8"><img src="assets/imgs/zenLearnCredit_Hours.svg" /></span>
+            <span class="color-gray">Credit Hrs : {{offeringDetails?.creditHours}}</span>
+          </div>
+
+          <div class="flex padding-top3per" *ngIf="offeringDetails?.endDate || offeringDetails?.endTime">
+            <span class="padding-right8"><img src="assets/imgs/zenLearnCalender.svg" /></span>
+            <span *ngIf='offeringDetails?.type == null' class="column fontp9em heading-color">
+              <span class="padding-bottom4per">{{offeringDetails?.startDate}} To {{offeringDetails?.endDate}}</span>
+              <span class="color-gray">{{offeringDetails?.startTime}} To {{offeringDetails?.endTime}}</span></span>
+
+
+          </div>
+
+          <div class="flex padding-top3per"
+            *ngIf="(offeringDetails?.startDate || offeringDetails?.completionDate) && !offeringDetails?.endDate">
+            <span class="padding-right8"><img src="assets/imgs/zenLearnCalender.svg" /></span>
+            <span class="column fontp9em heading-color ">
+              <span class="padding-bottom4per">{{offeringDetails?.startDate}}</span>
+            </span>
+            <span *ngIf="(offeringDetails?.completionDate)" class="column fontp9em heading-color">
+              <span class="padding-bottom4per">{{offeringDetails?.completionDate}}</span>
+            </span>
+          </div>
+        </div>
+
+        <!-- <div class="flex fontp9em padding-top3per" *ngIf="offeringDetails?.scheduleOfferingDescription">
+            <span class="padding-right8"><img src="assets/imgs/zenLearnCredit_Hours.svg" /></span>
+            <span class="color-gray">{{offeringDetails?.scheduleOfferingDescription}}</span>
+          </div> -->
+
+      </div>
+    </div>
+    <!-- segment sections -->
+
+    <div class="detail-info">
+      <div class="width100per">
+        <div>
+          <ion-segment class="segment" [(ngModel)]="selectedTab" (ionChange)="_segmentChanged($event)" scrollable>
+            <ion-segment-button value="Details" checked>
+              <span class="text-transform-cap">Details</span>
+            </ion-segment-button>
+            <ion-segment-button value="Rating/Review" *ngIf="isComingFromHistoryCourses">
+              <span class="text-transform-cap">Rating/Review</span>
+            </ion-segment-button>
+          </ion-segment>
+        </div>
+      </div>
+      <!-- Details Segment -->
+      <div [ngSwitch]="selectedTab">
+        <div *ngSwitchCase="'Details'" class="detail">
+          <div class="profile-card" *ngFor="let item of offeringDetailsData">
+            <div col-5 class="icon-section">
+              <div><img [src]=item?.icon1 onerror="this.src='./assets/imgs/Project.svg'" /></div>
+              <div class="profile-title">{{item?.key}}</div>
+            </div>
+            <div col-7 class="heading-profile">
+              <span class="align-cont-cent color-gray" [innerHTML]>
+                <img class="profile-img" *ngIf="item?.icon2" [src]=item?.icon2
+                  onError="this.src='assets/imgs/user.png'" />
+                <span *ngIf="item?.value!='0'" [ngStyle]="{'padding-left':!item?.icon2? 0 : 12 }">{{item?.value}}<span
+                    *ngIf="!item?.value">--</span></span>
+                <span *ngIf="item?.value=='0'">No seat limit</span>
+                <span
+                  *ngIf="item?.key=='Seats Remaining' && wholeData.maximiumEnrollment!=null">{{wholeData?.maximiumEnrollment}}</span>
+
+                <!-- <span *ngIf="item?.icon2">
+            <img class="profile-img" *ngIf="item?.icon2" [src]=item?.icon2 />
+            <span>{{item?.value}}</span></span> -->
+              </span>
+            </div>
+          </div>
+          <div class="nodata" *ngIf="offeringDetailsData?.length==0">No data available</div>
+        </div>
+      </div>
+      <!-- Rating/Review  Segment-->
+      <div [ngSwitch]="selectedTab" *ngIf="isComingFromHistoryCourses">
+        <div class="main-container" *ngSwitchCase="'Rating/Review'">
+          <div class="rating-subContainer" *ngFor="let item of offeringRatingData">
+            <div class="icon-card">
+              <img class="profile-icon" [src]="item?.associatePhoto" onerror="this.src='./assets/imgs/logo.png'" />
+            </div>
+            <div class="rating-contentCard">
+              <div class="rating-card">
+                <div class="performance-card">
+                  <span class="width100per padding-bottom12">{{item?.name}}</span>
+                </div>
+                <span>
+                  <span *ngFor="let subItem of [1,2,3,4,5]">
+
+                    <img *ngIf="subItem <= item?.ratingStars" src="assets/imgs/filledStar.svg" />
+                    <img *ngIf="subItem > item?.ratingStars" src="assets/imgs/emptyStar.svg" />
+                  </span>
+                </span>
+              </div>
+              <div class="details-card">{{item?.description}}</div>
+            </div>
+          </div>
+          <div *ngIf="!offeringRatingData" class="nodata">No Data Available</div>
+
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <ion-fab *ngIf="selectedTab == 'Rating/Review' && isComingFromHistoryCourses" right bottom edge
+    (click)="getRating(offeringDetails)">
+    <button ion-fab mini>
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
+  <div class="nodata" *ngIf="isDataNotAvailable">No data Available</div>
+</ion-content>
+<ion-footer class="justify-cont-center" *ngIf="!isComingFromHistoryCourses">
+  <div *ngIf="wholeData?.responseList">
+    <button *ngIf="!wholeData?.responseList.perCipio && !wholeData?.responseList.isEnrolled" ion-button round
+      color="secondary" (click)="getEnrolled('ENROLL','ENROLL')">Enroll Now</button>
+    <button *ngIf="!wholeData?.responseList.perCipio && wholeData?.responseList.isEnrolled" ion-button round
+      color="secondary" (click)="getEnrolled('withdraw','CANCELLED')">Withdraw</button>
+    <button *ngIf="wholeData?.responseList.perCipio" ion-button round color="secondary"
+      (click)="goToSuccess(wholeData?.responseList?.link)">Start Now</button>
+  </div>
+</ion-footer>

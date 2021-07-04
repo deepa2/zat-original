@@ -1,0 +1,51 @@
+performance-measuretext-area {
+  .parent-div {
+    position: relative;
+  }
+  .singleTextArea {
+    min-height: 480px;
+  }
+  ion-textarea {
+    background-color: white;
+    border: 1px solid darkgrey;
+    padding: 7px;
+    border-radius: 5px;
+  }
+  textarea.text-input {
+    min-height: 480px;
+  }
+  ion-item {
+    padding-left: 8px !important;
+  }
+  .item-md.item-block .item-inner {
+    border-bottom: 1px solid #dedede;
+    box-shadow: none !important;
+    border-bottom-color: transparent !important;
+  }
+
+  // textarea {
+  //   resize: none;
+  // }
+  .spinner-container {
+    height: 25px;
+    width: 25px;
+    // position: absolute;
+    // right: 15px;
+    // bottom: 50px;
+    // z-index: 2;
+    // margin-top: 10px;
+  }
+  .mic-container {
+    margin: 0 10px;
+  }
+  .mic-div {
+    position: absolute;
+    // bottom: 210px;
+    // right: 25px;
+    bottom: 34px;
+    right: 18px;
+  }
+  .mic-icon {
+    font-size: 20px;
+  }
+}

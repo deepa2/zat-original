@@ -1,0 +1,85 @@
+<ion-header class="header-container">
+    <ion-navbar>
+        <ion-title>{{actionType == 'edit'? 'Edit' : 'Add'}} Pickup Point</ion-title>
+        <ion-buttons end>
+            <div class="title-container">
+                <ion-icon slot="start" name="close" (click)="dismiss()" class="cancel-btn"></ion-icon>
+            </div>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+<ion-content>
+    <div class="form-container">
+
+        <form [formGroup]="pickupPtform">
+
+            <div class="margin-btm-10">
+                <ion-label class="padding10 margin10-rt-lf fontBold">Pickup Point </ion-label>
+
+                <ion-input class="borderBottom " placeholder="Add Pickup Point" formControlName="pickupPt">
+                </ion-input>
+                <span class="error-msg" *ngIf="pickupPtform.controls.pickupPt.errors && submitted">
+                    <p>* Kindly add pickup point.</p>
+                </span>
+            </div>
+            <div class="margin-btm-10">
+                <ion-label class="padding10 margin10-rt-lf fontBold">Pass Type </ion-label>
+                <!-- <ion-select placeholder="Select Pass type" interface="action-sheet" class="borderBottom margin10-rt-lf custom-select"
+                    style="max-width: 100%" formControlName="passType" (ionChange)="onPassTypeChange($event)">
+                    <ion-option [value]="item" *ngFor="let item of passOptions">{{item}}</ion-option>
+                </ion-select> -->
+                <ion-input class="borderBottom " value="Monthly" formControlName="passType" readonly> </ion-input>
+                <!-- <span class="error-msg" *ngIf="pickupPtform.controls.passType.errors && submitted">
+                    <p>* Kindly select pass type.</p>
+                </span> -->
+            </div>
+            <div class="margin-btm-10">
+                <ion-label class="padding10 margin10-rt-lf fontBold">Cost </ion-label>
+
+                <ion-input class="borderBottom" placeholder="Add Cost" formControlName="cost" type="number">
+                </ion-input>
+                <span class="error-msg" *ngIf="pickupPtform.controls.cost.errors && submitted">
+                    <p>* Kindly add cost.</p>
+                </span>
+            </div>
+            <!-- <div class="margin-btm-10">
+                <ion-label class="padding10 margin10-rt-lf fontBold">Route Sequence Number </ion-label>
+
+                <ion-input class="borderBottom" placeholder="Add Route Sequence Number" formControlName="routeSeqNo"
+                    type='tel'>
+                </ion-input>
+                <span class="error-msg" *ngIf="pickupPtform.controls.routeSeqNo.errors && submitted">
+                    <p>* Kindly add route sequence number.</p>
+                </span>
+            </div> -->
+            <div class="margin-btm-10 ">
+                <ion-label class="padding10 margin10-rt-lf dateLabel fontBold">Arrival Time</ion-label>
+                <ion-datetime displayFormat="hh:mm A" placeholder="Add Time" formControlName="arrivalTime" class="custom-date margin10-rt-lf borderBottom"
+                    max="08:30"></ion-datetime>
+
+                <!-- <ion-datetime displayFormat="DD-MM-YYYY" pickerFormat="YYYY MMMM DD" placeholder="Select Date" (ionChange)="onDateChange($event)"
+          [min]="currentDate" [max]="endDate" class="custom-date margin10-rt-lf borderBottom" formControlName="arrivalTime"></ion-datetime> -->
+                <!-- <span class="error-msg" *ngIf="passForm.errors?.IsWeekend">
+        <p>* Selected day is a weekend.</p>
+      </span> [class.invalid]="passForm.errors?.IsWeekend"
+      <span class="error-msg" *ngIf="passForm.controls.startDate.errors  && submitted">
+        <p>* Kindly select start date.</p>
+      </span> -->
+                <span class="error-msg" *ngIf="pickupPtform.controls.arrivalTime.errors && submitted">
+                    <p>* Kindly select arrival time.</p>
+                </span>
+            </div>
+
+
+
+
+
+
+        </form>
+
+    </div>
+    <div class="addBtn-container">
+        <button class="submitBtn" ion-button round (click)="verifyAddDetails()" *ngIf="actionType != 'edit'">Add</button>
+        <button class="submitBtn" ion-button round (click)="verifyAddDetails()" *ngIf="actionType == 'edit'">Update</button>
+    </div>
+</ion-content>

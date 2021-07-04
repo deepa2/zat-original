@@ -1,0 +1,108 @@
+add-comment-modal {
+      .commentsModalheader {
+        background-image: url("../assets/zenwen-imgs/modalHeaderImg.svg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        margin-bottom: 0 !important; 
+        display: flex;
+        .title{
+            font-size: 1em;
+            width: 80%;
+            color: white;
+        }
+        .cross-icon{
+            width: 20%;
+            text-align: right;
+            color: white;
+        }
+      }
+      .commentsModalContent{
+            height: calc(95vh - 50px);
+            overflow: scroll;
+            .list ion-item{
+              border: 1px solid #D2D2D2 !important;
+              border-radius: 5px;
+              background: #F9FAFB;
+            }
+         ul{
+            list-style-type:none;
+            position: absolute;
+            top: 95px;
+            z-index: 9;
+            background: white;
+            color: color($colors,secondary);
+            width: 100%;
+            min-height: 250px;
+            li{
+                padding: 5px 0;
+                letter-spacing: 1px;
+                font-size: 1em;
+            }
+         }
+          .input-comment{
+            margin-top: 16px;
+            height: 10em;
+              ion-textarea{
+                textarea{
+                    margin-left: 0;
+                    height: 100%;
+                }
+              }
+          }
+          .SubmitBtn{
+            display: flex;
+            padding: 16px 0;
+            justify-content: space-between;
+            button{
+                text-transform: capitalize;
+            }
+          }
+          .comment-list{
+            ion-avatar {
+              margin: 10px 0 !important;
+            }
+            .label-md {
+              margin: 0;
+            }
+              ion-item{
+                align-items: flex-start !important;
+                margin-bottom: 5px;
+              }
+              h2{
+                  color: color($colors,secondary);
+              }
+              p{
+                margin: 10px 0px;
+                white-space: initial !important;
+                font-size: 0.9em;
+              }
+              ion-note{
+                  font-size: 0.8em;
+              }
+          }
+      }
+      .comment-section-card-content{
+        background: #f5f5f5;
+        padding: 10px !important;
+        border-radius: 0 10px 10px;
+        margin: 10px;
+        margin-left: 15px;
+        position: relative;
+        width: 100%;
+        &::after {
+            width: 0px;
+            height: 0px;
+            border-top: 0px solid transparent;
+            border-bottom: 15px solid transparent;
+            border-right: 15px solid #f9f8f8;
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -15px;
+        }
+    }
+      .segment-md .segment-button {
+        border-bottom-color: transparent;
+    }
+}
+

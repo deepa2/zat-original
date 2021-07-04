@@ -1,0 +1,99 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Timesheet Pending
+    </ion-title>
+    <ion-buttons end>
+      <button class="allCheckbox">
+        <ion-checkbox [(ngModel)]="selectAllTimesheets" (ionChange)="updateSelectAll(selectAllTimesheets)"></ion-checkbox>
+        <ion-label>ALL</ion-label>
+      </button>
+      <button ion-button icon-only (click)="dismiss()">
+        <ion-icon ios="ios-close" md="md-close"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <ion-list class="pendingList">
+    <div class="parent" *ngFor="let p_item of pendingList">
+      <ion-item no-padding no-lines class="pendingItem" (click)="toggleSelection(p_item)">
+        <ion-avatar item-start>
+          <img src="{{p_item?.profilePicURL}}" onerror="this.src = 'assets/imgs/dummy-profile.png'">
+          <img class="tick-icon" src="assets/zents-imgs/approve-tickGreen.svg" *ngIf="p_item?.isSelected" />
+        </ion-avatar>
+        <ion-row>
+          <ion-col>
+              <span class="name">{{p_item?.staffName | titlecase}}</span>
+          </ion-col>
+        </ion-row>
+        <!-- <p class="header"><span class="sub-title">Task Name:</span><span class="desc">{{p_item?.taskName | titlecase}}</span></p>
+        <p class="header"><span class="sub-title">Billability:</span><span class="desc">{{p_item?.billablityFlag ==
+            'NO' ? 'Non-Billable' : 'Billable'}}</span></p>
+        <p class="header" *ngIf="p_item?.milestoneName && p_item?.milestoneName != '0'"><span class="sub-title">Milestone
+            Name:</span><span class="desc">{{p_item?.milestoneName}}</span></p>
+        <p class="header" *ngIf="p_item?.comments"><span class="sub-title">Comment :</span><span class="desc">{{p_item?.comments}}</span></p> -->
+        <ion-row>
+          <ion-col col-4>
+            Task Name
+          </ion-col>
+          <ion-col col-8>
+            {{p_item?.taskName | titlecase}}
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-4>
+            Billability
+          </ion-col>
+          <ion-col col-8>
+            {{p_item?.billablityFlag == 'NO' ? 'Non-Billable' : 'Billable'}}
+          </ion-col>
+        </ion-row>
+        <ion-row *ngIf="p_item?.milestoneName && p_item?.milestoneName != '0'">
+          <ion-col col-4>
+            Milestone Name
+          </ion-col>
+          <ion-col col-8>
+            {{p_item?.milestoneName}}
+          </ion-col>
+        </ion-row>
+        <ion-row *ngIf="p_item?.comments">
+          <ion-col col-4>
+            Comment
+          </ion-col>
+          <ion-col col-8>
+            {{p_item?.comments}}
+          </ion-col>
+        </ion-row>
+      </ion-item>
+      <ion-grid class="bg-color">
+        <ion-row>
+          <ion-col col-4> <strong>Total Efforts</strong></ion-col>
+          <ion-col col-8>{{p_item?.viewEfforts}}</ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col col-4><strong>Date</strong></ion-col>
+            <ion-col col-8>{{p_item?.taskUpdatedDate}}</ion-col>
+          </ion-row>
+      </ion-grid>
+      <!-- <div class="details">
+        <div class="sub-details">
+          <strong>Total Efforts:</strong>
+          <span>{{p_item?.viewEfforts}}</span>
+        </div>
+        <div class="sub-details">
+          <strong>Date:</strong>
+          <span>{{p_item?.taskUpdatedDate}}</span>
+        </div> -->
+        <!-- <div class="sub-details" *ngIf="p_item?.comments">
+            <strong>Comment:</strong>
+            <span>{{p_item?.comments}}</span>
+          </div> -->
+      <!-- </div> -->
+    </div>
+  </ion-list>
+
+</ion-content>
+<ion-footer text-center padding>
+  <button class="okayBtn" ion-button round small (click)="sendSelectedTimesheets()" [disabled]="doUpdate && !selectAllTimesheets">Okay</button>
+</ion-footer>

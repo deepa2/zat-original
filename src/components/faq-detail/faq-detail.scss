@@ -1,0 +1,108 @@
+page-faqDetail {
+  .content {
+    background-color: #645757c7;
+  }
+  .faqDetailCard {
+    // border: 1px solid darkgray;
+    // border-radius: 5px;
+    padding: 10px;
+    box-shadow: none !important ;
+    margin: 10px 10px 0;
+    width: calc(100% - 20px);
+    background: #F2FCFF;
+    border: 1px solid #D9F7FF;
+    border-radius: 5px;
+    box-sizing: border-box;
+    display: inline-block;
+    ion-label{
+      white-space: normal;
+    }
+  }
+
+  .quesAns {
+    white-space: initial;
+    color: #2C2F33;
+    font-size: 0.9em;
+    line-height: 1.5;
+  }
+
+  .quesLabel,
+  .ansLabel {
+    color: #0E7AC7;
+    font-size: 0.9em;
+  }
+
+  .ansLabel {
+    margin-top: 10px;
+  }
+
+  .quesAnsImg {
+    width: 22px;
+    height: 22px;
+  }
+  ion-header.faq-modal-header {
+    ion-navbar {
+      background: linear-gradient(45deg, #0EA2C8, #0E7AC7);
+      padding: 0 20px;
+    }
+    .text-color .toolbar-title,
+    button {
+      color: #fff;
+      font-size: 1.1em;
+    }
+  }
+  .text-color .toolbar-title,
+  button {
+    color: #488CFC;
+    font-size: 1.1em;
+  }
+
+  // .fixed-header {
+  //   position: fixed; /* Set the navbar to fixed position */
+  //   top: 0; /* Position the navbar at the bottom of the page */
+  //   width: 100%; /* Full width */
+  //   padding: 5%;
+  //   display: flex;
+  //   border-top-left-radius: 30px;
+  //   /* margin: 5%; */
+  //   // background: red;
+  //   border-top-right-radius: 30px;
+  // }
+  // ion-buttons.button {
+  //   box-shadow: none;
+  //   background: none;
+  //   color: black;
+  // }
+  // .margin-top75 {
+  //   margin-top: 75px;
+  // }
+  // .icon-class {
+  //   padding: 10px;
+  //   font-size: 25px;
+  // }
+
+  .container {
+    // position: absolute;
+    // top: 25%;
+    width: 100%;
+    // border-top-right-radius: 25px;
+    background: white;
+    // border-top-left-radius: 25px;
+  }
+  .sub-container {
+    height: 66vh;
+    overflow: scroll;
+    margin-top: 40px;
+    padding-bottom: 60px;
+    background: white;
+  }
+  .item-md.item-block .item-inner {
+    padding-right: 0 !important;
+    border-bottom: 0 !important;
+}
+.toolbar-background-md {
+  border-color: transparent;
+  background: linear-gradient(45deg, #0EA2C8, #0E7AC7);
+  color: #fff;
+}
+}

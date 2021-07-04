@@ -1,0 +1,100 @@
+page-non-zensarian-list {
+  .profile-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #b9c8e6;
+    background: white;
+    img.user-icon {
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      border: 1px solid #c0e0ff;
+      overflow: hidden;
+      left: 5px;
+      top: 5px;
+    }
+    .contact-id-container {
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      .id-card {
+        width: 30px;
+        margin-right: 5px;
+      }
+    }
+    .id-icon,
+    .call-users {
+      width: 30px;
+    }
+  }
+  .userImage {
+    width: 50px;
+    height: 50px;
+    margin-right: 7px;
+    border-radius: 50%;
+    border: 3px solid #dcedf7;
+    overflow: hidden;
+    left: 5px;
+    top: 5px;
+  }
+  .user-details {
+    padding-left: 5px;
+    width: 70%;
+  }
+
+  // Select list custom option
+  .status-select {
+    padding: 0 !important;
+    max-width: none;
+  }
+
+  //Filter container StyleSheet
+
+  .filter-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 5px;
+  }
+  .select-md .select-icon {
+    width: 20px;
+  }
+  .pass-status {
+    display: flex;
+    align-items: center;
+  }
+  .display-flex {
+    align-items: center;
+  }
+  .non-zensarian-content {
+    background-color: #e1e7f3;
+    padding: 10px;
+    font-family: "Roboto";
+  }
+  .scroll-content {
+    padding: 5px !important;
+  }
+  .align-top {
+    z-index: 100;
+  }
+  .colorGrey {
+    color: #7f7f7f;
+  }
+  .filter-icon{
+    width: 50px; 
+  }
+  .filter-options{
+    padding-left: 0px; 
+    background-color: transparent;
+    margin-left: 5px;
+  }
+  .user-info-container{
+    width: 100%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+}

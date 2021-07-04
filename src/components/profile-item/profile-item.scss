@@ -1,0 +1,26 @@
+profile-item {
+  .profile-item-wrapper {
+    padding-left: 0;
+  }
+
+  .name{
+      color:color($colors,primary);
+      font-size: 1em;
+      text-transform: capitalize;
+  }
+
+  .text-wrap{
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+//   .box-shadow{
+//     // box-shadow: 0 0px 12px rgba(0, 0, 0, 0.19), 0 4px 8px rgba(0, 0, 0, 0.23);
+// }
+.border{
+  border: 1px solid #EFEFEF;
+  margin-left: 10px;
+}
+  
+
+}

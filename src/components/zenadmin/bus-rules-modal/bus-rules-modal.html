@@ -1,0 +1,21 @@
+<ion-header class="header-container">
+  <ion-navbar>
+
+    <ion-title>Pass Rules</ion-title>
+    <ion-buttons end>
+      <div class="title-container">
+        <ion-icon slot="start" name="close" (click)="dismiss()" class="cancel-btn"></ion-icon>
+      </div>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <div class="pass-container">
+    <ul class="intro-para">
+      <ol  class="orderedList-container">
+        <li class="listItem" *ngFor="let item of responseList">{{item}}</li>
+      </ol>
+    </ul>
+  </div>
+
+</ion-content>

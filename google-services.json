@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "53867636135",
+    "firebase_url": "https://zentalent-5520d.firebaseio.com",
+    "project_id": "zentalent-5520d",
+    "storage_bucket": "zentalent-5520d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:53867636135:android:877ca1a8a2cd34a2",
+        "android_client_info": {
+          "package_name": "com.zensar.zentalent"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "53867636135-vqukkhe5h4u5a8a7ma8f7b355d8v940j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDYLtBNpwTW0ipLyUWFTBjMdjGLHirn5TY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "53867636135-vqukkhe5h4u5a8a7ma8f7b355d8v940j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

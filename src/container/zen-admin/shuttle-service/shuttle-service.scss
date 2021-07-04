@@ -1,0 +1,336 @@
+page-shuttle-service {
+    .status-select {
+        // padding: 0!important;
+        color: white;
+        padding: 10px;
+        max-width: none;
+        .select-text {
+            padding-right: 5px;
+            color: white;
+        }
+        .select-icon {
+            // color: white;
+            // font-size: 40px;
+        }
+        .select-icon-inner {
+            color: white !important;
+        }
+    }
+    .calendar-icon {
+        width: 30px;
+        height: 30px;
+        margin-right: 4px;
+        // padding: 2px;
+    }
+    .date-container {
+        align-items: center;
+        display: flex;
+        background: #e1e7f3;
+        padding: 0px 0px 4px 0px;
+        font-size: 1.1em;
+        font-weight: 400;
+        .calendar-icon {
+            margin-left: 5px;
+        }
+    }
+    .dateValue {
+        font-size: 0.96em;
+    }
+    .profile-cont-asso {
+        width: 80px;
+        height: 80px;
+        background-color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 0px 12px rgba(0, 0, 0, 0.19), 0 4px 8px rgba(0, 0, 0, 0.23);
+    }
+    .profile-asso {
+        width: 75px;
+        height: 75px;
+        border-radius: 50%;
+    }
+    .ion-card {
+        background-color: #ffffff;
+        border: none;
+        box-shadow: none;
+        border-radius: 5px;
+        // margin: 2%;
+        width: 98%;
+        min-height: 60%;
+    }
+    .height50vh {
+        height: 50vh;
+    }
+    .default-bg-img {
+        width: 70%;
+        height: 100%;
+    }
+    .centerText {
+        padding: 0.3em 1em;
+        margin: 0;
+        color: gray;
+    }
+    .profile-wrapper {
+        position: relative;
+        text-align: center;
+        padding-bottom: 13px;
+        color: #e1e7f3;
+        font-size: 16px;
+        border-bottom: 1px dashed #b9c8e6;
+        &::after {
+            // content: "";
+            // position: absolute;
+            // right: -7px;
+            // bottom: -7px;
+            // width: 15px;
+            // height: 15px;
+            // border-radius: 50%;
+            // background: #5f5cdf;
+            content: "";
+            position: absolute;
+            right: -10px;
+            bottom: -15px;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: #e1e7f3;
+        }
+        &::before {
+            content: "";
+            // position: absolute;
+            // left: -7px;
+            // bottom: -7px;
+            // width: 15px;
+            // height: 15px;
+            // border-radius: 50%;
+            // background: #5f5cdf;
+            content: "";
+            position: absolute;
+            left: -10px;
+            bottom: -15px;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: #e1e7f3;
+        }
+        .designation {
+            font-size: 14px;
+            margin-top: 5px;
+        }
+        .prof-pic-con {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 130px;
+            position: relative;
+            img.outer-image {
+                position: absolute;
+                width: 110px;
+            }
+            img.profile-pic {
+                width: 70px;
+                height: 70px;
+                border-radius: 50%;
+                position: relative;
+            }
+        }
+    }
+    .monthly-pass-container {
+        padding: 5px 5px;
+    }
+    .month-pass-date {
+        font-size: 14px;
+        font-weight: 400;
+    }
+    .container-items {
+        background: #ffffff;
+        //  height: 170px;
+        display: flex;
+        // flex-direction: column;
+        padding: 10px 5px;
+        border-radius: 5px;
+        // margin: 10px;
+        margin: 0px 10px;
+    }
+    .img-style {
+        height: 45px;
+        width: 45px;
+        border-radius: 50%;
+        border: 3px solid lightblue;
+        padding: 2px;
+        position: relative;
+        z-index: 1;
+    }
+    .user-pic {
+        width: 45px;
+        height: 45px;
+        margin-right: 2px;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        img.userpic-bg {
+            width: 60px;
+            position: absolute;
+            z-index: 0;
+        }
+    }
+    .associate-name {
+        font-size: 1em;
+        font-weight: 300;
+    }
+    .no-mentor {
+        padding: 15px;
+        text-align: center;
+        font-size: 1.1em;
+        font-weight: 500;
+    }
+    .disabled {
+        background-color: #e2e2e2;
+    }
+    .key-value {
+        width: calc(100% - 50px);
+        font-weight: 300;
+        font-size: 14px;
+        margin: 5px 0;
+    }
+    .route-img {
+        width: 25px;
+        height: 25px;
+        margin-right: 10px;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .pickup-point-card {
+        display: flex;
+        margin: 0px 10px;
+        padding: 5px 5px;
+    }
+    .pickup-details {
+        display: flex;
+        align-items: center;
+        width: 70%;
+    }
+    .pickup-time-card {
+        display: flex;
+        align-items: center;
+        width: 30%;
+    }
+    .displayFlex-col {
+        display: flex;
+        flex-direction: column;
+    }
+    .campus-name {
+        margin: 5px 0;
+        font-size: 14px;
+    }
+    .ticket-parent {
+        background: #e1e7f3;
+        padding: 5px 5px;
+    }
+    .marginBottom-10 {
+        margin-bottom: 10px;
+    }
+    .busIDText {
+        // padding: 0px 5px;
+        font-size: 1em;
+        padding: 2px;
+        font-weight: 300;
+    }
+    .bus-passId {
+        font-size: 1em;
+        font-weight: 400;
+    }
+    .monthly-pass-title {
+        font-size: 1em;
+        font-weight: 300;
+    }
+    .width40px {
+        width: 40px;
+        .calendar-icon{
+            width: 40px;
+            height: 40px;
+            padding: 0;
+        }
+    }
+    .route-pic {
+        // width: 45px;
+        // height: 45px;
+        margin-right: 10px;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .clock-img {
+        width: 25px;
+        height: 25px;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .bus-icon {
+        margin: 0;
+        height: 40px;
+        margin-right: 2px;
+    }
+    .bus-validity-container {
+        margin-left: 4px;
+    }
+    .bus-id-details {
+        margin-left: 4px;
+    }
+    .fontWeight {
+        font-weight: 400;
+    }
+    .pickup-name-container {
+        width: 75%;
+    }
+    .add-float-with-bg-suggestion-text {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 10px;
+        .add {
+            height: 25px;
+            width: 25px;
+            background-color: red;
+            border-radius: 50px;
+            display: flex;
+            justify-content: center;
+            margin: 0 10px;
+            align-items: center;
+            color: white;
+            background: $ts-bg !important;
+        }
+    }
+    .colorGrey {
+        color: #7f7f7f;
+    }
+    .ticket-parent {
+        * {
+            font-family: "Roboto";
+        }
+    }
+    .clock-container {
+        width: 100%;
+        .associate-name {
+            font-weight: 400;
+            color: #000;
+        }
+    }
+    .content-container {
+        background: #e1e7f3;
+    }
+    .filter-icon {
+        width: 20%;
+    }
+    .first-container {
+        margin-top: 10px;
+    }
+}

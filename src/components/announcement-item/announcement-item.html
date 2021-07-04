@@ -1,0 +1,57 @@
+<ion-card >
+
+  <div>
+
+    <p class="announcement-text padding0-10" [innerHTML] ="announcement.announcementText | emoji"></p> 
+
+    <!-- <p class="fontSize8"">
+      <span>{{formatDate(announcement.rowAddStp) | date}}</span>
+      <span>{{formatDate(announcement.rowAddStp) | date:'shortTime' }}</span>
+    </p> -->
+
+
+    <div class="flex">
+      <div class="flex"  *ngIf="announcement.rowAddStp" center text-left>
+          <span> <img class="imageSize" src="assets/imgs/Calender.svg" /></span>
+          <div class="date">{{formatDate(announcement.rowAddStp) | date}}</div>
+      </div>
+          <div class="date">
+            {{formatDate(announcement.rowAddStp) | date:'shortTime' }}
+          </div>
+  </div>
+
+    <multimedia *ngIf="announcement.attachments" [multimediaItems]='announcement.attachments'></multimedia>
+
+  </div>
+
+  <ion-row class="ratingSeperator">
+<div class="justify-cont-space-around width100">
+    <div text-center>
+      <button ion-button icon-start clear small (click)="addRating(announcement.announcementId,'like')">
+        <ion-label *ngIf='!announcement.liked'><img class="icon-bar" src="assets/imgs/new_Like_unfill.svg"></ion-label>
+        <ion-label *ngIf='announcement.liked'><img class="icon-bar" src="assets/imgs/new_Like_fill.svg"></ion-label>
+      </button>
+      <button  class="countAction" no-padding ion-button icon-start clear small
+        (click)="getRating(announcement.announcementId,'like')">{{announcement.likeCount}}</button>
+    </div>
+
+    <div text-center>
+      <button ion-button icon-start clear small (click)="addRating(announcement.announcementId,'dislike')">
+        <ion-label *ngIf='!announcement.disliked'><img class="icon-bar" src="assets/imgs/new_dislike_unfill.svg"></ion-label>
+        <ion-label *ngIf='announcement.disliked'><img class="icon-bar" src="assets/imgs/new_dislike_fill.svg">
+        </ion-label>
+      </button>
+      <button class="countAction" no-padding ion-button icon-start clear small
+        (click)="getRating(announcement.announcementId,'dislike')">{{announcement.disLikeCount}}</button>
+    </div>
+
+    <div text-center (click)="addRating(announcement.announcementId,'comment')">
+      <button ion-button icon-start clear small>
+        <ion-label><img class="icon-bar" src="assets/imgs/comment.svg"></ion-label>
+      </button>
+      <button  class="countAction" no-padding ion-button icon-start clear small>{{announcement.commentCount}}</button>
+    </div>
+  </div>
+  </ion-row>
+
+</ion-card>

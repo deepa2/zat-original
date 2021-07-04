@@ -1,0 +1,71 @@
+page-zendeavor-associate-list-for-consultation {
+  .custom-segment {
+    text-transform: capitalize !important;
+    font-size: 1em !important;
+  }
+  .parentDiv {
+    width: 100%;
+  }
+  .segment-button.segment-activated {
+    border-color: #3597e8 !important;
+    opacity: 1 !important;
+  }
+  .segment-md .segment-button {
+    // color: black !important;
+    opacity: 0.5;
+  }
+
+  .infoClass {
+    display: flex;
+  }
+  .divFirst {
+    width: 70%;
+  }
+
+  .empName {
+    color: #488cfc;
+    font-weight: 500;
+    white-space: initial;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .divSecond {
+    width: 30%;
+    border-left: 1px solid #2c2f33;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+    padding-left: 10px;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .subDiv {
+    display: flex;
+    flex-direction: column;
+  }
+  .status {
+    font-weight: 500;
+    margin-bottom: 5px;
+  }
+  .statusColor {
+    color: #488cfc;
+  }
+  .iconSize {
+    font-size: 1.6em;
+  }
+  .imgCls {
+    border-radius: 50%;
+    overflow: hidden;
+    width: 50px !important;
+    height: 50px !important;
+    border: 4px solid #c5dcf3;
+  }
+
+  .nodata {
+    padding: 10px;
+    // background: #b0cfef;
+    margin: 10px;
+    text-align: center;
+  }
+}

@@ -1,0 +1,76 @@
+page-rto-questionnaries {
+.bgColor{
+    background: #E5E5E5;
+}
+.container{
+    background: #FFFFFF;
+  padding: 5px;
+  margin-top: 10px;
+  display: flex;
+  border-radius: 5px;
+  //align-items: center;
+}
+
+.questionText{
+    margin-left: 8px;
+      font-weight: 600;
+      width: 80%;
+}
+
+.imageStyle{
+  width: 20%;
+}
+
+.footerStyle{
+  background: #ffff;
+    text-align: center;
+    
+}
+.questionnaires{
+  
+  .item-md{
+    padding-left: 0px;
+  }
+  }
+  .list-md .item-block .item-inner{
+    border-bottom: none!important;
+  }
+  .list-md{
+    margin: 0px;
+  }
+
+  .submitBttn{
+    border-radius: 20px;
+    text-transform: capitalize;
+  }
+  .questionLists{
+    background: #EEFFFA;
+   // color:#333333;
+    padding: 5px;
+    
+  }
+  .ulList{
+    column-count: 2;
+    margin-left: 0px;
+    padding-inline-start: 20px;
+    column-gap: 25px;
+    ul li::before {
+      color: #A5E6D5;
+         }
+  }
+
+  .label-md{
+    margin: 0px;
+  }
+  .item-block{
+    flex-direction: row-reverse;
+  }
+
+  .item-block{
+    min-height: 0px;
+  }
+  
+
+ 
+
+}

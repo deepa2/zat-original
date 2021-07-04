@@ -1,0 +1,81 @@
+<!--
+  Generated template for the CourseListPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>Learning Calendar</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="presentPopover($event)">
+        <img src="assets/imgs/dapFilterIcon.svg" />
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="isDataAvailable">
+    <div class="cal-header">
+      <div class="date-title">Date</div>
+      <div class="events-title">
+        <div>Training Details</div>
+        <div class="month-list">
+          <div class="month-item" [ngClass]="{'active': item.value == month}" *ngFor="let item of monthList" (click)="selctMonth(item?.value)">
+            <ion-label>{{item?.value | titlecase}}</ion-label>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+    <div class="nodata" *ngIf="offeringList.length==0">Learning calendar releasing  soon</div>
+    <ng-container *ngFor="let item of offeringList; let i = index ">
+     
+      <ion-card class="ion-card" [ngClass]="{'is-today': item.isToday}"  (click)="offeringDetails(item)">
+        <div class="claendar-date">
+          <ng-container *ngIf="offeringList[i - 1]?.startDate !=item.startDate" >
+            <div class="date">{{item.startDate | date: 'dd' }}</div>
+            <div class="day">{{item.startDate | date: 'EEE' }}</div>
+          </ng-container>
+        </div>
+        <div class="card-container {{item?.learningType}}">
+          <!-- <div class="titleName">{{item?.learningType}}</div> -->
+          <div class="titleName">
+            <span>{{item?.method}}</span>
+            <span class="learning-type">{{item?.learningType}}</span>
+          </div>
+          <div class="padding-bottom2per" *ngIf="item.startDate">{{item?.startTime}}  To {{item?.endTime}} </div>
+          <div class="subTitle">{{item?.title}}</div>
+          <div>
+            <div class="align-cont-cent padding-top3per fontp9em" *ngIf="item?.facility">
+              <span class="padding-right8"><img src="assets/imgs/zenLearnlocation.svg" /></span>
+              <span class="color-gray">{{item?.facility}}</span>
+              <!-- {{item.facility}} -->
+            </div>
+           
+            <div class="flex fontp9em padding-top3per color-gray" *ngIf="item?.financialYear">
+              <span class="padding-right8"><img src="assets/imgs/zenLearnCredit_Hours.svg" /></span>
+              <span>{{item?.financialYear}}</span>
+            </div>
+
+
+          </div>
+
+          <div *ngIf="item?.learningType == 'Behavioural' && item?.band" class="band">
+           Band - {{item?.band}}
+          </div>
+  
+  
+        </div>
+      </ion-card>
+    </ng-container>
+   
+    <ion-infinite-scroll threshold="300px" (ionInfinite)="loadData($event)">
+      <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+    
+  </div>
+  
+</ion-content> 

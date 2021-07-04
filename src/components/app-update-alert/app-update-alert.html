@@ -1,0 +1,48 @@
+<!-- Generated template for the AppUpdateAlertComponent component -->
+<ion-header no-border>
+
+  <ion-navbar>
+    <ion-toolbar>
+      <div class="img-parent ">
+
+        <img src="assets/imgs/update-app-img.svg" class="headerImg" onError="this.src='assets/imgs/dummy-banner.jpeg'" />
+
+      </div>
+    </ion-toolbar>
+
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+  <div class="main-div">
+
+    <div class="updateContent-parent">
+      <div class="">
+        <ion-grid class="updateTitleGrid">
+          <ion-row>
+            <ion-col class="newUpdate-title">
+              New update available
+            </ion-col>
+            <ion-col col-3 class="versionNumber">
+              v{{updateVersion}}
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col col-9 class="about-title">
+              About Update
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+        <div [innerHTML]="decryptedWhatsNewData" class="fontSize1p1 whatsnew" *ngIf="decryptedWhatsNewData"> </div>
+      </div>
+    </div>
+  </div>
+</ion-content>
+<ion-footer>
+  <div class="footerBtn-parent">
+    <button ion-button round class="skipBtn" (click)="onSkip()" *ngIf="showSkipbtn">Skip</button>
+    <button ion-button round class="updateBtn" (click)="onUpdate()">Update</button>
+
+  </div>
+</ion-footer>

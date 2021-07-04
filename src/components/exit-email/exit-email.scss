@@ -1,0 +1,80 @@
+exit-email {
+    .background {
+        background-color: white;
+    }
+    .header-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px;
+        background: linear-gradient(to right, #0ea2c8, #0e7cc7);
+        color: #fff;
+        img {
+            margin-right: 5px;
+            color: #fff;
+        }
+    }
+    .person-container {
+        display: flex;
+        align-items: center;
+        margin-left: 5px;
+        font-weight: 600;
+    }
+    .person-img {
+        height: 35px;
+        width: 35px;
+        margin-right: 5px;
+        border-radius: 50%;
+    }
+    .person-details {
+        display: flex;
+        flex-direction: column;
+    }
+    .icon-margin {
+        margin-right: 5px;
+    }
+    .middle-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 10px;
+    }
+    .input-field {
+       
+        background: #F6F9FB;
+        width: 100%;
+        height: 50px;
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #E5EFFF;
+    }
+    .textarea-height {
+        height: 150px;
+        margin-top: 10px;
+    }
+    .bottom-container {
+        margin: 0 10px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .btn-style {
+        text-transform: capitalize;
+    }
+    .attachement {
+        background: #e5efff;
+        height: 45px;
+        width: 45px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 10px;
+    }
+    .ft-300 {
+        font-weight: 300;
+    }
+    ion-icon{
+        font-size: 1.5em;
+    }
+
+}

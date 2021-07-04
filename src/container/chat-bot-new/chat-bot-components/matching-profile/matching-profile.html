@@ -1,0 +1,18 @@
+<div *ngFor="let item of referralList">
+    <ion-row class="chat-bg width90" (click)="_getCandidateProfileId(item)">
+        <ion-col col-5 class="align-cont-cent">
+            <div><img class="img30" [src]="item?.profileIcon" /></div>
+            <div>{{item?.candidateName}}</div>
+        </ion-col>
+        <ion-col col-7 class="align-cont-cent">
+            <div><img class="img30" [src]="item?.jobMatchIcon" /></div>
+            <div>{{item?.jobMatch}}</div>
+        </ion-col>
+    </ion-row>
+</div>
+<div class="text-wrapper" *ngIf="noJobsAvailable.slice(0,2) == 'No'">No job matches this profile </div>
+<div *ngIf="referralList == null" class="text-wrapper">{{errorMsg}}</div>
+<referral-bot-component [refferalDetails]="referralData" [dataOnly]="'true'"></referral-bot-component>
+<div class="text-wrapper" *ngIf="referralData">
+    Click <span class="updateProfileLink" (click)="_moveToPage()">here</span> to refer now.
+</div>

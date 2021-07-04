@@ -1,0 +1,42 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>{{isEdit ? "Update" : "Add"}} Driver</ion-title>
+        <ion-buttons end>
+            <button class="btn-style" (click)="dismiss('')" end>
+                <img src="assets/zenAdmin/close.svg" />
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <div class="modal-container">
+        <form [formGroup]="user">
+            <ion-item>
+                <ion-label color="dark" stacked class="label-color" for="name">Driver Name</ion-label>
+                <ion-input type="text" formControlName="username"></ion-input>
+            </ion-item>
+
+            <ion-item>
+                <ion-label color="dark" stacked class="label-color">Driver Number</ion-label>
+                <ion-input formControlName="number" type="tel"></ion-input>
+            </ion-item>
+            <div class="margin10">
+                <span class="error-msg">
+                    <p *ngIf="user.controls['number'].hasError('required') && user.controls?.number.touched">* Please enter a Contact Number</p>
+                    <p *ngIf="user.controls['number'].hasError('maxlength') || user.controls['number'].hasError('minlength')">* Please enter 10 digit number</p>
+                </span>
+            </div>
+            <ion-item>
+                Photo
+                <button ion-button outline item-end round (click)="selectImage()"> upload </button>
+                <div class="driver-logo">
+                    <img [src]="driverProfilePic" class="driver-img" onerror="this.src='assets/imgs/dummy-profile.png'" />
+                </div>
+            </ion-item>
+        </form>
+        <div class="footer-button">
+            <button ion-button round (click)="getAddNewDriver()">{{isEdit ? "Update" : "Add"}}</button>
+        </div>
+    </div>
+</ion-content>

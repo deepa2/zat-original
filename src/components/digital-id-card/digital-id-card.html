@@ -1,0 +1,181 @@
+<ion-content>
+  <ion-card color="light" class="ion-card ion-text-center margin5 post-relative" *ngIf="profileDetails">
+    <div class="right semi-circle"></div>
+    <div class="left semi-circle"></div>
+
+
+    <ion-card-content>
+      <div>
+        <!-- <ion-card class="profileBgImg"> -->
+        <div>
+          <div class="flex width100per padding8">
+            <!-- <div class="profileContainer">
+              <div class="flex-dir-col-center">
+                <img src="assets/menu_icons/outerImage.svg" style="height: 100px;">
+
+                <img class="profileImg" [src]="profileDetails?.profilePic" onErrorImage="assets/imgs/dummy-profile.png"
+                  defaultImage="assets/imgs/dummy-profile.png" />
+                <div class="center margin-top8">
+                  <img class="iconID" src="assets/imgs/ID icon.svg" />
+                </div>
+              </div>
+            </div> -->
+            <div class="profileImgNew mainDiv" (click)="goToProfile()">
+              <div class="imgDiv">
+                <img src="assets/imgs/blue-outer-circle.svg" class="profile-outer-circle">
+                <img class="user-profile-pic" src="{{profileDetails?.profilePic}}">
+              </div>
+
+              <div class="zensar-logo-div">
+                <img class="" src="assets/imgs/zensar-technologies-vector-logo 3.svg">
+              </div>
+
+
+            </div>
+
+            <div class="introContainer">
+
+              <div class="introSec">
+
+                <div class="line-height">
+
+                  <div class="text-white font1em fontWeight-bold marginBottom-10">{{profileDetails?.userName}}</div>
+
+
+                  <div class="flex padding4 al-item-cen" *ngIf="profileDetails?.userId">
+                    <div style="width: 10%;"><img class="iconID" src="assets/imgs/ID-icon-digitalID.svg" /></div>
+                    <div class="font0-9 text-white  padding-left10 ">{{profileDetails?.userId}}</div>
+                  </div>
+                  <div class="profileMargin margin-bottom3per" *ngIf="profileDetails?.userId"></div>
+
+                  <div class="flex padding4 al-item-cen" *ngIf="profileDetails?.designation">
+                    <div style="width: 10%;"><img class="iconID" src="assets/imgs/designation-digitalID.svg" /></div>
+                    <div class="font0-9 text-white  padding-left10 ">{{profileDetails?.designation}}</div>
+                  </div>
+                  <div class="profileMargin margin-bottom3per" *ngIf="profileDetails?.designation"></div>
+
+                  <div class="flex padding4 al-item-cen" *ngIf="profileDetails?.bloodGroup">
+                    <div style="width: 10%;"><img class="iconID" src="assets/imgs/Blood-Group.svg" /></div>
+                    <div class="font0-9 text-white  padding-left10 ">{{profileDetails?.bloodGroup}} </div>
+                  </div>
+                  <div class="profileMargin margin-bottom3per" *ngIf="profileDetails?.bloodGroup"></div>
+
+                  <div class="flex padding4 al-item-cen" *ngIf="profileDetails?.age">
+                    <div style="width: 10%;"><img class="iconID" src="assets/imgs/cake-age.svg" /></div>
+                    <div class="font0-9 text-white  padding-left10 ">{{profileDetails?.age}}</div>
+                  </div>
+
+                  <!-- <div *ngIf="profileDetails?.emailId" class="flex al-item-cen"
+                      (click)="goToMail(profileDetails?.emailId)">
+                      <div style="width: 10%;"><img class="mailD" src="assets/imgs/mail id.svg" /></div>
+                      <div class="font0-9 text-white padding-left10 mailEllipsis">{{profileDetails?.emailId}}</div>
+                    </div> -->
+
+                  <!-- <div *ngIf="profileDetails?.personalNumber" class="flex al-item-cen"
+                      (click)="call(profileDetails?.personalNumber)">
+                      <div class="width10">
+                        <img class="mailD" src="assets/imgs/personal no.svg" />
+                      </div>
+                      <div class="font0-9 text-white padding-left10 width90">{{profileDetails?.personalNumber}}</div>
+                    </div> -->
+
+
+                  <!-- <div *ngIf="profileDetails?.myExtension" class="flex al-item-cen"
+                      (click)="call(profileDetails?.myExtension)">
+                      <div class="width10">
+                        <img class="mailD" src="assets/imgs/office no.svg" />
+                      </div>
+                      <div class="font0-9 text-white padding-left10 width90">{{profileDetails?.myExtension}}</div>
+                    </div> -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- </ion-card> -->
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+
+
+
+  <ion-card color="light" class="professional-detailsCard ion-text-center margin5 post-relative" *ngIf="profileDetails">
+    <div class="right semi-circle"></div>
+    <div class="left semi-circle"></div>
+
+
+    <ion-card-content class="project-details-card-content">
+      <!-- <div *ngFor="let projectDetails of profiles?.value; index as i" style="    display: flex;
+      flex-direction: inherit;
+      align-items: start;">
+        <div style="padding-right: 10px;">
+          <img style="    width: 80px;
+          height: 0px;" [src]="projectDetails.icon" />
+        </div>
+        <div style="display: flex;
+        padding-top: 10px;
+        flex-direction: column;
+        width: 67%;
+        border-bottom: 1px dotted grey;
+        padding-bottom: 4px;">
+          <div style="    font-size: 0.9em;
+          padding: 0 0 2px 0;
+          font-weight: lighter;">{{projectDetails.key}}</div>
+          <div style="
+          font-weight: bold;
+      ">{{projectDetails.value}}</div>
+        </div> -->
+
+      <div>
+        <div *ngFor="let projectDetails of profiles?.value; index as i">
+          <div class="infoContent width100per" style="margin-top: 6px;">
+            <div class="width25">
+              <img class="infoImg" [src]="projectDetails.icon" />
+              <!-- style="margin-bottom: -13px;" -->
+              <!-- <div class="doJoinBg" style="  border-radius: 10px;   width: 50px;" [ngClass]="{'department-bg':projectDetails.id == '1','natureOfWork-bg': projectDetails.id == '2',
+              'doJoin-bg': projectDetails.id == '3','aadharCard-bg': projectDetails.id == '4'
+              }">
+                <img class="" src="assets/imgs/ID-icon-digitalID.svg" style="   width: 50px;height: 40px;padding: 10px;"/>
+
+              </div> -->
+            </div>
+            <div class="width74">
+              <div class="column">
+                <div class="text-grey font0-9">{{projectDetails.key}}</div>
+                <span *ngIf="projectDetails.key != 'Date of Joining'" class="">{{projectDetails.value}}</span>
+                <span *ngIf="projectDetails.key =='Date of Joining'" class="">{{formatDate(projectDetails.value) | date}}</span>
+              </div>
+
+            </div>
+          </div>
+          <div *ngIf="profiles?.value.length > i+1" class="border-bottom profileMargin marginTop2"></div>
+
+        </div>
+      </div>
+
+    </ion-card-content>
+    <div class="display-flex address-sign-container">
+      <div class="signature-container">
+        <!-- <div class="employerName">Employer/Manager:</div> -->
+
+        <div> <img class="signature" [src]="profileDetails?.signature" /></div>
+        <div class="font1em employerName">
+          <div>{{profileDetails?.employerName}}</div>
+          <div>{{profileDetails?.employerDesignation}}</div>
+        </div>
+      </div>
+      <div class="address-container flexCol-even">
+        <div class="text-grey addressTitle">Address:</div>
+        <div class="address">{{profileDetails?.officeAddress}}</div>
+      </div>
+    </div>
+  </ion-card>
+  <!-- <button ion-button round><ion-icon name="close"></ion-icon></button> -->
+  <div class="closeBtnContainer" (click)="closeModal()">
+    <button ion-button class="closeBtn">
+      <ion-icon name="close" class="closeIcon"></ion-icon>
+    </button>
+  </div>
+</ion-content>

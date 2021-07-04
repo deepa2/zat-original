@@ -1,0 +1,200 @@
+<!--
+  Generated template for the ZenRichLandingPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>ZenRich</ion-title>
+    <ion-buttons class="go-help" end (click)="goToHelp()">
+      <button ion-button icon-only>
+        <ion-icon name="ios-help-circle-outline"></ion-icon>
+      </button>
+      <span>Help</span>
+    </ion-buttons>
+  </ion-navbar>
+
+
+</ion-header>
+
+
+<ion-content>
+  <div *ngIf="isDataAvailble">
+
+
+    <div class="card-wrapper">
+      <div class="landing-card card{{i}}" *ngFor="let referalDetails of record let i = index ">
+        <div class="card-top">
+          <img class="card-bg" src="assets/imgs/landing-mask.svg" />
+          <img *ngIf="i == 0" src="assets/imgs/landing-job-icon.svg" />
+          <img *ngIf="i == 1" src="assets/imgs/referral-submitted.svg" />
+          <img *ngIf="i == 2" src="assets/imgs/people-selected.svg" />
+          <img *ngIf="i == 3" src="assets/imgs/average-referral.svg" />
+          <span>{{referalDetails?.value}}</span>
+        </div>
+        <p>{{referalDetails?.key}}</p>
+      </div>
+    </div>
+    <div>
+      <div class="tabs">
+        <div class="tab-item" [class.selected]="selectedSection  == 0" (click)="changeSlide(0,'Recent Openings')">
+
+          <img style="height: 20px;" src="assets/imgs/recent-openings.svg">
+          <span class="tab-text">Recent Openings</span>
+
+        </div>
+        <div class="tab-item" [class.selected]="selectedSection  == 1" (click)="changeSlide(1,'Drafts')">
+          <span>
+            <img style=" height: 20px;" src="assets/imgs/draft-icon.svg">
+          </span>
+          <span class="tab-text">Drafts</span>
+        </div>
+      </div>
+
+      <div class="tab-con" *ngIf="selectedTabValue == 'Drafts'">
+        <div class="opening-card draft-card" style="display: inline-block;" *ngFor="let item of slides.value"
+          (click)="goToReferralDetails(item)">
+          <div class="job-wrapper">
+            <div [ngClass]="{'hot-job': item.hotJobFlag != ''}" class="job-icon">
+              <img class="imgStyle" src="assets/imgs/job-item-icon.svg" />
+              <span>{{item?.srfNo}}</span>
+              <div class="hot-con" *ngIf="item.hotJobFlag != ''"><img class="hot-icon" src="assets/imgs/hot-icon.svg">
+                {{item.hotJobFlag}}</div>
+
+            </div>
+            <div class="job-info">
+              <div class="draftTitle">{{item?.jobTitle}}</div>
+              <div class="job-location info">
+                <span><img class="job-location roundedImg" src="assets/imgs/Person.png" /></span>
+                <span class="candidate-name">{{item?.candidateName}}</span></div>
+
+              <div class="skills info">
+                <img src="assets/imgs/time.svg" />
+                <span>{{item?.pendingDays}}</span></div>
+
+              <div class="job-info-footer" *ngIf="item.hotJobFlag != ''">
+                <div class="experience">
+                  <img class="money-icon" src="assets/imgs/money.svg" />
+                  <span class="inr">Bonus: Upto </span>
+                  <span 
+                    class="hot-amount"><img class="rupee-icon"
+                      src="assets/imgs/rupee-green.svg" />{{item?.hotJobReferralAmount}}</span>
+                </div>
+              </div>
+            </div>
+            <div class="closedIcon" (click)="$event.stopPropagation()" (click)="removeDraft(item) ">
+              <ion-icon name="ios-close-outline"></ion-icon>
+            </div>
+          </div>
+          <div class="progressBar">
+            <div class="progressInside" [style.width.%]="item?.percentage"></div>
+          </div>
+          <div class="job-footer job-footer-Darft" style="border-top: 0px; ">
+            <span class="pending-Days">
+              <img src="assets/icon/dashboard-icons/ZenRich_skills.svg">
+              <span class="mg-left">{{item?.stepCount}}</span>
+            </span>
+            <span>
+              <img src="assets/icon/dashboard-icons/ZenRich_forward.svg">
+            </span>
+          </div>
+        </div>
+        <div *ngIf="(slides?.value == null ||slides?.value.length == 0)"> No Data available</div>
+      </div>
+      <div class="tab-con" *ngIf="selectedTabValue == 'Recent Openings'">
+        <div class="opening-card" style="display: inline-block;" *ngFor="let item of slides.value; index as i"
+          (click)="goToJobDetails(item?.srfNo)">
+          <div class="job-wrapper">
+            <div [ngClass]="{'hot-job': item.hotJobFlag != ''}" class="job-icon">
+              <img class="imgStyle" src="assets/imgs/job-item-icon.svg" />
+              <span>{{item?.srfNo}}</span>
+              <div class="hot-con" *ngIf="item.hotJobFlag != ''"><img class="hot-icon" src="assets/imgs/hot-icon.svg">
+                {{item.hotJobFlag}}</div>
+
+            </div>
+            <div class="job-info">
+              <div class="job-title">
+                <span class="job-title-wrap"> <span>{{item?.jobTitle}}</span> </span>
+                <div class="niche-wrap" *ngIf="item.nicheSkillFlag">
+                  <img src="assets/imgs/nicheStar.svg"> <span class="niche-skills">Niche skill</span>
+                </div>
+
+              </div>
+              <div class="skills info">
+                <img class="job-skills" src="assets/icon/dashboard-icons/ZenRich_process.svg" />
+                <span>{{getMainSkills(item?.skills)}}</span></div>
+              <!-- bonus info -->
+              <div class="job-info-footer">
+                <div class="experience">
+                  <img class="money-icon" src="assets/imgs/money.svg" />
+                  <span>Bonus: Upto <img class="rupee-icon" src="assets/imgs/rupee.svg" /><span
+                      [ngClass]="{'bonus': ((item.hotJobReferralAmount != '' && item.hotJobFlag != '') &&  item.referralBonus != (item.hotJobReferralAmount | number))}"
+                      class="inr">{{item?.referralBonus}}</span></span>
+                  <span
+                    *ngIf="item.hotJobFlag != '' && item.referralBonus != (item.hotJobReferralAmount | number) && item.hotJobReferralAmount != ''"
+                    class="hot-amount"><img class="rupee-icon"
+                      src="assets/imgs/rupee-green.svg" />{{item?.hotJobReferralAmount}}</span>
+                </div>
+                <div class="referral-Bonus">
+                  <span><img class="money-icon" src="assets/imgs/Person.png"></span>
+                  <span>{{item?.profileMatchCount}}</span></div>
+              </div>
+            </div>
+            <div class="save-job">
+              <img class="bookMarkIcon" (click)="$event.stopPropagation()" (click)="bookMarked(item,i)"
+                *ngIf="!item?.isBookmarked" src="assets/icon/dashboard-icons/bookMarked.svg">
+              <img class="bookMarkIcon" (click)="$event.stopPropagation()" (click)="bookMarked(item,i)"
+                *ngIf="item?.isBookmarked" src="assets/icon/dashboard-icons/bookMarkFilled.svg">
+              <ion-icon name="more" (click)="$event.stopPropagation()"
+                (click)="presentpopover($event,item?.srfNo, item?.jobTitle,item)"></ion-icon>
+            </div>
+          </div>
+
+          <div class="job-footer job-info-footer">
+            <div class="experience">
+              <img class="experience-icon" src="assets/icon/dashboard-icons/ZenRich_experiance.svg" />
+              <span class="job-skills">Exp: {{item?.experience}}</span>
+            </div>
+            <div class="job-location"><span><img class="experience-icon"
+                  src="assets/icon/dashboard-icons/ZenRich_location.svg"></span>
+              <span class="job-skills">{{item?.location}}</span>
+            </div>
+
+          </div>
+
+        </div>
+        <div *ngIf="slides?.value">
+          <div class="opening-card viewAll-container" *ngIf="slides?.value.length > 3" (click)="goToZenRichList()">
+            <div class="viewAll">
+              <!-- <img class="experience-icon" src="assets/imgs/zenrichViewAll.svg" /> -->
+              <img src="assets/icon/dashboard-icons/ZenRich_viewall.svg">
+              <span class="viewAll-text"> View All</span>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="slides?.value == null"> No Data available</div>
+      </div>
+
+    </div>
+
+    <div class="tiles-container">
+      <div class="tiles" *ngFor="let tabData of allTabs let i = index" (click)="goToZenRichList(tabData)">
+        <div class="tiles-flex">
+          <span class="tiles-img">
+
+            <img *ngIf="i==0" class="imgStyle" src="assets/imgs/myReferrals.svg">
+            <img *ngIf="i==1" class="imgStyle" src="assets/imgs/all-openings.svg">
+            <img *ngIf="i==2" class="imgStyle" src="assets/imgs/saved-jobs.svg">
+            <img *ngIf="i==3" class="imgStyle" src="assets/imgs/saved-profiles.svg">
+          </span>
+          <span style="margin-top: 10px;color: #1586C7">
+            {{tabData?.value}}
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</ion-content>

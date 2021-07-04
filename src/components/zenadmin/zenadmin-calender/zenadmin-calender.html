@@ -1,0 +1,50 @@
+<ion-content>
+  <div class="display-flex padding10 blue-dotted-border" *ngIf="responseList">
+    <div class="date-container">
+      <div>
+        <img class="calendar-icon" src="assets/zenAdmin/calendar-img.svg" />
+      </div>
+      <div>
+        <ion-select class="status-select" [(ngModel)]="monthModel" (ionChange)="OnMonthChange(monthModel)"
+          [selectOptions]="selectOptions">
+          <ion-option [value]="monthItem" *ngFor="let monthItem of monthNames">{{monthItem}}</ion-option>
+        </ion-select>
+        <div class="year-name">{{currentYear}}</div>
+      </div>
+    </div>
+    <div class="title-container">
+      <ion-icon slot="start" name="close" (click)="dismissModal()" class="cancel-btn"></ion-icon>
+    </div>
+  </div>
+  <div class="calendar-body" *ngIf="responseList">
+    <ion-grid>
+      <ion-row class="calendar-weekday" class="ts-color">
+        <ion-col class="opacity04">S</ion-col>
+        <ion-col class="fontwt600">M</ion-col>
+        <ion-col class="fontwt600">T</ion-col>
+        <ion-col class="fontwt600">W</ion-col>
+        <ion-col class="fontwt600">T</ion-col>
+        <ion-col class="fontwt600">F</ion-col>
+        <ion-col class="opacity04">S</ion-col>
+      </ion-row>
+      <ion-row class="calendar-date">
+        <ion-col col-1 *ngFor="let lastDayItem of daysInLastMonth" class="hideDate">{{lastDayItem.day}}
+        </ion-col>
+        <ion-col col-1 class="ts-color" *ngFor="let dayItem of datesInCurrentMonth">
+          <span [ngClass]="{'confirmedPass' : dayItem.isApproved,'cancelledPass' : dayItem.isCancelled,'bg-blue': (!dayItem.isCancelled && !dayItem.isApproved),'opacity04': (dayItem.day=='Saturday' || dayItem.day=='Sunday')}">{{dayItem.dayNo}}</span>
+
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+  <div class="legends" *ngIf="responseList">
+    <div class="legend-section">
+      <div class="circle grey"></div>
+      <span>Confirmed Pass </span>
+    </div>
+    <div class="legend-section">
+      <div class="circle red"></div>
+      <span>Cancelled Pass </span>
+    </div>
+  </div>
+</ion-content>

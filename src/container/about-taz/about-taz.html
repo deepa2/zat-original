@@ -1,0 +1,51 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title class="pageTitile">About Talent@Zensar</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+
+  <div class="zenverse-wrapper">
+    <div class="app-info zeneverse-item {{item.title}}" (click)="goTopage(item)" *ngFor="let item of mainData">
+      <img class="abt-zv-icon" [src]="item?.icon">
+      <img class="zeneverse-item-bg" [src]="item?.backgroundImage">
+      <ion-label>{{item?.title}}<span class="label-border"></span></ion-label>
+    </div>
+
+    <!-- <div class="sandeep-vid zeneverse-item" (click)="openVideo()">
+      <img class="abt-zv-icon" src="assets/imgs/ceo-vid.svg">
+      <img class="zeneverse-item-bg" src="assets/imgs/sandeep-vid.svg">
+      <ion-label>ZenVerse Introductory Video<span class="label-border"></span></ion-label>
+    </div>
+
+    <div class="timeline zeneverse-item" (click)="openTimelineVideo()">
+      <img class="abt-zv-icon" src="assets/imgs/timeline.svg">
+      <img class="zeneverse-item-bg" src="assets/imgs/timeline-bg.svg">
+      <ion-label>Timeline Video<span class="label-border"></span></ion-label>
+    </div>
+
+    <div class="history zeneverse-item" (click)="goToVersionHistory()">
+      <img class="abt-zv-icon" src="assets/imgs/version-history.svg">
+      <img class="zeneverse-item-bg" src="assets/imgs/history-bg.svg">
+      <ion-label>Version History<span class="label-border"></span></ion-label>
+    </div>
+
+    <div class="brochure zeneverse-item" (click)="openInappBrowerFile()">
+      <img class="abt-zv-icon" src="assets/imgs/brochure.svg">
+      <img class="zeneverse-item-bg" src="assets/imgs/brochure-bg.svg">
+      <ion-label>Brochure<span class="label-border"></span></ion-label>
+    </div>
+
+    <div class="abt-zensar zeneverse-item" (click)="isAppAvailable()">
+      <img class="abt-zv-icon" src="assets/imgs/abt-zensar.svg">
+      <img class="zeneverse-item-bg" src="assets/imgs/abt-zen-bg.svg">
+      <ion-label>About Zensar<span class="label-border"></span></ion-label> -->
+    <!-- </div> -->
+
+  </div>
+</ion-content>

@@ -1,0 +1,7 @@
+<svg id="wall-clock_1_" data-name="wall-clock (1)" xmlns="http://www.w3.org/2000/svg" width="20.039" height="20.039" viewBox="0 0 20.039 20.039">
+  <ellipse id="Ellipse_1189" data-name="Ellipse 1189" cx="9.266" cy="9.266" rx="9.266" ry="9.266" transform="translate(0.753 0.753)" fill="#ffc03f"/>
+  <g id="Group_9304" data-name="Group 9304">
+    <path id="Path_41184" data-name="Path 41184" d="M10.019,20.039A10.019,10.019,0,1,1,20.039,10.019,10.019,10.019,0,0,1,10.019,20.039Zm0-18.576a8.557,8.557,0,1,0,8.557,8.557A8.552,8.552,0,0,0,10.019,1.463Z" fill="#101a20"/>
+    <path id="Path_41185" data-name="Path 41185" d="M193.376,111.794h-4.018a.74.74,0,0,1-.753-.753v-5.274a.753.753,0,0,1,1.507,0v4.521h3.265a.753.753,0,0,1,0,1.507Z" transform="translate(-179.901 -100.185)" fill="#101a20"/>
+  </g>
+</svg>

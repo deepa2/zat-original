@@ -1,0 +1,494 @@
+<ion-header>
+  <ion-navbar hideBackButton>
+    <ion-title class="pageTitile">
+      <div class="align-cont-base padding-left10">
+        <img class="profileHtWT margin-right10" src="./assets/imgs/chat/chatBot-icon.svg">
+        Zeno
+      </div>
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="viewCtrl.dismiss()">
+        <ion-icon name="md-close"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="chat-content">
+  <ion-list id="ionChatList" #ionList class="padding5" no-lines (click)="_closeKeyBoard()">
+    <!-- Chat list for bot and user -->
+    <div #ionListDiv *ngFor="let chatListItem of chatList; let i = index" [attr.data-index]="i">
+
+      <div class="bot-container" *ngIf="chatListItem?.from=='bot'">
+        <div class="padding5 position-relative " *ngIf="chatListItem?.response?.responseList?.speech">
+          <!-- Show data from bot response -->
+          <!-- greeting msg from bot -->
+          <div class="slide-from-left" *ngIf="i==0">
+            <img class="greeting-img" src="./assets/imgs/chat/{{greetingImg}}.svg" />
+          </div>
+          <!-- content from bot read-more.ts -->
+          <read-more class="speech slide-from-left"
+            [desc]="replacePhoneNumber(chatListItem?.response?.responseList?.speech,chatListItem?.response?.responseList?.actionName)"
+            [UpdateProfileLinkData]="chatListItem?.response?.responseList?.updateProfileLink"
+            [moveToPage]="chatListItem?.response?.responseList?.moveToPage"
+            [actionName]="chatListItem?.response?.responseList?.actionName" (moveToPageAllow)="_moveToPage()"
+            (updateProfile)="updateProfile($event,i)" [parentIndex]="i"
+            [ngStyle]="{'width':chatListItem?.response?.responseList?.showQuestionIcon ? '80%' : '89%'}"
+            (scrollToBottom)="_scrollToBottom()">
+          </read-more>
+
+          <img *ngIf="chatListItem?.response?.responseList?.showQuestionIcon" class="question-mark"
+            src="assets/imgs/chat/question-mark.svg"
+            (click)="openFAQModal(chatListItem?.response?.responseList?.data?.approvalHelpInfo)" />
+
+        </div>
+
+        <!-- for displaying PDF's -->
+        <div class="display-grid width90 margin-bottom6" *ngIf="chatListItem?.response?.responseList?.templateId == 4">
+          <table>
+            <tr *ngFor="let pdfItem of chatListItem?.response?.responseList?.restApi.split(',')">
+              <th>
+                <img class="margin-right5" *ngIf="pdfItem.slice( -4) == '.pdf'"
+                  src="assets/imgs/chat/pdf-doc-icon.svg" />
+                <img class="margin-right5" *ngIf="pdfItem.slice( -4) == 'pptx'"
+                  src="assets/imgs/chat/ppt-doc-icon.svg" />
+                <img class="margin-right5" *ngIf="pdfItem.slice( -4) != 'pptx' && pdfItem.slice( -4) != '.pdf'"
+                  src="assets/imgs/chat/word-doc-icon.svg" />
+                <span>
+                  {{pdfItem.slice( pdfItem.lastIndexOf('/') + 1, pdfItem.length - 4) | replaceUnderscorePipe }}</span>
+              </th>
+              <th><img (click)="_downloadPDF(pdfItem)" src="assets/imgs/chat/pdf-download.svg" /></th>
+              <th><img (click)="_mailPDFDocuments(pdfItem)" src="assets/imgs/chat/pdf-email.svg" /></th>
+            </tr>
+          </table>
+
+        </div>
+
+        <!-- To show image -->
+        <div class="width50 position-relative"
+          *ngIf="!chatListItem?.response?.responseList?.actionIncomplete && chatListItem?.response?.responseList?.templateId==2"
+          (click)="utilities.openAsset(chatListItem?.response?.responseList?.restApi)">
+          <img class="chat-item-pic" src="{{chatListItem?.response?.responseList?.restApi}}">
+
+          <div class="download-image-div">
+            <img class="download-img-icon" src="./assets/imgs/chat/download-zeno.svg"
+              (click)="downloadImage(chatListItem?.response?.responseList?.restApi);$event.stopPropagation()">
+            <img class="open-img-icon" src="./assets/imgs/chat/img-exp.svg">
+          </div>
+        </div>
+
+        <!-- To show User Bank Details & AR Details -->
+        <div class="read-more-bubble slide-from-left width50 ar-cont"
+          *ngIf="chatListItem?.response?.responseList?.actionName == 'arDetails'">
+          <div class="text-center padding10">
+            <img class="ar-profile" src="{{chatListItem?.response?.responseList?.userDetails?.profilePic}}" />
+            <div>{{chatListItem?.response?.responseList?.userDetails?.name}}</div>
+          </div>
+          <div class="infoModal">
+            <div class="align-cont-cent padding5-20">
+              <img class="icon20-20 margin-right8" src="./assets/imgs/chat/phone.svg" />
+              <span class="width80 ar-phone"
+                [innerHTML]="chatListItem?.response?.responseList?.userDetails?.extension | linky "
+                (click)="utilities.callNumber(chatListItem?.response?.responseList?.userDetails?.extension)"></span>
+            </div>
+            <div class="align-cont-cent padding5-20">
+              <img class="icon20-20 margin-right8" src="./assets/imgs/chat/email.svg" />
+              <span class="width80"
+                [innerHTML]="chatListItem?.response?.responseList?.userDetails?.email | linky "></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="chat-list suggestionItem queryContent white-space-nowrap display-inline-block"
+          *ngIf="chatListItem?.response?.responseList?.actionName == 'getUserBankDetails'">
+          <div *ngFor="let responseItem of chatListItem?.response?.responseList?.userDetails">
+            <div>{{responseItem.key}} : <span [innerHTML]="responseItem.value | linky "></span></div>
+          </div>
+        </div>
+
+        <!--not integarted weather template -->
+        <div *ngIf="chatListItem?.response?.responseList?.actionName"
+          [hidden]="chatListItem?.response?.responseList?.actionName!='getWeatherFetched'">
+          <div class="chat-list suggestionItem weather-cont">
+            <div class="detail-cloud">
+              <div class="font16">{{chatListItem?.response?.responseList?.weather?.description | titlecase }}</div>
+              <span class="font16">{{chatListItem?.response?.responseList?.weather?.currentTemp}}
+                <span>&deg;C</span>
+              </span>
+              <div>Humidity <span> {{chatListItem?.response?.responseList?.weather?.humidity}} %</span></div>
+            </div>
+            <div>
+              <img [src]="chatListItem?.response?.responseList?.weather?.weatherSymbol" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Timesheet Attendance Details -->
+        <div class="ts-attendance" *ngIf="chatListItem?.response?.responseList?.actionName"
+          [hidden]="chatListItem?.response?.responseList?.actionName!='getMyAttendanceDetails'">
+          <ion-row *ngFor="let responseItem of chatListItem?.response?.responseList?.dataList">
+            <ion-col col-4>
+              <div class="ts-calendar">
+                <img src="assets/imgs/chat/calendar-Icon.svg" />
+                <span><strong>{{responseItem?.dayName | titlecase}}</strong></span>
+              </div>
+              <p>{{responseItem?.loginDate | date: 'dd MMM yyyy'}}</p>
+            </ion-col>
+            <ion-col col-8>
+              <div>
+                <div><strong>In:</strong> {{responseItem?.logInTime}} </div>
+                <div><strong>Out:</strong> {{responseItem?.logOutTime}}</div>
+              </div>
+              <div class="efforts">{{responseItem?.efforts}}</div>
+            </ion-col>
+          </ion-row>
+        </div>
+
+        <!-- Timesheet Compliance Details -->
+        <div class="ts-compliance" *ngIf="chatListItem?.response?.responseList?.actionName"
+          [hidden]="chatListItem?.response?.responseList?.actionName!='getMyComplianceDetails'">
+          <div class="outer-div" *ngFor="let responseItem of chatListItem?.response?.responseList?.dataList">
+            <div class="ts-calendar"
+              (click)="getMonthwiseCompliancePercentage(responseItem.month,responseItem?.monthFlag)">
+              <img src="assets/imgs/chat/calendar-Icon.svg" /> <span>{{responseItem?.month}}</span>
+            </div>
+            <div>{{responseItem?.percentage}}</div>
+          </div>
+        </div>
+
+        <!-- Timesheet Allocation Details -->
+        <div class="ts-allocation" *ngIf="chatListItem?.response?.responseList?.actionName"
+          [hidden]="chatListItem?.response?.responseList?.actionName!='getMyAllocationDetails'">
+          <project-allocation [chatListItem]="chatListItem"></project-allocation>
+        </div>
+
+        <!-- Timesheet Date -->
+        <div class="d-flex horizontal-scroll left-space"
+          *ngIf="chatListItem?.response?.responseList?.actionName && chatListItem?.response?.responseList?.dataList?.length > 1"
+          [hidden]="chatListItem?.response?.responseList?.actionName!='getFillTimesheetDetails'">
+          <div *ngFor="let responseItem of chatListItem?.response?.responseList?.dataList;let dateIndex = index;">
+            <timesheet-data [dateObj]="responseItem" [type]="tsTypes.tsDate"
+              (onDateChange)="getTimeEntryDetails(responseItem,i + 1,chatListItem?.response?.responseList?.queryId)"
+              [updateStatus]="tsTypes?.updateStatus" [chatListIndexForDate]="i"
+              (setIndexTOUpdateSelDate)="setIndexTOUpdateSelDate($event,i + 1)" [indexToShowDot]="indexToShowDot"
+              [dateIndex]="dateIndex"></timesheet-data>
+          </div>
+        </div>
+
+        <!-- Timesheet Date After Submit-->
+        <div class="d-flex horizontal-scroll left-space" *ngIf="chatListItem?.response?.responseList?.actionName"
+          [hidden]="chatListItem?.response?.responseList?.actionName!='submitTimesheet'">
+          <div *ngFor="let responseItem of chatListItem?.response?.responseList?.dataList;let dateIndex = index;">
+            <timesheet-data [dateObj]="responseItem" [type]="tsTypes.tsDate"
+              (onDateChange)="getTimeEntryDetails(responseItem,i + 1,chatListItem?.response?.responseList?.queryId)"
+              [updateStatus]="tsTypes?.updateStatus" [chatListIndexForDate]="i"
+              (setIndexTOUpdateSelDate)="setIndexTOUpdateSelDate($event,i + 1)" [indexToShowDot]="indexToShowDot"
+              [dateIndex]="dateIndex"></timesheet-data>
+          </div>
+        </div>
+
+        <!-- TimeEntry Details -->
+        <div class="timesheet horizontal-scroll left-space"
+          *ngIf="chatListItem?.response?.responseList?.actionName && chatList[chatList.length - 1]?.response?.responseList?.showTimeEntryDetails== true"
+          [hidden]="chatListItem?.response?.responseList?.actionName!='timeEntryDetails'"
+          [hidden]="i!=(chatList.length-1)">
+          <div *ngIf="chatListItem?.response?.responseList?.dataList?.length > 0">
+            <ion-row class="effort-details">
+              <ion-col col-9 class="total-efforts">
+                <div *ngIf="chatListItem?.response?.responseList?.data?.staffLoginLogoutDetails">
+                  <div><strong>{{chatListItem?.response?.responseList?.data?.staffLoginLogoutDetails?.date}}</strong>
+                  </div>
+                  <strong>In: </strong>
+                  <span>{{chatListItem?.response?.responseList?.data?.staffLoginLogoutDetails?.logInTimeHrsMin}}</span>
+                  <strong>Out: </strong>
+                  <span>{{chatListItem?.response?.responseList?.data?.staffLoginLogoutDetails?.logOutHrsMin}}</span>
+                  <span>({{chatListItem?.response?.responseList?.data?.staffLoginLogoutDetails?.efforts}})</span>
+                </div>
+                <div><strong>Total Efforts:
+                    {{chatListItem?.response?.responseList?.totalCalculatedEfforts?.hour}}:{{chatListItem?.response?.responseList?.totalCalculatedEfforts?.minute}}
+                  </strong></div>
+              </ion-col>
+              <ion-col col-3 class="submitBtn">
+                <button ion-button round small [disabled]="tsFlags?.disableSubmit"
+                  (click)="showSubmitConfirmAlert(chatListItem?.response?.responseList?.data?.taskAndTimesheetDetails,chatListItem?.response?.responseList?.queryId,i)"
+                  [ngStyle]="{'opacity': i < chatList?.length - 1 || tsFlags?.disableSubmit ? '0.5' : '1'}">Submit</button>
+              </ion-col>
+            </ion-row>
+          </div>
+          <div class="project-title" *ngIf="!chatListItem?.response?.responseList?.data?.staffLoginLogoutDetails">
+            <strong>For Date :
+            </strong> <span>{{tsFordate}}</span>
+          </div>
+
+
+          <div class="project-card"
+            *ngFor="let responseItem of chatListItem?.response?.responseList?.dataList;let parentIndex = index;">
+            <div class="project-title"> <strong>Project: </strong>
+              <span>{{responseItem.title | titlecase}}</span>
+            </div>
+            <ion-slides slidesPerView="1.2" spaceBetween="5px" (ionSlideWillChange)="onTaskDataSLideChange()">
+              <ion-slide *ngFor="let task of responseItem.taskList;let childIndex = index;">
+                <timesheet-data [taskData]="task" [timesheetData]="responseItem"
+                  [type]="tsTypes.taskAndTimesheetDetails"
+                  [isTimesheetEditable]="chatListItem?.response?.responseList?.data?.isTimesheetEditable"
+                  [isPayrollToBeFilledZeroHours]="canFillZeroHoursFlag()"
+                  (edit)="editAndSaveTimesheet($event,task,chatListItem?.response?.responseList?.dataList,i,chatListItem?.response?.responseList?.actionId)"
+                  (refresh)="refreshTimesheet(i)" (setSuggestionList)="setSuggestionList($event,i)"
+                  [selData]="tsTypes.selData" [parentIndex]="parentIndex" [childIndex]="childIndex"
+                  [indexToToggleForm]="indexToToggleForm" (setIndexTOUpdate)="setIndexTOUpdate($event)"
+                  [chatListIndex]="i" [chatListLength]="chatList?.length"></timesheet-data>
+              </ion-slide>
+            </ion-slides>
+          </div>
+        </div>
+
+        <!-- User Profile -->
+        <div class="profile-old" *ngIf="chatListItem?.response?.responseList?.actionName"
+          [hidden]="chatListItem?.response?.responseList?.actionName!='getUserProfileData' && chatListItem?.response?.responseList?.actionName!='getMyProfile' && chatListItem?.response?.responseList?.actionName!='managerDetails'">
+          <ion-slides slidesPerView="3" spaceBetween="5px"
+            (ionSlideReachEnd)="onlastSlideUpdateEmpContactList(chatListItem?.response?.responseList?.searchResults)"
+            [ngStyle]="{'width': (showMoreArrow  && ((chatList.length - 1)  == i)) ? '90%' : '100%'}">
+            <ion-slide *ngFor="let responseItem of chatListItem?.response?.responseList?.searchResults"
+              (click)="goToProfile(responseItem)">
+              <ion-card>
+                <img src="{{responseItem.profilePicUrl}}" />
+                <div class="name">{{responseItem.employeeName}}</div>
+                <span>{{responseItem.employeeId}}</span>
+              </ion-card>
+            </ion-slide>
+          </ion-slides>
+          <div *ngIf="showMoreArrow && ((chatList.length - 1)  == i)" (click)="openEmpContactListModal()">
+            <ion-icon name="arrow-forward"></ion-icon>
+          </div>
+        </div>
+
+
+        <!-- My Timesheet Details -->
+        <div class="myTimesheet-old" *ngIf="chatListItem?.response?.responseList?.actionName"
+          [hidden]="chatListItem?.response?.responseList?.actionName !== 'getMyTimesheetDetails'">
+          <my-timesheet-detail class="width100" [chatList]="chatList" [chatListItem]="chatListItem" [parentIndex]="i"
+            (sendDataToChatBotResponseSuccess)="_sendDataToChatBotResponseSuccess($event)"></my-timesheet-detail>
+        </div>
+
+        <!-- Approve Timesheet-->
+        <div class="approve-timesheet left-space" *ngIf="chatListItem?.response?.responseList?.actionName"
+          [hidden]="chatListItem?.response?.responseList?.actionName!='getApproveTimesheetDetails'">
+          <div class="d-flex"
+            *ngIf="chatListItem?.response?.responseList?.data?.projectList?.length > 0 || chatListItem?.response?.responseList?.data?.teamsTimesheetList?.length > 0">
+            <div class="duration">
+              <img src="assets/imgs/chat/calendar-Icon.svg" />
+              <span>Duration:</span>
+              <strong>{{chatListItem?.response?.responseList?.data?.startDate | date:'dd MMM, yyyy'}} -
+                {{chatListItem?.response?.responseList?.data?.endDate | date:'dd MMM, yyyy'}}</strong>
+            </div>
+          </div>
+          <ion-list no-lines margin-top *ngIf="chatListItem?.response?.responseList?.dataList?.length > 0">
+            <button ion-item
+              (click)="getPendingTimesheetList('all',chatListItem?.response?.responseList?.data,chatListItem?.response?.responseList?.queryId,i)">
+              <span class="projectName">All Projects</span>
+              <img src="assets/zents-imgs/right-arrow.svg" />
+            </button>
+            <button ion-item *ngFor="let responseItem of chatListItem?.response?.responseList?.dataList;"
+              (click)="getPendingTimesheetList(responseItem,chatListItem?.response?.responseList?.data,chatListItem?.response?.responseList?.queryId,i)">
+              <span class="projectName">{{ responseItem.projectName }}</span>
+              <img src="assets/zents-imgs/right-arrow.svg" />
+            </button>
+          </ion-list>
+        </div>
+
+        <!-- "pendingTimesheetList" -->
+        <div class="approveAll left-space" *ngIf="chatListItem?.response?.responseList?.actionName"
+          [hidden]="chatListItem?.response?.responseList?.actionName!='pendingTimesheetList'">
+          <pending-timesheet [chatList]="chatList" [chatListItem]="chatListItem" [timesheetRestApi]="timesheetRestApi"
+            [parentIndex]="i" (sendDataToChatBotResponseSuccess)="_sendDataToChatBotResponseSuccess($event)">
+          </pending-timesheet>
+        </div>
+
+        <!-- create Task -->
+        <div
+          *ngIf="chatListItem?.response?.responseList?.showTimeEntryDetails == false && chatList[chatList.length - 2]?.response?.responseList?.actionName=='zenTS.getCreateTaskDetails' && chatListItem?.response?.responseList?.enableCT == true && i==(chatList.length-1)">
+          <create-task [selectedDateForCT]="sendCTDate" [timeEntryDetailData]="chatListItem?.response?.responseList"
+            [isPayrollToBeFilledZeroHours]="canFillZeroHoursFlag()" (addedTask)="addedTask($event)"
+            (allocationMessageChatBot)="allocationMessageChatBot($event)" (scrollToBottom)="_scrollToBottom()">
+          </create-task>
+        </div>
+
+        <!-- global mobility -->
+        <div class="region-list-cont" [hidden]="i!=(chatList.length-1)"
+          *ngIf="chatListItem?.response?.responseList?.rowRegionList != ''">
+          <button class="region-list" *ngFor="let region of chatListItem.response.responseList.rowRegionList"
+            (click)="_getHrChatBotData({value:region,clickedChatItem:chatListItem?.response?.responseList})"><span
+              class="margin-right10">{{region}}</span>
+            <ion-icon name="ios-arrow-forward"></ion-icon>
+          </button>
+        </div>
+
+        <!-- refferal check  -->
+        <div *ngIf="chatListItem?.response?.responseList?.actionName =='referral.checkReferralStatus'">
+          <referral-bot-component [refferalDetails]="chatListItem?.response?.responseList" [dataOnly]="'false'"
+            (moreReferralFlag)="_getHrChatBotData({ value: 'More Referral' })" (scrollToBottom)="_scrollToBottom()">
+          </referral-bot-component>
+        </div>
+
+        <!-- matching profile  in referral-->
+        <div *ngIf="chatListItem?.response?.responseList?.actionName =='referrals.matchingPositionsToMyProfile'">
+          <matching-profile [matchingProfile]="chatListItem?.response?.responseList"
+            (moveToPageAllow)="_moveToPage('zenrich')" (scrollToBottom)="_scrollToBottom()"></matching-profile>
+        </div>
+      </div>
+
+      <!-- implement in future -->
+      <!-- <div [ngSwitch]="chatListItem?.response?.responseList?.actionName">
+        <div *ngSwitchCase="'learning.myLearningHours'">
+          <!- learning history in zenlearn ->
+          <learning-hrs [responseList]="chatListItem?.response?.responseList" (scrollToBottom)="_scrollToBottom()">
+          </learning-hrs>
+        </div>
+        <div *ngSwitchCase="'learning.upcomingEnrolledCourses'">
+          <!- course list in zenlearn ->
+          <courses-list [responseList]="chatListItem?.response?.responseList" (scrollToBottom)="_scrollToBottom()">
+          </courses-list>
+        </div>
+        <div *ngSwitchCase="'learning.myDAP'">
+          <!- my dap ->
+          <my-dap [myDAPDetails]="chatListItem?.response?.responseList" (scrollToBottom)="_scrollToBottom()"></my-dap>
+        </div>
+      </div> -->
+
+      <!-- learning history in zenlearn -->
+      <div *ngIf="chatListItem?.response?.responseList?.actionName == 'learning.myLearningHours'">
+        <learning-hrs [responseList]="chatListItem?.response?.responseList" (scrollToBottom)="_scrollToBottom()">
+        </learning-hrs>
+      </div>
+
+      <!-- course list in zenlearn -->
+      <div *ngIf="chatListItem?.response?.responseList?.actionName == 'learning.upcomingEnrolledCourses'">
+        <courses-list [responseList]="chatListItem?.response?.responseList" (scrollToBottom)="_scrollToBottom()">
+        </courses-list>
+      </div>
+
+      <!-- my dap -->
+      <div *ngIf="chatListItem?.response?.responseList?.actionName =='learning.myDAP'">
+        <my-dap [myDAPDetails]="chatListItem?.response?.responseList" (scrollToBottom)="_scrollToBottom()"></my-dap>
+      </div>
+
+      <!-- only for teamDap & menteeDap -->
+      <div class="dap-cont"
+        *ngIf="chatListItem?.response?.responseList?.actionName =='learning.teamMembersDAP' || chatListItem?.response?.responseList?.actionName =='learning.menteesDAP'">
+        <div class="justify-spac-bt-align-cent padding10">Mentees <span class="dap-count center"> {{dapCount}}
+          </span></div>
+        <div class="dap-button" (click)="_viewAll(chatListItem?.response?.responseList?.actionName)">View</div>
+      </div>
+
+      <!-- feedback response -->
+      <div
+        *ngIf="(chatListItem?.response?.responseList?.actionName == 'receivedFeedbackRes' || chatListItem?.response?.responseList?.actionName == 'negativeFeedbackres')"
+        class="text-wrapper feedback">
+        <span>{{chatListItem?.response?.responseList?.feedbackResponse}}</span>
+      </div>
+
+      <!-- suggestion phrase -->
+      <div class="text-wrapper" *ngIf="!showChatBotLoader"
+        [ngStyle]="{'display': chatListItem?.response?.responseList?.suggestionPhrase ? 'block':'none'}"
+        [hidden]="i!=(chatList.length-1) ">
+        <span class="slide-from-left"> {{chatListItem?.response?.responseList?.suggestionPhrase}}</span>
+      </div>
+
+      <!-- Show Data of User queries -->
+      <div class=" padding5 display-flex justify-content-flex-end" *ngIf="chatListItem?.from=='me'"
+        [hidden]="!chatListItem?.query">
+        <div class="chat-item-cont position-relative" (click)="_updateUserQuery(chatListItem.query)">
+          <div class="chat-item slide-from-right">{{chatListItem?.query}}</div>
+          <div class="align-cont-cent colorGray justify-content-flex-end slide-from-right">
+            {{chatListItem?.currentTime}}
+            <img class="edit-query border-radius50" src='./assets/imgs/edit-query.svg' />
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Show Data for feedback  -->
+      <div *ngIf="i==chatList.length-1">
+        <div *ngIf="!chatListItem?.response?.responseList?.feedbackSent">
+          <feedback-componenet [feedbackDetails]="chatListItem?.response?.responseList" [showQueryBox]="showQueryBox"
+            [queryListenFromFeedback]="queryListenFromFeedback" [chatList]="chatList" [currentQueryId]="currentQueryId"
+            [currentActionId]="currentActionId" [userDetails]="userDetails"
+            (sendNegativeFeedback)="_sendNegativeFeedback($event)" (submitFeedback)="_submitFeedback($event)"
+            (tts)="_tts('')" (scrollToBottom)="_scrollToBottom()" (cancel)="_cancel()">
+          </feedback-componenet>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Bot loader -->
+    <div class="padding5 position-relative" *ngIf="showChatBotLoader">
+      <div class="margin-right10">
+        <img class="chat-item-profile-pic profileHtWT" src="./assets/imgs/chat/chatBot-icon.svg">
+      </div>
+      <div class="margin-left10">
+        <img class="dots-loader" src="./assets/imgs/chat/loader_01.gif" />
+      </div>
+    </div>
+
+  </ion-list>
+
+</ion-content>
+
+<ion-footer>
+  <!-- suggestionListForTS -->
+  <select-suggestion [type]="tsTypes.suggestionType" [suggestionList]="suggestionListForTS" [selectedValue]="selValue"
+    (setSuggestion)="setSuggestion($event)"></select-suggestion>
+
+  <!-- normal chatbot suggestions -->
+  <div class="horizontal-scroll sugesstion-cont align-cont-cent"
+    *ngIf="showSuggestion && suggestionList.suggestionsList && suggestionListForTS.length == 0 && !showChatBotLoader">
+    <!-- To show new items in suggestions in horizontal scroll -->
+    <div class="display-flex" *ngIf="suggestionList.newFeaturesList">
+      <button class="padding8 suggestion-list align-cont-cent" *ngFor="let item of suggestionList.newFeaturesList"
+        (click)="_getHrChatBotData({value:item})">
+        <img class="new-item" src="./assets/imgs/chat/new-item.svg" />
+        {{item}}
+      </button>
+    </div><!-- To show suggestions in horizontal scroll -->
+    <div class="display-flex">
+      <button class="padding11 suggestion-list" *ngFor="let item of suggestionList.suggestionsList"
+        (click)="_getHrChatBotData({value:item})">
+        {{item}}
+      </button>
+    </div>
+  </div>
+
+  <div padding>
+    <div [hidden]="showKeyboard" class="holder">
+      <!-- keyboard -->
+      <img class="width9 height9" *ngIf="!showText" (click)="_openKeyboard()"
+        src="./assets/imgs/chat/keyboard-icon.svg" />
+      <!-- Microphone/Listening -->
+      <img class="gifSize" *ngIf="listening || showChatBotLoader" src="./assets/imgs/chat/message-loader.gif" />
+      <!-- Speaker/Mute -->
+      <div class="align-cont-cent" *ngIf="!(listening || showChatBotLoader)">
+        <img class="icon40-40 margin-right20" *ngIf="!showText" (click)="_startListening()"
+          src="./assets/imgs/chat/microphone-icon.svg" />
+        <img *ngIf="mute " (click)="_muteSpeech()" src="./assets/imgs/chat/mute.svg" />
+        <img *ngIf="!mute " (click)="_muteSpeech()" src="./assets/imgs/chat/unmute-icon.svg" />
+      </div>
+      <img class="allIcons" (click)="_openSuggestionModal()" src="./assets/imgs/chat/chatbot-menu.svg" />
+    </div>
+
+    <div [hidden]="!showKeyboard" class="keyboard-holder">
+      <div class="grow">
+        <form [formGroup]="userInputGroup">
+          <ion-input formControlName="userInput" #ionInput1 type="text" [(ngModel)]='inputChatText'
+            (input)='_ionChangeToggleSendMic($event.target?.value)'
+            (ionChange)='_ionChangeToggleSendMic($event.target?.value)' (keyup.enter)="_sendText()"></ion-input>
+        </form>
+      </div>
+      <div>
+        <img *ngIf="showSend" class="icon40-40" (click)="_closeKeyboard()"
+          src="./assets/imgs/chat/microphone-icon.svg" />
+        <img *ngIf="!showSend " class="icon30-30" (click)="_sendText()" src="./assets/imgs/chat/send.svg" />
+      </div>
+    </div>
+  </div>
+</ion-footer>

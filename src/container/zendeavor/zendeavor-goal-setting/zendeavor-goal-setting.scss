@@ -1,0 +1,614 @@
+page-zendeavor-goal-setting {
+  ion-content {
+    position: absolute;
+  }
+  .activeColor {
+    color: white !important;
+    background-color: white !important;
+    .icon-border {
+      //   border: 1px solid black;
+      background: #488cfc;
+    }
+  }
+
+  .display-inline {
+    font-size: 0.9em;
+    margin: 1px;
+    padding: 10px;
+    background: white;
+    display: inline-block;
+    border-radius: 5px;
+    text-align: center;
+    color: gray;
+  }
+
+  .kra-title-flex {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .imgPadding {
+    padding: 5px;
+  }
+  .icon-border {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-bottom: 5px;
+    border: 1px solid gray;
+    display: inline-block;
+    line-height: 30px;
+  }
+
+  .font-color-blue {
+    color: color($colors, primary);
+  }
+
+  .rowCls {
+    display: flex;
+    align-items: center;
+  }
+  .colCls {
+    display: flex;
+    align-items: center;
+  }
+  .imgSize {
+    height: 25px;
+    width: 25px;
+  }
+  .mrginRt {
+    margin-right: 10px;
+  }
+  .bttmMargin {
+    // margin-bottom: 56px;
+    margin-bottom: 10px;
+  }
+  .greenClass {
+    background: green;
+    color: white;
+  }
+  .marginBtm {
+    margin-bottom: 2px;
+  }
+  .padng0to5 {
+    padding: 0px 5px;
+  }
+  .font-weight500 {
+    font-weight: 500;
+  }
+  .color-gray {
+    color: gray;
+  }
+  .status-icon {
+    width: 25px;
+    height: 25px;
+  }
+  .color-blue {
+    color: color($colors, primary);
+  }
+  .tracker-inner-circle {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+  }
+
+  // kra css
+  form .label {
+    margin: 10px 0px;
+  }
+  .card-md {
+    box-shadow: none;
+    border-radius: 5px;
+    border: 1px solid #b8ccec;
+    background: #e5efff;
+  }
+  .status-icon {
+    width: 25px;
+    height: 25px;
+  }
+
+  // tracker scss
+  .tracker {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin-right: 15px;
+    z-index: 99;
+    background: white;
+  }
+  // status on bases of kra completed/pending
+  .completed-status > .tracker {
+    border: 1px solid green;
+  }
+  .pending-status > .tracker {
+    border: 1px solid darkgray;
+  }
+  .incomplete-status > .tracker {
+    border: 1px solid gray;
+  }
+  .completed-status > .tracker > .tracker-inner-circle {
+    background: green;
+  }
+  .pending-status > .tracker > .tracker-inner-circle {
+    background: gray;
+  }
+  .incomplete-status > .tracker > .tracker-inner-circle {
+    background: white;
+  }
+
+  ion-row.completed-status::after {
+    content: " ";
+    position: absolute;
+    width: 2px;
+    left: 10px;
+    bottom: -20px;
+    height: 45px;
+    background: green;
+    z-index: 0;
+  }
+  ion-row.pending-status::after {
+    content: " ";
+    position: absolute;
+    width: 2px;
+    left: 10px;
+    bottom: -20px;
+    height: 45px;
+    background: lightgray;
+    z-index: 0;
+  }
+  ion-row.incomplete-status::after {
+    content: " ";
+    position: absolute;
+    width: 2px;
+    left: 10px;
+    bottom: -20px;
+    height: 45px;
+    background: lightgray;
+    z-index: 0;
+  }
+  ion-row.align-item-center:last-child::after {
+    display: none;
+  }
+  .align-item-center > ion-col {
+    padding: 10px 5px;
+  }
+  .padding10-20 {
+    padding: 10px 18px;
+  }
+  .astrick {
+    position: absolute;
+    height: 12px;
+    padding: 2px;
+  }
+  .textColor {
+    color: grey;
+    padding-bottom: 10px;
+  }
+
+  .text-input {
+    margin: 0 0 10px;
+    padding: 0;
+    width: calc(100% - 8px - 8px);
+  }
+  textarea.text-input {
+    overflow: auto;
+    min-height: 10vh !important ;
+    resize: auto !important;
+    color: black;
+  }
+
+  .footerBg {
+    background: white;
+    // text-align: center;
+    //height: 60px;
+  }
+
+  @media only screen and (device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) {
+    .footerBg {
+      background: white;
+      //   text-align: center;
+      height: 60px;
+    }
+  }
+  .nextBtn {
+    // text-align: center;
+    width: 20%;
+    font-size: 1.6rem;
+    text-transform: capitalize;
+  }
+
+  .roleRadio-btn-parent {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .radioButton-div {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    margin: 5px 0;
+    ion-label {
+      margin: 0;
+      padding: 0px 10px;
+    }
+  }
+  .yearDropdown {
+    ion-select {
+      // .select-md{
+      padding: 5px 1px !important;
+
+      // }
+    }
+  }
+
+  // .fab {
+  // width: 60px;
+  // height: 60px;
+  // background-color: #0ea2c8;
+  // border-radius: 50%;
+  // font-size: 45px;
+  // color: white;
+  // text-align: center;
+  // line-height: 65px;
+  // position: fixed;
+  // right: 30px;
+  // bottom: 60px;
+  // }
+
+  // .delete-button {
+  // width: 65px;
+  // height: 65px;
+  // background-color: #0ea2c8;
+  // border-radius: 50%;
+  // font-size: 35px;
+  // color: white;
+  // text-align: center;
+  // line-height: 70px;
+  // position: fixed;
+  // right: 30px;
+  // bottom: 140px;
+  // }
+
+  .datetime-md {
+    padding: 10px 0px !important;
+  }
+  ion-datetime {
+    position: relative;
+  }
+  ion-select {
+    position: relative;
+  }
+  .dropDown {
+    ion-select {
+      padding-bottom: 5px !important;
+      padding-top: 5px !important;
+      /* padding-right: 5px; */
+      padding-left: 0px !important;
+    }
+  }
+
+  .saveResetFooter {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 5px;
+  }
+  .savebtn {
+    // width: 25%;
+    background: #ffffff;
+    border: 1px solid color($colors, secondary);
+    color: color($colors, secondary);
+  }
+  .resetbtn {
+    // width: 80%;
+    // padding: 10px;
+    color: grey;
+    background: #ffffff;
+    border: 1px solid #333333;
+    margin-left: 5px;
+    padding: 15px;
+  }
+
+  .submitKraBtn {
+    // width: 40%;
+    color: #ffffff;
+    background: color($colors, secondary);
+    padding: 15px;
+  }
+  .saveSubmitParent {
+    display: flex;
+    justify-content: space-evenly;
+  }
+  .kra-weightage-parent {
+    display: flex;
+    align-items: center;
+  }
+  .kra-weight-text {
+    width: 100px;
+    color: #ffffff;
+    margin: 0 6px;
+  }
+  .weightage-score {
+    padding: 0 6px;
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.3);
+    padding: 6px;
+    font-size: 1.1em;
+    border-radius: 5px;
+  }
+
+  .preview-card {
+    box-shadow: none;
+    border-radius: 5px;
+    // background-image: linear-gradient(141deg, #e3fff3 0%, #b2e3e8 57%, #71d2f7 80%);
+    background-image: linear-gradient(to right, #e9f0fb, #afccfc);
+  }
+  .preview-header {
+    font-size: 1.6rem;
+    color: color($colors, secondary);
+    //background: linear-gradient(141deg, #b2e3e8 57%, #71d2f7 80%);
+    padding: 9px 16px;
+    background: rgba(75, 138, 252, 0.15);
+  }
+  .preview-cont {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+  }
+  .padding-bottom10per {
+    padding-bottom: 10%;
+  }
+  .completed-kra-heading {
+    display: flex;
+    text-align: left;
+    align-items: center;
+    padding: 5%;
+    width: 100%;
+  }
+  .completed-kra-status {
+    width: 40px;
+    height: 40px;
+    // background: red;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+  .congratulation-bg-img {
+    background-image: url("../assets/imgs/congratulation.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-bottom: 70%;
+  }
+
+  .consentStatus-parent {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    ion-label {
+      margin-left: 10px;
+      // padding: 0px 10px;
+    }
+  }
+  .textCapitalize {
+    text-transform: capitalize;
+  }
+  .error-msg {
+    color: red;
+    margin-top: 2px;
+    display: block;
+  }
+  .invalid {
+    border-bottom: 1px solid red;
+  }
+
+  .info-icon {
+    width: 15px;
+  }
+  .formButtonIcon {
+    background: transparent;
+  }
+
+  .reviewBtn {
+    background: white;
+    border: 1px solid color($colors, primary);
+    color: color($colors, primary);
+  }
+  .paddingRtLf10 {
+    padding: 0 10px;
+  }
+  .submitApprovalBtn {
+    margin: 40px 0;
+  }
+
+  .redirectedCommntcss {
+    text-decoration: underline;
+    font-weight: bold;
+    // color: #000000;
+  }
+  .arrowIconSize {
+    font-size: 1.3em;
+    padding: 0 10px;
+    // color: #0ea2c8;
+  }
+  .padding25pxRtLf {
+    padding-right: 25px;
+    padding-left: 25px;
+  }
+  .margin20px {
+    margin: 20px;
+  }
+  .role-tooltip {
+    // position: absolute;
+    // bottom: 35px;
+    // right: -4px;
+    position: absolute;
+    /* bottom: 37px; */
+    left: -20px;
+    /* right: -4px; */
+    top: 10px;
+  }
+  .pmToolTip {
+    // position: absolute;
+    // bottom: 9px;
+    // /* left: 167px; */
+    // right: -4px;
+    position: absolute;
+    /* bottom: 9px; */
+    left: -20px;
+    /* right: -4px; */
+    top: 36px;
+  }
+  .appraiserToolTip {
+    position: absolute;
+    /* bottom: 9px; */
+    left: 110px;
+    /* right: -4px; */
+    bottom: 8px;
+  }
+  .statusValues {
+    display: flex;
+    flex-direction: column;
+  }
+  .kraGuideline {
+    margin: 10px 0;
+    color: color($colors, primary);
+    border-bottom: 1px solid;
+  }
+  // spinner for Mic
+  .spinner-container {
+    height: 25px;
+    width: 25px;
+    // position: absolute;
+    // right: 15px;
+    // bottom: 50px;
+    // z-index: 2;
+    // margin-top: 10px;
+  }
+  .mic-container {
+    margin: 0 10px;
+  }
+
+  // css for KRA 1
+  .upper-card-parent {
+    display: flex;
+    flex-direction: row;
+    padding: 10px 5px;
+  }
+  .icon-div {
+    width: 18%;
+  }
+  .learningHrs-parent {
+    width: 78%;
+  }
+  .displayFlex {
+    display: flex;
+  }
+  .learning-hrs-div {
+    font-size: 1.1em;
+    font-weight: bold;
+  }
+  .margin-bottm-6 {
+    margin-bottom: 6px;
+  }
+  .alignItemCenter {
+    align-items: center;
+  }
+  .fontWeight-bold {
+    font-weight: bold;
+  }
+  .lower-card-parent {
+    // justify-content: space-between;
+    // flex-wrap: wrap;
+    display: flex;
+  }
+  .midTerm-parent {
+    // margin: 10px auto;
+    width: 50%;
+    //  border-right: 1px solid white;
+    background: #e5efff;
+    padding: 10px;
+    border-right: 1px solid #fff;
+  }
+  .endTerm-parent {
+    // margin: 10px auto;
+    width: 50%;
+    border-right: 1px solid white;
+    background: #e5efff;
+    padding: 10px;
+  }
+  .floorTarget-parent {
+    display: flex;
+    // flex-direction: column;
+    justify-content: space-between;
+  }
+  .marginbtm5 {
+    margin-bottom: 5px;
+  }
+  .kraType-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .main-card {
+    // border: 1px solid #808080b3;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+      0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+    margin: 10px;
+    margin-bottom: 20px;
+  }
+  .talentIndex-parent {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 10px;
+    background: #e5efff;
+  }
+  .addMore-parent {
+    display: flex;
+    align-items: center;
+  }
+  .addMoreBtn {
+    border: 1px solid color($colors, primary);
+    color: color($colors, primary);
+    background: white;
+    width: 90px;
+    height: 30px;
+  }
+  .subKRA-title {
+    color: color($colors, primary);
+    font-weight: bold;
+  }
+  .arrow-parent {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .iconSize {
+    font-size: 1.6em;
+    padding: 5px;
+  }
+  .colorRed {
+    color: red;
+  }
+  .font0-95 {
+    font-size: 0.95em;
+  }
+  .mandatory {
+    color: #da4454;
+    background: #ffd8d8;
+    font-size: 12px;
+    padding: 5px;
+    font-weight: 700;
+    /* margin: 0 1px; */
+    border-radius: 3px;
+  }
+  .marginBottom-8px {
+    margin-bottom: 8px;
+  }
+  .minKRAmsg {
+    font-size: 1em;
+    color: #7f8080;
+  }
+}

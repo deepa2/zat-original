@@ -1,0 +1,53 @@
+<!-- <sidebar [content]="content"></sidebar> -->
+<ion-menu [content]="content">
+    <ion-content class="menuBar">
+        <div class="newMenu mainDiv" (click)="goToProfile()" tappable>
+            <div class="imgDiv">
+                <img src="assets/menu_icons/outerImage.svg" style="height: 100px;">
+                <img class="user-pic" src="{{empDeatils?.employeeProfilePic}}">
+            </div>
+            <div class="user-info">
+                <div class="username">
+                    {{empDeatils?.employeeName}}
+                </div>
+                <span>
+          {{empDeatils?.designation}}
+        </span>
+            </div>
+
+        </div>
+        <ion-list class="menu-list">
+
+            <ion-item class="menu-item" tappable (click)="goToPage('AboutPage')">
+                <!-- <ion-icon name="leaf" item-start></ion-icon> -->
+                <img src="assets/menu_icons/about.svg" item-start class="iconStyle marginCls"> About App
+            </ion-item>
+            <!-- removed in 10.1.0 version -->
+            <!-- <ion-item class="menu-item" tappable (click)="goToPage('WhatsNew')">
+        <img src="assets/menu_icons/whatsNew.svg" item-start class="iconStyle marginCls">
+        What's New
+      </ion-item> -->
+            <ion-item class="menu-item" tappable (click)="contact()">
+                <img src="assets/menu_icons/contactus.svg" item-start class="iconStyle marginCls"> Contact Us
+            </ion-item>
+            <ion-item *ngIf="switchUser" tappable class="menu-item" (click)="goToPage('switchUser')">
+                <img src="assets/menu_icons/1-UpManager.svg" item-start class="iconStyle marginCls"> Switch User
+            </ion-item>
+            <ion-item class="menu-item" tappable (click)="logout('AboutPage')">
+                <img src="assets/menu_icons/logout.svg" item-start class="iconStyle marginCls"> Logout
+            </ion-item>
+            <ion-item style="margin: 5px;" tappable (click)="goToBackdoorEntry()">
+                <img src="assets/menu_icons/logout.svg" item-start class="iconStyle marginCls"> Backdoor Entry
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-menu>
+
+<ion-nav id="myNav" [root]="rootPage" #content></ion-nav>
+
+<!-- <ion-footer *ngIf="((getPageName() != false)&& loginDetails!='PRE-ONBOARDING')">
+  <div (click)="openChatModal()">
+    <img class="zeno-img" src="assets/imgs/chatbot.svg" />
+  </div>
+</ion-footer> -->
+<!-- <connectivity-alert *ngIf="!isInternetConnected"></connectivity-alert> -->

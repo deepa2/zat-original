@@ -1,0 +1,70 @@
+leave-declaration {
+    ion-label {
+        font-size: 1.1em;
+        font-family: 'Roboto';
+    }
+    .declaration-title {
+        ion-label {
+            font-size: 1.2em;
+            font-family: 'Roboto';
+        }
+        background: #EDF9FC;
+        padding: 5px 10px;
+        display: flex;
+        img {
+            max-width: 30px;
+            margin-right: 5px;
+        }
+    }
+    .declaration-info {
+        background: #EDF9FC;
+        padding: 5px 10px;
+        border-radius: 10px;
+    }
+    .declaration-consent {
+        padding: 5px 10px;
+        border-radius: 10px;
+        margin-top: 10px;
+        ion-checkbox {
+            margin-right: 10px;
+        }
+    }
+    .employee-signature {
+        background: #EDF9FC;
+        padding: 20px;
+        margin-top: 10px;
+        border-radius: 10px;
+        .signaute-heading {
+            color: #000;
+            font-weight: 500;
+            margin-bottom: 10;
+        }
+        ion-checkbox {
+            margin-right: 10px;
+        }
+        .signaute-text {
+            color: #989898;
+        }
+    }
+    .item-space-between {
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        ion-label {
+            margin: 0;
+        }
+    }
+    .declaration-body {
+        padding: 10px;
+        overflow-y: scroll;
+    }
+    ion-checkbox {
+        margin-top: 5px;
+    }
+    .submitBtn {
+        margin: 20px 0px 0px 0px;
+    }
+    ion-footer {
+        padding: 10px;
+    }
+}

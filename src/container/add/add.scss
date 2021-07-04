@@ -1,0 +1,79 @@
+page-add {
+  .imageConatiner {
+    overflow-x: scroll;
+  }
+
+  .msgSeperator {
+    border-top: 1px solid #d4d2d2;
+  }
+
+  ion-textarea {
+    background-color: white;
+    border: 1px solid darkgrey;
+    padding: 7px;
+    border-radius: 5px;
+  }
+
+  ion-item {
+    padding-left: 8px !important;
+  }
+
+  .singleTextArea {
+    min-height: 200px;
+  }
+
+  .remainingCharacters {
+    text-align: right;
+    color: darkgrey;
+    font-size: 15px;
+  }
+
+  .bar-button-md[icon-only] {
+    padding: 8px;
+  }
+
+  .item-md.item-block .item-inner {
+    border-bottom: 1px solid #dedede;
+    box-shadow: none !important;
+    border-bottom-color: transparent !important;
+  }
+
+  .alert-box {
+    background-color: #F2F4F5 ;
+    padding: 8px;
+    color: darkgrey;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 8px;
+  }
+
+  .alert-img {
+    width: 15px;    
+    height: 15px; 
+    margin-right: 10px;
+  }
+
+  .alert-text {
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.74);
+    font-weight: normal;   
+  }
+
+  // .alert-icon {
+  //   // padding: 10px;  
+  //   // margin: 10px;
+  // }
+
+  .msgTextarea {
+    margin-top: 20px;
+    min-height: 200px;
+    pointer-events:auto;
+    transform: none;
+    // overflow: scroll;
+  }
+
+  .pageTitile{
+    margin-left: -15px;
+  }
+}

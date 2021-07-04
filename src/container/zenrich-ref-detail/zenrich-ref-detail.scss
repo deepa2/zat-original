@@ -1,0 +1,252 @@
+page-zenrich-ref-detail {
+    padding: 0 10px;
+    background: #e7e8ee;
+    .content {
+        color: #000;
+        background-color: transparent;
+    }
+    .go-help{
+        color: #fff;
+        display: flex;
+        align-items: center;
+        margin-right: 5px;
+    }
+    .job-wrapper {
+        display: flex;
+        align-items: start;
+        padding: 10px;
+        margin: 10px 0;
+        background: #fff;
+
+        .job-icon {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: linear-gradient(90deg, #c59dfe, #5b46dc);
+            color: #fff;
+            padding: 5px;
+            border-radius: 5px;
+            font-size: 12px;
+            img{
+                height: 20px;
+                width: 20px;
+            }
+        }
+    }
+    .save-job {
+        display: flex;
+        align-items: start;
+        padding: 10px 5px;
+        ion-icon {
+            padding: 0px 10px;
+            font-size: 22px;
+            color: #6d6d6d;
+        }
+    }
+    .job-info {
+        width: 100%;
+        padding: 0 10px;
+    }
+    .job-exp {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px;
+    }
+    
+    .title {
+        font-weight: 600;
+        color: #333333;
+        display: flex;
+        align-items: center;
+    }
+    .job-title{
+        font-weight: 500;
+        color: #333333;
+        display: flex;
+        align-items: center;
+    }
+    .job-icon {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 15px;
+    }
+   
+    .job-icon.hot-job{
+        height: 75px;
+        min-width: 65px;
+        font-size: 12px;
+        padding: 5px 10px;
+        border-radius: 5px;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        .imgStyle {
+            margin-bottom: 5px;
+        }
+        .hot-con {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            background: #D70D00;
+            position: absolute;
+            bottom: 0;
+            white-space: nowrap;
+            font-size: 11px;
+            padding: 2px 5px;
+            width: 100%;
+            img.hot-icon {
+                height: auto;
+                width: auto;
+            }
+        }
+    }
+    .info-icon {
+        width: 18px;
+        height: 18px;
+    }
+    .info {
+        margin: 10px 0;
+    }
+    .joblocation {
+        display: flex;
+        align-items: center;
+        font-weight: 300;
+        text-transform: capitalize;
+    }
+    .status {
+        padding: 10px;
+        background: #fff;
+        border-radius: 7px;
+        .status-bar {
+            margin: 10px 0;
+            .status-item {
+                display: flex;
+            }
+            .status-item:last-child .status-icon {
+                margin-bottom: 0;
+                &::before {
+                    border: 0;
+                }
+            }
+            .status-icon {
+                position: relative;
+                margin-bottom: 29px;
+                .info-icon {
+                    margin-right: 10px;
+                    border: 1px solid #969696;
+                    border-radius: 50%;
+                    padding: 1px;
+                }
+                &::before {
+                    position: absolute;
+                    left: 8px;
+                    top: 20px;
+                    content: "";
+                    width: 10px;
+                    height: 30px;
+                    border-left: 2px dotted #969696;
+                }
+            }
+            .active .info-icon {
+                border: 1px solid #5dc652;
+            }
+            .active .status-icon {
+                &::before {
+                    border-left: 2px dotted #5dc652;
+                }
+            }
+            .pending .info-icon {
+                border: 1px solid orange;
+            }
+            .pending .status-icon {
+                &::before {
+                    border-left: 2px dotted orange;
+                }
+            }
+        }
+    }
+    .candidate-info {
+        border-radius: 7px 7px 0 0;
+        padding: 10px;
+        margin: 10px 0 0;
+        background: #fff;
+        border-bottom: 1px solid lightgray;
+        .title {
+            margin-left: 10px;
+        }
+    }
+    .job-details {
+        background: #fff;
+        border-top: 0;
+        border-radius: 0 0 7px 7px;
+        padding: 10px;
+        margin-bottom: 10px;
+        .title {
+            margin-left: 5px;
+        }
+    }
+    span.bonus {
+        text-decoration: line-through;
+    }
+    span.inr {
+        margin-right: 5px;
+        margin-left: 5px;
+    }
+    .money-icon{
+        margin-right: 5px;
+    }
+    span.info-title {
+        margin-right: 5px;
+    }
+    span.hot-amount {
+        color: #09A727;
+    }
+    .job-location {
+        margin-left: 15px;
+    }
+    .info-item {
+        margin-left: 10px;
+    }
+
+    .img-mar5 {
+        margin-right: 5px;
+        width: 14px;
+        height: 15px;
+    }
+    .jobTitle {
+        padding: 5px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background: #fff;
+        height: 65px;
+        border-radius: 5px;
+    }
+    .titleImg {
+        height: 25px;
+        width: 25px;
+        margin: 5px;
+    }
+    .candidateProfileImg {
+        height: 18px;
+        width: 18px;
+        border-radius: 50%;
+    }
+    .candidate-name {
+        display: flex;
+        align-items: center;
+        text-transform: capitalize;
+    }
+    .bonusGrid {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .calcWidth{
+        width: calc(100%-18px)
+    }
+    .fontStyle{
+        color: #ff1c1c;
+        align-items: start;
+    }
+}

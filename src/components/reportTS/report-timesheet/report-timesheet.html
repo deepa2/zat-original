@@ -1,0 +1,85 @@
+<form [formGroup]="reportForm" (ngSubmit)="onSubmit()">
+     <ion-list>
+        <!-- <ion-item no-lines no-padding class="borderColor">
+            <ion-select class="select-c" formControlName="projects" [disabled]="reportForm.controls.projects.disabled"
+                placeholder="Select Project" interface="action-sheet" (ionChange)="_onProjectListChange($event)">
+                <ion-option *ngFor="let item of projectList" [value]="item.projectName">{{item?.projectName}}
+                </ion-option>
+            </ion-select>
+        </ion-item>
+        <span class="error-msg" *ngIf="reportForm.controls.projects.errors  && submitted">
+            <p>* Please select Project Name.</p>
+        </span> -->
+
+        <ion-item class="borderColor">
+            <!-- <button id="projects" [disabled]="reportForm.controls.projects.disabled">Projects</button>
+            <input for="projects" formControlName="projects" readonly
+                [value]="selectedProjectList?.length > 0 ? selectedProjectList?.length : 0">
+            <ion-icon float-right text-right name="md-arrow-dropdown"></ion-icon> -->
+            <div class="grid-form">
+
+                <div>
+                    <button id="projects" [disabled]="reportForm.controls.projects.disabled">Projects</button>
+                </div>
+                <div class="report-input active-input" (click)="_openSelectedListModal('Projects')">
+                    <input class="width90" for="projects" formControlName="projects" readonly
+                        [value]="selectedProjectList?.length > 0 ? selectedProjectList?.length + '/' + projectList.length + ' Selected' : 0 + '/' + projectList.length + ' Selected'">
+                    <ion-icon end name="ios-arrow-forward"></ion-icon>
+                </div>
+                <div>
+                    <div class="round-button active-button"
+                        (click)="_selectProject(reportForm.controls.projects.disabled)">Select
+                        <ion-icon name="md-add">
+                        </ion-icon>
+                    </div>
+                </div>
+            </div>
+
+        </ion-item>
+
+        <ion-list radio-group class=" padding-left7 padding-top15" (ionChange)="_selectedTsStatusButtton($event)">
+            <div class="align-cont-cent  format-icons">
+                <ion-radio class="margin-right5" checked="true" value="TimeSheet status" #tsStatus></ion-radio>
+                <span>
+                    <ion-label>TimeSheet status</ion-label>
+                </span>
+
+                <div class="ts-status" [ngClass]="{'disabled-css': !tsStatus.checked}"
+                    (click)="_openModel(tsStatus.checked)">
+                    <ion-icon class="align-cont-cent justify-content-flex-end" float-right text-right
+                        name="md-arrow-dropdown"></ion-icon>
+                    {{selectedStatusValue}}
+                </div>
+
+                <!-- <select [disabled]="!tsStatus.checked" (change)="_tsStatus()" [(ngModel)]="value"
+                    [ngModelOptions]="{standalone: true}">
+                    <option value="volvo">Volvo</option>
+                    <option value="saab">Saab</option>
+                    <option value="mercedes">Mercedes</option>
+                    <option value="viewAll">View All</option>
+                </select> -->
+
+            </div>
+            <div class="align-cont-cent format-icons">
+                <ion-radio class="margin-right5" value="No timesheet report"></ion-radio>
+                <ion-label>Not Filled TimeSheet Status</ion-label>
+            </div>
+        </ion-list>
+
+        <div class="margin-top12">Export to:</div>
+        <ion-list radio-group class="align-cont-cent padding-left7 padding-top15" (ionChange)="_selectedFormat($event)">
+            <div class="center width30 format-icons" *ngFor="let item of sendFormat">
+                <ion-radio [checked]="item?.checked" [value]="item?.label"></ion-radio>
+                <img class="icon" src="assets/imgs/{{item?.label}}_icon.svg" />
+                <ion-label>{{item?.name}}</ion-label>
+            </div>
+        </ion-list>
+    </ion-list>
+
+    <div class="submitBtn margin-top12" text-center>
+        <button ion-button round type="submit" [disabled]="!(selectedProjectList?.length > 0 &&  !reportNA)"> Send
+            Report</button>
+    </div>
+
+
+</form>

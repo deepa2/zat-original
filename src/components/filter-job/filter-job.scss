@@ -1,0 +1,108 @@
+filter-job {
+    background: #fff;
+    .bgSkills {
+        background: #1cb798;
+    }
+    .bgBu {
+        background: #24b5e1;
+    }
+    .bgCity {
+        background: #b063fd;
+    }
+    .bgPostedDate {
+        background: #7f85ff;
+    }
+    .mainConatiner {
+        position: relative;
+        margin-top: 5px;
+    }
+    .filterType {
+        width: 40%;
+        text-align: center;
+        background: #e7e8ee;
+        height: 100%;
+        position: absolute;
+        height: 100vh;
+    }
+    .card-box {
+        height: 75px;
+        padding: 15px;
+        position: relative;
+        margin-bottom: 3px;
+    }
+    .bgImg {
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 75px;
+    }
+    .flexItem {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .imgStyle {
+        margin-bottom: 15px;
+        height: 18px;
+        width: 18px;
+    }
+    .textStyle {
+        text-transform: capitalize;
+        color: #fff;
+    }
+    .filterData {
+        width: 60%;
+        float: left;
+        margin-left: 40%;
+        position: absolute;
+        overflow-y: scroll;
+        height: 100vh;
+        overflow-x: hidden;
+    }
+    .filterItem {
+        display: flex;
+        align-items: flex-start;
+        padding: 10px;
+    }
+    .checboxStyle {
+        float: left;
+    }
+    .checkBoxText {
+        float: right;
+        margin-left: 5px;
+    }
+    .titleMargin {
+        margin-left: 10px;
+    }
+    .apply {
+        background: white;
+        color: #0e7ac7;
+        padding: 5px 10px!important;
+        text-transform: capitalize;
+        border-radius: 5px;
+    }
+    .reset {
+        text-transform: capitalize;
+        padding: 5px;
+    }
+    .text-box-conatiner {
+        border: 1px solid lightgray;
+        margin: 5px;
+        border-radius: 5px;
+    }
+    .no-data-msg {
+        text-align: center;
+        margin: 10px;
+        font-weight: 600;
+    }
+    @media only screen and (max-width: 767px) {
+        .md .modal-wrapper>.ion-page>ion-header>.toolbar.statusbar-padding:first-child {
+            padding-top: calc(20px + 4px) !important;
+            padding-top: calc(constant(safe-area-inset-top) + 4px) !important;
+            padding-top: calc(env(safe-area-inset-top) + 4px) !important;
+            min-height: calc(56px + 20px) !important;
+            min-height: calc(56px + constant(safe-area-inset-top)) !important;
+            min-height: calc(56px + env(safe-area-inset-top)) !important;
+        }
+    }
+}

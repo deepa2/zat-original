@@ -1,0 +1,106 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title class="pageTitile">ZenFinance</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <div class="main-card" *ngIf="showData">
+        <div class="card-design">
+            <div class="flex-center padding2-5 colorwhite">
+                <div class="profilecard-header">
+                    <div class="profile-pic-container">
+                        <img class="profile-pic" [src]=userprofile />
+                    </div>
+                </div>
+                <div class="flex-space-between">
+                    <div>
+                        <span class="payroll_title">{{payrolltitle}}</span>
+                    </div>
+                    <div class="display-flex">
+                        <div>
+                            <ion-item>
+                                <ion-select class="meeting-select margin-right1"
+                                    (ionChange)="onMonthDetailChange($event)" [selectOptions]="selectOptionsMonth">
+                                    <ion-option *ngFor="let item of monthWiseDetails;" [selected]="item.isCurrentMonth"
+                                        [value]="item.key">{{item?.value}}</ion-option>
+                                </ion-select>
+                            </ion-item>
+                        </div>
+                        <div>
+                            <ion-item>
+                                <ion-select class="meeting-select" [selectOptions]="yearselectOptions"
+                                    (ionChange)="onYearDetailChange($event)">
+                                    <ion-option *ngFor="let item of yearWiseDetails;let i=index" [value]="item.key"
+                                        [selected]="i==(yearWiseDetails.length-1)? true:false">{{item?.value}}
+                                    </ion-option>
+                                </ion-select>
+                            </ion-item>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- <div class="flex-center padding5 colorwhite">
+                    <div class="profilecard-header">
+                        <span><img class="profile-pic" [src]=userprofile /></span>
+                    </div>
+                    <div class="flex-center-space-between width100">
+                        <div>
+                            <span>{{payrollTitle}}</span>
+                        </div>
+                        <div *ngIf="filterList?.monthList.length > 0 && filterList?.yearList.length > 0"
+                            class="display-flex">
+                            <ion-item class="select-option">
+                                <ion-select class="meeting-select" [selectOptions]="selectOptions"
+                                    (ionChange)="onMonthChange($event)">
+                                    <ion-option *ngFor="let item of filterList.monthList;let i = index" [value]="item"
+                                        [selected]="i == 0 ? true:false">{{item}}</ion-option>
+                                </ion-select>
+                            </ion-item>
+                            <ion-item class="select-option">
+                                <ion-select class="meeting-select" [selectOptions]="selectOptions"
+                                    (ionChange)="onYearChange($event)">
+                                    <ion-option *ngFor="let item of filterList.yearList;let i = index"
+                                        [selected]="i==1 ? true:false" [value]="item">{{item}}</ion-option>
+                                </ion-select>
+                            </ion-item>
+                        </div>
+                    </div>
+                </div> -->
+            <div class="grid-align colorwhite">
+                <div *ngFor="let item of payrollData" class="grid-tile">
+                    <div>
+                        <img [src]=item?.icon alt="payroll-icons" />
+                    </div>
+                    <div class="payslip-sec">
+                        <span>{{item.value}}</span>
+                        <ion-icon class="download-icon" name="md-download" (click)="getpdfData(item)"
+                            [ngClass]="{'disable-btn':item?.isDisable}"></ion-icon>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="finance-list-bg" *ngIf="showData">
+        <ion-card class="list-card-styl">
+            <div class="finance-header">{{dashboardData}}</div>
+            <div class="list-item" *ngFor="let item of financeData" (click)="moveTo(item)">
+                <div class="list-icon">
+                    <img [src]=item?.icon alt="list-icon" />
+                </div>
+                <div class="finance-list-subitem">
+                    <span class="padding-bottom5">{{item?.key}}</span>
+                    <span *ngIf="!item.isNumber">{{item?.decryptValue}}</span>
+                    <span *ngIf="item.isNumber">{{item?.decryptValue | currency : 'INR' : 'symbol': '1.2-2' :
+                        'en-IN'}}</span>
+                </div>
+                <div *ngIf="item?.type">
+                    <ion-icon name="ios-arrow-forward"></ion-icon>
+                </div>
+            </div>
+        </ion-card>
+    </div>
+
+</ion-content>

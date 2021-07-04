@@ -1,0 +1,129 @@
+<ion-header no-border no-shadow>
+</ion-header>
+
+
+<ion-content>
+
+  <div *ngIf="!(loading$ | async)" class="notificationDivBackground">
+    <div class="notificationDiv">
+
+      <div class="left-item" padding>Zensar Onboarding</div>
+
+      <div class="right-item" padding (click)="presentOptions($event)">
+        <ion-icon name="more"></ion-icon>
+      </div>
+
+    </div>
+  </div>
+  <div style="padding-top: 50%" *ngIf="loading$ | async">
+    <ion-spinner></ion-spinner>
+  </div>
+  <div *ngIf="!(loading$ | async)">
+    <profile-image *ngIf="userDetails" [profilePic]="userDetails.profilePicUrl"></profile-image>
+  </div>
+  <div class="main-section" *ngIf="!(loading$ | async)">
+    <div>
+      <ion-grid>
+        <ion-row>
+          <ion-col col-5>
+          </ion-col>
+          <ion-col col-7>
+            <div class="profile-name">{{userDetails.candidateName}}</div>
+            <div class="profile-design">{{userDetails.designation}}</div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+    <!-- rejected docs button -->
+    <!-- <ion-buttons center>
+        <button  ion-button icon-only (click)="rejDocs()">Rejected Docs</button>
+      </ion-buttons> -->
+    <!-- 
+    <ion-grid *ngIf="!(loading$ | async)" margin-top style="height:50%">
+      <ion-row *ngFor="let data of formData; let i = index">
+        <ion-col col-7 text-center (click)="goToMyPage(data,i)">
+          <ion-card class="card-height">
+            <ion-card-content>
+              <div class="text-size">
+                {{data.title}}
+              </div>
+              <span>{{data.status}}</span>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+        <ion-col col-5 text-center (click)="goToDocuments(i)">
+          <ion-card class="card-height">
+            <ion-card-content>
+              <div class="docs-color">
+                {{data.documentCount}}
+              </div>
+              <span>Documents Submitted</span>
+            </ion-card-content>
+
+          </ion-card>
+        </ion-col>
+
+      </ion-row>
+    </ion-grid> -->
+
+    <!-- new dashboard html -->
+
+    <div *ngIf="!(loading$ | async)" margin-top style="height:50%">
+      <div class="card-container" *ngFor="let data of formData; let i = index">
+        <ion-card>
+          <div class="cardSection">
+
+            <div style="width:45%;" (click)="goToMyPage(data,i)">
+              <div class="text-size">{{data.title}}</div>
+              <div>{{data.status}}</div>
+            </div>
+            <div class="leadScore" (click)="goToDocuments(i)">
+              <div class="docs-color">{{data.documentCount}}</div>
+              <div class=font-size>Documents Submitted</div>
+            </div>
+          </div>
+          <div>
+            <div><img *ngIf="data.status=='Completed'" class="unabled-icon" src="assets/imgs/unable (1).svg"></div>
+            <div><img *ngIf="data.status=='Incomplete'" class="diabled-icon" src="assets/imgs/disable.svg"></div>
+          </div>
+        </ion-card>
+
+      </div>
+    </div>
+    <div>
+      <ion-row style="text-align: center;
+      padding: 30px;">
+        <ion-col no-padding>
+          <!-- <button  class="submitBtn"  ion-button text-center color="secondary" (click)="finalSubmit()" [disabled] ="!isAvailableForFinalSubmit">Submit for Approval</button> -->
+          <button class="submitBtn" ion-button text-center color="secondary" (click)="finalSubmit()"
+            [disabled]="!isAvailableForFinalSubmit">{{submitButtonValue}}</button>
+        </ion-col>
+      </ion-row>
+    </div>
+
+  </div>
+
+
+
+
+
+
+
+</ion-content>
+
+<ion-footer>
+
+  <ion-fab [ngClass]="{'customFab': isAvailableForFinalSubmit}" *ngIf="showAddOption" right bottom (click)="add()">
+    <button ion-fab>
+      <ion-icon name="help"></ion-icon>
+    </button>
+  </ion-fab>
+
+  <!-- <ion-row *ngIf="isAvailableForFinalSubmit">
+    <ion-col no-padding>
+      <button no-margin ion-button full large color="secondary" (click)="finalSubmit()">Submit for Approval</button>
+    </ion-col>
+  </ion-row> -->
+
+
+</ion-footer>

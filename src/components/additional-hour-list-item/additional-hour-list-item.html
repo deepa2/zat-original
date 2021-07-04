@@ -1,0 +1,39 @@
+<ion-list class="card-shadow">
+  <ion-item-sliding #item>
+    <ion-item no-padding class="main-item">
+      <div class="parent-div">
+        <div class="first-block" (click)="openEditModal()">
+          <div class="image" [class.saved]="addHrsTaskData.approvalStatus == '-1'"
+            [class.approved]="addHrsTaskData.approvalStatus == '1'"
+            [class.submitted]="addHrsTaskData.approvalStatus == '2'"
+            [class.rejected]="addHrsTaskData.approvalStatus == '3'" [class.task]="addHrsTaskData.approvalStatus == '0'">
+            <img src="assets/zents-imgs/{{data?.iconName}}.svg" />
+          </div>
+          <div class="text-block">
+            <span class="taskname">{{data?.taskName}}</span>
+          </div>
+        </div>
+        <ion-list class="list">
+          <div class="bill">
+            <span>Billability :</span>
+            <span class="color-light">{{editedData.billabilityName}}</span>
+          </div>
+          <div class="efforts">
+            <span>Efforts :</span>
+            <ion-item no-padding>
+              <ion-datetime [disabled]="addHrsTaskData?.approvalStatus == '1'" displayFormat="HH:mm"
+                pickerFormat="HH:mm" [(ngModel)]="editedData.efforts" minuteValues="00,15,30,45"
+                (ionChange)="onEffortsChange($event)"></ion-datetime>
+            </ion-item>
+          </div>
+        </ion-list>
+      </div>
+    </ion-item>
+    <ion-item-options side="right"
+      *ngIf="addHrsTaskData?.approvalStatus != '1' && addHrsTaskData?.approvalStatus != '0'">
+      <button class="deleteBtn" ion-button icon-only (click)="showDeleteConfirmAlert()">
+        <ion-icon name="trash"></ion-icon>
+      </button>
+    </ion-item-options>
+  </ion-item-sliding>
+</ion-list>

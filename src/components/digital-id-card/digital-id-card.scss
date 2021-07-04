@@ -1,0 +1,279 @@
+digital-id-card {
+  //   .profile-cont-asso {
+  //     width: 80px;
+  //     height: 80px;
+  //     background-color: white;
+  //     border-radius: 50%;
+  //     display: flex;
+  //     align-items: center;
+  //     justify-content: center;
+  //     box-shadow: 0 0px 12px rgba(0, 0, 0, 0.19), 0 4px 8px rgba(0, 0, 0, 0.23);
+  //   }
+
+  //   .profile-asso {
+  //     width: 75px;
+  //     height: 75px;
+  //     border-radius: 50%;
+  //   }
+  ion-content.content {
+    color: rgb(70, 70, 71);
+    background-color: rgb(70, 70, 71);
+  }
+  .ion-card {
+    // background-color: #f4f4f4;
+    border: none;
+    box-shadow: none;
+    border-radius: 5px;
+    margin: 2% !important;
+    // width: 96%;
+    min-height: 20%;
+    background: white;
+  }
+  .professional-detailsCard {
+    border: none;
+    box-shadow: none;
+    border-radius: 5px;
+    margin: 2% !important;
+    // width: 96%;
+    // min-height: 50%;
+    background: white;
+  }
+
+  .semi-circle {
+    // background: white;
+    background: rgb(70, 70, 71);
+    display: inline-block;
+  }
+
+  .right,
+  .left {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    height: 32px;
+    width: 16px;
+    // height: 20px * 2;
+    // width: 20px;
+    border: none;
+    // height: 15px * 2;
+    // width: 15px;
+  }
+
+  .right {
+    left: 0;
+    border-bottom-right-radius: 15px * 2;
+    border-top-right-radius: 15px * 2;
+    // background: red;
+  }
+
+  .left {
+    right: 0;
+    border-bottom-left-radius: 15px * 2;
+    border-top-left-radius: 15px * 2;
+  }
+
+  .height50vh {
+    height: 50vh;
+  }
+  .default-bg-img {
+    width: 70%;
+    height: 100%;
+  }
+  .centerText {
+    padding: 0.3em 1em;
+    margin: 0;
+    color: gray;
+  }
+  .post-relative {
+    position: relative;
+  }
+  .margin5 {
+    margin: 5px;
+  }
+  //   .profileBgImg {
+  //     background: url("../assets/imgs/Group_1286.svg") no-repeat;
+  //     background-size: cover;
+  //   }
+  .profileContainer {
+    width: 35%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0px 10px;
+  }
+  .profileImg {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+  .iconID {
+    width: 16px;
+    height: 16px;
+  }
+  .text-white {
+    // color: #fff;
+    color: black;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .introContainer {
+    width: 65%;
+    border-left: 1px dotted grey;
+  }
+  .introSec {
+    // margin: 10px 15px 10px 15px;
+    // margin: 0px 15px;
+    margin-left: 25px;
+  }
+  .line-height {
+    line-height: 1.7;
+  }
+  //   .newMenu {
+  //     padding: 30px 0;
+  //     justify-content: center;
+  //     //height: 27vh;
+  //     background: url("../assets/imgs/landing_bg.svg") no-repeat;
+  //     background-size: cover;
+  //     background-position: 100% 100%;
+  //   }
+
+  
+  .user-profile-pic {
+    border-radius: 50%;
+    border: 2px solid white;
+    position: absolute;
+    height: 70px;
+    width: 70px;
+    top: 44px;
+  }
+  .infoImg {
+    width: 60px;
+    height: 60px;
+  }
+  .column {
+    display: flex;
+    flex-direction: column;
+  }
+  .border-bottom {
+    border-bottom: 1px dotted grey;
+    margin-left: 24%;
+  }
+  .infoContent {
+    display: flex;
+    align-items: center;
+    // margin: 10px 0px 10px 15px;
+    // padding: 10px 25px 10px 25px;
+  }
+
+  .profileImgNew {
+    padding: 5px 0;
+    justify-content: center;
+    margin: 0 10px;
+    //height: 27vh;
+    // background: url("../assets/imgs/landing_bg.svg") no-repeat;
+    // background-size: cover;
+    // background-position: 100% 100%;
+  }
+  .width74 {
+    width: 74%;
+  }
+  .address-sign-container {
+    border-top: 1px dotted grey;
+  }
+  .signature-container {
+    // margin: 0 10px;
+    // padding: 10px;
+    // width: 60%;
+    padding: 5px;
+    width: 41%;
+  }
+  .signature {
+    height: 90px;
+  }
+  .address-container {
+    border-left: 1px dotted grey;
+    // width: 45%;
+    // padding: 10px;
+    width: 55%;
+    padding: 10px;
+  }
+  .fontBold {
+    font-weight: bold;
+  }
+  .address {
+    font-size: 1em;
+  }
+  .addressTitle {
+    font-size: 0.95em;
+    // padding: 10px 0;
+    // padding: 0 0 10px 0;
+  }
+  .zensar-logo-div {
+    height: 20px;
+  }
+  .closeBtn {
+    border-radius: 50%;
+    background-color: white;
+    height: 60px;
+    width: 60px;
+  }
+  .closeIcon {
+    color: black;
+    font-size: 25px;
+  }
+  .closeBtnContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    // height: 20px;
+  }
+  .marginBottom-10 {
+    margin-bottom: 7px;
+  }
+  .fontWeight-bold {
+    font-weight: bold;
+  }
+  .border-bottom15 {
+    border-bottom: 1px dotted grey;
+    margin-left: 15%;
+  }
+  .employerName {
+    text-align: center;
+  }
+  .flexCol-even {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
+
+  .project-details-card-content {
+    padding: 10px 20px;
+  }
+  // .doJoin-bg {
+  //   background: linear-gradient(to bottom right, #f6d465 0%, #ff7a58 100%);
+  // }
+  // .department-bg {
+  //   background: linear-gradient(to bottom right, #f4b7c4 0%, #9f82f7 100%);
+  // }
+  // .natureOfWork-bg {
+  //   background: linear-gradient(to bottom right, #b7de6c 0%, #76a83d 100%);
+  // }
+  // .aadharCard-bg {
+  //   background: linear-gradient(to bottom right, #47f6e6 0%, #22b7ed 100%);
+  // }
+  .marginTop2 {
+    margin-top: 2px;
+  }
+
+  .profile-outer-circle {
+    // height: 104px;
+    // width: 100px;
+    height: 107px;
+    width: 107px;
+  }
+}

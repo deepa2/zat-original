@@ -1,0 +1,108 @@
+page-rto-country-wise {
+    .contentBackgroud {
+        background-color: #ebebeb;
+    }
+    .cardBorder {
+        border-radius: 5px;
+    }
+    .cardHeader {
+        display: flex;
+        align-items: center;
+        padding: 5px;
+    }
+    .parentImg {
+        height: 60px;
+        width: 60px;
+    }
+    .headerFonts {
+        font-weight: 600;
+        font-size: 1em;
+    }
+    .contentPadding {
+        padding: 0px;
+        margin: 0px 5px 5px;
+    }
+    .cardContainer {
+        width: 49.5%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 4px;
+    }
+    .conatinerFlex {
+        display: flex;
+        align-items: center;
+        padding: 5px;
+    }
+    .childImg {
+        height: 30px;
+        width: 35px;
+        margin: 2px;
+    }
+    .conatinerDetails {
+        padding: 3px;
+        // margin-right: 5px;
+
+        border-radius: 5px;
+        min-width: 35px;
+        text-align: center;
+    }
+    .greenBG {
+        background-color: #ebffe9;
+    }
+    .redBG {
+        background-color: #f9ece9;
+    }
+    .greenText {
+        background-color: #c8ffa4;
+        color: #11a28a;
+        font-weight: 600;
+        font-size: 0.9em;
+    }
+    .redText {
+        background-color: #ffcabc;
+        color: #eb582f;
+        font-weight: 600;
+        font-size: 0.9em;
+    }
+    .headerText {
+        text-transform: capitalize;
+       // font-size: 1.1em;
+       font-size: 0.9em;
+    }
+    .mr5 {
+        margin: 5px;
+    }
+    .bgFlex {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .calenderImgPos {
+        position: absolute;
+        top: 14px;
+    }
+    .calenderImg {
+        height: 20px;
+        width: 20px;
+    }
+    .monthName {
+        font-size: 0.9em;
+        color: white;
+        margin-top: 3px;
+        color: #ffffff;
+    }
+    .mrLeft {
+        margin-left: 5px;
+    }
+
+    .toolbar-title-md {
+        font-size: 1.6rem;
+        padding: 0px;
+    }
+    .back-button-md{
+        min-width: 30px;
+        padding: 0px;
+    }
+}

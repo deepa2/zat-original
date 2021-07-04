@@ -1,0 +1,126 @@
+page-gatepass {
+    .toolbar-title {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .gate-pass-wrapper {
+        // background: url('../../assets/imgs/gatepass-bg.svg');
+        background: linear-gradient(90deg, #18bfb9, #339fde);
+        margin: 10px;
+        border-radius: 10px;
+        min-height: calc(100vh - 76px);
+        
+        .profile-wrapper {
+            position: relative;
+            text-align: center;
+            padding-bottom: 20px;
+            color: #fff;
+            font-size: 16px;
+            border-bottom: 1px dashed #fff;
+            &::after {
+                content: "";
+                position: absolute;
+                right: -7px;
+                bottom: -7px;
+                width: 15px;
+                height: 15px;
+                border-radius: 50%;
+                background: #fff;
+            }
+            &::before {
+                content: "";
+                position: absolute;
+                left: -7px;
+                bottom: -7px;
+                width: 15px;
+                height: 15px;
+                border-radius: 50%;
+                background: #fff;
+            }
+            .designation {
+                font-size: 14px;
+                margin-top: 5px;
+            }
+            .prof-pic-con {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 130px;
+                position: relative;
+                img.outer-image {
+                    position: absolute;
+                    width: 110px;
+                }
+                img.profile-pic {
+                    width: 70px;
+                    height: 70px;
+                    border-radius: 50%;
+                    position: relative;
+                }
+            }
+        }
+        .user-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+            position: relative;
+            z-index: 1;
+            .info-item {
+                width: 230px;
+                display: flex;
+                align-items: center;
+                color: #fff;
+                font-size: 16px;
+                margin-bottom: 10px;
+                img.info-icon {
+                    margin-right: 10px;
+                    margin-bottom: 10px;
+                }
+                span {
+                    border-bottom: 1px dashed #fff;
+                    padding-bottom: 10px;
+                    width: 100%;
+                    //text-decoration: underline;
+                }
+            }
+        }
+        .qr-code {
+            text-align: center;
+            margin-top: 5vh;
+            padding-bottom: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #fff;
+            img {
+                width: 55%;
+                border-radius: 10px;
+            }
+        }
+    }
+    .watch-video {
+        font-size: 14px;
+        border: 1px solid #fff;
+        padding: 3px 10px;
+        border-radius: 12px;
+    }
+    .mask {
+        position: absolute;
+        // height:  calc(100vh - 76px);
+        z-index: 0;
+        width: 100%;
+    }
+    .pdfIcon{
+        height: 24px;width:24px
+    }
+    .pdfTextLine{
+        text-decoration: underline;
+    }
+    .note{
+        margin: 5px;
+      padding-top: 20px;
+    }
+}

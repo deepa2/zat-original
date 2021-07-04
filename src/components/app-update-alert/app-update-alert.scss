@@ -1,0 +1,58 @@
+app-update-alert {
+  ion-header {
+    ion-navbar {
+      background: none !important;
+      padding: 0 !important;
+    }
+
+    ion-toolbar {
+      padding: 0 !important;
+    }
+    .toolbar-title {
+      padding: 0 !important;
+    }
+  }
+
+  .headerImg {
+    width: 100%;
+    min-height: 100px;
+    // background: #ffd748;
+  }
+  .updateContent-parent {
+  }
+  .about-title {
+    font-weight: bold;
+    font-size: 1.1em;
+  }
+  .versionNumber {
+    color: color($colors, secondary);
+    font-weight: bold;
+    font-size: 1.1em;
+  }
+  .footerBtn-parent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0;
+  }
+  .skipBtn {
+    width: 40%;
+    height: 45px;
+  }
+  .updateBtn {
+    width: 40%;
+    height: 45px;
+  }
+  .whatsnew {
+    color: #808080;
+    padding-right: 10px;
+  }
+  .updateTitleGrid {
+    padding: 10px 15px;
+  }
+  .newUpdate-title{
+    color: color($colors, secondary);
+    font-size: 1.1em;
+    font-weight: bold;
+  }
+}

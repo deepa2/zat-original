@@ -1,0 +1,85 @@
+admin-add-pickup-points {
+    .maincontent {
+        background: #e1e7f3;
+    }
+    .cancel-btn {
+        color: white;
+        padding: 10px;
+        font-size: 25px;
+    }
+    ion-item.item.item-block.item-md {
+        padding: 0 6px;
+    }
+    ion-list {
+        margin: 0 10px !important;
+    }
+    ion-item {
+        margin-bottom: 10px !important;
+        position: relative;
+    }
+    .pickup-pts-list {
+        .timings-container {
+            background: #ecf2fe;
+            border-radius: 5px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-right: 5px;
+        }
+        .pickpt-name {
+            // font-weight: bold;
+            font-size: 14px;
+            font-family: Roboto;
+        }
+        .cost {
+            font-size: 14px;
+            margin-top: 3px;
+            font-family: Roboto;
+        }
+        .pickup-pt-details-col {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .more-icon-col {
+            position: absolute;
+            right: -2%;
+            /* left: 93%; */
+            top: 28%;
+        }
+    }
+    .iconSize {
+        font-size: 1.2em;
+        padding: 5px;
+    }
+    .add-new-pickup-imgparent {
+        height: 100px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background: white;
+        margin: 10px;
+        border-radius: 2px;
+        .add-pickup-pt-txt {
+            margin-top: 3px;
+        }
+        .add-new-pt-img {
+            width: 50px;
+            height: 50px;
+        }
+    }
+    .custom-item-reorder ion-reorder {
+        display: none !important;
+    }
+    .time-data {
+        font-family: Roboto;
+        font-size: 12px;
+    }
+    .submitBtn {
+        text-transform: capitalize;
+    }
+    .footer-container {
+        background: #ffffff;
+    }
+}

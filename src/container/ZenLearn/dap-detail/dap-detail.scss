@@ -1,0 +1,72 @@
+dap-detail{
+  .scroll-content {
+    background: #E4EBF3;
+  }
+  .dapContainer{
+    padding: 10px;
+    margin-bottom: 10px;
+    background: #fff;
+    display: flex;
+    justify-content: space-between;
+    .dap-main-info {
+      width: 80%;
+      
+    }
+  }
+  ion-col.dap-value.col {
+    font-weight: 300;
+  }
+  .dapList{
+    background: #fff;
+    margin: 10px;
+    padding-bottom: 10px;
+    border-radius: 5px;
+    overflow: hidden;
+
+    textarea.text-input{
+      height: 100px;
+    }
+    
+    .dap-header{
+      background: #F9FAFE;
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      position: relative;
+      img.right-arrow {
+        position: absolute;
+        right: 10px;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        width: 8px;
+    }
+      img {
+        width: 40px;
+        margin-right: 5px;
+      }
+    }
+    .dap-info{
+      padding: 1px 10px;
+    }
+  }
+  
+  .ion-page > ion-content.backgrnd-white {
+    background: #ffffff;
+  }
+  .btnStyle{
+    border-radius: 25px;
+    text-transform: capitalize;
+    .button-md {
+      font-size: 1.5rem;
+    }
+  }
+  .submitBtn{
+    text-align: center;
+    padding: 5px;
+  }
+
+
+  
+}
+

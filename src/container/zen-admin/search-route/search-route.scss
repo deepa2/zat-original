@@ -1,0 +1,129 @@
+page-search-route {
+  .searchbar-md .searchbar-input {
+    padding: 6px 45px;
+  }
+  .list-item {
+    display: flex;
+    align-items: center;
+    background: white;
+    border-radius: 5px;
+    padding: 7px;
+    border: 1px solid #b9c8e6;
+  }
+  .no-data-found {
+    margin: 20px 10px;
+    text-align: center;
+    font-size: 1.3em;
+    height: 15vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .pickup-point-item {
+    display: flex;
+    align-items: center;
+    background: white;
+    border-radius: 5px;
+    margin-bottom: 7px;
+    border: 1px solid #b9c8e6;
+    padding: 5px;
+    justify-content: space-between;
+  }
+  .route-container,
+  .pickup-container {
+    background: #e1e7f3;
+    padding: 0px 5px;
+    margin-bottom: 7px;
+  }
+  .route-details {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .routeImg {
+    width: 55px;
+    max-width: 15%;
+  }
+  .pickup-details {
+    width: 55%;
+  }
+  .clock-img {
+    width: 20px;
+    margin-right: 5px;
+  }
+  .time-value {
+    font-size: 1em;
+    width: 100%;
+  }
+  .arrowForward {
+    padding: 5px;
+  }
+  .route-title {
+    padding: 5px;
+    padding-top: 0px;
+  }
+  .fontBold {
+    font-weight: bold;
+  }
+  .padding-lftRt5 {
+    padding: 0 5px;
+  }
+  .font14 {
+    font-size: 1.1em;
+  }
+  .font15 {
+    font-size: 1.2em;
+  }
+  .time-details-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 30%;
+  }
+  .route-details-parent {
+    padding-top: 7px;
+    background: #e1e7f3;
+    height: calc(100vh - 164px);
+  }
+  .no-data-parent {
+    height: calc(100vh - 84px);
+  }
+  .no-data-card {
+    height: 98%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 15px;
+  }
+  .card-md {
+    border-radius: 10px;
+  }
+  // Added by Swanand: to meet design
+  .segment-header {
+    background: #fff;
+  }
+  .search-route-content {
+    background: #e1e7f3;
+    * {
+      font-family: "Roboto";
+    }
+    ion-icon {
+      font-family: "Ionicons" !important;
+    }
+  }
+  .colorGrey {
+    color: #7f7f7f;
+  }
+  .segment-md .segment-button.activated,
+  .segment-md .segment-button.segment-activated {
+    color: #1586c7;
+    border-bottom: 2px solid #1586c7;
+  }
+  .segment-md .segment-button {
+    color: #000;
+    text-transform: none;
+    font-family: "Roboto";
+    font-weight: 500;
+  }
+}

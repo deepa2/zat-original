@@ -1,0 +1,94 @@
+<ion-header class="header-container">
+    <ion-navbar>
+        <ion-title *ngIf="requestType=='cancelPass'">Cancel Pass</ion-title>
+        <ion-title *ngIf="requestType=='raiseComplaint'">Raise Complaint
+        </ion-title>
+        <ion-buttons end>
+            <div class="title-container">
+                <ion-icon slot="start" name="close" (click)="dismiss()" class="cancel-btn"></ion-icon>
+            </div>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+<ion-content>
+    <div class="cost-details-container" *ngIf="requestType=='cancelPass'">
+        <div class="bus-info-container">
+            <div class="user-pic">
+                <img class="route-img" src="assets/zenAdmin/Bus-Pass-cancel.svg" />
+            </div>
+            <div class="amount-details">
+                <div class="associate-name colorGrey">BusPass ID</div>
+                <div class="key-value fontWeight">{{busPassID}}</div>
+            </div>
+        </div>
+        <div class="bus-info-container mb-10">
+            <div class="user-pic">
+                <img class="route-img" src="assets/zenAdmin/calenderIcon.svg" />
+            </div>
+            <div class="amount-details">
+                <div class="associate-name colorGrey">{{passtype}} Pass</div>
+                <div class="key-value fontWeight">{{passValidity}}</div>
+            </div>
+        </div>
+
+        <div class="rules-container">
+            <div class="note-div">
+                <div class="bus-rulesTxt" (click)="openRulesModal()">Pass Rules</div>
+            </div>
+            <div class="marginLeft" *ngIf="passtype?.toLowerCase()=='monthly'">If cancellation done after 5th of the
+                month, full charge will be deducted.</div>
+        </div>
+
+        <div class="checkBox-container">
+            <ion-checkbox [(ngModel)]="checkBoxValue"></ion-checkbox>
+            <span class="marleft-10">I agree to pass rules. </span>
+        </div>
+    </div>
+
+    <div *ngIf="requestType=='raiseComplaint'">
+        <div class="form-container">
+            <form [formGroup]="complaintForm">
+                <div class="margin-btm-10">
+                    <ion-label class="padding10 margin10-rt-lf">Employee ID</ion-label>
+                    <ion-input class="borderBottom " placeholder="Bus Employee ID(eg. 12345)" formControlName="employid"
+                        type="number">
+                    </ion-input>
+                    <div class="margin-btm-10">
+                        <span class="error-msg">
+                            <p *ngIf="complaintForm.controls['employid'].hasError('required') && submitted">* Please enter a Employee ID</p>
+                            <p *ngIf="complaintForm.controls['employid'].hasError('pattern') && submitted">* Only numbers are allowed.</p>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="margin-btm-10">
+                    <ion-label class="padding10 margin10-rt-lf">Select Route</ion-label>
+                    <ion-input class="borderBottom " placeholder="Select Route" formControlName="routeName">
+                    </ion-input>
+                </div>
+                <div class="margin-btm-10">
+                    <ion-label class="padding10 margin10-rt-lf">Bus No</ion-label>
+                    <ion-input class="borderBottom " placeholder="Bus No" formControlName="busNo">
+                    </ion-input>
+                </div>
+                <div class="margin-btm-10">
+                    <ion-label class="padding10 margin10-rt-lf">Reason</ion-label>
+                    <ion-select placeholder="Select Reason" interface="action-sheet" class="borderBottom margin10-rt-lf custom-select"
+                        formControlName="reason">
+                        <ion-option [value]="item" *ngFor="let item of reasonList">{{item}}</ion-option>
+                    </ion-select>
+                </div>
+            </form>
+        </div>
+    </div>
+</ion-content>
+<ion-footer>
+    <div class="text-center" *ngIf="requestType=='raiseComplaint'">
+        <button class="cancelBtn" ion-button round (click)="confirmCancelAlert()">Submit </button>
+    </div>
+    <div class="text-center" *ngIf="requestType=='cancelPass'">
+        <button class="cancelBtn" ion-button round (click)="confirmCancelAlert()" [disabled]="!checkBoxValue">
+            Cancel Pass
+        </button>
+    </div>
+</ion-footer>

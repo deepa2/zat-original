@@ -1,0 +1,104 @@
+<!--
+  Generated template for the TravelersListPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+    <ion-navbar>
+        <ion-title>Travellers List</ion-title>
+        <ion-buttons end>
+            <ion-select [(ngModel)]="bookingStatus" class="status-select" interface="popover" (ionChange)="onSelectChange($event)">
+                <ion-option value="All">All</ion-option>
+                <ion-option value="Approved">Approved</ion-option>
+                <ion-option value="Cancelled">Cancelled</ion-option>
+            </ion-select>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+<ion-content class="mainContent">
+
+    <div *ngIf="showNoPassPage" class="no-data">No Data Found</div>
+
+    <div *ngIf="!showNoPassPage && inchargeDetails">
+        <div class="ticket-parent" *ngFor="let busItem of inchargeDetails">
+            <!-- (click)="openCalendarModal()" busInchargeDetailDOs-->
+            <div class="date-container">
+                <div>
+                    <img class="calendar-icon" src="assets/zenAdmin/calendar-img.svg" />
+                </div>
+                <div>
+                    <!-- <div class="day-value">{{inchargeDetails?.currDay}}</div> -->
+                    <div class="display-flex">
+                        <div class="currDate">{{busItem?.date}}</div>
+                        <!-- <span class="display-flex">
+            <img class="blk-down-arrow" src="assets/zenAdmin/down-arrow.svg" />
+          </span> -->
+                    </div>
+                </div>
+            </div>
+            <div>
+                <ion-card color="light" class="ion-card ion-text-center margin5 post-relative" *ngFor="let item of busItem.busInchargeDetailDOs" (click)="gotoDetailsPage(item)">
+                    <div class="bus-details-card">
+                        <div class="busNumber-details">
+                            <span>
+                <img class="bus-img" src="assets/zenAdmin/bus-image.svg" />
+              </span>
+                            <div class="busNumber-info-card">
+                                <span class="colorGrey"> Bus </span>
+                                <span class="bus-number"> {{item.busNumber}} </span>
+                            </div>
+                        </div>
+                        <div class="busUser-count-details">
+                            <div>
+                                <img class="grp-image" src="assets/zenAdmin/group-image.svg" />
+                            </div>
+                            <div class="usersCount">
+                                {{item.reservedSeats}}/{{item.totalSeats}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="profile-wrapper"></div>
+                    <div class="container-items">
+                        <div class="route-pic">
+                            <img class="route-img" src="assets/zenAdmin/route-icon.svg" />
+                            <!-- <img class="userpic-bg" src="assets/zenLearn-imgs/User_profile_BG.svg"> -->
+                        </div>
+                        <div style="
+              display: flex;
+              flex-direction: column;
+              padding-top: 8px;
+              width: 80%;
+            ">
+                            <span class="associate-name colorGrey">Route</span>
+                            <span class="key-value fontWeight">{{item?.busRouteName}}</span>
+                        </div>
+                    </div>
+                    <div class="driver-info-container">
+                        <!-- <div class="user-pic">
+            <img class="img-style" [src]="item?.driverProfilePic" onerror="this.src='./assets/imgs/logo.png'">
+            <img class="userpic-bg" src="assets/zenLearn-imgs/User_profile_BG.svg">
+          </div> -->
+                        <div class="profile-img-container">
+                            <!-- <img class="ringImg-profile" src="assets/zenLearn-imgs/profile-ring-img.svg" onerror="this.src='assets/imgs/blank.png'" /> -->
+                            <img class="userImage" [src]="tem?.driverProfilePic" onerror="this.src='assets/imgs/dummy-profile.png'" />
+                        </div>
+                        <div style="
+              display: flex;
+              flex-direction: column;
+              padding-top: 8px;
+              width: 80%;
+            ">
+                            <span class="associate-name colorGrey">Driver</span>
+                            <span class="key-value fontWeight"> {{item?.driverName}}</span>
+                        </div>
+                        <div (click)="call(item?.driverNumber)">
+                            <img class="phone-image" src="assets/zenAdmin/call-image.svg" />
+                        </div>
+                    </div>
+                </ion-card>
+            </div>
+        </div>
+    </div>
+</ion-content>

@@ -1,0 +1,140 @@
+<span class="ts-dates" *ngIf="type == 'date'" (click)="dateSelected(chatListIndexForDate,dateIndex)">
+  <h6 no-margin>{{dateObj?.day | titlecase}}</h6>
+  <h4 no-margin [class.task]="dateObj.status == 'Pending'" [class.saved]="dateObj.status == 'Saved'" [class.approved]="dateObj.status == 'Approved'"
+    [class.submitted]="dateObj.status == 'Submitted'" [class.rejected]="dateObj.status == 'Rejected'">{{dateObj?.date |
+    date: 'd'}}</h4>
+  <div [class.selected]="chatListIndexForDate == indexToShowDot?.chatListIndexForDateToUpdate && dateIndex == indexToShowDot?.dateIndexToUpdate"></div>
+  <!-- <div>{{dateObj.status}}</div>
+  ?.substring(0, 1) -->
+</span>
+
+<ion-card class="task-card" no-margin *ngIf="type == 'ttDetails'">
+  <ion-row class="status">
+    <ion-col col-2>
+      <div class="image" [class.saved]="taskData.approvalStatus == '-1'" [class.approved]="taskData.approvalStatus == '1'"
+        [class.submitted]="taskData.approvalStatus == '2'" [class.rejected]="taskData.approvalStatus == '3'"
+        [class.task]="taskData.approvalStatus == '0'">
+        <img src="assets/zents-imgs/{{data?.iconName}}.svg"/>
+      </div>
+    </ion-col>
+    <ion-col col-8 text-left>
+      <span>Status: Task {{taskData.timesheetStatus}}</span>
+    </ion-col>
+    <ion-col col-2 text-right>
+      <button ion-button clear (click)="openEditForm(chatListIndex,parentIndex,childIndex)" 
+      [ngStyle]="{'opacity':chatListIndex < chatListLength - 1 ? '0.5' : '1'}">
+        <ion-icon name="create"></ion-icon>
+      </button>
+    </ion-col>
+  </ion-row>
+  <ion-grid [ngStyle]="{'display': chatListIndex == indexToToggleForm?.chatListIndexToUpdate && parentIndex == indexToToggleForm?.parentIndexToUpdate && childIndex == indexToToggleForm?.childIndexToUpdate ? 'none' : 'block'}">
+    <p text-left>{{data?.taskName}}</p>
+    <ion-row class="border-top" *ngIf="timesheetData.isFixedBidProject == 'YES'">
+      <ion-col col-4 text-left>
+        <strong>Milestone:</strong>
+      </ion-col>
+      <ion-col class="milestone" col-8 text-left>
+        {{editedData.milestoneName}}
+      </ion-col>
+    </ion-row>
+    <ion-row class="border-bottom border-top">
+      <ion-col col-4 text-left>
+        <strong>Efforts:</strong>
+      </ion-col>
+      <ion-col text-left>
+        <!-- <ion-datetime no-padding [disabled]="taskData?.approvalStatus == '1' || isTimesheetEditable == 'NO' || data?.editEfforts"
+          displayFormat="HH:mm" pickerFormat="HH:mm" [(ngModel)]="editedData.efforts" minuteValues="00,15,30,45"
+          (ionChange)="onEffortsChange($event)"></ion-datetime> -->
+        <ion-row>
+          <ion-col col-6 (click)="setList(efforts.hourValues,'hour',selEfforts.hour)">
+            <span [ngStyle]="{'opacity':(chatListIndex < chatListLength - 1) || this.isTimesheetEditable == 'NO' || this.data.editEfforts ? '0.5' : '1'}">{{selEfforts.hour}} Hrs</span>
+          </ion-col>
+          <ion-col col-6 (click)="setList(efforts.minuteValues,'minute',selEfforts.minute)">
+            <span [ngStyle]="{'opacity':(chatListIndex < chatListLength - 1) || this.isTimesheetEditable == 'NO' || this.data.editEfforts ? '0.5' : '1'}">{{selEfforts.minute}} mins</span>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="margin-top-bottom5" col-4 text-left>
+        <strong>Billability:</strong>
+      </ion-col>
+      <ion-col class="margin-top-bottom5" text-left>
+        <!-- <ion-select no-padding [disabled]="taskData?.approvalStatus == '1' || isTimesheetEditable == 'NO'" interface="alert"
+            placeholder="Select Billability" cancelText="Cancel" okText="Save" [(ngModel)]="editedData.billability"
+            (ionChange)="onBillabilityChange($event)">
+            <ion-option *ngFor="let b of billabilityList" [value]="b.value">{{b.name}}</ion-option>
+          </ion-select> -->
+        <button [disabled]="isTimesheetEditable == 'NO'" (click)="setList(billabilityList,'billability',editedData.billability)"
+        [ngStyle]="{'color':chatListIndex < chatListLength - 1 ? '#888888' : '#000000'}">{{editedData.billabilityName}}</button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <form [formGroup]="editTimesheetForm" class="ts-edit-form" *ngIf="chatListIndex == indexToToggleForm?.chatListIndexToUpdate && parentIndex == indexToToggleForm?.parentIndexToUpdate && childIndex == indexToToggleForm?.childIndexToUpdate"
+    (ngSubmit)="onSubmit()">
+    <ion-list>
+      <div no-padding class="first-item efforts">
+        <div class="d-flex">
+          <ion-label stacked>Task</ion-label>
+          <!-- <button type="submit">Save</button> -->
+        </div>
+        <div class="division">
+          <ion-input type="text" [value]="data?.taskName" [readonly]="true"></ion-input>
+        </div>
+      </div>
+      <div no-padding class="efforts" *ngIf="timesheetData.isFixedBidProject == 'YES'">
+        <ion-label stacked>Milestone</ion-label>
+        <div class="division" (click)="setList(timesheetData.milestoneDetails,'formMilestone',editTimesheetForm.controls.milestoneObj.value)">
+          <ion-input formControlName="milestone" type="text" [readonly]="true"></ion-input>
+          <img src="assets/imgs/chat/down-arrow.png" [ngStyle]="{'opacity': editTimesheetForm.controls.milestone.disabled ? '0.4' : '1'}">
+        </div>
+      </div>
+      <span class="error-msg" *ngIf="timesheetData.isFixedBidProject == 'YES' && isSubmitted && editTimesheetForm.controls.milestone.errors">
+        <p>* Milestone is required.</p>
+      </span>
+
+      <div no-padding class="efforts">
+        <ion-label stacked>Efforts</ion-label>
+        <div class="division">
+          <div (click)="setList(efforts.hourValues,'formHour',editTimesheetForm.controls.hour.value)">
+            <ion-input formControlName="hour" type="text" [readonly]="true"></ion-input>
+            <span class="hour">Hours</span>
+            <img src="assets/imgs/chat/down-arrow.png">
+          </div>
+          <div (click)="setList(efforts.minuteValues,'formMinute',editTimesheetForm.controls.minute.value)">
+            <ion-input formControlName="minute" type="text" [readonly]="true"></ion-input>
+            <span class="min">Mins</span>
+            <img src="assets/imgs/chat/down-arrow.png">
+          </div>
+        </div>
+      </div>
+      <span class="error-msg" *ngIf="isSubmitted && editTimesheetForm.controls.hour.errors && editTimesheetForm.controls.hour.errors.min && editTimesheetForm.controls.minute.errors && editTimesheetForm.controls.minute.errors.min">
+        <p>* Please select valid hours.</p>
+      </span>
+
+      <div class="efforts" no-padding>
+        <ion-label stacked>Billability</ion-label>
+        <div class="division" (click)="setList(billabilityList,'formBillability',editTimesheetForm.controls.billability.value)">
+          <ion-input type="text" formControlName="billabilityName" [readonly]="true"></ion-input>
+          <img src="assets/imgs/chat/down-arrow.png">
+        </div>
+      </div>
+      <span class="error-msg" *ngIf="isSubmitted && editTimesheetForm.controls.billabilityName.errors">
+        <p>* Billability is required.</p>
+      </span>
+
+      <ion-item class="comments" no-padding (click)="setList('','comments')">
+        <ion-label stacked>Comments</ion-label>
+        <ion-textarea (keypress)="utility.omit_special_char($event)" rows="2" cols="20" formControlName="remarks"></ion-textarea>
+      </ion-item>
+      <span class="error-msg" *ngIf="isSubmitted && editTimesheetForm.controls.remarks.errors">
+        <p>* Remarks is required.</p>
+      </span>
+
+      <div class="saveBtn">
+        <button ion-button round small type="submit">Save Task</button>
+      </div>
+
+    </ion-list>
+  </form>
+</ion-card>

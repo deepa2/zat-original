@@ -1,0 +1,30 @@
+<!-- Generated template for the AddNewRouteModalComponent component -->
+<ion-header>
+
+  <ion-navbar>
+    <ion-toolbar>
+      <ion-searchbar placeholder="Search Route(s)" (ionInput)="onSearchRoute($event)" [(ngModel)]="searchInputText"
+        (ionClear)="onCancel($event)">
+      </ion-searchbar>
+      <ion-buttons end>
+        <button class="addNewRouteBtn" [disabled]="routeListData?.length != 0" (click)="addNewRoute()">Add</button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list>
+    <ion-item *ngFor="let routes of routeListData" (click)="onSelectRouteName(routes)">
+      {{routes.routeName}}
+    </ion-item>
+  </ion-list>
+
+
+</ion-content>
+<ion-footer>
+  <div class="closeBtn">
+    <button ion-button round (click)="closeModal()">Close</button>
+  </div>
+</ion-footer>

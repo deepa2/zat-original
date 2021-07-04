@@ -1,0 +1,23 @@
+page-report {
+    .img-32 {
+        height: 34px;
+        width: 32px;
+    }
+    .box-50 {
+        height: 60px;
+        width: 50px;
+    }
+    .title {
+        font-size: 15px;
+        font-weight: 600;
+        padding: 12px;
+        color: $primary-color;
+    }
+    .card-cust {
+        // border-radius: 5px !important;
+        //box-shadow: 0px 1px 4px 1px rgba(105, 105, 105, 0.85) !important;
+        box-shadow: none;
+        border: 1px solid #dadfe0;
+        margin: 12px 10px;
+    }
+}

@@ -1,0 +1,47 @@
+announcement-item {
+  .ann-card {
+    
+    // border-radius: 5px;
+    // box-shadow: 0px 1px 4px 1px rgba(105, 105, 105, 0.85);
+    margin: 10px 0px 23px 10px;
+  }
+
+  .announcement-text{
+   font-size: 1em;
+   margin-bottom: 10px;
+  }
+  .ratingSeperator {
+    border-top: 1px solid #d4d2d2;
+
+    ion-icon {
+      font-size: 22px;
+    }
+  }
+
+  .icon-bar {
+    width: 22px;
+    height: 22px;
+  }
+  .icon-arrow{
+    width: 15px;
+    height: 15px;
+  }
+
+  .countAction{
+    font-size: 15px;
+  }
+  .flex {
+    display: flex;
+    margin-left: 5px;
+    margin-bottom: 5px
+  }
+  .date {
+    color: grey;
+    margin-right: 9px;
+    font-size: 0.9em;
+  }
+  img.imageSize {
+    width: 14px;
+    margin-right: 4px;
+  }
+}

@@ -1,0 +1,55 @@
+<!--
+  Generated template for the RtoEngagementPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>RTO Awareness</ion-title>
+    <ion-buttons end (click)="presentOption($event)">
+      <button ion-button style="text-transform: capitalize; font-size: 1.1em;">
+        <img style="margin: 5px;" src="assets/menu_icons/popUpCalender.svg">{{selectedMonth}}
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="contentBackgroud">
+
+  <ion-card *ngFor="let rtoData of rtoEngagementData" class="cardBorder">
+    <ion-card-header class="cardHeader">
+      <span>
+        <img class="cardImg" [src]="rtoData?.icon">
+        <!-- <img *ngIf="rtoData?.key == 'SA'" class="cardImg" src="assets/new_vd_icon/SA-icon.svg"> -->
+      </span>
+      <span>
+        {{rtoData?.key}}
+      </span>
+    </ion-card-header>
+    <ion-card-content class="contentPadding">
+      <div class="container">
+        <div class="conatinerColoumn" *ngFor="let countryWiseDetails of rtoData.rtDataList">
+          <div *ngIf="countryWiseDetails?.icon != null">
+            <img class="childImg" [src]="countryWiseDetails?.icon">
+          </div>
+          <div class="childData">
+            <span>
+              {{countryWiseDetails?.key}}
+            </span>
+            <span style="font-weight: 600;
+            color: #5288E9;">
+              {{countryWiseDetails?.value | number}}
+            </span>
+          </div>
+
+        </div>
+      </div>
+    </ion-card-content>
+
+  </ion-card>
+
+</ion-content>

@@ -1,0 +1,92 @@
+<!--
+  Generated template for the AdditionalHoursPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header class="ts-header">
+
+  <ion-navbar>
+    <ion-title>{{pageTitle}}</ion-title>
+    <!-- <button ion-button icon-only clear
+      (click)="getDatesOfSelectedMonth(months?.lastMonth,'lastMonth')">
+      <img src="assets/zents-imgs/calendar_white_icon.svg" />
+      <span>{{months?.lastMonth?.substring(0, 3)}}</span>
+    </button>
+    <div class="divider"></div>
+    <button class="current-month" ion-button icon-only clear style="color: white"
+      (click)="getDatesOfSelectedMonth(months?.currentMonth,'currentMonth')">
+      <img src="assets/zents-imgs/calendar_white_icon.svg" />
+      {{months?.currentMonth?.substring(0, 3)}}
+    </button> -->
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <div class="addHrs">
+    <div class="calendar">
+      <ion-grid>
+        <ion-row class="calendar-bar">
+          <ion-col col-1>
+            <img src="assets/zents-imgs/calendar_icon.svg" />
+          </ion-col>
+          <ion-col col-7>
+            <ion-datetime #datetime no-padding displayFormat="DD-MMM-YYYY" pickerFormat="DD MMM YYYY"
+              placeholder="Start Date" [(ngModel)]="selectedDate" [min]="dateRange?.minDate" [max]="dateRange?.maxDate"
+              (ionChange)="onDateChange($event)">
+            </ion-datetime>
+            <ion-icon class="down-arrow" name="arrow-dropdown" (click)="datetime.open()"></ion-icon>
+          </ion-col>
+          <ion-col col-4 text-right>
+            <button class="addHrsSubmitBtn" ion-button round small [disabled]="disableSubmit"
+              (click)="showSubmitConfirmAlert(additionalHourTimesheetData.taskAndTimesheetDetails)">Submit</button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+    <div class="addHrs-timesheet">
+      <div class="addHrs-details" text-left
+        *ngFor="let timesheet of additionalHourTimesheetData?.taskAndTimesheetDetails;let i=index;">
+        <div class="project-name">
+          <span>{{utility.toTitleCase(timesheet.title)}}</span>
+        </div>
+        <span *ngFor="let task of timesheet.taskList">
+          <additional-hour-list-item [addHrsTaskData]="task" [projIndex]="i" (edit)="saveAddHrsTimesheet(task,$event)"
+            (open)="presentEditModal(task)" (delete)="deleteTimesheet(task)" (refresh)="refreshTimesheet()">
+          </additional-hour-list-item>
+        </span>
+      </div>
+      <div padding text-center class="noTimesheetMsg"
+        *ngIf="additionalHourTimesheetData == 'null' || (additionalHourTimesheetData && additionalHourTimesheetData?.taskAndTimesheetDetails?.length == 0)">
+        There are no filled timesheets/tasks for the selected date.
+        <div class="inner-div">
+          click on <div class="options">
+            <ion-icon name="funnel"></ion-icon>
+          </div> to view more options.
+        </div>
+      </div>
+    </div>
+  </div>
+
+</ion-content>
+
+<span class="ts-fab">
+  <ion-fab #fab right bottom class="addHrs-fab">
+    <button ion-fab (click)="fabClicked()">
+      <ion-icon name="funnel"></ion-icon>
+    </button>
+    <ion-fab-list side="top">
+      <button ion-fab (click)="applyAdditionalHours()">
+        <ion-label>Apply {{pageTitle}}</ion-label>
+        <ion-icon name="add"></ion-icon>
+      </button>
+      <button ion-fab (click)="goToAppliedHoursList()">
+        <ion-label>Applied Hours List</ion-label>
+        <ion-icon name="list-box"></ion-icon>
+      </button>
+    </ion-fab-list>
+  </ion-fab>
+</span>
+<div *ngIf="showOverlay" class="page-overlay"></div>

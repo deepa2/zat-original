@@ -1,0 +1,27 @@
+page-registration {
+  input.input-style {
+    padding: 5px;
+    background: #f6f6f6;
+    border: 1px solid lightgray;
+    width: 100%;
+  }
+
+  .required {
+    padding: 0;
+    padding-left: 5px;
+    color: #de8f8f;
+  }
+  .register-btn {
+    font-size: 1.5rem;
+    text-transform: capitalize;
+  }
+  .font1p2em {
+    font-size: 1.2em;
+  }
+  .color-red {
+    color: red;
+  }
+  .margin-top10 {
+    margin-top: 10px;
+  }
+}

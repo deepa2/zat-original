@@ -1,0 +1,135 @@
+<!--
+  Generated template for the ZendeavorKraPreviewPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>KRA : Review</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="closeModal()">
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+  <div class="card" *ngFor="let item of kraListDetails">
+    <div class="title">
+      <span class="kra-title">KRA:1</span>
+      <span>
+        <img class="pen-icon" src="assets/imgs/RectangleImg.svg" />
+      </span>
+    </div>
+
+    <ion-grid>
+      <ion-row justify-content-start *ngFor="let subItem of item.kradetailList">
+        <ion-col col-4>{{subItem.key}}*</ion-col>
+        <ion-col col-8>{{subItem.value}}</ion-col>
+      </ion-row>
+      <!-- <ion-row justify-content-start>
+          <ion-col col-4>
+            Milestone Date*
+          </ion-col>
+          <ion-col col-8>
+           31/10/2019
+          </ion-col>
+        </ion-row> -->
+      <!-- <ion-row justify-content-start>
+            <ion-col col-4>
+              Weightage*
+            </ion-col>
+            <ion-col col-8>
+             15
+            </ion-col>
+          </ion-row> -->
+      <!-- <ion-row justify-content-start>
+              <ion-col col-4>
+                Floor*
+              </ion-col>
+              <ion-col col-8>
+               08
+              </ion-col>
+            </ion-row> -->
+      <!-- <ion-row justify-content-start>
+                <ion-col col-4>
+                  Target*
+                </ion-col>
+                <ion-col col-8>
+                 10
+                </ion-col>
+              </ion-row> -->
+      <!-- <ion-row justify-content-start>
+                  <ion-col col-4>
+                    Performance Measure*
+                  </ion-col>
+                  <ion-col col-8>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
+                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+                  </ion-col>
+                </ion-row> -->
+    </ion-grid>
+  </div>
+
+  <!-- Weightage card -->
+
+  <!-- <div class="wt-card">
+ 
+  <ion-row justify-content-start >
+      <ion-col col-5>
+          Total KRA Weightage
+      </ion-col>
+      <ion-col col-3 class="kra-weightage">
+       100/100
+      </ion-col>
+    </ion-row>
+    <ion-row justify-content-start>
+        <ion-col col-5>
+            KRA
+        </ion-col>
+        <ion-col col-6>
+         <button ion-button round outline class="capital">Review</button>
+        </ion-col>
+      </ion-row>
+      <div class="checkBox-card">
+          <ion-item no-lines>
+              <ion-label>I have reviewed my KRAs before final submission</ion-label>
+              <ion-checkbox slot="end" value="submit" ></ion-checkbox>
+            </ion-item>
+      </div>
+      <div text-center>
+        <button ion-button round outline class="capital">Submit for Approval</button>
+        
+      </div>
+</div> -->
+
+
+  <!-- <div class="card-main">
+<div class="card-row">
+  <div class="card-col-1">
+    Total KRA Weightage
+  </div>
+  <div class="card-col-2">
+    100/100
+  </div>
+</div>
+<div class="card-row">
+<div class="card-col-1">  KRA</div>
+<div>  <button ion-button round outline class="capital">Review</button></div>
+</div>
+
+<div class="checkBox-card">
+  <ion-item no-lines>
+      <ion-label>I have reviewed my KRAs before final submission</ion-label>
+      <ion-checkbox slot="end" value="submit" ></ion-checkbox>
+    </ion-item>
+</div>
+<div text-center>
+<button ion-button round outline class="capital">Submit for Approval</button>
+</div>
+</div> -->
+</ion-content>

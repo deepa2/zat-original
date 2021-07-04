@@ -1,0 +1,216 @@
+app-list-item{
+    .parent-div{
+        // border: 1px solid #ebebeb;
+        // margin-top: 2%;
+        // border-radius: 5px;
+        .first-block{
+            display: flex;
+            margin: 2% 2% 5%;
+            // justify-content: center;
+            .image{
+                // width: 15%;
+                // padding: 2%;
+                // margin: 2%;
+                border-radius: 5px;
+                text-align: center;
+                width: 40px;
+                height: 40px;
+                display: flex;
+                justify-content: center;
+            }
+            .text-block{
+                width: 85%;
+                display: flex;
+                white-space: initial;
+                flex-direction: column;
+                justify-content: space-evenly;
+                margin-left: 2%;
+                .taskname{
+                    font-size: 1em;
+                    font-weight: 500;
+                    white-space: initial;
+                }
+                .text{
+                    display: flex;
+                    align-items: baseline;
+                    .title{
+                        // width: 25%;
+                        color: #666464;
+                        font-weight: 500;
+                        font-size: 1em;
+                    }
+                    .name{
+                        color: grey;
+                        font-size: 0.9em;
+                        width: 70%;
+                        white-space: initial;
+                        padding-left: 2%;
+                    }
+                }
+            }
+        }
+        .section{
+            display: flex;
+            margin: 0;
+            // border-top: 1px solid #ffffff;
+            background-color: $ts-light;
+            font-size: 0.9em;
+            .efforts{
+                display: flex;
+                width: 45%;
+                align-items: center;
+                padding: 0 10px;
+                // border-right: 1px solid #ffffff;
+                ion-datetime{
+                    position: relative;
+                    font-size: 0.9em;
+                    padding-left: 5px;
+                    width: 100%;
+                    .datetime-text{
+                        color: $ts-primary;
+                    }
+                }
+            }
+            .bill{
+                width: 55%;
+                display: flex;
+                align-items: center;
+                padding: 0 10px;
+                border-right: 1px solid #ffffff;
+                ion-select{
+                    width: 100%;
+                    max-width: none;
+                    color: $ts-primary;
+                    font-size: 0.9em;
+                    padding-left: 5px;
+                    padding-right: 0px;
+                    position: relative;
+                    .select-icon{
+                        display: none;
+                    }
+                }
+            }
+            ion-item{
+                background-color: $ts-light;
+                .item-inner{
+                    padding-right: 0px;
+                }
+            }
+        }
+        // .grid{
+        //     border-top: 1px solid #FFFFFF;
+        //     padding: 0;
+        //     .col{
+        //         display: flex;
+        //         align-items: center;
+        //         ion-select{
+        //             width: 55%;
+        //             max-width: none;
+        //             padding: 0px 2%;
+        //             margin-top: 2%;
+        //         }
+        //     }
+        //     .first-col{
+        //         border-right: 1px solid #FFFFFF;
+        //         padding: 0 0.5em;
+        //     }
+        // }
+        ion-grid{
+            border-top: 1px solid #ebebeb;
+            background-color: $ts-light;
+            padding: 0;
+            ion-col{
+                // padding-left: 1% !important;
+                display: flex;
+                align-items: center;
+                // padding: 4% 1%;
+                .value{
+                    color: grey;
+                    font-size: 0.9em;
+                    padding-left: 2%;
+                    width: 50%;
+                }
+                span{
+                    font-size: 0.9em;
+                }
+            }
+            .border{
+                border-right: 1px solid #ebebeb;
+            }
+        }
+    }
+    .deleteBtn{
+        background-color: $ts-primary;
+    }
+    ion-item-options{
+        .activated{
+            background-color: $ts-primary !important;
+        }
+    }
+    .main-item{
+        .item-inner{
+            padding-right: 0% !important;
+            .label{
+                margin: 0%;
+            }
+        }
+    }
+    .color-light{
+        color: #666464;
+        padding-left: 5px;
+        font-size: 1em;
+    }
+
+
+    //New css
+    // .saved{
+    //     background-color: #E9F2FE;
+    // }
+    // .approved{
+    //     background-color: #D8F9D0;
+    // }
+    // .submitted{
+    //     background-color: #FFEFCE;
+    // }
+    // .rejected{
+    //     background-color: #FFE2DB;
+    // }
+    // .task{
+    //     background-color: #E8EFF8;
+    // }
+    .saved{
+        background-color: $ts-blue;
+    }
+    .approved{
+        background-color: $ts-btn-green;
+    }
+    .submitted{
+        background-color: $ts-orange;
+    }
+    .rejected{
+        background-color: $ts-red;
+    }
+    .task{
+        background-color: $ts-grey;
+    }
+
+    .card-shadow{
+        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.07), 0 3px 1px -2px rgba(0, 0, 0, 0.1), 0 1px 5px 0 rgba(0, 0, 0, 0.06); 
+       }
+
+    .applied-hours{
+        .first-block{
+            margin: 2% !important;
+            padding-top: 2%;
+        }
+        .text{
+            .title{
+                width: 20% !important;
+            }
+            .name{
+                width: 80% !important;
+            }
+        }
+    }
+
+}

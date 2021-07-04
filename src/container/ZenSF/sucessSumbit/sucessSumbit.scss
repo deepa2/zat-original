@@ -1,0 +1,62 @@
+sucessSumbit-page {
+    h1 {
+        font-size: 3.5rem;
+    }
+    .sumbit-btn {
+        width: 30%;
+        -webkit-align-self: center;
+        -ms-flex-item-align: center;
+        align-self: center;
+        font-size: 1.2em;
+        padding: 3%;
+        border-radius: 40px;
+        background-color: #0e8bc7;
+        color: white;
+    }
+    .successImg {
+        display: flex;
+        //flex-direction: column;
+        position: absolute;
+        top: 5%;
+        left: 10%;
+    }
+    .success-icon{
+        position: relative;
+        top: 10%;
+    }
+    .successful-text {
+        padding-left: 12px;
+        position: relative;
+        top: 5%;
+    }
+
+    .success-response{
+        margin: 3px;
+    }
+
+    .successDialog {
+        position: absolute;
+        left: 10%;
+        margin: 0;
+       
+        // p {
+        //     margin: 0;
+        // }
+    }
+    // .toolbar-md {
+    //     padding: 0px !important;
+    //     min-height: 0px !important;
+    //     padding-top: 0 !important;
+    //     min-height: 56px !important;
+    // }
+    @media only screen and (max-width: 767px) {
+        .md .modal-wrapper>.ion-page>ion-header>.toolbar.statusbar-padding:first-child {
+            padding-top: calc(20px + 4px) !important;
+            padding-top: calc(constant(safe-area-inset-top) + 4px) !important;
+            padding-top: calc(env(safe-area-inset-top) + 4px) !important;
+            min-height: calc(56px + 20px) !important;
+            min-height: calc(56px + constant(safe-area-inset-top)) !important;
+            min-height: calc(56px + env(safe-area-inset-top)) !important;
+        }
+    }
+}

@@ -1,0 +1,79 @@
+gatepass-check.ion-page {
+  ul.intro-para {
+    padding: 10px;
+  }
+  ol {
+    list-style: none;
+    padding: 0;
+    li {
+      margin-bottom: 10px;
+      background: #fff;
+      padding: 10px;
+      padding-left: 30px;
+      border-radius: 3px;
+  }
+    li::before{
+      content: "";
+      position: absolute;
+      left: 7px;
+      width: 30px;
+      height: 30px;
+      background:  url("../assets/imgs/guide-user.svg") no-repeat,linear-gradient(-45deg, #ffee7f,#ff9f68);
+        background-position: center;
+    }
+   
+    li:nth-child(1n + 1)::before{
+      background:  url("../assets/imgs/guide-user.svg") no-repeat,linear-gradient(-45deg, #a7cdff,#9a8bff);
+        background-position: center;
+    }
+    li:nth-child(2n + 1)::before{
+      background:  url("../assets/imgs/guide-user.svg") no-repeat,linear-gradient(-45deg, #fc9de6,#ff5b85);
+        background-position: center;
+    }
+    li:nth-child(3n + 1)::before{
+      background:  url("../assets/imgs/guide-user.svg") no-repeat,linear-gradient(-45deg, #76e794,#05c5bf);
+        background-position: center;
+    }
+    li:nth-child(4n + 1)::before{
+      background:  url("../assets/imgs/guide-user.svg") no-repeat,linear-gradient(-45deg, #ffee7f,#ff9f68);
+        background-position: center;
+    }
+    li:nth-child(5)::before{
+      background:  url("../assets/imgs/guide-user.svg") no-repeat,linear-gradient(-45deg, #b9c9ff,#45a0ff);
+        background-position: center;
+    }
+    li:nth-child(6)::before{
+      background:  url("../assets/imgs/guide-user.svg") no-repeat,linear-gradient(-45deg, #c4f994,#70b42d);
+        background-position: center;
+    }
+    li:nth-child(7)::before{
+      background:  url("../assets/imgs/guide-user.svg") no-repeat,linear-gradient(-45deg, #ffee7f,#ff9f68);
+        background-position: center;
+    }
+    li:nth-child(8)::before{
+      background:  url("../assets/imgs/guide-user.svg") no-repeat,linear-gradient(-45deg, #fcbdbf,#987efb);
+        background-position: center;
+    }
+   
+  }
+  ion-content.content-md:not([padding]) .scroll-content {
+    background: #EBEBEB;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  ion-modal.guidelinesModal
+    .modal-wrapper
+    > gatepass-check.ion-page
+    > ion-header
+    > .toolbar.statusbar-padding:first-child {
+    padding-top: calc(20px + 4px) !important;
+    padding-top: calc(constant(safe-area-inset-top) + 4px) !important;
+    padding-top: calc(env(safe-area-inset-top) + 4px) !important;
+    min-height: calc(56px + 20px) !important;
+    min-height: calc(0px + constant(safe-area-inset-top)) !important;
+    min-height: env(safe-area-inset-top) !important;
+  }
+ 
+}
+

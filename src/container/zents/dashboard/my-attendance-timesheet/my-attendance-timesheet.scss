@@ -1,0 +1,137 @@
+page-my-attendance-timesheet {
+
+    .attendance-title{
+        background: #D6E6FF;
+        color:$ts-secondary;
+        font-size: 1.2em;
+
+    }
+    .attendance{
+        background: #EFF5FF;
+        ion-grid{
+            width:100%;
+            font-size: 1em;
+            ion-icon{
+                font-size: 2em;
+            }
+        }
+        .attendance-row{
+                        border-bottom: 1px solid #C2CDFF;
+                        padding-top: 8px;
+                        padding-bottom: 8px;
+                    }
+    
+        .last-attendance-row{
+            padding-top: 8px;
+        }
+    }
+
+    .iconify {
+        height: 2em;
+        width: 2em;
+    }
+
+    .formheader{
+        .form-group{
+            margin-bottom: 0;
+        }
+        padding: 6px;
+    }
+    .dateInput{
+        width: 75%;
+        border: none;
+    }
+
+    .borderColor{
+        width: 100%;
+        border-bottom: 1px solid #C2CDFF;  
+        padding-left: 0px;
+        font-size: 1em;
+    }
+
+    .dateBody{
+        width: 50%;
+        border-bottom: 1px solid #C2CDFF;
+        padding: 5px;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+    .dateIcon{
+        float: right;
+        background: none;
+        font-size: 0.5em;
+    }
+    #buttonColor{
+        // --background: linear-gradient(to right,var(--ion-color-primary-shade),var(--ion-color-primary-tint)); 
+        color: white;
+        text-transform: capitalize;
+        width: 110px;
+        height: 40px;
+    }
+
+    .formBody{
+        display: flex;
+        // padding: 4%;
+    }
+    .submitBtn{
+        --background: none;
+        text-align: center;
+  
+        button{
+            background: $ts-secondary;
+            color:white;
+            border-style:none !important;
+            text-transform: none;
+        }
+    }
+    .endDateError{
+        width: 50%;
+        margin-left: 50%;
+    }
+
+    //Newly added CSS
+    .list .item .item-inner{
+        border-bottom: none;
+        padding: 0 !important;
+    }
+    .error-msg{
+        color: red;
+        margin-top: 2px;
+        margin-left: 10px;
+        display: block;
+    }
+    ion-select{
+        width: 100%;
+        max-width: none;
+    }
+    .dateBorderColor{
+        border-bottom: 1px solid #C2CDFF;  
+        font-size: 1em;
+    }
+    .marginRight{
+        margin-right: 2%;
+    }
+    .my-timesheets-parent{
+        padding:10px;
+    }
+    .my-timesheets{
+        border: 1px solid #B5C5DF;
+        .title{
+            background: #D6E6FF;
+            color:$ts-secondary;
+            font-size: 1.2em;
+        }
+    }
+
+    .attendance_icon_row{
+        align-items: center;
+        display: flex;
+
+    }
+    .item-radio-checked.item-md ion-label {
+        color: #000000 !important;
+    }
+
+}
+

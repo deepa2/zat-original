@@ -1,0 +1,271 @@
+<!--
+  Generated template for the ReviewGoalsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>KRA Summary</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <div class="bttmMargin">
+
+    <!-- <ion-card class="preview-card">
+      <ion-card-header class="preview-header">Overall Score</ion-card-header>
+      <div class="preview-cont">
+        <div class="padding-bottom10per width100">
+          <div class="displayFlex  fontSize1p2">
+            <div col-5>Status</div>
+            <div col-7 class="fontSize9">{{finalStatus}}</div>
+          </div>
+        </div>
+      </div>
+    </ion-card> -->
+
+    <!-- tracker content -->
+    <ion-card style="padding: 0 0 23px 0;" *ngIf="reviewResponse?.kraActivity">
+      <div class="justify-spac-bt-align-cent padding10-20 font-weight500 fontSize1p1">
+        <span class="align-cont-cent">
+          <img class="status-icon mrginRt" src="assets/imgs/annual-status.svg" />
+          <span>Status</span>
+        </span>
+        <!-- <span class="alertCustomCss" (click)="goToQuestion()">Need Help</span> -->
+      </div>
+      <div class="padng0to5">
+        <ion-row class="align-item-center margin0-5 position-relative" *ngFor="let activity of reviewResponse?.kraActivity"
+          [ngClass]="{'completed-status': (activity.colorCode == 'green'),'pending-status': (activity.colorCode == 'red') ,'incomplete-status': (activity.colorCode == 'grey')}">
+          <span class="tracker center">
+            <!-- [ngStyle]="{'border-color': activity.colorCode}" -->
+            <div class="tracker-inner-circle"></div>
+            <!-- [ngStyle]="{'background': activity.colorCode}" -->
+          </span>
+          <ion-col col-10>
+
+            <div class="marginBtm">{{activity.status}}</div>
+            <div class="color-blue fontSize9">{{activity.statusValue}}</div>
+            <!-- <span class="display-flex" (click)="openRedirectCommentsModal(KRADetails?.redirectedComments)">
+                <div class="color-blue fontSize9 redirectedCommntcss " *ngIf="activity.status=='Redirected'">{{activity.statusValue}}</div>
+  
+                <ion-icon *ngIf="activity.status=='Redirected'" name="ios-arrow-forward" class="arrowIconSize"></ion-icon>
+              </span> -->
+          </ion-col>
+        </ion-row>
+      </div>
+    </ion-card>
+
+    <!-- overall score -->
+    <!-- <div *ngIf="scoreList">
+        <ion-card class="preview-card">
+          <ion-card-header class="kra-header">Overall Score</ion-card-header>
+          <div class=" display-flex  fontSize1p2" *ngFor="let scoreItem of scoreList">
+            <div class="kra-title" col-5>{{scoreItem.key}}</div>
+            <div col-7 class="font-weight500">{{scoreItem.value}}</div>
+          </div>
+        </ion-card>
+      </div> -->
+
+    <!-- <div class="card margin8" *ngIf="scoreList">
+        <div class="kra-header">
+          <span class="kra-title">Overall Score</span>
+  
+        </div>
+        <ion-grid>
+          <ion-row justify-content-start *ngFor="let scoreItem of scoreList">
+            <ion-col col-5>{{scoreItem.key}}</ion-col>
+            <ion-col col-7>{{scoreItem.value}}</ion-col>
+          </ion-row>
+        </ion-grid>
+  
+      </div> -->
+
+    <!-- KRA details card -->
+    <div class="card margin8 kraDetailsCard" *ngFor="let item of kraListDetails">
+      <div class="kra-header">
+        <span class="kra-title">{{item.kraTitle}}</span>
+        <span>
+          <img class="pen-icon" *ngIf="showSubmitEditForEmp()" src="assets/imgs/ZenDeavour/edit-icon.svg" (click)="editKra(item)" />
+          <img class="pen-icon" *ngIf="showSubmitEditForMgr()" src="assets/imgs/ZenDeavour/edit-icon.svg" (click)="editKra(item)" />
+          <!-- <img class="pen-icon" *ngIf="showSubmitEditForReviewer()" src="assets/imgs/ZenDeavour/edit-icon.svg" (click)="editKra(item)" /> -->
+        </span>
+      </div>
+      <div *ngIf="item.kraId !='1'">
+        <div *ngFor="let subItem of item?.kradetailList">
+          <ion-row justify-content-start *ngIf="subItem.key =='Title' ||subItem.key =='Unit Of Measurement'||item.kraTitle=='KRA Details' ">
+            <ion-col *ngIf="subItem.value != '' " class="keyValueCol fontWtBold">{{subItem.key}}</ion-col>
+            <!-- <ion-col *ngIf="subItem.value != '' " >{{subItem.value}}</ion-col> -->
+          </ion-row>
+          <ion-row justify-content-start *ngIf="subItem.key =='Title' ||subItem.key =='Unit Of Measurement'|| item.kraTitle=='KRA Details'">
+            <!-- <ion-col *ngIf="subItem.value != '' " >{{subItem.key}}</ion-col> -->
+            <ion-col *ngIf="subItem.value != '' " class="titleValueCol">{{subItem.value}}</ion-col>
+          </ion-row>
+          <ion-row *ngIf="subItem?.keyValueList">
+            <ion-col class="dottedBorder padding10" col-4 *ngFor="let dateItem of subItem?.keyValueList">
+              <div class="padding-bottom5 fontWtBold">{{dateItem.key}}</div>
+              <div>{{dateItem.value}}</div>
+            </ion-col>
+
+          </ion-row>
+          <ion-row class="border-bottomGray" *ngIf="subItem?.midTermValueList">
+            <ion-col class=" padding10" *ngFor="let midtermItem of subItem?.midTermValueList">
+              <div class="padding-bottom5 fontWtBold">{{midtermItem.key}}</div>
+              <div>{{midtermItem.value}}</div>
+            </ion-col>
+          </ion-row>
+          <ion-row class="border-bottomGray" *ngIf="subItem?.annualValueList">
+            <ion-col class="padding10" *ngFor="let endtermItem of subItem?.annualValueList">
+              <div class="padding-bottom5 fontWtBold">{{endtermItem.key}}</div>
+              <div>{{endtermItem.value}}</div>
+            </ion-col>
+          </ion-row>
+        </div>
+      </div>
+      <!-- css for KRA1 preview -->
+      <div *ngIf="item.kraId =='1' && item?.kradetailList">
+
+
+        <div *ngFor="let kraListItem of item?.kradetailList">
+          <div>
+
+            <!-- <ion-row justify-content-start *ngIf="kraListItem.key">
+              <ion-col class="keyValueCol fontWtBold">{{kraListItem.key}}</ion-col>
+            </ion-row>
+            <ion-row justify-content-start *ngIf="kraListItem.value">
+              <ion-col class="titleValueCol">{{kraListItem.value}}</ion-col>
+            </ion-row> -->
+            <!-- css for new preview screen -->
+            <ion-row justify-content-start *ngIf="kraListItem.key =='Title' ||kraListItem.key =='Unit Of Measurement'||item.kraTitle=='KRA Details' ">
+              <ion-col *ngIf="kraListItem.value != '' " class="keyValueCol fontWtBold">{{kraListItem.key}}</ion-col>
+              <!-- <ion-col *ngIf="subItem.value != '' " >{{subItem.value}}</ion-col> -->
+            </ion-row>
+            <ion-row justify-content-start *ngIf="kraListItem.key =='Title' ||kraListItem.key =='Unit Of Measurement'|| item.kraTitle=='KRA Details'">
+              <!-- <ion-col *ngIf="subItem.value != '' " >{{subItem.key}}</ion-col> -->
+              <ion-col *ngIf="kraListItem.value != '' " class="titleValueCol">{{kraListItem.value}}</ion-col>
+            </ion-row>
+            <ion-row *ngIf="kraListItem?.keyValueList">
+              <ion-col class="dottedBorder padding10" col-4 *ngFor="let dateItem of kraListItem?.keyValueList">
+                <div class="padding-bottom5 fontWtBold">{{dateItem.key}}</div>
+                <div>{{dateItem.value}}</div>
+              </ion-col>
+
+            </ion-row>
+            <ion-row class="border-bottomGray" *ngIf="kraListItem?.midTermValueList">
+              <ion-col class=" padding10" *ngFor="let midtermItem of kraListItem?.midTermValueList">
+                <div class="padding-bottom5 fontWtBold">{{midtermItem.key}}</div>
+                <div>{{midtermItem.value}}</div>
+              </ion-col>
+            </ion-row>
+            <ion-row class="border-bottomGray" *ngIf="kraListItem?.annualValueList">
+              <ion-col class="padding10" *ngFor="let endtermItem of kraListItem?.annualValueList">
+                <div class="padding-bottom5 fontWtBold">{{endtermItem.key}}</div>
+                <div>{{endtermItem.value}}</div>
+              </ion-col>
+            </ion-row>
+          </div>
+          <div *ngIf="kraListItem?.subKraDetailList">
+            <div *ngFor="let subkraItem1 of kraListItem?.subKraDetailList;let indexOfelement=index;" class="marginBottom-25px">
+              <div class="subKRAtitle">Sub KRA {{indexOfelement + 1}}</div>
+              <div *ngIf="subkraItem1?.subKraList" class="margin10 dottedBorder">
+
+                <div *ngFor="let subItem of subkraItem1?.subKraList">
+
+
+
+                  <ion-row justify-content-start *ngIf="subItem.key =='Title' ||subItem.key =='Unit Of Measurement'||item.kraTitle=='KRA Details' ">
+                    <ion-col *ngIf="subItem.value != '' || subItem.value != null " class="keyValueCol fontWtBold">{{subItem.key}}</ion-col>
+                    <!-- <ion-col *ngIf="subItem.value != '' " >{{subItem.value}}</ion-col> -->
+                  </ion-row>
+                  <ion-row justify-content-start *ngIf="subItem.key =='Title' ||subItem.key =='Unit Of Measurement'|| item.kraTitle=='KRA Details'">
+                    <!-- <ion-col *ngIf="subItem.value != '' " >{{subItem.key}}</ion-col> -->
+                    <ion-col *ngIf="subItem.value != '' || subItem.value != null" class="titleValueCol">{{subItem.value}}</ion-col>
+                  </ion-row>
+                  <ion-row *ngIf="subItem?.keyValueList">
+                    <ion-col class="dottedBorder-leftNone padding10" col-6 *ngFor="let dateItem of subItem?.keyValueList">
+                      <div class="padding-bottom5 fontWtBold">{{dateItem.key}}</div>
+                      <div>{{dateItem.value}}</div>
+                    </ion-col>
+
+                  </ion-row>
+                  <ion-row class="border-bottomGray" *ngIf="subItem?.midTermValueList">
+                    <ion-col class=" padding10" *ngFor="let midtermItem of subItem?.midTermValueList">
+                      <div class="padding-bottom5 fontWtBold">{{midtermItem.key}}</div>
+                      <div>{{midtermItem.value}}</div>
+                    </ion-col>
+                  </ion-row>
+                  <ion-row class="border-bottomGray" *ngIf="subItem?.annualValueList">
+                    <ion-col class="padding10" *ngFor="let endtermItem of subItem?.annualValueList">
+                      <div class="padding-bottom5 fontWtBold">{{endtermItem.key}}</div>
+                      <div>{{endtermItem.value}}</div>
+                    </ion-col>
+                  </ion-row>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- css for KRA1 preview ends-->
+
+      <!-- <ion-row class="border-bottomGray">
+        <ion-col class=" padding10">
+          <div class="padding-bottom5">MilestoneDate</div>
+          <div>31-Mar-2020</div>
+        </ion-col>
+        <ion-col class=" padding10">
+          <div class="padding-bottom5">MilestoneDate</div>
+          <div>31-Mar-2020</div>
+        </ion-col>
+        <ion-col class=" padding10">
+          <div class="padding-bottom5">MilestoneDate</div>
+          <div>31-Mar-2020</div>
+        </ion-col>
+      </ion-row> -->
+    </div>
+  </div>
+
+
+
+
+</ion-content>
+
+<ion-footer [ngClass]="(userRole=='1' && (finalStatus=='PENDING FOR CONSENT') && !hideConsentOnKraStatus)?'agreeDisgreeFooter':'footerBg'">
+  <!-- [ngClass]="(userRole=='1' && (finalStatus=='PENDING FOR CONSENT' || finalStatus=='REDIRECT BY APPRAISER'))?'agreeDisgreeFooter':'footerBg'" -->
+
+  <button class="nextBtn" (click)="closeReviewPage(submit)" ion-button round *ngIf="userRole=='1' && finalStatus=='PENDING TO SUBMIT'">Done</button>
+  <div *ngIf="userRole=='2' && finalStatus=='PENDING AT APPRAISER'">
+    <button class="nextBtn" (click)="presentConfirm()" ion-button round *ngIf="isDirectApprove">Approve</button>
+    <button class="nextBtn" (click)="presentConfirm()" ion-button round *ngIf="!isDirectApprove">Submit</button>
+
+    <button class="nextBtn" (click)="redirectKRA()" ion-button round>Redirect</button>
+
+  </div>
+  <div *ngIf="userRole=='1' && (finalStatus=='PENDING FOR CONSENT') && !hideConsentOnKraStatus" style="margin-top: 10px;">
+    <ion-list class="associate-submitCheckbox-container">
+
+      <!-- <ion-item class="appraiser-checkbox-container">
+        <ion-label>I had a discussion with my appraiser
+          <img class="asterisk" src="assets/imgs/asterisk.svg" />
+        </ion-label>
+        <ion-checkbox [(ngModel)]="appraiserDiscussionmodel" checked="true" disabled></ion-checkbox>
+      </ion-item> -->
+      <ion-item class="appraiser-checkbox-container">
+        <ion-label> I had a discussion with my appraiser
+        </ion-label>
+        <ion-checkbox [(ngModel)]="reviewerdiscusionReqmodel"></ion-checkbox>
+      </ion-item>
+    </ion-list>
+    <div class="align-end">
+      <button class="approvebtn" (click)="selectConsent('agree',true)" [ngClass]="{'btn-background': isapprove}"
+        ion-button round>Agree</button>
+      <button class="approvebtn" (click)="selectConsent('disagree',false)" ion-button round [ngClass]="{'btn-background': !isapprove}">Disagree</button>
+    </div>
+  </div>
+
+</ion-footer>

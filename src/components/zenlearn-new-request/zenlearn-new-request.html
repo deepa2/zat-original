@@ -1,0 +1,33 @@
+<!-- Generated template for the ZenlearnNewRequestComponent component -->
+
+  
+<ion-content padding>
+  <div class="container-header">
+   
+    <span class="sectionHeading">
+      <img src="assets/zenLearn-imgs/onthejob-icon.svg" />
+      New Request
+    </span>
+    <span (click)="close()">
+      <ion-icon class="close" ios="ios-close" md="md-close"></ion-icon>
+    </span>
+  </div>
+  <div class="main-wrapper">
+    <ion-label>Select Mentor</ion-label>
+    <div class="add-mentor" (click)="openMentor()">
+      <span>{{mentorDetails?.value}}</span>
+      <ion-icon name="add-circle"></ion-icon>
+      </div>
+
+      <ion-label>Message for mentor</ion-label>
+      <div class="msg-box">
+        <ion-textarea placeholder="message for mentor" [(ngModel)]="message">
+    
+        </ion-textarea>
+      </div>
+      <div style="text-align: center;">
+        <button class="request-btn" ion-button (click)="submit()">Send Request</button>
+      </div>
+  </div>
+  
+</ion-content>

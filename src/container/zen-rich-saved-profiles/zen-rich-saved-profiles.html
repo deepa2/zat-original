@@ -1,0 +1,130 @@
+<!--
+  Generated template for the ZenRichSavedProfilesPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Saved Profiles</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="bg-color">
+
+  <div class="profileConatiner">
+    <div class="profilesection">
+      <span>
+        <img class="profileImg" src="assets/imgs/Person.png">
+      </span>
+      <span class="candidateName">
+        {{profileDetails.candidateName}}
+      </span>
+    </div>
+  </div>
+  <div class="tab">
+    <div class="tabContainer" [hidden]="profileKey.key == 'Additional Information'" [class.selected]="selectedTab == i"
+      (click)="changeTab(i,profileKey.key)" *ngFor="let profileKey of profileData; index as i">{{profileKey.key}}</div>
+  </div>
+
+
+
+  <div *ngIf="profileData">
+    <div  *ngFor="let profileDetail of profileData; index as i">
+      <ion-list class="tab-con" *ngIf="selectedTab == i && profileKey == 'Basic Information'">
+        <ion-item *ngFor="let profileDetails of profileDetail?.value; index as j">
+          <ion-avatar item-start>
+            <img [src]="profileDetails?.icon">
+          </ion-avatar>
+          <p>{{profileDetails?.key}}</p>
+          <span *ngIf="profileDetails?.key != 'Date Of Birth'">{{profileDetails?.value}}</span>
+          <span *ngIf="profileDetails?.key == 'Date Of Birth'">{{formatDate(profileDetails?.value) | date}}</span>
+        </ion-item>
+      </ion-list>
+
+      <div *ngIf="selectedTab == i && profileKey == 'Matching Jobs'">
+        <!-- <div class="opening-card" *ngFor="let item of profileDetail?.value; index as i">
+          <div class="job-wrapper">
+            <div class="job-icon">
+              <img class="listImg" src="assets/imgs/annual-status.svg" />
+              <span>{{item?.srfNo}}</span>
+            </div>
+            <div class="job-info" (click)="goToJobDetails(item.srfNo)">
+              <div class="job-title">{{item?.jobTitle}}</div>
+              <div class="skills info"><span><img [src]="item?.skillsIcon"></span>
+                <span>{{item?.skills}}</span></div>
+              <div class="job-location info"><span><img class="imgStyle" [src]="item?.locationIcon"></span>
+                <span>{{item?.location}}</span></div>
+            </div>
+            <div class="save-job">
+              <ion-icon (click)="$event.stopPropagation()" (click)="bookMarked(item,i)" *ngIf="!item?.isBookmarked"
+                name="ios-bookmark-outline"></ion-icon>
+              <ion-icon (click)="$event.stopPropagation()" (click)="bookMarked(item,i)" *ngIf="item?.isBookmarked"
+                name="bookmark"></ion-icon>
+              <ion-icon name="more" (click)="presentpopover($event)"></ion-icon>
+            </div>
+          </div>
+          <div class="job-footer">
+            <div class="experience">Exp. : {{item?.experience}}</div>
+            <div class="referral-Bonus">
+              <span><img [src]="item?.profileMatchIcon"></span>
+              <span class="matchingProfile">{{item?.profileMatchCount}}</span></div>
+          </div>
+        </div> -->
+        <div class="opening-card" *ngFor="let item of profileDetail?.value; index as i">
+          <div class="job-wrapper">
+            <div class="job-icon">
+              <img class="titleImg" src="assets/imgs/job-item-icon.svg" />
+              <span>{{item?.srfNo}}</span>
+            </div>
+            <div class="job-info" (click)="goToJobDetails(item.srfNo)">
+              <div class="job-title">{{item?.jobTitle}}</div>
+              <div class="skills info"><span class="img-mar5"><img
+                    src="assets/icon/dashboard-icons/ZenRich_skills.svg"></span>
+                <span class="calWidth">{{item?.skills}}</span></div>
+              <div class="job-location info"><span class="img-mar5"><img
+                    src="assets/icon/dashboard-icons/ZenRich_location.svg"></span>
+                <span>{{item?.location}}</span></div>
+            </div>
+            <div class="save-job">
+              <img class="bookMarkIcon" (click)="$event.stopPropagation()" (click)="bookMarked(item,i)"
+                *ngIf="!item?.isBookmarked" src="assets/icon/dashboard-icons/bookMarked.svg">
+              <img class="bookMarkIcon" (click)="$event.stopPropagation()" (click)="bookMarked(item,i)"
+                *ngIf="item?.isBookmarked" src="assets/icon/dashboard-icons/bookMarkFilled.svg">
+              <ion-icon name="more" (click)="presentpopover($event,item?.srfNo,item?.jobTitle,item)"></ion-icon>
+            </div>
+          </div>
+          <div class="job-footer">
+            <div class="experience">
+              <span><img src="assets/icon/dashboard-icons/ZenRich_experiance.svg"></span>
+              <span>
+                Exp: {{item?.experience}}
+              </span></div>
+              <div class="experience">
+                <img class="money-icon" src="assets/imgs/money.svg" />
+                <span>Referral: <span class="inr">Upto INR {{item?.referralBonus}}</span></span>
+              </div>
+
+          </div>
+        </div>
+        <div class="noData" *ngIf="profileDetail?.value == null">No data available </div>
+      </div>
+    </div>
+  </div>
+  <ion-infinite-scroll *ngIf="profileKey == 'Matching Jobs'" (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll-content>
+
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+  <ion-fab bottom right *ngIf="profileKey == 'Basic Information'">
+    <button (click)="goToCandidateProfile()" ion-fab>
+      <ion-icon name="md-create"></ion-icon>
+    </button>
+
+  </ion-fab>
+
+</ion-content>

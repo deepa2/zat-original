@@ -1,0 +1,55 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title class="pageTitile">{{pageTitle}}</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="presentOptions($event)">
+        <ion-icon name="more"></ion-icon>
+      </button>
+    </ion-buttons>
+
+  </ion-navbar>
+
+  <ion-toolbar>
+    <ion-searchbar [(ngModel)]="searchInput" animated placeholder="Search Associate Name/ID"
+      [formControl]="searchControl" (ionInput)="getItems($event)"></ion-searchbar>
+  </ion-toolbar>
+
+</ion-header>
+
+
+<ion-content>
+
+  <div class="spinner-container">
+    <ion-spinner class="loader" *ngIf="loading$ | async"></ion-spinner>
+  </div>
+
+  <div padding text-center *ngIf="!(loading$ | async) && searchedData && searchedData.length == 0">{{noResult}}</div>
+
+  <div class="card-cont" >
+    <ion-card color="light" class="ion-card ion-text-center margin5 " *ngFor="let item of searchedData"
+      (click)="goToProfile($event,item.employeeId)">
+      <div class="right semi-circle"></div>
+
+      <div class="left semi-circle"></div>
+      <ion-card-header class="justify-cont-center padding10">
+        <div class="profile-cont-asso"><img class="profile-asso" [src]="item.profilePicUrl"
+            onerror="this.src='assets/imgs/dummy-profile.png'"></div>
+      </ion-card-header>
+
+      <ion-card-content text-center>
+        <div class="font14">{{item.employeeName}}</div>
+        <div class="id-color font12">{{item.employeeId}}</div>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <!-- <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher> -->
+
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+</ion-content>

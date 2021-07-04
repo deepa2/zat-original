@@ -1,0 +1,127 @@
+<!--
+  Generated template for the MyAttendanceTimesheetPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header class="ts-header">
+
+  <ion-navbar>
+    <ion-title>My Timesheets</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+
+  <div *ngIf="data?.isDataAvailable" class="my-attendance-timesheet-page">
+    <!--  -->
+    <div *ngIf="data?.attendanceList.length > 0" class="attendance block-border">
+      <div padding class="attendance-title">
+        Attendance
+      </div>
+      <ion-grid padding>
+        <ion-row *ngFor="let attendaceInfo of data?.attendanceList; index as i" [ngClass]="{'attendance-row' : i != data?.attendanceList.length -1, 'last-attendance-row' :  i == data?.attendanceList.length -1  }">
+          <ion-col class="attendance_icon_row" no-padding col-1>
+            <img src="assets/imgs/attendance_icon.svg">
+          </ion-col>
+          <ion-col col-3>
+            <span class="darkColor">{{attendaceInfo.dayName}}</span>
+          </ion-col>
+          <ion-col col-4>
+            {{attendaceInfo.loginDate}}
+          </ion-col>
+          <ion-col text-center col-4 class="redDates" *ngIf="checkDateToHighlight(attendaceInfo.viewEfforts)">
+            {{attendaceInfo.viewEfforts ? attendaceInfo.viewEfforts : "--" }}
+          </ion-col>
+          <ion-col text-center col-4 *ngIf="!checkDateToHighlight(attendaceInfo.viewEfforts)">
+            {{attendaceInfo.viewEfforts ? attendaceInfo.viewEfforts : "--" }}
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+
+    <div class="my-timesheets-parent">
+      <div class="my-timesheets">
+        <div padding class="title">
+          My Timesheets
+        </div>
+        <div>
+          <div class="formheader">
+            <form [formGroup]="timeSheetForm" (ngSubmit)="openMyTimesheetPage()">
+              <ion-list>
+                <ion-grid no-padding margin-top>
+                  <ion-row>
+                    <ion-col no-padding class="dateBorderColor marginRight">
+                      <ion-datetime formControlName="startDate" displayFormat="DD-MMM-YYYY" pickerFormat="DD MMM YYYY"
+                        placeholder="Start Date" [(ngModel)]="tsStartDate" [min]="tsDates?.tsMinDate" [max]="tsDates?.tsMaxDate" (ionChange)="onStartDateSelect($event)" >
+                      </ion-datetime>
+                    </ion-col>
+                    <ion-col no-padding class="dateBorderColor">
+                      <ion-datetime formControlName="endDate" displayFormat="DD-MMM-YYYY" pickerFormat="DD MMM YYYY"
+                        placeholder="End Date" [(ngModel)]="tsEndDate" [min]="tsDates?.tsMinDate" [max]="tsDates?.tsMaxDate" (ionChange)="onEndDateSelect($event)" ></ion-datetime>
+                    </ion-col>
+                  </ion-row>
+                </ion-grid>
+                <div *ngIf="isSubmitted && t.startDate.errors && !t.ProjName.errors" class="invalid-feedback" [ngStyle]="{'display':isSubmitted && t.startDate.errors ? 'block':'none'}">
+                  <div *ngIf="t.startDate.errors.required">
+                    <sub>*</sub> Please select start date
+                  </div>
+                </div>
+                <div *ngIf="isSubmitted && t.endDate.errors && !t.ProjName.errors" class="invalid-feedback" [ngStyle]="{'display':isSubmitted && t.endDate.errors ? 'block':'none'}">
+                  <div *ngIf="t.endDate.errors.required">
+                    <sub>*</sub> Please select end date
+                  </div>
+                </div>
+                <div class="error-msg" *ngIf="!invalidDateMessageFlag && compareFlag">
+                  <sub>*</sub> End date should be greater than start date
+                </div>
+                <div class="error-msg" *ngIf="!invalidDateMessageFlag && !compareFlag && oneMonthMessageFlag">
+                  <sub>*</sub> You can only select one month time duration
+                </div>
+                <div class="error-msg" *ngIf="invalidDateMessageFlag">
+                  <sub>*</sub> Start Date should be in between {{tsDates?.tsMinDate | date:'dd-MMM-yyyy'}} and 
+                  {{tsDates?.tsMaxDate | date:'dd-MMM-yyyy'}}
+                </div>
+
+                <ion-item class="borderColor" margin-top>
+                  <ion-select [(ngModel)]="selectedProject" formControlName="projName" placeholder="Select Project"
+                    interface="action-sheet">
+                    <ion-option *ngIf="projectAllocationList.length > 1" value="all">All Projects</ion-option>
+                    <ion-option *ngFor="let project of projectAllocationList" [value]="project">{{project.projectName}}
+                    </ion-option>
+                  </ion-select>
+                </ion-item>
+                <span class="error-msg" *ngIf="isSubmitted && t.projName.errors">
+                  <p>* Please select Project Name.</p>
+                </span>
+
+                <ion-item class="borderColor" margin-top>
+                  <ion-select formControlName="status" placeholder="Select Status" [(ngModel)]="selectedStatus"
+                    interface="action-sheet">
+                    <ion-option value="all">All Status</ion-option>
+                    <ion-option value="-1">Saved</ion-option>
+                    <ion-option value="1">Approved</ion-option>
+                    <ion-option value="2">Submitted</ion-option>
+                    <ion-option value="3">Rejected</ion-option>
+                  </ion-select>
+                </ion-item>
+                <span class="error-msg" *ngIf="isSubmitted && t.status.errors">
+                  <span *ngIf="t.status.errors.required">
+                    <p>* Please select status.</p>
+                  </span>
+                </span>
+
+              </ion-list>
+
+              <div class="submitBtn" float-center>
+                <button ion-button round outline type="submit">View Timesheets</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</ion-content>

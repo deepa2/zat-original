@@ -1,0 +1,116 @@
+page-rto-population {
+    .parentBtn {
+        display: flex;
+        align-items: center;
+        border: 1px solid white;
+        border-radius: 22px;
+    }
+    .parentBtn > div:first-child {
+        border-radius: 22px 0px 0px 22px;
+        text-align: center;
+        width: 55px;
+    }
+    .parentBtn > div:last-child {
+        border-radius: 0 22px 22px 0px;
+        text-align: center;
+        width: 55px;
+    }
+    .selected {
+        background-color: white;
+        color: black;
+    }
+    .cardRadius {
+        border-radius: 5px;
+    }
+    .cardHeader {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 5px;
+    }
+    .displayFlex {
+        display: flex;
+        align-items: center;
+    }
+    .parentImg {
+        height: 60px;
+        width: 60px;
+    }
+
+    .contentPadding {
+        padding: 0px;
+    }
+    .gridView {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        margin: 2px;
+    }
+    .gridView > div:first-child {
+        border-bottom-left-radius: 5px;
+    }
+    .gridView > div:last-child {
+        border-bottom-right-radius: 5px;
+        margin-right: 0px;
+    }
+    .gridColoumn {
+        display: flex;
+        background-color: #fbf6ca;
+        margin-right: 2px;
+        padding: 5px;
+    }
+    .imgStyle {
+        height: 30px;
+        width: 30px;
+    }
+    .rtoValues {
+        display: flex;
+        flex-direction: column;
+        padding: 3px;
+    }
+    .font9 {
+        font-size: 0.9em;
+    }
+    .font11 {
+        font-size: 1.1em;
+    }
+    .backgroundColor {
+        background-color: #ebebeb;
+    }
+    .filterClass {
+        color: black;
+        font-size: 1.1em;
+        font-weight: 600;
+    }
+    .filterIcon {
+        color: black;
+    }
+    .toolbar {
+        background-color: white;
+    }
+    .bgFlex {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+    .bgImgPos {
+        position: absolute;
+        top: 13px;
+    }
+    .calenderImg {
+        height: 20px;
+        width: 20px;
+    }
+    .monthName {
+        font-size: 0.9em;
+        color: white;
+        margin-top: 2px;
+        font-weight: 100;
+    }
+    .mrLeft {
+        margin-left: 5px;
+    }
+    .rRight {
+        margin-right: 5px;
+    }
+}

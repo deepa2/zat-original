@@ -1,0 +1,26 @@
+page-feedback {
+    .ion-ios-close-outline {
+        font-size: 40px;
+    }
+    .text-input {
+        min-height: 100px;
+        padding: 0 5px;
+    }
+    .title {
+        font-size: 20px;
+    }
+    .close {
+        height: 40px;
+        width: 40px;
+        background-color: #7f7f7f;
+    }
+    .userRating {
+        background-color: transparent;
+    }
+    ion-textarea {
+        background-color: white;
+        border: 1px solid darkgrey;
+        padding: 7px;
+        border-radius: 5px;
+    }
+}

@@ -1,0 +1,111 @@
+{
+    "logs": [
+        {
+            "outputFile": "D:\\ZenSar-Apps\\ZenTalent\\zenHelp\\platforms\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-fr\\values-fr.xml",
+            "map": [
+                {
+                    "source": "D:\\ZenSar-Apps\\ZenTalent\\zenHelp\\platforms\\android\\app\\src\\main\\res\\values-fr\\multiimagechooser_strings_fr.xml",
+                    "from": {
+                        "startLines": "3,2,1,4",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "167,79,16,308",
+                        "endColumns": "140,87,62,103",
+                        "endOffsets": "303,162,74,407"
+                    },
+                    "to": {
+                        "startLines": "26,33,34,37",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "2547,3213,3301,3574",
+                        "endColumns": "140,87,62,103",
+                        "endOffsets": "2683,3296,3359,3673"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\dn51437\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\d2d5b381a0b2d9b5d2dbe96252e1b5c3\\res\\values-fr\\values-fr.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "105,216,331,442,524,630,760,843,923,1009,1119,1231,1334,1445,1552,1659,1818,1917",
+                        "endColumns": "110,114,110,81,105,129,82,79,85,109,111,102,110,106,106,158,98,85",
+                        "endOffsets": "211,326,437,519,625,755,838,918,1004,1114,1226,1329,1440,1547,1654,1813,1912,1998"
+                    },
+                    "to": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,38",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "150,261,376,487,569,675,805,888,968,1054,1164,1276,1379,1490,1597,1704,1863,3678",
+                        "endColumns": "110,114,110,81,105,129,82,79,85,109,111,102,110,106,106,158,98,85",
+                        "endOffsets": "256,371,482,564,670,800,883,963,1049,1159,1271,1374,1485,1592,1699,1858,1957,3759"
+                    }
+                },
+                {
+                    "source": "D:\\ZenSar-Apps\\ZenTalent\\zenHelp\\platforms\\android\\app\\src\\main\\res\\values-fr\\fpauth-strings.xml",
+                    "from": {
+                        "startLines": "17,19,21,22,23,24,27,25,20,26,18",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "691,796,928,1018,1082,1180,1522,1247,894,1423,734",
+                        "endColumns": "42,97,89,63,97,66,107,175,33,98,61",
+                        "endOffsets": "729,889,1013,1077,1175,1242,1625,1418,923,1517,791"
+                    },
+                    "to": {
+                        "startLines": "19,27,28,29,30,31,32,35,36,39,41",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "1962,2688,2786,2876,2940,3038,3105,3364,3540,3764,3964",
+                        "endColumns": "42,97,89,63,97,66,107,175,33,98,61",
+                        "endOffsets": "2000,2781,2871,2935,3033,3100,3208,3535,3569,3858,4021"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\dn51437\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-basement-10.2.6.aar\\c2bc5595ff2d784b7950a7eae02b8cfc\\res\\values-fr\\values.xml",
+                    "from": {
+                        "startLines": "4",
+                        "startColumns": "0",
+                        "startOffsets": "285",
+                        "endColumns": "223",
+                        "endOffsets": "508"
+                    },
+                    "to": {
+                        "startLines": "20",
+                        "startColumns": "4",
+                        "startOffsets": "2005",
+                        "endColumns": "223",
+                        "endOffsets": "2224"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\dn51437\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.1.1.aar\\6e7b47fda2679ad0bc839cc711ebbf77\\res\\values-fr\\values-fr.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    },
+                    "to": {
+                        "startLines": "40",
+                        "startColumns": "4",
+                        "startOffsets": "3863",
+                        "endColumns": "100",
+                        "endOffsets": "3959"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\dn51437\\.gradle\\caches\\transforms-1\\files-1.1\\android-crop-1.0.0.aar\\9650a8940f0eee67bfae6670215f59db\\res\\values-fr\\values-fr.xml",
+                    "from": {
+                        "startLines": "4,5,6,7,8",
+                        "startColumns": "4,4,4,4,4",
+                        "startOffsets": "215,288,336,405,474",
+                        "endColumns": "72,47,68,68,58",
+                        "endOffsets": "283,331,400,469,528"
+                    },
+                    "to": {
+                        "startLines": "21,22,23,24,25",
+                        "startColumns": "4,4,4,4,4",
+                        "startOffsets": "2229,2302,2350,2419,2488",
+                        "endColumns": "72,47,68,68,58",
+                        "endOffsets": "2297,2345,2414,2483,2542"
+                    }
+                }
+            ]
+        }
+    ]
+}

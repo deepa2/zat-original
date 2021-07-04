@@ -1,0 +1,141 @@
+additional-hour-list-item {
+    .parent-div{
+        // border: 1px solid #ebebeb;
+        // margin-top: 2%;
+        // border-radius: 5px;
+        .first-block{
+            display: flex;
+            margin: 2% 2% 5%;
+            .image{
+                // width: 15%;
+                // padding: 2%;
+                // margin: 2%;
+                border-radius: 5px;
+                text-align: center;
+                width: 40px;
+                height: 40px;
+                display: flex;
+                justify-content: center;
+            }
+            .text-block{
+                width: 85%;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-evenly;
+                margin-left: 2%;
+                .taskname{
+                    font-size: 1em;
+                    font-weight: bold;
+                    white-space: initial;
+                }
+                .text{
+                    .title{
+                        color: #666464;
+                        font-weight: bold;
+                    }
+                    .name{
+                        color: grey;
+                    }
+                }
+            }
+        }
+        .list{
+            display: flex;
+            // border-top: 1px solid #ffffff;
+            margin: 0;
+            background-color: $ts-light;
+            font-size: 0.9em;
+            .efforts{
+                display: flex;
+                width: 50%;
+                align-items: center;
+                padding: 0 10px;
+                // border-right: 1px solid #ffffff;
+                ion-datetime{
+                position: relative;
+                font-size: 0.9em;
+                padding-left: 5px;
+                width: 100%;
+                    .datetime-text{
+                        color: $ts-primary;
+                    }
+                }
+            }
+            .bill{
+                width: 50%;
+                display: flex;
+                align-items: center;
+                padding: 0 10px;
+                border-right: 1px solid #ffffff;
+                ion-select{
+                    position: relative;
+                    width: 100%;
+                    max-width: none;
+                    color: #488cfc;
+                    font-size: 0.9em;
+                }
+            }
+            ion-item{
+                background-color: $ts-light;
+                .item-inner{
+                    padding-right: 0px;
+                }
+            }
+        }
+        .grid{
+            border-top: 1px solid #FFFFFF;
+            padding: 0;
+            .col{
+                display: flex;
+                align-items: center;
+                ion-select{
+                    width: 55%;
+                    max-width: none;
+                    padding: 0px 2%;
+                    margin-top: 2%;
+                }
+            }
+            .first-col{
+                border-right: 1px solid #FFFFFF;
+                padding: 0 0.5em;
+            }
+        }
+    }
+    .deleteBtn{
+        background-color: $ts-primary;
+    }
+
+    .main-item{
+        .item-inner{
+            padding-right: 0% !important;
+            .label{
+                margin: 0%;
+            }
+        }
+    }
+    .color-light{
+        color: #666464;
+        padding-left: 5px;
+        font-size: 1em;
+    }
+    //New css
+    .saved{
+        background-color: $ts-blue;
+    }
+    .approved{
+        background-color: $ts-btn-green;
+    }
+    .submitted{
+        background-color: $ts-orange;
+    }
+    .rejected{
+        background-color: $ts-red;
+    }
+    .task{
+        background-color: $ts-grey;
+    }
+
+    .card-shadow{
+        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.07), 0 3px 1px -2px rgba(0, 0, 0, 0.1), 0 1px 5px 0 rgba(0, 0, 0, 0.06); 
+       }
+}

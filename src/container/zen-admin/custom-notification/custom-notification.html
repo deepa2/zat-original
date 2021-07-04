@@ -1,0 +1,30 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>Notification/Announcements</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content class="container-bg">
+    <div>
+        <ion-card class="custom-card-styl" (click)="addNotification('','custom')">
+            <span><img src="assets/imgs/notifcation.svg" /></span>
+            <span class="title-custm-styl">Custom Notification:</span>
+        </ion-card>
+
+        <div class="title-noty-styl">Notification Templates</div>
+        <ion-card *ngFor="let item of notificationTemplate" class="temp-card-styl" (click)="addNotification(item,'default')">
+            <div class="icon-styl"><img src="assets/imgs/tempNotification.svg" /></div>
+            <div class="flex-clumn">
+                <span>Subject</span>
+                <span class="route-title-styl">{{item?.subjectOfMail}}</span>
+            </div>
+        </ion-card>
+        <div class="no-data" *ngIf="notificationTemplate?.length <=0 || notificationTemplate.length <=0">
+            {{errorMessage}}
+        </div>
+    </div>
+    <ion-infinite-scroll threshold="300px" (ionInfinite)="loadData($event)" *ngIf="resultPending">
+        <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">
+        </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+</ion-content>

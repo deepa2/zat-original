@@ -1,0 +1,59 @@
+exit-recovery-details {
+    .background {
+    }
+    .header-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 15px;
+        background: linear-gradient(84deg, #0ea2c8, #0e7cc7);
+
+        color: #fff;
+    }
+    .conatiner-details {
+        display: flex;
+        align-items: center;
+        margin-left: 5px;
+        font-weight: 600;
+        img {
+            margin-right: 5px;
+        }
+    }
+    .img-margin {
+        margin-right: 5px;
+    }
+    .recovery-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px;
+        margin-left: 5px;
+    }
+    .recovery-flex {
+        display: flex;
+        align-items: center;
+    }
+    .borderBtm {
+        border-bottom: 1px dotted lightgrey;
+        margin-right: 45px;
+        margin-left: 15px;
+    }
+    ion-icon {
+        font-size: 1.5em !important;
+    }
+    .mr-10 {
+        margin-right: 10px;
+    }
+    .btm-container {
+        background: #eff3ff;
+        margin: 10px 15px;
+        padding: 10px 5px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-weight: 600;
+    }
+    .ft-color {
+        color: #0e7ac7;
+    }
+}

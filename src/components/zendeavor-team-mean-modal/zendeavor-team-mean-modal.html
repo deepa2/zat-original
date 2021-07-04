@@ -1,0 +1,59 @@
+<!-- Generated template for the ZendeavorTeamMeanModalComponent component -->
+<ion-header>
+
+  <ion-navbar>
+    <div class="title-container">
+      <ion-icon slot="start" name="close" (click)="dismiss()" class="cancel-btn"></ion-icon>
+      <div class="manager-name padding10">{{teamMeanData?.managerName}}</div>
+    </div>
+    <ion-buttons end>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content class="teamMeanModal">
+  <div class="mean-grid">
+    <div class="mean-container width50">
+      <div class="tooltip-div">
+        <div class="applicableMean width90-per">Applicable Mean</div>
+        <div>
+          <ion-icon  [tooltip]="toolTipDataForApplicableMean" positionV="bottom" hideOthers="true" [event]="tooltipEvent"
+            clear color="dark" item-right >
+            <img class="info-icon" src="assets/imgs/info.svg" />
+          </ion-icon>
+        
+      
+        </div>
+      </div>
+      <div class="applicable-score">{{teamMeanData?.applicableMean}}</div>
+
+    </div>
+    <div class="mean-container width50">
+      <div class="tooltip-div">
+        <div class="width90-per">Permissible Limit</div>
+        <div>
+          <ion-icon [tooltip]="toolTipDataForPermissibleLimit" positionV="bottom" hideOthers="true" [event]="tooltipEvent" class="formButtonIcon"
+            clear color="dark" item-right>
+            <img class="info-icon" src="assets/imgs/info.svg" />
+          </ion-icon>
+        </div>
+      </div>
+      <div class="permissible-score">{{teamMeanData?.permissibleLimit}}</div>
+
+    </div>
+  </div>
+  <div class="padding10 fontWeight-600 tooltip-div">
+    <div class="width92-per">
+      <span class="fontSize1-3">Current Mean:</span>
+      <span class="fontSize1-3">{{teamMeanData?.actualMean}}</span>
+    </div>
+
+    <span>
+      <ion-icon [tooltip]="tooltipDataforActualMean" positionV="bottom" hideOthers="true" [event]="tooltipEvent" class="formButtonIcon"
+        clear color="dark" item-right>
+        <img class="info-icon" src="assets/imgs/info.svg" />
+      </ion-icon>
+    </span>
+  </div>
+
+  
+</ion-content>

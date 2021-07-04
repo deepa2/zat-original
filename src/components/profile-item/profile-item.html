@@ -1,0 +1,14 @@
+<ion-item class="profile-item-wrapper">
+
+    <ion-avatar item-start (click)="goToProfile($event)">
+        <img class="border"  [src]="user.employeeProfilePic || user.profilePicUrl"  onerror="this.src='assets/imgs/dummy-profile.png'"/>
+    </ion-avatar>
+
+    <div class="name text-wrap box-shadow ">{{uppercase(user.employeeName)}}</div>
+
+    <!-- <p *ngIf="createdDate">
+        <span>{{formatDate(createdDate) | date}}</span>
+        <span>{{formatDate(createdDate) | date:'shortTime' }}</span>
+    </p> -->
+
+</ion-item>

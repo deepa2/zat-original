@@ -1,0 +1,3 @@
+<div (click)="profileClicked()" class="profile-img">
+    <img *ngIf="profilePic" [src]="profilePic" onerror="this.src='assets/imgs/dummy-profile.png'"/> 
+</div>

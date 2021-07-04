@@ -1,0 +1,97 @@
+.assosiate-list {
+  padding: 10px;
+  padding-bottom: 50px;
+  background: #ebebeb;
+  min-height: calc(100vh - 55px);
+  .team-list-card {
+    margin: 10px 0;
+    padding: 10px;
+    background: #fff;
+    border-radius: 5px;
+    .profile-info {
+      display: flex;
+      align-items: center;
+      img.user-icon {
+        width: 50px;
+        height: 50px;
+        margin-right: 10px;
+        border-radius: 50%;
+        border: 3px solid #c0e0ff;
+        overflow: hidden;
+        position: absolute;
+        left: 5px;
+        top: 5px;
+      }
+      .username {
+        font-size: 16px;
+        // color: #1586c7;
+        margin-bottom: 5px;
+      }
+      label.user-id {
+        color: #2d2d2d;
+        font-weight: 300;
+      }
+    }
+    .learming-info {
+      display: flex;
+      margin-top: 10px;
+      .learning-item.Technical {
+        background: #e8ffe6;
+      }
+      .learning-item.Behavioural.middel-item {
+        background: #eef3ff;
+      }
+      .learning-item.DAP {
+        background: #f3e2ff;
+      }
+      .learning-item {
+        width: 100%;
+        background: #edf9fc;
+        padding: 6px;
+        border-radius: 5px;
+        .learning-type {
+          font-weight: 300;
+          font-size: 13px;
+          color: #2d2d2d;
+        }
+      }
+      .learning-item.middel-item {
+        margin: 0 5px;
+      }
+      .learning-percent {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 10px;
+        .completed-percent.Technical {
+          background: #63d69b;
+        }
+        .completed-percent.Behavioural {
+          background: #8db0f9;
+        }
+        .completed-percent.DAP {
+          background: #ce91ff;
+        }
+        .required-percent {
+          font-size: 14px;
+          font-weight: 700;
+        }
+        .completed-percent {
+          color: white;
+          font-size: 13px;
+          padding: 3px 5px;
+          background: #1586c7;
+        }
+      }
+    }
+  }
+  .profile-img-container {
+    position: relative;
+  }
+  .ringImg-profile {
+    width: 60px;
+  }
+  .user-details {
+    padding-left: 5px;
+  }
+}

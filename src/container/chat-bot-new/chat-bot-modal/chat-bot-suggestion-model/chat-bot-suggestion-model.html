@@ -1,0 +1,78 @@
+<ion-header class="zeno-header top8" no-border *ngIf="headerFlag">
+    <ion-navbar>
+        <ion-title>Zeno Menu</ion-title>
+        <ion-buttons left>
+            <button ion-button icon-only (click)="dismiss()">
+                <ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+<ion-header class="zeno-header" no-border *ngIf="!headerFlag">
+    <ion-navbar>
+        <ion-title>
+            <img src="./assets/imgs/chat/{{listOfSelected?.backgroundCode}}.svg" />
+            {{listOfSelected?.categoryName}}
+        </ion-title>
+        <ion-buttons left>
+            <button ion-button icon-only (click)="_more()">
+                <ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <div>
+        <div id="suggestionID1">
+            <ion-searchbar debounce="500" animated placeholder="Search what Zeno can do"
+                (ionInput)="_searchItems($event)">
+            </ion-searchbar>
+            <details class="class-{{item.categoryId}} details-animated"
+                *ngFor="let item of searchedSuggestionList;let i = index" [attr.id]="'list' + i" (click)="_scrollToBottom(i)">
+                <summary>
+                    <div class="align-cont-cent summary-header ">
+                        <img src="././assets/imgs/chat/{{item.backgroundCode}}.svg" />
+                        <div class="category-name">{{item?.categoryName}}</div>
+                    </div>
+                </summary>
+                <div class="horizontal-scroll sugesstion-cont align-cont-cent">
+                    <!-- To show new items in suggestions in horizontal scroll -->
+                    <div class="display-flex" *ngIf="item.newPhraseList">
+                        <button class="padding8 suggestion-list align-cont-cent"
+                            *ngFor="let phraseList of item.newPhraseList" (click)="initiateReq(phraseList)">
+                            <img class="new-item" src="./assets/imgs/chat/new-item.svg" />
+                            {{phraseList}}
+                        </button>
+                    </div><!-- To show suggestions in horizontal scroll -->
+                    <div class="display-flex">
+                        <button class="padding11 suggestion-list" *ngFor="let phraseList of item.phraseList| slice:0:3;"
+                            (click)="initiateReq(phraseList)">
+                            {{phraseList}}
+                        </button>
+                    </div>
+                    <div class="padding11  more" *ngIf="item?.phraseList?.length > 3" (click)="_more(item)">
+                        {{phraseList?.length}}More</div>
+                </div>
+            </details>
+            <div class="no-data" *ngIf="searchedSuggestionList.length == 0 ">No Data Available! </div>
+        </div>
+
+        <div id="suggestionID2">
+            <div class="margin10 padding11 suggestion-list  justify-content-space-btw"
+                *ngFor="let item of listOfSelected?.newPhraseList" (click)="initiateReq(item)">
+                <span class="align-cont-cent">
+                    <img class="new-item" src="./assets/imgs/chat/new-item.svg" />
+                    {{item}}
+                </span>
+                <ion-icon slot="start" name="ios-arrow-forward"></ion-icon>
+            </div>
+            <div class="margin10 padding11 suggestion-list  justify-content-space-btw"
+                *ngFor="let item of listOfSelected?.phraseList" (click)="initiateReq(item)">
+                <span>{{item}}</span>
+                <ion-icon slot="start" name="ios-arrow-forward"></ion-icon>
+            </div>
+        </div>
+    </div>
+
+</ion-content>

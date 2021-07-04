@@ -1,0 +1,39 @@
+custom-notification-page {
+    .container-bg {
+        background-color: #e1e7f3;
+    }
+    .custom-card-styl {
+        display: flex;
+        flex-direction: column;
+        /* justify-content: center; */
+        align-items: center;
+        padding: 10px;
+        box-shadow: none;
+    }
+    .temp-card-styl {
+        display: flex;
+        align-items: center;
+        /* padding: 4px; */
+        box-shadow: none;
+    }
+    .icon-styl {
+        padding: 8px;
+    }
+    .flex-clumn {
+        display: flex;
+        flex-direction: column;
+    }
+    .route-title-styl {
+        font-weight: 600;
+        padding-top: 4px;
+    }
+    .title-noty-styl {
+        padding-top: 20px;
+        font-size: 1.1em;
+        padding-left: 12px;
+    }
+    .title-custm-styl {
+        padding-top: 12px;
+        font-size: 1.1em;
+    }
+}

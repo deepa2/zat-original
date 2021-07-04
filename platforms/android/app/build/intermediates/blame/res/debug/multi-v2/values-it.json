@@ -1,0 +1,77 @@
+{
+    "logs": [
+        {
+            "outputFile": "D:\\ZenSar-Apps\\ZenTalent\\zenHelp\\platforms\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-it\\values-it.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\dn51437\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\d2d5b381a0b2d9b5d2dbe96252e1b5c3\\res\\values-it\\values-it.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "105,214,314,423,507,616,741,818,894,975,1081,1189,1287,1391,1496,1603,1766,1866",
+                        "endColumns": "108,99,108,83,108,124,76,75,80,105,107,97,103,104,106,162,99,82",
+                        "endOffsets": "209,309,418,502,611,736,813,889,970,1076,1184,1282,1386,1491,1598,1761,1861,1944"
+                    },
+                    "to": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,29",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "105,214,314,423,507,616,741,818,894,975,1081,1189,1287,1391,1496,1603,1766,2807",
+                        "endColumns": "108,99,108,83,108,124,76,75,80,105,107,97,103,104,106,162,99,82",
+                        "endOffsets": "209,309,418,502,611,736,813,889,970,1076,1184,1282,1386,1491,1598,1761,1861,2885"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\dn51437\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-basement-10.2.6.aar\\c2bc5595ff2d784b7950a7eae02b8cfc\\res\\values-it\\values.xml",
+                    "from": {
+                        "startLines": "4",
+                        "startColumns": "0",
+                        "startOffsets": "285",
+                        "endColumns": "194",
+                        "endOffsets": "479"
+                    },
+                    "to": {
+                        "startLines": "20",
+                        "startColumns": "4",
+                        "startOffsets": "1909",
+                        "endColumns": "194",
+                        "endOffsets": "2099"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\dn51437\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.1.1.aar\\6e7b47fda2679ad0bc839cc711ebbf77\\res\\values-it\\values-it.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    },
+                    "to": {
+                        "startLines": "31",
+                        "startColumns": "4",
+                        "startOffsets": "2984",
+                        "endColumns": "100",
+                        "endOffsets": "3080"
+                    }
+                },
+                {
+                    "source": "D:\\ZenSar-Apps\\ZenTalent\\zenHelp\\platforms\\android\\app\\src\\main\\res\\values-it\\fpauth-strings.xml",
+                    "from": {
+                        "startLines": "17,19,21,22,23,24,27,25,20,26,18",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "691,784,894,986,1048,1155,1486,1234,860,1392,734",
+                        "endColumns": "42,75,91,61,106,78,94,157,33,93,49",
+                        "endOffsets": "729,855,981,1043,1150,1229,1576,1387,889,1481,779"
+                    },
+                    "to": {
+                        "startLines": "19,21,22,23,24,25,26,27,28,30,32",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "1866,2104,2180,2272,2334,2441,2520,2615,2773,2890,3085",
+                        "endColumns": "42,75,91,61,106,78,94,157,33,93,49",
+                        "endOffsets": "1904,2175,2267,2329,2436,2515,2610,2768,2802,2979,3130"
+                    }
+                }
+            ]
+        }
+    ]
+}

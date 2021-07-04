@@ -1,0 +1,107 @@
+user-asset-details-modal {
+  .assetList {
+    // background: #fff;
+    margin: 10px;
+    padding-bottom: 10px;
+    border-radius: 5px;
+    overflow: hidden;
+    border: 1px solid #0e7ac7;
+
+    textarea.text-input {
+      height: 100px;
+    }
+
+    .asset-header {
+      background: #0e7ac7;
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      position: relative;
+      img.right-arrow {
+        position: absolute;
+        right: 10px;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        width: 8px;
+      }
+      img {
+        width: 40px;
+        margin-right: 5px;
+      }
+    }
+    .asset-info {
+      padding: 1px 10px;
+    }
+  }
+  .asset-main-container {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    border-bottom: 1px dotted grey;
+  }
+  .asset-name-parent {
+    display: flex;
+    align-items: center;
+  }
+  .title-container {
+    display: flex;
+    align-items: center;
+  }
+  .pagetitle {
+    color: white;
+    font-size: 1.2em;
+    padding: 10px 2px;
+  }
+  .assetImg {
+    width: 40px;
+    margin: auto;
+  }
+  ion-item.item.item-block.item-md {
+    padding: 0;
+  }
+  ion-label.label.label-md {
+    margin: 10px;
+  }
+  .cancel-btn {
+    color: white;
+    padding: 10px;
+    font-size: 25px;
+  }
+  ion-label.label.label-md {
+    margin: 0;
+  }
+  ion-col {
+    font-size: 0.9em;
+  }
+  //  ion-card:first-of-type{
+  //    margin-top: 80px;
+  //   }
+  .toolbar-md {
+    padding: 0;
+    padding-top: 0 !important;
+    min-height: 56px !important;
+  }
+}
+// @media only screen and (max-width: 767px) {
+
+//   ion-modal.asset-details-modal .modal-wrapper > user-asset-details-modal.ion-page > ion-header > .toolbar.statusbar-padding:first-child {
+//     padding-top: calc(20px + 4px) !important;
+//     padding-top: calc(constant(safe-area-inset-top) + 4px) !important;
+//     padding-top: calc(env(safe-area-inset-top) + 4px) !important;
+//     min-height: calc(56px + 20px) !important;
+//     min-height: calc(0px + constant(safe-area-inset-top)) !important;
+//     min-height: env(safe-area-inset-top) !important;
+//   }
+//   // .btmPara {
+//   //   padding: 0 10px;
+//   //   bottom: 0px;
+//   //   //margin-top: 100px;
+//   // }
+// }
+// @media only screen and (device-height: 812px) and (device-width: 375px) {
+//   user-asset-details-modal .scroll-content {
+//     margin-top: 80px !important;
+//   }
+// }

@@ -1,0 +1,72 @@
+<!-- Generated template for the CovidInformationComponent component -->
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      <span>Access ID</span>
+      <div class="watch-video" (click)="goTogatepassCheck()">View Guidelines</div>
+    </ion-title>
+
+  </ion-navbar>
+</ion-header>
+<ion-content>
+
+  <!-- <gatepass-check *ngIf="isShowCheck == true" (hideCheckValue)=asignCheckValue($event)></gatepass-check> -->
+  <div class="gate-pass-wrapper" *ngIf="isShowCheck == false">
+    <img class="mask" src="assets/imgs/gatepass-mask.svg">
+    <div class="profile-wrapper">
+      <div class="prof-pic-con">
+        <img class="outer-image" src="assets/menu_icons/outerImage.svg">
+        <img class="profile-pic" src="{{userData?.profilePic}}">
+      </div>
+      <div class="user-name">{{userData?.userName}}</div>
+      <div class="designation">{{userData?.designation}}</div>
+    </div>
+    <div class="user-info">
+      <div class="info-item">
+        <img class="info-icon" src="assets/imgs/deskNo.svg">
+        <span>Location : {{userData?.location}}</span>
+      </div>
+
+      <div class="info-item">
+        <img class="info-icon" src="assets/imgs/gate-calendar.svg">
+        <span>Start Date : {{formateDT(userData?.startDate)| date}}</span>
+      </div>
+
+      <div class="info-item">
+        <img class="info-icon" src="assets/imgs/gate-calendar.svg">
+        <span>End Date : {{ formateDT(userData?.endDate) | date}}</span>
+      </div>
+
+      <div *ngIf="userData?.isPermitDoc" class="info-item" (click)="openPdfDocument(userData?.permitDocument)">
+        <img  class="info-icon pdfIcon" src="assets/imgs/gatePass-white-pdf.svg">
+        <span class="pdfTextLine">{{userData?.permitDocumentName}}</span>
+      </div>
+
+      <div  *ngIf="userData?.isExtendedLockdown" class="info-item" (click)="openPdfDocument(userData?.extendedLocdownPeroidCerticate)">
+        <img  class="info-icon pdfIcon" src="assets/imgs/gatePass-white-pdf.svg">
+        <span class="pdfTextLine">{{userData?.extendedLocdownPeroidCerticateName}}</span>
+      </div>
+      <div  *ngIf="userData?.isWorkPlacePlan1" class="info-item" (click)="openPdfDocument(userData?.workPlacePlan1Doc)">
+        <img  class="info-icon pdfIcon" src="assets/imgs/gatePass-white-pdf.svg">
+        <span class="pdfTextLine">{{userData?.workPlacePlan1DocName}}</span>
+      </div>
+      <div  *ngIf="userData?.isWorkPlacePlan2" class="info-item" (click)="openPdfDocument(userData?.workPlacePlan2Doc)">
+        <img  class="info-icon pdfIcon" src="assets/imgs/gatePass-white-pdf.svg">
+        <span class="pdfTextLine">{{userData?.workPlacePlan2DocName}}</span>
+      </div>
+      <div  *ngIf="userData?.isReadingDoc" class="info-item" (click)="openPdfDocument(userData?.readingDocUrl)">
+        <img  class="info-icon pdfIcon" src="assets/imgs/gatePass-white-pdf.svg">
+        <span class="pdfTextLine">{{userData?.readingDocName}}</span>
+      </div>
+    </div>
+    
+
+    <div class="qr-code">
+      <img src="{{userData?.qrcodeURL}}">
+      <span class="note">Note: Please display this access ID and your physical ID card to the
+        security/receptionist</span>
+    </div>
+
+  </div>
+
+</ion-content>

@@ -1,0 +1,26 @@
+<div class="container-card" *ngIf="learningHistory">
+  <div class="learning-card" *ngFor="let item of learningHistory?.learningList" (click)="allOffering(item.type)">
+    <div class="learning-icon"> <span><img class="icon-header" [src]=item?.icon
+          onerror="this.src='./assets/imgs/logo.png'" /></span></div>
+    <div class="flex-column-center width88per padding0-5">
+      <div class=" width100per">
+        <span class="justify-content-space-btw width100per">
+          <span class="center font-1p2 learn-sum-title">{{item?.title}}</span>
+          <span class="center">
+            <span class="lerning-pecent-value font-bold">{{item?.percentage}}%</span>
+            <span class="lerning-hr">{{item?.totalCreditHrs}} Hrs</span>
+            <ion-icon class="padding-left12" end name="ios-arrow-forward">
+              <!-- (click)="goToZenLearnDashboard(item?.title)" -->
+            </ion-icon>
+          </span>
+        </span>
+      </div>
+      <div class="progress-outer">
+        <div class="progress-inner" [ngStyle]="{'background-color':'#01C275','width':item?.percentage +'%'}">
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- <div *ngIf="!learningHistory" class="nodata">No Data Available</div> -->
+
+</div>

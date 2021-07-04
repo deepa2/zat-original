@@ -1,0 +1,272 @@
+<div [formGroup]="form">
+
+  <div *ngIf="formKey" [formArrayName]="formKey">
+
+    <div formGroupName="0">
+
+      <div [ngSwitch]="info.fieldType">
+        <!-- [ngStyle]="{'border-bottom': info?.bindWith == highlightField ? '1px solid #0e89c8' : 'none'}" -->
+        <ion-item *ngSwitchCase="'dropdown'" [ngClass]="{'fadeIn':info?.bindWith == highlightField}"
+          [hidden]="info?.bindWith=='certificationCode' && info.lov.length == 0">
+          <ion-label floating>
+            <span>{{formLabel}}</span>
+            <img style="position: absolute;
+            height: 12px;padding: 2px;" *ngIf="info.isRequired" src="assets/imgs/asterisk.svg" /></ion-label>
+          <ionic-selectable [formControlName]="formKey" item-content [items]="info.lov" itemValueField="key"
+            itemTextField="value" [shouldStoreItemValue]="true" [canSearch]="true" (onSelect)="onSelect($event,info)">
+          </ionic-selectable>
+
+
+
+          <button *ngIf="info.toolTipMsg" [tooltip]="info.toolTipMsg" positionV="bottom" hideOthers="true"
+            [arrow]="showArrow" [event]="tooltipEvent" [duration]="duration" class="formButtonIcon" ion-button clear
+            color="dark" type="button" item-right>
+            <img class="info-icon" src="assets/imgs/new_information.svg" />
+          </button>
+
+
+          <!-- <tool-tip *ngIf="info.toolTipMsg" [toolTipMsg]="info.toolTipMsg"></tool-tip> -->
+
+        </ion-item>
+
+        <ion-item *ngSwitchCase="'textField'" [ngClass]="{'validateExp':validateExperience}">
+
+          <ion-label floating>{{formLabel}}<img style="position: absolute;
+            height: 12px;padding: 2px;" *ngIf="info.isRequired" src="assets/imgs/asterisk.svg" /></ion-label>
+
+          <ion-input (ionBlur)="clickOption(info)"
+            *ngIf="info.bindWith!= 'experienceInMonths' && info.bindWith!= 'skillId'" placeholder="Enter the value"
+            type="text" [formControlName]="formKey">
+          </ion-input>
+          <ion-input (ionBlur)="clickOption(info)" (ionFocus)="checkFocus(info)"
+            *ngIf="info.bindWith == 'experienceInMonths'" placeholder="Enter the value" type="number"
+            [formControlName]="formKey">
+          </ion-input>
+
+
+          <button *ngIf="info.toolTipMsg" [tooltip]="info.toolTipMsg" positionV="bottom" hideOthers="true"
+            [arrow]="showArrow" [event]="tooltipEvent" [duration]="duration" class="formButtonIcon" ion-button clear
+            color="dark" type="button" item-right>
+            <img class="info-icon" src="assets/imgs/new_information.svg" />
+          </button>
+          <ion-input *ngIf="info.bindWith == 'skillId'" type="hidden" [formControlName]="formKey"
+            style="visibility: hidden;"></ion-input>
+
+          <ion-input *ngIf="info.bindWith == 'skillId'" [(ngModel)]="skillUpdate" (click)="openSkillModal(form)"
+            type="text" [ngModelOptions]="{standalone: true}">
+          </ion-input>
+
+        </ion-item>
+
+        <ion-item *ngSwitchCase="'calendar'">
+
+          <ion-label floating>{{formLabel}}<img style="position: absolute;
+            height: 12px;padding: 2px;" *ngIf="info.isRequired" src="assets/imgs/asterisk.svg" /></ion-label>
+
+          <ion-datetime [min]="info.minValue" [max]="info.maxValue" displayFormat="DD/MM/YYYY"
+            (ionChange)="clickOption(info)" [formControlName]="formKey">
+          </ion-datetime>
+
+
+
+          <button *ngIf="info?.isAvailableForSubmit" class="formButtonIcon calendar" (click)="openCalendar(0)"
+            ion-button clear color="dark" type="button" item-right>
+            <img class="form-icon" src="assets/imgs/new_calendar.svg" />
+          </button>
+
+
+          <button *ngIf="info.toolTipMsg" [tooltip]="info.toolTipMsg" positionV="bottom" hideOthers="true"
+            [arrow]="showArrow" [event]="tooltipEvent" [duration]="duration" class="formButtonIcon" ion-button clear
+            color="dark" type="button" item-right>
+            <img class="info-icon" src="assets/imgs/new_information.svg" />
+          </button>
+
+        </ion-item>
+
+        <ion-item *ngSwitchCase="'file'">
+
+          <ion-label>{{formLabel}}<img style="position: absolute;
+            height: 12px;padding: 2px;" *ngIf="info.isRequired" src="assets/imgs/asterisk.svg" /></ion-label>
+
+          <ion-input placeholder="" type="hidden" [formControlName]="formKey"></ion-input>
+          <!-- <ion-icon (click)="fileUpload(formKey)" [style.transform]="degreeStyle" name="attach" item-right></ion-icon> -->
+
+
+          <button *ngIf="form.get(formKey).value[0][formKey]" (click)="openAsset(form.get(formKey).value[0][formKey])"
+            class="formButtonIcon showFile" ion-button clear color="dark" type="button" item-right>
+            <img class="form-eyeIcon" src="assets/imgs/new_showPassword.svg" />
+          </button>
+
+          <button *ngIf="info?.isAvailableForSubmit" (click)="fileUpload(formKey,info.docType)"
+            class="formButtonIcon calendar" ion-button clear color="dark" type="button" item-right positionV="bottom">
+            <img class="form-attachIcon" src="assets/imgs/new_attach.svg" />
+          </button>
+
+          <button *ngIf="info.toolTipMsg" [tooltip]="info.toolTipMsg" positionV="bottom" hideOthers="true"
+            [arrow]="showArrow" [event]="tooltipEvent" [duration]="duration" class="formButtonIcon" ion-button clear
+            color="dark" type="button" item-right>
+            <img class="info-icon" src="assets/imgs/new_information.svg" />
+          </button>
+
+        </ion-item>
+        <div *ngIf="info.isShow">
+          <ion-item *ngSwitchCase="'checkbox'">
+
+
+            <ion-label>{{formLabel}}<img style="position: absolute;
+            height: 12px;padding: 2px;" *ngIf="info.isRequired" src="assets/imgs/asterisk.svg" /></ion-label>
+
+            <ion-checkbox (ionChange)="checkboxToggle(info,$event)" [formControlName]="formKey">
+            </ion-checkbox>
+
+            <button *ngIf="info.toolTipMsg" [tooltip]="info.toolTipMsg" positionV="bottom" hideOthers="true"
+              [arrow]="showArrow" [event]="tooltipEvent" [duration]="duration" class="formButtonIcon" ion-button clear
+              color="dark" type="button" item-right>
+              <img class="info-icon" src="assets/imgs/new_information.svg" />
+            </button>
+
+          </ion-item>
+        </div>
+
+        <p class="errorMessage" *ngIf="isRequired(form.controls[formKey].controls[0].controls[formKey],formKey)">
+          {{formLabel}} is required</p>
+
+        <p class="errorMessage" *ngIf="isPattern(form.controls[formKey].controls[0].controls[formKey],formKey)">
+          {{formLabel}} is invalid</p>
+
+        <p class="errorMessage" *ngIf="isInvalidDate(form.controls[formKey].controls[0].controls[formKey],formKey)">
+          Start date needs to be less than end date</p>
+
+      </div>
+
+    </div>
+
+    <div *ngIf="childFieldList">
+
+      <div *ngFor="let items of form.controls[formKey].controls | slice:1;index as j" [formGroupName]="j+1">
+
+        <div *ngIf="childFieldList[j]" [ngSwitch]="childFieldList[j].fieldType">
+
+          <ion-item *ngSwitchCase="'dropdown'">
+
+            <ion-label floating>{{childFieldList[j].title}}<img style="position: absolute;
+              height: 12px;padding: 2px;" *ngIf="info.isRequired" src="assets/imgs/asterisk.svg" /></ion-label>
+
+            <ionic-selectable [formControlName]="childFieldList[j].bindWith" item-content
+              [items]="childFieldList[j].lov" itemValueField="key" itemTextField="value" [shouldStoreItemValue]="true"
+              [canSearch]="true" (onSelect)="onChildSelect($event,childFieldList[j],j)">
+            </ionic-selectable>
+
+            <button *ngIf="childFieldList[j].toolTipMsg" [tooltip]="childFieldList[j].toolTipMsg" positionV="bottom"
+              hideOthers="true" [arrow]="showArrow" [event]="tooltipEvent" [duration]="duration" class="formButtonIcon"
+              ion-button clear color="dark" type="button" item-right>
+              <img class="info-icon" src="assets/imgs/new_information.svg" />
+            </button>
+
+          </ion-item>
+
+          <ion-item *ngSwitchCase="'textField'">
+
+            <ion-label floating>{{childFieldList[j].title}}<img style="position: absolute;
+              height: 12px;padding: 2px;" *ngIf="childFieldList[j].isRequired" src="assets/imgs/asterisk.svg" />
+            </ion-label>
+
+            <ion-input placeholder="Enter the value" type="text" [formControlName]="childFieldList[j].bindWith">
+            </ion-input>
+
+            <button *ngIf="childFieldList[j].toolTipMsg" [tooltip]="childFieldList[j].toolTipMsg" positionV="bottom"
+              hideOthers="true" [arrow]="showArrow" [event]="tooltipEvent" [duration]="duration" class="formButtonIcon"
+              ion-button clear color="dark" type="button" item-right>
+              <img class="info-icon" src="assets/imgs/new_information.svg" />
+            </button>
+
+          </ion-item>
+
+          <ion-item *ngSwitchCase="'calendar'">
+            <ion-label floating>{{childFieldList[j].title}}<img style="position: absolute;
+              height: 12px;padding: 2px;" *ngIf="childFieldList[j].isRequired" src="assets/imgs/asterisk.svg" />
+            </ion-label>
+
+            <ion-datetime [min]="childFieldList[j].minValue" [max]="childFieldList[j].maxValue"
+              displayFormat="DD/MM/YYYY" (ionChange)="clickOption(childFieldList[j])"
+              [formControlName]="childFieldList[j].bindWith">
+            </ion-datetime>
+
+            <button *ngIf="childFieldList[j]?.isAvailableForSubmit" class="formButtonIcon calendar" ion-button clear
+              color="dark" type="button" (click)="openCalendar(childFieldList[j].calendarIndex)" item-right>
+              <img class="form-icon" src="assets/imgs/new_calendar.svg" />
+            </button>
+
+            <button *ngIf="childFieldList[j].toolTipMsg" [tooltip]="childFieldList[j].toolTipMsg" positionV="bottom"
+              hideOthers="true" [arrow]="showArrow" [event]="tooltipEvent" [duration]="duration" class="formButtonIcon"
+              ion-button clear color="dark" type="button" item-right>
+              <img class="info-icon" src="assets/imgs/new_information.svg" />
+            </button>
+          </ion-item>
+
+          <ion-item *ngSwitchCase="'file'">
+
+            <ion-label>{{childFieldList[j].title}}<img style="position: absolute;
+              height: 12px;padding: 2px;" *ngIf="childFieldList[j].isRequired" src="assets/imgs/asterisk.svg" />
+            </ion-label>
+
+            <ion-input placeholder="" type="hidden" [formControlName]="childFieldList[j].bindWith">
+            </ion-input>
+
+            <button *ngIf="getAssetValue(childFieldList[j].bindWith) "
+              (click)="openAsset(getAssetValue(childFieldList[j].bindWith))" class="formButtonIcon showFile " ion-button
+              clear color="dark" type="button" item-right>
+              <img class="form-icon" src="assets/imgs/new_showPassword.svg" />
+            </button>
+
+            <!-- [ngClass]="childFieldList[j].toolTipMsg?'showFile':'showonlyFile'"  -->
+
+            <button *ngIf="childFieldList[j]?.isAvailableForSubmit"
+              (click)="fileUpload(childFieldList[j].bindWith,childFieldList[j].docType,j)"
+              class="formButtonIcon calendar" [ngClass]="{'calender':childFieldList[j].toolTipMsg}" ion-button clear
+              color="dark" type="button" item-right positionV="bottom">
+              <img class="form-attachIcon" src="assets/imgs/new_attach.svg" />
+            </button>
+
+            <button *ngIf="childFieldList[j].toolTipMsg" [tooltip]="childFieldList[j].toolTipMsg" positionV="bottom"
+              hideOthers="true" [arrow]="showArrow" [event]="tooltipEvent" [duration]="duration" class="formButtonIcon"
+              ion-button clear color="dark" type="button" item-right>
+              <img class="info-icon" src="assets/imgs/new_information.svg" />
+            </button>
+
+          </ion-item>
+
+          <ion-item *ngSwitchCase="'checkbox'">
+            <ion-label>{{childFieldList[j].title}}<img style="position: absolute;
+              height: 12px;padding: 2px;" *ngIf="childFieldList[j].isRequired" src="assets/imgs/asterisk.svg" />
+            </ion-label>
+
+            <ion-checkbox [(ngModel)]="checkboxValue" (ionChange)="checkboxToggle(info,$event)"
+              [formControlName]="childFieldList[j].bindWith"></ion-checkbox>
+
+            <button *ngIf="childFieldList[j].toolTipMsg" [tooltip]="childFieldList[j].toolTipMsg" positionV="bottom"
+              hideOthers="true" [arrow]="showArrow" [event]="tooltipEvent" [duration]="duration" class="formButtonIcon"
+              ion-button clear color="dark" type="button" item-right>
+              <img class="info-icon" src="assets/imgs/new_information.svg" />
+            </button>
+
+          </ion-item>
+
+          <p class="errorMessage" *ngIf="isChildRequired(j,childFieldList[j].bindWith)">
+            {{childFieldList[j].title}} is required</p>
+
+          <p class="errorMessage" *ngIf="isChildPattern(j,childFieldList[j].bindWith)">
+            {{childFieldList[j].title}} is invalid</p>
+
+          <p class="errorMessage" *ngIf="isChildInvalidDate(j,childFieldList[j].bindWith)">
+            Start date needs to be less than end date</p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

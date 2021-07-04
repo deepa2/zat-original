@@ -1,0 +1,84 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>Create Activity</ion-title>
+        <ion-buttons end>
+            <button class="btn-style" (click)="dismiss()" end>
+                <ion-icon name="close"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+<ion-content>
+    <div>
+        <ion-item>
+            <ion-label class="colorGray" floating>Activity<span class="red">*</span></ion-label>
+            <ion-input type="text" [(ngModel)]="title"></ion-input>
+        </ion-item>
+        <ion-list radio-group (ionChange)="_selectedRadioBtn($event)">
+            <ion-list-header class="colorGray">
+                Choose from below<span class="red">*</span>
+            </ion-list-header>
+            <div class="radio-cont">
+
+                <div class="radio-item align-cont-cent" *ngFor="let item of goalLst;let i = index"
+                    [ngStyle]="{'background': selectedRadio==item ? '#F3FFF8' : 'white'}">
+                    <img src="assets/imgs/{{item.toLowerCase()}}.svg">
+                    <div class="text-styl">{{item}}</div>
+                    <ion-radio class="radio-btn" [value]="item" checked="{{selectedRadio==item}}"></ion-radio>
+                </div>
+            </div>
+        </ion-list>
+
+        <!-- <div>
+            <ion-item>
+                <ion-label class="colorGray" floating>Title<span class="red">*</span></ion-label>
+                <ion-input type="text" [(ngModel)]="title" (ionBlur)="closeKeyBoard()"></ion-input>
+            </ion-item>
+        </div>
+
+        <div>
+            <ion-grid radio-group (ionChange)="_selectedRadioBtn($event)">
+                <ion-list-header class="colorGray">
+                    Categories<span class="red">*</span>
+                </ion-list-header>
+                <div class="radio-cont">
+
+                    <div class="radio-item align-cont-cent" *ngFor="let item of goalLst;let i = index"
+                        [ngStyle]="{'background': selectedRadio==item ? '#F3FFF8' : 'white'}">
+                        <img src="assets/imgs/{{item.toLowerCase()}}.svg">
+                        <div>{{item}}</div>
+                        <ion-radio class="radio-btn" [value]="item" checked="{{selectedRadio==item}}"></ion-radio>
+                    </div>
+                </div>
+            </ion-grid>
+        </div> -->
+
+    </div>
+
+
+    <div style="margin-top: 20px;">
+
+
+        <span class="colorGray" padding-left>Goal</span>
+        <div class="display-flex">
+            <ion-item>
+                <ion-input type="text" placeholder="Select a goal" [(ngModel)]="selectedGoal" readonly></ion-input>
+            </ion-item>
+            <div class="delete-styl" (click)="deleteGoal()" *ngIf="selectedGoal.length > 0">  <ion-icon class="icon-size" name="ios-trash"></ion-icon></div>
+            <ion-buttons end  (click)="goalList()">
+                <button class="drop-btn" end>
+                    <ion-icon name="ios-arrow-down"></ion-icon>
+                </button>
+            </ion-buttons>
+        </div>
+
+    </div>
+
+
+    <div class="center paddingTop15">
+        <!-- && selectedGoal?.length > 0 -->
+        <button class="sumbit-btn" [disabled]="!(title?.length > 0 )" (click)="showConfirm()">Submit</button>
+    </div>
+
+
+</ion-content>

@@ -1,0 +1,15 @@
+<ion-list>
+  <ion-list-header padding-right no-margin>
+    {{title}} :
+  </ion-list-header>
+  <ion-item no-lines padding-right *ngFor="let item of faqList" (click)="expandItem(item)">
+    <div class="title">
+      <span [ngStyle]="{'font-weight' :item.expanded ? 'bold' : 'initial' }">{{item.title}}</span>
+      <ion-icon name="add" *ngIf="!item.expanded"></ion-icon>
+      <ion-icon name="remove" *ngIf="item.expanded"></ion-icon>
+    </div>
+    <expand-collapse [expanded]="item.expanded" [data]="item">
+    </expand-collapse>
+  </ion-item>
+
+</ion-list>

@@ -1,0 +1,190 @@
+// page-shuttles-list {
+//   .font-family {
+//     font-family: "Roboto";
+//   }
+//   ion-content {
+//     // overwrite inline styles
+//     --offset-bottom: auto !important;
+//     --overflow: hidden;
+//     overflow: auto;
+//     &::-webkit-scrollbar {
+//       display: none;
+//     }
+//   }
+//   ion-card-content {
+//     width: 100%;
+//     display: flex;
+//   }
+//   ion-icon {
+//     display: inline-block;
+//     font-size: 2.1em;
+//   }
+//   .card-md {
+//     box-shadow: none;
+//     .card-content-md {
+//       height: 100px;
+//       padding: 8px;
+//     }
+//   }
+//   .toolbar-content-md {
+//     display: contents !important;
+//     color: white;
+//     width: 40px;
+//     height: 40px;
+//   }
+//   .main-icon {
+//     width: 20%;
+//   }
+//   .main-text-container {
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: space-between;
+//   }
+//   .title {
+//     font-size: 1.2em;
+//   }
+//   .common-text {
+//     display: flex;
+//     padding: 2px;
+//   }
+//   .route-img {
+//     width: 16px;
+//     height: 16px;
+//   }
+//   .route-text {
+//     font-size: 1em;
+//     color: #7f7f7f;
+//     padding-left: 8px;
+//     font-weight: 300;
+//   }
+//   div > img {
+//     width: 85%;
+//   }
+//   .route-sub-text {
+//     font-size: 1em;
+//     padding-left: 8px;
+//   }
+//   .scroll-content {
+//     padding: 0px;
+//     background-color: #e1e7f3;
+//   }
+// }
+
+page-shuttles-list {
+  ion-title {
+      width: 100%;
+      display: inline-block;
+  }
+  ion-app.md [padding] .scroll-content {
+      // overwrite slide class
+      padding: 0px;
+  }
+  ion-card {
+      box-shadow: none !important;
+  }
+  .bus-search-conatiner {
+      background: #e1e7f3;
+      font-family: "Roboto";
+  }
+  .toolbar-title-md {
+      padding: 0px;
+  }
+  .left-header {
+      width: 90%;
+      display: inline-block;
+  }
+  .right-header {
+      width: 5%;
+      padding-top: 5px;
+      display: inline-block;
+  }
+  // body
+  ion-card-content {
+      width: 100%;
+      display: flex;
+  }
+  .card-content-md {
+      // overwrite slide class
+      padding: 7px;
+      display: flex;
+      flex-direction: column;
+  }
+  .bus-icon {
+      width: 15%;
+      padding: 4px;
+  }
+  .bus-info {
+      padding-left: 6px;
+      width: 55%;
+      padding-top: 5px;
+  }
+  .bus-name {
+      color: #7f7f7f;
+      font-size: 1.1em;
+      font-weight: 300;
+  }
+  .bus-number {
+      font-size: 1.1em;
+      font-weight: 400;
+  }
+  .small-icon {
+      height: 20px;
+      width: 20px;
+  }
+  .route-title {
+      color: #7f7f7f;
+      font-size: 1em;
+      padding-left: 5px;
+      font-weight: 300;
+  }
+  .route-name {
+      font-size: 1em;
+      padding-left: 8px;
+  }
+  .seats {
+      font-size: 1.1em;
+      font-weight: 400;
+      padding-left: 5px;
+      padding-top: 5px;
+  }
+  .common-alignmnt {
+      display: flex;
+      justify-content: flex-start;
+  }
+  .seatIcon {
+      width: 25px;
+      height: 25px;
+  }
+  .available-seats {
+      width: 25%;
+      display: flex;
+      justify-content: flex-start;
+      padding-top: 10px;
+  }
+  .menudot-icon {
+      height: 16px;
+      width: 16px;
+  }
+  .align-center {
+      display: flex;
+      align-items: center;
+      align-self: flex-start;
+  }
+  .mt-5 {
+      margin-top: 5px;
+  }
+  .card-md {
+      background: #fff;
+      border: 1px solid #b9c8e6;
+      border-radius: 5px;
+  }
+  .menu-icon {
+      margin-top: 5px;
+      width: 5%;
+  }
+  .no-data-found {
+      padding: 10px;
+      font-weight: 500;
+      font-size: 14px;
+  }
+}

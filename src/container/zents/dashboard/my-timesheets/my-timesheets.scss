@@ -1,0 +1,131 @@
+page-my-timesheets {
+  .noRecords {
+    p {
+      text-align: center;
+    }
+  }
+
+  .statustype-box-submited {
+    background-color: $ts-orange;
+  }
+
+  .statustype-box-saved {
+    background-color: $ts-blue;
+  }
+
+  .statustype-box-approved {
+    background-color: $ts-btn-green;
+  }
+
+  .statustype-box-rejected {
+    background-color: $ts-red;
+  }
+
+  .virtualItemsParent {
+    width: 100%;
+    padding: 10px 10px 0px 10px;
+  }
+  .btn-email-timesheet {
+    font-size: 0.8em;
+    text-transform: none;
+    background: white;
+    padding: 10px;
+    border-radius: 20px;
+    color: $ts-secondary;
+  }
+
+  .parent-div {
+    .first-block {
+      width: 96%;
+      display: flex;
+      margin: 2% 2% 5%;
+      padding-top: 2%;
+      .image {
+        // width: 15%;
+        padding: 5px;
+        // margin: 2%;
+        border-radius: 5px;
+        text-align: center;
+        width: 11%;
+        height: 40px;
+        display: flex;
+        justify-content: center;
+      }
+      .text-block {
+        width: 86%;
+        display: flex;
+        white-space: initial;
+        flex-direction: column;
+        justify-content: space-evenly;
+        margin-left: 2%;
+        margin-right: 2%;
+        .taskname {
+          font-size: 1em;
+          font-weight: 500;
+          white-space: initial;
+        }
+        .text {
+          display: flex;
+          align-items: baseline;
+          .title {
+            color: #666464;
+            font-weight: 500;
+            font-size: 1em;
+          }
+          .name {
+            width: 100%;
+            color: grey;
+            font-size: 0.9em;
+            // width: 70%;
+            white-space: initial;
+            padding-left: 2%;
+          }
+        }
+      }
+    }
+
+    ion-grid {
+      border-top: 1px solid #ebebeb;
+      background-color: #eff5ff;
+      padding: 0;
+      display: flex;
+      justify-content: flex-start;
+      ion-col {
+        // padding-left: 1% !important;
+        display: flex;
+        align-items: center;
+        // padding: 4% 1%;
+        .value {
+          color: grey;
+          font-size: 0.9em;
+          padding-left: 2%;
+          width: 100%;
+        }
+        span {
+          font-size: 0.9em;
+        }
+      }
+      .border {
+        border-right: 1px solid #ebebeb;
+      }
+    }
+  }
+
+  .card-shadow {
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.07), 0 3px 1px -2px rgba(0, 0, 0, 0.1), 0 1px 5px 0 rgba(0, 0, 0, 0.06);
+  }
+
+  .zeno-myTimesheet{
+    ion-grid{
+      ion-row{
+        min-height: 30px;
+      }
+      .comments-row{
+        border-top: 1px solid #ebebeb;
+        .comments{
+          align-items: flex-start !important;
+        }
+      }
+    }
+  }
+}

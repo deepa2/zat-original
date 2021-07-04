@@ -1,0 +1,80 @@
+<!--
+  Generated template for the DapCoursesListPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{getData?.selectedLearning}} Courses List</ion-title>
+    <ion-buttons end *ngIf="!getData.isOtherSelected">
+      <button ion-button icon-only (click)="presentOptions($event)">
+        <img src="assets/imgs/dapFilterIcon.svg" />
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <div class="noData" *ngIf="noDataAvaiable">No data available </div>
+  <div class="showMessage" *ngIf="ismsgAvailable">{{showMsg}}</div>
+  <div class="inputBox" *ngIf="getData.isOtherSelected">
+    <ion-item>
+      <ion-label stacked class="dapLabel">You have selected "Others" in the competency/skill tab. Please specify the
+        competency/skill that you plan to learn this year. <img style="position: absolute;
+        height: 12px;padding: 2px;" src="assets/imgs/asterisk.svg" /></ion-label>
+      <ion-input [(ngModel)]="otherData"></ion-input>
+    </ion-item>
+    <p *ngIf="otherDataMsg" class="errorCls">This field is required</p>
+  </div>
+  <ion-card *ngFor="let courseDetails of dapCoursesList; index as i" (click)="selectedCourse(courseDetails,i)">
+
+    <div class="card-container">
+      <div class="card-header {{courseDetails.method}}">
+        <div class="titleName">
+          <img *ngIf="courseDetails.method=='V Learn'" src="assets/imgs/virtual-icon.svg" />
+          <img *ngIf="courseDetails.method=='Classroom'" src="assets/imgs/classroom-icon.svg" />
+          <img *ngIf="courseDetails.method=='Online'" src="assets/imgs/online-icon.svg" />
+        </div>
+        <div class="subTitle">{{courseDetails?.title}}</div>
+      </div>
+    </div>
+
+    <div class="text-left" style=" padding: 10px;">
+
+      <div class="subTitle">{{courseDetails?.itemDescription}}</div>
+
+      <div class="flex favdiv">
+        <span class="padding-right8">
+
+        </span>
+
+        <span class="fav" *ngIf="!courseDetails?.selectedItem"><img class="favImg" src="assets/menu_icons/heart.svg">
+          <span>Shortlist</span>
+        </span>
+
+        <span class="fav" *ngIf="courseDetails?.selectedItem"><img class="favImg"
+            src="assets/menu_icons/Filledheart.svg">
+          <span>Shortlisted</span>
+        </span>
+      </div>
+    </div>
+
+  </ion-card>
+  <ion-infinite-scroll (ionInfinite)="loadCourses($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>
+<ion-footer>
+  <div class="footerBtn" *ngIf="!getData.isOtherSelected">
+    <p class="footerText" *ngIf="selectedCourses.length > 0">{{selectedCourses.length}} Shortlisted</p>
+    <p class="footerText" *ngIf="selectedCourses.length == 0">Please select the course(s)</p>
+    <button ion-button round [disabled]="selectedCourses.length == 0" (click)="addCouses()">ADD</button>
+  </div>
+  <div class="saveBtn" *ngIf="getData.isOtherSelected">
+    <button ion-button (click)="addCouses()">Save</button>
+  </div>
+</ion-footer>

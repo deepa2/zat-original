@@ -1,0 +1,81 @@
+<!--
+  Generated template for the ApplyjobapplicationPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title class="pageTitile">Application Details</ion-title>
+    <ion-buttons end>
+      <button style="text-transform: capitalize;" ion-button (click)="submitForm()">
+        Apply
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <div *ngIf="wholeData" class="navBg jobCodeBar">
+    <div class="display-flex align-item-center">
+      <div class="padding3 width22per">
+        <div><img class="icon-size" [src]="wholeData?.icon" /></div>
+      </div>
+      <div class="rightSection width54per">
+        <div class="alertCustomCss">{{wholeData?.jobTitle}}</div>
+
+        <div>Job Code :{{wholeData?.jobCode}}</div>
+      </div>
+      <div class="headerCirSize">
+        <circle-progress [percent]="selectedJobCode.currentMatch" [radius]="100" [outerStrokeWidth]="15"
+          [innerStrokeWidth]="15" [space]="-14" [outerStrokeColor]="selectedJobCode.filledColor"
+          [innerStrokeColor]="selectedJobCode.nonFilledColor" [showSubtitle]="false" [animation]="true"
+          [animationDuration]="300" [responsive]="true">
+        </circle-progress>
+      </div>
+    </div>
+  </div>
+
+  <div class="jobDetails">
+    <ion-list *ngFor="let details of wholeData?.jobDetails" class="detailList">
+      <ion-row>
+        <ion-col col-4>
+          <!-- <img [src]="details.key"> -->
+          {{details.key}}
+        </ion-col>
+        <ion-col col-8 [innerHTML] = "details.value" >
+          <!-- {{details.value}} -->
+        </ion-col>
+        <!-- <ion-col col-8 *ngIf="details.key == 'Project'" [innerHTML]= "details.value">
+          
+        </ion-col> -->
+      </ion-row>
+    </ion-list>
+  </div>
+  <div class="associateDetails" *ngIf="wholeData?.associateDetails">
+    <div class="associateDetailsList">
+      <span class="headingPadding">Associate Details (optional)</span><span><img (click)="showLinkdinProfile()"
+          class="linkdinIcon" src="assets/new_vd_icon/edge-linkdin.png"></span>
+    </div>
+    <ion-list *ngFor="let details of wholeData?.associateDetails" class="listMrg">
+      <ion-input class="textSized" *ngIf="details.fieldType == 'text'" placeholder="LinkedIn Url" type="text"
+        [(ngModel)]="details.titleValue">
+      </ion-input>
+      <ion-textarea class="singleTextArea" style="font-size: 1em;" *ngIf="details.fieldType == 'textArea'"
+        elasticTextArea placeholder="Tell us why you are suitable for this open position "
+        [(ngModel)]="details.titleValue">
+      </ion-textarea>
+
+
+    </ion-list>
+
+  </div>
+
+</ion-content>
+<ion-footer class="footerBg">
+  <!-- <button ion-button round (click)="submitForm()">Apply</button> -->
+
+</ion-footer>

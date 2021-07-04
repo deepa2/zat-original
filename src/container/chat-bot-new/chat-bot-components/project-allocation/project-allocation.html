@@ -1,0 +1,54 @@
+<ion-slides slidesPerView="1.2" spaceBetween="5px">
+    <ion-slide *ngFor="let responseItem of chatListItem?.response?.responseList?.dataList">
+        <ion-row>
+            <div>
+                <img src="assets/imgs/chat/proj-d-proj-icon.svg" />
+                Project
+            </div>
+            <div (click)="expand()" [ngClass]="{'expand' : expandDiv}">{{responseItem?.projectName | titlecase}}
+            </div>
+        </ion-row>
+        <ion-row>
+            <div>
+                <img src="assets/imgs/chat/proj-d-manager-icon.svg" />
+                1Up Manager
+            </div>
+            <div>{{responseItem?.projectManagerName | titlecase}}</div>
+        </ion-row>
+        <ion-row>
+            <div>
+                <img src="assets/imgs/chat/proj-d-date-icon.svg" />
+                Allocation Start Date
+            </div>
+            <div>{{responseItem?.resourceAllocationStartDate}}</div>
+        </ion-row>
+        <ion-row>
+            <div>
+                <img src="assets/imgs/chat/proj-d-date-icon.svg" />
+                Allocation End Date
+            </div>
+            <div>{{responseItem?.resourceAllocationEndDate}}</div>
+        </ion-row>
+        <ion-row>
+            <div>
+                <img src="assets/imgs/chat/proj-d-date-icon.svg" />
+                Project Start Date
+            </div>
+            <div>{{responseItem?.projectStartDate}}</div>
+        </ion-row>
+        <ion-row>
+            <div>
+                <img src="assets/imgs/chat/proj-d-date-icon.svg" />
+                Project End Date
+            </div>
+            <div>{{responseItem?.projectEndDate}}</div>
+        </ion-row>
+        <ion-row>
+            <div>
+                <img src="assets/imgs/chat/proj-d-utilization-icon.svg" />
+                Utilization
+            </div>
+            <div>{{responseItem?.utilization}}</div>
+        </ion-row>
+    </ion-slide>
+</ion-slides>

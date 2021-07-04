@@ -1,0 +1,568 @@
+page-add-new-pass {
+    .item-cover {
+        width: 0;
+        height: 0;
+    }
+    form .label {
+        margin: 10px 10px;
+    }
+    .select-md .select-icon {
+        position: relative;
+        width: 20px;
+        height: 20px;
+        max-width: 100%!important;
+    }
+    .custom-select {
+        padding: 5px 10px;
+        max-width: 100%!important;
+    }
+    .custom-date {
+        padding: 5px 10px;
+    }
+    .margin10-rt-lf {
+        margin: 0 10px !important;
+    }
+    .margin-btm-10 {
+        margin-bottom: 10px;
+    }
+    .update-bg-color {
+        background-color: #eaf0fc;
+        .scroll-content {
+            margin-bottom: 0px !important;
+        }
+    }
+    ion-textarea.input.input-md {
+        margin: 0;
+        border: 1px solid grey;
+        border-radius: 5px;
+        background: #f6f6f6;
+        textarea {
+            margin: 0 !important;
+            padding: 5px;
+            outline: none;
+            background: #f6f6f6;
+        }
+    }
+    .comments-title {
+        margin: 10px;
+        padding: 3px 5px;
+    }
+    .summry-container {
+        margin: 10px;
+        border: 1px solid #849ac5;
+        border-radius: 10px;
+    }
+    .summary-header {
+        display: flex;
+        align-items: center;
+        background: #ecf2fe;
+        padding: 5px 10px;
+        border-top-right-radius: 10px;
+        border-top-left-radius: 10px;
+    }
+    .summry-img {
+        width: 35px;
+        height: 35px;
+    }
+    .summaryImg {
+        width: 25px;
+        height: 25px;
+    }
+    .grid-container {
+        padding: 25px 10px 15px;
+        font-family: "Roboto";
+        .col {
+            padding: 0px 3px;
+        }
+    }
+    .available {
+        color: #02ab08;
+        font-weight: 500 !important;
+    }
+    .notAvailable {
+        color: red;
+        font-weight: 500 !important;
+    }
+    .summaryTitle {
+        margin-left: 5px;
+        font-size: 1.1em;
+    }
+    .submitBtn {
+        text-transform: capitalize;
+    }
+    .checkBox-container {
+        display: flex;
+        margin: 5px;
+        justify-content: space-between;
+    }
+    .marleft-10 {
+        margin-left: 10px;
+    }
+    .dateLabel {
+        padding: 5px 10px;
+    }
+    .borderBottom {
+        border-bottom: 1px solid grey !important;
+    }
+    .form-container {
+        margin-top: 10px;
+        font-family: "Roboto";
+    }
+    ion-input {
+        width: 95%;
+        input.text-input.text-input-md {
+            padding: 5px 10px;
+            opacity: 1;
+            margin: 0;
+        }
+    }
+    .confirmation-card {
+        display: flex;
+        align-items: center;
+        background-color: white;
+    }
+    // pass sumarry css
+    .date-container {
+        align-items: center;
+        display: flex;
+        background: #5f5cdf;
+        // padding: 10px;
+        padding: 10px 0px;
+        color: white;
+        margin: 0 10px;
+    }
+    .nopass-date-container {
+        align-items: center;
+        display: flex;
+        background: #5f5cdf;
+        // padding: 10px;
+        padding: 10px 0px;
+        color: white;
+        margin: 0 10px;
+    }
+    .calendar-icon {
+        width: 40px;
+        margin-right: 4px;
+    }
+    .dateValue {
+        font-size: 0.96em;
+    }
+    .profile-cont-asso {
+        width: 80px;
+        height: 80px;
+        background-color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 0px 12px rgba(0, 0, 0, 0.19), 0 4px 8px rgba(0, 0, 0, 0.23);
+    }
+    .profile-asso {
+        width: 75px;
+        height: 75px;
+        border-radius: 50%;
+    }
+    .ion-card {
+        background-color: #ffffff;
+        border: none;
+        box-shadow: none;
+        border-radius: 5px;
+        // margin: 2%;
+        width: 98%;
+        min-height: 60%;
+    }
+    .height50vh {
+        height: 50vh;
+    }
+    .default-bg-img {
+        width: 70%;
+        height: 100%;
+    }
+    .centerText {
+        padding: 0.3em 1em;
+        margin: 0;
+        color: gray;
+    }
+    .profile-wrapper {
+        position: relative;
+        text-align: center;
+        padding-bottom: 4px;
+        color: #e2e2e2;
+        font-size: 16px;
+        border-bottom: 1px dashed gray;
+        &::after {
+            content: "";
+            position: absolute;
+            right: -10px;
+            bottom: -15px;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: #eaf0fc;
+        }
+        &::before {
+            content: "";
+            position: absolute;
+            left: -10px;
+            bottom: -15px;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: #eaf0fc;
+        }
+        .designation {
+            font-size: 14px;
+            margin-top: 5px;
+        }
+        .prof-pic-con {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 130px;
+            position: relative;
+            img.outer-image {
+                position: absolute;
+                width: 110px;
+            }
+            img.profile-pic {
+                width: 70px;
+                height: 70px;
+                border-radius: 50%;
+                position: relative;
+            }
+        }
+    }
+    .month-pass-date {
+        padding: 0px 5px;
+        font-size: 14px;
+        font-weight: 400;
+        margin-top: 4px;
+    }
+    .container-items {
+        background: #ffffff;
+        display: flex;
+        padding: 10px 5px;
+        border-radius: 5px;
+        margin: 5px 10px;
+    }
+    .img-style {
+        height: 45px;
+        width: 45px;
+        border-radius: 50%;
+        border: 3px solid lightblue;
+        padding: 2px;
+        position: relative;
+        z-index: 1;
+    }
+    .phone-image {
+        height: 45px;
+        width: 45px;
+        padding: 2px;
+    }
+    .user-pic {
+        width: 45px;
+        height: 45px;
+        margin-right: 10px;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        img.userpic-bg {
+            width: 60px;
+            position: absolute;
+            z-index: 0;
+        }
+    }
+    .associate-name {
+        font-size: 1em;
+        color: #7f7f7f;
+        font-weight: 300;
+    }
+    .no-mentor {
+        padding: 15px;
+        text-align: center;
+        font-size: 1.1em;
+        font-weight: 500;
+    }
+    .disabled {
+        background-color: #e2e2e2;
+    }
+    .key-value {
+        width: calc(100% - 50px);
+        font-weight: 300;
+        font-size: 1.1em;
+        margin: 5px 0;
+    }
+    .route-img {
+        width: 25px;
+        height: 25px;
+        margin-right: 10px;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .clock-img {
+        width: 25px;
+        height: 25px;
+        margin-right: 10px;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .pickup-point-card {
+        display: flex;
+        margin: 10px;
+        padding: 5px 5px;
+    }
+    .pickup-details {
+        display: flex;
+        align-items: center;
+        width: 68%;
+    }
+    .pickup-time-card {
+        display: flex;
+        align-items: center;
+        width: 32%;
+    }
+    .displayFlex-col {
+        display: flex;
+        flex-direction: column;
+    }
+    .campus-name {
+        margin: 5px 0;
+        font-size: 1.1em;
+    }
+    .ticket-parent {
+        background: #e2e2e2;
+        padding: 10px 5px;
+        * {
+            font-family: "Roboto";
+        }
+    }
+    .height-auto {
+        height: auto;
+    }
+    .bg-grey {
+        background: #e1e7f3;
+    }
+    .no-pass-text {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 10px 5px;
+        font-size: 1.3em;
+        color: #0ea2c8;
+        font-size: 1.1em;
+        font-weight: 400;
+    }
+    .new-pass-btn {
+        text-align: center;
+        text-transform: capitalize;
+    }
+    .color-black {
+        color: black;
+    }
+    .no-pass-parent {
+        padding-bottom: 10px;
+    }
+    .position-absolute {
+        position: absolute;
+    }
+    .post-relative {
+        position: relative;
+    }
+    .ticket-status-parent {
+        top: 20%;
+        right: -2%;
+    }
+    .ticket-status-img {
+        width: 120px;
+    }
+    .colorGrey {
+        color: #7f7f7f;
+    }
+    .busIDText {
+        padding: 0px 5px;
+        font-size: 1em;
+    }
+    .bus-passId {
+        padding: 0px 5px;
+        font-size: 14px;
+        font-weight: 400;
+        margin-top: 4px;
+    }
+    .monthly-pass-title {
+        padding: 0px 5px;
+        font-size: 1em;
+    }
+    .bus-details-parent {
+        display: flex;
+    }
+    .user-info-container {
+        display: flex;
+        flex-direction: column;
+        padding-top: 8px;
+        width: 80%;
+        .associate-name {
+            font-size: 1.1em !important;
+            color: #000 !important;
+            font-weight: 400;
+        }
+    }
+    .fontWeight {
+        font-weight: 400;
+    }
+    .bus-info-container {
+        background: #ffffff;
+        display: flex;
+        padding: 10px;
+        border-radius: 5px;
+        margin: 0px 10px;
+    }
+    .driver-info-container {
+        background: #ffffff;
+        display: flex;
+        padding: 0 0px 10px 0px;
+        margin: 0px 10px;
+    }
+    .driver-img-container {
+        margin-right: 20px;
+    }
+    .day-value {
+        margin-bottom: 3px;
+        padding: 0 3px;
+        font-weight: 400;
+    }
+    .currDate {
+        padding: 0 3px;
+        font-size: 13px;
+    }
+    .blk-down-arrow {
+        width: 10px;
+    }
+    .no-pass-bg {
+        margin: 30px 0px;
+    }
+    .route-pic {
+        margin-right: 10px;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .width40px {
+        width: 40px;
+    }
+    .textarea-div {
+        margin-left: 10px;
+        ion-item {
+            padding: 0 !important;
+        }
+    }
+    .colorGreen {
+        color: #04a248;
+    }
+    .fontBold {
+        font-weight: 400;
+        font-family: "Roboto";
+    }
+    .successTxt {
+        font-size: 16px;
+        margin-bottom: 5px;
+    }
+    .success-msg-div {
+        width: 46%;
+        padding: 0px 5px 28px 5px;
+    }
+    ion-item {
+        .item-inner {
+            border: none !important;
+            box-shadow: none !important;
+        }
+    }
+    .error-msg {
+        color: red;
+        margin-top: 2px;
+        display: block;
+        padding: 0 10px;
+    }
+    .invalid {
+        border-bottom: 1px solid red !important;
+    }
+    .userProfile-container {
+        background: #ffffff;
+        display: flex;
+        border-radius: 5px;
+        margin: 5px;
+        align-items: center;
+    }
+    .img-container {
+        margin-right: 10px;
+    }
+    img.user-icon {
+        width: 45px;
+        height: 45px;
+        margin-left: 5px;
+        border-radius: 50%;
+        border: 2px solid #c0e0ff;
+        overflow: hidden;
+    }
+    .bus-img {
+        width: 40px;
+        height: 40px;
+        margin-right: 10px;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .bus-rulesTxt {
+        color: #0ea2c8;
+        text-decoration: underline;
+        font-size: 15px;
+    }
+    .update-bg-color .ticket-parent {
+        background: #eaf0fc;
+    }
+    .width-100 {
+        width: 100%;
+    }
+    .ticket-sub-container {
+        display: flex;
+        align-items: center;
+        padding: 0 0 6px 6px;
+        background: #eaf0fc;
+    }
+    .driver-sub-container {
+        display: flex;
+        flex-direction: column;
+        padding-top: 8px;
+        width: 80%;
+    }
+    .sub-title-container ion-col {
+        font-weight: 400;
+        font-size: 1em;
+    }
+    .values-container ion-col {
+        font-size: 1.1em;
+        font-weight: 400;
+        margin-top: 5px;
+    }
+    .item-container {
+        display: flex;
+        flex-direction: column;
+        padding-top: 8px;
+        width: 80%;
+    }
+    .pass-id-container{
+        margin-right: 6px;
+        .pass-id-icon{
+            width: 25px
+        }
+    }
+    .auto-renew-text{
+        color: #0ea2c8;
+    }
+}

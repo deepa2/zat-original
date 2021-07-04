@@ -1,0 +1,88 @@
+page-about-taz {  .zenverse-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  .zeneverse-item {
+    width: calc(50% - 15px);
+    height: calc(32vh - 25px);
+    display: flex;
+    display: flex;    
+    position: relative;
+    align-items: flex-start;
+    margin: 10px 0 0px 10px;
+    flex-direction: column;
+    padding: 10px;
+    color: #fff;
+    border-radius: 5px;
+    margin-top: 10px;
+    img{
+      width: 65px;
+    }
+    .abt-zv-icon{
+      z-index: 9;
+    }
+    ion-label{
+      position: absolute;
+      bottom: 20px;
+      font-size: 1.1em;
+      font-weight: 500;
+      width: calc(100% - 20px);
+      white-space: normal;
+    }
+    .label-border{
+      display: block;
+      width: 25px;
+      height: 3px;
+      background: rgba(255, 255, 255, 0.5);
+      border-radius: 5px;
+      margin-top: 5px;
+      overflow: hidden;
+    }
+    .zeneverse-item-bg{
+      width: 65%;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      margin: auto;
+    }
+    
+}
+
+.app-info{
+  .zeneverse-item-bg{
+    width: 70%;
+  }
+  background: linear-gradient(-45deg, #ff3f3f, #ffb0b0);
+  
+}
+.Zensar.zeneverse-item {
+  background: linear-gradient(-45deg, #2cbb79, #63dfa9) !important;
+}
+.History.zeneverse-item {
+   background: linear-gradient(-45deg, #FF848A, #FEBEA3);
+}
+.Timeline.zeneverse-item {
+  background: linear-gradient(-45deg, #e77097, #f8afe0);
+}
+.Brochure.zeneverse-item {
+  background: linear-gradient(-45deg, #f9b429, #fde58c);
+
+}
+.About.zeneverse-item {
+  background: linear-gradient(-45deg, #86c544, #cae791);
+}
+.Zenlearn.zeneverse-item {
+  background: linear-gradient(-45deg, #7290FB, #BFCBFF);
+}
+.Introductory.zeneverse-item {
+  background: linear-gradient(-45deg, #7290FB, #BFCBFF);
+}
+}
+.md{
+.zenverse-wrapper {
+  .zeneverse-item {
+    height: calc(32vh - 31px);
+  }
+}
+}
+}

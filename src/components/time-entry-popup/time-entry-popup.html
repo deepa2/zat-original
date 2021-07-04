@@ -1,0 +1,59 @@
+<ion-content>
+    <div class="grid-item-wrapper">
+        <!-- <div class="grid-item flex-dir-col-center ApprovalDashboardPage">
+            <img src="assets/icon/dashboard-icons/Approvals.svg" onerror="this.src='assets/imgs/blank.png'" class="image">
+            <img src="assets/icon/dashboard-icons/Icon-texture.svg" onerror="this.src='assets/imgs/blank.png'"
+                class="icon-texture">
+                <div class="icon-name">Timesheet Approval</div>
+        </div>
+        <div class="grid-item flex-dir-col-center AditionalHours">
+            <img src="assets/icon/dashboard-icons/AdditionalHours.svg" onerror="this.src='assets/imgs/blank.png'"
+                class="image">
+            <img src="assets/icon/dashboard-icons/Icon-texture.svg" onerror="this.src='assets/imgs/blank.png'"
+                class="icon-texture">
+                <div class="icon-name">Aditional Hours</div>
+        </div>
+        <div class="grid-item flex-dir-col-center MyAttendanceTimesheetPage">
+            <img src="assets/icon/dashboard-icons/MyTimesheets.svg" onerror="this.src='assets/imgs/blank.png'"
+                class="image">
+            <img src="assets/icon/dashboard-icons/Icon-texture.svg" onerror="this.src='assets/imgs/blank.png'"
+                class="icon-texture">
+                <div class="icon-name">My Timesheet</div>
+        </div> -->
+
+        <div (click)="goToMyPage(item)" *ngFor="let item of subPages" class="grid-item flex-dir-col-center"
+            [ngClass]="item.pageName">
+            <div>
+
+                <img *ngIf="item.pageName == 'TimeEntryPage'" src="assets/icon/dashboard-icons/TimeEntry.svg"
+                    onerror="this.src='assets/imgs/blank.png'" class="image">
+                <img *ngIf="item.pageName == 'ApprovalDashboardPage'" src="assets/icon/dashboard-icons/Approvals.svg"
+                    onerror="this.src='assets/imgs/blank.png'" class="image">
+                <img *ngIf="item.pageName == 'AdditionalHoursPage'"
+                    src="assets/icon/dashboard-icons/AdditionalHours.svg" onerror="this.src='assets/imgs/blank.png'"
+                    class="image">
+                <img *ngIf="item.pageName == 'MyAttendanceTimesheetPage'"
+                    src="assets/icon/dashboard-icons/MyTimesheets.svg" onerror="this.src='assets/imgs/blank.png'"
+                    class="image">
+                <img *ngIf="item.pageName == 'ReportPage'" src="assets/icon/dashboard-icons/Reports.svg"
+                    onerror="this.src='assets/imgs/blank.png'" class="image">
+                <img src="assets/icon/dashboard-icons/Icon-texture.svg" onerror="this.src='assets/imgs/blank.png'"
+                    class="icon-texture">
+
+
+            </div>
+            <div class="icon-name" [innerHTML]="item.title">
+            </div>
+        </div>
+    </div>
+
+
+</ion-content>
+
+<!-- <img *ngIf="item.pageName == 'ApprovalDashboardPage'" src="assets/icon/dashboard-icons/Approvals.svg"
+                onerror="this.src='assets/imgs/blank.png'" class="image">
+                <img *ngIf="item.pageName == 'AdditionalHoursPage'" src="assets/icon/dashboard-icons/AdditionalHours.svg"
+                onerror="this.src='assets/imgs/blank.png'" class="image">
+                <img *ngIf="item.pageName == 'MyAttendanceTimesheetPage'"
+                src="assets/icon/dashboard-icons/MyTimesheets.svg" onerror="this.src='assets/imgs/blank.png'"
+                class="image"> -->

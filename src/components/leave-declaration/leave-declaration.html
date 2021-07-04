@@ -1,0 +1,29 @@
+<!-- Generated template for the LeaveDeclarationComponent component -->
+<ion-header>
+    <div class="declaration-title" no-lines>
+        <img class="dose-calnder" src="assets/imgs/leave-declaration.svg" item-left/>
+        <ion-label>Leave Declaration</ion-label>
+    </div>
+</ion-header>
+<ion-content>
+
+    <div class="declaration-body">
+        <div class="declaration-info mt-10">
+            <ion-label text-wrap>Declaration from Associate, confirming that they have applied/availed Leave hours /days of time off and Leaves, in company Leave Management System for the past stipulated duration</ion-label>
+        </div>
+        <div class="declaration-consent item-space-between">
+            <ion-checkbox [(ngModel)]="declaration"></ion-checkbox>
+            <ion-label text-wrap>I hereby declare and confirm that all hours/days of leave of absence/Time offs taken by me till the date of this affirmation are formally applied and approved in the leave application system</ion-label>
+        </div>
+        <div class="employee-signature item-space-between">
+            <ion-checkbox [(ngModel)]="signature"></ion-checkbox>
+            <div>
+                <ion-label class="signaute-heading" text-wrap>Associate's Signature</ion-label>
+                <ion-label class="signaute-text" text-wrap>(checking the checkbox is equivalent to a handwritten signature)</ion-label>
+            </div>
+        </div>
+    </div>
+</ion-content>
+<ion-footer>
+    <button class="submitBtn" ion-button round float-right (click)="submitDeclration()" [disabled]="!(signature && declaration)">Submit</button>
+</ion-footer>

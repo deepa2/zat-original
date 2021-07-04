@@ -1,0 +1,254 @@
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>Bus Details</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+
+    <div class="busDetails-card-parent" *ngIf="busDetails">
+        <ion-card>
+            <ion-card-content class="column">
+                <div class="container-raw">
+                    <div class="bus-icon">
+                        <img src="assets/zenAdmin/bus-icon.svg" />
+                    </div>
+                    <div class="bus-info">
+                        <div class="bus-title-div">
+                            <span class="bus-name label-key">Bus</span>
+                        </div>
+                        <div class="common-alignmnt">
+                            <span class="bus-number label-value">{{busDetails?.busNumber}}</span>
+                        </div>
+
+                    </div>
+                    <div class="available-seats">
+                        <img class="seatIcon" src="assets/zenAdmin/available_seats.svg">
+                        <span class="seats label-value">{{busDetails?.reservedSeats ? busDetails?.reservedSeats :
+                            '0'}}/{{busDetails?.totalSeats}}</span>
+                    </div>
+
+                </div>
+
+                <div class="container-raw">
+                    <div class="bus-icon">
+
+                    </div>
+                    <div class="common-alignmnt mt-10">
+                        <img class="small-icon" src="assets/zenAdmin/routeIcon.svg">
+                        <span class="route-title label-key">Route: </span>
+                        <span class="route-name label-value">{{busDetails?.routeName}}</span>
+                    </div>
+                </div>
+                <div class="container-raw">
+                    <div class="bus-icon">
+
+                    </div>
+                    <div class="arrival-seats-parent">
+                        <div class="seats-container">
+                            <img class="small-icon" src="assets/zenAdmin/seaticon.svg">
+                            <span class="route-title label-key">Seats: </span>
+                            <span class="route-name label-value">{{busDetails?.totalSeats}}</span>
+                        </div>
+                        <div class="arrival-container">
+                            <img class="arrival-icon" src="assets/zenAdmin/arrival-icon.svg">
+                            <span class="arrival-title label-key">Arrival</span>
+                            <!-- <span class="route-name">{{item.seatNo}}</span> -->
+                        </div>
+                    </div>
+                </div>
+            </ion-card-content>
+
+            <div class="time-details-container">
+                <div class="in-time-div">
+                    <span class="intimeTxt label-key">In Time: </span>
+                    <ion-datetime class="disabled-date" displayFormat="hh:mm A" placeholder="Time" (ionChange)="onTimeChange($event,busDetails.busId,'inTime',busDetails.outTime)"
+                        [(ngModel)]="busDetails.inTime" class="label-value" disabled></ion-datetime>
+                    <!-- <span>{{busDetails?.inTime}}</span> -->
+                    <!-- <ion-datetime displayFormat="hh:mm A" value="2012-12-15T13:47:20.789" placeholder="{{butItem?.inTime ? butItem?.inTime : 'Time'}}"></ion-datetime> -->
+                </div>
+                <div class="out-time-div">
+                    <span class="outTimeTxt label-key">Out Time: </span>
+                    <ion-datetime class="disabled-date" displayFormat="hh:mm A" placeholder="Time" (ionChange)="onTimeChange($event,busDetails.busId,'outTime',busDetails.inTime)"
+                        [(ngModel)]="busDetails.outTime" class="label-value" disabled ></ion-datetime>
+                    <!-- <span>{{busDetails?.outTime}}</span> -->
+                    <!-- <ion-datetime displayFormat="hh:mm A" value="2012-12-15T13:47:20.789" placeholder="{{butItem?.outTime ? butItem?.outTime : 'Time'}}"></ion-datetime> -->
+                </div>
+            </div>
+        </ion-card>
+
+    </div>
+    <div *ngIf="busDetails">
+        <ion-segment [(ngModel)]="segmentModel">
+            <ion-segment-button value="bus-details" class="custom-segment">Bus Details</ion-segment-button>
+            <ion-segment-button value="pickupPoint" class="custom-segment">Pickup Point</ion-segment-button>
+            <ion-segment-button value="cotravellers" class="custom-segment">Co Travellers</ion-segment-button>
+        </ion-segment>
+    </div>
+    <!-- bus details code -->
+    <div *ngIf="busDetails" [ngSwitch]="segmentModel" class="segment-parent" [ngClass]="{'background-color-white':segmentModel==='bus-details', 'background-color-white pickup-segment':segmentModel==='pickupPoint', 'background-color-gray':segmentModel==='cotravellers'}">
+        <div *ngSwitchCase="'bus-details'">
+            <div>
+                <ion-card class="card-parent">
+                    <div class="card-header padding10">
+                        <div><img class="incharge-img" src="assets/zenAdmin/sp-incharge-icon.svg" onerror="this.src='./assets/imgs/annual-status.svg'" /></div>
+                        <div class="fontWeight">Bus Incharge</div>
+                    </div>
+                    <div class="card-data">
+                        <div class="userProfile-container">
+                            <div class="img-container"><img class="user-icon" [src]="busInchargeDetails?.busInchargeProfilePic"
+                                    onerror="this.src='assets/imgs/dummy-profile.png'" /></div>
+                            <div class="user-info-container">
+                                <span class="associate-name label-key">Name</span>
+                                <span class="key-value label-value">{{busInchargeDetails?.busInchargeName}}</span>
+                            </div>
+                        </div>
+                        <div class="driver-info-container">
+                            <!-- <div class="driver-img-container"><img class="user-icon" src="assets/imgs/dummy-profile.png" onerror="this.src='assets/imgs/dummy-profile.png'" />
+            </div> -->
+                            <div class="contactimg-container"><img class="contactNo-image" src="assets/zenAdmin/sp-call-icon.svg"
+                                    onerror="this.src='assets/imgs/dummy-profile.png'" /></div>
+                            <div class="driver-info-card">
+                                <span class="associate-name label-key">Contact Number</span>
+                                <span class="key-value label-value">{{busInchargeDetails?.busInchargeContactNumber}}</span>
+                            </div>
+                            <div (click)="call(busInchargeDetails?.busInchargeContactNumber)"> <img class="phone-image"
+                                    src="assets/zenAdmin/call-image.svg">
+                            </div>
+                        </div>
+                    </div>
+                </ion-card>
+            </div>
+            <div>
+                <ion-card class="card-parent">
+                    <div class="card-header padding10">
+                        <div><img class="incharge-img" src="assets/zenAdmin/driver-icon.svg" onerror="this.src='./assets/imgs/annual-status.svg'" /></div>
+                        <div class="fontWeight">Driver Details</div>
+                    </div>
+                    <div class="card-data">
+                        <div class="userProfile-container">
+                            <div class="img-container"><img class="user-icon" src="assets/imgs/dummy-profile.png"
+                                    onerror="this.src='assets/imgs/dummy-profile.png'" /></div>
+                            <div class="user-info-container">
+                                <span class="associate-name label-key">Name</span>
+                                <span class="key-value label-value">{{driverDetails?.driverName}}</span>
+                            </div>
+                        </div>
+                        <div class="driver-info-container">
+                            <!-- <div class="driver-img-container"><img class="user-icon" src="assets/imgs/dummy-profile.png" onerror="this.src='assets/imgs/dummy-profile.png'" />
+              </div> -->
+                            <div class="contactimg-container"><img class="contactNo-image" src="assets/zenAdmin/sp-call-icon.svg"
+                                    onerror="this.src='assets/imgs/dummy-profile.png'" /></div>
+                            <div class="driver-info-card">
+                                <span class="associate-name label-key">Contact Number</span>
+                                <span class="key-value label-value">{{driverDetails?.driverNumber}}</span>
+                            </div>
+                            <div (click)="call(driverDetails?.driverNumber)"> <img class="phone-image" src="assets/zenAdmin/call-image.svg">
+                            </div>
+                        </div>
+                    </div>
+                </ion-card>
+            </div>
+        </div>
+        <!-- pickup point code -->
+        <div *ngSwitchCase="'pickupPoint'" class="pickup-container">
+            <div class="pickup-card-parent" *ngIf="pickupPointsList">
+                <ion-card class="pickup-points-card">
+                    <div class="points-title-container">
+                        <div>
+                            <img class="assetImg" src="assets/zenAdmin/pickup-points-route.svg" onerror="this.src='./assets/imgs/annual-status.svg'" />
+                        </div>
+                        <div class="point-title">Pickup Points</div>
+                    </div>
+
+                    <div *ngFor="let item of pickupPointsList;let index=i;let odd=odd; let even=even;">
+                        <div class="timeline">
+                            <div class="container right" *ngIf="even">
+                                <div class="pick-up-content">
+                                    <div class="placeName">{{item.stopName}}</div>
+                                    <div class="time-parent ">
+                                        <span class="time-icon-container">
+                                            <!-- <ion-icon name="time"></ion-icon> -->
+                                            <img class="clock-img" src="assets/zenAdmin/wall-clock.svg" onerror="this.src='./assets/imgs/annual-status.svg'" />
+                                        </span>
+                                        <span class="colorGrey">{{item.arrivalTime}}</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="container left text-left" *ngIf="odd">
+                                <div class="pick-up-content align-item-end">
+                                    <div class="placeName">{{item.stopName}}</div>
+                                    <div class="time-parent ">
+                                        <span class="time-icon-container">
+                                            <!-- <ion-icon name="time"></ion-icon> -->
+                                            <img class="clock-img" src="assets/zenAdmin/wall-clock.svg" onerror="this.src='./assets/imgs/annual-status.svg'" />
+                                        </span>
+                                        <span class="colorGrey">{{item.arrivalTime}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ion-card>
+            </div>
+        </div>
+        <div *ngSwitchCase="'cotravellers'" class="co-taveller-parent">
+            <div class="cotravellers-container">
+                <div class="co-traveller-card">
+
+                    <!-- <ion-buttons end> -->
+                    <ion-select [(ngModel)]="bookingStatus" class="status-select" [selectOptions]="selectOptions"
+                        interface="popover">
+                        <ion-option value="All">All</ion-option>
+                        <ion-option value="Approved">Approved</ion-option>
+                        <!-- <ion-option value="Rejected">Rejected</ion-option>
+                        <ion-option value="Pending">Pending</ion-option> -->
+                        <ion-option value="Cancelled">Cancelled</ion-option>
+
+                    </ion-select>
+                    <!-- </ion-buttons> -->
+
+                </div>
+                <ng-container *ngIf="(coTravellerList | cotraveller: bookingStatus) as result">
+                    <div class="profile-info" *ngFor="let coTravellerItem of coTravellerList | cotraveller: bookingStatus">
+                        <div class="cotraveller-img-container">
+                            <!-- <img class="ringImg-profile" src="assets/zenLearn-imgs/profile-ring-img.svg" onerror="this.src='assets/imgs/blank.png'" /> -->
+                            <img class="user-icon" [src]="coTravellerItem?.profilePicUrl" onerror="this.src='assets/imgs/dummy-profile.png'" />
+                        </div>
+                        <div class="user-details">
+                            <div style="display: flex;">
+                                <span class="username" [ngClass]="{'width-100': !coTravellerItem?.isBusIncharge}">{{coTravellerItem?.userName}}</span>
+                                <span class="incharge" *ngIf="coTravellerItem?.isBusIncharge">Incharge</span>
+                            </div>
+                            <div class="colorGrey fontWt300" *ngIf="coTravellerItem.isNonZensarian">Non-Zensar</div>
+                            <div class="colorGrey fontWt300" *ngIf="!coTravellerItem.isNonZensarian">Zensar</div>
+                        </div>
+                        <div class="contact-id-container">
+                            <span class="id-card"><img src="assets/zenAdmin/id-card-icon.svg" class="id-icon" /></span>
+                            <span (click)="call(coTravellerItem?.userName)">
+                                <img class="call-users" src="assets/zenAdmin/call-image.svg" />
+                            </span>
+                        </div>
+                    </div>
+                    <div *ngIf="result?.length <='0'|| coTravellerList.length <= '0'" class="no-data">
+                        <span>No Data Found</span>
+                    </div>
+                </ng-container>
+            </div>
+            <!-- <div *ngIf="!coTravellerList || coTravellerList.length <= '0'" class="no-data">
+                <span>No Data Found</span>
+            </div> -->
+        </div>
+    </div>
+    <!-- raise complaint Fab button -->
+    <!-- <div > -->
+    <ion-fab right bottom (click)="raiseComplaintReq()" *ngIf="segmentModel == 'cotravellers'">
+        <div ion-fab>
+            <img class="raiseComplaint-icon" src="assets/zenAdmin/raiseComplaint-icon.svg" />
+        </div>
+    </ion-fab>
+    <!-- </div> -->
+</ion-content>

@@ -1,0 +1,100 @@
+corona-safety-measures-alert.ion-page {
+  .heading {
+    margin-top: 10px;
+    margin-bottom: 0;
+  }
+  ul.intro-para {
+    padding: 10px;
+    margin-top: 0;
+  }
+  ol {
+    list-style: none;
+    padding: 0;
+    li {
+      margin-bottom: 10px;
+      background: #fff;
+      padding: 10px;
+      padding-left: 30px;
+      border-radius: 3px;
+      position: relative;
+    }
+    li::before {
+      content: "";
+      position: absolute;
+      // left: 7px;
+      // width: 25px;
+      height: 25px;
+      left: -12px;
+      width: 25px;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+      background: url("../assets/imgs/guide-user.svg") no-repeat,
+        linear-gradient(-45deg, #ffee7f, #ff9f68);
+      background-position: center;
+    }
+
+    li:nth-child(1n + 1)::before {
+      background: url("../assets/imgs/guide-user.svg") no-repeat,
+        linear-gradient(-45deg, #a7cdff, #9a8bff);
+      background-position: center;
+    }
+    li:nth-child(2n + 1)::before {
+      background: url("../assets/imgs/guide-user.svg") no-repeat,
+        linear-gradient(-45deg, #fc9de6, #ff5b85);
+      background-position: center;
+    }
+    li:nth-child(3n + 1)::before {
+      background: url("../assets/imgs/guide-user.svg") no-repeat,
+        linear-gradient(-45deg, #76e794, #05c5bf);
+      background-position: center;
+    }
+    li:nth-child(4n + 1)::before {
+      background: url("../assets/imgs/guide-user.svg") no-repeat,
+        linear-gradient(-45deg, #ffee7f, #ff9f68);
+      background-position: center;
+    }
+    li:nth-child(5)::before {
+      background: url("../assets/imgs/guide-user.svg") no-repeat,
+        linear-gradient(-45deg, #b9c9ff, #45a0ff);
+      background-position: center;
+    }
+    li:nth-child(6)::before {
+      background: url("../assets/imgs/guide-user.svg") no-repeat,
+        linear-gradient(-45deg, #c4f994, #70b42d);
+      background-position: center;
+    }
+    li:nth-child(7)::before {
+      background: url("../assets/imgs/guide-user.svg") no-repeat,
+        linear-gradient(-45deg, #ffee7f, #ff9f68);
+      background-position: center;
+    }
+    li:nth-child(8)::before {
+      background: url("../assets/imgs/guide-user.svg") no-repeat,
+        linear-gradient(-45deg, #fcbdbf, #987efb);
+      background-position: center;
+    }
+  }
+  ion-content.content-md:not([padding]) .scroll-content {
+    background: #ebebeb;
+  }
+  ion-footer{
+    // background: #ebebeb;
+  }
+  .dismissBtn-parent {
+    text-align: center;
+  }
+  .dismissBtn{
+    width: 25%;
+    height: 41px;
+  }
+  .header-text{
+    padding: 7px 10px;
+  }
+  .dos-donts{
+    font-weight: 700;
+    padding: 5px 10px;
+    font-size: 1.2em;
+    color: #0E7AC7;
+  }
+}

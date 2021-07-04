@@ -1,0 +1,278 @@
+<!-- Generated template for the CovidInformationComponent component -->
+<ion-header>
+    <ion-navbar>
+        <ion-title>
+            COVID 19 Safety
+        </ion-title>
+        <ion-buttons end>
+            <!-- <button ion-button icon-only>
+        <ion-icon ios="ios-close" md="md-close"></ion-icon>
+      </button> -->
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+<ion-content padding>
+
+    <div *ngIf="isdataAvailable" class="corona-wrapper">
+        <p class="date" *ngIf="submittedDateTime">You had last updated this on {{submittedDateTime}}</p>
+        <!-- Current Location New Functionality -->
+        <div class="markYourSelf current-city" *ngIf="isIndiaPayroll">
+            <div class="markYourSelfText">What is your current city?</div>
+            <div class="travellingDetails">
+                <ion-item>
+                    <ion-label stacked>Your current city<span class="required-field">*</span></ion-label>
+                    <ion-input type="text" [(ngModel)]="currentCity" required #currentCityCtrl></ion-input>
+                </ion-item>
+            </div>
+        </div>
+        <p *ngIf="currentCityStatus" class="errorCls">Please fill the mandatory information</p>
+        <div class="travellingInfo" [ngClass]="{'linear-background' : isIndiaPayroll}">Have you travelled to any international/domestic destination since {{submittedDateOnly}}?
+        </div>
+        <div class="travellingDetails">
+            <div class="radioBtnPos">
+                <ion-item>
+                    <ion-radio slot="end" [checked]="this.travelStatus == 'YES'?true:false" id="yes" (ionSelect)="changedItem('YES')">
+                    </ion-radio>
+                    <ion-label class="txtMrgin">Yes</ion-label>
+                </ion-item>
+            </div>
+            <div class="radioBtnPos">
+                <ion-item>
+                    <ion-radio [checked]="this.travelStatus == 'NO'?true:false" (ionSelect)="changedItem('NO')"></ion-radio>
+                    <ion-label class="txtMrgin">No</ion-label>
+                </ion-item>
+
+            </div>
+        </div>
+        <p *ngIf="markStatus" class="errorCls">Please select an option</p>
+
+        <div *ngIf="travelStatus == 'YES'">
+            <ion-item class="travelFrom">
+                <ion-label stacked>Travel From & Travel To<img class="more" src="assets/imgs/asterisk.svg" /></ion-label>
+                <ion-input type="text" [(ngModel)]="selectedCountry" required (ionChange)="onInput()"></ion-input>
+            </ion-item>
+            <p *ngIf="!isCountryFieldCorrect" class="errorCls">Please fill the mandatory information</p>
+
+            <ion-item class="travelDate">
+                <img src="assets/imgs/Calender.svg" class="img" item-right>
+                <ion-label stacked>Last Travel Date <img class="more" src="assets/imgs/asterisk.svg" /></ion-label>
+                <ion-datetime displayFormat="DD/MM/YYYY" (ionChange)="changeDate()" [max]="setDate" [(ngModel)]="selectedDate" required>
+                </ion-datetime>
+            </ion-item>
+            <p *ngIf="!isDateFieldCorrect" class="errorCls">Please fill the mandatory information</p>
+        </div>
+
+
+
+        <div class="markYourSelf">
+            <div class="markYourSelfText">Mark yourself</div>
+            <div class="travellingDetails">
+                <span class="radioBtnPos">
+          <ion-item>
+            <ion-radio [checked]="personStatus == 'I am well and healthy'?true :false"
+            (ionSelect)="personstatus('I am well and healthy')"></ion-radio> 
+            <ion-label class="txtMrgin">I am well and
+            healthy</ion-label>
+          </ion-item>
+          
+
+        </span>
+                <span class="radioBtnPos">
+          <ion-item>
+            <ion-radio [checked]="personStatus == 'Need Help'?true :false" (ionSelect)="personstatus('Need Help')">
+            </ion-radio><ion-label class="txtMrgin">Need Help</ion-label>
+          </ion-item>
+         
+        </span>
+            </div>
+            <p *ngIf="markStatus2" class="errorCls">Please select an option</p>
+        </div>
+
+
+
+        <div *ngIf="personStatus == 'Need Help'">
+            <ion-item>
+                <ion-label stacked>Current Location</ion-label>
+                <ion-input type="text" [(ngModel)]="selectedLocation" required (ionChange)="onInput()"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label stacked>Emergency Contact No.</ion-label>
+                <ion-input type="tel" [(ngModel)]="ContactNumber" required (ionChange)="onInput()"></ion-input>
+            </ion-item>
+
+        </div>
+
+
+    </div>
+
+    <!-- Need Help section -->
+    <div *ngIf="isAlreadyMarkedNeedHelp" class="corona-wrapper">
+        <p class="date">Hi {{userName}}, Hope you are doing well</p>
+        <div class="travellingInfo">Since you have opted for <span class="blue-txt">"Need Help" on {{dateandTime}}.</span> could you please update us on your current status</div>
+
+        <p *ngIf="markStatus" class="errorCls">Please fill the mandatory information</p>
+        <div class="markYourSelf">
+            <div class="travellingDetails">
+                <span class="radioBtnPos">
+            <ion-item>
+              <ion-radio [checked]="personStatus == 'I am recovering' ? true :false" (ionSelect)="personstatus('I am recovering')">
+              </ion-radio>
+              <ion-label class="txtMrgin">I am recovering</ion-label>
+            </ion-item>
+          </span>
+                <span class="radioBtnPos">
+            <ion-item>
+              <ion-radio [checked]="personStatus == 'I have recovered' ? true :false" (ionSelect)="personstatus('I have recovered')">
+              </ion-radio>
+              <ion-label class="txtMrgin">I have recovered</ion-label>
+            </ion-item>
+                </span>
+                <span class="radioBtnPos">
+            <ion-item>
+              <ion-radio [checked]="personStatus == 'Marked ‘Need Help’ by mistake' ? true :false" (ionSelect)="personstatus('Marked ‘Need Help’ by mistake')">
+              </ion-radio>
+              <ion-label class="txtMrgin">Marked ‘Need Help’ by mistake</ion-label>
+            </ion-item>
+                </span>
+                <span class="radioBtnPos">
+            <ion-item>
+              <ion-radio [checked]="personStatus == 'I need more help' ? true :false" (ionSelect)="personstatus('I need more help')">
+              </ion-radio>
+              <ion-label class="txtMrgin">I need more help</ion-label>
+            </ion-item>
+          </span>
+            </div>
+            <p *ngIf="markStatus2" class="errorCls">Please select an option</p>
+        </div>
+
+        <div *ngIf="personStatus == 'I need more help'" class="need-help-container">
+            <ion-item no-lines class="custom-class">
+                <div class="txt-container">
+                    <img src="assets/imgs/need_more_help.svg" class="need_more_help_img">
+                    <p class="label-bold">We are here for you</p>
+                </div>
+            </ion-item>
+            <ion-item>
+                <ion-label stacked>Contact Number</ion-label>
+                <ion-input type="tel" [(ngModel)]="ContactNumber" required (ionChange)="onInput()"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label stacked>Location</ion-label>
+                <ion-input type="text" [(ngModel)]="selectedLocation" required (ionChange)="onInput()"></ion-input>
+            </ion-item>
+
+
+        </div>
+
+
+    </div>
+
+    <!-- Vaccination section -->
+
+    <div *ngIf="isdataAvailable == true && isIndiaPayroll == true" class="vaccination-wrapper">
+        <div class="markYourSelf">
+            <div class="markYourSelfText">Have you been vaccinated?</div>
+            <div class="travellingDetails">
+                <span class="radioBtnPos">
+          <ion-item>
+            <ion-radio [checked]="isVaccinated == 'Yes' ? true : false"
+            (ionSelect)="vaccinationStatus('Yes')"></ion-radio> 
+            <ion-label class="txtMrgin">Yes</ion-label>
+          </ion-item>
+          
+
+        </span>
+                <span class="radioBtnPos">
+          <ion-item>
+            <ion-radio [checked]="isVaccinated == 'No' ? true : false" (ionSelect)="vaccinationStatus('No')">
+            </ion-radio>
+            <ion-label class="txtMrgin">No</ion-label>
+          </ion-item>
+         
+        </span>
+            </div>
+        </div>
+        <div *ngIf="isVaccinated == 'Yes'" class="vaccination-details" id="vaccination-container">
+            <div class="vaccine-section">
+                <div class="vaccine-title">
+                    <img src="assets/icon/covid19/vaccination-dose.svg" alt="">
+                    <div class="vaccine-info">
+                        <p>Vaccine Name:<span class="required-field">*</span></p>
+                        <ion-item no-lines class="padding-0">
+                            <ion-label class="no-width">Select Vaccine</ion-label>
+                            <ion-select [(ngModel)]="vaccineID" class="vaccination-selector" placeholder="Select Vaccine" (ionChange)="checkVaccine()">
+                                <ion-option [value]="vaccine.vaccineId" *ngFor="let vaccine of listofVaccines">{{vaccine.vaccineName}}</ion-option>
+                            </ion-select>
+                        </ion-item>
+                    </div>
+                </div>
+                <div class="vaccine-title">
+                    <img src="assets/icon/covid19/vaccination-injection.svg" alt="">
+                    <div class="vaccine-info dose-info">
+                        <p>Dose Details:</p>
+                        <div class="dose-details">
+                            <div class="dose-title">
+                                <p>Dose 1:</p>
+                            </div>
+                            <div class="dose-date">
+                                <span class="dose-sub-label">Date of inoculation<span class="required-field">*</span></span>
+                                <ion-item>
+                                    <ion-datetime displayFormat="DD-MM-YYYY" [(ngModel)]="firstDose" class="dose-date-picker" [max]="endDate" min="2021-01-01"></ion-datetime>
+                                    <img class="dose-calnder" src="assets/imgs/new_calendar.svg" item-right/>
+                                </ion-item>
+                            </div>
+                            <div class="checkBox dose-taken" *ngIf="showSecondDose">
+                                <ion-checkbox color="dark" [(ngModel)]="doseTaken" (ionChange)="_fnDoseTaken($event)"></ion-checkbox>
+                                <span class="marleft-5">Dose 2 not taken yet</span>
+
+                            </div>
+                        </div>
+
+                        <!-- Dose 2 -->
+                        <div class="dose-details" *ngIf="showSecondDose && !doseTaken">
+                            <div class="dose-title">
+                                <p>Dose 2:</p>
+                            </div>
+                            <div class="dose-date" [ngClass]="{'disabled-item' : doseTaken}">
+                                <span class="dose-sub-label">Date of inoculation<span *ngIf="!doseTaken" class="required-field">*</span></span>
+                                <ion-item>
+                                    <ion-datetime [min]="firstDose" [max]="endDate" displayFormat="DD/MM/YYYY" [(ngModel)]="secondDose" class="dose-date-picker" (ionChange)=secondDoseSelected($event)></ion-datetime>
+                                    <img class="dose-calnder" src="assets/imgs/new_calendar.svg" item-right/>
+                                </ion-item>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p *ngIf="vaccineStatus" class="errorCls">Please select an option</p>
+
+
+    </div>
+
+    <!-- <p class="rtoGuideline" [hidden]="!isdataAvailable">Click here to view safe <span class="agreement" (click)="openRTOVedio()"><b>Return To Office</b></span> eLearning guidelines.</p> -->
+    <!-- <span class="rtoGuideline" [hidden]="!isdataAvailable" (click)="openRTOVedio()"><b> Click here to open return to office guidelines.</b></span> -->
+    <p [hidden]="!isdataAvailable" *ngIf="showfooter" class="pd-10 note">Note: The respective ERT team will take action based on your response. Your response shall remain confidential and will only be shared with a limited number of authorized persons within Zensar for the purpose of offering you assistance and enhancing
+        organizational safety.</p>
+
+</ion-content>
+<ion-footer *ngIf="showfooter" class="fotterBtn">
+    <div [hidden]="!isdataAvailable" *ngIf="showfooter" class="btmPara">
+        <div class="checkBox">
+            <ion-checkbox color="dark" [disabled]="checkBoxValue" [(ngModel)]="checkboxStatus" (ionChange)="checkValue()" [checked]="checkBoxValue"></ion-checkbox>
+            <span class="marleft-5">I have read and understood the <span class="agreement"
+          (click)="goToTermsConditions()"><b>Teleworking Agreement</b></span> guidelines and accept its conditions<img class="more" src="assets/imgs/asterisk.svg" /></span>
+
+        </div>
+    </div>
+    <div [hidden]="!isAlreadyMarkedNeedHelp" *ngIf="showfooter" class="btmPara">
+        <div class="checkBox">
+            <ion-checkbox color="dark" [disabled]="checkBoxValue" [(ngModel)]="checkboxStatus" (ionChange)="checkValue()" [checked]="checkBoxValue"></ion-checkbox>
+            <span class="marleft-5">I have read and understood the <span class="agreement"
+          (click)="goToTermsConditions()"><b>Teleworking Agreement</b></span> guidelines and accept its conditions<img class="more" src="assets/imgs/asterisk.svg" /></span>
+
+        </div>
+    </div>
+    <button ion-button [disabled]="checkBoxValue ? false: !checkboxStatus" (click)="submitServey()">Submit</button>
+</ion-footer>

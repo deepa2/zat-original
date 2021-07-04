@@ -1,0 +1,187 @@
+page-calender-model {
+  ion-navbar {
+    background: white;
+  }
+  .background {
+    background-color: white;
+  }
+  .toolbar-md {
+    padding-top: 0!important;
+    min-height: 56px !important;
+    font-size: 1.5em;
+    padding: 0 12px 8px;
+
+  }
+  .bgTransparent{
+    background: transparent;
+  }
+  [col-1] {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 8.33333%;
+    -ms-flex: 0 0 8.33333%;
+    flex: 0 0 14.285714285714286%;
+    width: 14.285714285714286%;
+    max-width: 14.285714285714286%;
+  }
+  .col {
+    text-align: center;
+    // padding: 5px;
+  }
+  .last-month,
+  .next-month {
+    color: #999999;
+    font-size: 90%;
+  }
+
+  .disabled {
+    // color: #999999;
+    // font-size: 90%;
+    opacity: 0.5;
+  }
+  .currentDate,
+  .otherDate {
+    padding: 5px;
+  }
+  .currentDate {
+    font-weight: bold;
+    background-color: color($colors, secondary);
+    color: white;
+    // border-radius: 30px;
+  }
+  .calendar-header {
+    // background-color: #1a732d;
+    color: color($colors, primary);
+    margin-top: 6px;
+   // margin-bottom: 6px;
+    .per {
+      font-size: 0.9em;
+      color: #343434;
+      // color: $ts-primary;
+      span {
+        font-weight: 400;
+      }
+    }
+  }
+  .event-bullet {
+    margin: 2px auto;
+    height: 5px;
+    width: 5px;
+    background-color: green;
+    border-radius: 30px;
+  }
+  .selected-date {
+    width: 20px;
+    height: 2px;
+    background-color: blue;
+  }
+  .unselected-date {
+    border: none;
+  }
+  .calendar-month {
+    width: 90%;
+  }
+  .cross-icon {
+    width: 10%;
+  }
+  .calendar-body {
+    // padding: 22px;
+
+    .grid {
+      padding: 0;
+    }
+    .col:last-child {
+      border-right: none;
+    }
+    .calendar-weekday,
+    .calendar-date {
+      text-align: center;
+      margin: 0;
+      .col {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        span {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 25px;
+          width: 25px !important;
+        }
+      }
+    }
+    .calendar-weekday {
+      font-weight: 500;
+      // color: #a7464d
+    }
+  }
+
+  //New Added css
+  .rejectedDate {
+    font-weight: bold;
+    background-color: $ts-red;
+    // background-color: #ffc800;
+    color: white;
+    border-radius: 50%;
+  }
+  .pendingDate {
+    font-weight: bold;
+    background-color: $ts-grey;
+    // background-color: #ff7600;
+    color: white;
+    border-radius: 50%;
+  }
+  .selectedDateColor {
+    font-weight: bold;
+    background-color: $ts-blue;
+    color: white;
+    border-radius: 50%;
+  }
+  .cross-color-ts {
+    color: black;
+  }
+  .ts-color {
+    color: $ts-primary;
+  }
+  .hideDate{
+    opacity: 0;
+  }
+  .ts-calendar-header-bg{
+    background-color: #EAEFF8;
+   // margin-bottom: 1em;
+   border-radius: 20px 20px 0 0;
+   
+  }
+  .legends{
+    // padding-left: 1em;
+    display: flex;
+    justify-content: space-evenly;
+    .legend-section{
+        display: flex;
+        align-items: center;
+        .circle{
+          width: 0.8em;
+          height: 0.8em;
+          border-radius: 50%;
+        }
+        span{
+          margin-left: 5px;
+          color: #595656;
+        }
+        .red{
+          background-color: $ts-red;
+        }
+        .grey{
+          background-color: $ts-grey;
+        }
+    }
+  }
+  @media only screen and (max-width: 767px) {
+    .md .modal-wrapper > .ion-page > ion-header > .toolbar.statusbar-padding:first-child {
+      padding-top: 0 !important;
+      padding-top: 0 !important;
+      padding-top: 0 !important;
+      min-height: 0 !important;
+      min-height: 0 !important;
+    }
+  }
+}

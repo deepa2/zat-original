@@ -1,0 +1,126 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Search</ion-title>
+  </ion-navbar>
+  <ion-searchbar type="text" color="light" [placeholder]="placeHolder" clearInput [(ngModel)]="searchItem"
+    [formControl]="searchControl">
+  </ion-searchbar>
+</ion-header>
+
+<ion-content class="bgColor">
+  <div *ngIf="pastSearches.length > 0">
+    <ion-list class="bgList">
+      <div class="ft600">
+        <img src="assets/icon/dashboard-icons/ZenRich_pastsearchDetails.svg">
+        <span style="margin-left: 5px;">Past Searches</span>
+      </div>
+      <ion-item *ngFor="let searchDetails of pastSearches" (click)="searchJobs(searchDetails)">
+        <ion-avatar item-start>
+          <img src="assets/icon/dashboard-icons/ZenRich_pastSearch_new.svg">
+        </ion-avatar>
+        <span class="pastSearchFlex">
+          <span>{{searchDetails?.searchText}}</span>
+          <span class="pastSearchText">{{searchDetails?.searchTime}}</span>
+        </span>
+      </ion-item>
+    </ion-list>
+  </div>
+
+  <div *ngIf="this.paramsData.parameter != 'MY_REFERRALS'">
+
+    <div class="opening-card" *ngFor="let item of openingsData; index as i">
+      <div class="job-wrapper">
+        <div [ngClass]="{'hot-job': item.hotJobFlag != ''}" class="job-icon jobIcon{{i}}">
+          <!-- <img class="" src="assets/imgs/annual-status.svg" /> -->
+          <img class="" src="assets/imgs/job-item-icon.svg" />
+          <span>{{item?.srfNo}}</span>
+          <div class="hot-con" *ngIf="item.hotJobFlag != ''"><img class="hot-icon" src="assets/imgs/hot-icon.svg"> {{item.hotJobFlag}}</div>
+      
+        </div>
+        <div class="job-info" (click)="goToJobDetails(item.srfNo)">
+          <div class="job-title">
+            <span class="job-title-wrap"> <span>{{item?.jobTitle}}</span> </span>
+            <div class="niche-wrap" *ngIf="item.nicheSkillFlag">
+              <img  src="assets/imgs/nicheStar.svg"> 
+              <span class="niche-skills">Niche skill</span>
+            </div>
+         
+          </div>
+          <div class="skills info">
+            <span class="img-mar5"><img src="assets/icon/dashboard-icons/ZenRich_skills.svg"></span>
+            <span class="job-skills">{{item?.skills}}</span>
+          </div>
+          <!-- bonus info -->
+          <div class="job-info-footer">
+            <div class="experience">
+              <img class="money-icon" src="assets/imgs/money.svg" />
+              <span>Bonus: Upto <img class="rupee-icon" src="assets/imgs/rupee.svg" /><span [ngClass]="{'bonus': ((item.hotJobReferralAmount != '' && item.hotJobFlag != '') &&  item.referralBonus != (item.hotJobReferralAmount | number))}" class="inr">{{item?.referralBonus}}</span></span>
+              <span *ngIf="item.hotJobFlag != '' &&  item.referralBonus != (item.hotJobReferralAmount | number) && item.hotJobReferralAmount != ''" class="hot-amount"><img class="rupee-icon" src="assets/imgs/rupee-green.svg" />{{item?.hotJobReferralAmount}}</span>
+            </div>
+            <div class="referral-Bonus">
+              <span><img class="money-icon" src="assets/imgs/Person.png"></span>
+              <span>{{item?.profileMatchCount}}</span></div>
+          </div>
+         
+        </div>
+        <div class="save-job">
+          <img class="bookMarkIcon" (click)="$event.stopPropagation()" (click)="bookMarked(item,i)"
+            *ngIf="!item?.isBookmarked" src="assets/icon/dashboard-icons/bookMarked.svg">
+          <img class="bookMarkIcon" (click)="$event.stopPropagation()" (click)="bookMarked(item,i)"
+            *ngIf="item?.isBookmarked" src="assets/icon/dashboard-icons/bookMarkFilled.svg">
+          <ion-icon name="more" (click)="presentpopover($event,item?.srfNo, item?.jobTitle)"></ion-icon>
+        </div>
+      </div>
+      <div class="job-footer job-info-footer">
+        <div class="experience">
+          <img class="experience-icon" src="assets/icon/dashboard-icons/ZenRich_experiance.svg" />
+          <span class="job-skills">Exp: {{item?.experience}}</span>
+        </div>
+        <div class="job-location"><span><img class="experience-icon"
+              src="assets/icon/dashboard-icons/ZenRich_location.svg"></span>
+          <span class="job-skills">{{item?.location}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="this.paramsData.parameter == 'MY_REFERRALS'">
+    <div class="opening-card" *ngFor="let item of openingsData; index as i">
+      <div class="job-wrapper">
+        <div class="job-icon">
+          <img class="listImg" src="assets/imgs/job-item-icon.svg" />
+          <span>{{item?.srfNo}}</span>
+        </div>
+        <div class="job-info" (click)="goToRefDetails(item.referralMappingId,item.srfNo)">
+          <div class="job-title">{{item?.candidateName}}</div>
+          <div class="skills info"><span><img class="imgStyle roundedImg img-mar5" src="assets/imgs/Person.png"></span>
+            <span>{{item?.jobTitle}}</span></div>
+          <div class="job-location info"><span class="img-mar5 imgStyle"><img
+                src="assets/icon/dashboard-icons/ZenRich_calendar.svg"></span>
+            <span>Referred Date : {{formatDate(item?.referredDate) | date}}</span></div>
+        </div>
+        <div class="save-job">
+          <ion-icon name="more" (click)="presentpopover($event)"></ion-icon>
+        </div>
+      </div>
+      <div class="job-footer font9">
+        <div class="experience width50">
+          <span><img class="img-mar5" src="assets/icon/dashboard-icons/ZenRich_process.svg"></span>
+          <span>Status : {{item?.candidateStatus}}</span></div>
+        <div class="referral-Bonus width50">
+          
+          <img class="money-icon" src="assets/imgs/money.svg" />
+          <span>Bonus: <span class="inr">Upto INR {{item?.referralBonus}}</span></span>
+        </div>
+          
+      </div>
+    </div>
+  </div>
+  <div *ngIf="showMessage" class="searchMessage">{{showMessage}}</div>
+
+
+  <ion-infinite-scroll *ngIf="pastSearches.length == 0" (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+</ion-content>

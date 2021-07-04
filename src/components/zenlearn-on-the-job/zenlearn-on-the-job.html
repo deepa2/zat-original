@@ -1,0 +1,42 @@
+<!-- Generated template for the ZenlearnOnTheJobComponent component -->
+<ion-content class="background">
+
+  <div class="container-header">
+
+    <span class="sectionHeading">
+      <img src="assets/zenLearn-imgs/onthejob-icon.svg" />
+      {{onTheJobData?.sectionTitle}}
+    </span>
+    <span (click)="close()">
+      <ion-icon class="close" ios="ios-close" md="md-close"></ion-icon>
+    </span>
+  </div>
+  <div class="list-details">
+    <ion-row *ngFor="let listDetails of onTheJobData?.list">
+      <ion-col col-6>
+        {{listDetails?.title}}
+      </ion-col>
+      <ion-col class="dap-value" col-6 *ngIf="listDetails.title != 'Status' && listDetails.title !='Milestone Date'">
+        {{listDetails?.value}}
+      </ion-col>
+      <ion-col class="dap-value" col-6 *ngIf="listDetails.title != 'Status' && listDetails.title=='Milestone Date'">
+        {{dateConversion(listDetails?.value)}}
+      </ion-col>
+      <ion-col class="dap-value" col-6 *ngIf="listDetails.title == 'Status'">
+        {{getStatus(listDetails?.value,listDetails)}}
+      </ion-col>
+    </ion-row>
+
+  </div>
+  <div class="user-comments" *ngIf="dapStatus">
+    <div class="commentsText">Your comments</div>
+    <ion-textarea class="insideTextarea" [(ngModel)]="comments"></ion-textarea>
+  </div>
+  <div class="btnDiv" *ngIf="role == 'Associate' && dapStatus">
+    <button ion-button class="btnStyle"  (click)="markComplete()"> Submit</button>
+  </div>
+  <div class="btnDiv" *ngIf="role == 'manager' && dapStatus">
+    <button ion-button class="btnStyle" [disabled]="!comments" (click)="approveReject(false)">Approve</button>
+    <button ion-button class="btnStyle" [disabled]="!comments" (click)="approveReject(true)">Reject</button>
+  </div>
+</ion-content>

@@ -1,0 +1,150 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>Non Zensarian Detail View</ion-title>
+    </ion-navbar>
+    <div class="user-details-container">
+        <div class="profile-container">
+            <div class="img-container">
+                <img class="user-icon" [src]="userData?.userProfilePic"
+                    onerror="this.src='assets/imgs/dummy-profile.png'" />
+            </div>
+            <div class="user-details">
+                <div>
+                    <span class="username">{{userData?.userName}}</span>
+                </div>
+                <div class="emp-id">{{userData?.userId}}</div>
+                <div class="profile-calender colorGrey mt-5">
+                    <img src="assets/zenAdmin/non-zensarian-assets/calender.svg" class="detail-icon"
+                        alt="Profile created date" /> Profile Created: {{userData?.profileCreateDate}}
+                </div>
+            </div>
+        </div>
+        <div class="mt-10">
+            <ion-segment [(ngModel)]="taskView" class="custom-segment">
+                <ion-segment-button value="details">Details</ion-segment-button>
+                <ion-segment-button value="pass">Bus Pass</ion-segment-button>
+            </ion-segment>
+        </div>
+        <img class="edit-icon" src="assets/zenAdmin/edit-icon.svg" (click)="updateUser()" />
+    </div>
+</ion-header>
+
+<ion-content class="non-zensarian-container">
+    <div [ngSwitch]="taskView">
+        <div class="details-view mt-40" *ngSwitchCase="'details'">
+            <ion-grid>
+                <ion-row class="flex-row mt-0">
+                    <ion-col col-5 class="text-color">
+                        <img src="assets/zenAdmin/non-zensarian-assets/call.svg" class="detail-icon"
+                            alt="Contact Number" /> Contact Number
+                    </ion-col>
+                    <ion-col class="contact-info text-color" col-7>
+                        {{userDetailsData?.contactNumber}}
+                        <img (click)="call(userDetailsData?.contactNumber)" class="call-users"
+                            src="assets/zenAdmin/call-image.svg" />
+                    </ion-col>
+                </ion-row>
+
+                <ion-row class="flex-row">
+                    <ion-col col-5 class="text-color">
+                        <img src="assets/zenAdmin/non-zensarian-assets/email.svg" class="detail-icon"
+                            alt="Email Address" /> Email Address
+                    </ion-col>
+                    <ion-col col-7 class="text-color">{{userDetailsData?.emailId}}</ion-col>
+                </ion-row>
+
+                <ion-row class="flex-row">
+                    <ion-col col-5 class="text-color">
+                        <img src="assets/zenAdmin/non-zensarian-assets/designation.svg" class="detail-icon"
+                            alt="Designation" /> Designation
+                    </ion-col>
+                    <ion-col col-7 class="text-color">{{userDetailsData?.designation}}</ion-col>
+                </ion-row>
+            </ion-grid>
+        </div>
+
+        <div class="pass-view mt-20" *ngSwitchCase="'pass'">
+            <div class="ticket-parent" *ngFor="let busDetailsItem of busDetails">
+                <div class="date-container">
+                    <div>
+                        <img class="calendar-icon" src="assets/zenAdmin/calendar-img.svg" />
+                    </div>
+                    <div>
+                        <div class="dateValue">{{busDetailsItem.monthYear}}</div>
+                    </div>
+                </div>
+
+                <div>
+                    <div *ngFor="let busItem of busDetailsItem.busPassDetailDOs">
+                        <ion-card color="light" class="ion-card ion-text-center margin5 post-relative marginBottom-10"
+                            (click)="goToBusDetail(busItem)">
+                            <div class="display-flex padding10 blue-border pass-detail-container">
+                                <div class="display-flex bus-id-container">
+                                    <div class="width40px">
+                                        <img class="bus-icon" src="assets/zenAdmin/bus-pass-id.svg" />
+                                    </div>
+                                    <div class="bus-id-details">
+                                        <div class="colorGrey busIDText">BusPass ID</div>
+                                        <div class="bus-passId">{{busItem?.busPassId}}</div>
+                                    </div>
+                                </div>
+
+                                <div class="display-flex monthly-pass-container">
+                                    <div class="width40px">
+                                        <img class="calendar-icon" src="assets/zenAdmin/monthly-pass.svg" />
+                                    </div>
+                                    <div class="bus-validity-container">
+                                        <div class="dateValue colorGrey monthly-pass-title">{{busItem?.passType}} Pass
+                                        </div>
+                                        <div class="month-pass-date">{{busItem?.busPassValidity}}</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="profile-wrapper"></div>
+                            <div class="container-items blue-border">
+                                <div class="route-pic">
+                                    <img class="route-img" src="assets/zenAdmin/route-icon.svg" />
+                                </div>
+                                <div class="route-container">
+                                    <div class="associate-name colorGrey">Route</div>
+                                    <div class="key-value fontWeight">{{busItem.routeName}}</div>
+                                </div>
+                                <div class="filter-icon">
+                                    <img *ngIf="busItem?.isCancelled" src="assets/zenAdmin/Cancelled.png" />
+                                    <img *ngIf="!busItem?.isCancelled" src="assets/zenAdmin/Approved.png" />
+                                </div>
+                            </div>
+                            <div class="pickup-point-card blue-border">
+                                <div class="pickup-details">
+                                    <div class="route-pic">
+                                        <img class="route-img" src="assets/zenAdmin/location.svg" />
+                                    </div>
+                                    <div class="displayFlex-col pickup-name-container">
+                                        <span class="associate-name colorGrey">Pickup Point</span>
+                                        <span class="campus-name fontWeight">{{busItem?.pickupPointName}}</span>
+                                    </div>
+                                </div>
+                                <div class="pickup-time-card">
+                                    <div class="user-pic">
+                                        <img class="clock-img" src="assets/zenAdmin/clock-icon.svg" />
+                                    </div>
+                                    <div class="displayFlex-col">
+                                        <span class="associate-name"> {{busItem?.passSubType=='Drop'? '-':busItem?.arrivalTime}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </ion-card>
+                    </div>
+                </div>
+            </div>
+            <div class="no-data" *ngIf="!busDetails || busDetails.length == '0'">No Data Available</div>
+        </div>
+    </div>
+
+    <ion-fab right bottom (click)="addNewBusPass()">
+        <button ion-fab>
+            <ion-icon name="add"></ion-icon>
+        </button>
+    </ion-fab>
+</ion-content>

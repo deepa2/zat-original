@@ -1,0 +1,120 @@
+<!--
+  Generated template for the MyTimesheetsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header class="ts-header">
+
+  <ion-navbar>
+    <ion-title>My Timesheets</ion-title>
+    <ion-buttons end *ngIf="type == 'myTimesheet'">
+      <button *ngIf="myTimesheetData.length != 0" ion-button icon-only clear style="color: white" (click)="showConfirmAlert()">
+        <ion-icon name="mail"></ion-icon>
+      </button>
+
+      <!-- <button *ngIf="myTimesheetData.length != 0" (click)="showConfirmAlert()" shape="round" class="btn-email-timesheet"
+        slot="end"><ion-icon name="mail"></ion-icon>
+      </button> -->
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+
+  <div *ngIf="type == 'myTimesheet'">
+    <ion-list>
+      <div *ngFor="let item of myTimesheetData" class="virtualItemsParent">
+        <div class="parent-div card-shadow applied-hours">
+          <div class="first-block">
+            <div class="image" [ngClass]="getApproverStatusBoxType(item.approvalStatus)">
+              <img [src]="getTimesheetTypeIcon(item.approvalStatus)" />
+            </div>
+            <div class="text-block">
+              <span class="taskname">{{item?.taskName}}</span>
+              <div class="text">
+                <span class="title">Project:</span>
+                <span class="name">{{item?.projectName}}</span>
+              </div>
+              <div class="text">
+                <span class="title">Date:</span>
+                <span class="name">{{item?.taskUpdateDateDB}}</span>
+              </div>
+              <div class="text" *ngIf="item.milestoneName != undefined && item.milestoneName != null && item.milestoneName != 0 && item.milestoneName != ''">
+                <span class="title">Milestone:</span>
+                <span class="name">{{item?.milestoneName}}</span>
+              </div>
+            </div>
+          </div>
+          <ion-grid>
+            <ion-row>
+              <ion-col class="border width50">
+                <span>Efforts:</span>
+                <span class="value">{{item.viewEfforts}}</span>
+              </ion-col>
+              <ion-col class="width50">
+                <span>Billability:</span>
+                <span class="value">{{item.billablityFlag == 'YES' ?
+                  'Billable' : 'Non-Billable' }}</span>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </div>
+
+      </div>
+    </ion-list>
+
+    <div *ngIf="!isAnyRecord() && flag?.isPageLoaded" class="noRecords">
+      <p>No records to show.</p>
+    </div>
+  </div>
+
+  <div *ngIf="type === 'chat-bot'">
+    <ion-list class="zeno-myTimesheet">
+      <div *ngFor="let item of myTimesheetData" class="virtualItemsParent">
+        <div class="parent-div card-shadow applied-hours">
+          <div class="first-block">
+            <div class="image" [ngClass]="getApproverStatusBoxType(item.approvalStatusId)">
+              <img [src]="getTimesheetTypeIcon(item.approvalStatusId)" />
+            </div>
+            <div class="text-block">
+              <span class="taskname">{{item?.taskName}}</span>
+              <div class="text">
+                <span class="title">Project:</span>
+                <span class="name">{{item?.projectName}}</span>
+              </div>
+              <div class="text">
+                <span class="title">Date:</span>
+                <span class="name">{{item?.taskUpdateDate}}</span>
+              </div>
+              <div class="text" *ngIf="item.milestoneName != undefined && item.milestoneName != null && item.milestoneName != 0 && item.milestoneName != ''">
+                <span class="title">Milestone:</span>
+                <span class="name">{{item?.milestoneName}}</span>
+              </div>
+            </div>
+          </div>
+          <ion-grid>
+            <ion-row>
+              <ion-col class="border width50">
+                <span>Efforts:</span>
+                <span class="value">{{item?.totalEfforts.split('.')[0]}} Hrs {{item?.totalEfforts.split('.')[1]}} mins</span>
+              </ion-col>
+              <ion-col class="width50">
+                <span>Billability:</span>
+                <span class="value">{{item?.billablityFlag}}</span>
+              </ion-col>
+            </ion-row>
+            <ion-row class="comments-row" *ngIf="item?.comments">
+              <ion-col text-left class="comments">
+                <span>Comments:</span>
+                <span class="value">{{item?.comments}}</span>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </div>
+
+      </div>
+    </ion-list>
+  </div>
+</ion-content>

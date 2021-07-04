@@ -1,0 +1,113 @@
+page-add-bus {
+  .item-cover {
+    width: 0;
+    height: 0;
+  }
+  form .label {
+    margin: 10px 10px;
+  }
+  .select-md .select-icon {
+    position: relative;
+    width: 20px;
+    height: 20px;
+  }
+  .custom-select {
+    padding: 5px 10px;
+  }
+  .custom-date {
+    padding: 5px 10px;
+  }
+  .margin10-rt-lf {
+    margin: 0 10px !important;
+  }
+  .margin-btm-10 {
+    margin-bottom: 10px;
+  }
+  .form-container {
+    margin-top: 10px;
+  }
+
+  //   ion-input {
+  //     width: 95%;
+  //     input.text-input.text-input-md {
+  //       padding: 5px 10px;
+  //       opacity: 1;
+  //       margin: 0;
+  //     }
+  //   }
+  .text-input {
+    // margin: 0 0 10px;
+    // padding: 0;
+    // width: calc(100% - 8px - 8px);
+    margin: 0 !important;
+    padding: 10px !important;
+  }
+  ion-input {
+    width: 95% !important;
+    margin: 0 !important;
+    margin-left: 10px !important;
+  }
+  .marleft-10 {
+    margin-left: 10px;
+  }
+  .dateLabel {
+    padding: 5px 10px;
+  }
+  .borderBottom {
+    border-bottom: 1px solid grey !important;
+  }
+
+  .associateInfo-container {
+    display: flex;
+    align-items: center;
+    // border: 1px dotted #000000;
+    margin: 5px 10px;
+    background: #d5f1f8;
+    border-radius: 5px;
+  }
+  .userImg-container {
+    padding: 8px;
+    .user-profile {
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      border: 2px solid #38889c;
+    }
+  }
+  .associateDetails-container {
+    width: 65%;
+  }
+  .changeTxt {
+    color: #0ea2c8;
+    text-decoration: underline;
+    font-size: 15px;
+  }
+  .busIncharge-txt {
+    padding: 5px 10px;
+  }
+  .driver-txt {
+    padding: 5px 10px;
+  }
+  .driver-incharge-container {
+    margin: 5px;
+  }
+  .busIncharge-container {
+    margin-bottom: 10px;
+  }
+  // footer
+  .button-container {
+    text-align: center;
+  }
+  .add-button {
+    text-transform: capitalize;
+  }
+  .error-msg {
+    color: red;
+    margin-top: 2px;
+    display: block;
+    padding: 0 10px;
+  }
+  .invalid {
+    border-bottom: 1px solid red !important;
+  }
+}

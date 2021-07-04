@@ -1,0 +1,78 @@
+
+<ion-header>
+  <ion-navbar>
+    <ion-buttons start >
+      <button ion-button icon-only>
+        
+      </button>
+    </ion-buttons>
+    <ion-title center>
+      <img class="back-btn" (click)="dismiss(isBack=true)" src="assets/imgs/back-arrow.svg" />
+      <span>Add New</span>
+    </ion-title>
+    <ion-buttons end (click)="dismiss(isBack=false)">
+      <button ion-button icon-only>
+        Add
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <div class="">
+    <form class="pad-16" #addCompetency="ngForm" novalidate>
+    <ion-item>
+      <ion-label floating class="form-label" class="noColor">Skill<img class="asterisck"
+        src="assets/imgs/asterisk.svg" />
+    </ion-label>
+      <ionic-selectable name="skillId" [(ngModel)]="data.compItem.skillId" item-content [items]="data?.prolangLov"
+        itemValueField="key" itemTextField="value" [shouldStoreItemValue]="true" [canSearch]="true"
+       >
+      </ionic-selectable>
+    </ion-item>
+
+    <div class="two-form-item">
+      <ion-item>
+        <ion-label floating class="form-label" class="noColor">Proficiency<img class="asterisck"
+            src="assets/imgs/asterisk.svg" />
+        </ion-label>
+        <ion-select name="proficiency" [(ngModel)]="data.compItem.proficiency" item-content>
+          <ion-option *ngFor="let proficiency of data?.proficiencyLov" [value]="proficiency.key">
+            {{proficiency.value}}</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label floating class="form-label" class="noColor">Experience <img class="asterisck"
+            src="assets/imgs/asterisk.svg" />
+        </ion-label>
+        <ion-select name="experience" [(ngModel)]="data.compItem.experience" item-content>
+          <ion-option *ngFor="let experience of data?.experienceLov" [value]="experience.key">
+            {{experience.value}}
+          </ion-option>
+        </ion-select>
+      </ion-item>
+    </div>
+
+    <div class="two-form-item">
+      <ion-item>
+        <ion-label floating class="form-label" class="noColor">Last Used <img class="asterisck"
+            src="assets/imgs/asterisk.svg" />
+        </ion-label>
+        <ion-select name="lastUsed" [(ngModel)]="data.compItem.lastUsed" item-content>
+          <ion-option *ngFor="let lastUsed of data?.lastUsedLov" [value]="lastUsed.key">{{lastUsed.value}}
+          </ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label floating class="form-label" class="noColor">Interest<img class="asterisck"
+            src="assets/imgs/asterisk.svg" />
+        </ion-label>
+        <ion-select name="interest" [(ngModel)]="data.compItem.interest" item-content>
+          <ion-option *ngFor="let interest of data?.interestLov" [value]="interest.key">{{interest.value}}
+          </ion-option>
+        </ion-select>
+      </ion-item>
+    </div>
+  </form>   
+  </div>
+
+</ion-content>

@@ -1,0 +1,15 @@
+expand-collapse {
+    .expand-wrapper {
+        transition: max-height 0.4s ease-in-out;
+        overflow: hidden;
+        height: auto;
+        padding-top: 5px;
+        span{
+            white-space: initial;
+        }
+      }
+      
+      .collapsed {
+        max-height: 0 !important;
+      }
+}

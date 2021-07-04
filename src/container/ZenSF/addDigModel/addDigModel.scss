@@ -1,0 +1,77 @@
+addDigModel-page {
+    .red {
+        color: red;
+    }
+    .delete-styl {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-right: 3%;
+    }
+    .icon-size{
+        font-size: 2em;
+    }
+    .text-styl {
+        padding-left: 12px;
+    }
+
+    .btn-style {
+        background: #0e83c7;
+        color: white;
+        font-size: 1.2em;
+    }
+    .sumbit-btn {
+        width: 30%;
+        -webkit-align-self: center;
+        -ms-flex-item-align: center;
+        align-self: center;
+        font-size: 1.2em;
+        padding: 3%;
+        border-radius: 40px;
+        background-color: #0e8bc7;
+        color: white;
+    }
+    .paddingTop15 {
+        padding-top: 15px;
+    }
+
+    .radio-cont {
+        display: flex;
+        flex-wrap: wrap;
+        width: 94%;
+        margin: auto;
+    }
+    .radio-item {
+        width: 48%;
+        position: relative;
+        margin: 1%;
+        padding: 5px;
+        border: 1px solid #e3e3e3;
+        border-radius: 5px;
+    }
+    .radio-btn {
+        position: absolute;
+        top: 5px;
+        right: 15px;
+        z-index: 999;
+    }
+    .flex-space-betwn {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 8px 7px;
+    }
+    .drop-btn {
+        background-color: white;
+        font-size: 1.1em;
+    }
+    .toolbar-md {
+        padding: 0px !important;
+        min-height: 0px !important;
+        padding-top: 0 !important;
+        min-height: 56px !important;
+    }
+    .colorGray {
+        color: black !important;
+    }
+}

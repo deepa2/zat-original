@@ -1,0 +1,52 @@
+event-detail-modal {
+    ion-list-header.list-header {
+        background-image: url("../assets/zenwen-imgs/modalHeaderImg.svg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        margin-bottom: 0 !important; 
+        border-radius: 10px 10px 0 0;
+        border: 0;
+        ion-label{
+            color: white;
+        }
+      }
+      .event-modal-con{
+        height: calc(80vh - 100px);
+        overflow: auto;
+      }
+      .event-modal-con.upcoming{
+        height: calc(80vh - 160px);
+        overflow: auto;
+      }
+      .list-md .item-block .item-inner {
+            border-bottom: 1px dotted #dedede;
+        }
+      ion-item{
+          ion-avatar{
+              margin: 0px !important;
+            img{
+                width: auto !important;
+                height: auto !important;
+            }
+          }
+          p{
+              white-space: initial;
+          }
+          ion-label{
+              margin: 0px !important;
+          }
+          
+      }
+      .parent{
+        overflow: scroll;
+        height: 25em;
+      }
+      .list button.bookBtn{
+        background-color: #1586C7;
+        color: #fff;
+        padding: 13px 20px;
+        border-radius: 25px;
+        margin: 10px auto;
+        display: block;
+    }
+}

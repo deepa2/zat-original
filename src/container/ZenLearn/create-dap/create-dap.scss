@@ -1,0 +1,158 @@
+page-create-dap {
+  .item-md {
+    padding-right: 0px;
+    padding-left: 0px;
+  }
+  .pad-16 {
+    padding: 0px 16px;
+  }
+  textarea {
+    height: 100px;
+    padding: 5px;
+    font-size: 1.6rem;
+  }
+  .textArea {
+    //border: 1px solid;
+    padding: 5px;
+    margin-top: 5px;
+    background: white;
+    .item-inner {
+      border-bottom: none !important;
+    }
+  }
+  .parentMargin {
+    margin-bottom: 15px;
+  }
+  .dapErrorCls {
+    color: red;
+    //padding-left: 16px;
+    background: #edf9fc;
+    padding-left: 10px;
+  }
+  .listErrorCls {
+    color: red;
+  }
+
+  .dapParentList {
+    margin-bottom: 15px;
+    background-color: #d5f1f8;
+    .item-md {
+      background-color: #edf9fc;
+      padding-bottom: 5px;
+      padding-right: 10px;
+      padding-left: 10px;
+    }
+  }
+  .dapList {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px;
+    font-size: 1.1em;
+    font-weight: 600;
+    color: #1586c7;
+  }
+  .dapSection {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .dapSectionId {
+    flex-direction: row;
+    height: 25px;
+    width: 25px;
+    background: #1586c7;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+  }
+  .dapSectionTitle {
+    margin-left: 10px;
+  }
+  .dapAddProgram {
+    height: 100px;
+    //border: 1px solid;
+    width: 100px;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    color: #1586c7;
+  }
+  .addprogramTitle {
+    padding: 5px;
+    font-size: 0.8em;
+  }
+  .noBorder {
+    .item-inner {
+      border-bottom: none !important;
+    }
+    .label-md {
+      margin: 13px 8px 0px 0;
+    }
+  }
+  .addProgramParent {
+    display: flex;
+  }
+  .selectedProgram {
+    margin-left: 15px;
+  }
+  .selectedProgramDetails {
+    font-size: 0.9em;
+    height: 32px;
+  }
+  .buttonParent {
+    text-align: center;
+  }
+  .btnStyle {
+    border-radius: 20px;
+    text-transform: capitalize;
+  }
+  .noColor {
+    .item-inner {
+      border-bottom-color: #dedede !important ;
+      box-shadow: none !important;
+    }
+  }
+  .info-icon {
+    height: 20px;
+    width: 20px;
+  }
+
+  .dapLabel {
+    white-space: normal;
+  }
+
+  .showToolTip {
+    height: 20px;
+    width: 20px;
+    margin-left: 10px;
+  }
+  .asterisck {
+    position: absolute;
+    height: 12px;
+    padding: 2px;
+  }
+
+  .calenderIcon {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+  }
+
+  .calenderIconDap{
+    position: absolute;
+    right: 0;
+    bottom: 7px;
+  }
+  .mentorMessage{
+    text-align: justify;
+  }
+  .mentor{
+    text-decoration: underline;
+    color:#1586c7;
+  }
+}

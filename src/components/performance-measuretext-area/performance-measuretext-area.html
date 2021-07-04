@@ -1,0 +1,45 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{pageTitle}}</ion-title>
+    <ion-buttons end>
+      <!-- <button ion-button icon-only (click)="dismiss($event)">
+        <ion-icon name="close"></ion-icon>
+      </button> -->
+      <button ion-button icon-only (click)="dismiss($event)">
+        <ion-icon name="md-send"></ion-icon>
+      </button>
+
+      <button ion-button icon-only (click)="dismissAlert()">
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+<ion-content padding>
+  <div class="parent-div">
+    <!-- <ion-item>
+      <ion-textarea class="singleTextArea" [(ngModel)]="performanceValue" placeholder="">
+      </ion-textarea>
+    </ion-item> -->
+
+    <!-- <div padding-top class="remainingCharacters" *ngIf="navType!='addAnnouncement'">
+            {{maxLength - addForm.form.value.addText?.length}} characters left
+        </div> -->
+    <ion-item>
+      <ion-textarea class="singleTextArea" elasticTextArea [(ngModel)]="performanceValue" #inputToFocus placeholder="Enter text here">
+      </ion-textarea>
+    </ion-item>
+    <div class="mic-div">
+      <span (click)="startSpeech()" *ngIf="showMic" class="mic-container">
+        <ion-icon name="mic" class="mic-icon"></ion-icon>
+
+      </span>
+      <div *ngIf="showLoader" class="spinner-container">
+        <img src="assets/imgs/ZenDeavour/listening.gif" />
+      </div>
+    </div>
+  </div>
+
+</ion-content>

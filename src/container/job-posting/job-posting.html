@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-navbar>
+
+    <ion-title class="pageTitile">Jobs Posted</ion-title>
+  </ion-navbar>
+
+</ion-header>
+<ion-content>
+  <div class="jobs-wrapper">
+    <div class="jobs-list">
+
+      <div class="job-item" *ngFor="let item of jobsData" >
+        <div class="jobs-info-wrapper" (click)="goToDetailPage(item)">
+          <div class="job-icon">
+            <img src="assets/imgs/jobicon.svg">
+          </div>
+          <div class="job-info">
+            <div class="job-title">{{item.jobName}}</div>
+            <div class="job-info-item">
+              <div class="job-info-title">Job Code</div>
+              <div class="job-info-value">{{item.jobCode}}</div>
+            </div>
+            <div class="job-info-item">
+              <div class="job-info-title">Posted Date</div>
+              <div class="job-info-value">{{item.postedDate}}</div>
+            </div>
+            <div class="job-info-item">
+              <div class="job-info-title">Postion</div>
+              <div class="job-info-value">{{item.position}}</div>
+            </div>
+          </div>
+        </div>
+        <div class="applicants" (click)="goToApplicantsPage(item)">
+          <img class="file-icon" src="assets/imgs/information.svg">
+          <span>{{item.applicants}} Applicants </span>
+          <img src="assets/imgs/Arrow-forward-blue.svg">
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

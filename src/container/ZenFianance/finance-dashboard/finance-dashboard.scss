@@ -1,0 +1,165 @@
+finance-dashboard-page {
+
+    .download-icon {
+        font-size: 1.5em;
+        // padding: 8px;
+    }
+
+    .icon-styl {
+        width: 20px;
+    }
+    .flex-center {
+        display: flex;
+        align-items: center;
+    }
+    .width10 {
+        width: 10%;
+    }
+
+    .flex-space-between {
+        display: flex;
+        justify-content: space-between;
+        width: 90%;
+        align-items: center;
+    }
+    .grid-align {
+        display: grid;
+        grid-template-columns: auto auto;
+        column-gap: 3px;
+        row-gap: 3px;
+        padding: 8px;
+    }
+    .grid-tile {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        background-color: #fefefe2b;
+        border-radius: 4px;
+        padding: 10px;
+    }
+    .payslip-sec {
+        width: 85%;
+        display: flex;
+        justify-content: space-between;
+        /* padding: 0px 4px; */
+        padding-left: 6px;
+    }
+    .main-card {
+        border-radius: 0 0 16px 16px;
+        padding: 4px;
+        background: white;
+    }
+    .card-design {
+        margin: 8px;
+        background-image: linear-gradient(to right, #3dd47f, #00aab7);
+        // padding: 8px;
+        border-radius: 5px;
+    }
+    .finance-list-bg {
+        padding: 1px;
+    }
+    .year-heading {
+        padding: 10px;
+        font-size: 1.1em;
+    }
+    .list-item {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        border-bottom: 1px solid lightgray;
+        padding: 16px;
+    }
+    .list-icon {
+        width: 12%;
+    }
+    
+    .flex-clumn {
+        display: flex;
+        flex-direction: column;
+    }
+    .padding5 {
+        padding: 5px;
+    }
+    .colorwhite {
+        color: white;
+    }
+    .profile-pic {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        border: 2px solid #f0f8ff21;
+    }
+
+    .profile-pic-container {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+    }
+
+    .profilecard-header {
+        width: 10%;
+    }
+    .finance-header {
+        padding: 12px;
+        font-size: 1em;
+        font-weight: 700;
+        padding-bottom: 0px;
+    }
+    ion-select {
+        max-width: 100%;
+    }
+    .select-option.item-md {
+        background: none;
+        padding-left: 0;
+    }
+    .select-text {
+        color: white;
+        padding-right: 8px;
+    }
+    .select-md{
+        padding: 0;
+    }
+    .item-md.item-block .item-inner {
+        border-bottom: none;
+    }
+    .select-md .select-icon .select-icon-inner {
+        color: white;
+        left: 2px;
+    }
+    .padding2-5{
+        padding: 2px 5px;
+    }
+    .bg-color{
+        background-color: #F2F5F9;
+    }
+    .scroll-content{
+        background: #F2F5F9;
+    }
+    .list-card-styl{
+        border-radius: 10px;
+    }
+
+    .payroll_title {
+        font-size: 16px;
+        font-weight: bold;
+    }
+    .meeting-select {
+        background: #f0f8ff21;
+        padding: 8px;
+        border-radius: 8px;
+    }
+
+    .item-md {
+        background: transparent;
+        padding: 0px;
+    }
+
+    .item-md.item-block .item-inner {
+        padding-right: 0;
+    }
+    .disable-btn{
+        color: gray;
+    }
+
+}

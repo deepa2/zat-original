@@ -1,0 +1,36 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title class="pageTitile">{{pageTitle}} FAQs</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="presentOptions($event)">
+        <ion-icon name="more"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding-vertical>
+
+  <ion-spinner *ngIf="loading$ | async"></ion-spinner>
+
+  <ion-list *ngIf="!(loading$ | async)">
+    <ion-card class="faqDetailCard" *ngFor="let cardDetail of information">
+      <ion-row>
+        <ion-col class="quesLabel">Question</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col><span class="quesAns">{{cardDetail.count}}{{cardDetail.question}}</span></ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col class="ansLabel">Answer</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col><span class="quesAns">{{cardDetail.answer}}</span></ion-col>
+      </ion-row>
+    </ion-card>
+  </ion-list>
+
+</ion-content>

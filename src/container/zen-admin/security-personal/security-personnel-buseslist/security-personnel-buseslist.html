@@ -1,0 +1,90 @@
+<!--
+  Generated template for the SecurityPersonnelBuseslistPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>Buses</ion-title>
+        <ion-buttons end>
+            <button ion-button icon-only (click)="presentOptions($event)">
+                <ion-icon name="more"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="bus-search-conatiner">
+
+    <div>
+        <ion-card *ngFor="let item of busList" (click)="gotoBusDetails(item?.busId)">
+            <ion-card-content>
+
+                <div class="bus-list-raw1">
+                    <div class="bus-icon">
+                        <img src="assets/zenAdmin/bus-icon.svg" />
+                    </div>
+                    <div class="bus-number-width">
+                        <div class="bus-title-div">
+                            <span class="bus-name label-key">Bus</span>
+                        </div>
+                        <div class="common-alignmnt">
+                            <span class="bus-number label-value">{{item?.busNumber}}</span>
+                        </div>
+                    </div>
+                    <div class="available-seats">
+                        <img class="seatIcon" src="assets/zenAdmin/available_seats.svg">
+                        <span class="seats label-value">{{item?.reservedSeats ? item?.reservedSeats :
+                            '0'}}/{{item?.totalSeats}}</span>
+                    </div>
+                </div>
+
+                <div class="bus-list-raw2">
+                    <div class="bus-icon"></div>
+
+                    <div class="bus-title-div">
+                        <img class="small-icon" src="assets/zenAdmin/routeIcon.svg">
+                        <span class="route-title label-key">Route: </span>
+                        <span class="route-name label-value">{{item?.routeName}}</span>
+                    </div>
+                </div>
+
+                <div class="bus-list-raw3">
+                    <div class="bus-icon"></div>
+
+                    <div class="arrival-seats-parent">
+                        <div class="seats-container">
+                            <img class="small-icon" src="assets/zenAdmin/seaticon.svg">
+                            <span class="route-title label-key">Seats: </span>
+                            <span class="route-name label-value">{{item?.totalSeats}}</span>
+                        </div>
+                        <div class="arrival-container">
+                            <img class="arrival-icon" src="assets/zenAdmin/arrival-icon.svg">
+                            <span class="arrival-title label-key">Arrival</span>
+                        </div>
+                    </div>
+                </div>
+
+            </ion-card-content>
+
+            <div class="time-details-container" (click)="$event.stopPropagation()">
+                <div class="in-time-div">
+                    <span class="intimeTxt label-key">In Time: </span>
+                    <ion-datetime displayFormat="hh:mm A" placeholder="Time" (ionChange)="onTimeChange($event,item?.busId,'inTime',item?.outTime)"
+                        [(ngModel)]="item.inTime" class="label-value">
+                    </ion-datetime>
+                </div>
+                <div class="out-time-div">
+                    <span class="outTimeTxt label-key">Out Time: </span>
+                    <ion-datetime displayFormat="hh:mm A" placeholder="Time" (ionChange)="onTimeChange($event,item?.busId,'outTime',item?.inTime)"
+                        [(ngModel)]="item.outTime" class="label-value">
+                    </ion-datetime>
+                </div>
+            </div>
+        </ion-card>
+    </div>
+</ion-content>

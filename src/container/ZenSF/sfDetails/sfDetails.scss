@@ -1,0 +1,161 @@
+sfDetails-page {
+    .content {
+        background-color: #eff3f8;
+    }
+    .button-md {
+        text-transform: inherit;
+    }
+    .dig-deatils {
+        background-color: white;
+        padding: 10px;
+    }
+    .deails-align {
+        display: flex;
+        flex-direction: column;
+    }
+    .details-list {
+        display: flex;
+        flex-direction: column;
+        padding-top: 9px;
+    }
+    .grid-align {
+        display: grid;
+        grid-template-columns: 0.15fr 0.4fr 1fr;
+        padding: 6px;
+    }
+    .title-styl {
+        font-size: 1.1em;
+        font-weight: 600;
+    }
+    .btn-style {
+        background: #0e83c7;
+        color: white;
+        font-size: 1.2em;
+    }
+    .catg-styl {
+        font-size: 1em;
+        font-weight: 500;
+    }
+    // .toolbar-md {
+    //     padding: 0px !important;
+    //     min-height: 0px !important;
+    //     padding-top: 0 !important;
+    //     min-height: 56px !important;
+    // }
+    .align-center {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .commnets-section {
+        background: white;
+        margin: 10px;
+        border-radius: 6px;
+    }
+    .heading-styl {
+        padding: 10px;
+        font-size: 1.1em;
+    }
+    .icon-styl {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 5%;
+    }
+    .aling-center {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.1em;
+        padding: 0 0 10px 0;
+    }
+    .comments {
+        padding: 2px;
+    }
+    .manager-comments {
+        display: flex;
+        align-items: center;
+        width: 13%;
+    }
+    .manager {
+        width: 90%;
+    }
+    .manager-profile-pic {
+        width: 40px;
+        // height: 40px;
+        border-radius: 50%;
+    }
+    .manager-comments-section {
+        display: flex;
+        align-items: flex-start;
+        padding: 10px 0 0 10px;
+    }
+    .manager-comments-title {
+        display: flex;
+        align-items: center;
+        padding: 12px;
+        font-size: 16px;
+    }
+    .manager-name-section {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 3px 10px 0 0;
+    }
+    .manager-name {
+        padding-left: 8px;
+        font-size: 15px;
+        width: 50%;
+    }
+    .date-stamp {
+        border: 2px solid #000000;
+        padding: 5px;
+        border-radius: 3px;
+        width: 40%;
+        text-align: center;
+    }
+    .comments-title-text {
+        padding-left: 7px;
+    }
+    .manager-comments-text-view {
+        background: #f5f8fb;
+        border-radius: 5px;
+    }
+    .activity-completed {
+        padding: 10px 0 0 0;
+        display: flex;
+        align-items: center;
+    }
+    .manager-comment-text-section {
+        padding: 10px 10px 10px 2px;
+    }
+    .manager-comments-text {
+        padding: 10px;
+    }
+    .mark-as-complete {
+        padding: 10px;
+    }
+    .mark-as-complete-btn {
+        font-size: 1em;
+        padding: 15px;
+        height: 10px;
+        text-transform: inherit;
+    }
+    .padding15 {
+        padding: 15px;
+    }
+    .bullet {
+        width: 10px;
+        height: 10px;
+        background: #71f571;
+        margin-left: 3px;
+        border-radius: 50%;
+    }
+    .completed-styl {
+        padding-left: 12px;
+        font-weight: 700;
+    }
+    .comment-updated-date{
+        padding: 10px 15px 0 20px;
+    }
+}

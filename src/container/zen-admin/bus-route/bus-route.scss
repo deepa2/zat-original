@@ -1,0 +1,59 @@
+page-bus-route {
+    ion-title {
+        width: 100%;
+        display: inline-block;
+    }
+    .left-header {
+        width: 90%;
+        display: inline-block;
+    }
+    .right-header {
+        width: 5%;
+        padding-top: 5px;
+        display: inline-block;
+    }
+    .main-container {
+        background: #dfe5f1;
+        padding: 0px;
+    }
+    .segment-section{
+        background: white;
+    }
+    ion-card {
+        width: 100%;
+        display: flex;
+    }
+    .route-icon {
+        width: 18%;
+        padding:8px 0px 8px 5px; 
+    }
+    .route-img {
+        height: 50px;
+        width: 50px;
+    }
+    .route-info {
+        width: 75%;
+    }
+    .route-title {
+        padding-top: 15px;
+    }
+    .Route {
+        font-size: 1em;
+        color: grey;
+    }
+    .city-name {
+        font-size: 1.3em;
+        color: black;
+        font-weight: 600;
+    }
+    .small-arrow {
+        width: 4%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .arrow-icon {
+        height: 15px;
+        width: 15px;
+    }
+}

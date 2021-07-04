@@ -1,0 +1,92 @@
+<!-- Generated template for the JobFilterComponent component -->
+<ion-header>
+  <ion-navbar>
+    <ion-buttons start>
+      <button ion-button icon-only>
+
+      </button>
+    </ion-buttons>
+    <ion-title center>
+      <img class="back-btn" (click)="dismiss()" src="assets/imgs/back-arrow.svg" />
+      <span class="titleMargin">Filter</span>
+
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="resetAll()" class="reset">
+        Reset
+      </button>
+      <button ion-button icon-only class="apply" (click)="applyFilter()">
+        Apply
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+<div class="mainConatiner" *ngIf="isDataavailable">
+  <div class="filterType">
+    <div class="card-box"
+      [ngClass]="{'bgSkills':filterType=='skills','bgBu':filterType=='bu','bgCity':filterType=='city','bgPostedDate':filterType=='postedDate'}"
+      *ngFor="let filterType of filterjob" (click)="updateFilterType(filterType)">
+      <img src="assets/imgs/landing-mask.svg" class="bgImg">
+      <div class="flexItem">
+        <img class="imgStyle" *ngIf="filterType == 'skills'"
+          src="assets/icon/dashboard-icons/Zenrich-filter-skills.svg">
+        <img class="imgStyle" *ngIf="filterType == 'bu'" src="assets/icon/dashboard-icons/Zenrich-filter-bu.svg">
+        <img class="imgStyle" *ngIf="filterType == 'city'"
+          src="assets/icon/dashboard-icons/Zenrich-filter-location.svg">
+        <img class="imgStyle" *ngIf="filterType == 'postedDate'"
+          src="assets/icon/dashboard-icons/Zenrich-filter-calendar.svg">
+        <span class="textStyle">
+          {{filterType}}
+        </span>
+
+      </div>
+
+    </div>
+  </div>
+  <div class="filterData">
+    <div *ngIf="selectedtype =='skills'">
+      <div class="text-box-conatiner">
+        <ion-input type="text" placeholder = 'Search skills' [(ngModel)]="searchValue" (ngModelChange)="searchText()"></ion-input>
+      </div>
+      <div class="filterItem" *ngFor="let skillsValue of  skillsArray">
+        <ion-checkbox class="checboxStyle" (ionChange)="changed(skillsValue)" [(ngModel)]="skillsValue.checked">
+        </ion-checkbox>
+        <span class="checkBoxText">{{skillsValue.value}}</span>
+      </div>
+      <div class="no-data-msg" *ngIf="skillsArray.length == 0">No item found </div>
+    </div>
+    <div *ngIf="selectedtype =='bu'">
+      <div class="filterItem" *ngFor="let skillsValue of  buArray; index as i">
+        <ion-checkbox class="checboxStyle" (ionChange)="changed(skillsValue)" [(ngModel)]="skillsValue.checked">
+        </ion-checkbox>
+        <span class="checkBoxText">{{skillsValue.value}}</span>
+      </div>
+    </div>
+    <div *ngIf="selectedtype =='city'">
+      <div class="filterItem" *ngFor="let skillsValue of  cityArray; index as i">
+        <ion-checkbox class="checboxStyle" (ionChange)="changed(skillsValue)" [(ngModel)]="skillsValue.checked">
+        </ion-checkbox>
+        <span class="checkBoxText">{{skillsValue.value}}</span>
+      </div>
+    </div>
+    <div *ngIf="selectedtype =='postedDate'">
+      <ion-item>
+        <ion-label>
+          Start Date
+        </ion-label>
+        <ion-datetime displayFormat="MMM DD, YYYY" (ionChange)="changeDate(startDate,'startDate')"
+          [(ngModel)]="startDate" [min]="startDate" [max]="endDate"></ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-label>
+          End Date
+        </ion-label>
+        <ion-datetime displayFormat="MMM DD, YYYY" (ionChange)="changeDate(endDate,'endDate')" [(ngModel)]="endDate"
+          [min]="startDate" [max]="endDate"></ion-datetime>
+      </ion-item>
+    </div>
+  </div>
+
+</div>
+</ion-content>

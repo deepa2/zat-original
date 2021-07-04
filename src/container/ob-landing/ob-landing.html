@@ -1,0 +1,45 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title *ngIf="!finalSubmit">Welcome to Zensar</ion-title>
+    <ion-title *ngIf="finalSubmit">Submit</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="presentOptions($event)">
+        <ion-icon name="more"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <div class="spinner-container">
+    <ion-spinner class="loader" *ngIf="loading$ | async"></ion-spinner>
+  </div>
+
+
+  <div *ngIf="!(loading$ | async)">
+
+    <p class="obText" [innerHTML]="this.welcomeMessage?.pageText | sanitizeHtml">
+    </p>
+
+    <ion-row *ngIf="finalSubmit">
+      <ion-col col-1>
+        <ion-checkbox [(ngModel)]="submit"></ion-checkbox>
+      </ion-col>
+      <ion-col class="agreementText" col-11>I agree to all</ion-col>
+    </ion-row>
+
+    <div *ngIf="finalSubmit && submit" class="button-center">
+      <button ion-button color="light"  class="startObBtn" round (click)="completeOnboarding()">Finish Onboarding</button>
+    </div>
+
+    <div *ngIf="!finalSubmit" class="button-center">
+      <button ion-button color="light" class="startObBtn" round (click)="goToOBDashboard()">Start Onboarding</button>
+    </div>
+
+  </div>
+
+</ion-content>

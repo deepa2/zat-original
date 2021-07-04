@@ -1,0 +1,64 @@
+courses-list {
+  // .withdraw {
+  //   padding: 8px;
+  //   background: #e4f3ff;
+  //   border-radius: 15px;
+  // }
+  // details {
+  //   border-radius: 5px;
+  //   margin: 5px 8px 8px;
+  // }
+
+  // summary::-webkit-details-marker {
+  //   display: none;
+  // }
+
+  // summary {
+  //   position: relative;
+  //   margin: 0px;
+  //   padding: 10px;
+  //   border-radius: 5px;
+  //   background-color: #e4f3ff;
+  // }
+  // .detail-cont {
+  //   border: 1px solid #e4f3ff;
+  //   padding: 12px;
+  //   border-radius: 0 0 5px 5px;
+  //   border-top: none;
+  // }
+
+  // summary:after {
+  //   content: " ";
+  //   color: black;
+  //   position: absolute;
+  //   right: 5%;
+  //   width: 8px;
+  //   height: 8px;
+  //   border: solid #676666;
+  //   border-width: 0 2px 2px 0;
+  //   padding: 0px;
+  //   transform: rotate(45deg);
+  //   top: 40%;
+  // }
+
+  // details[open] summary:after {
+  //   top: 45%;
+  //   transform: rotate(-135deg);
+  // }
+
+  // .card-background {
+  //   background: #f7f6f6;
+  //   border-bottom: 1px solid #cec7c7;
+  // }
+  .summary-header {
+    padding: 4px 5px;
+    border-radius: 5px;
+    background-color: $chat-contentBg;
+    display: flex;
+    align-items: center;
+  }
+
+  .dap-cont {
+    width: 88%;
+  }
+}

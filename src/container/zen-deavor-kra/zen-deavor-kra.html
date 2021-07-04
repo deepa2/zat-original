@@ -1,0 +1,805 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>
+            <div class="score-container">
+                <div>{{kraType}} Appraisal</div>
+            </div>
+        </ion-title>
+        <ion-buttons end (click)="openTeamMeanModal()" *ngIf="kraId !='0'">
+
+            <div class="totalScore" *ngIf="(kraType == 'Mid-Term' || kraType == 'Annual')&& showWhenData=='KRA'">Score: {{showGlobalScore}}
+            </div>
+
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+<ion-content class="padding8">
+    <!-- KRA toggle button -->
+    <div class="justify-content-space-btw overflowX header-fixed">
+
+        <div class="display-inline kra-title-flex" [ngClass]="{'activeColor': kraId == kraList.kraId}" *ngFor="let kraList of KRADetails.kraStatusList" (click)="!KRADetails.isPreview && userRole=='1'?$event.stopPropagation():_getSelectedData(kraList.kraId,kraList.title,kraList.kraWeightage,kraList.subKraId)">
+            <img *ngIf="(kraList.kraId == 0 || kraList.kraId == -1 || kraList.kraId == -2)&& kraId != kraList.kraId" class="icon-border imgPadding" [src]=kraList.icon [ngClass]="{'greenClass':kraList.status == 'completed'}" />
+            <img *ngIf="(kraList.kraId == 0 || kraList.kraId == -1 || kraList.kraId == -2) && kraId == kraList.kraId" class="icon-border imgPadding" [src]=kraList.selectedIcon />
+            <!-- <img class="icon-border" [src]=kraList.icon /> -->
+            <span class="icon-border" [ngClass]="{'greenClass':kraList.status == 'completed'}" [hidden]="(kraList.kraId == 0 || kraList.kraId == -1 || kraList.kraId == -2)">{{kraList.kraId}}</span>
+
+
+            <!-- condition for adding goal icon when goals are completed -->
+            <!-- <span class="icon-border" [hidden]></span> -->
+            <span class="kra-title" [ngClass]="{'font-color-blue': kraId == kraList.kraId}">{{kraList.title}}</span>
+        </div>
+    </div>
+
+    <!-- display when home is selected -->
+    <div class="bgColor-white" *ngIf="showWhenData =='Home'" [hidden]="isServiceCallOn">
+
+
+
+
+        <ion-card padding>
+
+            <div *ngIf="comingFromManager" (click)="goToProfile()" style="text-align: -webkit-right;">
+                <span class="user-profile">
+                    <span>View Profile</span>
+                <img src="assets/imgs/userprofile-arrow.svg">
+                </span>
+            </div>
+
+            <ion-row *ngFor="let fields of KRADetails.fieldDetails" class="rowCls">
+                <ion-col col-6 class="colCls">
+                    <span class="mrginRt">
+                        <img class="width80" class="imgSize" [src]=fields.icon />
+                    </span>
+                    <span class="font-weight500">{{fields.title}}</span>
+                </ion-col>
+                <ion-col col-6>
+                    <span class="color-gray" [ngClass]="{viewConsultation: fields.title=='Consultation' && fields.showLink == true}" (click)="gotoViewConsultation(fields.title,fields.showLink)">{{fields.titleValue}}</span>
+                    <span *ngIf="fields.titleValue2" class="color-gray">{{fields.titleValue2}}</span>
+                </ion-col>
+            </ion-row>
+        </ion-card>
+
+        <!-- tracker content -->
+        <ion-card style="padding: 0 0 23px 0;">
+            <div class="justify-spac-bt-align-cent padding10-20 font-weight500 fontSize1p1">
+                <span class="align-cont-cent">
+                    <img class="status-icon mrginRt" src="assets/imgs/annual-status.svg" />
+                    <span>Status</span>
+                </span>
+                <div class="statusValues">
+                    <span class="alertCustomCss" (click)="goToQuestion()">Need Help</span>
+                    <span class="kraGuideline" (click)="openGuidelinesPdf()" *ngIf="kraType == 'Mid-Term' || kraType == 'Annual'">ZenD
+                        Manual</span>
+                </div>
+            </div>
+            <div class="padng0to5">
+                <ion-row class="align-item-center margin0-5 position-relative" *ngFor="let activity of KRADetails.kraActivity" [ngClass]="{'completed-status': (activity.colorCode == 'green'),'pending-status': (activity.colorCode == 'red') ,'incomplete-status': (activity.colorCode == 'grey')}">
+                    <span class="tracker center">
+                        <!-- [ngStyle]="{'border-color': activity.colorCode}" -->
+                        <div class="tracker-inner-circle"></div>
+                        <!-- [ngStyle]="{'background': activity.colorCode}" -->
+                    </span>
+                    <ion-col col-10>
+
+                        <div class="marginBtm">{{activity.status}}</div>
+                        <div class="color-blue fontSize9">{{activity.statusValue}}</div>
+                    </ion-col>
+                </ion-row>
+            </div>
+        </ion-card>
+    </div>
+
+    <!-- KRA form which directs associate to fill KRAs sequentially -->
+    <div *ngIf="showWhenData =='KRA' || kraId=='-2'" class="padding10 bttmMargin" [hidden]="isServiceCallOn">
+        <div *ngFor="let fields of KRADetails.fieldDetails; index as i ">
+            <form #KRAForm="ngForm" (ngSubmit)="saveKRA(false)">
+
+                <div class="margin-bottom4per">
+                    <ion-label *ngIf="fields.bindWith !='midTerm' && fields.bindWith !='annual'">{{fields.title}}<img class="astrick" src="assets/imgs/asterisk.svg" /></ion-label>
+                    <ion-input *ngIf="fields.fieldType=='text' && fields.bindWith !='midTerm' && fields.bindWith !='annual'" readonly class="borderBottom" placeholder={{fields.titleValue}}>
+                    </ion-input>
+                    <ion-textarea class="kraTextarea" *ngIf="fields.fieldType=='textArea' && fields.bindWith !='midTerm' && fields.bindWith !='annual'" readonly class="borderBottom textColor" [innerHtml]=urlify(fields.titleValue)></ion-textarea>
+                </div>
+                <!-- Annual & Mid term FLoor /Target section -->
+                <div *ngIf="kraType == 'Mid-Term' ||  kraType == 'Annual'">
+                    <ion-row *ngIf="fields.bindWith=='midTerm' ">
+                        <ion-col>
+                            <div class="margin-bottom4per">
+                                <ion-label>{{midtermfloorData?.title}}
+
+                                    <!-- <img class="astrick" src="assets/imgs/asterisk.svg" /> -->
+                                    <span class="margin10">
+                                        <ion-icon [tooltip]="midtermfloorData.tooltip" positionV="bottom"
+                                            hideOthers="true" [event]="tooltipEvent" class="formButtonIcon" clear
+                                            color="dark" item-right>
+                                            <img class="info-icon" src="assets/imgs/info.svg" />
+                                        </ion-icon>
+                                    </span>
+                                </ion-label>
+
+                                <ion-input *ngIf="midtermfloorData.fieldType=='text'" readonly class="borderBottom" placeholder={{midtermfloorData.titleValue}}>
+                                </ion-input>
+                            </div>
+
+                        </ion-col>
+                        <ion-col>
+                            <div class="margin-bottom4per">
+                                <ion-label>{{midtermTargetData?.title}}
+                                    <!-- <img class="astrick" src="assets/imgs/asterisk.svg" /> -->
+                                    <span class="margin10">
+                                        <ion-icon [tooltip]="midtermTargetData.tooltip" positionV="bottom"
+                                            hideOthers="true" [event]="tooltipEvent" class="formButtonIcon" clear
+                                            color="dark" item-right>
+                                            <img class="info-icon" src="assets/imgs/info.svg" />
+                                        </ion-icon>
+                                    </span>
+
+                                </ion-label>
+
+                                <ion-input *ngIf="midtermTargetData.fieldType=='text'" readonly class="borderBottom" placeholder={{midtermTargetData.titleValue}}>
+                                </ion-input>
+                            </div>
+                        </ion-col>
+                    </ion-row>
+
+                    <ion-row *ngIf="fields.bindWith=='annual'">
+                        <ion-col>
+                            <div class="margin-bottom4per">
+                                <ion-label>{{endtermfloorData.title}}
+                                    <img class="astrick" src="assets/imgs/asterisk.svg" />
+
+                                    <span class="margin20px">
+                                        <ion-icon [tooltip]="endtermfloorData.tooltip" positionV="bottom"
+                                            hideOthers="true" [event]="tooltipEvent" class="formButtonIcon" clear
+                                            color="dark" item-right>
+                                            <img class="info-icon" src="assets/imgs/info.svg" />
+                                        </ion-icon>
+                                    </span>
+                                </ion-label>
+
+                                <ion-input *ngIf="endtermfloorData.fieldType=='text'" readonly class="borderBottom" placeholder={{endtermfloorData.titleValue}}>
+                                </ion-input>
+
+                            </div>
+                        </ion-col>
+                        <ion-col>
+                            <div class="margin-bottom4per">
+                                <ion-label>{{endtermTargetData.title}}<img class="astrick" src="assets/imgs/asterisk.svg" />
+                                    <span class="margin20px">
+                                        <ion-icon [tooltip]="endtermTargetData.tooltip" positionV="bottom"
+                                            hideOthers="true" [event]="tooltipEvent" class="formButtonIcon" clear
+                                            color="dark" item-right>
+                                            <img class="info-icon" src="assets/imgs/info.svg" />
+                                        </ion-icon>
+                                    </span>
+                                </ion-label>
+
+                                <ion-input *ngIf="endtermTargetData.fieldType=='text'" readonly class="borderBottom" placeholder={{endtermTargetData.titleValue}}>
+                                </ion-input>
+                            </div>
+                        </ion-col>
+                    </ion-row>
+
+                </div>
+            </form>
+        </div>
+
+
+
+
+        <div class="score-card" style="display: flex; flex-direction: row;" *ngIf="showWhenData=='KRA' && kraType == 'Annual' && userRole == '1'">
+            <div class="fontSize1p5">Score :</div>
+            <div class="font1em padding-left7">{{kraScore}}/{{kraWeightage}}</div>
+        </div>
+
+        <form #ratingForm="ngForm" (ngSubmit)="saveKRA(false)">
+            <!-- Save rating as Associate(Associate's view)  -->
+            <div class="header-cont margin-bottom3per" *ngIf="(showWhenData =='KRA' && kraId !='-2')">
+                <div class="header-kra fontSize1p5 font-weight500 font-color-blue">Self Ratings</div>
+                <div class="padding10" *ngFor="let associate of KRADetails?.associatesFeildList; index as i" [hidden]="!associate.isShow">
+
+                    <div class="label-Icon">
+                        <ion-label class="fontSize1p4" [ngClass]="{'greyColor':userRole == '2' || !associate?.isEditable}">
+                            {{associate.title}}<img class="astrick" src="assets/imgs/asterisk.svg" />
+                        </ion-label>
+                        <ion-icon *ngIf="associate.tooltip" [tooltip]="associate.tooltip" positionV="bottom" hideOthers="true" [event]="tooltipEvent" class="formButtonIcon" clear color="dark" item-right>
+                            <img class="info-icon" src="assets/imgs/info.svg" />
+                        </ion-icon>
+                    </div>
+
+                    <ion-input *ngIf="associate.fieldType=='text' && associate.regEx!=null" #achievRef type="number" [readonly]="!associate?.isEditable || isManagerOption=='true' || isReviewerOption=='true'" class="form-control borderBottom" #achievRef="ngModel" required
+                        [(ngModel)]="associate.titleValue" [ngModelOptions]="{standalone: true}" (ionBlur)="displayScore($event,associate.titleValue)" [ngClass]="{'greyColor':userRole == '2' || !associate?.isEditable}">
+                    </ion-input>
+
+                    <ion-input *ngIf="associate.fieldType=='text'  && associate.regEx==null" #achievRef [readonly]="!associate?.isEditable || isManagerOption=='true' || isReviewerOption=='true'" class="form-control borderBottom" #achievRef="ngModel" required [(ngModel)]="associate.titleValue"
+                        [ngModelOptions]="{standalone: true}" [ngClass]="{'greyColor':userRole == '2' || !associate?.isEditable}">
+                    </ion-input>
+
+                    <!-- <span  *ngIf="name.touched || name.dirty">
+            {{associate.title}} is required
+          </span> -->
+
+                    <ion-textarea *ngIf="associate.fieldType == 'textArea'" [readonly]="!associate?.isEditable || isManagerOption=='true' || isReviewerOption=='true'" #achievRef class="form-control borderBottom" #achievRef="ngModel" required [(ngModel)]="associate.titleValue"
+                        [ngModelOptions]="{standalone: true}" [ngClass]="{'greyColor':userRole == '2' || !associate?.isEditable}" (ionFocus)="associate?.isEditable ? expandTextArea(associate.title, associate.titleValue, i, 'associatesFeildList', 'titleValue') : null">
+                    </ion-textarea>
+                </div>
+
+                <!--   -->
+                <!-- upload attachment -->
+
+                <div *ngIf="(kraId != '1' && kraType=='Mid-Term') ||  (kraId != '1' && kraType=='Annual')">
+                    <div class="attachContainer" *ngIf="(userRole == '1' && attachmentList)  || (userRole == '2' && attachmentList?.length > 0) || (userRole == '3' && attachmentList?.length > 0)">
+                        <div class="attachments">
+                            <div>Upload Document</div>
+                            <div *ngIf="userRole=='1'" class="upload" (click)="pickFile($event)">
+                                <ion-icon name="cloud-upload"></ion-icon> Upload
+                            </div>
+                        </div>
+
+                        <ion-row class="attach-color padding5 align-item-flex-start" *ngFor="let attachements of attachmentList; index as i">
+                            <ion-col col-5>File {{i+1}} </ion-col>
+                            <ion-col (click)="openAsset(attachements.fileUrl)" class="align-cont-cent"><img class="preview-icon" src="assets/imgs/attachment_preview.svg" />Preview
+                            </ion-col>
+                            <ion-col *ngIf="userRole=='1'" (click)="deleteUploadedAttachment(attachements)">
+                                <ion-icon name="trash"></ion-icon> Delete
+                            </ion-col>
+                        </ion-row>
+
+                        <ion-row class="attach-color padding5 center" *ngIf="attachmentList?.length<=0">
+                            <span class="color-blue">No Attachment Available</span>
+                            <div style="padding: 5px; font-size: .8em;">Please upload (JPEG/JPG/PNG/PDF/XLS/XLSX/MSG/EML) & size should not exceed 5 MB. </div>
+                        </ion-row>
+                    </div>
+                </div>
+            </div>
+
+            <div class="score-card" *ngIf="showWhenData=='KRA' && kraType == 'Annual' && userRole == '2'" style="display: flex; flex-direction: row;">
+                <div class="fontSize1p5 alertCustomCss">Score :</div>
+                <div class="font1em padding-left7">{{kraScore}}/{{kraWeightage}}</div>
+            </div>
+
+            <!-- 1up Manager's appraisal rating section(Manager's rating to associates) -->
+            <div class="header-cont margin-bottom3per" *ngIf="(KRADetails?.isManagerOption || KRADetails?.isReviewerOption) && 
+      showWhenData =='KRA' &&  kraId !='-2'">
+                <div class="header-kra fontSize1p5 font-weight500 font-color-blue">Appraiser Rating</div>
+                <div *ngFor="let manager of KRADetails?.managerFeildList;index as managerIndex" class="padding10">
+                    <div class="label-Icon">
+                        <ion-label class="fontSize1p4" [ngClass]="{'greyColor':!manager?.isEditable}">{{manager.title}}
+                            <img class="astrick" src="assets/imgs/asterisk.svg" />
+                        </ion-label>
+                        <ion-icon *ngIf="manager.tooltip" [tooltip]="manager.tooltip" positionV="bottom" hideOthers="true" [event]="tooltipEvent" class="formButtonIcon" clear color="dark" item-right>
+                            <img class="info-icon" src="assets/imgs/info.svg" />
+                        </ion-icon>
+                    </div>
+                    <ion-input *ngIf="manager?.fieldType=='text' && manager.regEx!=null" class="form-control borderBottom" [readonly]="!manager?.isEditable" #managerRef type="number" [(ngModel)]="manager.titleValue" [ngModelOptions]="{standalone: true}" #managerRef="ngModel"
+                        (ionBlur)="displayScore($event,manager.titleValue)" [ngClass]="{'greyColor':!manager?.isEditable}">
+                    </ion-input>
+
+                    <ion-input *ngIf="manager?.fieldType=='text' && manager.regEx==null" class="form-control borderBottom" #managerRef [readonly]="!manager?.isEditable" [(ngModel)]="manager.titleValue" [ngModelOptions]="{standalone: true}" #managerRef="ngModel" [ngClass]="{'greyColor':!manager?.isEditable}">
+                    </ion-input>
+
+                    <ion-textarea *ngIf="manager?.fieldType=='textArea'" class="form-control borderBottom" #managerRef [(ngModel)]="manager.titleValue" [readonly]="!manager?.isEditable" [ngModelOptions]="{standalone: true}" #managerRef="ngModel" [ngClass]="{'greyColor':!manager?.isEditable}"
+                        (ionFocus)="manager?.isEditable ? expandTextArea(manager.title, manager.titleValue, managerIndex, 'managerFeildList', 'titleValue',manager?.isEditable) : null">
+                    </ion-textarea>
+                </div>
+            </div>
+
+            <div class="score-card" *ngIf="showWhenData=='KRA' && kraType == 'Annual' && userRole == '3'" style="display: flex; flex-direction: row;">
+                <div class="fontSize1p5 alertCustomCss">Score :</div>
+                <div class="font1em padding-left7">{{kraScore}}/{{kraWeightage}}</div>
+            </div>
+
+            <!-- 2ndUp Manager's/Reviewer's appraisal rating section(Manager's rating to associates)-->
+            <div class="header-cont" *ngIf="(KRADetails.isReviewerOption && showWhenData =='KRA'&& kraId !='-2')">
+                <div class="header-kra fontSize1p5 font-weight500 font-color-blue">Reviewer Rating</div>
+                <div *ngFor="let reviewer of KRADetails?.reviewerFieldList; index as reviewerIndex " class="padding10">
+                    <div class="label-Icon">
+                        <ion-label class="fontSize1p4">{{reviewer.title}} <img class="astrick" src="assets/imgs/asterisk.svg" />
+                        </ion-label>
+                        <ion-icon *ngIf="reviewer.tooltip" [tooltip]="reviewer.tooltip" positionV="bottom" hideOthers="true" [event]="tooltipEvent" class="formButtonIcon" clear color="dark" item-right>
+                            <img class="info-icon" src="assets/imgs/info.svg" />
+                        </ion-icon>
+                    </div>
+                    <ion-input *ngIf="reviewer.fieldType=='text' && reviewer.regEx!=null" [readonly]="!reviewer.isEditable" class="form-control borderBottom" #managerRef type="number" [(ngModel)]="reviewer.titleValue" [ngModelOptions]="{standalone: true}" #managerRef="ngModel"
+                        (ionBlur)="displayScore($event,reviewer.titleValue)" [ngClass]="{'greyColor':!reviewer?.isEditable}">
+                    </ion-input>
+
+                    <ion-input *ngIf="reviewer.fieldType=='text' && reviewer.regEx==null" [readonly]="!reviewer.isEditable" class="form-control borderBottom" #managerRef [(ngModel)]="reviewer.titleValue" [ngModelOptions]="{standalone: true}" #managerRef="ngModel" [ngClass]="{'greyColor':!reviewer?.isEditable}">
+                    </ion-input>
+
+                    <ion-textarea *ngIf="reviewer.fieldType=='textArea'" class="form-control borderBottom" #managerRef [(ngModel)]="reviewer.titleValue" [ngModelOptions]="{standalone: true}" #managerRef="ngModel" (ionFocus)="reviewer.isEditable ? expandTextArea(reviewer.title, reviewer.titleValue, reviewerIndex, 'reviewerFieldList', 'titleValue') : null">
+                    </ion-textarea>
+                </div>
+            </div>
+
+            <div *ngIf="kraId=='-2'">
+                <!-- showing competency -->
+                <div *ngIf="KRADetails?.competencyFieldList" class="compentency-container">
+                    <div class="container-box">
+                        <div class="competenct-title">
+                            <img [src]="KRADetails?.competencyFieldList.icon" class="img-style">
+                            <span class="compentency-container pd-5">{{KRADetails?.competencyFieldList.value}}</span>
+                        </div>
+                        <ion-icon *ngIf="KRADetails?.competencyFieldList.toolTip" [tooltip]="KRADetails?.competencyFieldList.toolTip" positionV="bottom" hideOthers="true" [event]="tooltipEvent" clear color="dark">
+                            <img class="info-icon" src="assets/imgs/info.svg" />
+                        </ion-icon>
+
+
+                    </div>
+
+                    <!-- list of competency -->
+                    <div *ngFor="let competencyItem of KRADetails?.competencyFieldList.keyValueList; i as index" class="mr-top" [ngClass]="{'openConatiner':competencyItem?.isOpen, 'invalid-container': ((isSaveSummaryCallsed && (!competencyItem.associateFieldList.titleValue ||!competencyItem.appraiserFieldList.titleValue ) ) && competencyItem?.isOpen)}">
+                        <div class="competency-details-container" (click)="toggleAccordian(competencyItem, i)" [ngClass]="{'close-container':!competencyItem?.isOpen}">
+                            <span>{{competencyItem.title}}</span>
+                            <span [ngClass]="{'rotate-icon': competencyItem?.isOpen}"><img class="faq-icon"
+                                    src="assets/imgs/exapnd-collapse.svg"></span>
+
+                        </div>
+
+                        <div class="competency-details" [hidden]="!competencyItem?.isOpen">
+                            <div class="competency-subtitle mr-6">
+                                <img class="img-style" [src]="competencyItem.icon">
+                                <span class="pd-5">{{competencyItem.subTitle}}</span>
+                            </div>
+                            <div *ngIf="competencyItem.associateFieldList; i as index" class="compentency-container mr-6">
+                                <div class="user-competency-details">
+                                    <div class="competency-subtitle">
+                                        <img class="user-pic" [src]="competencyItem.associateFieldList.icon">
+                                        <span class="pd-5">{{competencyItem.associateFieldList.title}}</span>
+                                    </div>
+                                    <ion-select *ngIf="competencyItem.associateFieldList.isEditable" placeholder="Select Value" class="competencySelect" [name]="competencyItem.id" [(ngModel)]="competencyItem.associateFieldList.titleValue" (ngModelChange)="selectedCompetency($event,competencyItem.id)">
+                                        <ion-option value={{item.id}} *ngFor="let item of competencyItem.associateFieldList.lov">
+                                            {{item.title}}</ion-option>
+                                    </ion-select>
+                                    <div class="selectedValue" *ngIf="!competencyItem.associateFieldList.isEditable">
+                                        {{competencyItem.associateFieldList.titleValue2}}</div>
+                                </div>
+                            </div>
+                            <div *ngIf="competencyItem.appraiserFieldList" class="compentency-container">
+                                <div class="user-competency-details">
+                                    <div class="competency-subtitle">
+                                        <img class="user-pic" [src]="competencyItem.appraiserFieldList.icon">
+                                        <span class="pd-5">{{competencyItem.appraiserFieldList.title}}</span>
+                                    </div>
+
+                                    <ion-select *ngIf="competencyItem.appraiserFieldList.isEditable" placeholder="Select Value" class="competencySelect" [name]="competencyItem.id" [(ngModel)]="competencyItem.appraiserFieldList.titleValue" (ngModelChange)="selectedCompetency($event,competencyItem.id)">
+                                        <ion-option value={{item.id}} *ngFor="let item of competencyItem.appraiserFieldList.lov">
+                                            {{item.title}}</ion-option>
+                                    </ion-select>
+                                    <div class="selectedValue" *ngIf="!competencyItem.appraiserFieldList.isEditable">
+                                        {{competencyItem.appraiserFieldList.titleValue2}}</div>
+                                </div>
+                            </div>
+
+
+                            <div *ngIf="competencyItem.defination" class="mr-6">
+                                <div class="competency-subtitle">
+                                    <img class="img-style" [src]="competencyItem.defination.icon">
+                                    <span class="pd-5">{{competencyItem.defination.value}}</span>
+                                </div>
+                                <div class="mr-3" *ngFor="let behaviourItem of competencyItem.defination.keyValueList">
+                                    {{behaviourItem}}
+                                </div>
+                            </div>
+
+                            <div *ngIf="competencyItem.behavoiurs" class="mr-6">
+                                <div class="competency-subtitle">
+                                    <img class="img-style" [src]="competencyItem.behavoiurs.icon">
+                                    <span class="pd-5">{{competencyItem.behavoiurs.value}}</span>
+                                </div>
+                                <!-- <ul>
+                  <li class="mr-3" *ngFor="let behaviourItem of competencyItem.behavoiurs.keyValueList">
+                    {{behaviourItem}}
+                  </li>
+                </ul> -->
+                                <div class="mr-3" *ngFor="let behaviourItem of competencyItem.behavoiurs.keyValueList">
+                                    - {{behaviourItem}}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="error mr-6" [hidden]="!competencyItem?.associateFieldList" *ngIf="isSaveSummaryCalled && !competencyItem?.associateFieldList?.titleValue">*Field is required
+                        </div>
+                        <div class="error mr-6" [hidden]="!competencyItem?.appraiserFieldList" *ngIf="isSaveSummaryCalled && !competencyItem?.appraiserFieldList?.titleValue">*Field is required
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="section-container">
+                    <div class="section-headings">
+                        <img src="assets/imgs/career-apiration.svg">
+                        <span class="pd-5">Career Aspirations</span>
+                    </div>
+                    <div class="goal-container" *ngFor="let aspirations of KRADetails?.goalFeildList;index as goalIndex">
+                        <div>
+                            <ion-label *ngIf="aspirations?.isShow" class="goals-label">{{aspirations?.title}}
+                                <img *ngIf="!(aspirations.title=='Appraisee Comment')" class="astrick" src="assets/imgs/asterisk.svg" />
+                            </ion-label>
+                        </div>
+                        <ion-textarea class="fontSize9 text-black" *ngIf="aspirations.fieldType=='textArea'  && aspirations.bindWith=='careerAspiration1'" #aspiration1Ref required [(ngModel)]="aspirations.titleValue" [ngModelOptions]="{standalone: true}" #aspiration1Ref="ngModel"
+                            class="goals-textarea" [readonly]="!aspirations?.isEditable" (ionFocus)="aspirations?.isEditable ? expandTextArea(aspirations.title, aspirations.titleValue, goalIndex, 'goalFeildList', 'titleValue') : null" [ngClass]="{'greyColor':!aspirations?.isEditable}">
+                        </ion-textarea>
+
+                        <ion-textarea class="fontSize9 text-black" *ngIf="aspirations.fieldType=='textArea' && aspirations.bindWith=='careerAspiration2'" #aspiration1Ref required [(ngModel)]="aspirations.titleValue" [ngModelOptions]="{standalone: true}" #aspiration1Ref="ngModel"
+                            class="goals-textarea" [readonly]="!aspirations?.isEditable" (ionFocus)="aspirations?.isEditable ? expandTextArea(aspirations.title, aspirations.titleValue, goalIndex, 'goalFeildList', 'titleValue') : null" [ngClass]="{'greyColor':!aspirations?.isEditable}"></ion-textarea>
+
+                        <ion-textarea class="fontSize9 text-black" *ngIf="aspirations.fieldType=='textArea' && aspirations.bindWith=='careerAspiration3'" #aspiration1Ref [(ngModel)]="aspirations.titleValue" [ngModelOptions]="{standalone: true}" #aspiration1Ref="ngModel" class="goals-textarea"
+                            [readonly]="!aspirations?.isEditable" (ionFocus)="aspirations?.isEditable ? expandTextArea(aspirations.title, aspirations.titleValue, goalIndex, 'goalFeildList', 'titleValue') : null" [ngClass]="{'greyColor':!aspirations?.isEditable}"></ion-textarea>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mobility constraint section -->
+
+            <div *ngIf="KRADetails.goalsDetails != null && (userRole == '1'|| userRole == '2')  &&  kraId=='-2'">
+
+                <div class="section-container">
+                    <div class="padding12">
+                        <ion-list radio-group>
+                            <div class="goals-label">
+                                Do you have any mobility constraint?
+                                <img class="astrick" src="assets/imgs/asterisk.svg" />
+                            </div>
+
+                            <div class="promo-container">
+                                <div class="row">
+                                    <ion-radio [checked]="KRADetails.goalsDetails.mobilityConstraint != null  && KRADetails.goalsDetails.mobilityConstraint == true" (click)="mobilityChoice('Yes')" [disabled]="userRole =='2'"></ion-radio>
+                                    <ion-label class="font1em">Yes</ion-label>
+                                </div>
+                                <div class="row">
+                                    <ion-radio [checked]="KRADetails?.goalsDetails.mobilityConstraint != null && KRADetails?.goalsDetails.mobilityConstraint == false" (click)="mobilityChoice('No')" checked="true" value="No" [disabled]="userRole =='2'"></ion-radio>
+                                    <ion-label class="font1em">No</ion-label>
+                                </div>
+                            </div>
+                        </ion-list>
+                    </div>
+
+                    <div *ngIf="KRADetails.goalsDetails.mobilityConstraint" class="padding12">
+                        <div *ngFor="let mobility of mobilityConstraintField;index as mobilityIndex">
+                            <ion-label class="goals-label">Justification
+                                <img class="astrick" src="assets/imgs/asterisk.svg" />
+                            </ion-label>
+                            <ion-textarea class="fontSize9 text-black" required type="text" *ngIf="mobility.fieldType =='textArea'" [(ngModel)]="mobility.titleValue" class="promo-textarea" [ngModelOptions]="{standalone: true}" [readonly]="!mobility.isEditable">
+                            </ion-textarea>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- this section displays 1st Up Manager(Appraiser) , goals where user gets the option to recommend the associate for promotions. -->
+            <!-- -->
+
+            <!-- this section displays 1st Up Manager(Appraiser) , goals where user gets the option to recommend the associate for promotions. -->
+            <!-- -->
+
+            <div class="section-container" *ngIf="KRADetails?.isEligibleForPromotion &&  kraId=='-2' && (userRole == '2' || userRole == '3') ">
+                <div class="section-headings">
+                    <img src="assets/imgs/promotion-icon.svg">
+                    <span class="pd-5" *ngIf="userRole == '2'">Promotion Details</span>
+                    <span class="pd-5" *ngIf="userRole == '3'">Promotion Details by Appraiser</span>
+                </div>
+                <div class="goals-label promo">
+                    Do you want to recommend him/her for promotion?
+                </div>
+                <div class="padding8 pro promotionSection promotion-Details">
+                    <!-- <ion-list radio-group>
+            <div class="goals-label">
+              Do you want to recommend him/her for promotion?
+            </div>
+            <div class="promo-container">
+              <div class="row">
+                <ion-radio [checked]="KRADetails?.goalsDetails.isPermotionRecommendedByAppraiser == true"
+                  (click)="appraiserDecision('Yes')" [disabled]="userRole == '3'"></ion-radio>
+                <ion-label class="font1em">Yes</ion-label>
+              </div>
+              <div class="row">
+                <ion-radio [checked]="KRADetails?.goalsDetails.isPermotionRecommendedByAppraiser == false"
+                  (click)="appraiserDecision('No')" value="No" [disabled]="userRole == '3'">
+                </ion-radio>
+                <ion-label class="font1em">No</ion-label>
+              </div>
+            
+
+
+              <div class="row promotionDetails"
+                *ngIf="kraId=='-2' &&  KRADetails?.goalsDetails.isPermotionRecommendedByAppraiser"
+                (click)="goToPromotionDetails()">
+                Promotion Details
+              </div>
+
+            </div>
+          </ion-list> -->
+
+                    <ion-select placeholder="Select Value" class="competencySelect pro" (ionChange)="appraiserDecision($event)" [disabled]="userRole == '3'">
+                        <ion-option [selected]="KRADetails?.goalsDetails.isPermotionRecommendedByAppraiser == true">Yes</ion-option>
+                        <ion-option [selected]="KRADetails?.goalsDetails.isPermotionRecommendedByAppraiser == false">No</ion-option>
+                    </ion-select>
+                    <div class="row promotionDetails" *ngIf="kraId=='-2' && KRADetails?.goalsDetails.isPermotionRecommendedByAppraiser &&  KRADetails?.appraiserPromotionDetailList" (click)="goToPromotionDetails()">
+                        Additional Details
+                    </div>
+
+
+
+                </div>
+
+                <div *ngIf="isPromotionDetailsFilled && userRole == '2'" style="color:red;margin-left: 10px;"> Please fill additional details.</div>
+
+                <div class="promo" *ngIf="kraId=='-2' &&  KRADetails?.goalsDetails.isPermotionRecommendedByAppraiser">
+                    <div>
+                        <p class="goals-label">Promotion Details</p>
+                    </div>
+                    <div class="promotion-Details">
+                        <ion-list>
+                            <ion-item>
+                                <ion-label class="font1em">Role</ion-label>
+                                <ion-select class="font1em" [(ngModel)]="appraiserViewRole" [ngModelOptions]="{standalone: true}" interface="action-sheet" (ionChange)="onTitle(appraiserViewRole)" [placeholder]='appraiserViewRole' [disabled]="userRole == '3'">
+
+                                    <div *ngFor="let item of icList">
+                                        <ion-option [value]="item.title">{{item.value}}</ion-option>
+                                    </div>
+                                </ion-select>
+                            </ion-item>
+                        </ion-list>
+                        <div style="position: relative;">
+                            <ion-list>
+                                <ion-item (click)="getDesignationList()">
+                                    <ion-label class="font1em flex">Designation
+                                    </ion-label>
+
+                                    <ion-select class="font1em promotion-Details" [(ngModel)]="appriaserViewDesignation" (ionChange)="onDesignation(appriaserViewDesignation)" interface="action-sheet" [ngModelOptions]="{standalone: true}" [placeholder]='appriaserViewDesignation' [disabled]="userRole == '3'">
+                                        <ion-option *ngFor="let designation of  designationList" [value]="designation.value">{{designation.value}}</ion-option>
+                                    </ion-select>
+                                </ion-item>
+                            </ion-list>
+
+
+                            <ion-icon *ngIf="KRADetails?.toolTipForDesignation" [tooltip]="KRADetails?.toolTipForDesignation" positionV="bottom" hideOthers="true" [event]="tooltipEvent" class="desig-tooltip" clear color="dark">
+                                <img class="info-icon" src="assets/imgs/info.svg" />
+                            </ion-icon>
+
+                        </div>
+
+                        <ion-label class="goals-label">Justification
+                            <img class="astrick" src="assets/imgs/asterisk.svg" />
+                        </ion-label>
+                        <ion-textarea class="fontSize9 text-black" [ngModelOptions]="{standalone: true}" [(ngModel)]="appraiserViewJustification" type="text" class="promo-textarea" [disabled]="userRole == '3'">
+                        </ion-textarea>
+
+                    </div>
+                </div>
+            </div>
+
+
+
+            <!-- this section displays 2nd Up Manager(Reviewer) goals  where user gets the option to recommend the associate for promotions  -->
+            <div *ngIf="KRADetails?.isEligibleForPromotion &&  kraId=='-2' && userRole == '3' " class="section-container">
+                <div class="section-headings">
+                    <img src="assets/imgs/promotion-icon.svg">
+                    <span class="pd-5">Promotion Details</span>
+                </div>
+                <div class="goals-label promo">
+                    Do you want to recommend him/her for promotion?
+                </div>
+                <div class="padding8 pro promotionSection promotion-Details">
+                    <!-- <ion-list radio-group>
+            <div class="goals-label">
+              Do you want to recommend him/her for promotion?
+            </div>
+            <div class="promo-container">
+              <div class="row">
+                <ion-radio [checked]="KRADetails?.goalsDetails.isPermotionRecommendedByReviewer == true"
+                  (click)="reviewerDecision('Yes')"></ion-radio>
+                <ion-label class="font1em">Yes</ion-label>
+              </div>
+              <div class="row">
+                <ion-radio [checked]="KRADetails?.goalsDetails.isPermotionRecommendedByReviewer == false"
+                  (click)="reviewerDecision('No')" value="No"></ion-radio>
+                <ion-label class="font1em">No</ion-label>
+              </div>
+              <div class="row promotionDetails"
+                *ngIf="kraId=='-2' &&  KRADetails?.goalsDetails.isPermotionRecommendedByReviewer"
+                (click)="reviewerPromotionDetails()">
+                Promotion Details
+              </div>
+            </div>
+          </ion-list> -->
+
+                    <ion-select placeholder="Select Value" class="competencySelect" (ionChange)="reviewerDecision($event)">
+                        <ion-option [selected]="KRADetails?.goalsDetails.isPermotionRecommendedByReviewer == true">Yes</ion-option>
+                        <ion-option [selected]="KRADetails?.goalsDetails.isPermotionRecommendedByReviewer == false">No</ion-option>
+                    </ion-select>
+
+                    <div class="row promotionDetails" *ngIf="kraId=='-2' &&   KRADetails?.goalsDetails.isPermotionRecommendedByReviewer &&  KRADetails?.reviewerPromotionDetailList" (click)="reviewerPromotionDetails()">
+                        Additional Details
+                    </div>
+                </div>
+
+                <div *ngIf="isPromotionDetailsFilled && userRole == '3'" style="color:red;margin-left: 10px;"> Please fill additional details.</div>
+                <div class="promo" *ngIf="kraId=='-2' &&  KRADetails?.goalsDetails.isPermotionRecommendedByReviewer">
+                    <div>
+                        <p class="goals-label">Promotion Details</p>
+                    </div>
+                    <div class="promotion-Details">
+                        <ion-list>
+                            <ion-item>
+                                <ion-label class="font1em">Role</ion-label>
+                                <ion-select class="font1em promotion-Details" [(ngModel)]="reviewerViewRole" [ngModelOptions]="{standalone: true}" interface="action-sheet" (ionChange)="reviewerRoleSelection(reviewerViewRole)" [placeholder]='reviewerViewRole'>
+                                    <div *ngFor="let item of icList">
+                                        <ion-option [value]="item.title">{{item.title}}</ion-option>
+                                    </div>
+                                </ion-select>
+                            </ion-item>
+                        </ion-list>
+                        <div style="position: relative;">
+                            <ion-list>
+                                <ion-item class="flex" (click)="getDesignationList()">
+                                    <ion-label class="font1em ">Designation
+
+                                        <ion-icon *ngIf="KRADetails?.toolTipForDesignation" [tooltip]="KRADetails?.toolTipForDesignation" positionV="bottom" hideOthers="true" [event]="tooltipEvent" class="desig-tooltip" clear color="dark">
+                                            <img class="info-icon" src="assets/imgs/info.svg" />
+                                        </ion-icon>
+
+                                    </ion-label>
+
+                                    <ion-select class="font1em promotion-Details" [(ngModel)]="reviewerViewDesignation" (ionChange)="reviewerDesigSelection(reviewerViewDesignation)" interface="action-sheet" [ngModelOptions]="{standalone: true}" [placeholder]='reviewerViewDesignation'>
+                                        <ion-option *ngFor="let designation of  designationList" (value)="designation.value">{{designation.value}}</ion-option>
+                                    </ion-select>
+                                </ion-item>
+                            </ion-list>
+                        </div>
+                    </div>
+
+                    <div>
+
+                        <ion-label class="goals-label">Justification
+                            <img class="astrick" src="assets/imgs/asterisk.svg" />
+                        </ion-label>
+                        <ion-textarea class="fontSize9 text-black" [(ngModel)]="reviewerViewJustification" [ngModelOptions]="{standalone: true}" #justificationReviewerRef required #justificationReviewerRef="ngModel" type="text" class="promo-textarea">
+                        </ion-textarea>
+                    </div>
+                </div>
+            </div>
+
+
+        </form>
+
+        <!-- when KRA 1 is selected -->
+        <div class="talentIndex-parent" *ngIf="kraId=='1' && KRADetails?.subKraList">
+
+            <div class="fontWeight-bold">
+                Talent Index
+            </div>
+            <div class="addMore-parent">
+                <span class="padding10 subKRA-title">Sub KRA:
+                    {{KRADetails?.actualSubkra}}/{{KRADetails?.maxLimit}}</span>
+                <!-- <span>
+          <button class="textCapitalize addMoreBtn" ion-button round (click)="gotoAddSubKra(KRADetails?.addSubKraList,true)">Add
+            More</button>
+        </span> -->
+            </div>
+        </div>
+        <div *ngIf="kraId=='1'">
+            <div class="paddingRtLf10">
+                <p *ngIf="KRADetails?.minMaxSubKraMessage" class="minKRAmsg">Note: {{KRADetails?.minMaxSubKraMessage}}
+                </p>
+                <!-- <p *ngIf="KRADetails?.minMaxSubKraMessage" class="font0-95"> * {{KRADetails?.minMaxSubKraMessage}}</p> -->
+                <!-- <p *ngIf="KRADetails?.mandatorySubKraMessage" class="font0-95"> * {{KRADetails?.mandatorySubKraMessage}}</p> -->
+            </div>
+
+            <div class="main-card" *ngFor="let subKraItem of KRADetails.subKraList" (click)="viewSubKra(subKraItem?.subKraFieldList,false,subKraItem?.isMandatory)">
+                <div class="upper-card-parent padding5">
+                    <div class="icon-div">
+                        <img [src]="subKraItem.icon">
+                    </div>
+                    <div class="learningHrs-parent">
+                        <div class="learning-hrs-div marginBottom-8px">
+                            <span>{{subKraItem.title}} </span>
+                            <span class="mandatory" *ngIf="subKraItem.isMandatory">Mandatory</span>
+                            <!-- <span>Technical/Behavioural</span> -->
+                        </div>
+                        <div class="displayFlex margin-bottm-6 alignItemCenter" *ngFor="let item of subKraItem.value">
+                            <div>
+                                <img class="kraType-icon" [src]="item.icon" />
+                            </div>
+                            <div class="padding5" *ngIf="item.key">{{item.key}}</div>
+                            <div class="padding5" *ngIf="item.key !='Milestone Date'">{{item.value}}</div>
+                            <div class="padding5" *ngIf="item.key=='Milestone Date'">{{item.value |date : 'd MMM yyyy'}}
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <div class="arrow-parent">
+
+                    </div>
+                </div>
+                <div class="lower-card-parent">
+                    <div class="midTerm-parent">
+                        <div>
+                            <div class="fontWeight-bold marginbtm5">{{subKraItem.midTermTitle}}:</div>
+                            <div class="floorTarget-parent">
+                                <div>
+                                    <span>Target:</span>
+                                    <span>{{subKraItem.midTermTarget}}</span>
+                                </div>
+                                <div>
+                                    <span>Floor:</span>
+                                    <span>{{subKraItem.midTermFloor}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="endTerm-parent">
+                        <div class="fontWeight-bold marginbtm5">{{subKraItem.annualTitle}}:</div>
+                        <div class="floorTarget-parent">
+                            <div>
+                                <span>Target:</span>
+                                <span>{{subKraItem.annualTarget}}</span>
+                            </div>
+                            <div>
+                                <span>Floor:</span>
+                                <span>{{subKraItem.annualFloor}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- KRA 1 css ends -->
+
+
+    </div>
+
+    <div *ngIf="showWhenData == 'Preview'">
+        <!-- overall score -->
+        <ion-card class="preview-card" *ngIf="KRADetails.isPreview && (userRole=='1' || userRole=='2' ||userRole=='3' )">
+            <ion-card-header class="preview-header">Performance Review Score</ion-card-header>
+            <div class="preview-cont">
+                <div class="padding-bottom10per width100">
+                    <div class=" display-flex  fontSize1p2" *ngFor="let item of KRADetails.scoreList">
+                        <div col-6>{{item?.key}}</div>
+                        <div col-6 class="font-weight500">{{item?.value}}</div>
+                    </div>
+                </div>
+                <button class="nextBtn" ion-button round (click)="openPreview()">Next</button>
+            </div>
+        </ion-card>
+        <!-- on kra completion -->
+        <div *ngIf="!KRADetails.isPreview && userRole == '1'">
+            <ion-card class="preview-card congratulation-bg-img">
+                <div class="preview-cont">
+                    <span class="completed-kra-heading">
+                        <span class="completed-kra-status"><img src="assets/imgs/ZenDeavour/kra-tick.svg" />
+                        </span><span class="fontSize1p8">
+                            Thank you</span>
+                    </span>
+                    <div [innerHTML]="KRADetails?.successMessage"></div>
+                </div>
+            </ion-card>
+            <div text-center> <button class="" ion-button round (click)="goToDashboard()">Back to Dashboard</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- FAB button css  -->
+    <ion-fab right bottom *ngIf="kraId > 0  && (kraType == 'Mid-Term' || kraType == 'Annual')">
+        <button ion-fab (click)="openGuidelinesPdf()" class="help-fab fab-btn">
+            <ion-icon name="help"></ion-icon>
+        </button>
+    </ion-fab>
+</ion-content>
+
+
+<ion-footer class="footerBg" *ngIf="(KRADetails.isPreview && userRole=='1') || userRole=='2' || userRole=='3'" [hidden]="kraId=='-1'">
+
+    <div style="display: flex; justify-content: center;">
+        <button *ngIf="showSaveResetBtn()" (click)="saveKRA()" class="nextBtn" ion-button round>Save</button>
+        <button *ngIf="showSaveResetBtn()" (click)="resetData()" class="nextBtn" ion-button round>Reset</button>
+        <button *ngIf="kraId=='-2' || showWhenData=='KRA' || showWhenData=='Home' " class="nextBtn" ion-button round (click)="saveKRA(true)">Next</button>
+        <!-- (showWhenData=='KRA'  || showWhenData == 'Goals') && KRADetails?.isEligibleForPromotion -->
+    </div>
+</ion-footer>

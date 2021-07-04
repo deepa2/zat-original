@@ -1,0 +1,53 @@
+<!-- Generated template for the ExpandableComponent component -->
+<div #expandWrapper class='expand-wrapper' [class.collapsed]="!expanded">
+  <!-- <ng-content></ng-content> -->
+  <form [formGroup]="experienceForm">
+
+      <ion-item>
+          <ion-label floating color="primary">Previous Organization Name</ion-label>
+          <ion-input type="text" formControlName="preOrganizationName" class="form-control"></ion-input>
+      </ion-item>
+
+      <ion-item>
+          <ion-label color="primary">Experience Letter</ion-label>
+          <ion-input placeholder="Choose file" type="text" formControlName="expLetter" (change)="changeListener($event)"></ion-input>
+          <button ion-button color="light" item-end>Browse</button>
+      </ion-item>
+
+      <ion-item>
+          <ion-label color="primary">Relieving Letter</ion-label>
+          <ion-input placeholder="Choose file" type="text" formControlName="relieveLetter" (change)="changeListener($event)"></ion-input>
+          <button ion-button color="light" item-end>Browse</button>
+      </ion-item>
+
+      <ion-item>
+          <ion-label floating color="primary">City</ion-label>
+          <ion-input type="text" formControlName="city" class="form-control"></ion-input>
+      </ion-item>
+
+      <ion-item>
+          <ion-label floating color="primary">Country</ion-label>
+          <ion-input type="text" formControlName="country" class="form-control"></ion-input>
+      </ion-item>
+
+      <ion-item>
+          <ion-label floating color="primary">Start Date</ion-label>
+          <ion-datetime displayFormat="MM/DD/YYYY" [min]="minDate" [max]="maxDate"
+              formControlName="startDate">
+          </ion-datetime>
+      </ion-item>
+
+      <ion-item>
+          <ion-label floating color="primary">End Date</ion-label>
+          <ion-datetime displayFormat="MM/DD/YYYY" [min]="minDate" [max]="maxDate"
+              formControlName="endDate">
+          </ion-datetime>
+      </ion-item>
+
+      <ion-item>
+          <ion-label floating color="primary">Designation</ion-label>
+          <ion-input type="text" formControlName="designation" class="form-control"></ion-input>
+      </ion-item>
+     
+  </form>
+</div>

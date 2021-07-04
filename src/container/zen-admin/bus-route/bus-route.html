@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      <div class="left-header">Bhopal</div>
+      <div class="right-header">
+        <img src="assets/zenAdmin/search-icon.svg">
+      </div>
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<!-- Body -->
+
+<ion-content class="main-container">
+  <div>
+    <ion-segment class="segment-section" [(ngModel)]="segmentModel">
+      <ion-segment-button value="Root" class="custom-segment">Bus Details</ion-segment-button>
+      <ion-segment-button value="pickupPoint" class="custom-segment">Pickup Point</ion-segment-button>
+    </ion-segment>
+  </div>
+
+  <div [ngSwitch]="segmentModel">
+    <!-- Root-Segment -->
+    <div *ngSwitchCase="'Root'">
+      <ion-card *ngFor="let item of details">
+        <div class="route-icon">
+          <img class="route-img" [src]="item.img1">
+        </div>
+        <div class="route-info">
+          <div class="route-title">
+            <span class="Route">{{item.route}}</span> <br>
+            <span class="city-name">{{item.city}}</span>
+          </div>
+        </div>
+        <div class="small-arrow">
+          <img class="arrow-icon" [src]="item.img2">
+        </div>
+      </ion-card>
+    </div>
+
+    <!-- pickup-point segment -->
+    <div  *ngSwitchCase="'pickupPoint'">
+      <ion-card *ngFor="let item of details">
+        <div class="route-icon">
+          <img class="route-img" [src]="item.img1">
+        </div>
+        <div class="route-info">
+          <div class="route-title">
+            <span class="Route">{{item.route}}</span> <br>
+            <span class="city-name">{{item.city}}</span>
+          </div>
+        </div>
+        <div class="small-arrow">
+          <img class="arrow-icon" [src]="item.img2">
+        </div>
+      </ion-card>
+    </div>
+  </div>
+</ion-content>

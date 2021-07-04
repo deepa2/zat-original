@@ -1,0 +1,129 @@
+query-item {
+  .image-container {
+    min-height: 200px;
+    background-size: cover;
+  }
+
+  .flex {
+    display: flex;
+    margin-left: 5px;
+  }
+
+  // .card-content {
+  //   // margin-top: 23px;
+  //   padding: 10px 12px;
+  // }
+  .padding {
+    padding-top: 0px 8px 8px 9px;
+  }
+
+  .queryContent {
+    font-size: 14px;
+    width: 85%;
+    margin-left: 9px;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    font-size: 1em;
+    margin-top: 9px;
+    max-width: 100%;
+  }
+
+  .noEllipsis {
+    display: block;
+  }
+
+  .queryInfo {
+    font-size: 14px;
+  }
+
+  .attach {
+    font-size: 20px;
+    width: 20px;
+    height: 20px;
+    right: 0px;
+    transform: rotate(45deg);
+  }
+  .attachContainer{
+    position: relative;
+  }
+
+  .attachmentIcon {
+    
+    text-align: right;
+    position: absolute;
+    right: 25px;
+    top: 10px;
+  }
+
+  .statusBar {
+    display: flex;
+  }
+
+  .triangle {
+    width: 0px;
+    position: absolute;
+    height: 0px;
+    right: 0px;
+    bottom: 0px;
+    border: 10px solid;
+    border-left-color: transparent;
+    border-top-color: transparent;
+  }
+
+  .date {
+    color: grey;
+    margin-right: 9px;
+    font-size: 0.9em;
+  }
+
+  .queryCard {
+    margin: 5px 0px 5px 2px;
+    box-shadow: 0px 0px 7px 4px #7d7d7d25;
+  }
+
+  ion-label > .label-md {
+    margin: 0;
+  }
+  img.imageSize {
+    width: 14px;
+    margin-right: 4px;
+  }
+  .container {
+    padding: 5px 0;
+  }
+  .mainContanier {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .circle-cont {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  .outer-circle {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    // background: red;
+  }
+  .inner-circle {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: white
+    ;
+  }
+  .trail {
+    height: 20px;
+    width: 50%;
+    border-right: 2px dotted grey;
+    display: none;
+  }
+
+  .padding-bottom7{
+    padding-bottom: 7px;
+  }
+}

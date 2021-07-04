@@ -1,0 +1,20 @@
+<ion-content>
+<!-- <p class="date" *ngIf="msg.status.statusCode !=1">{{msg?.status?.statusMessage}}</p> -->
+<div class="close-icon">
+  <ion-icon (click)="dismiss()" ios="ios-close" md="md-close"></ion-icon>
+</div>
+
+<div class="success-info">
+  <div class="success-wrap">
+    <ion-label class="success">Congratulations</ion-label>
+    <ion-label class="earned">You Earned</ion-label>
+    <ion-label class="count">{{points}}</ion-label>
+    <!-- <ion-label class="count">20</ion-label> -->
+
+    <ion-label class="earned">Points</ion-label>
+
+  </div>
+  <img  src="assets/imgs/starBg.svg" />
+</div>
+
+</ion-content>

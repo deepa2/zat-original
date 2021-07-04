@@ -1,0 +1,20 @@
+<div class="d-flex">
+    <span>Timesheets</span>
+    <div>
+        <strong><span
+                *ngIf="chatListItem?.response?.responseList?.selectedPendingTimesheetList?.length > 0">{{chatListItem?.response?.responseList?.selectedPendingTimesheetList?.length}}
+                / </span>{{chatListItem?.response?.responseList?.pendingList?.length}}</strong>
+        <button (click)="_openPendingTimesheetListModal(chatListItem?.response?.responseList?.pendingList,parentIndex)"
+            [disabled]="(parentIndex != (chatList?.length - 1) || chatListItem?.response?.responseList?.pendingList?.length == 0)">View</button>
+    </div>
+</div>
+<div class="message" *ngIf="chatListItem?.response?.responseList?.selectedPendingTimesheetList?.length > 0">
+    Do
+    you want to approve all selected timesheets?</div>
+<button class="approveAllBtn" ion-button round small
+    (click)="_approveAllPendingTimesheets(chatListItem?.response?.responseList,parentIndex)"
+    [disabled]="(parentIndex != (chatList?.length - 1) || chatListItem?.response?.responseList?.pendingList?.length == 0)">Approve
+    <span class="text">{{chatListItem?.response?.responseList?.selectedPendingTimesheetList?.length > 0 &&
+        chatListItem?.response?.responseList?.selectedPendingTimesheetList?.length !==
+        chatListItem?.response?.responseList?.pendingList?.length ? 'Selected' : 'All'}}</span>
+</button>

@@ -1,0 +1,54 @@
+<ion-header class="zeno-header" no-border>
+    <ion-navbar>
+        <ion-title>
+            Details
+        </ion-title>
+        <ion-buttons left>
+            <button ion-button icon-only (click)="dismiss()">
+                <ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <div class="read-more-cont">
+        <span [innerHTML]="text|linky" (click)="checkLink(desc)"></span>
+
+        <div *ngIf="UpdateProfileLinkData?.showLink">
+            Click
+            <span class="updateProfileLink" (click)="update(UpdateProfileLinkData)">here</span>
+            to update now.
+        </div>
+
+        <div *ngIf="moveToPage && actionName =='zenTalent.createDAP'">
+            Click <span class="updateProfileLink" (click)="_moveToPage()">here</span> to create
+            Development Action Plan
+        </div>
+
+        <div *ngIf="moveToPage && actionName =='zenTalent.ijp'">
+            Click <span class="updateProfileLink" (click)="_moveToPage()">here</span> to apply
+            for IJP
+        </div>
+
+        <div *ngIf="moveToPage && actionName =='referral.referYourFriend.yes.bonusPolicy.yes'">
+            Click <span class="updateProfileLink" (click)="_moveToPage()">here</span> to refer on
+            ZenRich
+        </div>
+
+        <div *ngIf="moveToPage && actionName =='referrals.FAQs'">
+            Click <span class="updateProfileLink" (click)="_moveToPage()">here</span> for FAQs
+        </div>
+
+        <div *ngIf="moveToPage && actionName =='referral.createFriendsProfile'">
+            Click <span class="updateProfileLink" (click)="_moveToPage()">here</span> to create friend's profile
+        </div>
+        <div *ngIf="moveToPage && actionName =='learning.behaviouralCalendar'">
+            Click <span class="updateProfileLink" (click)="_moveToPage()">here</span> to view Behavioural Calendar
+        </div>
+
+    </div>
+
+
+
+</ion-content>

@@ -1,0 +1,255 @@
+page-internal-job-posting {
+  .parent {
+    font-size: 18px;
+    color: #808080 !important;
+    width: 100%;
+    overflow-x: scroll;
+    white-space: nowrap;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #eff5ff;
+
+    .child3 {
+      display: inline-block;
+      vertical-align: middle;
+      padding: 3%;
+      width: 33.33%;
+      text-align: center;
+      font-size: 14px;
+    }
+    .child2 {
+      display: inline-block;
+      vertical-align: middle;
+      padding: 3%;
+      width: 50%;
+      text-align: center;
+      font-size: 14px;
+    }
+    .selected {
+      border-bottom: 2px solid #0ea2c8;
+      color: #0ea2c8;
+    }
+    .span-Text {
+      font-size: 13px;
+      color: #c2c2c2;
+    }
+  }
+  .grid-cont {
+    display: grid;
+    grid-template-columns: 35px auto;
+    align-items: center;
+  }
+  .margin-top56 {
+    margin-top: 56px;
+  }
+  .background {
+    background: white;
+  }
+
+  .icon-size {
+    width: 15px;
+    height: 15px;
+  }
+  .profileBackgroundOverlay {
+    height: 20vh;
+    top: 0;
+    z-index: -1;
+    left: 0;
+    width: 100%;
+    background: $app-background;
+    padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+    position: absolute;
+  }
+  ion-header::after {
+    display: none;
+  }
+
+  .pageTitile {
+    margin-left: -15px;
+  }
+
+  .noResult {
+    padding: 10px;
+  }
+  .searchBar {
+    margin-top: 0;
+  }
+  .searchBarStyle {
+    position: absolute;
+    right: 0;
+    padding: 0px;
+  }
+  .margin-top15 {
+    margin-top: 15px;
+  }
+  .margin-top45 {
+    margin-top: 45px;
+  }
+
+  //////////////////////
+  * {
+    box-sizing: border-box;
+  }
+
+  /* Create three unequal columns that floats next to each other */
+  .column {
+    /*  float: left;
+    padding: 10px; */
+    // height: 300px; /* Should be removed. Only for demonstration */
+    float: left;
+    padding: 10px;
+  }
+
+  .left,
+  .right {
+    width: 20.5%;
+  }
+
+  .middle {
+    width: 58%;
+  }
+
+  .row {
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  .bgColor {
+    background: #d5f1f8;
+  }
+  .column1 {
+    /*  float: left;
+     padding: 10px; */
+    // height: 300px; /* Should be removed. Only for demonstration */
+    float: left;
+    padding: 5px;
+
+    // padding: 5px;
+    // display: flex;
+    // align-items: center;
+    // justify-content: center;
+    // position: relative;
+  }
+
+  .overall-percentage {
+    font-size: 1em;
+    font-weight: 400;
+  }
+  .contentHeight {
+    margin-top: 40px;
+  }
+  .cardPosition {
+    position: relative;
+  }
+  .jobTitle {
+    font-size: 1em;
+    color: #222222;
+    line-height: 1.3;
+  }
+  .jobCode {
+    color: grey;
+  }
+  .cardPadding {
+    padding: 5px;
+  }
+  .jobDetails {
+    display: flex;
+    align-items: center;
+    //padding: 2px;
+  }
+  .imgHtWT {
+    height: 20px;
+    width: 20px;
+  }
+  .btn {
+    text-align: right;
+    position: relative;
+  }
+  .btnPosition {
+    padding: 5px;
+    text-transform: none;
+    position: absolute;
+    right: 5px;
+    bottom: 0px;
+  }
+  // .scroll-content {
+  //     margin-top: 97px !important;
+  //    }
+
+  // .scroll-content {
+  //   margin-top: 0px !important;
+  // }
+  .mgCls {
+    margin-top: 97px;
+  }
+  // .mg56 {
+  //   margin-top: 56px;
+  // }
+
+  // .mg56 {
+  //   margin-top: 56px;
+  // }
+
+  // @media only screen and (device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) {
+  //   .mg56 {
+  //     margin-top: 76px;
+  //   }
+  // }
+  // @media only screen and (device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) {
+  //   .mg56 {
+  //     margin-top: 100px;
+  //   }
+  // }
+
+  tspan {
+    font-size: 2.7em;
+  }
+  .pageTitile {
+    margin-left: -15px;
+  }
+  .iconSize {
+    height: 60px;
+    width: 60px;
+  }
+  .progressBarDiv {
+    height: 64px;
+    width: 64px;
+  }
+  .notify {
+    font-size: 1em !important;
+    width: 39%;
+    position: absolute;
+    bottom: 0px;
+    right: 0;
+    padding: 0;
+    margin: 0;
+  }
+  .navBg {
+    background: #eff5ff;
+  }
+  .alLogo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 0px;
+  }
+  .imgPadding {
+    padding: 3px;
+  }
+  .logoImg {
+    position: absolute;
+    height: 50px;
+    width: 50px;
+    top: 50%;
+    left: 49.5%;
+    transform: translate(-50%, -50%);
+  }
+ 
+}

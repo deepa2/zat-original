@@ -1,0 +1,79 @@
+page-zen-learn-rating {
+  .filledstar-size {
+    font-size: 2em;
+    padding: 0;
+  }
+  .emptystar-size {
+    height: 20px;
+    width: 20px;
+  }
+
+  .yellow {
+    color: #c7c700;
+  }
+
+  .textarea {
+    width: 100%;
+    margin: 3px;
+    // border: none;
+    border: 1px solid lightgray;
+    border-radius: 8px;
+  }
+  .ion-card {
+    padding: 10px;
+  }
+  .sumbit-section {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 5%;
+    position: absolute;
+    bottom: 8px;
+    right: 3px;
+    width: 100%;
+  }
+  .later-section {
+    padding-right: 4%;
+    font-size: 1em;
+  }
+  .flex-space-btwn {
+    display: flex;
+    justify-content: space-between;
+  }
+  .padding4per {
+    padding: 4%;
+  }
+  .traning-rating {
+    display: flex;
+    flex-direction: column;
+    padding: 8px 4px;
+    background: #edf9fc;
+  }
+  .traning-type {
+    font-size: 1.1em;
+    padding-top: 10px;
+    padding-left: 4px;
+  }
+  .traning-desc {
+    font-size: 1.2em;
+    color: #1586c7;
+    padding: 8px 4px;
+  }
+  .padding12-8 {
+    padding: 12px 8px;
+  }
+  .rating-title {
+    font-size: 1.1em;
+    font-weight: 600;
+  }
+  .rating-card {
+    // background: #d4d0d0;
+    margin: 12px 0px;
+    border-radius: 4px;
+  }
+  .review-title {
+    font-size: 1.1em;
+    font-weight: 600;
+    padding: 7px 0px;
+  }
+}

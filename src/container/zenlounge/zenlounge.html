@@ -1,0 +1,80 @@
+<ion-header no-border no-shadow no-bounce>
+  <ion-navbar>
+    <ion-title class="pageTitile">{{pageTitle}}</ion-title>
+    <ion-buttons end>
+      
+      <button ion-button icon-only (click)="presentPopover($event)">
+        <ion-icon name="more"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content no-bounce>
+  
+
+  <ion-card class="zencard" *ngFor="let item of zenloungeData">
+    <ion-card-header>
+     
+      <img class="group-icon" [src]="zenloungeBaseUrl + item.groupPictureUrl">
+      <div class="group-info">
+        <ion-label class="group-name">{{item.groupName}}</ion-label>
+        <ion-label class="post-date">{{item.postCreateDate}}</ion-label>
+      </div>
+      
+    </ion-card-header>
+  
+    <ion-card-content>
+      <div class="description">
+        <span class="taged-user" *ngFor="let tagItem of item.taggedGroupOrUserList ">@{{tagItem.taggedUserName}}</span>
+        <read-more class="description" [desc]="item.postDescription"></read-more>
+      </div>
+      
+      <div class="attachments" *ngIf="item.postAttachments">
+        <div class="imgCount{{calculateLength(item.postAttachments)}}" [ngClass]="{'load-more': calculateLength(item.postAttachments)>=5}">
+          <ng-container  *ngFor="let imageItem of item.postAttachments; let i=index">
+            
+            <div class="image-item item{{i}}" *ngIf="i < 5 && (imageItem.mimeType =='image/jpeg' || imageItem.mimeType =='image/png')">
+              <img (click)="presentImageModal(item.postAttachments, i)"  src="{{encodeURI(zenloungeBaseUrl + imageItem.postfileUrl)}}">
+              <div *ngIf="i == 4 && item.postAttachments.length >5" class="more-overlay" (click)="presentImageModal(item.postAttachments, i)" > + {{getPostAttachMnetLength(item.postAttachments)}} </div>
+            </div>
+           
+          </ng-container>
+        </div> 
+          <div class="videoPdf-con">
+            <ng-container  *ngFor="let videoPdfItem of item.postAttachments; let i=index ">
+              <div class="video-item" *ngIf="videoPdfItem.mimeType=='video/mp4' || videoPdfItem.mimeType=='application/pdf'">
+               <video *ngIf="videoPdfItem.mimeType=='video/mp4'" muted playsinline  preload="false" controls controlsList="nodownload" style="width:100%;height:30vh;" poster="{{encodeURI(zenloungeBaseUrl + videoPdfItem.thumbnail)}}" (playing)="VideoEventInit($event)">
+                
+                  <source src="{{encodeURI(zenloungeBaseUrl + videoPdfItem.postfileUrl)}}" 
+                          type='video/mp4;codecs="avc1.42E01E, mp4a.40.2"'/>
+                </video>
+               
+                <img (click)="openPdfFile(videoPdfItem.postfileUrl)" *ngIf="videoPdfItem.mimeType=='application/pdf'" src="{{encodeURI(zenloungeBaseUrl + videoPdfItem.thumbnail)}}">
+               
+               
+               
+              </div>
+              
+            </ng-container>
+          </div>
+          <div class="docs-container">
+            <ng-container  *ngFor="let imageItem of item.postAttachments; let i=index ">
+              <div class="doc-item" *ngIf="imageItem.mimeType=='application/file'">
+                <label (click)="openPdfFile(imageItem.postfileUrl)" class="document-label" >
+                  <ion-icon name="ios-document-outline" ></ion-icon>
+                  <span class="file-name">Document File{{i}}</span>
+                </label>  
+              </div>
+             
+            </ng-container>
+          </div>
+         
+          
+        </div>
+    </ion-card-content>
+  </ion-card> 
+  <ion-infinite-scroll (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

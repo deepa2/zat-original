@@ -1,0 +1,324 @@
+page-new-profile {
+  .iconID {
+    width: 16px;
+    height: 16px;
+  }
+
+  .contentBg {
+    background: #ebebec;
+  }
+
+  .profileImg {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+
+  // .introSec {
+
+  //   display: flex;
+  //   align-items: flex-start;
+  //   flex-direction: column;
+  //   padding-left: 1em;
+  //   justify-content: flex-start;
+  //   align-items: center;
+  //   padding: 25px 25px 25px 25px;
+  //   margin: 10px 0 10px 0px;
+  //   line-height: 1.4;
+  // }
+  .introSec {
+    margin: 10px 15px 10px 15px;
+  }
+  .mailD {
+    width: 16px;
+    height: 16px;
+  }
+
+  ion-slides {
+    height: auto;
+
+    .swiper-container {
+      height: auto;
+    }
+  }
+  .swiper-slide {
+    padding-bottom: 20px;
+  }
+  .slideContainer {
+    // height: 390px;
+    height: calc(100vh - 243px - env(safe-area-inset-top));
+    background: #fff;
+    padding: 15px 6px 0px 6px;
+    margin: 0px 10px 0 10px;
+    overflow-y: auto;
+  }
+  .swiper-pagination-bullet-active {
+    background: #8264ff;
+    opacity: 1;
+    width: 8px;
+  }
+  .cardHeading {
+    display: flex;
+    padding: 0px 5px 0 15px;
+    justify-content: space-between;
+  }
+  .card-height {
+    overflow-y: auto;
+    // height: 308px;
+    height: 88%;
+  }
+  .swiper-container-horizontal > .swiper-pagination-bullets {
+    left: 0;
+    bottom: 0px;
+    width: 100%;
+  }
+  .infoContent {
+    display: flex;
+    align-items: center;
+    // margin: 10px 0px 10px 15px;
+    // padding: 10px 25px 10px 25px;
+  }
+  .infoImg {
+    width: 60px;
+    height: 60px;
+  }
+
+  .border-bottom {
+    border-bottom: 1px dotted grey;
+    margin-left: 24%;
+  }
+
+  .keyBorder {
+    border: 1px solid #8264ff;
+    width: 35px;
+    margin: 4px 0px 0px 15px;
+    border-radius: 10px 10px 10px 10px;
+  }
+  ion-card {
+    p {
+      margin: 0px 0px 0px 0px;
+    }
+  }
+  .padding1 {
+    padding: 1px;
+  }
+  .margin-left {
+    margin-left: 10px;
+  }
+  .al-item-cen {
+    align-items: center;
+  }
+  .addImg {
+    width: 85%;
+    // height: 45px;
+  }
+  .borderBtm {
+    border-left: 1px solid grey;
+    border-bottom: 1px solid grey;
+    border-right: 1px solid grey;
+  }
+  .list-md[inset] {
+    margin: 16px;
+    border-bottom: 1px solid grey;
+  }
+  .width20 {
+    width: 20%;
+  }
+  .margin12 {
+    margin: 0px 12px 0px 0px;
+  }
+  .skillsExpertise {
+    font-size: 0.9em;
+    color: #aea9a9;
+  }
+  .white {
+    color: white;
+  }
+  // .padding16 {
+  //   padding: 16px 0 0 0;
+  // }
+  ion-card.profile-details-card.card-md {
+    box-shadow: none;
+  }
+  .profileBgImg {
+    background: url("../assets/imgs/Group_1286.svg") no-repeat;
+    background-size: cover;
+  }
+
+  .padding25 {
+    padding: 25px 0px 0px 0px;
+  }
+  .profileIon-card {
+    background: linear-gradient(to right, #488cfc, #8264ff);
+  }
+  .isRequested {
+    color: color($colors, primary);
+  }
+  .skillBg {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+  }
+  .just-cen-algn-cen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .border-bottomRec {
+    border-bottom: 1px dotted grey;
+    margin-left: 18%;
+  }
+  ion-list {
+    ion-label {
+      font-size: 0.85em;
+    }
+  }
+  .myclass {
+    color: color($colors, primary);
+  }
+  .padding-calender {
+    padding: 0px 0px 0px 6px;
+  }
+  .flex-column {
+    flex-direction: column;
+  }
+  .skillsBtn {
+    display: flex;
+    justify-content: flex-end;
+  }
+  .grid-container {
+    display: inline-grid;
+    grid-template-columns: auto auto;
+    // background-color: #2196F3;
+    padding: 10px;
+  }
+  .line-height {
+    line-height: 1.7;
+  }
+
+  .vertical {
+    border: 1px dotted #d6e6ff;
+    margin: 25px 0px 25px 0px;
+    width: 0px;
+  }
+  .skillsBtm {
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px dotted grey;
+
+    ion-row {
+      max-width: 100%;
+    }
+  }
+
+  .clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+  .skillMsg {
+    text-align: center;
+    /* border-bottom: 1px dotted grey; */
+    border: 1px solid transparent;
+    font-size: 1em;
+    background: #d5f1f8;
+    padding: 4px;
+  }
+
+  .mailEllipsis {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  .width74 {
+    width: 74%;
+  }
+
+  .width8 {
+    width: 8%;
+  }
+
+  .width10 {
+    width: 10%;
+  }
+
+  .width90 {
+    width: 90%;
+  }
+  .profileContainer {
+    width: 35%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0px 10px;
+  }
+  .introContainer {
+    width: 65%;
+    border-left: 1px dotted #d6e6ff;
+  }
+  .text-white {
+    color: #fff;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .width25 {
+    width: 25%;
+  }
+
+  .displayItems {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .width70 {
+    width: 70%;
+  }
+  .skillUpdateIcon {
+    height: 14px;
+    width: 10px;
+    margin-left: 3px;
+    margin-top: 2px;
+  }
+  .skillsDispFlex {
+    display: flex;
+    flex-direction: row;
+  }
+  .profileMargin {
+    margin-top: 10px;
+  }
+
+  .editImage-icon {
+    // position: absolute;
+    // top: 50px;
+    // left: 50px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    background: #0e8ac7;
+    width: 18px;
+    height: 18px;
+    border-radius: 100%;
+  }
+  .editprofileImg {
+    width: 20px;
+  }
+  .positionRelative {
+    position: relative;
+  }
+  .pencilIcon-profile {
+    display: inline-block;
+    /* font-size: 0.95em; */
+    padding: 5px;
+    color: white;
+    font-size: 12px;
+  }
+}

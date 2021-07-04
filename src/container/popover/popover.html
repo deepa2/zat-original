@@ -1,0 +1,224 @@
+<ion-list *ngIf="type=='options'" no-margin>
+    <!-- <button ion-item *ngIf="userType!='PRE-ONBOARDING'" (click)="goToPage('NewHomePage')">Home</button> -->
+    <button ion-item (click)="goToPage('AboutPage')">About App</button>
+    <button ion-item (click)="goToPage('WhatsNewPage')">What's New</button>
+
+    <div radio-group>
+        <ion-item *ngIf="role.isAdmin">
+            <ion-label>Admin</ion-label>
+            <ion-radio (ionSelect)="changeRole('admin')" [checked]="selectedRole=='admin'"></ion-radio>
+        </ion-item>
+
+        <ion-item *ngIf="role.isHr">
+            <ion-label>HR</ion-label>
+            <ion-radio (ionSelect)="changeRole('hr')" [checked]="selectedRole=='hr'"></ion-radio>
+        </ion-item>
+
+        <ion-item *ngIf="role.isAssociate">
+            <ion-label>User</ion-label>
+            <ion-radio (ionSelect)="changeRole('associates')" [checked]="selectedRole=='associates'"></ion-radio>
+        </ion-item>
+    </div>
+
+    <button ion-item (click)="logout()">Logout</button>
+</ion-list>
+
+<ion-list *ngIf="type=='addAnnouncement'" no-margin>
+    <!-- <button ion-item (click)="goToPage('NewHomePage')">Home</button> -->
+    <button ion-item (click)="goToPage('AboutPage')">About App</button>
+    <button ion-item (click)="goToPage('WhatsNewPage')">What's New</button>
+    <button *ngIf="role.isAdmin" ion-item (click)="goToPage('AddPage')">
+        Add Announcement
+    </button>
+    <button ion-item (click)="contact()">Contact Us</button>
+    <button ion-item (click)="logout()">Logout</button>
+</ion-list>
+
+<ion-list *ngIf="type=='home' || type=='others' || type=='profile'" no-margin>
+    <!-- <button *ngIf="(type=='others' || type=='profile') && userType!='PRE-ONBOARDING'" ion-item
+    (click)="goToPage('NewHomePage')">Home</button> -->
+    <button ion-item (click)="goToPage('AboutPage')">About App</button>
+    <button ion-item (click)="goToPage('WhatsNewPage')">What's New</button>
+    <button ion-item (click)="contact()">Contact Us</button>
+    <button ion-item (click)="logout()">Logout</button>
+</ion-list>
+<ion-list *ngIf="type=='new-home'" no-margin>
+    <button ion-item (click)="goToPage('AboutPage')">About App</button>
+    <button ion-item (click)="goToPage('WhatsNewPage')">What's New</button>
+    <button ion-item (click)="contact()">Contact Us</button>
+    <button ion-item (click)="logout()">Logout</button>
+    <button ion-item (click)="goToBackdoorEntry()">Backdoor Entry</button>
+</ion-list>
+
+<div *ngIf="type=='filter'" radio-group [(ngModel)]="filterType">
+    <ion-item *ngFor="let item of filterArray">
+        <ion-label>{{item.value}}</ion-label>
+        <ion-radio (ionSelect)="selectFilter()" [value]="item.value" [checked]="item.value"></ion-radio>
+    </ion-item>
+</div>
+
+<ion-list *ngIf="type=='attach'" no-margin>
+    <ion-item class="attachOption" (click)="selectAttach('gallery')">
+        <span>Open Gallery</span>
+        <button item-end class="attachIcon" ion-button round icon-only>
+            <ion-icon name="camera"></ion-icon>
+        </button>
+    </ion-item>
+
+    <button class="attachOption" ion-item (click)="selectAttach('camera')">
+        <span>Take Photo</span>
+        <button item-end class="attachIcon" ion-button round icon-only>
+            <ion-icon name="image"></ion-icon>
+        </button>
+    </button>
+</ion-list>
+
+<ion-list *ngIf="type=='obLanding' || type=='obChangePassword' || type== 'obAdd'" no-margin>
+    <button *ngIf="type !='obChangePassword'" ion-item (click)="goToPage('AboutPage','onBoarding')">
+        About App
+    </button>
+    <button *ngIf="type !='obChangePassword'" ion-item (click)="contact()">
+        Contact Us
+    </button>
+    <button ion-item (click)="logout()">Logout</button>
+</ion-list>
+
+<ion-list *ngIf="type=='obDashboard'" no-margin>
+    <button ion-item (click)="goToPage('AboutPage','onBoarding')">
+        About App
+    </button>
+    <button ion-item (click)="goToPage('QuestionsPage')">My Questions</button>
+    <button ion-item (click)="contact()">Contact Us</button>
+    <button ion-item (click)="logout()">Logout</button>
+</ion-list>
+
+<ion-list *ngIf="type == 'obDocumentDetails' || type =='obAddDetails'" no-margin>
+    <button *ngIf="type !='obChangePassword'" ion-item (click)="goToPage('AboutPage','onBoarding')">
+        About App
+    </button>
+    <button *ngIf="type !='obChangePassword'" ion-item (click)="contact()">
+        Contact Us
+    </button>
+    <button ion-item (click)="logout()">Logout</button>
+</ion-list>
+
+<ion-list *ngIf="type == 'rejectedDocuments'" no-margin>
+    <button ion-item (click)="logout()">Logout</button>
+</ion-list>
+
+<ion-list *ngIf="type == 'ZenDeavour'" no-margin>
+    <button ion-item (click)="selectAll()" *ngIf="isSelected!='true'">
+        Select All
+    </button>
+    <button ion-item (click)="selectAll()" *ngIf="isSelected=='true'">
+        Deselect All
+    </button>
+</ion-list>
+
+<ion-list *ngIf="type == 'Redirect'" no-margin>
+    <!-- <button ion-item (click)="redirect()">Redirect</button> -->
+    <button ion-item (click)="consult()">Consult</button>
+</ion-list>
+
+<ion-list *ngIf="type == 'sendReminder'" no-margin>
+    <button ion-item (click)="sendReminder()">Send Reminder</button>
+</ion-list>
+
+<ion-list *ngIf="type == 'chatBot'" no-margin>
+    <button ion-item (click)="chatBotFeedBack('askquestion')">
+        Add as a question
+    </button>
+    <button ion-item (click)="chatBotFeedBack('feedback')">Feedback</button>
+</ion-list>
+<!-- <ion-list *ngIf="type=='obChangePassword'" no-margin>
+  <button ion-item (click)="logout()">Logout</button>
+</ion-list> -->
+
+<!-- ZenDeavor options for reviewer  -->
+<ion-list *ngIf="type == 'direct-submit'" no-margin>
+    <button ion-item (click)="directSubmitKra()">Direct Approve</button>
+    <!-- <button ion-item (click)="consult()">Consult</button> -->
+</ion-list>
+
+<ion-list *ngIf="dapType=='dapCourseList'" no-margin>
+    <!-- <button ion-item (click)="goToPage('NewHomePage')">Home</button> -->
+    <ion-label style="text-align: center; font-size: 1.2em; font-weight: 600">Filter</ion-label>
+    <!-- <ion-item>
+    <ion-label>V Learn</ion-label>
+    <ion-checkbox style="margin: 9px 10px 9px 4px;" [(ngModel)]="selectedVlearn" (ionChange)="updateValue('V Learn')"></ion-checkbox>
+  </ion-item>
+  <ion-item>
+    <ion-label>Classroom</ion-label>
+    <ion-checkbox style="margin: 9px 10px 9px 4px;" [(ngModel)]="selectedclassroom" (ionChange)="updateValue('Classroom')"></ion-checkbox>
+  </ion-item>
+  <ion-item>
+    <ion-label>Online</ion-label>
+    <ion-checkbox style="margin: 9px 10px 9px 4px;" [(ngModel)]="selectedonline" (ionChange)="updateValue('Online')"></ion-checkbox>
+  </ion-item> -->
+    <ion-item *ngFor="let dapfilter of dapfilterArray">
+        <ion-label>{{dapfilter?.value}}</ion-label>
+        <ion-checkbox style="margin: 9px 10px 9px 4px" [(ngModel)]="dapfilter.checked"></ion-checkbox>
+    </ion-item>
+    <ion-buttons style="text-align: center; margin-top: 15px">
+        <button ion-button (click)="applyfilter()">Apply</button>
+    </ion-buttons>
+</ion-list>
+
+<ion-list *ngIf="type == 'rtoData'">
+    <div radio-group>
+        <ion-item *ngFor="let monthsDataList of monthsData">
+            <ion-label> {{monthsDataList.month}} </ion-label>
+            <ion-radio (ionSelect)="getSelectedMonth(monthsDataList)" [checked]="monthsDataList.checked"></ion-radio>
+        </ion-item>
+    </div>
+</ion-list>
+
+<div *ngIf="type=='rtoPopulation'" radio-group>
+    <ion-item *ngFor="let item of monthFilter">
+        <ion-label>{{item.month}}</ion-label>
+        <ion-radio (ionSelect)="selectMonth(item)" [checked]="item.isSelected"></ion-radio>
+    </ion-item>
+</div>
+
+<ion-list *ngIf="type == 'ZenRich'" no-margin>
+    <button ion-item (click)="copyCode('CopyCode')">Copy Job Code</button>
+    <button ion-item (click)="copyCode('CopyDetails')">Copy Job Details</button>
+    <!-- <button ion-item (click)="consult()">Consult</button> -->
+</ion-list>
+
+<!-- options for Goal Setting KRA1 -->
+<ion-list *ngIf="type == 'editSubKra'" no-margin>
+    <button ion-item (click)="editSubKra('edit')" *ngIf="showEdit">Edit</button>
+    <button ion-item (click)="editSubKra('delete')" *ngIf="showDelete">
+        Delete
+    </button>
+</ion-list>
+<!-- Redirect options for Midterm-ZenDeavor -->
+<ion-list *ngIf="type == 'MidtermRedirect'" no-margin>
+    <button ion-item (click)="redirect()">Redirect</button>
+</ion-list>
+
+<ion-list *ngIf="type == 'dapDetails'" no-margin>
+    <button ion-item (click)="export()">Export</button>
+</ion-list>
+
+<!-- Admin Bus options -->
+
+<ion-list *ngIf="type == 'adminBus'" no-margin>
+    <button ion-item (click)="busEdit()" *ngIf="showEdit">Edit</button>
+    <button ion-item (click)="busDelete()" *ngIf="showDelete">Delete</button>
+</ion-list>
+<ion-list *ngIf="type == 'adminpickuppt'" no-margin>
+    <button ion-item (click)="pickupPt('edit')" *ngIf="showEdit">Edit</button>
+    <button ion-item (click)="pickupPt('delete')" *ngIf="showDelete">Delete</button>
+</ion-list>
+<!-- ZenAdmin Home Page FAQ Option  -->
+<ion-list *ngIf="type == 'zenAdminFaq'" no-margin>
+    <button ion-item (click)="gotoFaq('faq')">FAQ</button>
+</ion-list>
+<!-- ZenAdmin charges in search route details  -->
+<ion-list *ngIf="type == 'passCharges'" no-margin>
+    <button ion-item >Monthly {{costDetails?.monthly}}</button>
+    <button ion-item >Daily {{costDetails?.daily}}</button>
+    <button ion-item >Weekly {{costDetails?.weekly}}</button>
+</ion-list>

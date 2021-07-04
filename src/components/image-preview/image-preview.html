@@ -1,0 +1,15 @@
+
+    
+<ion-content>
+  <div class="close-btn" (click)="dismiss()">
+    <ion-icon ios="ios-close-circle" md="md-close-circle"></ion-icon>
+  </div>
+  <ion-slides #slides class="postImage-slider">
+    <ng-container *ngFor="let item of imageData">
+      <ion-slide *ngIf="item.mimeType =='image/jpeg' || item.mimeType =='image/png'" >
+        <img class="group-icon" src="{{encodeURI(zenloungeBaseUrl + item.postfileUrl)}}">
+      </ion-slide>
+    </ng-container>
+    
+  </ion-slides>
+</ion-content>

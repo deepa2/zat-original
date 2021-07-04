@@ -1,0 +1,67 @@
+page-ob-landing {
+  .ob-welcome-heading {
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  .button-center {
+    text-align: center;
+  }
+  .obText {
+    font-size: 14px;
+    text-align: justify;
+    line-height: 1.5;
+  }
+
+  .underline {
+    border-top: 1px dotted black;
+  }
+
+  .containerRow {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+    [col-6] {
+      flex: 0 0 48%;
+      width: 48%;
+      max-width: 48%;
+      text-align: left;
+    }
+
+    .alignRight {
+      text-align: right;
+    }
+  }
+
+  .agreementText {
+    font-size: 16px;
+  }
+
+  .startObBtn {
+    background-color: color($colors, secondary);
+    color: white;     
+  }
+
+  .heading {
+    font-size: 20px;
+    color: color($colors, secondary);
+    font-weight: bold;
+    margin-top: 4px;
+  }
+
+  .intro-para {
+    font-size: 14px;
+  }
+
+  .module-heading {
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: -11px;
+  }
+
+  .intro-para{
+    font-size: 15px;
+    line-height: 1.5;
+  }
+}

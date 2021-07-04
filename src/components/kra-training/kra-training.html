@@ -1,0 +1,25 @@
+<!-- <ion-header>
+  <ion-navbar class="headerBackground">
+    <ion-title>{{modalParams.type}}</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="dismiss()">
+        <ion-icon slot="end" name="close"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header> -->
+<ion-content>
+  <div class="header-fixed">
+    <ion-navbar>
+      <ion-title>{{modalParams.type}}</ion-title>
+      <ion-buttons end>
+        <button ion-button icon-only (click)="dismiss()">
+          <ion-icon slot="end" name="close"></ion-icon>
+        </button>
+      </ion-buttons>
+    </ion-navbar>
+  </div>
+  <ion-card class="no-shadow" *ngFor="let item of modalParams.courseList">
+    <div class="padding10 fontSize1p1">{{item}}</div>
+  </ion-card>
+</ion-content>

@@ -1,0 +1,31 @@
+reports-page {
+    .contanier-bg {
+        background-color: #e1e7f3;
+    }
+    .card-desn {
+        box-shadow: none;
+        padding: 6px;
+    }
+    .reprt-icon-styl {
+        padding: 5px;
+    }
+    .title-styl {
+        padding-left: 8px;
+        font-size: 1.1em;
+        font-weight: 400;
+    }
+    .date-list-styl {
+        display: flex;
+        align-items: center;
+        padding: 7px 5px;
+        padding-top: 16px;
+    }
+    .genrate-styl {
+        padding-left: 5px;
+        color: gray;
+    }
+    .date-styl {
+        padding-left: 6px;
+        font-weight: 400;
+    }
+}

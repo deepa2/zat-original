@@ -1,0 +1,90 @@
+<!--
+  Generated template for the PostQuestionPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Add Question</ion-title>
+    <!-- <ion-buttons end hideBackButton>
+      <button ion-button icon-only (click)="backButtonClick()">
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons> -->
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <div>
+    <ion-textarea id="add" rows="4" class="width100 growTextBox questionArea" placeholder="Enter your question here"
+      maxlength="maxLength" (input)='_inputUpdate($event.target?.value)' [(ngModel)]="askedQuestion"
+      (keyup.enter)="send()">
+    </ion-textarea>
+
+    <div>
+      <div style="padding-top:2px;float: right;" class="{'redColor':lessThanZero}"> {{remainingCharacters}} </div>
+      <div *ngIf="lessThanZero" class="bg-danger msgBox">{{warning}}</div>
+    </div>
+
+    <div class="confirmation padding5" *ngIf="askedQuestion.length > 0 && !lessThanZero">
+      <div>{{confirmation}}</div>
+      <button [disabled]="!askedQuestion" (click)="send()"
+        class="box-shadow btn askedQuestion ? 'postSuccess': 'post'">Post</button>
+      <button (click)="cancel()" type="button" class="btn cancel">Cancel</button>
+    </div>
+
+
+    
+    <div *ngIf="imgList" margin-vertical  class="listImages display">
+      <div  class="frame-square width-30">
+        <div class="crop">
+          <img [src]="imgList" (click)="openModal()" onerror="this.src=''">
+        </div>
+      </div>
+      <div  class="width-60">
+        <div class="mg-30">{{getFileName(imgList)}}</div>
+      </div>
+      <div  class="width-10">
+        <span (click)="removeImg()">
+          <ion-icon name="close"></ion-icon>
+        </span>
+      </div>
+
+    </div>
+
+
+  </div>
+</ion-content>
+
+<ion-footer padding>
+  <div class="spinner-container">
+    <ion-spinner name="dots" class="loader" *ngIf="loading$ | async"></ion-spinner>
+  </div>
+
+  <div *ngIf="!(loading$ | async)">
+    <div class="holder">
+      <!-- keyboard -->
+      <!-- <img class="width9 height9" *ngIf="!showText" (click)="_openKeyboard()" src="./assets/imgs/chat/keyboard.svg" /> -->
+
+      <!-- Microphone/Listening -->
+      <img class="width9 height9" *ngIf="!listening" (click)="_startListening()"
+        src="./assets/imgs/chat/microphone-icon.svg" />
+      <img class="width9 height9" *ngIf="listening" src="./assets/imgs/chat/message-loader.gif" />
+
+      <!-- Speaker/Mute -->
+      <!-- <img class="width9 height9" *ngIf="mute" (click)="_muteSpeech()" src="./assets/imgs/chat/mute.svg" />
+      <img class="width9 height9" *ngIf="!mute" (click)="_muteSpeech()" src="./assets/imgs/chat/unmute.svg" /> -->
+    </div>
+
+    <!-- <div [hidden]="!showKeyboard" class="keyboard-holder center">
+      <div class="width9 height9">
+        <img *ngIf="!showSend" (click)="_closeKeyboard()" src="./assets/imgs/chat/microphone.svg" />
+        <img *ngIf="showSend" (click)="_sendText()" src="./assets/imgs/chat/send.svg" />
+      </div>
+    </div> -->
+  </div>
+</ion-footer>

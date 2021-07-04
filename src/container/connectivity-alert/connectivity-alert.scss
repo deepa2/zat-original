@@ -1,0 +1,48 @@
+connectivity-alert {
+  .scroll-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .container {
+    position: relative;
+  }
+  .alertBackground {
+    padding: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  // .container-body {
+  //   position: absolute;
+  //   left: 40%;
+  //   right: 40%;
+  //   bottom: 0;
+  //   top: 30%;
+  //   text-align:center;
+  // }
+  .tyrBtn {
+    background: #a7464d;
+    color: white;
+    text-align: center;
+    width: 50%;
+    padding: 10px;
+    font-size: 1em;
+    margin-top: 22px;
+    border-radius: 23px;
+  }
+  .errorImg {
+    // width: 40px;
+    height: 145px;
+  }
+  .h1 {
+    font-size: 1.9em;
+    margin-top: 25px;
+  }
+  .warning{
+    line-height: 0.5;
+  }
+}

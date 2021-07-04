@@ -1,0 +1,59 @@
+<!--
+  Generated template for the VisionPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Vision</ion-title>
+  </ion-navbar>
+  <div>
+    <ion-segment [(ngModel)]="vision">
+      <ion-segment-button value="zenwenChapter">
+        ZenWen Chapter
+      </ion-segment-button>
+      <ion-segment-button value="zenwenVision">
+        ZenWen Vision
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+</ion-header>
+
+
+<ion-content class="vision_content">
+  <div [ngSwitch]="vision" class="zenwenChapter">
+    <div *ngSwitchCase="'zenwenChapter'">
+      <ion-card padding>
+        <p><strong>What is ZenWen?</strong></p>
+        <read-more [desc]="zenwenContent"></read-more>
+      </ion-card>
+
+      <ion-card padding *ngFor="let chapter of zenwenChapter">
+        <p>{{chapter?.title}}</p>
+        <img src="{{imgUrl + chapter?.thumbnailUrl}}">
+        <div class="emailAddr">write to us @
+          <a href="mailto:{{chapter?.description}}">{{chapter?.description}}</a>
+        </div>
+      </ion-card>
+
+    </div>
+
+    <div *ngSwitchCase="'zenwenVision'" class="zenwenVision">
+      <ion-card padding>
+        <img src="{{imgUrl + zenwenVision?.thumbnailUrl}}" />
+      </ion-card>
+      <ion-card>
+        <ion-list>
+          <ion-item>
+            <!-- <ion-avatar item-start>
+              <img src="assets/zenwen-imgs/buddy-cop.svg" />
+            </ion-avatar> -->
+            <p [innerHTML]="zenwenVision?.description"></p>
+          </ion-item>
+        </ion-list>
+      </ion-card>
+    </div>
+  </div>
+</ion-content>

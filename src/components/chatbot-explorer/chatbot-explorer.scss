@@ -1,0 +1,19 @@
+chatbot-explorer {
+.title-text{
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+}
+.close-icon{
+    font-size: 30px;
+    color: #000000;
+    padding: 0 10px 10px;
+}
+.explore-slide{
+    height: 87vh;
+    background: gainsboro;
+    margin: 5px;
+    border-radius: 5px;
+}
+}

@@ -1,0 +1,53 @@
+<ion-header>
+
+  <ion-toolbar class="toolBg">
+    <ion-title>Rejected Documents</ion-title>
+    <!-- <div class="right-item" padding (click)="presentOptions($event)">
+        <ion-icon name="more"></ion-icon>
+      </div> -->
+    <ion-buttons end>
+      <button *ngIf="finalSubmit" class="submit" form="ngForm" ion-button (click)="finalSubmit()"
+        [disabled]="!isAvailableForFinalSubmit">
+        Submit
+      </button>
+      <button ion-button icon-only (click)="presentOptions($event)">
+        <ion-icon name="more"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <div padding *ngIf="loading$ | async">
+    <ion-spinner></ion-spinner>
+  </div>
+
+  <ion-card class="queryCard" *ngFor="let docs of rejectedDocsList" (click)="gotoEditPage(docs.type,docs.referenceId)">
+    <!-- <ion-card class="queryCard" *ngFor="let docs of rejectedDocsList$"> -->
+    <div>
+
+      <div class="justify-content-space-btw">
+ 
+        <div><img class="rej-icon" *ngIf="docs.rejectionStatus == 'Reject'"
+            src="assets/zents-imgs/ts-rejected-icon.svg" /></div>
+        <div><img class="pending-icon" *ngIf="docs.rejectionStatus == 'Pending'"
+            src="assets/zents-imgs/ts-submitted-icon.svg" /></div>
+        <div class="width70 title-content">
+          <p class="category">
+            {{docs.title}}
+
+            <!-- PANCARD -->
+          </p>
+          <p class="reason">Rejection Reasons:</p>
+          <p class="fontSize9">{{docs.reasonForRejection}}</p>
+        </div>
+        <div class="width20">
+          <ion-icon class="font-size1p6" name="arrow-forward"></ion-icon>
+        </div>
+      </div>
+
+    </div>
+  </ion-card>
+</ion-content>

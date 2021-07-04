@@ -1,0 +1,158 @@
+page-zendeavor-reviewer-list {
+  // .custom-segment {
+  //   font-size: 1em !important;
+  //   text-transform: capitalize !important;
+  // }
+
+  .custom-segment {
+    text-transform: capitalize !important;
+    font-size: 1em !important;
+    display: flex;
+    flex-direction: column;
+    padding: 5px!important;
+    height: auto!important;
+    line-height: 1.25!important;
+    
+  }
+
+  .associate-profile-pic {
+    border-radius: 50%;
+    overflow: hidden;
+    width: 50px;
+    height: 50px;
+    border: 4px solid #c5dcf3;
+  }
+
+  .associate-card {
+    display: flex;
+    padding: 5px;
+    margin: 10px;
+    flex-direction: row;
+    background: white;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+  }
+  .associate-details {
+    display: flex;
+    align-items: center;
+    width: 70%;
+  }
+  .associate-info {
+    padding: 0 10px;
+  }
+  .team-details {
+    display: flex;
+  }
+  .teamMean {
+    display: flex;
+    align-items: center;
+  }
+  .user-img {
+    width: 25px;
+    border-radius: 50%;
+  }
+
+  .iconSize {
+    position: absolute;
+    right: 20px;
+  }
+  .teamMean-container {
+    display: flex;
+  }
+
+  .padding-rt-left5 {
+    padding: 0 5px;
+  }
+
+  .nodata {
+    margin: 10px;
+    font-size: 1em;
+    background: white;
+    padding: 10px;
+    text-align: center;
+  }
+
+  .divSecond {
+    width: 30%;
+    border-left: 1px solid #2c2f33;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+    padding-left: 10px;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .subDiv {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .font8em {
+    font-size: 0.8em;
+  }
+  .statusColor {
+    color: #488cfc;
+  }
+  .status {
+    font-weight: 500;
+    margin-bottom: 5px;
+  }
+  .padding5 {
+    padding: 5px;
+  }
+  .font1-6em {
+    font-size: 1.6em;
+  }
+  .selectedImg {
+    // position: absolute;
+    // height: 22px!important;
+    // top: 45px;
+    // /* right: 77px; */
+    // margin-left: 35px;
+
+    position: absolute;
+    height: 20px !important;
+    top: 38px;
+    /* right: 77px; */
+    margin-left: 20px;
+  }
+  .teamMean-img {
+    width: 30px;
+    padding: 3px;
+  }
+  .teamMean-img-div {
+    border: 1px solid white;
+    border-radius: 50%;
+  }
+  .currentMeanTitle {
+    width: 60px;
+    text-align: center;
+    font-size: 0.95em;
+  }
+  .associate-name {
+    color: #488cfc;
+    font-weight: 500;
+    white-space: initial;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .imgCls {
+    border-radius: 50%;
+    overflow: hidden;
+    width: 50px !important;
+    height: 50px !important;
+    border: 4px solid #c5dcf3;
+  }
+  .associateCardApproved {
+    display: flex;
+    // padding: 5px;
+    margin: 10px;
+    flex-direction: row;
+    background: white;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+  }
+  .current-mean-color {
+    color: white;
+  }
+}

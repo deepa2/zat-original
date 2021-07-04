@@ -1,0 +1,262 @@
+page-return-to-office.ion-page {
+  ion-content.footerContent.content {
+    .scroll-content {
+      padding: 0 !important;
+      // background: url("../assets/imgs/coronaBottomBg.svg");
+      background-position: center bottom;
+      background-repeat: no-repeat;
+      margin-bottom: 125px !important;
+    }
+  }
+
+    ion-content.content .scroll-content {
+        padding: 0 !important;
+        // background: url("../assets/imgs/coronaBottomBg.svg");
+        background-position: center bottom;
+        background-repeat: no-repeat;
+        // padding-bottom: 110px !important;
+        background: #EBEBEB;
+      }
+      ion-content.content.fullscreen .scroll-content {
+        padding-bottom: 50px !important;
+      }
+      .signin-wrapper{
+        margin: 10px;
+        background: #fff;
+        padding: 8px;
+        border-radius: 5px;
+     
+      .signin-con {
+        display: flex;
+        background: url("../assets/imgs/guidlinebg.svg");
+        .sign-text{
+          padding: 10px;
+        }
+        .rto-con{
+          margin-top: 15px;
+          .guidlines {
+            background: #fff;
+            color: #0e7ac8;
+            width: 100px;
+            text-align: center;
+            padding: 5px;
+            margin-top: 10px;
+            border-radius: 15px;
+         }
+         span.rto {
+          color: #0051BC;
+          font-weight: bold;
+          }
+        }
+        
+        }
+      }
+      .corona-wrapper {
+        background: url("../assets/imgs/coronaBg.svg");
+        background-position: right top;
+        background-repeat: no-repeat;
+        padding: 10px;
+        min-height: 320px;
+      }
+      .item-md {
+        background-color: transparent;
+        width: 170px;
+      }
+      .datetime-md {
+        padding: 8px 5px 8px 5px;
+      }
+    
+      .travellingDetails {
+        margin-top: 5px;
+      }
+      .radioBtnPos {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+        margin-right: 5px;
+      }
+      .btmPara {
+        // position: fixed;
+        //bottom: 56px;
+        padding: 0 10px;
+        bottom: 0px;
+        text-align: left;
+      }
+      .fotterBtn {
+        text-align: right;
+        box-shadow: 0 0 7px #b1b1b1;
+        // padding: 10px;
+        background: #fff;
+        button.button {
+          border-radius: 30px;
+          overflow: hidden;
+          margin: 0 15px 15px 0;
+        }
+      }
+      .txtMrgin {
+        margin: 3px;
+      }
+      .img {
+        height: 20px;
+        margin-top: 20px;
+      }
+      .more {
+        position: absolute;
+        height: 10px;
+        padding: 2px;
+      }
+      .textClick {
+        color: #0e7ac7;
+        border-bottom: 1px solid;
+      }
+      .note {
+        padding: 10px;
+        color: #ef1100;
+        text-align: justify;
+      }
+      .checkBox {
+        display: flex;
+        justify-content: baseline;
+        margin-top: 20px;
+        margin-bottom: 10px;
+        align-items: flex-start;
+      }
+      .checkBox .checkbox-md-dark .checkbox-checked {
+        border-color: #0e7ac7;
+        background-color: #0e7ac7;
+      }
+      .checkBox .item-md {
+        padding-left: 0px;
+      }
+    
+      .checkBox .item.item-md .checkbox-md {
+        margin: 9px 10px 9px 4px;
+      }
+    
+      .checkBox .item-md.item-block .item-inner {
+        border-bottom: none;
+      }
+      .marleft-5 {
+        margin-left: 5px;
+      }
+      .errorCls {
+        color: red;
+      }
+      .markYourSelf {
+        margin-top: 15px;
+      }
+      .markYourSelfText {
+        font-size: 1.1em;
+        font-weight: bold;
+        margin: 5px;
+      }
+      .date {
+        margin-top: 10px;
+      }
+      .travellingInfo {
+        font-size: 1.1em;
+        font-weight: bold;
+        margin-top: 5px;
+      }
+      span.agreement {
+        color: #047cdc;
+        border-bottom: 1px solid;
+      }
+      /* Could Use thise as well for Individual Controls */
+      video::-webkit-media-controls-play-button {
+      }
+    
+      video::-webkit-media-controls-volume-slider,
+    // video::-webkit-media-controls-mute-button,
+    // video::-webkit-media-controls-timeline {
+    //     display: none;
+    //   }
+      .viewPdf {
+        display: flex;
+        align-items: center;
+        margin-top: 20px;
+        padding: 0 5px;
+       
+      }
+      .viewPdf  span {
+        width: 130px;
+      }
+      span.view {
+        margin-left: 30px;
+        text-decoration: underline;
+        color: #2196F3;
+    }
+      .pdfImg {
+        width: 15px;
+        margin-right: 10px;
+      }
+      .border-btm{
+        border-bottom:1px solid
+      }
+    
+      video::-webkit-media-controls-current-time-display {
+      }
+    // .videoMargin{
+    //   margin-top: 10px;
+    // }
+    
+    }
+    @media only screen and (max-width: 767px) {
+      ion-modal.infoModal
+        .modal-wrapper
+        > covid-information.ion-page
+        > ion-header
+        > .toolbar.statusbar-padding:first-child {
+        padding-top: calc(20px + 4px) !important;
+        padding-top: calc(constant(safe-area-inset-top) + 4px) !important;
+        padding-top: calc(env(safe-area-inset-top) + 4px) !important;
+        min-height: calc(56px + 20px) !important;
+        min-height: calc(0px + constant(safe-area-inset-top)) !important;
+        min-height: env(safe-area-inset-top) !important;
+      }
+      .btmPara {
+        padding: 0 10px;
+        bottom: 0px;
+        //margin-top: 100px;
+      }
+    }
+    @media only screen and (device-height: 812px) and (device-width: 375px) {
+      covid-information .scroll-content {
+        margin-top: 80px !important;
+      }
+
+  video::-webkit-media-controls-current-time-display {
+  }
+  .videoMargin {
+    margin-top: 5px;
+  }
+.pdfAligments{
+  display: flex;
+  justify-content: center;
+  align-items: center
+}
+}
+@media only screen and (max-width: 767px) {
+  ion-modal.infoModal
+    .modal-wrapper
+    > covid-information.ion-page
+    > ion-header
+    > .toolbar.statusbar-padding:first-child {
+    padding-top: calc(20px + 4px) !important;
+    padding-top: calc(constant(safe-area-inset-top) + 4px) !important;
+    padding-top: calc(env(safe-area-inset-top) + 4px) !important;
+    min-height: calc(56px + 20px) !important;
+    min-height: calc(0px + constant(safe-area-inset-top)) !important;
+    min-height: env(safe-area-inset-top) !important;
+  }
+  .btmPara {
+    padding: 0 10px;
+    bottom: 0px;
+    //margin-top: 100px;
+  }
+}
+@media only screen and (device-height: 812px) and (device-width: 375px) {
+  covid-information .scroll-content {
+    margin-top: 80px !important;
+  }
+}

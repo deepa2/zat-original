@@ -1,0 +1,287 @@
+page-zendeavor-team-list {
+  // css for segment
+  .custom-segment {
+    text-transform: capitalize !important;
+    font-size: 1em !important;
+    display: flex;
+    flex-direction: column;
+    padding: 5px!important;
+    height: auto!important;
+    line-height: 1.25!important;
+    
+  }
+
+  .row {
+    display: flex;
+    // justify-content: flex-start;
+    background: #efefef;
+    margin: 10px 0;
+  }
+  .imgCls {
+    border-radius: 50%;
+    overflow: hidden;
+    width: 50px !important;
+    height: 50px !important;
+    border: 4px solid #c5dcf3;
+  }
+
+  .userpic-div {
+    width: 20%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* img {
+      width: 40px;
+    } */
+  }
+  .associate-details {
+    width: 45%;
+    display: flex;
+    /* align-items: center; */
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px 15px;
+    .associate-name {
+      font-size: 1.3em;
+      font-weight: 500;
+    }
+    .associate-id {
+      font-size: 1.1em;
+    }
+  }
+  .status-div {
+    // width: 50%;
+    display: flex;
+    /* align-items: center; */
+    flex-direction: column;
+    justify-content: center;
+    width: 35%;
+    background: #dbdbdb;
+    padding: 10px 15px;
+    .status-name {
+      font-size: 1.3em;
+      font-weight: 500;
+    }
+    .status-value {
+      font-size: 1.1em;
+    }
+  }
+  .parentDiv {
+    width: 100%;
+  }
+  .segment-button.segment-activated {
+    border-color: #3597e8 !important;
+    opacity: 1 !important;
+  }
+
+  .segment-md .segment-button {
+    // color: black !important;
+    opacity: 0.5;
+  }
+
+  .infoClass {
+    display: flex;
+  }
+  .divFirst {
+    width: 70%;
+  }
+  .empName {
+    color: #488cfc;
+    font-weight: 500;
+    white-space: initial;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .divSecond {
+    width: 30%;
+    border-left: 1px solid #2c2f33;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+    padding-left: 10px;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .subDiv {
+    display: flex;
+    flex-direction: column;
+  }
+  .status {
+    font-weight: 500;
+    margin-bottom: 5px;
+  }
+  .statusColor {
+    color: #488cfc;
+  }
+  .iconSize {
+    font-size: 1.6em;
+  }
+  .headerBtn {
+    border: 1px solid;
+    border-radius: 24px;
+    text-transform: capitalize;
+    padding: 15px 10px;
+  }
+  .headerBackground {
+    background: linear-gradient(to right, #488cfc, #8264ff);
+  }
+  .selectedImg {
+    // position: absolute;
+    // height: 22px!important;
+    // top: 45px;
+    // /* right: 77px; */
+    // margin-left: 35px;
+
+    position: absolute;
+    height: 20px !important;
+    top: 38px;
+    /* right: 77px; */
+    margin-left: 20px;
+  }
+
+  /* .item ion-avatar ion-img,
+  .item ion-avatar img .imgCls {
+    border-radius: 50%;
+    overflow: hidden;
+    width: 50px!important;
+    height: 50px!important;
+  } */
+  .nodata {
+    margin: 10px;
+    font-size: 1em;
+    background: white;
+    padding: 10px;
+    text-align: center;
+  }
+  .pd5 {
+    padding: 5px;
+  }
+  .font8em {
+    font-size: 0.8em;
+  }
+  // ion-segment {
+  //   display: block;
+  //   white-space: nowrap;
+  //   overflow: auto;
+  //   // &::-webkit-scrollbar {
+  //   //   width: 0;
+  //   //   height: 0;
+  //   //   display: none;
+  //   // }
+
+  //   ion-segment-button.segment-button {
+  //     display: inline-block;
+  //     min-width: 110px;
+  //     width: auto;
+  //     color: #0ea2c8 !important;
+  //   }
+  // }
+
+  .teamMean {
+    display: flex;
+    align-items: center;
+  }
+  .user-profile {
+    width: 30px;
+    // border-radius: 50%;
+    padding: 3px;
+  }
+
+  .padding-rt-left5 {
+    padding: 0 5px;
+  }
+
+  // reviewer list css
+
+  .associate-profile-pic {
+    border-radius: 50%;
+    overflow: hidden;
+    width: 50px;
+    height: 50px;
+    border: 4px solid #c5dcf3;
+  }
+  .associate-card {
+    display: flex;
+    padding: 5px;
+    margin: 10px;
+    flex-direction: row;
+    background: white;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+      0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+  }
+
+  .associate-details-rw {
+    display: flex;
+    align-items: center;
+    width: 70%;
+    .associate-name {
+      color: #488cfc;
+      font-weight: 500;
+    }
+  }
+  .associate-info {
+    padding: 0 10px;
+  }
+  .team-details {
+    display: flex;
+  }
+  .team-iconSize {
+    position: absolute;
+    right: 20px;
+  }
+  .teamMean-container {
+    display: flex;
+  }
+  .nextBtn {
+    text-align: center;
+    // width: 20%;
+    background: #6363aa;
+    text-transform: capitalize;
+    // width: 30%;
+  }
+
+  .submitfooter {
+    display: flex;
+    justify-content: center;
+    height: 30px;
+  }
+
+  .arrowicon-container {
+    width: 30px;
+  }
+
+  .margin-topBottom5 {
+    margin: 5px 0;
+  }
+
+  .btnsubmit-footer {
+    position: absolute;
+    bottom: 0px;
+  }
+
+  .teamMean-icon-div {
+    border: 1px solid white;
+    border-radius: 50%;
+  }
+
+  .currentMeanTitle {
+    width: 60px;
+    text-align: center;
+    font-size: 0.95em;
+  }
+  .width-85px{
+    width: 85px;
+  }
+  .info-icon {
+    width: 15px;
+    margin-left: 18px;
+  }
+  .current-mean-color{
+    color: white;
+  }
+  .padding7px {
+    padding: 7px;
+  }
+}

@@ -1,0 +1,101 @@
+<ion-header>
+    <ion-navbar class="navbar">
+
+
+        <button ion-button icon-only menuToggle>
+      <!-- <ion-icon name="menu"></ion-icon> -->
+      <img class="menu-icon" src="assets/icon/dashboard-icons/menu-icon.svg" class="icon-texure">
+    </button>
+        <ion-title>Home</ion-title>
+    </ion-navbar>
+    <ion-toolbar>
+        <div class="home-banner" *ngIf="homeBanner && homeBanner?.length">
+            <!-- loop="true" is removed add if needed -->
+            <ion-slides slidesPerView="1.2" centeredSlides="true" pager autoplay='false' speed="800">
+                <ion-slide class="bannerSlide" *ngFor="let banner of homeBanner; index as i">
+                    <!-- (click)="getBannerDetails(banner.bannerId,banner.bannerName)" -->
+                    <div *ngIf="banner.bannerName != 'VaccinationUpdate'" >
+                        <img (click)="goToBanners(banner)" [src]="banner.bannerImage" class="bannerImg" onError="this.src='assets/imgs/dummy-banner.jpeg'">
+                    </div>
+                    <div *ngIf="banner.bannerName == 'VaccinationUpdate'" >
+                        <vaccination-graph [graphData]="vaccineDashBoardData"[userDetails]="userDetails"></vaccination-graph>
+                    </div>
+                </ion-slide>
+            </ion-slides>
+        </div>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content style="min-height:'58vh'">
+
+    <ion-slides class="menu-slide-head slideBackground" [pager]="applicationList?.length > 1 ">
+        <ion-slide *ngFor="let data of applicationList;let i=index">
+            <div *ngIf="data.length > 0" class="height-58vh">
+                <div *ngIf="data.length > 0" class="grid-col-3">
+
+                    <!-- comment ChatBotNew while building start -->
+                    <!-- <div (click)="goToMyPage({pageName:'ChatBotNew',isAvailable:true})" class="grid-item flex-dir-col-center"
+            [ngClass]="ChatBot">
+            <div>
+              <img src="assets/icon/dashboard-icons/zeno.svg" onerror="this.src='assets/imgs/blank.png'" class="image">
+            </div>
+
+            <div class="icon-name" [innerHTML]="'Zeno New'">
+            </div>
+          </div> -->
+                    <!-- comment ChatBotNew while building end -->
+
+                    <div (click)="goToMyPage(item)" *ngFor="let item of data" [class.disable]="!item.isAvailable" class="grid-item flex-dir-col-center" [ngClass]="item.pageName">
+                        <div>
+                            <span>
+                <img class="newIconSize" *ngIf="item.isNew" src="assets/imgs/Tag.svg" />
+              </span>
+                            <img *ngIf="item.pageName == 'QuestionsPage'" src="assets/icon/dashboard-icons/AskQuestions.svg" onerror="this.src='assets/imgs/blank.png'" class="image" />
+                            <img *ngIf="item.pageName == 'SkillPage'" src="assets/icon/dashboard-icons/SkillManagement.svg" onerror="this.src='assets/imgs/blank.png'" class="image" />
+                            <img *ngIf="item.pageName == 'ZenDeavorDashboardPage'" src="assets/icon/dashboard-icons/ZenDeavor.svg" onerror="this.src='assets/imgs/blank.png'" class="image" />
+                            <img *ngIf="item.pageName == 'InternalJobPostingPage'" src="assets/icon/dashboard-icons/JobOpportunities.svg" onerror="this.src='assets/imgs/blank.png'" class="image" />
+                            <img *ngIf="item.pageName == ''" src="assets/icon/dashboard-icons/MyLeaves.svg" onerror="this.src='assets/imgs/blank.png'" class="image" />
+                            <img *ngIf="item.pageName == 'ZencontactsPage'" src="assets/icon/dashboard-icons/Zencontacts.svg" onerror="this.src='assets/imgs/blank.png'" class="image" />
+                            <img *ngIf="item.pageName == 'FaqPage'" src="assets/icon/dashboard-icons/FAQs.svg" onerror="this.src='assets/imgs/blank.png'" class="image" />
+                            <img *ngIf="item.pageName == 'AnnouncementPage'" src="assets/icon/dashboard-icons/Announcements.svg" onerror="this.src='assets/imgs/blank.png'" class="image" />
+                            <img *ngIf="item.pageName == 'TimeEntryPage'" src="assets/icon/dashboard-icons/TimeEntry.svg" onerror="this.src='assets/imgs/blank.png'" class="image" />
+                            <img *ngIf="item.pageName == 'ApprovalDashboardPage'" src="assets/icon/dashboard-icons/Approvals.svg" onerror="this.src='assets/imgs/blank.png'" class="image" />
+                            <img *ngIf="item.pageName == 'AdditionalHoursPage'" src="assets/icon/dashboard-icons/AdditionalHours.svg" onerror="this.src='assets/imgs/blank.png'" class="image" />
+                            <img *ngIf="item.pageName == 'MyAttendanceTimesheetPage'" src="assets/icon/dashboard-icons/MyTimesheets.svg" onerror="this.src='assets/imgs/blank.png'" class="image" />
+                            <img *ngIf="item.pageName == 'Zenlounge'" src="assets/icon/dashboard-icons/zenlounge.svg" onerror="this.src='assets/imgs/blank.png'" class="image" />
+                            <img *ngIf="item.pageName == 'ZenLearn'" src="assets/icon/dashboard-icons/zenlearn.svg" onerror="this.src='assets/imgs/blank.png'" class="image" />
+                            <img *ngIf="item.pageName == 'Corona'" src="assets/icon/dashboard-icons/coronaIcon.svg" onerror="this.src='assets/imgs/blank.png'" class="image" />
+                            <img *ngIf="item.pageName == 'ICSS'" src="assets/icon/dashboard-icons/icss.svg" onerror="this.src='assets/imgs/blank.png'" class="image" />
+                            <img *ngIf="item.pageName == 'zenwen'" src="assets/icon/dashboard-icons/ZenWen.svg" onerror="this.src='assets/imgs/blank.png'" class="image" />
+                            <img *ngIf="item.pageName == 'Manager Dashboard'" src="assets/icon/dashboard-icons/manager.svg" onerror="this.src='assets/imgs/blank.png'" class="image" />
+                            <img *ngIf="item.pageName == 'GatePass'" src="assets/icon/dashboard-icons/gatepass.svg" onerror="this.src='assets/imgs/blank.png'" class="image" />
+                            <img *ngIf="item.pageName == 'ChatBot'" src="assets/icon/dashboard-icons/NewZeno.svg" onerror="this.src='assets/imgs/blank.png'" class="image" />
+                            <img *ngIf="item.pageName == 'ChatBotNew'" src="assets/icon/dashboard-icons/NewZeno.svg" onerror="this.src='assets/imgs/blank.png'" class="image" />
+                            <img *ngIf="item.pageName == 'RTODashboard'" src="assets/icon/dashboard-icons/RTO-dashboard.svg" onerror="this.src='assets/imgs/blank.png'" class="image" />
+                            <img *ngIf="item.pageName == 'ZenVerse'" src="assets/icon/dashboard-icons/Zenverse.svg" onerror="this.src='assets/imgs/blank.png'" class="image" />
+                            <img *ngIf="item.pageName == 'ZenRich'" src="assets/icon/dashboard-icons/zenrich-icon.svg" onerror="this.src='assets/imgs/blank.png'" class="image" />
+                            <img *ngIf="item.pageName == 'Exit'" src="assets/icon/dashboard-icons/Zen-Exit.svg" onerror="this.src='assets/imgs/blank.png'" class="image" />
+                            <img *ngIf="item.pageName == 'ZenAdmin'" src="assets/icon/dashboard-icons/zenadmin.svg" onerror="this.src='assets/imgs/blank.png'" class="image" />
+                            <img *ngIf="item.pageName == 'ZenFinance'" src="assets/icon/dashboard-icons/ZenFinance.svg" onerror="this.src='assets/imgs/blank.png'" class="image" />
+                            <img src="assets/imgs/Icontexture.png" onerror="this.src='assets/imgs/blank.png'" class="icon-texture" />
+
+                        </div>
+                        <div class="icon-name" [innerHTML]="item.title">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ion-slide>
+    </ion-slides>
+
+
+
+
+</ion-content>
+
+<ion-footer>
+    <div (click)="goToChatBot()">
+        <img class="zeno-img" src="assets/imgs/chatbot2.svg" />
+    </div>
+</ion-footer>

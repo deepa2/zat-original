@@ -1,0 +1,96 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title class="pageTitile">Team List</ion-title>
+
+  </ion-navbar>
+</ion-header>
+<ion-content class="backgrnd-white">
+  <div class="assosiate-list-detail">
+    <div class="team-list-card" no-padding>
+      <div class="associate-info">
+        <div class="profile-info">
+          <img class="user-icon" [src]="teamData.profilePicURL" onerror="this.src='assets/imgs/blank.png'" />
+          <div class="user-details">
+            <div class="username">{{teamData.userName}}</div>
+            <div class="sub-title" *ngFor="let userInfoitem of teamData.userDetails">
+
+              <label class="user-id">{{userInfoitem.value}}</label>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="tabs-content">
+      <div class="learning-tab">
+
+        <div class="container-card">
+          <div class="learning-card" *ngFor="let learningItem of teamData.learningSummary; let i=index ">
+            <div class="learning-icon">
+              <span>
+                <img class="icon-header" src="{{learningItem.icon}}" onerror="this.src='./assets/imgs/logo.png'" />
+              </span>
+            </div>
+            <div class="learning-info-con">
+              <div class=" width100per">
+                <span class="justify-content-space-btw width100per">
+                  <span class="center font-1p2 learn-sum-title">{{learningItem.title}}</span>
+                  <span class="center">
+                    <span class="lerning-pecent-value font-bold">{{learningItem.percentage}}%</span>
+                    <span class="lerning-hr">{{learningItem.totalCreditHrs}} Hrs</span>
+                    <ion-icon class="padding-left12" end name="ios-arrow-forward"></ion-icon>
+                  </span>
+                </span>
+              </div>
+              <div class="progress-outer">
+                <div class="progress-inner" [ngStyle]="{'background-color':'#01C275','width':learningItem.percentage +'%'}">
+                </div>
+              </div>
+              <!-- <circle-progress [percent]="learningItem.percentage" [radius]="20" [outerStrokeWidth]="5"
+              [innerStrokeWidth]="5" [space]="-14" [outerStrokeColor]="red"
+              [innerStrokeColor]="yellow" [showSubtitle]="false" [animation]="true"
+              [animationDuration]="300" [responsive]="true">
+            </circle-progress> -->
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <!-- Tabs -->
+      <div class="tabs-con">
+
+        <div class="tab">DAP</div>
+        <ion-buttons class="filter-icon">
+          <button ion-button icon-only (click)="presentPopover($event)">
+            <img src="assets/imgs/dapFilterIconblack.svg" />
+          </button>
+        </ion-buttons>
+      </div>
+      <div class="Dap-tab">
+        <div class="learming-info">
+          <div class="learning-item" *ngFor="let dapItem of dapData; let i=index " (click)='goToDapPage(dapItem)'>
+            <div class="containerItem-image"> 
+            </div>
+            <div class="conatinerItem-list">
+              <ng-container *ngFor="let listData of dapItem?.list">
+                <ion-row *ngIf="listData?.value!=''">
+                  <ion-col col-6>
+                    {{listData?.key}}
+                  </ion-col>
+                  <ion-col col-6 class="colorGrey">
+                    {{listData?.value}}
+                  </ion-col>
+                </ion-row>
+              </ng-container>
+             
+            </div>
+          </div>
+          <div class="no-data" *ngIf="dapData==null">No Dap available</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</ion-content>

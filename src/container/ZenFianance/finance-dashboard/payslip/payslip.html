@@ -1,0 +1,73 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title class="pageTitile">{{pageTitle.key}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="monthWiseDetails">
+    <div class="dap-styl">
+      <div class="paysilp-header">
+        <div class="display-flex">
+          <div>
+            <ion-item>
+              <ion-select class="meeting-select margin-right1" [selectOptions]="monthselectOptions"
+                (ionChange)="onMonthDetailChange($event)">
+                <ion-option *ngFor="let item of monthWiseDetails;let i = index" [value]="item.key"
+                  [selected]="item.isCurrentMonth">{{item?.value}}</ion-option>
+              </ion-select>
+            </ion-item>
+          </div>
+
+          <div>
+            <ion-item>
+              <ion-select class="meeting-select" [selectOptions]="yearselectOptions"
+                (ionChange)="onYearDetailChange($event)">
+                <ion-option *ngFor="let item of yearList;let i=index" [value]="item.key"
+                  [selected]="i==(yearList.length-1)? true:false">{{item?.value}}
+                </ion-option>
+              </ion-select>
+            </ion-item>
+          </div>
+        </div>
+
+        <div (click)="getpdfData()" [ngClass]="{'disable-btn': financeData?.isDisable}">
+          <img src="assets/imgs/financeDownLoad.svg" alt="download-icon" />
+        </div>
+      </div>
+
+      <div class="grid-display">
+        <div *ngFor="let item of paysilpHeader" class="flex-center grid-item-payslip">
+          <div>
+            <img class="icon-style" [src]=item?.icon alt="interst-img" />
+          </div>
+          <div class="flex-clum-pading textcolor">
+            <span>{{item?.key}}</span>
+            <span *ngIf="!item.isNumber">{{item?.decryptValue}}</span>
+            <span *ngIf="item.isNumber">{{item?.decryptValue | currency : 'INR' : 'symbol': '1.2-2' : 'en-IN'}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- details-card -->
+    <div class="list-backgroung">
+      <ion-card class="list-card-styl">
+        <div class="list-item" *ngFor="let item of financeData" (click)="movetoEarningDetails(item)">
+          <div class="list-icon">
+            <img class="icon-styl" [src]=item?.icon />
+          </div>
+          <div class="finance-list-subitem">
+            <span class="padding-bottom5">{{item?.key}}</span>
+            <span *ngIf="!item.isNumber">{{item?.decryptValue}}</span>
+            <span *ngIf="item.isNumber">{{item?.decryptValue | currency : 'INR' : 'symbol': '1.2-2' : 'en-IN'}}</span>
+          </div>
+          <div *ngIf="item.valueList">
+            <ion-icon name="ios-arrow-forward"></ion-icon>
+          </div>
+        </div>
+      </ion-card>
+    </div>
+  </div>
+
+</ion-content>

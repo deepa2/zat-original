@@ -1,0 +1,49 @@
+announcement-ratings {
+  .cmt-footer {
+    display: flex;
+  }
+
+  .send {
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    font-size: 1.8rem;
+    // margin-right: 14px;
+    margin-left: 6px;
+  }
+
+  ion-title {
+    text-transform: capitalize;
+  }
+
+  // ion-nav{
+  //     background: $app-background;
+  // }
+
+  .queryInfo {
+    font-size: 14px;
+  }
+  .date {
+    color: grey;
+    margin-right: 9px;
+    font-size: 0.8em;
+  }
+
+  .pageTitile{
+    margin-left: -15px;
+  }
+    .list-md {
+    margin-top: 8px;
+}
+.flex {
+  display: flex;
+  margin-left: 5px;
+  margin-bottom: 5px
+}
+img.imageSize {
+  width: 14px;
+  margin-right: 4px;
+}
+
+}

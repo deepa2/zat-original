@@ -1,0 +1,114 @@
+page-exit-checklist {
+    .list-container {
+        width: 100%;
+        display: flex;
+        align-items: flex-start;
+        padding: 12px;
+    }
+
+    .list-details {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 15%;
+        height: 50px;
+        margin-top: 14px;
+        padding: 5px;
+        color: #ffff;
+        border-radius: 5px;
+        img {
+            height: 22px;
+            width: 22px;
+        }
+    }
+    .content-details {
+        margin: 10px;
+        width: 80%;
+        text-align: justify;
+    }
+    .content-border {
+        border: 1px dotted lightgrey;
+        margin-left: 10px;
+        margin-right: 12px;
+    }
+    .manager {
+        background: linear-gradient(315deg, #05b2ac, #89ceb5);
+    }
+    .admin {
+        background: linear-gradient(315deg, #01c2b3, #498cfc);
+    }
+    .tims {
+        background: linear-gradient(315deg, #647afd, #e35489);
+    }
+    .gm {
+        background: linear-gradient(315deg, #f8c271, #fe8547);
+        //background: linear-gradient(315deg, #F8C271#FE8547);
+    }
+    .payroll {
+        background: linear-gradient(315deg, #79e893, #00c4c1);
+    }
+    .leaves {
+        background: linear-gradient(315deg, #8dc1ff, #afa1ff);
+    }
+    .ts {
+        background: linear-gradient(315deg, #ffc5a7, #ff8364);
+    }
+    .stats {
+        background: linear-gradient(315deg, #e15b7f, #f9b1e2);
+    }
+    .sub-heading {
+        font-weight: 600;
+        margin-left: 30px;
+    }
+    ion-icon {
+        margin-right: 5px;
+    }
+
+    .main-container {
+        padding: 10px 5px;
+    }
+    .parent-container {
+        display: flex;
+        align-items: center;
+    }
+    .parent-img {
+        height: 20px;
+        width: 20px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 5px;
+        margin: 5px;
+    }
+    .parent-text {
+        font-size: 1em;
+        font-weight: 600;
+    }
+    .child-container {
+        display: flex;
+        align-items: flex-start;
+        padding: 5px 5px 5px 30px;
+        img {
+            height: 13px;
+            /* font-size: 1.3em; */
+            margin-right: 5px;
+            margin-top: 3px;
+        }
+    }
+    .mr-tp {
+        margin-top: 5px;
+    }
+    .last-container {
+        padding: 10px;
+    }
+    .mar-lt {
+        margin-left: 15px !important;
+    }
+    .process-txt{
+        font-weight: 600;
+    }
+    .mr-para{
+        margin: 5px;
+    }
+}

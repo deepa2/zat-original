@@ -1,0 +1,118 @@
+<!-- Generated template for the RedirectKraComponent component -->
+<ion-header>
+    <div class="header-fixed">
+        <ion-navbar>
+          <ion-title>Redirect</ion-title>
+          <ion-buttons end>
+            <button ion-button icon-only (click)="dismiss()">
+              <ion-icon slot="end" name="close"></ion-icon>
+            </button>
+          </ion-buttons>
+        </ion-navbar>
+      </div>
+</ion-header>
+<ion-content>
+  <!-- <div class="header-fixed">
+    <ion-navbar>
+      <ion-title>Redirect</ion-title>
+      <ion-buttons end>
+        <button ion-button icon-only (click)="dismiss()">
+          <ion-icon slot="end" name="close"></ion-icon>
+        </button>
+      </ion-buttons>
+    </ion-navbar>
+  </div> -->
+  <!-- <ion-card class="no-shadow" >
+    <div class="padding10 fontSize1p1">sdhhs</div>
+  </ion-card> -->
+  <div class="padding10 fontSize1p1">
+
+    <ion-list>
+      <ion-item *ngIf="processType=='Mid-Term'">
+
+
+        <ion-select [selectOptions]="selectOptions" placeholder="Select *" [(ngModel)]="type" (ionChange)="onSelectChange(type)">
+
+          <ion-option value="1">Wrong Appraisal </ion-option>
+          <!-- <ion-option value="2">Incorrect KRAs </ion-option> -->
+          <!-- <ion-option value="3">Incorrect Appraiser </ion-option> -->
+          <ion-option value="2">Redirect to other Manager </ion-option>
+          <ion-option value="3">Ask AR to Redirect</ion-option>
+
+        </ion-select>
+
+      </ion-item>
+      <div *ngIf="displaySearchOptions">
+        <div class="consult-title-container" (click)="openAssociateSearchModal()">
+          <div class="consulTo-title">Redirect To</div>
+          <div>
+            <!-- <ion-icon name="add"></ion-icon> -->
+            <img src="assets/imgs/ZenDeavour/addUserForConsult.svg" class="addImg">
+          </div>
+        </div>
+        <div *ngIf="associateDetailsList?.length==0" class="associateInfo-container no-associate-data">
+          Please select manager to redirect
+        </div>
+        <div class="associateInfo-container" *ngFor="let associateItem of associateDetailsList;index as i">
+          <div class="userImg-container">
+            <img class="user-profile" [src]="associateItem?.employeeProfilePic" onerror="this.src='assets/imgs/dummy-profile.png'">
+          </div>
+          <div class="associateDetails-container">
+            <div>{{associateItem?.employeeName}}</div>
+            <div>{{associateItem?.employeeId}}</div>
+          </div>
+          <div (click)="deleteAssociate(associateItem,i)">
+            <!-- <ion-icon name="trash"></ion-icon> -->
+            <img class="deleteImg" src="assets/imgs/ZenDeavour/consult-delete.svg">
+          </div>
+        </div>
+      </div>
+
+      <ion-item *ngIf="processType=='Annual'">
+
+
+        <ion-select [selectOptions]="selectOptions" placeholder="Select *" [(ngModel)]="type" (ionChange)="onSelectChange(type)">
+
+          <ion-option value="1">Wrong Appraisal </ion-option>
+          <!-- <ion-option value="2">Incorrect KRAs </ion-option> -->
+          <!-- <ion-option value="3">Incorrect Appraiser </ion-option> -->
+          <ion-option value="2">Redirect to other Manager </ion-option>
+          <ion-option value="3">Ask AR to Redirect</ion-option>
+
+        </ion-select>
+      </ion-item>
+      <ion-item *ngIf="showRedirectForGoals">
+
+
+        <ion-select [selectOptions]="selectOptions" placeholder="Select *" [(ngModel)]="type">
+
+          <!-- <ion-option value="1">Wrong Appraisal </ion-option> -->
+          <ion-option value="2">Incorrect KRAs </ion-option>
+          <ion-option value="3">Incorrect Appraiser </ion-option>
+
+        </ion-select>
+      </ion-item>
+    </ion-list>
+
+    <!-- <div *ngIf="showRedirectForGoals" class="redirectGoals-div">
+      <span>Issue Type:</span>
+      <span>Redirect KRAs</span>
+    </div> -->
+
+  </div>
+  <div class="cmnt-area-div padding6 margin8">
+
+    <textarea rows="5" cols="40" placeholder="Comments *" [(ngModel)]='cmmtData' class="commtArea"></textarea>
+    <!-- <img class="astrick" src="assets/imgs/asterisk.svg" /> -->
+  </div>
+
+</ion-content>
+
+<ion-footer class="footerBg">
+
+  <button class="nextBtn" (click)="submit(type)" ion-button round *ngIf="!showRedirectForGoals">Submit</button>
+  <button class="redirectBtnGoals" (click)="redirectGoalsService(type)" ion-button round *ngIf="showRedirectForGoals">Redirect</button>
+
+
+
+</ion-footer>

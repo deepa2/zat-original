@@ -1,0 +1,65 @@
+page-applied-hours-detail {
+    .main{
+        background-color: #ebebeb;
+        .parent-div{
+            border-radius: 5px;
+            background-color: #ffffff;
+            margin: 2%;
+        }
+        ion-list{
+            ion-card{
+                display: flex;
+                align-items: center;
+                width: 96%;
+                margin: 2%;
+                padding: 2%;
+                box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.07), 0 3px 1px -2px rgba(0, 0, 0, 0.1), 0 1px 5px 0 rgba(0, 0, 0, 0.06);
+               .profile-pic{
+                    // width: 20%;
+                    img{
+                        border-radius: 50%;
+                        padding: 8%;
+                        height: 50px;
+                        width: 50px;
+                    }
+               }
+                .info{
+                    width:60%;
+                    padding-left: 2%;
+                    ion-label{
+                        color: grey;
+                        .name{
+                            font-size:1em;
+                            color:$ts-primary;
+                            font-weight: bold;
+                        }
+                        .type{
+                            font-size:0.9em;
+                            color:#999;
+                        }
+                        .status{
+                            font-size:0.9em;
+                            margin-top: 5px;
+                            // margin: 4px 0;
+                        }
+                    }
+                }
+                .icon{
+                    width:20%;
+                    .image{
+                        display: flex;
+                        justify-content: flex-end;
+                        img{
+                            width: 25px;
+                            height: 25px;
+                        }
+                    }
+                }
+            }
+            .track{
+                font-size: 1em;
+                margin-left: 2%;
+            }
+        }
+    }
+}

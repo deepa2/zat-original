@@ -1,0 +1,17 @@
+pending-timesheet {
+    
+}
+@media only screen and (max-width: 767px) {
+    ion-modal.pendingTimesheetListModal
+        .modal-wrapper
+        > covid-information.ion-page
+        > ion-header
+        > .toolbar.statusbar-padding:first-child {
+        padding-top: calc(20px + 4px) !important;
+        padding-top: calc(constant(safe-area-inset-top) + 4px) !important;
+        padding-top: calc(env(safe-area-inset-top) + 4px) !important;
+        min-height: calc(56px + 20px) !important;
+        min-height: calc(0px + constant(safe-area-inset-top)) !important;
+        min-height: env(safe-area-inset-top) !important;
+    }
+}

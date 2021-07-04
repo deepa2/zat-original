@@ -1,0 +1,107 @@
+<ion-header>
+
+    <ion-navbar>
+        <ion-title *ngIf="isNewBus">Add Bus</ion-title>
+        <ion-title *ngIf="!isNewBus">Edit Bus</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+
+    <div class="form-container">
+        <form [formGroup]="addBusForm">
+            <div class="margin-btm-10">
+                <ion-label class="padding10 margin10-rt-lf fontBold">Select Route</ion-label>
+                <!-- <ion-select placeholder="Select Route" (ionChange)="onRouteChange($event)" interface="action-sheet"
+                    class="borderBottom margin10-rt-lf custom-select" style="max-width: 100%" formControlName="routeName">
+                    <ion-option [value]="item.routeName" *ngFor="let item of routeList;let i=index;" >{{item.routeName}}</ion-option>
+                </ion-select> -->
+                <ion-input formControlName="routeName" class="borderBottom margin10-rt-lf " style="max-width: 100%"
+                    (ionFocus)="gotoAddNewRouteModal()" placeholder="Select Route"></ion-input>
+                <span class="error-msg" *ngIf="addBusForm.controls.routeName.errors && submitted">
+                    <p>* Kindly select route name.</p>
+                </span>
+            </div>
+            <div class="margin-btm-10">
+                <ion-label class="padding10 margin10-rt-lf fontBold">Total Seats </ion-label>
+
+                <ion-input class="borderBottom " placeholder="Add Total Seats" formControlName="totalSeats" type="number">
+                </ion-input>
+                <span class="error-msg" *ngIf="submitted">
+                    <p *ngIf="addBusForm.controls.totalSeats.errors?.required">* Kindly add total seats.</p>
+                    <p *ngIf="addBusForm.controls.totalSeats.errors?.min">* Total seat count should be greater than 0.</p>
+                    <p *ngIf="addBusForm.controls.totalSeats.errors?.max">* Total seat count should be in the range 1
+                        and 50.</p>
+                </span>
+            </div>
+            <div class="margin-btm-10">
+                <ion-label class="padding10 margin10-rt-lf fontBold">Bus Number </ion-label>
+
+                <ion-input class="borderBottom " placeholder="Add Bus Number" formControlName="busNumber">
+                </ion-input>
+                <span class="error-msg" *ngIf="addBusForm.controls.busNumber.errors && submitted">
+                    <p *ngIf="addBusForm.controls.busNumber.errors?.required">* Kindly add bus number.</p>
+                    <!-- <p *ngIf="addBusForm.controls.busNumber.errors?.pattern">* Please enter bus number in this format MH12DE1433/ .</p> -->
+                </span>
+            </div>
+        </form>
+        <div class="driver-incharge-container">
+            <div class="busIncharge-container">
+                <div class="busIncharge-txt">Bus Incharge</div>
+                <div class="associateInfo-container" *ngIf="!isNewBus">
+                    <div class="userImg-container">
+                        <img class="user-profile" [src]="busInchargeDetails?.busInchargeProfilePic" onerror="this.src='assets/imgs/dummy-profile.png'">
+                    </div>
+                    <div class="associateDetails-container">
+                        <div>{{busInchargeDetails?.busInchargeName}}</div>
+                        <div>{{busInchargeDetails?.busInchargeContactNumber}}</div>
+                    </div>
+                    <div class="changeTxt" (click)="gotoAddNewDriver('Bus Incharge')">Change</div>
+                </div>
+                <div class="associateInfo-container" *ngIf="isNewBus">
+                    <div class="userImg-container">
+                        <img class="user-profile" [src]="busInchargeDetails?.busInchargeProfilePic" onerror="this.src='assets/imgs/dummy-profile.png'">
+                    </div>
+                    <div class="associateDetails-container">
+                        <div>{{busInchargeDetails?.busInchargeName}}</div>
+                        <div>{{busInchargeDetails?.busInchargeContactNumber}}</div>
+                    </div>
+                    <div class="changeTxt" (click)="gotoAddNewDriver('Bus Incharge')">Add</div>
+                </div>
+            </div>
+            <div class="driver-container">
+                <div class="driver-txt">Driver</div>
+
+                <div class="associateInfo-container" *ngIf="!isNewBus">
+                    <div class="userImg-container">
+                        <img class="user-profile" [src]="driverDetails?.driverProfilePic" onerror="this.src='assets/imgs/dummy-profile.png'">
+                    </div>
+                    <div class="associateDetails-container">
+                        <div>{{driverDetails?.driverName}}</div>
+                        <div>{{driverDetails?.driverNumber}}</div>
+                    </div>
+                    <div class="changeTxt" (click)="gotoAddNewDriver('Driver')">Change</div>
+                </div>
+
+                <div class="associateInfo-container" *ngIf="isNewBus">
+                    <div class="userImg-container">
+                        <img class="user-profile" [src]="driverDetails?.driverProfilePic" onerror="this.src='assets/imgs/dummy-profile.png'">
+                    </div>
+                    <div class="associateDetails-container">
+                        <div>{{driverDetails?.driverName}}</div>
+                        <div>{{driverDetails?.driverNumber}}</div>
+                    </div>
+                    <div class="changeTxt" (click)="gotoAddNewDriver('Driver')">Add</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</ion-content>
+
+<ion-footer class="button-container">
+    <button class="add-button" ion-button round (click)="verifySubmitDetails()" *ngIf="isNewBus">Add Bus</button>
+    <button class="add-button" ion-button round (click)="verifySubmitDetails()" *ngIf="!isNewBus">Update Bus</button>
+
+</ion-footer>

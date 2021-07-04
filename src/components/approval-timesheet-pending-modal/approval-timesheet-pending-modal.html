@@ -1,0 +1,101 @@
+<ion-content>
+  <div class="additionHourApprovalRoot">
+    <ion-grid class="pending-grid">
+      <ion-row class="user-header">
+        <ion-col col-2>
+          <ion-avatar class="user-img">
+            <img [src]="selectedItem.profilePicURL" onError="this.src='assets/imgs/user.png'" />
+            <!--  style="width:100%;height:100%;display: block; margin-left: auto;margin-right: auto;"-->
+          </ion-avatar>
+        </ion-col>
+        <ion-col align-self-center class="font-title" col-9>
+          <span class="staffName">{{selectedItem.staffName|titlecase}}</span>
+        </ion-col>
+        <ion-col no-padding (click)="closeModal()"  align-self-center col-1>
+            <img class="closeIcon"  src="assets/imgs/close_white.svg" />
+          </ion-col>
+      </ion-row>
+
+      <ion-row class="row-padding">
+        <ion-col class="font-subtitle" col-4>
+          <strong>Task Name</strong>
+        </ion-col>
+        <ion-col class="font-subtitle" col-8>{{selectedItem.taskName|titlecase}}</ion-col>
+      </ion-row>
+
+      <ion-row class="row-padding">
+        <ion-col class="font-subtitle" col-4>
+          <strong>Project</strong>
+        </ion-col>
+        <ion-col class="font-subtitle" col-8>{{selectedItem.projectName|titlecase}}
+        </ion-col>
+      </ion-row>
+
+      <ion-row *ngIf="selectedItem.milestoneName != '0'" class="row-padding">
+        <ion-col class="font-subtitle" col-4>
+          <strong>Milestone</strong>
+        </ion-col>
+        <ion-col class="font-subtitle" col-8>
+          {{selectedItem.milestoneName != '0' ? selectedItem.milestoneName : '-' }}
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="row-padding">
+        <ion-col class="font-subtitle" col-4>
+          <strong>Billability</strong>
+        </ion-col>
+        <ion-col class="font-subtitle" col-8>
+          {{selectedItem.billablityFlag == 'YES' ? 'Billable' : 'Non Billable' }}
+        </ion-col>
+      </ion-row>
+
+
+      <ion-row class="row-padding">
+        <ion-col class="font-subtitle" col-4>
+          <strong>Total Efforts</strong>
+        </ion-col>
+        <ion-col class="font-subtitle" col-8>
+          {{selectedItem.viewEfforts}}
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="row-padding">
+        <ion-col class="font-subtitle" col-4>
+          <strong>Date</strong>
+        </ion-col>
+        <ion-col class="font-subtitle" col-8>
+          {{selectedItem.taskUpdatedDate}}
+        </ion-col>
+      </ion-row>
+
+      <ion-row *ngIf="selectedItem.associateComment?.length > 0" class="row-padding">
+        <ion-col class="font-subtitle" col-4>
+          <strong>Comment</strong>
+        </ion-col>
+        <ion-col class="font-subtitle" col-8>
+          {{selectedItem.associateComment ? selectedItem.associateComment  : '-' }}
+        </ion-col>
+      </ion-row>
+
+
+      <ion-row class="row-padding">
+        <ion-col class="font-subtitle" col-12>
+          <ion-textarea (keypress)="omit_special_char($event)" class="commentBox" name="ngModel" [(ngModel)]="commentText"
+            placeholder="Comment"></ion-textarea>
+        </ion-col>
+        <ion-col class="font-subtitle" col-12>
+          <span *ngIf="flags?.isCommentRequired" class="error-text">
+            *Comment Required
+          </span>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="smallBtn">
+        <ion-col text-right col-12>
+          <button ion-button round class="approve-btn" [disabled] = "flags?.fromRejectTs" (click)="onApproveClicked()">Approve</button>
+          <button ion-button round class="pending-btn" (click)="onRejectClicked()">Reject</button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>

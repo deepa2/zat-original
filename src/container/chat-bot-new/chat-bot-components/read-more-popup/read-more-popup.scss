@@ -1,0 +1,23 @@
+read-more-popup {
+  .read-more-cont {
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid $chatBot-borderColor;
+    height: calc(100% - 20px);
+    border-radius: 8px;
+    background: $chat-contentBg;
+    font-size: 15px;
+    line-height: 1.5;
+    overflow: scroll;
+  }
+  .toolbar-md {
+    padding: 0px !important;
+    min-height: 0px !important;
+    padding-top: 0 !important;
+    min-height: 56px !important;
+}
+  .scroll-content,
+  .fixed-content {
+    margin-top: 46px !important;
+  }
+}

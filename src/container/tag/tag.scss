@@ -1,0 +1,31 @@
+page-tag {
+  .selectDept {
+    border: 1px solid gray;
+    font-size: 18px;
+  }
+
+  .tagItem {
+    padding-bottom: 0;
+    padding-top: 0;
+  }
+
+  .right-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-direction: row;
+  }
+
+  .deptName {
+    color:color($colors,primary);
+    font-size: 1em;
+  }
+
+  ion-toolbar{
+    background-color: white; 
+  }
+
+  .pageTitile{
+    margin-left: -15px;
+  }
+}

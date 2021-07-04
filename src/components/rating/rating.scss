@@ -1,0 +1,62 @@
+.ion-md-star {
+    font-size: 40px;
+    padding: 10px;
+}
+.background {
+    //background: white;
+}
+.rating-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    font-size: 1.2em;
+    background: linear-gradient(to right, #0ea2c8, #0e7cc7);
+    color: #fff;
+}
+.ratin-box {
+    text-align: center;
+    padding: 10px;
+}
+.textarea-container {
+    padding: 5px 10px;
+    width: 100%;
+    border: 0px;
+    background: #f6f9fb;
+    height: 100px;
+    border: 1px solid #e5efff;
+    border-radius: 5px;
+}
+.btm-container {
+    text-align: end;
+    padding: 0px 9px;
+}
+.btm-button {
+    text-transform: capitalize;
+    margin-top: 10px;
+}
+.header-report {
+}
+.margin-top-60 {
+    margin-top: 60px;
+}
+.content {
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.report-ok {
+    text-align: end;
+    padding: 0px 20px;
+    // margin-top: 20px;
+    .btm-button {
+        // margin-top: 20px;
+    }
+}
+.feedback-msg {
+    margin-left: 12px;
+}
+.width45 {
+    width: 45%;
+}

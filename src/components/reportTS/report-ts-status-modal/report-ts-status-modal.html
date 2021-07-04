@@ -1,0 +1,30 @@
+<ion-header class="box-shadow-none">
+    <div class="modal-header">
+        <div class="width80 font18">Timesheet status</div>
+        <ion-icon name="close" (click)="_dismiss()"></ion-icon>
+    </div>
+</ion-header>
+<ion-content>
+
+    <ion-list>
+        <ion-item class="cb-cont">
+            <ion-label>View All</ion-label>
+            <ion-checkbox class="margin-cb" color="success" slot="end" [(ngModel)]="viewAll" checked="{{selectAll}}"
+                (click)="_viewAll()">
+            </ion-checkbox>
+        </ion-item>
+        <!-- 
+        <ion-item *ngFor="let item of tsStatusList" (click)="_selectedTsStatus(item)">
+            <ion-label>{{item?.title}}</ion-label>
+        </ion-item> -->
+
+        <ion-item class="cb-cont" *ngFor="let item of tsStatusList">
+            <ion-label>{{item?.title}}</ion-label>
+            <ion-checkbox class="margin-cb" slot="end" [(ngModel)]="item.checked" (click)="_everyElement(item)">
+            </ion-checkbox>
+        </ion-item>
+    </ion-list>
+    <div class="submitBtn margin-top12" text-center>
+        <button ion-button round (click)="_submitStatus()"> ok</button>
+    </div>
+</ion-content>

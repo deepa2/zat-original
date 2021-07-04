@@ -1,0 +1,48 @@
+<!-- <div class="e_header" padding>
+    <div class="title">
+      Search List
+    </div>
+    <div class="cross-icon" (click)="closeModal()">
+      <ion-icon name="close"></ion-icon>
+    </div>
+  </div> -->
+<!-- <ion-header>
+  <ion-navbar>
+    <ion-title>
+      Search List
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="closeModal()">
+        <ion-icon ios="ios-close" md="md-close"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <div class="contact">
+    <ion-card *ngFor="let item of searchedData" (click)="goToProfile(item)">
+      <div class="profile_img">
+        <img src="{{item?.profilePicUrl}}" onerror="this.src='assets/imgs/dummy-profile.png'" />
+      </div>
+      <div class="profile-info">
+        <h2>{{item.employeeName}}</h2>
+        <p>{{item.employeeId}}</p>
+      </div>
+    </ion-card>
+  </div>
+</ion-content> -->
+<ion-header>
+  <ion-navbar style="background: none !important">
+    <ion-title>
+      {{title}}
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <ion-list>
+    <ion-item padding-right *ngFor="let item of list" (click)="selectData(item)">
+      <span *ngIf="title == 'Milestone'" [ngStyle]="{'color': matchMilestone(selectedValue,item) ? '#0EA2C8' : 'black' }">{{item.milestoneName}}</span>
+      <span *ngIf="title == 'Hour'" [ngStyle]="{'color': selectedValue == item ? '#0EA2C8' : 'black' }">{{item}}</span>
+    </ion-item>
+  </ion-list>
+</ion-content>

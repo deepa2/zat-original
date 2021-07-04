@@ -1,0 +1,29 @@
+
+.grid-item-wrapper{
+    display: flex;
+    padding: 5px;
+    .grid-item {
+        margin: 5px;
+        width: 100%;
+        height: 17.5vh;
+        border-radius: 5px;
+        position: relative;
+        -webkit-box-pack: center;
+        -webkit-justify-content: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+    }
+    .image {
+        width: 90px;
+    }
+    .icon-name {
+        font-size: 14px;
+        padding-top: 0;
+        padding: 0 5px;
+        min-height: 35px;
+        line-height: 1.3;
+        color: #fff;
+        margin-top: -22px;
+        text-align: center;
+    }
+}

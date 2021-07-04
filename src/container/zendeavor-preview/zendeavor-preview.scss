@@ -1,0 +1,344 @@
+page-zendeavor-preview {
+  // .scroll-content {
+  //   // padding-bottom: 160px!important;
+  //   // margin: 0% !important;
+  //   margin-bottom: 160px!important;
+  //   margin-top: 0!important;
+
+  // }
+  .card {
+    // background: #efefef;
+    margin-bottom: 10px;
+    border: 1.2px solid lightgray;
+    border-radius: 5px;
+  }
+  .kra-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    background: #d6e6ff;
+    .pen-icon {
+      height: 20px;
+    }
+    .kra-title {
+      font-weight: bold;
+      font-size: 1.1em;
+    }
+  }
+
+  // card only htmlf
+
+  .card-main {
+    padding: 10px;
+    // background: #efefef;
+    .checkBox-card {
+      border-bottom: 2px dotted #d8c9c9;
+      margin-bottom: 20px;
+      background: #efefef;
+
+      ion-item {
+        padding: 0;
+        background: #efefef;
+      }
+      ion-checkbox.checkbox {
+        margin: 0;
+        margin-right: 10px;
+      }
+      ion-label {
+        white-space: initial;
+      }
+    }
+  }
+
+  // .kra-weightage{
+  //     border: 1px dotted #d8c9c9;
+  //     border-style: dotted;
+  //     font-weight: bold;
+  //     font-size: 1.2em;
+  // }
+  // ion-row{
+  //     margin-bottom: 20px;
+  // }
+  .capital {
+    text-transform: capitalize;
+  }
+  .card-row {
+    display: flex;
+    justify-content: start;
+    margin-bottom: 20px;
+    .card-col-1 {
+      width: 45%;
+    }
+    .card-col-2 {
+      border: 1px dotted #d8c9c9;
+      padding: 5px 15px;
+      font-weight: bold;
+      font-size: 1.2em;
+    }
+  }
+  .cmnt-area {
+    border-radius: 5px;
+    border: 2px solid whitesmoke;
+  }
+
+  .preview-card {
+    box-shadow: none;
+    border-radius: 5px;
+    // background-image: linear-gradient(141deg, #e3fff3 0%, #b2e3e8 57%, #71d2f7 80%);
+    background-image: linear-gradient(to right, #e9f0fb, #afccfc);
+  }
+  .preview-header {
+    font-size: 1.6rem;
+    color: #488cfc;
+    //background: linear-gradient(141deg, #b2e3e8 57%, #71d2f7 80%);
+    padding: 9px 16px;
+    background: rgba(75, 138, 252, 0.15);
+  }
+  .preview-cont {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  .footerBg {
+    // background: #d3d3d366;
+    text-align: center;
+    background: white;
+    height: 60px;
+    // height: 150px;
+  }
+  @media only screen and (device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) {
+    .footerBg {
+      background: white;
+      text-align: center;
+      height: 60px;
+      // height: 150px;
+    }
+  }
+  .nextBtn {
+    text-align: center;
+    width: 20%;
+    background: #6363aa;
+    text-transform: capitalize;
+    width: 30%;
+  }
+  .align-end {
+    text-align: end;
+  }
+  .approvebtn {
+    text-align: center;
+    width: 20%;
+    background: white;
+    text-transform: capitalize;
+    width: 30%;
+    color: #6363aa;
+    border: 1px solid #6363aa;
+  }
+  .btn-background {
+    background: #6363aa;
+    color: white;
+  }
+  .button-md.activated {
+    background: #6363aa;
+  }
+  .headerBackground {
+    background: linear-gradient(to right, #488cfc, #8264ff);
+  }
+  .bttmMargin {
+    margin-bottom: 56px;
+  }
+  .displayFlex {
+    display: flex;
+    align-items: center;
+  }
+
+  .asterisk {
+    position: absolute;
+    height: 12px;
+    padding: 2px;
+  }
+
+  .appraiser-checkbox-container {
+    ion-checkbox.checkbox {
+      margin: 0 10px !important;
+    }
+  }
+
+  .associate-submitCheckbox-container {
+    ion-list.list {
+      margin: 5px 0;
+    }
+    ion-item {
+      padding: 0;
+    }
+  }
+  ion-list.associate-submitCheckbox-container.list {
+    margin: 0;
+  }
+
+  .agreeDisgreeFooter {
+    // background: #d3d3d366;
+    text-align: center;
+    background: white;
+    // height: 60px;
+    //height: 145px;
+    margin-bottom: 18px;
+  }
+
+  //  .kraDetailsCard{
+  .kraDetailsCard:last-of-type {
+    margin-bottom: 140px;
+  }
+  //  }
+  // KRA 1 css
+
+  .dottedBorder {
+    border: 0.1px solid lightgray;
+  }
+  .border-bottomGray {
+    border-bottom: 0.1px solid lightgray;
+  }
+  .keyValueCol {
+    padding: 0px 10px;
+    margin-top: 10px;
+  }
+  .titleValueCol {
+    padding: 5px 10px;
+    margin-bottom: 5px;
+  }
+
+  .fontWtBold {
+    font-weight: bold;
+  }
+  // status on bases of kra completed/pending
+
+  // tracker scss
+  .tracker {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin-right: 15px;
+    z-index: 99;
+    background: white;
+  }
+  .completed-status > .tracker {
+    border: 1px solid green;
+  }
+  .pending-status > .tracker {
+    border: 1px solid darkgray;
+  }
+  .incomplete-status > .tracker {
+    border: 1px solid gray;
+  }
+  .completed-status > .tracker > .tracker-inner-circle {
+    background: green;
+  }
+  .pending-status > .tracker > .tracker-inner-circle {
+    background: gray;
+  }
+  .incomplete-status > .tracker > .tracker-inner-circle {
+    background: white;
+  }
+
+  ion-row.completed-status::after {
+    content: " ";
+    position: absolute;
+    width: 2px;
+    left: 10px;
+    bottom: -20px;
+    height: 45px;
+    background: green;
+    z-index: 0;
+  }
+  ion-row.pending-status::after {
+    content: " ";
+    position: absolute;
+    width: 2px;
+    left: 10px;
+    bottom: -20px;
+    height: 45px;
+    background: lightgray;
+    z-index: 0;
+  }
+  ion-row.incomplete-status::after {
+    content: " ";
+    position: absolute;
+    width: 2px;
+    left: 10px;
+    bottom: -20px;
+    height: 45px;
+    background: lightgray;
+    z-index: 0;
+  }
+  ion-row.align-item-center:last-child::after {
+    display: none;
+  }
+  .align-item-center > ion-col {
+    padding: 10px 5px;
+  }
+  .padding10-20 {
+    padding: 10px 18px;
+  }
+  .status-icon {
+    width: 25px;
+    height: 25px;
+  }
+  .mrginRt {
+    margin-right: 10px;
+  }
+  .padng0to5 {
+    padding: 0px 5px;
+  }
+  .font-weight500 {
+    font-weight: 500;
+  }
+  .tracker-inner-circle {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+  }
+  .marginBtm {
+    margin-bottom: 2px;
+  }
+  .color-blue {
+    color: color($colors, primary);
+  }
+  .dottedBorder-leftNone {
+    border: 0.1px solid lightgray;
+    border-left: none;
+  }
+  .subKRAtitle {
+    background: #d6e6ff;
+    padding: 5px 10px;
+    font-size: 1em;
+    color: #0EA2C8;
+    // margin:  10px;
+  }
+  .marginBottom-25px{
+    margin-bottom: 25px;
+  }
+  .viewMore{
+    padding: 5px 10px;
+    color: blue;
+    text-decoration: underline;
+  }
+  .subItems{
+    width: 100%;
+    padding: 5px;
+    font-weight: 600;
+  }
+  .subItemDetails{
+    width: 100%;
+    padding-left: 10px;
+   display: flex;
+  align-items: center;
+    justify-content: start;
+   padding-right: 30px;
+  }
+
+  .sub-head{
+    width: 77%;
+  }
+}

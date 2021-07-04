@@ -1,0 +1,62 @@
+<!--
+  Generated template for the ZendeavorViewConsultationPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>View Consultation</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <div *ngFor="let chatItem of conversationList" class="feedbacklist-container">
+    <div *ngFor="let feedbackItem of chatItem.feedbackList; index as i" class="margin-bottom3per">
+
+
+      <div class="chat-container" *ngIf="loggedInUserID != feedbackItem.send_by">
+        <div class="chat-imgContainer">
+          <img class="chat-img" [src]="feedbackItem.profilePicUrl" onerror="this.src='assets/imgs/dummy-profile.png'" />
+
+        </div>
+        <div class="chat-message-container">
+          <div class="chat-username">{{feedbackItem?.userName}}</div>
+          <!-- <div class="msg-date"> {{feedbackItem?.receiver_date|date :'MMM d, yyyy, h:mm a'}} </div> -->          
+          <div class="msg-date"> {{dateConversion(feedbackItem?.receiver_date)}} </div>
+          <div class="chat-msg width100per">
+            <div>{{feedbackItem?.sender_comment}}</div>
+          </div>
+
+        </div>
+      </div>
+      <div class="chat-containerflex-end" *ngIf="loggedInUserID == feedbackItem.send_by">
+        <div class="chat-message-container-end">
+          <div class="chat-username">{{feedbackItem?.userName}}</div>
+          <div class="msg-date-end"> {{dateConversion(feedbackItem?.receiver_date)}}</div>
+          <div class="chat-msg-end width100per">
+            <div class="">{{feedbackItem?.sender_comment}}</div>
+          </div>
+        </div>
+        <div>
+          <img class="chat-img-end" [src]="feedbackItem.profilePicUrl" onerror="this.src='assets/imgs/dummy-profile.png'" />
+        </div>
+
+
+      </div>
+    </div>
+    <div class="margin10" class="textarea-container">
+      <span class="textareaSpan">
+        <ion-textarea (ionChange)="adjustHeight($event,feedbackTextRef)" class="feedbackTextarea" placeholder="Please enter the message"
+          rows="1" #feedbackTextRef="ngModel" #feedbackTextRef name="feedbackTextRef"></ion-textarea>
+      </span>
+      <span class="sendBtn-parent" (click)="submitConsultation(feedbackTextRef.value,chatItem)">
+        <ion-icon ios="ios-send" name="send"></ion-icon>
+      </span>
+    </div>
+  </div>
+
+</ion-content>

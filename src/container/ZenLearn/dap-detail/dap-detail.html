@@ -1,0 +1,67 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title class="pageTitile">DAP</ion-title>
+    <!-- <ion-buttons end *ngIf="role == 'Associate'">
+      <button ion-button icon-only (click)="presentOptions($event)">
+        <ion-icon name="more"></ion-icon>
+      </button>
+    </ion-buttons> -->
+  </ion-navbar>
+</ion-header>
+<!-- new features  -->
+
+<ion-content>
+
+  <div class="dapContainer">
+    <div class="dap-image">
+      <img src="assets/zenLearn-imgs/dap-icon1.svg" />
+    </div>
+    <div class="dap-main-info">
+      <ion-row *ngFor="let listDetails of dapList?.list">
+        <ion-col class="dap-title" col-5>{{listDetails?.key}}</ion-col>
+        <ion-col class="dap-value" col-7>{{listDetails?.value}}</ion-col>
+      </ion-row>
+    </div>
+  </div>
+  <div *ngFor="let dapSectionList of  dapSection" class="dapList" (click)="getDapDetail(dapSectionList)">
+    <div *ngIf="dapSectionList?.showDapSection">
+      <div class="dap-header">
+        <img *ngIf="dapSectionList.sectionTitle=='On the Job'" src="assets/zenLearn-imgs/on-the-job.svg" />
+        <img *ngIf="dapSectionList.sectionTitle=='Peer Learning'" src="assets/zenLearn-imgs/peer-learning.svg" />
+        <img *ngIf="dapSectionList.sectionTitle=='Classroom/Online'" src="assets/zenLearn-imgs/classroom.svg" />
+        {{dapSectionList?.sectionTitle}}
+        <!-- <img *ngIf="dapSectionList?.sectionTitle !='Classroom/Online'" class="right-arrow" src="assets/zenLearn-imgs/right-arrow.svg" /> -->
+      </div>
+      <ion-row class="dap-info" *ngFor="let detail of  dapSectionList?.list">
+        <ng-container *ngIf="detail?.key !='Mentor Name' && detail?.value!=''">
+          <ion-col col-5 (click)="openCourses(detail?.key)">{{detail?.title}}</ion-col>
+          <ion-col class="dap-value" col-7 *ngIf="detail?.title != 'Status' && detail?.title !='Milestone Date' && detail?.key =='peerName'">{{dapSectionList?.list[1].value}} ({{detail?.value}})</ion-col>
+          <ion-col class="dap-value" col-7 *ngIf="detail?.title != 'Status' && detail?.title !='Milestone Date' && detail?.key !='peerName' && detail?.title !='Shortlisted Programs'">{{detail?.value}}</ion-col>
+          <ion-col (click)="openCourses()" class="dap-value"  col-7 style="display: flex;
+          align-items: center;
+          justify-content: space-between;" *ngIf="detail?.title != 'Status' && detail?.title !='Milestone Date' && detail?.key !='peerName' && detail?.title =='Shortlisted Programs'"><span>{{detail?.value}}</span>
+            <!-- <img *ngIf="detail?.title != 'Status' && detail?.title !='Milestone Date' && detail?.key !='peerName' && detail?.title =='Shortlisted Programs'" class="right-arrow" src="assets/zenLearn-imgs/right-arrow.svg" /> -->
+          </ion-col>
+          <ion-col class="dap-value" col-7 *ngIf="detail?.title != 'Status' && detail?.title=='Milestone Date'">{{dateConversion(detail?.value)}}</ion-col>
+          <ion-col class="dap-value" col-7 *ngIf="detail?.title == 'Status'">{{getStatusValue(detail?.value,detail)}}
+          </ion-col>
+        </ng-container>
+        
+      </ion-row>
+
+    </div>
+   
+  </div>
+
+  <div *ngIf="dapDetailedData.status == 'Pending Manager Approval'" class="dapList">
+    <ion-textarea placeholder="Manager's comments" [(ngModel)]="managersComments">
+
+    </ion-textarea>
+  </div>
+  
+  <div class="submitBtn" *ngIf="dapDetailedData.status == 'Pending Manager Approval'">
+    <button ion-button class="btnStyle" [disabled]="!managersComments" (click)="approveReject('Approved')">Approve</button>
+    <button ion-button class="btnStyle" [disabled]="!managersComments" (click)="approveReject('Rejected')">Reject</button>
+
+  </div>
+</ion-content>

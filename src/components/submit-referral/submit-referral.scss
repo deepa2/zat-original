@@ -1,0 +1,58 @@
+submit-referral{
+    background: #fff;
+    .submit-footer {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+  }
+    .home-screen{
+        background: linear-gradient(to right, #0EA2C8, #0E7AC7);
+        padding: 10px 15px;
+        color: #fff;
+        border-radius: 20px;
+        width: 140px;
+        margin: 10px;
+        text-align: center;
+      }
+      .heading{
+        text-align: justify;
+      }
+      .success-msg {
+        font-size: 15px;
+    }
+      .paraPadding{
+        padding-left: 1px;
+        text-align: justify;
+      }
+      .paraTitle{
+        font-size: 1.1em;
+        font-weight: 600;
+      }
+      .success-info{
+        padding: 10px;
+        margin: 10px;
+        background: url(../assets/imgs/submitBg.svg);
+        background-size: cover;
+        min-height: 75vh;
+        border-radius: 10px
+      }
+      .success{
+        font-size: 20px;
+        margin-left: 10px;
+        color: #1586C7;
+      }
+      .success-wrap {
+        display: flex;
+        align-items: center;
+    }
+        @media only screen and (max-width: 767px) {
+            .md .modal-wrapper > .ion-page > ion-header > .toolbar.statusbar-padding:first-child {
+              padding-top: calc(20px + 4px) !important;
+              padding-top: calc(constant(safe-area-inset-top) + 4px) !important;
+              padding-top: calc(env(safe-area-inset-top) + 4px) !important;
+              min-height: calc(56px + 20px) !important;
+              min-height: calc(56px + constant(safe-area-inset-top)) !important;
+              min-height: calc(56px + env(safe-area-inset-top)) !important;
+            }
+          }
+}

@@ -1,0 +1,25 @@
+report-ts-status-modal {
+    .modal-header {
+        display: flex;
+        justify-content: space-between;
+        // background: $primary-color;
+        align-items: center;
+        // color: white;
+        min-height: 70px;
+        padding-left: 1em;
+        padding-right: 1em;
+        font-size: 1.5em;
+    }
+    ion-header.box-shadow-none::after {
+        box-shadow: none;
+        display: none;
+    }
+    .margin-cb {
+        margin: 9px 4px 9px 4px;
+    }
+    .cb-cont {
+        display: flex;
+        flex-direction: row-reverse;
+        padding: 0 20x;
+    }
+}

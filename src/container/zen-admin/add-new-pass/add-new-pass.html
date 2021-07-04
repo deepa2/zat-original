@@ -1,0 +1,338 @@
+<!--
+  Generated template for the AddNewPassPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+    <ion-navbar>
+        <ion-title *ngIf="!isPassSubmitted && passReqType=='bus'">New Bus Pass</ion-title>
+        <ion-title *ngIf="isPassSubmitted">Confirmation</ion-title>
+        <ion-title *ngIf="!isPassSubmitted && passReqType=='shuttle'">Book Shuttle</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content [ngClass]="{'update-bg-color': isPassSubmitted}">
+    <div class="form-container" *ngIf="!isPassSubmitted && passReqType=='bus'">
+        <form [formGroup]="passForm">
+            <div class="margin-btm-10">
+                <ion-label class="padding10 margin10-rt-lf fontBold">Pass Type</ion-label>
+                <ion-select placeholder="Select Pass type" (ionChange)="onPassTypeChange($event)" interface="action-sheet"
+                    class="borderBottom margin10-rt-lf custom-select" formControlName="passType" [(ngModel)]="passType">
+                    <ion-option [value]="item" *ngFor="let item of busTypeList">{{item}}</ion-option>
+                </ion-select>
+            </div>
+            <!-- daily pass types -->
+            <div class="margin-btm-10" *ngIf="passType=='Daily'">
+                <ion-label class="padding10 margin10-rt-lf fontBold">Daily Pass Type
+                </ion-label>
+                <ion-select placeholder="Select Pass type" interface="action-sheet" class="borderBottom margin10-rt-lf custom-select"
+                    formControlName="dailypassType" (ionChange)="onDailyTypeChange($event)">
+                    <ion-option [value]="item" *ngFor="let item of dailyPassOptions">{{item}}</ion-option>
+                </ion-select>
+                <span class="error-msg" *ngIf="passForm.errors?.dailypassIsEmpty  && submitted">
+                    <p>* Kindly Select Daily Pass Type.</p>
+                </span>
+            </div>
+            <div class="margin-btm-10">
+                <ion-label class="padding10 margin10-rt-lf dateLabel fontBold">Start Date</ion-label>
+                <ion-datetime displayFormat="DD-MM-YYYY" pickerFormat="DD-MMMM-YYYY" formControlName="startDate"
+                    placeholder="Select Date" (ionChange)="onDateChange($event)" class="custom-date margin10-rt-lf borderBottom"
+                    [class.invalid]="passForm.errors?.IsWeekend" [min]="currentDate" [max]="endDate"></ion-datetime>
+                <span class="error-msg" *ngIf="passForm.errors?.IsWeekend">
+                    <p>* Selected day is a weekend.</p>
+                </span>
+                <span class="error-msg" *ngIf="passForm.controls.startDate.errors  && submitted">
+                    <p>* Kindly select start date.</p>
+                </span>
+                <span class="error-msg" *ngIf="passForm.errors?.passNotAllowed">
+                    <p>* Pass not allowed after 6.30pm.</p>
+                </span>
+            </div>
+            <div class="margin-btm-10">
+                <ion-label class="padding10 margin10-rt-lf fontBold">Select Route</ion-label>
+                <ion-select placeholder="Select Route" (ionChange)="onRouteChange($event)" interface="action-sheet"
+                    class="borderBottom margin10-rt-lf custom-select" formControlName="routeName">
+                    <ion-option [value]="item" *ngFor="let item of routeList" [hidden]="!item">{{item}}</ion-option>
+                </ion-select>
+                <span class="error-msg" *ngIf="passForm.controls.routeName.errors && submitted">
+                    <p>* Kindly select route name.</p>
+                </span>
+            </div>
+            <div class="margin-btm-10">
+                <ion-label class="padding10 margin10-rt-lf fontBold">Select Pickup/Drop Point</ion-label>
+                <ion-select placeholder="Select Pickup/Drop Point" (ionChange)="onPickUpPtChange($event)" interface="action-sheet"
+                    class="borderBottom margin10-rt-lf custom-select" formControlName="pickupPoint">
+                    <ion-option [value]="item" *ngFor="let item of pickupPointNames" [hidden]="!item">{{item}}</ion-option>
+                </ion-select>
+                <span class="error-msg" *ngIf="passForm.controls.pickupPoint.errors  && submitted">
+                    <p>* Kindly select pickup/drop Point.</p>
+                </span>
+            </div>
+            <div class="margin-btm-10" *ngIf="passForm.controls.dailypassType?.value !='Drop'">
+                <ion-label class="padding10 margin10-rt-lf fontBold">Arrival Time</ion-label>
+                <ion-input formControlName="arrivalTime" class="borderBottom margin10-rt-lf"></ion-input>
+            </div>
+            <div class="comment-container margin-btm-10">
+                <div class="comments-title fontBold">Comments</div>
+                <div class="textarea-div">
+                    <ion-item>
+                        <ion-textarea rows="6" cols="20" placeholder="Enter here..." formControlName="comments"></ion-textarea>
+                    </ion-item>
+                </div>
+            </div>
+            <div class="summry-container">
+                <div class="summary-header">
+                    <span>
+                        <img class="summry-img" src="assets/zenAdmin/summary-img.svg" />
+                    </span>
+                    <span class="summaryTitle">Summary</span>
+                </div>
+                <div class="grid-container">
+                    <ion-row>
+                        <ion-col col-3> <img class="summaryImg" src="assets/zenAdmin/seats.svg" /></ion-col>
+                        <ion-col col-3><img class="summaryImg" src="assets/zenAdmin/money-img.svg" /></ion-col>
+                        <ion-col col-6><img class="summaryImg" src="assets/zenAdmin/calenderIcon.svg" /></ion-col>
+                    </ion-row>
+                    <ion-row class="sub-title-container">
+                        <ion-col col-3>Seats </ion-col>
+                        <ion-col col-3>Amount</ion-col>
+                        <ion-col col-6>{{passType}} Pass <span class="auto-renew-text" *ngIf="passType=='Monthly'">(AutoRenew)</span>
+                        </ion-col>
+                    </ion-row>
+                    <ion-row class="values-container">
+                        <ion-col col-3 class="available" *ngIf="!isSeatAvailable" class="notAvailable">Not Available</ion-col>
+                        <ion-col col-3 class="available" *ngIf="isSeatAvailable" class="available">Available</ion-col>
+                        <ion-col col-3>{{this.selectedPickupPtDetails?.amount}} INR</ion-col>
+                        <ion-col col-6>{{this.selectedPickupPtDetails?.busPassValidity}}</ion-col>
+                    </ion-row>
+                </div>
+            </div>
+        </form>
+        <div class="checkBox-container padding10">
+            <div class="display-flex">
+                <ion-checkbox [(ngModel)]="checkBoxValue"></ion-checkbox>
+                <span class="marleft-10">I agree to pass rules. </span>
+            </div>
+
+            <span class="bus-rulesTxt" (click)="openRulesModal()">Pass Rules</span>
+        </div>
+    </div>
+    <!-- Add new pass for shuttle -->
+    <div class="form-container" *ngIf="!isPassSubmitted && passReqType=='shuttle'">
+        <form [formGroup]="shuttleForm">
+            <div class="margin-btm-10">
+                <ion-label class="padding10 margin10-rt-lf fontBold">Pass Type</ion-label>
+                <ion-select placeholder="Select Pass type" (ionChange)="onPassTypeChange($event)" class="borderBottom margin10-rt-lf custom-select"
+                    formControlName="passType" [(ngModel)]="passType" interface="action-sheet">
+                    <ion-option [value]="item" *ngFor="let item of busTypeList">{{item}}</ion-option>
+                </ion-select>
+            </div>
+            <div class="margin-btm-10" *ngIf="passType=='Daily'">
+                <ion-label class="padding10 margin10-rt-lf fontBold">Daily Pass Type
+                </ion-label>
+                <ion-select placeholder="Select Pass type" interface="action-sheet" class="borderBottom margin10-rt-lf custom-select"
+                    formControlName="dailypassType">
+                    <ion-option [value]="item" *ngFor="let item of dailyPassOptions">{{item}}</ion-option>
+                </ion-select>
+                <span class="error-msg" *ngIf="shuttleForm.errors?.dailypassIsEmpty  && submitted">
+                    <p>* Kindly Select Daily Pass Type.</p>
+                </span>
+            </div>
+
+            <div class="margin-btm-10">
+                <ion-label class="padding10 margin10-rt-lf dateLabel fontBold">Start Date</ion-label>
+
+                <ion-datetime displayFormat="DD-MM-YYYY" pickerFormat="DD MMMM YYYY" formControlName="startDate"
+                    placeholder="Select Date" (ionChange)="onDateChange($event)" [min]="currentDate" [max]="endDate"
+                    class="custom-date margin10-rt-lf borderBottom" [class.invalid]="shuttleForm.errors?.IsWeekend">
+                </ion-datetime>
+                <span class="error-msg" *ngIf="shuttleForm.errors?.IsWeekend">
+                    <p>* Selected day is a weekend.</p>
+                </span>
+                <span class="error-msg" *ngIf="shuttleForm.controls.startDate.errors  && submitted">
+                    <p>* Kindly select start date.</p>
+                </span>
+            </div>
+            <div class="margin-btm-10">
+                <ion-label class="padding10 margin10-rt-lf fontBold">Select Route</ion-label>
+                <ion-select placeholder="Select Route" (ionChange)="onRouteChange($event)" interface="action-sheet"
+                    class="borderBottom margin10-rt-lf custom-select" formControlName="routeName">
+                    <ion-option [value]="item" *ngFor="let item of routeList">{{item}}</ion-option>
+                </ion-select>
+                <span class="error-msg" *ngIf="shuttleForm.controls.routeName.errors && submitted">
+                    <p>* Kindly select route name.</p>
+                </span>
+            </div>
+            <div class="margin-btm-10">
+                <ion-label class="padding10 margin10-rt-lf fontBold">Select Drop Point</ion-label>
+                <ion-select placeholder="Select Drop Point" (ionChange)="onPickUpPtChange($event)" interface="action-sheet"
+                    class="borderBottom margin10-rt-lf custom-select" formControlName="pickupPoint">
+                    <ion-option [value]="item" *ngFor="let item of pickupPointNames">{{item}}</ion-option>
+                </ion-select>
+                <span class="error-msg" *ngIf="shuttleForm.controls.pickupPoint.errors  && submitted">
+                    <p>* Kindly select drop point.</p>
+                </span>
+            </div>
+            <div class="summry-container">
+                <div class="summary-header">
+                    <span>
+                        <img class="summry-img" src="assets/zenAdmin/summary-img.svg" />
+                    </span>
+                    <span class="summaryTitle">Summary</span>
+                </div>
+                <div class="grid-container">
+                    <ion-row>
+                        <ion-col col-4>
+                            <img class="summaryImg" src="assets/zenAdmin/seats.svg" />
+                        </ion-col>
+                        <ion-col col-4>
+                            <img class="summaryImg" src="assets/zenAdmin/money-img.svg" /></ion-col>
+                        <ion-col col-4>
+                            <img class="summaryImg" src="assets/zenAdmin/calenderIcon.svg" /></ion-col>
+                    </ion-row>
+                    <ion-row class="sub-title-container">
+                        <ion-col col-4>Seats </ion-col>
+                        <ion-col col-4>Amount</ion-col>
+                        <ion-col col-4>{{passType}} Pass</ion-col>
+                    </ion-row>
+                    <ion-row class="values-container">
+                        <ion-col col-4 class="available" *ngIf="!isSeatAvailable" class="notAvailable">Not Available</ion-col>
+                        <ion-col col-4 class="available" *ngIf="isSeatAvailable" class="available">Available</ion-col>
+                        <ion-col col-4>{{this.selectedPickupPtDetails?.amount}} INR</ion-col>
+                        <ion-col col-4>{{this.selectedPickupPtDetails?.busPassValidity}}</ion-col>
+                    </ion-row>
+                </div>
+            </div>
+        </form>
+        <div class="checkBox-container padding10">
+            <div class="display-flex">
+                <ion-checkbox [(ngModel)]="checkBoxValue"></ion-checkbox>
+                <span class="marleft-10">I agree to pass rules.</span>
+            </div>
+            <span class="bus-rulesTxt" (click)="openRulesModal()">Pass Rules</span>
+        </div>
+    </div>
+    <!-- Confirmation Screen after pass is submitted -->
+    <div *ngIf="isPassSubmitted && passSuccessData">
+        <div class="confirmation-card" *ngIf="passSuccessData">
+            <img src="assets/zenAdmin/pass-success-bg.svg" class="confirmation-img" />
+            <div class="success-msg-div">
+                <div class="colorGreen successTxt">{{successMsg.displayTextTitle}}</div>
+                <div>{{successMsg.displayText}}</div>
+            </div>
+        </div>
+
+        <div class="ticket-parent">
+            <div class="ticket-sub-container" *ngIf="isPassSubmitted">
+                <span class="pass-id-container"><img src="assets/zenAdmin/pass-id-icon.svg" class="pass-id-icon" /></span>
+                <span *ngIf="passReqType=='bus'">Bus Pass</span>
+                <span *ngIf="passReqType=='shuttle'">Shuttle Pass</span>
+            </div>
+            <div *ngIf="!showNoPassPage">
+                <ion-card color="light" class="ion-card ion-text-center margin5 post-relative">
+                    <div class="display-flex padding10 bus-details-parent">
+                        <div class="display-flex bus-id-container">
+                            <div class="width40px">
+                                <img class="calendar-icon" src="assets/zenAdmin/bus-pass-id.svg" *ngIf="passReqType == 'bus'" />
+                                <img class="calendar-icon" src="assets/zenAdmin/shuttle-img.svg" *ngIf="passReqType == 'shuttle'" />
+                            </div>
+                            <div>
+                                <div class="colorGrey busIDText" *ngIf="passReqType == 'bus'">BusPass ID</div>
+                                <div class="colorGrey busIDText" *ngIf="passReqType == 'shuttle'">Shuttle</div>
+                                <div class="bus-passId">{{passSuccessData?.busPassId}}</div>
+                            </div>
+                        </div>
+
+                        <div class="display-flex monthly-pass-container">
+                            <div class="width40px">
+                                <img class="calendar-icon" src="assets/zenAdmin/monthly-pass.svg" *ngIf="passReqType == 'bus'" />
+                                <img class="calendar-icon" src="assets/zenAdmin/shuttle-date-img.svg" *ngIf="passReqType == 'shuttle'" />
+
+                            </div>
+                            <div>
+                                <div class="dateValue colorGrey monthly-pass-title" *ngIf="passReqType == 'bus'">
+                                    {{passSuccessData?.passType}} Pass<span class="auto-renew-text" *ngIf="passSuccessData?.passType=='Monthly'">(AutoRenew)</span></div>
+                                <div class="dateValue colorGrey monthly-pass-title" *ngIf="passReqType == 'shuttle'">Date</div>
+                                <div class="month-pass-date">{{passSuccessData?.busPassValidity}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- associate list -->
+                    <div class="userProfile-container">
+                        <div class="img-container">
+                            <img class="user-icon" [src]="passSuccessData?.userProfilePic" onerror="this.src='assets/imgs/dummy-profile.png'" />
+                        </div>
+                        <div class="user-info-container">
+                            <span class="associate-name">{{passSuccessData?.userName}}</span>
+                            <span class="key-value colorGrey">{{passSuccessData?.userId}}</span>
+                        </div>
+                    </div>
+                    <!-- approved/cancelled image -->
+                    <div class="position-absolute ticket-status-parent">
+                        <img src="assets/zenAdmin/Approved.png" class="ticket-status-img" />
+                    </div>
+
+                    <div class="container-items">
+                        <div class="route-pic">
+                            <img class="route-img" src="assets/zenAdmin/route-icon.svg" />
+                        </div>
+                        <div class="item-container">
+                            <span class="associate-name colorGrey">Route</span>
+                            <span class="key-value fontWeight">{{passSuccessData?.routeName}}</span>
+                        </div>
+                    </div>
+                    <div class="pickup-point-card">
+                        <div class="pickup-details">
+                            <div class="route-pic">
+                                <img class="route-img" src="assets/zenAdmin/location.svg" />
+                            </div>
+                            <div class="displayFlex-col">
+                                <span class="associate-name">Pickup Point</span>
+                                <span class="campus-name fontWeight">{{passSuccessData?.pickupPointName}}</span>
+                            </div>
+                        </div>
+                        <div class="pickup-time-card" *ngIf="passSuccessData?.arrivalTime">
+                            <div class="">
+                                <img class="clock-img" src="assets/zenAdmin/clock-icon.svg" />
+                            </div>
+                            <div class="displayFlex-col">
+                                <span class="key-value fontWeight width-100">{{passSuccessData?.passSubType=='Drop'? '-':passSuccessData?.arrivalTime}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="profile-wrapper"></div>
+                    <div class="bus-info-container">
+                        <div class="user-pic">
+                            <img class="bus-img" src="assets/zenAdmin/bus-image.svg" />
+                        </div>
+                        <div class="item-container">
+                            <div class="associate-name">Bus</div>
+                            <div class="key-value fontWeight">{{passSuccessData?.busNumber}}</div>
+                        </div>
+                    </div>
+                    <div class="driver-info-container">
+                        <div class="driver-img-container">
+                            <img class="user-icon" [src]="passSuccessData?.busInchargeProfilePic" onerror="this.src='assets/imgs/dummy-profile.png'" />
+                        </div>
+                        <div class="driver-sub-container">
+                            <span class="associate-name">Bus Incharge</span>
+                            <span class="key-value fontWeight">{{passSuccessData?.busInchargeName}}</span>
+                        </div>
+                        <div (click)="call(passSuccessData?.busInchargeContactNo)">
+                            <img class="phone-image" src="assets/zenAdmin/call-image.svg" />
+                        </div>
+                    </div>
+                </ion-card>
+            </div>
+        </div>
+    </div>
+</ion-content>
+<ion-footer *ngIf="!isPassSubmitted">
+    <div class="text-center">
+        <button class="submitBtn" ion-button round (click)="verifySubmitDetails()" [disabled]="!checkBoxValue && !isDailyPassAllowed"
+            *ngIf="passReqType=='bus'">Submit</button>
+        <button class="submitBtn" *ngIf="passReqType=='shuttle'" ion-button round (click)="verifySubmitDetails()"
+            [disabled]="!checkBoxValue">Book Shuttle</button>
+    </div>
+</ion-footer>

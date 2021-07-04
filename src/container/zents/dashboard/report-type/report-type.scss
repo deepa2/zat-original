@@ -1,0 +1,94 @@
+page-report-type {
+    .cust-card {
+        .header-card {
+            background-color: $card-header-color;
+            p {
+                color: $primary-color;
+                font-size: 15px;
+            }
+        }
+        box-shadow: none;
+        border-radius: 4px;
+        border: 1px solid #b5c5df;
+    }
+    .select-c {
+        max-width: 100%;
+        width: 100%;
+        padding: 13px 8px 13px 8px;
+        // margin: 5px 0;
+        border-bottom: 1px solid #c3e2ea;
+    }
+    .item-md {
+        padding-left: 0;
+    }
+    .icon {
+        height: 22px;
+        width: 24px;
+        margin: 0 5px;
+    }
+    .dateBorderColor {
+        border-bottom: 1px solid #c3e2ea;
+    }
+    .timeDate {
+        padding: 13px 8px 13px 8px;
+    }
+    .radio-label {
+        margin: 13px 16px 13px 8px;
+    }
+    input {
+        // width: 15%;
+        border: none;
+        background: transparent;
+    }
+    .borderColor button {
+        font-size: 1.6rem;
+        background: transparent;
+    }
+    .borderColor {
+        border-bottom: 2px solid #e5f3f6;
+        padding-top: 10px;
+    }
+    ion-item {
+        .label-md {
+            margin: 13px 0 8px;
+        }
+        // .icon {
+        //     color: gray;
+        // }
+    }
+    .report-NA {
+        color: #ff5950;
+        padding: 0 10px;
+    }
+
+    .round-button {
+        border-radius: 10px;
+        border: 1px solid #cedce4;
+        padding: 0 5px;
+        color: #cedce4;
+        width: 90%;
+        margin-left: auto;
+    }
+
+    .active-input {
+        color: #0e7fc8 !important;
+        border-bottom: 1px solid #0e7fc8 !important;
+    }
+    .active-button {
+        color: #0e7fc8 !important;
+        border: 1px solid #0e7fc8 !important;
+    }
+
+    .report-input {
+        color: #cedce4;
+        border-bottom: 1px solid #cedce4;
+        margin-right: 15px;
+        // width: calc(50% - 15px);
+        // max-width: calc(50% - 15px);
+    }
+    .grid-form {
+        display: grid;
+        grid-template-columns: 0.5fr 1fr 0.5fr;
+        align-items: center;
+    }
+}

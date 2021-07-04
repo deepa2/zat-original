@@ -1,0 +1,45 @@
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>Edit Profile</ion-title>
+        <ion-buttons end>
+        </ion-buttons>
+    </ion-navbar>
+
+</ion-header>
+
+<ion-content padding-vertical>
+
+    <ion-spinner *ngIf="loading$ | async"></ion-spinner>
+
+    <div *ngIf="!(loading$ | async) && hasRequestedShowMsg"   margin class="hasRequestedShowMsg">
+            <img  class="alert-image" src="assets/imgs/alert.svg">
+        {{hasRequestedShowMsg}}</div>
+
+    <div text-center *ngIf="!(loading$ | async) && expDetails.length == 0 ">No results found</div>
+
+    <div *ngFor="let item of expDetails">
+        <ion-card (click)="goToAddDetails(item)">
+            <span class="span-text">{{item.employer}}</span>
+            <ion-col col-1 text-right class="right-arrow">
+                <ion-icon name="arrow-forward"></ion-icon>
+            </ion-col>
+        </ion-card>
+    </div>
+
+
+
+</ion-content>
+<ion-footer>
+    <ion-fab [ngClass]="{'customFab': (expDetails.length > 0 && !showSubmit)}" *ngIf="editType == 'experience' && !hasRequested" right
+        bottom (click)="addForm()">
+        <button ion-fab>
+            <ion-icon name="add"></ion-icon>
+        </button>
+    </ion-fab>
+    <ion-row *ngIf="!showSubmit">
+        <ion-col no-padding>
+            <button no-margin ion-button full large color="secondary" (click)="submitExperience()">Submit</button>
+        </ion-col>
+    </ion-row>
+</ion-footer>

@@ -1,0 +1,44 @@
+<ion-header>
+
+  <ion-navbar>
+
+    <ion-input #inputToFocus [(ngModel)]="searchTerm" placeholder="Search" [formControl]="searchControl"
+      (ionChange)="onSearchInput($event)"></ion-input>
+
+    <!-- <ion-searchbar [formControl]="searchControl" [(ngModel)]="searchTerm" (ionInput)="onSearchInput($event)">
+    </ion-searchbar> -->
+
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+
+  <ion-spinner *ngIf="loading$ | async"></ion-spinner>
+
+  <div *ngIf="!(totalResultCount >= 0) && recentSearchItems.length > 0">
+    <ion-row class="recentSearch">
+      <ion-col class="text-left" col-10>
+        RECENT SEARCHES
+      </ion-col>
+      <ion-col (click)="clearRecentSearch()" class="text-right" col-2>
+        Clear
+      </ion-col>
+    </ion-row>
+  </div>
+
+  <ion-list *ngIf="!(totalResultCount >= 0) && recentSearchItems.length > 0">
+    <ion-item class="searchText" *ngFor="let text of recentSearchItems" (click)="searchRecent(text)">{{text}}</ion-item>
+  </ion-list>
+
+  <div class="status" padding text-center *ngIf="!(loading$ | async) && totalResultCount == 0 ">No results found</div>
+
+  <query-list *ngIf="!(loading$ | async)" [(showOptions)]="showOptions" [type]='pageName'
+    (gotToDetail)="gotToListDetail($event)" [items]="items$">
+  </query-list>
+
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+</ion-content>

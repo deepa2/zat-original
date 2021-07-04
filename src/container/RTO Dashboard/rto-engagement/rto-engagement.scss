@@ -1,0 +1,50 @@
+page-rto-engagement {
+    .cardBorder {
+        border-radius: 5px;
+    }
+    .cardHeader {
+        padding: 0px;
+        display: flex;
+        align-items: center;
+        font-weight: 600;
+        margin-left: 8px;
+        margin-top: 8px;
+    }
+    .cardImg {
+        height: 40px;
+        width: 40px;
+    }
+    .container {
+        display: grid;
+        grid-template-columns: 50% 33% 17%;
+        margin-right: 5px;
+        margin-left: 8px;
+        
+        margin-bottom: 8px;
+    }
+    .conatinerColoumn {
+        display: flex;
+        align-items: center;
+        background: aliceblue;
+        padding: 5px;
+        border-radius: 5px;
+        margin-right: 3px;
+        
+    }
+    .childImg {
+        height: 60px;
+        width: 60px;
+    }
+    .childData {
+        display: flex;
+        flex-direction: column;
+        margin-left: 5px;
+        font-size: 0.9em;
+    }
+    .contentPadding{
+        padding: 0px;
+    }
+    .contentBackgroud{
+        background-color: #EBEBEB;
+    }
+}

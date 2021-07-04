@@ -1,0 +1,43 @@
+chat-bot-popup {
+    .align-center{
+        text-align: center;
+        font-size: 18px;
+    }
+   .logo-name-container{
+    margin: 10px;
+    border: 1px solid #d0cbcb;
+    border-radius: 5px;
+    padding: 10px;
+   }
+    .logo{
+        height: 50px;
+        width: 50px;
+        margin: 10px;
+    }
+    .welcome-block{
+        font-weight: bold;
+        padding-bottom: 10px;
+    }
+    
+         
+    .name-container{
+
+    }
+    .msg-container{
+        font-size: 15px;
+        padding: 10px;
+    }
+    
+    .explore-container{
+
+    }
+    .explore-btn{
+        width: 130px;
+        display: inline-block;
+        padding: 7px;
+        border: 1px solid #bdbdbd;
+        margin-top: 20px;
+        border-radius: 20px;
+        font-size: 15px;
+    }
+}

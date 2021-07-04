@@ -1,0 +1,32 @@
+<div class="kra-list-parent">
+  <div class="kraCls initailWidth">
+    <div class="kraType" (click)="goToTeamList()"><img [src]=item.icon></div>
+    <div class="kraItem">{{item.value}}</div>
+  </div>
+
+  <div class="kraDetails initalItemWidth">
+    <ion-list>
+      <ion-item *ngFor="let data of item.offerList" (click)="goToKRA(data)">
+
+        <!-- <ion-avatar item-start  >
+          <img [src]=data.icon />
+        </ion-avatar>
+        <div class="justify-spac-bt-align-cent">
+          <span class="font9"  [ngClass]="{'disableText':  data.isDisable}"(click)="goToKRA(data)">{{data.value}}</span>
+          <ion-icon *ngIf="!data.isDisable" name="ios-arrow-forward"></ion-icon>
+        </div> -->
+        <div class="listItem">
+          <span class="pdRight">
+            <img class="imgSize" [src]=data.icon />
+          </span>
+          <div class="justify-spac-bt-align-cent">
+            <span class="font9" [ngClass]="{'disableText':  data.isDisable}">{{data.value}}</span>
+            <ion-icon *ngIf="!data.isDisable" name="ios-arrow-forward" class="iconSize"></ion-icon>
+          </div>
+        </div>
+
+      </ion-item>
+
+    </ion-list>
+  </div>
+</div>

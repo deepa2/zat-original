@@ -1,0 +1,82 @@
+<div class="additionHourApprovalRoot">
+  <ion-grid class="pending-grid">
+    <ion-row class="user-header">
+      <ion-col col-2>
+        <ion-avatar class="user-img">
+          <img [src]="selectedItem.profilePicURL" onError="this.src='assets/imgs/user.png'" />
+        </ion-avatar>
+      </ion-col>
+      <ion-col align-self-center class="font-title" col-9>
+        <span class="staffName">{{selectedItem.staffName|titlecase}}</span>
+      </ion-col>
+      <ion-col (click)="closeModal('')" align-self-center col-1>
+        <img class="closeIcon"  src="assets/imgs/close_white.svg" />
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="row-padding">
+      <ion-col class="font-subtitle" col-4>
+        <strong>Task Name</strong>
+      </ion-col>
+      <ion-col class="font-subtitle" col-8>
+        {{selectedItem.taskName|titlecase}}
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="row-padding">
+      <ion-col class="font-subtitle" col-4>
+        <strong>Project</strong>
+      </ion-col>
+      <ion-col class="font-subtitle" col-8>
+        {{selectedItem.projectName|titlecase}}
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="row-padding">
+      <ion-col class="font-subtitle" col-4>
+        <strong>Billability</strong>
+      </ion-col>
+      <ion-col class="font-subtitle" col-8>
+          Billable
+        <!-- {{selectedItem.billablityFlag == 'YES' ? 'Billable' : 'Non Billable' }} -->
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="row-padding">
+      <ion-col class="font-subtitle" col-4>
+        <strong>Applied Hours</strong>
+      </ion-col>
+      <ion-col class="font-subtitle" col-8>
+        {{selectedItem.appliedAddHrs}}
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="row-padding">
+      <ion-col class="font-subtitle" col-4>
+        <strong>Applied Date</strong>
+      </ion-col>
+      <ion-col class="font-subtitle" col-8>
+        {{selectedItem.additionalHrsDate}}
+      </ion-col>
+    </ion-row>
+
+    <ion-row *ngIf= "type == 'approval-pending'" class="row-padding">
+      <ion-col class="font-subtitle" col-12>
+        <ion-textarea (keypress)="omit_special_char($event)" class="commentBox" name="ngModel" [(ngModel)]="commentText"
+          placeholder="Comment"></ion-textarea>
+      </ion-col>
+      <ion-col class="font-subtitle" col-12>
+        <span *ngIf="flags?.commentRequired" class="error-text">
+          *Comment Required
+        </span>
+      </ion-col>
+    </ion-row>
+
+    <ion-row *ngIf= "type == 'approval-pending'" class="smallBtn">
+      <ion-col text-right col-12>
+        <button ion-button round class="approve-btn" [disabled] = "flags?.fromReject" (click)="onApproveClicked()">Approve</button>
+        <button ion-button round class="pending-btn" (click)="onRejectClicked()" color="light">Reject</button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</div>

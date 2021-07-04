@@ -1,0 +1,434 @@
+page-non-zensarian-deatail-view {
+    .non-zensarian-container {
+        font-family: "Roboto";
+        background-color: #e1e7f3;
+    }
+    .profile-calender {
+        display: flex;
+        align-items: center;
+    }
+    .blue-border {
+        border: 2px solid #b9c8e6;
+    }
+    .scroll-content {
+        // margin-top: 60% !important;
+    }
+    .pass-detail-container {
+        border-bottom: 0px;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        background: #fff;
+        .calendar-icon {
+            padding: 0px !important;
+        }
+    }
+    .user-details-container {
+        background: #fff;
+        padding: 15px 15px 0px 15px;
+        box-shadow: 0px 0px 0px 0px #ccc;
+        width: 100%;
+        position: relative;
+        font-family: "Roboto";
+    }
+    .profile-container {
+        display: flex;
+        align-items: start;
+        img.user-icon {
+            width: 45px;
+            height: 45px;
+            margin-right: 10px;
+            border-radius: 50%;
+            border: 2px solid #c0e0ff;
+            overflow: hidden;
+            left: 5px;
+            top: 5px;
+        }
+        .img-container {
+            position: relative;
+        }
+        .contact-id-container {
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            flex-direction: row;
+            .id-card {
+                margin-right: 10px;
+            }
+        }
+        .username {
+            font-size: 1.2em;
+            margin-right: 5px;
+            font-weight: 400;
+            font-family: "Roboto";
+        }
+        .emp-id {
+            color: #8a8686;
+            font-size: 1.1em;
+            margin-top: 5px;
+        }
+        .user-details {
+            width: 100%;
+            margin-left: 10px;
+        }
+    }
+    .custom-segment {
+        width: 50%;
+    }
+    .segment-md .segment-button {
+        text-transform: none;
+        font-size: 1.1em;
+        font-weight: 400;
+    }
+    .segment-md .segment-button.activated,
+    .segment-md .segment-button.segment-activated {
+        border-bottom: 3px solid #0e7ac7;
+        color: #0e7ac7;
+    }
+    .details-view {
+        background: #fff;
+        box-shadow: 1px 1px 1px 1px #ccc;
+        margin: 10px;
+        padding: 20px 10px;
+        border-radius: 5px;
+        margin-top: 40px;
+        .flex-row {
+            margin-top: 20px;
+        }
+        .call-users {
+            position: absolute;
+            right: 10px;
+        }
+        .contact-info {
+            display: flex;
+            align-items: center;
+        }
+        .max-width-50 {
+            max-width: 50%;
+        }
+        .text-color {
+            color: #8a8686;
+        }
+    }
+    .pass-view {
+        .view {
+            background: #fff;
+            box-shadow: 1px 1px 1px 1px #ccc;
+            margin: 0px 10px;
+            padding: 20px 10px;
+            border-radius: 5px;
+        }
+    }
+    .detail-icon {
+        width: 12px;
+        margin-right: 7px;
+    }
+    // Pass Detail view style. Optimize it later
+    .status-select {
+        color: white;
+        padding: 10px;
+        max-width: none;
+        .select-text {
+            padding-right: 5px;
+            color: white;
+        }
+        .select-icon-inner {
+            color: white !important;
+        }
+    }
+    .date-container {
+        align-items: center;
+        display: flex;
+        background: #e1e7f3;
+        padding: 0;
+        font-size: 1.1em;
+        font-weight: 400;
+        padding: 0px 5px;
+    }
+    .calendar-icon {
+        width: 30px;
+        height: 30px;
+        margin-right: 4px;
+        padding: 2px;
+    }
+    .dateValue {
+        font-size: 0.96em;
+    }
+    .profile-cont-asso {
+        width: 80px;
+        height: 80px;
+        background-color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 0px 12px rgba(0, 0, 0, 0.19), 0 4px 8px rgba(0, 0, 0, 0.23);
+    }
+    .profile-asso {
+        width: 75px;
+        height: 75px;
+        border-radius: 50%;
+    }
+    .ion-card {
+        background-color: transparent;
+        border: none;
+        box-shadow: none;
+        border-radius: 0px;
+        width: 98%;
+        min-height: 60%;
+    }
+    .height50vh {
+        height: 50vh;
+    }
+    .default-bg-img {
+        width: 70%;
+        height: 100%;
+    }
+    .centerText {
+        padding: 0.3em 1em;
+        margin: 0;
+        color: gray;
+    }
+    .profile-wrapper {
+        background: #fff;
+        position: relative;
+        text-align: center;
+        padding-bottom: 7px;
+        color: #e1e7f3;
+        font-size: 1.2em;
+        border-bottom: 1px dashed #b9c8e6;
+        &::after {
+            content: "";
+            position: absolute;
+            right: -10px;
+            bottom: -15px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #e1e7f3;
+            border: 2px solid #b9c8e6;
+        }
+        &::before {
+            content: "";
+            position: absolute;
+            left: -10px;
+            bottom: -15px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #e1e7f3;
+            border: 2px solid #b9c8e6;
+        }
+        .designation {
+            font-size: 1.1em;
+            margin-top: 5px;
+        }
+        .prof-pic-con {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 130px;
+            position: relative;
+            img.outer-image {
+                position: absolute;
+                width: 110px;
+            }
+            img.profile-pic {
+                width: 70px;
+                height: 70px;
+                border-radius: 50%;
+                position: relative;
+            }
+        }
+    }
+    .monthly-pass-container {
+        padding: 5px 5px;
+    }
+    .month-pass-date {
+        font-size: 14px;
+        font-weight: 400;
+        padding: 2px;
+        color: #101a20;
+    }
+    .container-items {
+        background: #ffffff;
+        display: flex;
+        padding: 5px 10px;
+        border-bottom: 0;
+        border-top: 0;
+    }
+    .img-style {
+        height: 45px;
+        width: 45px;
+        border-radius: 50%;
+        border: 3px solid lightblue;
+        padding: 2px;
+        position: relative;
+        z-index: 1;
+    }
+    .user-pic {
+        width: 20px;
+        height: 20px;
+        margin-right: 5px;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        img.userpic-bg {
+            width: 60px;
+            position: absolute;
+            z-index: 0;
+        }
+    }
+    .associate-name {
+        font-size: 1.1em;
+        font-weight: 300;
+    }
+    .pickup-time-card .associate-name {
+        font-size: 1.1em;
+        font-weight: 400;
+        color: #000;
+    }
+    .no-mentor {
+        padding: 15px;
+        text-align: center;
+        font-size: 1.1em;
+        font-weight: 400;
+    }
+    .disabled {
+        background-color: #e2e2e2;
+    }
+    .key-value {
+        width: calc(100% - 50px);
+        font-weight: 300;
+        font-size: 1.1em;
+        margin: 5px 0;
+    }
+    .route-img {
+        width: 25px;
+        height: 25px;
+        margin-right: 10px;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .pickup-point-card {
+        display: flex;
+        padding: 5px 10px;
+        border-top: 0;
+        background: #fff;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+    }
+    .pickup-details {
+        display: flex;
+        align-items: center;
+        width: 65%;
+    }
+    .pickup-time-card {
+        display: flex;
+        align-items: center;
+        width: 35%;
+    }
+    .displayFlex-col {
+        display: flex;
+        flex-direction: column;
+    }
+    .campus-name {
+        margin: 5px 0;
+        font-size: 1.1em;
+    }
+    .ticket-parent {
+        background: #e1e7f3;
+        padding: 5px;
+    }
+    .marginBottom-10 {
+        margin-bottom: 10px;
+    }
+    .busIDText {
+        font-size: 1em;
+        padding: 2px;
+    }
+    .bus-passId {
+        font-size: 1em;
+        font-weight: 400;
+        padding: 2px;
+    }
+    .monthly-pass-title {
+        font-size: 1em;
+        padding: 2px;
+    }
+    .width40px {
+        width: 30px;
+    }
+    .route-pic {
+        margin-right: 10px;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .clock-img {
+        width: 20px;
+        height: 20px;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .bus-icon {
+        margin: 0;
+        height: 40px;
+        margin-right: 2px;
+    }
+    .bus-validity-container {
+        margin-left: 4px;
+    }
+    .bus-id-details {
+        margin-left: 4px;
+    }
+    .fontWeight {
+        font-weight: 400;
+    }
+    .pickup-name-container {
+        width: 75%;
+    }
+    .colorGrey {
+        color: #7f7f7f;
+        // color: #484848; //Dark gray
+    }
+    .mt-40 {
+        margin-top: 40px;
+    }
+    .mt-10 {
+        margin-top: 10px;
+    }
+    .mt-5 {
+        margin-top: 5px;
+    }
+    .mt-30 {
+        margin-top: 30px;
+    }
+    .mt-20 {
+        margin-top: 20px;
+    }
+    .edit-icon {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        width: 40px;
+    }
+    .mt-0 {
+        margin-top: 0px !important;
+    }
+    .route-container {
+        display: flex;
+        flex-direction: column;
+        padding-top: 8px;
+        width: 70%;
+    }
+    .no-data-container {
+        padding: 10px;
+        margin-left: 5px
+    }
+}

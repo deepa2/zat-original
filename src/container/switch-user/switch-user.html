@@ -1,0 +1,42 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Switch User</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  
+
+  <div>
+    <div style="text-align: center;
+    font-size: 2em;margin-top: 10%">
+     
+    </div>
+    <ion-list style="margin-top: 40%">
+      <div style="padding: 15px;
+      text-align: center;
+      font-size: 1.2em;">Switch User</div>
+      <ion-item style="padding: 0px" *ngFor="let user of detail index as i" (click)="goToPage(user)">
+
+        <ion-avatar item-start *ngIf="i==0">
+          <img style="height: 70px;border: 2px dotted #fc8c70; width:70px;
+          padding: 2px;" src="{{user.profilePic}}">
+        </ion-avatar>
+        <ion-avatar item-start *ngIf="i==1">
+          <img style="height: 70px;border: 2px dotted #fc8c70; width:70px;
+          padding: 2px;" src="{{user.profilePic}}">
+        </ion-avatar>
+        <h2>{{user.userName}}</h2>
+        <p>{{user.role}}</p>
+        <p style="right: 5px;
+      position: absolute;
+      top: 30px;"><img src="assets/imgs/Arrow-forward.svg"></p>
+      </ion-item>
+
+    </ion-list>
+  </div>
+</ion-content>

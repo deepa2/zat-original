@@ -1,0 +1,29 @@
+<div class="feedbackTextarea slide-from-left-1"
+    *ngIf="(feedbackDetails?.actionName == 'salary_discrepency' && feedbackDetails?.lifespan == 2 && showQueryBox) || (feedbackDetails?.actionName == 'pf_faq' && feedbackDetails?.lifespan == 2 && showQueryBox) || (feedbackDetails?.actionName == 'investment' && feedbackDetails?.lifespan == 2 && showQueryBox) || (feedbackDetails?.actionName == 'pf_faq_yes' && feedbackDetails?.lifespan == 1 && showQueryBox) || (feedbackDetails?.actionName == 'salaryLetter' && feedbackDetails?.lifespan == 2 && showQueryBox) || (feedbackDetails?.actionName == 'visaPolicy' && feedbackDetails?.lifespan == 2 && showQueryBox)">
+    <textarea placeholder="Please provide your query" [(ngModel)]='queryListenFromFeedback'></textarea>
+    <div class="display-flex justify-content-flex-end margin5">
+        <div class="cancel-button" (click)="_cancel()">Cancel</div>
+        <div class="send-button" (click)="_sendNegativeFeedback(feedbackDetails, queryListenFromFeedback)">Send Email
+        </div>
+    </div>
+</div>
+
+<div *ngIf="feedbackDetails?.lifespan == 1 && feedbackDetails?.actionName != 'getUserProfileParamsDetails'"
+    class="horizontal-scroll align-cont-cent feedback slide-from-left-1">
+    <span class="fromBot margin-left5">{{feedbackMessage}}</span>
+    <img class="thum-icon" *ngIf="!flag" (click)="_submitFeedback('Positive', feedbackDetails)"
+        src="./assets/imgs/chat/thumbs-up.svg" alt="thumns up">
+    <img class="thum-icon" *ngIf="!flag" (click)="_submitFeedback('Negative', feedbackDetails, $event)"
+        src="./assets/imgs/chat/thumbs-down.svg" alt="thumns down">
+
+</div>
+
+<div class="feedbackTextarea slide-from-left-1"
+    *ngIf="feedbackDetails?.lifespan == 1 && feedbackDetails?.negativeFeedback && showQueryBox">
+    <textarea placeholder="Please provide your feedback" [(ngModel)]='negativeFeedbackMessage'></textarea>
+    <div class="display-flex justify-content-flex-end margin5">
+        <div class="cancel-button" (click)="_cancel()">Cancel</div>
+        <div class="send-button" (click)="_sendNegativeFeedback(feedbackDetails, negativeFeedbackMessage)">Send Feedback
+        </div>
+    </div>
+</div>

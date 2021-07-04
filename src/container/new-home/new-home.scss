@@ -1,0 +1,320 @@
+page-new-home {
+
+  
+  .menu-slide-head {
+    height: auto;
+  }
+  .image {
+    width: 80px;
+  }
+
+  .header-grid {
+    height: 30%;
+    background: #488cfc;
+    border-bottom-right-radius: 10%;
+    border-bottom-left-radius: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .slide-head {
+    padding: 5px;
+  }
+
+  .bannerImg {
+    border-radius: 5px;
+    // height: -webkit-fill-available;
+    width: 100%;
+  }
+  .home-banner {
+    height: calc(33vh - 60px);
+    height: calc(33vh - 60px - env(safe-area-inset-top));
+  }
+  .bannerSlide {
+    padding: 10px 5px;
+  }
+
+  .icon-name {
+    font-size: 14px;
+    padding-top: 0;
+    padding: 0 5px;
+    min-height: 35px;
+    line-height: 1.3;
+    color: #fff;
+    margin-top: -18px;
+  }
+
+  //   css for footer 
+  .footer {
+    background: white;
+    bottom: 15px;
+    width: 100%;
+    height: 15px;
+  }
+  ion-footer::before {
+    display: none;
+  }
+  .circle {
+    display: inline-block;
+    position: relative;
+    top: -35px;
+    border-radius: 100%;
+    background: url(assets/imgs/zeno-logo.svg) 0 0/100% 100% no-repeat;
+    width: 75px;
+    height: 75px;
+    margin: 0 1rem;
+    left: 35%;
+  }
+
+  .zeno-img {
+    position: relative;
+    left: 0%;
+    bottom: 21px;
+    width: 100%;
+  }
+
+  .newIconSize {
+    top: 2px;
+    width: 35px;
+    height: 15px;
+    position: absolute;
+    left: 0px;
+  }
+  .disable {
+    opacity: 0.5;
+  }
+
+  .justify-cont-space-btw {
+    justify-content: space-between;
+  }
+
+  ion-navbar {
+    background: transparent;
+  }
+
+  ion-header {
+    min-height: 33vh;
+    height: 33vh;
+    background: url("../assets/imgs/landing_bg.svg") no-repeat;
+    background-size: cover;
+    background-position: 100% 100%;
+  }
+  .scroll-content {
+    margin-top: 33vh !important;
+  }
+
+  // @media only screen and (device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) {
+  //   ion-header {
+  //     min-height: 35vh;
+  //     height: 35vh;
+  //     // background: url("../assets/imgs/landing_bg.svg") no-repeat;
+  //     // background-size: cover;
+  //     // background-position: 100% 100%;
+  //   }
+  //   .scroll-content {
+  //     margin-top: 35vh !important;
+  //   }
+  // }
+
+  // iphone 7 plus
+
+  // @media only screen and (min-device-width: 414px) and (max-device-height: 736px) and (-webkit-device-pixel-ratio: 3) {
+  //   ion-header {
+  //     min-height: 35vh;
+  //     height: 35vh;
+  //     // background: url("../assets/imgs/landing_bg.svg") no-repeat;
+  //     // background-size: cover;
+  //     // background-position: 100% 100%;
+  //   }
+  //   .scroll-content {
+  //     margin-top: 35vh !important;
+  //   }
+  // }
+
+  ///
+
+  // @media only screen and (device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 2) {
+  //   ion-header {
+  //     min-height: 34vh;
+  //     height: 34vh;
+  //     // background: url("../assets/imgs/landing_bg.svg") no-repeat;
+  //     // background-size: cover;
+  //     // background-position: 100% 100%;
+  //   }
+  //   .scroll-content {
+  //     margin-top: 34vh !important;
+  //   }
+  // }
+  // @media only screen and (min-device-width: 375px) and (max-device-height: 667px) and (-webkit-device-pixel-ratio: 2) {
+  //   ion-header {
+  //     min-height: 34vh;
+  //     height: 34vh;
+  //   }
+  //   .scroll-content {
+  //     margin-top: 34vh !important;
+  //   }
+  // }
+
+  .toolbar-title-md {
+    padding: 12px;
+  }
+  .toolbar-md {
+    padding: 0;
+  }
+
+  .height-58vh {
+    min-height: 58vh;
+  }
+
+  .grid-col-3 {
+    display: grid;
+    width: 96%;
+    margin: 2%;
+    // margin: 2px 10px 2px 10px;
+    padding-bottom: 6%;
+    grid-template-columns: 1fr 1fr 1fr;
+    // height: 490px;
+    // min-height: 58vh;
+  }
+  .grid-item {
+    //padding-top: 24px;
+    // background: #f5f8fd;
+    // background: white;
+    margin: 3px;
+    // height: 125px;
+    height: 17.5vh;
+    border-radius: 5px;
+    position: relative;
+    justify-content: center;
+  }
+
+  // .home-banner > .swiper-pagination-fraction,
+  // .swiper-pagination-custom,
+  // .swiper-container-horizontal > .swiper-pagination-bullets {
+  //   left: 0;
+  //   bottom: 0px !important;
+  //   top: unset;
+  //   width: 100%;
+  // }
+  .menu-slide-head > .swiper-pagination-fraction,
+  .swiper-pagination-custom,
+  .swiper-container-horizontal > .swiper-pagination-bullets {
+    left: 0;
+    bottom: 8%;
+    width: 100%;
+  }
+
+  .menu-slide-head .swiper-container-horizontal > .swiper-pagination-bullets {
+    bottom: 10px;
+  }
+
+  .slideBackground {
+    background: #f5f8fd;
+  }
+
+  .minWidthCls {
+    max-width: 62px;
+  }
+
+  .fixed-content {
+    background: #f5f8fd;
+  }
+  .swiper-pagination-bullet {
+    // border-radius: 0;
+    width: 6px;
+    height: 6px;
+  }
+
+  
+}
+
+
+/******************* Css for menu *******************/
+.navbar {
+  button {
+    background: transparent;
+    font-size: 22px;
+  }
+  .toolbar-content {
+    display: flex;
+  }
+}
+.menu-list {
+  margin-top: 20px;
+  .list {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    img.list-icon {
+      margin: 0 10px 10px 15px;
+    }
+    .label {
+      margin: 0;
+      border-bottom: 1px dotted #cac0c0;
+      padding-bottom: 15px;
+    }
+  }
+}
+.menu {
+  background: #fff;
+  width: 70%;
+  height: 100%;
+  left: -1000px;
+  top: 0;
+  position: absolute;
+  transition: all 0.3s;
+  z-index: 999;
+  .user-profile-con {
+    padding: 25px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: url(../assets/imgs/landing_bg.svg) no-repeat;
+    .userpic-con {
+      width: 90px;
+      height: 90px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      img.userpic-bg {
+        position: absolute;
+        z-index: 0;
+      }
+      img.userpic {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        position: relative;
+        z-index: 1;
+      }
+    }
+    .user-info {
+      width: 100%;
+      margin-top: 10px;
+      text-align: center;
+      color: #fff;
+      .username {
+        font-size: 16px;
+        font-weight: 600;
+        margin-bottom: 5px;
+      }
+    }
+  }
+}
+.menu-overlay {
+  background: rgba(0, 0, 0, 0.49);
+  width: 100%;
+  height: 100%;
+  left: -1000px;
+  top: 0;
+  position: absolute;
+  transition: all 0.3s;
+  z-index: 998;
+}
+
+// zenLearn css
+.background-red{
+background-color: red;
+}

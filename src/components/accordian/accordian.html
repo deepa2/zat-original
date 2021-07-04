@@ -1,0 +1,97 @@
+<!-- Generated template for the AccordianComponent component -->
+<div (click)="expandAnswer()" *ngIf="type =='exit-faq'">
+  <div class="faq-container" *ngIf="type =='exit-faq'">
+    <div class="faq-details">
+      <div>{{faqData?.question}}</div>
+      <div [hidden]="showAnswer" class="faq-answer">{{faqData?.answer}}</div>
+    </div>
+    <span [ngClass]="{'rotate-icon': !showAnswer}">
+      <img class="faq-icon" src="assets/ZenExit-Imgs/faq-icon.svg">
+    </span>
+
+  </div>
+  <div *ngIf="type =='exit-faq'" class="faq-border"></div>
+
+</div>
+
+
+<div *ngIf="type =='exit-Status'">
+  <div (click)="expandAnswer()" class="exit-status-departments-info">
+    <div class="department-info">
+      <span><img class="exit-status-imgMargin" [src]="exitStatusData?.departmentIcon"></span>
+      <span>{{exitStatusData?.departmentName}}</span>
+    </div>
+
+    <div class="rating-status-container" (click)="$event.stopPropagation();">
+      <span class="ratingMargin" [hidden]="exitStatusData?.clearanceFlag == 'N'">
+        <span *ngFor="let subItem of [1,2,3,4,5]" (click)="openRating(exitStatusData)">
+          <ion-icon [hidden]="!(subItem <= selectedStar)" name="star" [ngStyle]="{'color':'#F4B432'}">
+          </ion-icon>
+
+          <ion-icon [hidden]="!(subItem > selectedStar)" name="star" [ngStyle]="{'color':'lightgrey'}">
+          </ion-icon>
+
+        </span>
+      </span>
+
+      <span *ngIf="exitStatusData?.clearanceFlag == 'N'" class="exit-status-info"></span>
+      <span *ngIf="exitStatusData?.clearanceFlag == 'Y'" class="exit-status-icon">
+        <img src="assets/ZenExit-Imgs/approved.svg">
+      </span>
+
+    </div>
+  </div>
+
+  <div [hidden]="showAnswer" class="exit-inlinie-block">
+    <div class="mr-5" [ngClass]="{'inline-constainer':exitStatusData?.contactDetails.length > 1}"
+      *ngFor="let contactDetails of exitStatusData?.contactDetails">
+      <div class="exit-department-container">
+        <div class="department-heading">
+          <span class="ft-600">{{contactDetails?.projectData?.key}}</span>
+          <span class="ft-300">{{contactDetails?.projectData?.value}}</span>
+        </div>
+        <div class="department-heading">
+          <!-- <span class="ft-600">{{contactDetails.statusData?.key}}</span>
+          <span class="ft-300">{{contactDetails.statusData?.value}}</span> -->
+        </div>
+      </div>
+      <div class="department-details" [ngClass]="{'auto-height':contactDetails?.departmentContactList.length == 1}">
+        <div *ngFor="let departmentContactList of contactDetails?.departmentContactList">
+          <div class="department-detailed-data" *ngFor="let departmentDetails of departmentContactList">
+            <div class="deaprtment-sub-deatils">
+              <img class="roundedImg" [src]="departmentDetails?.profilePicUrl">
+              <span class="department">
+                <span class="ft-600">
+                  {{departmentDetails?.key}}
+                </span>
+                <span class="ft-300">{{departmentDetails?.contactPersonName}}</span>
+              </span>
+            </div>
+            <div class="deaprtment-contact">
+              <ion-icon class="icon-color" (click)="call(exitStatusData,departmentDetails,'mobile')"
+                *ngIf="departmentDetails?.mobileNumber" name="phone-portrait"></ion-icon>
+              <img (click)="call(exitStatusData,departmentDetails,'extn')" *ngIf="departmentDetails?.extension"
+                src="assets/ZenExit-Imgs/telephone.svg">
+              <img (click)="mailTo(exitStatusData,departmentDetails)" src="assets/ZenExit-Imgs/email.svg">
+            </div>
+          </div>
+        </div>
+        <!-- <div class="recoverContainer" *ngIf="exitStatusData?.isRecovery">
+          <span class="recoverData">
+            <img [src]="contactDetails?.recoveryData.icon">
+            <span>{{contactDetails?.recoveryData?.key}}: {{contactDetails?.recoveryData?.value}}
+            </span>
+          </span>
+        </div> -->
+        <!-- <div class="recoverContainer" *ngIf="exitStatusData?.isRecovery && exitStatusData?.ratingComments">
+          <span class="ft-600">Comments:</span> <span class="ft-300"> {{exitStatusData?.ratingComments}}
+          </span>
+        </div> -->
+      </div>
+
+
+    </div>
+  </div>
+
+  <div class="borderBtm" *ngIf="length > index+1 && showAnswer"></div>
+</div>

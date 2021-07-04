@@ -1,0 +1,100 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>
+            Select <span text-capitalize>{{listFrom}}</span>
+        </ion-title>
+        <ion-buttons end (click)="_dismiss()">
+            <button ion-button icon-only>
+                <ion-icon ios="ios-close" md="md-close"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+    <ion-navbar>
+        <ion-searchbar [(ngModel)]="searchInput" animated placeholder="Search" (ionInput)="getItems($event)">
+        </ion-searchbar>
+    </ion-navbar>
+</ion-header>
+<ion-content>
+    <div class="title-client" *ngIf="list.length != 0">
+        <ion-label class="color-primary" text-capitalize>{{listFrom}}</ion-label>
+        <div class="align-cont-cent " >
+            <!-- *ngIf="searchInput.length == 0" -->
+            <ion-checkbox padding-right color="success" slot="end" [(ngModel)]="selectAll" checked="{{selectAll}}"
+                (click)="_selectAll()">
+            </ion-checkbox>
+            <ion-label>Select All ({{list.length}})</ion-label>
+        </div>
+    </div>
+
+    <div [ngSwitch]="listFrom">
+
+        <!-- <ion-list *ngSwitchCase="'customer'">
+
+            <ion-item *ngFor="let asso of list" class="align-checkbox">
+                <ion-label>{{asso.customerName}}</ion-label>
+                <ion-checkbox slot="end" [(ngModel)]="asso.isChecked" (click)="_everyElement(asso)">
+                </ion-checkbox>
+            </ion-item>
+        </ion-list> -->
+        <ion-list *ngSwitchCase="'customer'">
+
+            <ion-item *ngFor="let asso of renderList" class="align-checkbox">
+                <ion-label>{{asso.customerName}}</ion-label>
+                <ion-checkbox slot="end" [(ngModel)]="asso.isChecked" (click)="_everyElement(asso)">
+                </ion-checkbox>
+            </ion-item>
+        </ion-list>
+        <ion-list *ngSwitchCase="'projects'">
+
+            <ion-item *ngFor="let project of renderList" class="align-checkbox">
+                <ion-label>{{project.projectName}}</ion-label>
+                <ion-checkbox slot="end" [(ngModel)]="project.isChecked" (click)="_everyElement(project)">
+                </ion-checkbox>
+            </ion-item>
+        </ion-list>
+        <ion-list *ngSwitchCase="'associates'">
+
+            <ion-item *ngFor="let project of renderList" class="align-checkbox">
+                <ion-label>{{project.associateName}}</ion-label>
+                <ion-checkbox slot="end" [(ngModel)]="project.isChecked" (click)="_everyElement(project)">
+                </ion-checkbox>
+            </ion-item>
+        </ion-list>
+
+        <ion-list *ngSwitchCase="'locationList'">
+            <ion-item *ngFor="let location of renderList" class="align-checkbox">
+                <ion-label>{{location.locationName}}</ion-label>
+                <ion-checkbox slot="end" [(ngModel)]="location.isChecked" (click)="_everyElement(location)">
+                </ion-checkbox>
+            </ion-item>
+        </ion-list>
+
+        <ion-list *ngSwitchCase="'payroll'">
+            <ion-item *ngFor="let payroll of renderList" class="align-checkbox">
+                <ion-label>{{payroll?.payrollName}}</ion-label>
+                <ion-checkbox slot="end" [(ngModel)]="payroll.isChecked" (click)="_everyElement(payroll)">
+                </ion-checkbox>
+            </ion-item>
+        </ion-list>
+
+        <ion-list *ngSwitchCase="'clients'">
+            <ion-item *ngFor="let payroll of renderList" class="align-checkbox">
+                <ion-label>{{payroll?.payrollName}}</ion-label>
+                <ion-checkbox slot="end" [(ngModel)]="payroll.isChecked" (click)="_everyElement(payroll)">
+                </ion-checkbox>
+            </ion-item>
+        </ion-list>
+        <ion-infinite-scroll threshold="300px" (ionInfinite)="loadData($event)">
+            <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">
+            </ion-infinite-scroll-content>
+        </ion-infinite-scroll>
+    </div>
+    <div class="error-msg" *ngIf="list.length == 0">No Data Available!</div>
+
+</ion-content>
+<ion-footer *ngIf="list.length != 0">
+    <ion-toolbar text-right>
+        <button ion-button round (click)="_add()">
+            Add </button>
+    </ion-toolbar>
+</ion-footer>

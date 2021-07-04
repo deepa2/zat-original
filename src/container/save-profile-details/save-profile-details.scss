@@ -1,0 +1,66 @@
+page-save-profile-details {
+.selected{
+    border-bottom: 1px solid lightgray;
+    font-weight: 600;
+}
+.opening-card {
+    margin: 10px;
+    border: 1px solid #dad8d8;
+    border-radius: 7px;
+    .job-wrapper {
+        display: flex;
+        padding: 10px 5px;
+    }
+    .save-job {
+        display: flex;
+        align-items: start;
+        //padding: 10px 5px;
+        ion-icon {
+            padding: 0px 5px;
+            font-size: 22px;
+            color: #6d6d6d;
+        }
+    }
+    .job-info {
+        width: 100%;
+        padding: 0 10px;
+    }
+    .job-icon {
+        display: flex;
+        // align-items: flex-start;
+        // margin-bottom: 10px;
+        margin-bottom: 10px;
+        flex-direction: column;
+        align-items: center;
+        background: lightgray;
+        padding: 5px;
+        height: 65px;
+        border-radius: 5px;
+    }
+    .job-footer {
+        display: flex;
+        justify-content: space-between;
+        border-top: 1px solid #dad8d8;
+        .experience {
+            border-right: 1px solid #dad8d8;
+            width: 40%;
+            padding: 10px;
+        }
+        .referral-Bonus {
+            padding: 10px;
+            width: 60%;
+        }
+    }
+    .job-title,
+    .title {
+        font-weight: 600;
+        color: #0f7dc8;
+    }
+    .info {
+        margin: 10px 0;
+    }
+    .matchingProfile {
+        margin: 5px;
+    }
+}
+}

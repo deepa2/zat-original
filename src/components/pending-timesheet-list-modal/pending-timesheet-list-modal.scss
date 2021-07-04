@@ -1,0 +1,142 @@
+pending-timesheet-list-modal {
+    ion-buttons{
+        display: flex;
+        align-items: center;
+        .allCheckbox{
+            padding: 0;
+            background: transparent;
+            color: white;
+            width: 65px;
+            display: flex;
+            align-items: center;
+            ion-checkbox{
+                border: 1px solid white;
+                .checkbox-icon{
+                    background: transparent;
+                    border: none;
+                    .checkbox-inner{
+                        left: 6px !important;
+                        top: 1px !important;
+                    }
+                }
+            }
+            ion-label{
+                display: inline-flex;
+                margin-left: 5px;
+            }
+        }
+    }
+    .pendingList{
+        padding: 8px;
+        .parent{
+            margin-bottom: 8px;
+            // border: 1px solid #c7eff9c7;
+            border: 1px solid #ebebeb;
+            box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.07), 0 3px 1px -2px rgba(0, 0, 0, 0.1), 0 1px 5px 0 rgba(0, 0, 0, 0.06);
+            .pendingItem{
+                display: flex;
+                align-items: flex-start;
+                .header{
+                    display: flex;
+                    margin: 5px 0;
+                    .sub-title{
+                        width: 42%;
+                        display: inline-block;
+                        font-size: 0.9em;
+                    }
+                    .desc{
+                        width: 58%;
+                        display: block;
+                        white-space: initial;
+                        font-size: 0.9em;
+                        margin-left: 5px;
+                    }
+                }
+                ion-avatar{
+                    margin: 8px;
+                    img{
+                        height: 50px;
+                        width: 50px;
+                    }
+                    .tick-icon{
+                        // height: 15px;
+                        // width: 15px;
+                        // position: absolute;
+                        // left: 35px;
+                        // top: 35px;
+                        height: 20px !important;
+                        width: 20px !important;
+                        position: absolute;
+                        left: 40px;
+                        top: 38px;
+                    }
+                }
+                .item-inner{
+                    padding-right: 0px !important;
+                }
+                ion-label{
+                    margin: 5px;
+                    // margin-left: 0;
+                    h2{
+                        color:color($colors,primary);
+                    }
+                }
+            }
+            .details{
+                background-color: #EDF9FC;
+                padding: 5px;
+                .sub-details{
+                    padding: 2px;
+                    display: flex;
+                    strong{
+                        display: inline-block;
+                        width: 30%;
+                        font-size: 0.9em;
+                    }
+                    span{
+                        color: #666;
+                        width: 70%;
+                        font-size: 0.9em;
+                    }
+                }
+            }
+            ion-row{
+                ion-col{
+                    color: #666;
+                    font-size: 0.9em;
+                    white-space: initial;
+                    strong{
+                        color: black;
+                    }
+                    .name{
+                        font-size: 1em;
+                        color:color($colors,primary);
+                    }
+                }
+            }
+            .bg-color{
+                background-color: #EDF9FC; 
+            }
+        }
+    }
+    ion-footer{
+        .okayBtn{
+            background-color: #0e88c8;
+            text-transform: capitalize;
+          }
+    }
+    @media only screen and (max-width: 767px) {
+        ion-modal.pendingTimesheetListModal
+            .modal-wrapper
+            > covid-information.ion-page
+            > ion-header
+            > .toolbar.statusbar-padding:first-child {
+            padding-top: calc(20px + 4px) !important;
+            padding-top: calc(constant(safe-area-inset-top) + 4px) !important;
+            padding-top: calc(env(safe-area-inset-top) + 4px) !important;
+            min-height: calc(56px + 20px) !important;
+            min-height: calc(0px + constant(safe-area-inset-top)) !important;
+            min-height: env(safe-area-inset-top) !important;
+        }
+    }
+}

@@ -1,0 +1,56 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title> Activity List</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <div class="container-bg">
+        <!-- respective-associate -->
+        <div class="list-align">
+            <div class="profile-section">
+                <div class="profile-icon"><img class="avtar-styl" [src]=associateDetails?.profilePicUrl /></div>
+                <div class="flex-clum paddding-left8">
+                    <span class="padding-btm6">{{associateDetails?.userName}}</span>
+                    <span>{{associateDetails?.userId}}</span>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <ion-searchbar debounce="500" animated placeholder="Search" (ionClear)="onCancel($event)" (ionInput)="_searchItems($event)">
+            </ion-searchbar>
+
+            <!-- dialog-details -->
+            <div *ngFor="let item of renderList" class="diag-list" (click)="movetoDigDetails(item)" [ngStyle]="{'background': item?.managerReadStatus ? 'white' : '#e7e2e2'}">
+                <div class="dig-icon">
+                    <img [src]="item.icon" />
+                </div>
+
+                <div class="list-section">
+                    <div class="space-btwn-align">
+                        <div class="dig-list-title">{{item?.dialogTitle}}</div>
+                        <div class="arrow-styl">
+                            <ion-icon name="ios-arrow-forward"></ion-icon>
+                        </div>
+                    </div>
+
+                    <div class="catg-styl">
+                        <span class="catg-title">{{item?.dialogCategoryName}}</span>
+                        <span class="date-styl">
+                            <span class="calender-styl">
+                                <img src="assets/imgs/digCalender.svg" />
+                            </span> {{_getFormatDate(item.dialogCreatedDate)}}
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- <div class="no-data-msg" *ngIf="renderList.length == 0">{{errorMessage}}</div> -->
+
+    <ion-infinite-scroll threshold="300px" (ionInfinite)="loadData($event)">
+        <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data..." *ngIf="resultPending">
+        </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+</ion-content>

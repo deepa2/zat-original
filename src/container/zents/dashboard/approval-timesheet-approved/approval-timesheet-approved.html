@@ -1,0 +1,83 @@
+<!--
+  Generated template for the ApprovalTimesheetApprovedPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header class="ts-header">
+  <ion-navbar hideBackButton="flags?.showSearchBox">
+    <ion-title *ngIf="!flags?.showSearchBox" class="approval-ts-title">
+      Timesheets
+    </ion-title>
+
+    <ion-buttons *ngIf="!flags?.showSearchBox" end>
+      <button margin-right ion-button icon-only (click)="showSearchBar()">
+        <ion-icon name="search"></ion-icon>
+      </button>
+      <!-- <button class="allCheckbox">
+        <ion-checkbox [(ngModel)]="selectAllTimesheets" (ionChange)="updateSelectAll(selectAllTimesheets)"></ion-checkbox>
+        <ion-label>ALL</ion-label>
+      </button> -->
+      <button ion-button icon-only (click)="openFilterModal()">
+        <img class="filterIcon" src="assets/imgs/filterIcon.svg" />
+      </button>
+    </ion-buttons>
+
+    <ion-searchbar *ngIf="flags?.showSearchBox" animated="true" [showCancelButton]="true" (ionClear)="onSearchClear()"
+      (ionCancel)="onSearchCancel()" (ionChange)="onSearchTextChange()" [(ngModel)]="searchText"></ion-searchbar>
+
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div [ngStyle]="{'margin-bottom':(type == TYPE_PENDING) && isAnyRecord() ? '56px' : '0px'}">
+    <div class="headSection">
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+              <span *ngIf="type == TYPE_PENDING">Pending Timesheets</span>
+              <span *ngIf="type == TYPE_APPROVED">Approved Timesheets</span>
+              <span *ngIf="type == TYPE_REJECTED">Rejected Timesheets</span>
+          </ion-col>
+          <ion-col *ngIf="(type == TYPE_PENDING) && isAnyRecord()">
+            <div class="selectAllSection">
+              <ion-checkbox [(ngModel)]="selectAllTimesheets" (ionChange)="updateSelectAll(selectAllTimesheets)"></ion-checkbox>
+              <span>Select All</span>
+            </div>
+          </ion-col>
+          <!-- <ion-col col-6>
+            <div class="approveAllSection" *ngIf="(type == TYPE_PENDING) && isAnyRecord()">
+              <button ion-button round (click)="presentAlertConfirmDialog()" class="ion-float-right approvAllbtn">Approve
+                All</button>
+            </div>
+          </ion-col> -->
+        </ion-row>
+      </ion-grid>
+    </div>
+
+    <div *ngIf="isAnyRecord()">
+      <div *ngFor="let item of getDataSource()">
+        <approval-timesheet-item *ngIf="this.filteredData.category != 'OVERTIME'" [type]="type"
+          (onApprovalRejectClicked)="onApprovalRejectClicked(item)" (onApprovalApproveClicked)="onApprovalApproveClicked(item)"
+          (open)="openApprovalModalPage(item)" (openApprovalPendingTS)="openPendingDetailModalPage(item, false)" [item]="item"
+          (toggleCheck)="toggleCheck($event)"></approval-timesheet-item>
+        <approval-timesheet-item *ngIf="this.filteredData.category == 'OVERTIME' && item.additionalHrsFlag == 'YES'"
+          [type]="type" (onApprovalRejectClicked)="onApprovalRejectClicked(item)" (onApprovalApproveClicked)="onApprovalApproveClicked(item)"
+          (open)="openApprovalModalPage(item)" (openApprovalPendingTS)="openPendingDetailModalPage(item, false)" [item]="item"></approval-timesheet-item>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="!isAnyRecord() && flags?.isApiCalled" class="noRecords">
+    <p>No records to show.</p>
+  </div>
+
+  <!-- <ion-fab right bottom>
+    <button ion-fab (click)="openFilterModal()">
+      <img class="filterIcon" src="assets/imgs/filterIcon.svg" />
+    </button>
+  </ion-fab> -->
+
+</ion-content>
+<ion-footer text-center *ngIf="(type == TYPE_PENDING) && isAnyRecord()" [ngStyle]="{'background-color':(type == TYPE_PENDING) && isAnyRecord() ? 'white' : 'transparent'}">
+    <button class="okayBtn" ion-button round small (click)="approveSelectedTimesheets()" [disabled]="doUpdate && !selectAllTimesheets">Approve</button>
+</ion-footer>

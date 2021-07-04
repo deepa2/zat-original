@@ -1,0 +1,62 @@
+<ion-list>
+
+    <span *ngIf="type == 'list'">
+
+        <span *ngFor="let item of items; last as isLast;let isFirst = first" (click)="gotTo(item)">
+            <div *ngIf="!isFirst && item.type!='trail'" class="trail"></div>
+            <query-item [detail]="detail" *ngIf="item.type!='trail'" [(showOptions)]="showOptions" [item]="item">
+            </query-item>
+
+            <span *ngIf="item.type=='trail'">
+                <div class="trail"></div>
+                <div>
+                    <!-- <ion-row>
+                        <ion-col class="horizontal-timeline"></ion-col>
+                        <ion-col></ion-col>
+                    </ion-row> -->
+
+                    <ion-row class="padding-right7 padding-left7">
+                        <ion-col padding class="trailBackground answerFont">
+                            <ion-row>
+                                <ion-col padding-bottom class="answerFont">{{item.answer}}</ion-col>
+                            </ion-row>
+
+                            <ion-row>
+                                <div class="queryInfo flex" *ngIf="item.activityDate">
+                                    <div class="flex mar">
+                                        <span> <img class="imageSize" src="assets/imgs/Calender.svg"/></span>
+                                        <div class="date">{{utilities.formatDate(item.activityDate) | date}}</div>
+                                    </div>
+                                    <div class="date">{{utilities.formatDate(item.activityDate) | date:'shortTime'}}
+                                    </div>
+                                </div>
+                            </ion-row>
+                        </ion-col>
+                    </ion-row>
+
+                    <!-- <ion-row *ngIf="!isLast">
+                        <ion-col class="horizontal-timeline"></ion-col>
+                        <ion-col></ion-col>
+                    </ion-row> -->
+                </div>
+                <!-- <div *ngIf="!isLast" class="trail"></div> -->
+            </span>
+        </span>
+    </span>
+
+    <span *ngIf="type == 'search'">
+        <span *ngFor="let item of items" (click)="gotTo(item)">
+            <query-item *ngIf='item.type!="Announcement"' [(showOptions)]="showOptions" [item]="item"></query-item>
+            <announcement-item *ngIf='item.type=="Announcement"' [announcement]='item'></announcement-item>
+        </span>
+    </span>
+
+    <span *ngIf="type == 'notification'">
+        <span *ngFor="let item of items" (click)="gotTo(item)">
+            <notification-item [item]="item"></notification-item>
+        </span>
+    </span>
+
+    <!-- <button (click)="openCalenderModel()">Test</button> -->
+
+</ion-list>

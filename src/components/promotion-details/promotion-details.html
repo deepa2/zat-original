@@ -1,0 +1,40 @@
+<!-- Generated template for the PromotionDetailsComponent component -->
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Additional Details
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="closePopup()">
+        <ion-icon ios="ios-close" md="md-close"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <form #promotionForm="ngForm" novalidate (ngSubmit)="myForm(promotionForm)">
+    <ion-list *ngFor="let promotionQuestions of promotionDetails">
+      <ion-item>
+        <ion-label stacked> {{promotionQuestions.title}} <img *ngIf="promotionQuestions?.isRequired" style="position: absolute;
+          height: 12px;padding: 2px;" src="assets/imgs/asterisk.svg" />
+
+        </ion-label>
+        <ion-textarea class="txtArea" [(ngModel)]="promotionQuestions.titleValue" [name]="promotionQuestions?.id"
+          [readonly]="!promotionQuestions.isEditable" [ngClass]="{'bg': !checkFooterVisility()}" [required]="promotionQuestions?.isRequired">
+        </ion-textarea>
+      </ion-item>
+
+      <div
+        *ngIf="(promotionForm?.controls[promotionQuestions?.id]?.dirty || promotionForm?.touched) && promotionForm?.controls[promotionQuestions?.id]?.errors?.required && promotionQuestions?.isRequired"
+        class="errorMsg"> This field is required</div>
+      <!-- <div>{{promotionForm.controls[promotionQuestions?.id]?.errors.required}}</div> -->
+    </ion-list>
+
+  </form>
+
+</ion-content>
+
+<ion-footer *ngIf="checkFooterVisility()" class="footer-style"><button type="submit"
+    (click)="promotionForm.ngSubmit.emit()" class="footerBtn">Save</button>
+
+</ion-footer>

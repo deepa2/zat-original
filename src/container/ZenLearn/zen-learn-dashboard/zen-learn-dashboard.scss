@@ -1,0 +1,728 @@
+page-zen-learn-dashboard {
+    .progress-outer {
+        position: relative;
+        // margin: 8px;
+        margin: 8px 0px;
+        top: -8px;
+        border-radius: 20px;
+    }
+    .noDataCard {
+        height: 50px;
+        border: 1px solid lightgray;
+        border-radius: 5px;
+    }
+    .progress-outer::after {
+        content: " ";
+        position: absolute;
+        width: 100%;
+        top: 8px;
+        left: 0;
+        border-top: 3px solid #c7c4c4;
+        z-index: 0;
+    }
+    .progress-inner {
+        height: 4px;
+        border-radius: 20px;
+        // background-color: green;
+        position: relative;
+        z-index: 9;
+        top: 7px;
+    }
+    .dap-item {
+        width: 100%;
+        // background: #f1f1f1;
+        margin: 1px;
+    }
+    .bg-red {
+        background-color: red;
+    }
+    .color-white {
+        color: white;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .padding3per {
+        padding: 3%;
+    }
+    .font-1p3 {
+        font-size: 1.3em;
+    }
+    .font-1p2 {
+        font-size: 1.2em;
+    }
+    .align-right {
+        align-items: flex-start;
+    }
+    .padding2-0 {
+        padding: 2% 0;
+    }
+    .padding-right8 {
+        padding-right: 8px;
+    }
+    .color-gray {
+        color: gray;
+    }
+    .padding-bottom2per {
+        padding-bottom: 2%;
+    }
+    .padding-bottom4per {
+        padding-bottom: 4%;
+    }
+    .segment-button {
+        border: 1px solid #1586c7;
+        border-radius: 12px;
+    }
+    .dap-container {
+        border-radius: 10px;
+        display: flex;
+        margin: 2px;
+        .dap-item {
+            width: 100%;
+            // background: #f1f1f1;
+            margin: 1px;
+            min-height: 110px;
+            font-size: 12px;
+        }
+        .dap-title {
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        .dap-data {
+            display: flex;
+            justify-content: center;
+            padding: 8px 1px;
+        }
+    }
+    .mid-slider {
+        .midcart-item {
+            font-size: 14px;
+            border: 1px solid #b5c5df;
+            // background: #f1f1f1;
+            color: #1586c7;
+            margin: 10px 0 10px 10px;
+            padding: 10px;
+            border-radius: 6px;
+            background: linear-gradient(-45deg, #f96cae, #7a67fb);
+        }
+        // .swiper-slide {
+        //   min-width: 138px;
+        //   width: auto !important;
+        // }
+    }
+    .position-relative {
+        position: relative;
+    }
+    .padding-right20 {
+        padding-right: 20px;
+    }
+    .dap-slide {
+        display: flex;
+        flex-direction: column;
+        background: white;
+        border-radius: 9px 0px 0px 10px;
+        // padding: 2% 7%;
+        width: 99%;
+    }
+    .max-width35 {
+        max-width: 35px;
+    }
+    .activeColor {
+        color: white !important;
+        background-color: #1586c7 !important;
+    }
+    .segment-button>div:first-child>button {
+        border-radius: 22px 0 0 22px;
+    }
+    .segment-button>div:last-child>button {
+        border-radius: 0 22px 22px 0;
+    }
+    .segment-button>div>button {
+        font-size: 1em;
+        padding: 6px 16px;
+        color: black;
+        background: white;
+        width: 140px;
+    }
+    .bg-img {
+        background-image: url("../assets/imgs/myDapBackground.svg");
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    .lerning-hr {
+        display: flex;
+        background: #1586c7;
+        padding: 4px 4px;
+        border-radius: 3px;
+        font-size: 1.1em;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: white;
+    }
+    .lerning-pecent-value {
+        padding-right: 7px;
+        font-size: 1.1em;
+    }
+    .ion-card {
+        margin: 14px 0px 0px 4px;
+        padding: 0px;
+        width: calc(100% - 10px);
+        min-height: 170px;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px 0 #516efe1f, 0 3px 4px -7px #516efe1f, 0 0px 5px 0 #516efe1f;
+        background: #fff;
+        border: 1px solid #b5c5df;
+        // padding: 3%;
+        display: flex;
+        align-items: self-end;
+        .card-header {
+            padding: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .V.Learn {
+            background: #fffaee;
+        }
+        .Classroom {
+            background: #f6f8ff;
+        }
+        .Online {
+            background: #f3fff8;
+        }
+        .card-data {
+            padding: 5px;
+        }
+    }
+    .titleName {
+        font-size: 1.1em;
+        color: gray;
+        img {
+            width: 55px;
+        }
+    }
+    .subTitle {
+        font-size: 1em;
+        color: #213643;
+        padding: 2% 0;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: calc(100% - 60px);
+    }
+    .fontp9em {
+        font-size: 0.9em;
+    }
+    .padding-top3per {
+        padding-top: 3%;
+    }
+    .icon-header {
+        height: 30px;
+        width: 30px;
+    }
+    .flex-spac-betwn-center {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .flex-column-center {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+    .margin-right2 {
+        margin-right: 2%;
+    }
+    .height-auto {
+        height: auto;
+    }
+    .padding2per {
+        padding: 2%;
+    }
+    .width44per {
+        width: 44%;
+    }
+    .width88per {
+        width: 88%;
+    }
+    .width56per {
+        width: 56%;
+    }
+    .text-left {
+        text-align: left;
+    }
+    .padding8per {
+        padding: 8%;
+    }
+    .padding-right10 {
+        padding-right: 10px;
+    }
+    .padding-left20 {
+        padding-left: 20px;
+    }
+    .padding-left12 {
+        padding-left: 12px;
+    }
+    .fontSize1p2 {
+        font-size: 1.2em;
+    }
+    .fontSize1p5 {
+        font-size: 1.5rem;
+    }
+    .bold {
+        font-weight: bold;
+    }
+    .learn-sum-title {
+        font-weight: 300;
+    }
+    .flex-end-center {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+    }
+    .align-content-flex-start {
+        align-items: flex-start;
+    }
+    .profile-picture {
+        background-color: #d5f1f8;
+        display: flex;
+        align-items: center;
+    }
+    .profile-round {
+        width: 35px;
+        height: 35px;
+        border-radius: 17.5px;
+        // padding: 3px;
+        border: 2px solid #a9d8fb;
+    }
+    .profile-heading {
+        color: #1586c7;
+        font-size: 1.2em;
+        font-weight: 700;
+    }
+    .learning-icon {
+        width: 12%;
+        padding-left: 2%;
+    }
+    .dap-icon {
+        width: 22px;
+    }
+    .dap-image-padding {
+        padding-right: 8px;
+    }
+    .dap-section {
+        border-bottom: 1px solid gray;
+        padding: 10px 12px;
+    }
+    .dap-slide>span:last-child {
+        border-bottom: 0px;
+    }
+    .dap-heading {
+        padding: 10px 12px;
+        text-align: left;
+    }
+    .heading-font {
+        font-size: 1.3em;
+        color: white;
+        padding: 6px 0px;
+    }
+    .dap-subHeading {
+        font-size: 1.2em;
+        color: white;
+        min-height: 45px;
+        font-weight: 300;
+    }
+    .padding9px {
+        padding: 9px;
+    }
+    .learning-card {
+        padding-top: 12px;
+        display: flex;
+        width: 100%;
+    }
+    .font-bold {
+        font-weight: bold;
+    }
+    .bottom-border {
+        border-bottom: 1px solid;
+        white-space: nowrap;
+        margin-left: 10px;
+    }
+    .width85per {
+        width: 85%;
+    }
+    .padding5-0 {
+        padding: 5% 0;
+    }
+    .progresscard-border {
+        border-radius: 10px;
+        border: 1px solid #b5c5df;
+        box-shadow: none;
+    }
+    .width70per {
+        width: 70%;
+    }
+    .container-card {
+        min-height: 17vh;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        padding: 2%;
+    }
+    .nodata {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.1em;
+    }
+    .dapText {
+        padding: 5px;
+        font-size: 1.1em;
+        span {
+            text-decoration: underline;
+            color: blue;
+        }
+    }
+    .card-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: left;
+        width: 100%;
+    }
+    .padding-left7 {
+        padding-left: 7px;
+    }
+    .padding0-5 {
+        padding: 0 5px;
+    }
+    .image-style {
+        width: 22px;
+        height: 22px;
+    }
+    .heading-color {
+        color: #383838;
+    }
+    .grayCls {
+        color: lightgray;
+    }
+    .tabHeading {
+        margin-top: 10px;
+        margin-left: 10px;
+    }
+    .dap-slide>span:last-child {
+        border-bottom-left-radius: 10px;
+    }
+    .fadeIn {
+        background-color: #0e89c8 !important;
+        color: white;
+        animation: fadeIn 1s steps(5, start) infinite;
+        -webkit-animation: fadeIn 1s steps(5, start) infinite;
+    }
+    .dashboard-title {
+        display: flex;
+        align-items: center;
+    }
+    .dash-img-parent {
+        height: 45px;
+    }
+    .dash-title {
+        font-size: 1.1em;
+        font-weight: 700;
+        margin-top: -2px;
+    }
+    .cartImg {
+        width: 65px;
+        // height: 35px;
+    }
+    .bgDAPImgCard {
+        background: url("../assets/zenLearn-imgs/DAPbg-img.svg") no-repeat;
+        background-size: cover;
+        height: 65px;
+    }
+    .bgLeaderBoardImgCard {
+        background: url("../assets/zenLearn-imgs/leaderBoard-bg-img.svg") no-repeat;
+        background-size: cover;
+        height: 65px;
+    }
+    .bgEnrolledImgCard {
+        background: url("../assets/zenLearn-imgs/enrolledCourses-bg-img.svg") no-repeat;
+        background-size: cover;
+        height: 65px;
+    }
+    .bgLearningHrsBgCard {
+        background: url("../assets/zenLearn-imgs/learningHrs-bg.svg") no-repeat;
+        background-size: cover;
+        height: 65px;
+    }
+    .colorWhite {
+        color: #ffffff;
+        // white-space: nowrap;
+    }
+    .profileImg {
+        height: 45px;
+        widows: 45px;
+    }
+    .yourScore-img {
+        width: 30px;
+        margin: 3px 5px;
+    }
+    .score-parent {
+        display: flex;
+        align-items: center;
+        justify-content: end;
+    }
+    .yourScore-title {
+        font-size: 1.1em;
+        font-weight: 700;
+        padding: 5px;
+    }
+    .leaderBoard-lowerCard-parent {
+        display: flex;
+        justify-content: center;
+        margin: 1px 10px 10px 10px;
+    }
+    .leaderboard-data-card {
+        display: flex;
+        flex-direction: column;
+        width: 33%;
+        background: #9cd9f9;
+        margin-right: 2px;
+        align-items: center;
+    }
+    .leaderBoard-score-value {
+        width: 50px;
+        height: 50px;
+        background-color: white;
+        border-radius: 50%;
+        border: 4px solid #80c8ee;
+        box-shadow: 0 0 5px #80c8ee;
+        margin: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .leaderBoard-score-key {
+        padding: 5px;
+        width: 100%;
+        background: #ceecfc;
+    }
+    .enrolledData {
+        display: flex;
+        align-items: center;
+        margin: 0px 10px;
+    }
+    .enrolledCount-img {
+        width: 30px;
+        margin: 3px 5px;
+    }
+    .enrolledCount-title {
+        font-size: 1em;
+        font-weight: bold;
+        padding: 5px;
+    }
+    .enrolledData-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        margin: 1px 10px 10px 10px;
+    }
+    .technical-course-container {
+        width: 47%;
+        background: #8db0f9;
+        margin-right: 1px;
+    }
+    .behavioural-course-container {
+        width: 47%;
+        background: #63d69b;
+    }
+    .technicalImg-parent {
+        display: flex;
+        justify-content: center;
+    }
+    .tecnicalImg {
+        width: 50px;
+        // margin: 5px;
+    }
+    .behaviouralImg {
+        width: 50px;
+        // margin: 5px;
+    }
+    .course-hrs-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 7px;
+        background: #c6d8fc;
+    }
+    .dap-headerbg {
+        background: #97a8ff;
+    }
+    .lightBlue-color {
+        background: #55c1fb;
+    }
+    .lightGreen-color {
+        background: #c4f7c2;
+    }
+    .lightPurple-color {
+        background: #d8d4fd;
+    }
+    .dap_row0 {
+        background: #e1e9fe;
+    }
+    .dap_row1 {
+        background: #dcffd2;
+    }
+    .dap_row2 {
+        background: #fcf5c7;
+    }
+    .Team {
+        background: #9cd9f9;
+    }
+    .BU {
+        background: #88ef84;
+    }
+    .Zensar {
+        background: #b0a8fb;
+    }
+    .behavioral-title {
+        background: #CBD9FF;
+    }
+    .technical-title {
+        background: #C1FFAF;
+    }
+    .total-title {
+        background: #F9EEA9;
+    }
+    .midcart-item.Recommendations {
+        background: linear-gradient(-45deg, #00b787, #12d5ff);
+    }
+    .midcart-item.Calendar {
+        background: linear-gradient(-45deg, #6796f1, #01ede2);
+    }
+    .midcart-item.Preferences {
+        background: linear-gradient(-45deg, #35c268, #4ef6c2);
+    }
+    .midcart-item.DAP,
+    .midcart-item.My.DAP {
+        background: linear-gradient(-45deg, #7e68f9, #f56bb0);
+    }
+    .midcart-item.Mentorship {
+        background: linear-gradient(-45deg, #667df1, #6bc4f4, );
+    }
+    .trainings-title {
+        display: flex;
+        justify-content: center;
+        padding: 8px 1px;
+    }
+    .height200 {
+        height: 200px;
+    }
+    .dap-lowerCard-container {
+        border-radius: 10px;
+        display: flex;
+        margin: 5px;
+        .dap-item {
+            width: 100%;
+            // background: #f1f1f1;
+            margin: 1px;
+            min-height: 110px;
+            font-size: 12px;
+        }
+        .dap-title {
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        .dap-data {
+            display: flex;
+            justify-content: center;
+            padding: 8px 1px;
+        }
+    }
+    .card-header {
+        padding: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .V.Learn {
+        background: #fffaee;
+        span.learning-type {
+            background: #f5c656;
+        }
+        span.learning-type::before {
+            width: 0;
+            height: 0;
+            content: "";
+            border-style: solid;
+            border-width: 9px 0 9px 9px;
+            border-color: transparent transparent transparent #fffaee;
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+        }
+    }
+    .Classroom {
+        background: #f6f8ff;
+        span.learning-type {
+            background: #8db0f9;
+        }
+    }
+    .Online {
+        background: #e8ffe6;
+        span.learning-type {
+            background: #63d69b;
+        }
+    }
+    .card-data {
+        padding: 5px;
+    }
+    .card-header {
+        background: #b8edef;
+    }
+    .like-dislike-wrapper {
+        display: flex;
+        color: #929292;
+        margin-top: 10px;
+        img {
+            width: 30px;
+            margin-right: 5px;
+        }
+        .like,
+        .dislike {
+            display: flex;
+            align-items: center;
+            margin-right: 15px;
+        }
+    }
+    @-webkit-keyframes fadeIn {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+    @keyframes fadeIn {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+    .financial-year-selector {
+        color: #fff;
+        font-weight: 600;
+    }
+    .finance-year-container {
+        display: flex;
+        .drop-down-img {
+            width: 12px;
+            margin-left: 5px;
+        }
+    }
+}

@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title class="pageTitile">Mentee</ion-title>
+   
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <div class="mentee-con">
+    <div class="mentee-item" *ngFor="let item of information" (click)="openMenteeAlert(item)">
+      <img class="mentee-pic" [src]="item.profilePic">
+      <div class="mentee-info">
+        <div class="mentee-name">{{item?.menteeName}}</div>
+        <div class="mentee-id">{{item?.menteeid}}<span class="status {{item?.currentStatus}}">{{item?.currentStatus}}</span></div>
+      </div>
+    </div>
+  </div>
+</ion-content>

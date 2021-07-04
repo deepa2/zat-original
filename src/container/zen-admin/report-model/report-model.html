@@ -1,0 +1,36 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>{{reportType}}</ion-title>
+        <ion-buttons end>
+            <button class="btn-style" (click)="dismiss()" end>
+                <ion-icon name="close"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+<ion-content>
+    <form [formGroup]="passForm">
+        <!-- employee-selection -->
+        <ion-list>
+            <ion-item>
+                <ion-label stacked>Employee ID</ion-label>
+                <ion-input type="tel" placeholder="Enter employee ID" formControlName="empID"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label stacked>Start Date</ion-label>
+                <ion-datetime displayFormat="DD-MM-YYYY" pickerFormat="DD MMM YYYY" formControlName="startDate" placeholder="Select start date" (ionChange)="onStartDateChange($event)" [max]="currDate" [class.invalid]="passForm.errors?.startDate">
+                </ion-datetime>
+            </ion-item>
+            <ion-item>
+                <ion-label stacked>End Date</ion-label>
+                <ion-datetime displayFormat="DD-MM-YYYY" pickerFormat="DD MMM YYYY" formControlName="endDate" placeholder="Select end date" (ionChange)="onEndDateChange($event)" [min]="startDate" [max]="currDate" [class.invalid]="passForm.errors?.endDate">
+                </ion-datetime>
+            </ion-item>
+        </ion-list>
+    </form>
+</ion-content>
+<ion-footer>
+    <div class="text-center" (click)="getSearchData()">
+        <button class="submitBtn" ion-button round>Generate Report</button>
+    </div>
+</ion-footer>

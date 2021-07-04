@@ -1,0 +1,42 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>Goals</ion-title>
+        <ion-buttons end>
+            <button class="btn-style" (click)="_dismiss()" end>
+                <ion-icon name="close"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+<ion-content>
+
+    <!-- <div *ngFor="let item of goalData;let i= index" (click)="getGoalName(item.goalName)" class="list-styl">
+        <div class="padding-right12">{{i+1}}</div>
+        <div>{{item.goalName}}</div>
+        <ion-checkbox padding-right color="success" slot="end" [(ngModel)]="selectAll" checked="{{selectAll}}">
+        </ion-checkbox>
+    </div> -->
+
+    <!-- <ion-list>
+        <ion-item *ngFor="let item of goalData;let i= index">
+            <ion-label>{{item.goalName}}</ion-label>
+            <ion-checkbox slot="end" [(ngModel)]="item.isChecked">
+            </ion-checkbox>
+        </ion-item>
+    </ion-list> -->
+
+    <ion-list radio-group (ionChange)="_selectedSiteButtton($event)">
+        <ion-item *ngFor="let item of goalData;let i = index">
+            <ion-label class="ion-text-justify">{{item.name}}</ion-label>
+            <ion-radio [value]="item" checked="{{i == 0}}"></ion-radio>
+        </ion-item>
+    </ion-list>
+    <ion-infinite-scroll threshold="300px" (ionInfinite)="loadData($event)">
+        <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">
+        </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+    <div class="error-msg" *ngIf="goalData.length == 0">{{errorMessage}}</div>
+</ion-content>
+<ion-footer class="center padding-16">
+    <button class="sumbit-btn" (click)="_addGoal()" [disabled]="this.goalData < 1">Add Goal</button>
+   </ion-footer>

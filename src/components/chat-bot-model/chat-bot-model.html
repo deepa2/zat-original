@@ -1,0 +1,44 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>Zeno Info</ion-title>
+        <ion-buttons end>
+            <button ion-button icon-only (click)="dismiss()">
+                <ion-icon ios="ios-close" md="md-close"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-searchbar debounce="500" animated placeholder="Search" (ionInput)="_searchItems($event)"></ion-searchbar>
+
+    <details class="class-{{item.categoryId}} details-animated"
+        *ngFor="let item of searchedSuggestionList;let i = index" [attr.id]="'list' + i">
+        <summary>
+            <div class="display-flex summary-header {{item.backgroundCode}}">
+                <div class="align-item-center category-name">{{item?.categoryName }}</div>
+            </div>
+        </summary>
+
+        <ion-card *ngFor="let phraseList of item.phraseList" class="padding-4per card-background shadow-none"
+            (click)="initiateReq(phraseList)">
+            <div class="justify-spac-ar-align-cent list-bg">
+                <div>{{phraseList}}</div>
+                <div>
+                    <ion-icon class="forward-icon" name="ios-arrow-forward"></ion-icon>
+                </div>
+            </div>
+        </ion-card>
+    </details>
+</ion-content>
+
+
+<!-- old hard coded list -->
+<!-- <ion-content style="position: relatives">
+    <div class="font-size16 padding10">Some of the queries that can be answered:</div>
+    <ul inset *ngFor="let item of chatbotSuggestions" (click)="initiateReq(item)">
+        <li>
+            <div class="font-size16 "> {{item.label}}</div>
+        </li>
+    </ul>
+</ion-content> -->

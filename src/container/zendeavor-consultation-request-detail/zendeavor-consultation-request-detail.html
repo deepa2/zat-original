@@ -1,0 +1,132 @@
+<!--
+  Generated template for the ZendeavorConsultationRequestDetailPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title *ngIf="!isReadOnly">Consultation Requested</ion-title>
+    <ion-title *ngIf="isReadOnly">Consultation Submitted</ion-title>
+
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <div *ngIf="!showSuccessMsg">
+
+
+    <div class="userDetails-container">
+      <ion-card padding>
+        <!-- <div class="divFirst">
+        <ion-item class="padding0 padding-left7">
+          <ion-avatar item-start>
+            <img class="imgCls" [src]="fieldItem?.employeeProfilePic">
+          </ion-avatar>
+
+          <h3 class="empName">Deepa Nair</h3>
+          <p>51437</p>
+        </ion-item>
+      </div> -->
+        <ion-row class="rowCls" *ngFor="let fieldItem of consultationDetails?.fieldDetails">
+          <ion-col col-6 class="colCls">
+            <span class="mrginRt">
+              <img class="width80" class="imgSize" [src]=fieldItem.icon />
+            </span>
+            <span class="font-weight500">{{fieldItem.title}}</span>
+          </ion-col>
+          <ion-col col-6>
+            <span class="color-gray">{{fieldItem.titleValue}}</span>
+            <span class="color-gray">{{fieldItem.titleValue2}}</span>
+          </ion-col>
+        </ion-row>
+      </ion-card>
+
+    </div>
+    <!-- <div>
+    <ion-card>
+      <div class="msg-title">Message</div>
+      <div class="padding10">dkjhfjhsfj</div>
+    </ion-card>
+  </div> -->
+
+    <div *ngFor="let chatItem of consultationDetails?.conversationList" class="conversationList-container">
+      <div class="chat-container" *ngIf="loggedInUserID != chatItem.send_by">
+        <div class="chat-imgContainer">
+          <img class="chat-img" [src]="chatItem.profilePicUrl" onerror="this.src='assets/imgs/dummy-profile.png'" />
+
+        </div>
+        <div class="chat-message-container">
+          <div class="chat-username">{{chatItem?.userName}}</div>
+          <!-- <div class="msg-date"> {{chatItem?.receiver_date|date :'MMM d, yyyy, h:mm a'}} </div> -->
+          <div class="msg-date"> {{ dateConversion(chatItem?.receiver_date)}} </div>
+
+          <div class="chat-msg width100per">
+            <div>{{chatItem?.sender_comment}}</div>
+          </div>
+
+        </div>
+      </div>
+      <!-- <div class="chat-containerflex-end">
+
+      <div class="chat-message-container-end">
+        <div class="chat-username textalignRight">{{chatItem?.userName}}</div>
+        <div class="msg-date-end"> {{chatItem?.receiver_date|date}} </div>
+        <div class="chat-msg-end">
+          <div>{{chatItem?.sender_comment}}</div>
+        </div>
+
+      </div>
+      <div class="chat-imgContainer-end">
+        <img class="chat-img" [src]="chatItem.profilePicUrl" onerror="this.src='assets/imgs/dummy-profile.png'" />
+
+      </div>
+    </div> -->
+      <div class="chat-containerflex-end" *ngIf="loggedInUserID == chatItem.send_by">
+        <div class="chat-message-container-end">
+          <div class="chat-username">{{chatItem?.userName}}</div>
+          <div class="msg-date-end"> {{dateConversion(chatItem?.receiver_date)}}</div>
+          <div class="chat-msg-end width100per">
+            <div class="">{{chatItem?.sender_comment}}</div>
+          </div>
+        </div>
+        <div>
+          <img class="chat-img-end" [src]="chatItem.profilePicUrl" onerror="this.src='assets/imgs/dummy-profile.png'" />
+        </div>
+
+
+      </div>
+    </div>
+
+    <div class="margin10">
+
+      <div class="feedbackTitle">Feedback:</div>
+      <div class="">
+        <!-- <textarea class="" rows="6" cols="48" placeholder="" [(ngModel)]='feedback' class="commtArea"></textarea> -->
+        <ion-textarea class="feedbackTextarea" placeholder="" rows="8" [(ngModel)]="feedbackMsg"></ion-textarea>
+      </div>
+
+
+    </div>
+  </div>
+  <!-- <div class="successMsg-container padding10" *ngIf="showSuccessMsg">
+    <div class="congratulation-bg-img">
+      <div class="success-msgdiv">
+        <div class="margin10"><img class="tick-img" src="assets/imgs/ZenDeavour/tickSign-blue.svg" /></div>
+        <div class="fontSize1p8">Successful</div>
+      </div>
+      <div class="consultMsg">Consultation submitted successfully</div>
+
+    </div>
+  </div> -->
+</ion-content>
+<ion-footer class="submitfooter" *ngIf="!showSuccessMsg">
+
+  <button class="submitBtn" (click)="submitConsultation()" ion-button round>Submit</button>
+
+
+
+</ion-footer>

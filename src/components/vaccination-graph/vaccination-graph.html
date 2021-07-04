@@ -1,0 +1,47 @@
+<!-- Generated template for the VaccinationGraphComponent component -->
+<div class="main-container">
+    <div class="header-container">
+        <div class="header-left"> Covid-19 Vaccination Update </div>
+        <div class="header-right">{{graphDetails?.currentDate}}</div>
+    </div>
+    <!-- Body -->
+    <div class="body-container">
+        <div class="img-container" (click)="goToCovidServyPage()" >
+            <img class="img" src="assets/imgs/dose-taking.svg" alt="">
+        </div>
+        <div class="box-container">
+            <div class="common">
+                <span class="first-row-first-colum"> Total Associates</span>
+                <span class="first-row-second-colum">{{graphDetails?.totalAssociates}}</span>
+            </div>
+            <div class="common">
+                <span class="second-row-first-colum">2nd Dose</span>
+                <span class="second-row-second-colum">{{graphDetails?.secondDoseTaken}}</span>
+            </div>
+            <div class="common">
+                <span class="third-row-first-colum">1st Dose</span>
+                <span class="third-row-second-colum">{{graphDetails?.firstDoseTaken}}</span>
+            </div>
+            <div class="common">
+                <span class="fourth-row-first-colum"> Non-Vaccinated</span>
+                <span class="fourth-row-second-colum">{{graphDetails?.notVaccinated}}</span>
+            </div>
+
+        </div>
+    </div>
+    <!-- footer -->
+    <div>
+        <div class="flex-container vaccination-progress-bar">
+            <div class="one font-width">{{graphDetails?.secondDoseTakenPercent}}%</div>
+            <div class="two font-width">{{graphDetails?.firstDoseTakenPercent}}%</div>
+            <div class="three not-vaccinated">{{graphDetails?.notVaccinatedPercent}}%</div>
+
+        </div>
+        <div class="flex-container no-background">
+            <div class="one trans-background secondDose">2nd dose</div>
+            <div class="two trans-background firstDose">1st dose</div>
+            <div class="three trans-background notVaccinated">Not Vaccinated</div>
+
+        </div>
+    </div>
+</div>

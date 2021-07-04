@@ -1,0 +1,63 @@
+page-add-nz-bus-pass {
+  .content-container {
+    background: #fff;
+    padding: 10px !important;
+    * {
+      font-family: "Roboto";
+    }
+  }
+  ion-label {
+    font-weight: 500;
+    font-family: 1em;
+  }
+  .pass-form {
+    padding: 10px;
+    .item-md,
+    .item-md.item-block .item-inner {
+      padding-left: 0px;
+      padding-right: 0px;
+    }
+    .comment-area {
+      min-height: 15vh;
+      background: #f6f6f6;
+      border: 1px solid #b4b4b4;
+      border-radius: 5px;
+      margin-top: 10px;
+      padding: 5px;
+    }
+  }
+  .summry-container {
+    padding: 10px;
+    border: 1px solid #849ac5;
+    border-radius: 10px;
+  }
+  .summary-header {
+    display: flex;
+    align-items: center;
+    background: #ecf2fe;
+    height: 65px;
+    padding: 10px;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+  }
+  .summry-img {
+    width: 45px;
+    height: 45px;
+  }
+  .summaryImg {
+    width: 30px;
+    height: 30px;
+  }
+  .grid-container {
+    padding: 10px;
+  }
+  .available {
+    color: #02ab08;
+  }
+  .notAvailable {
+    color: red;
+  }
+  .summaryTitle {
+    padding: 5px;
+  }
+}

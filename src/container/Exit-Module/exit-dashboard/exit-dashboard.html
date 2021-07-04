@@ -1,0 +1,64 @@
+<!--
+  Generated template for the ExitDashboardPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Exit Tracker</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <div *ngIf="exitDetailsData" class="exit-Details-Conatiner">
+    <div class="exit-Dashboard-Img-Conatiner">
+      <img src="assets/ZenExit-Imgs/exitImg.svg" alt="image">
+
+    </div>
+    <div class="exit-Dashboard-Dates-Conatiner">
+      <span class="exit-Resigned">
+        <img src="assets/ZenExit-Imgs/calender-black.svg" />
+        <span>
+          <span class="exit-FW"> Seperation initiated On: </span>
+          <span class="exit-ResignedColor">{{exitDetailsData?.resignedOn}}</span>
+        </span>
+      </span>
+      <span class="exit-Resigned">
+        <img src="assets/ZenExit-Imgs/calender-black.svg" />
+        <span>
+          <span class="exit-FW">Last working day: </span>
+          <span class="exit-LwdColor">{{exitDetailsData?.lastWorkingDate}}</span>
+        </span>
+      </span>
+    </div>
+  </div>
+  <div *ngIf="exitDetailsData" class="exit-sub-details">
+    <div (click)="goToPersonalDetails()" class="personal-container">
+      <div class="person-details">
+        <img src="assets/ZenExit-Imgs/personalBG.svg">
+        <span class="person-details-container">
+        <img  style="margin:10px"src="assets/ZenExit-Imgs/peronalImg.svg">
+        <span>Personal Details</span>
+      </span>
+      </div>
+      </div>
+      
+    <div (click)="goToExitStatus()" class="exit-tracker">
+      <div class="person-details">
+        <img  src="assets/ZenExit-Imgs/trackBg.svg">
+        <span class="person-details-container">
+        <img style="margin:10px" src="assets/ZenExit-Imgs/Tracker-exit.svg">
+        <span>Track Exit Status</span>
+      </span>
+      </div>
+    </div>
+
+  </div>
+
+
+</ion-content>

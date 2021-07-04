@@ -1,0 +1,23 @@
+<!-- Generated template for the StdTaskListModalComponent component -->
+<!-- List of Sliding Items -->
+<ion-header class="ts-header">
+  <ion-toolbar>
+    <ion-title>Select Standard Task</ion-title>
+    <button navPop ion-button icon-only clear>
+      <ion-icon name="close"></ion-icon>
+    </button>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-searchbar (ionInput)="filterTasks($event)"></ion-searchbar>
+  <ion-list>
+    <ion-item-group *ngIf= "projectTasks?.length > 0">
+      <ion-item-divider color="light">Project Management Related Tasks</ion-item-divider>
+      <ion-item *ngFor="let projTask of projectTasks" (click)="onTaskSelect(projTask)">{{projTask.taskName}}</ion-item>
+    </ion-item-group>
+    <ion-item-group *ngIf= "orgStdTasks?.length > 0">
+      <ion-item-divider color="light">Organization Standard Related Tasks</ion-item-divider>
+      <ion-item *ngFor="let orgTask of orgStdTasks" (click)="onTaskSelect(orgTask)">{{orgTask.taskName}}</ion-item>
+    </ion-item-group>
+  </ion-list>
+</ion-content>

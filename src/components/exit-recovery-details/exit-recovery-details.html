@@ -1,0 +1,34 @@
+<!-- Generated template for the ExitRecoveryDetailsComponent component -->
+<ion-content style="background-color: white;">
+
+  <div class="header-container">
+    <span class="conatiner-details">
+      <img src="assets/ZenExit-Imgs/funds.svg">
+      <span>Recovery/Due Amount</span>
+    </span>
+    <span class="img-margin" (click)="dismiss()">
+
+      <ion-icon ios="ios-close" md="md-close"></ion-icon>
+
+    </span>
+  </div>
+  <div *ngFor="let department of exitRecoveryData?.departmentList; index as i">
+    <div *ngIf="department?.departmentRecoveryAmount != 0" class="recovery-container">
+      <span class="recovery-flex">
+        <img class="img-margin" [src]="department?.departmentIcon">
+        <span>{{department?.departmentName}}</span>
+      </span>
+      <span class="mr-10">{{department?.departmentRecoveryAmount}}</span>
+    </div>
+    <div class="borderBtm"
+      *ngIf="(exitRecoveryData?.departmentList.length > i+1 && department?.departmentRecoveryAmount != 0)"></div>
+  </div>
+
+
+  <div class="btm-container">
+    <span>Total</span>
+    <span class="ft-color">{{exitRecoveryData?.recoveryAmount}}</span>
+  </div>
+
+
+</ion-content>

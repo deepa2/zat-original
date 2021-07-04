@@ -1,0 +1,123 @@
+redirect-kra {
+  .headerBackground {
+    background: linear-gradient(to right, #488cfc, #8264ff);
+  }
+  .card-md.no-shadow {
+    box-shadow: 0px 1px 1px 2px #dadfe0a8;
+  }
+  .header-fixed {
+    position: sticky;
+    width: 100%;
+    top: 0;
+    background: linear-gradient(to right, #488cfc, #8264ff);
+  }
+  .cmnt-area-div {
+    display: flex;
+    border: 2px solid whitesmoke;
+    justify-content: center;
+    align-items: center;
+    margin-left: 15px;
+    // border-radius: 5px;
+    // border: 2px solid whitesmoke;
+  }
+  .footerBg {
+    // background: #d3d3d366;
+    text-align: center;
+    background: white;
+    // height: 60px;
+  }
+  @media only screen and (device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) {
+    .footerBg {
+      background: white;
+      text-align: center;
+      height: 60px;
+    }
+  }
+  .nextBtn {
+    text-align: center;
+    width: 20%;
+    background: #6363aa;
+    text-transform: capitalize;
+    width: 30%;
+  }
+
+  .button-md.activated {
+    background: #6363aa;
+  }
+  ion-select {
+    max-width: 100%;
+    width: 100%;
+    padding: 13px 8px 13px 0px !important;
+  }
+
+  .commtArea {
+    display: flex;
+    border: 0;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  .astrick {
+    height: 10px;
+    position: absolute;
+    bottom: 51%;
+    left: 28%;
+  }
+  .redirectGoals-div {
+    padding: 5px 10px;
+  }
+  .redirectBtnGoals {
+    text-align: center;
+    width: 20%;
+    text-transform: capitalize;
+    width: 30%;
+  }
+  .consult-title-container {
+    display: flex;
+    justify-content: space-between;
+    // padding: 10px;
+    color: #488cfc;
+    // margin: 10px 0;
+    align-items: center;
+    margin: 10px;
+    padding-top: 10px;
+  }
+  .consulTo-title {
+    // font-size: 1.4em;
+    // font-weight: 600;
+  }
+  .addImg{
+    width: 30px;
+    height: 30px;
+  }
+  .associateInfo-container {
+    display: flex;
+    align-items: center;
+    // border: 1px dotted #000000;
+    margin: 10px;
+    background: #d5f1f8;
+  }
+  .userImg-container {
+    padding: 8px;
+    .user-profile {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      border: 1px solid #38889c;
+      padding: 3px;
+    }
+  }
+  .associateDetails-container {
+    width: 70%;
+  }
+  .deleteImg {
+    width: 35px;
+    padding: 5px;
+  }
+  .no-associate-data {
+    text-align: center;
+    height: 60px;
+    padding: 10px;
+  }
+}

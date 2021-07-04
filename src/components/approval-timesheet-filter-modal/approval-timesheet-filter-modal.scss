@@ -1,0 +1,135 @@
+approval-timesheet-filter-modal {
+    background:#fff;
+    width: 100%;
+
+    .modal-title{
+        font-size: 1.2em;
+    }
+
+    .approval-filter-main{
+        .formheader{
+             padding: 4%;
+             .form-group{
+                margin-bottom: 0.8em;
+             }
+         }
+        .startDateInput{
+            margin-right: 10px;
+        }
+        .formBody{
+            display: flex;
+            // padding: 4%;
+            margin-top: 10px;
+        }
+        .dateIcon{
+            float: right;
+            background: none;
+            font-size: 0.5em;
+        }
+        .dateInput{
+            width: 75%;
+            border: none;
+        }
+        
+        
+        .dateBody{
+            width: 50%;
+            border-bottom: 1px solid #C2CDFF;  
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+             ngb-datepicker{
+                padding: 0px;
+                position: absolute;
+                top: 165px!important;
+                left: 34px!important;
+            }
+        }
+    
+        ion-select{
+            width: 100%;
+            max-width: none;
+            padding-left: 0px !important;
+        }
+        ion-item{
+            width: 100%;
+        }
+        ion-datetime{
+            padding-left: 0px !important;
+        }
+
+        .header-row{
+            padding-right: 8px;
+        }
+    }
+
+    #buttonColor{
+        // --background: linear-gradient(to right,var(--ion-color-primary-shade),var(--ion-color-primary-tint)); 
+        background: $ts-secondary;
+        color: white;
+        text-transform: capitalize;
+        // width: 110px;
+        height: 40px;
+    }
+    .submitBtn{
+        --background: none;
+        text-align: center;
+        margin-top:10px;
+    }
+
+    .filterIconHeader{
+        text-align: center;
+    }
+
+    .item-inner{
+        border-bottom: none !important;
+        padding: 0 !important;
+    }
+    .borderColor{
+        width: 100%;
+        border-bottom: 1px solid #C2CDFF;  
+        padding-left: 0px;
+        margin-top:10px;
+    }
+    .margin-right{
+        margin-right : 2%;
+    }
+
+    .form-content{
+        padding-left: 10px;
+        padding-right: 10px;
+        .pending-radio{
+            padding-left: 8px !important;
+        }
+        .approved-radio{
+            padding-left: 8px !important;
+        }
+        // padding-bottom: 16px;
+    }
+    .radio-checked {
+        .radio-inner {
+            background-color: #42C147 !important;
+            border-color: #42C147 !important;
+        }
+    }
+    .item-radio-checked.item-md ion-label {
+        color: #000000 !important;
+    }
+
+    ion-radio{
+        margin: 0 10px 0 0  !important;
+        
+        .item-inner {
+            ion-label{
+                color:#000000 !important; 
+            }
+        }
+    }
+    .error-msg{
+        color: red;
+        margin-top: 2px;
+        margin-left: 10px;
+        display: block;
+    }
+
+ }

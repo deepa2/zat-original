@@ -1,0 +1,209 @@
+vaccination-graph {
+    .main-container {
+        font-size: 14px;
+        background: url("../assets/imgs/vaccination-bg.svg");
+        width: 100%;
+        // margin-top: 20px;
+        background-repeat: no-repeat;
+        background-color: #cfe8f2;
+        padding: 5px;
+        border-radius: 5px;
+    }
+    .header-container {
+        display: flex;
+        justify-content: space-between;
+        font-size: 15px;
+        color: #e44d4d;
+        div {
+            font-size: 12px;
+        }
+    }
+    .header-left {
+        font-weight: 700;
+        text-align: left;
+        // margin-top: 10px;
+        // margin-left: 24px;
+    }
+    .header-right {
+        color: #848484;
+        // margin-top: 10px;
+    }
+    .body-container {
+        display: flex;
+        justify-content: space-between;
+        // height: 17vh;
+    }
+    .img-container {
+        width: 40%;
+        align-self: flex-end;
+    }
+    .img {
+        width: 100%;
+        margin-bottom: -5px;
+        // height: 20vh;
+        // margin-left: 50px;
+    }
+    .box-container {
+        margin: 5px 0px;
+        width: 60%;
+        span {
+            font-size: 12px;
+        }
+    }
+    .common {
+        margin-bottom: 5px;
+        display: flex;
+        justify-content: space-between;
+        span:nth-child(1) {
+            flex: 1;
+            align-self: stretch;
+            min-width: 65%;
+            max-width: 65%;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            text-align: left;
+        }
+        span:nth-child(2) {
+            min-width: 30%;
+            max-width: 30%;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    }
+    .first-row-first-colum {
+        background-color: #00a2a5;
+        color: white;
+        border-radius: 3px;
+        font-family: "Roboto";
+        padding: 3px;
+    }
+    .first-row-second-colum {
+        background-color: #00a2a5;
+        color: black;
+        border-radius: 3px;
+        font-family: "Roboto";
+        padding: 3px;
+    }
+    .second-row-first-colum {
+        background-color: #e44d4d;
+        color: white;
+        border-radius: 3px;
+        font-family: "Roboto";
+        padding: 3px;
+    }
+    .second-row-second-colum {
+        background-color: #e44d4d;
+        color: black;
+        border-radius: 3px;
+        font-family: "Roboto";
+        padding: 3px;
+    }
+    .third-row-first-colum {
+        background-color: #fc9292;
+        color: white;
+        border-radius: 3px;
+        font-family: "Roboto";
+        padding: 3px;
+    }
+    .third-row-second-colum {
+        background-color: #fc9292;
+        color: black;
+        border-radius: 3px;
+        font-family: "Roboto";
+        padding: 5px;
+    }
+    .fourth-row-first-colum {
+        background-color: #d7d9da;
+        color: white;
+        border-radius: 3px;
+        font-family: "Roboto";
+        padding: 5px;
+    }
+    .fourth-row-second-colum {
+        background-color: #d7d9da;
+        color: black;
+        border-radius: 3px;
+        font-family: "Roboto";
+        padding: 5px;
+    }
+    // footer
+    .flex-container {
+        display: flex;
+        flex-wrap: wrap;
+        background-color: #d7d9da;
+        border-radius: 5px;
+    }
+    .flex-container > div {
+        text-align: right;
+        font-size: 12px;
+    }
+    .one {
+        width: 20%;
+        background: #e44d4d;
+        padding: 5px;
+    }
+    .two {
+        width: 25%;
+        background: #fc9292;
+        padding: 5px;
+    }
+    .three {
+        flex: 1;
+        padding: 5px;
+    }
+    .trans-background {
+        // background: white;
+        padding: 5px 0px !important;
+        text-align: right;
+    }
+    .font-width {
+        font-size: 25px;
+        font-weight: bold;
+        color: #fff;
+    }
+    .not-vaccinated {
+        font-size: 25px;
+        font-weight: bold;
+        color: #909090;
+    }
+    .no-background {
+        background-color: transparent !important;
+        div {
+            background-color: transparent !important;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+            font-weight: 600;
+        }
+    }
+    .vaccination-progress-bar {
+        .one {
+            border-top-left-radius: 5px;
+            border-bottom-left-radius: 5px;
+        }
+    }
+    @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+        .main-container {
+            font-size: 10px;
+        }
+        .header-container {
+            font-size: 10px;
+            div {
+                font-size: 1.5rem;
+            }
+        }
+        .box-container {
+            span {
+                font-size: 1.1rem;
+            }
+        }
+        .flex-container > div {
+            font-size: 1.1rem;
+        }
+    }
+    .font-width {
+        font-size: 15px;
+    }
+}

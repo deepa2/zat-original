@@ -1,0 +1,86 @@
+page-referral-info { 
+    background: #EBEBEB;
+    padding: 10px;
+    ion-content.content {
+        color: #000;
+        background-color: #ebebeb;
+    }
+    img.asterisck {
+    width: 7px;
+    }
+    .refer-friend-btn {
+        text-align: center;
+        background: #f5f5f5;
+        padding: 15px;
+        // position: fixed;
+        width: 100%;
+        bottom: 0;
+        .nextBtn {
+            background: linear-gradient(to right, #0EA2C8, #0E7AC7);
+            padding: 10px 15px;
+            color: #fff;
+            border-radius: 20px;
+        }
+        .checkBox {
+            text-align: left;
+            margin-bottom: 10px;
+            display: flex;
+        }
+        span.marleft-5 {
+            margin-left: 10px;
+            span.agreement {
+                text-decoration: underline;
+                color: #0d7ec6;
+            }
+        }
+    }
+    .two-form-item{
+        display: flex;
+    }
+    .ref-title {
+        margin-bottom: 10px;
+        padding: 15px 15px 0;
+        font-size: 16px;
+        display: flex;
+        align-items: center;
+        img.info-icon {
+            width: 16px;
+        }
+        span{
+            line-height: 1;
+            margin-top: 2px;
+            margin-left: 5px;
+            font-weight: 600;
+        }
+    
+    }
+    .form-value {
+        font-weight: 300;
+        font-size: 16px;
+    }
+    .basic-info,
+    .additional-info {
+        width: 100%;
+        height: calc(100vh - 175px);
+        overflow: scroll;
+        position: absolute;
+        background: #fff;
+        border-radius: 7px;
+        .item .item-inner {
+            padding-right: 8px;
+            border-bottom: 0;
+        }
+    }
+    .abt-con {
+        padding: 10px 15px;
+        margin: 10px;
+        background: #f5f5f5;
+        border: 1px solid #dcdcdc;
+        border-radius: 5px;
+    } 
+    .edit {
+        position: absolute;
+        right: 20px;
+    }
+    
+}

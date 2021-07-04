@@ -1,0 +1,324 @@
+<!--
+  Generated template for the ZendeavorAddSubKrasPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>Talent Index: Sub KRA</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+    <!-- KRA form which directs associate to fill KRAs sequentially -->
+    <div class="padding10" [hidden]="isServiceCallOn" [ngClass]="{'bttmMargin': processType !='Mid-Term','marginbottom10' : processType =='Mid-Term'}">
+        <div *ngFor="let field of KRADetails.subKraFieldList; index as i ">
+            <form [formGroup]="GoalsForm">
+                <div class="margin-bottom4per dropDown" *ngIf="field.bindWith=='title'">
+                    <div class="align-cont-cent">
+                        <ion-label>{{field.title}}<img class="astrick" src="assets/imgs/asterisk.svg" />
+                        </ion-label>
+                    </div>
+                    <!-- kraFormsTitle {{kraFormsTitle}} -->
+                    <ion-select [(ngModel)]="kraFormsTitle" *ngIf="field.fieldType=='dropDown'" (ionChange)="onTitleChange($event)" interface="action-sheet" class="borderBottom " style="max-width: 100%" formControlName="title" [class.invalid]="GoalsForm.controls.title.errors  && submitted"
+                        [disableControl]="!field.isEditable">
+                        <ion-option [value]="item" *ngFor="let item of field.valueList;index as i">{{item}}</ion-option>
+                    </ion-select>
+                    <div *ngIf="field.fieldType=='label'">
+                        <ion-input class="borderBottom " formControlName="title" [disableControl]="!field.isEditable" [class.invalid]="GoalsForm.controls.title.errors  && submitted">
+                        </ion-input>
+                    </div>
+
+                    <span class="error-msg" *ngIf="GoalsForm.controls.title.errors  && submitted">
+            <p>* Please select Title</p>
+          </span>
+
+                </div>
+                <!-- custom title -->
+
+                <div class="margin-bottom4per" *ngIf="field.bindWith=='subTitle'">
+                    <div class="align-cont-cent">
+                        <ion-label>{{field.title}}<img class="astrick" src="assets/imgs/asterisk.svg" /></ion-label>
+                    </div>
+
+                    <ion-input class="borderBottom" [class.invalid]="GoalsForm.controls.subTitle.errors  && submitted" formControlName="subTitle" [disableControl]="!field.isEditable">
+                    </ion-input>
+
+
+                    <span class="error-msg" *ngIf="GoalsForm.controls.subTitle.errors  && submitted">
+            <p>* Please add Sub Title.</p>
+          </span>
+                </div>
+                <!-- <div class="margin-top8" *ngIf="field.bindWith=='subTitle'">
+          <ion-input class="borderBottom " [disableControl]="!field.isEditable" formControlName="customTitle"
+            [class.invalid]="GoalsForm.controls.customTitle.errors  && submitted" placeholder="Add Title">
+          </ion-input>
+          Status {{GoalsForm.controls.customTitle}}
+        </div> -->
+                <div class="margin-bottom4per" *ngIf="field.bindWith=='milestoneDate'">
+                    <ion-label>{{field.title}}<img class="astrick" src="assets/imgs/asterisk.svg" /></ion-label>
+
+                    <ion-datetime class="borderBottom " displayFormat="DD-MM-YYYY" pickerFormat="DD MMMM YYYY" formControlName="milestoneDate" [class.invalid]="GoalsForm.controls.milestoneDate.errors  && submitted" [(ngModel)]="milestoneDate" [disableControl]="!field.isEditable"
+                        [min]="KRADetails?.minDate" [max]="KRADetails?.maxDate"></ion-datetime>
+
+
+                    <span class="error-msg" *ngIf="GoalsForm.controls.milestoneDate.errors  && submitted">
+            <p>* Please select Milestone Date.</p>
+          </span>
+                </div>
+                <div class="margin-bottom4per dropDown" *ngIf="field.bindWith=='kraType'">
+                    <div class="align-cont-cent">
+                        <ion-label>{{field.title}}<img class="astrick" src="assets/imgs/asterisk.svg" />
+                        </ion-label>
+                    </div>
+                    <ion-select (ionChange)="onSelectChange($event)" interface="action-sheet" class="borderBottom " style="max-width: 100%" formControlName="KRAtype" [class.invalid]="GoalsForm.controls.KRAtype.errors  && submitted" [disableControl]="!field.isEditable">
+                        <ion-option [value]="item" *ngFor="let item of field.valueList;index as i">{{item}}</ion-option>
+                    </ion-select>
+                    <span class="error-msg" *ngIf="GoalsForm.controls.KRAtype.errors  && submitted">
+            <p>* Please select KRA Type.</p>
+          </span>
+                </div>
+                <div>
+                    <ion-row *ngIf="field.title=='Mid-Term' && showMidEndTermValues">
+                        <ion-col>
+                            <div class="margin-bottom4per">
+                                <ion-label>{{midtermfloorData?.title}}
+                                    <span class="margin10">
+                    <ion-icon [tooltip]="midtermfloorData.tooltip" positionV="bottom" hideOthers="true"
+                      [event]="tooltipEvent" class="formButtonIcon" clear color="dark" item-right>
+                      <img class="info-icon" src="assets/imgs/ZenDeavour/blue-question-mark.svg" />
+                    </ion-icon>
+                  </span>
+                                </ion-label>
+                                <ion-input class="borderBottom " formControlName="midTermFloor" type="number" [disableControl]="GoalsForm.controls.midTermFloor.disabled" [class.invalid]="(GoalsForm.errors?.midTermMatching || GoalsForm.errors?.midtermFloorIsempty )&& submitted">
+                                </ion-input>
+                                <!-- Status {{GoalsForm.controls.midTermFloor.disabled}} -->
+                                <span class="error-msg" *ngIf="GoalsForm.errors?.midtermFloorIsempty && submitted">
+                  <p>* Please enter mid-term floor!</p>
+                </span>
+                            </div>
+                        </ion-col>
+                        <ion-col>
+                            <div class="margin-bottom4per">
+                                <ion-label>{{midtermTargetData?.title}}
+                                    <span class="margin10">
+                    <ion-icon [tooltip]="midtermTargetData.tooltip" positionV="bottom" hideOthers="true"
+                      [event]="tooltipEvent" class="formButtonIcon" clear color="dark" item-right>
+                      <img class="info-icon" src="assets/imgs/ZenDeavour/blue-question-mark.svg" />
+                    </ion-icon>
+                  </span>
+                                </ion-label>
+                                <ion-input class="borderBottom" formControlName="midTermTarget" type="number" [class.invalid]="(GoalsForm.errors?.midtermTargetIsempty ||GoalsForm.errors?.midTermMatching) && submitted" [disableControl]="GoalsForm.controls.midTermTarget.disabled">
+                                </ion-input>
+                                <span class="error-msg" *ngIf="GoalsForm.errors?.midtermTargetIsempty  && submitted">
+                  <p>* Please enter mid-term target!</p>
+                </span>
+
+                            </div>
+                        </ion-col>
+                    </ion-row>
+                    <ion-row *ngIf="field.title=='Mid-Term' && showMidEndTermValues">
+                        <span class="error-msg" *ngIf="GoalsForm.errors?.midTermMatching && submitted">
+              <p>* Mid-term floor and mid-term target should be different!</p>
+            </span>
+                    </ion-row>
+                    <ion-row *ngIf="field.title=='Annual' && showMidEndTermValues">
+                        <ion-col>
+                            <div class="margin-bottom4per">
+                                <ion-label>{{endtermfloorData.title}}<img class="astrick" src="assets/imgs/asterisk.svg" />
+                                    <span class="margin20px">
+                    <ion-icon [tooltip]="endtermfloorData.tooltip" positionV="bottom" hideOthers="true"
+                      [event]="tooltipEvent" class="formButtonIcon" clear color="dark" item-right>
+                      <img class="info-icon" src="assets/imgs/ZenDeavour/blue-question-mark.svg" />
+                    </ion-icon>
+                  </span>
+                                </ion-label>
+                                <ion-input class="borderBottom" formControlName="endTermFloor" type="number" [class.invalid]="GoalsForm.controls.endTermFloor.errors  && submitted" [disableControl]="GoalsForm.controls.endTermFloor.disabled">
+                                </ion-input>
+                                <span class="error-msg" *ngIf="GoalsForm.controls.endTermFloor.errors  && submitted">
+                  <p>* Please enter annual floor!</p>
+                </span>
+                            </div>
+                        </ion-col>
+                        <ion-col>
+                            <div class="margin-bottom4per">
+                                <ion-label>{{endtermTargetData.title}}<img class="astrick" src="assets/imgs/asterisk.svg" />
+                                    <span class="margin20px">
+                    <ion-icon [tooltip]="endtermTargetData.tooltip" positionV="bottom" hideOthers="true"
+                      [event]="tooltipEvent" class="formButtonIcon" clear color="dark" item-right>
+                      <img class="info-icon" src="assets/imgs/ZenDeavour/blue-question-mark.svg" />
+                    </ion-icon>
+                  </span>
+                                </ion-label>
+                                <ion-input class="borderBottom" formControlName="endTermTarget" type="number" [class.invalid]="GoalsForm.controls.endTermTarget.errors  && submitted" [disableControl]="GoalsForm.controls.endTermTarget.disabled">
+                                </ion-input>
+                                <span class="error-msg" *ngIf="GoalsForm.controls.endTermTarget.errors  && submitted">
+                  <p>* Please enter annual target!</p>
+                </span>
+                            </div>
+                        </ion-col>
+                    </ion-row>
+                    <ion-row *ngIf="field.title=='Annual'  && showMidEndTermValues">
+                        <span class="error-msg" *ngIf="GoalsForm.errors?.endTermMatching && submitted">
+              <p>* Annual floor and annual target should be different!.</p>
+            </span>
+                    </ion-row>
+                </div>
+                <div class="margin-bottom4per" *ngIf="field.bindWith=='performanceMeasure'">
+                    <div class="align-cont-cent">
+                        <ion-label>{{field.title}}<img class="astrick" src="assets/imgs/asterisk.svg" /></ion-label>
+                        <!-- adding mic icon for voice input -->
+                        <div *ngIf="field.isEditable">
+                            <span (click)="startSpeech()" *ngIf="showMic" class="mic-container">
+                <ion-icon name="mic"></ion-icon>
+
+              </span>
+                            <div *ngIf="showLoader" class="spinner-container">
+                                <img src="assets/imgs/ZenDeavour/listening.gif" />
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <ion-textarea formControlName="performanceMeasure" class="borderBottom textColor kraTextarea" [class.invalid]="GoalsForm.controls.performanceMeasure.errors  && submitted" [disableControl]="!field.isEditable" (ionFocus)="field.isEditable ? gotoperformanceMeasure(field.title) : null"></ion-textarea>
+
+                    <span class="error-msg" *ngIf="GoalsForm.controls.performanceMeasure.errors  && submitted">
+            <p>* Please add Performance Measure.</p>
+          </span>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Save rating as Associate(Associate's view)  -->
+    <form #ratingForm="ngForm">
+        <div class="header-cont margin-bottom3per" *ngIf="!showSaveKRA && (processType=='Mid-Term' || processType =='Annual')">
+            <div class="header-kra fontSize1p5 font-weight500 font-color-blue">Self Ratings </div>
+            <div class="padding10" *ngFor="let associate of KRADetails?.associatesFeildList; index as i">
+
+                <div class="label-Icon">
+                    <ion-label class="fontSize1p4" [ngClass]="{'greyColor':userRole == '2' || !associate?.isEditable}">
+                        {{associate?.title}}<img class="astrick" src="assets/imgs/asterisk.svg" />
+                    </ion-label>
+                    <ion-icon *ngIf="associate.tooltip" [tooltip]="associate.tooltip" positionV="bottom" hideOthers="true" [event]="tooltipEvent" class="formButtonIcon" clear color="dark" item-right>
+                        <img class="info-icon" src="assets/imgs/info.svg" />
+                    </ion-icon>
+                </div>
+
+                <ion-input *ngIf="associate.fieldType=='text' && associate.regEx!=null" #achievRef type="number" [readonly]="!associate?.isEditable || isManagerOption=='true' || isReviewerOption=='true'" class="form-control borderBottom" #achievRef="ngModel" required
+                    [(ngModel)]="associate.titleValue" [ngModelOptions]="{standalone: true}" [ngClass]="{'greyColor':userRole == '2' || !associate?.isEditable}">
+                </ion-input>
+
+                <ion-input *ngIf="associate.fieldType=='text'  && associate.regEx==null" #achievRef [readonly]="!associate?.isEditable || isManagerOption=='true' || isReviewerOption=='true'" class="form-control borderBottom" #achievRef="ngModel" required [(ngModel)]="associate.titleValue"
+                    [ngModelOptions]="{standalone: true}" [ngClass]="{'greyColor':userRole == '2' || !associate?.isEditable}">
+                </ion-input>
+
+                <!-- <span  *ngIf="name.touched || name.dirty">
+        {{associate.title}} is required
+      </span> -->
+
+                <ion-textarea *ngIf="associate.fieldType == 'textArea'" [readonly]="!associate?.isEditable" #achievRef class="form-control borderBottom" #achievRef="ngModel" required [(ngModel)]="associate.titleValue" [ngModelOptions]="{standalone: true}" [ngClass]="{'greyColor':userRole == '2' || !associate?.isEditable}"
+                    (ionFocus)="associate?.isEditable ? expandTextArea(associate.title, associate.titleValue, i, 'associatesFeildList', 'titleValue') : null">
+                </ion-textarea>
+            </div>
+
+            <!--   -->
+            <!-- upload attachment -->
+            <div class="attachContainer" *ngIf=" (userRole == '1' && attachmentList)  || (userRole == '2' && attachmentList?.length > 0) || (userRole == '2' && attachmentList?.length > 0)">
+                <div class="attachments">
+                    <div>Upload Document</div>
+                    <div *ngIf="userRole=='1'" class="upload" (click)="pickFile($event)">
+                        <ion-icon name="cloud-upload"></ion-icon> Upload
+                    </div>
+                </div>
+
+                <ion-row class="attach-color padding5 align-item-flex-start" *ngFor="let attachements of attachmentList;index as i">
+                    <ion-col col-3>File {{i+1}}</ion-col>
+                    <ion-col (click)="openAsset(attachements.fileUrl)" class="align-cont-cent"><img class="preview-icon" src="assets/imgs/attachment_preview.svg" />Preview
+                    </ion-col>
+                    <ion-col *ngIf="userRole=='1'" (click)="deleteUploadedAttachment(attachements)">
+                        <ion-icon name="trash"></ion-icon> Delete
+                    </ion-col>
+                </ion-row>
+
+                <ion-row class="attach-color padding5 center" *ngIf="attachmentList?.length<=0">
+                    <span class="color-blue">No Attachment Available</span>
+                    <div style="padding: 5px;">Please upload (JPEG/JPG/PNG/PDF/XLS/XLSX/MSG/EML) & size should not exceed 5 MB.  </div>
+                </ion-row>
+            </div>
+
+        </div>
+        <!-- 1up Manager's appraisal rating section(Manager's rating to associates) -->
+        <div class="header-cont" *ngIf="isManagerOption || reviewerOption">
+            <div class="header-kra fontSize1p5 font-weight500 font-color-blue">Appraiser Rating</div>
+            <div *ngFor="let manager of KRADetails.managerFeildList; index as mangerIndex" class="padding10">
+                <div class="label-Icon">
+                    <ion-label class="fontSize1p4">{{manager.title}} <img class="astrick" src="assets/imgs/asterisk.svg" />
+                    </ion-label>
+                    <ion-icon *ngIf="manager.tooltip" [tooltip]="manager.tooltip" positionV="bottom" hideOthers="true" [event]="tooltipEvent" class="formButtonIcon" clear color="dark" item-right>
+                        <img class="info-icon" src="assets/imgs/info.svg" />
+                    </ion-icon>
+                </div>
+                <ion-input *ngIf="manager?.fieldType=='text' && manager.regEx!=null" class="form-control borderBottom" [readonly]="!manager?.isEditable" #managerRef type="number" [(ngModel)]="manager.titleValue" [ngModelOptions]="{standalone: true}" #managerRef="ngModel"
+                    [ngClass]="{'greyColor':!manager?.isEditable}">
+                </ion-input>
+
+                <ion-input *ngIf="manager?.fieldType=='text' && manager.regEx==null" class="form-control borderBottom" #managerRef [readonly]="!manager?.isEditable" [(ngModel)]="manager.titleValue" [ngModelOptions]="{standalone: true}" #managerRef="ngModel" [ngClass]="{'greyColor':!manager?.isEditable}">
+                </ion-input>
+
+                <ion-textarea *ngIf="manager?.fieldType=='textArea'" class="form-control borderBottom" #managerRef [(ngModel)]="manager.titleValue" [readonly]="!manager?.isEditable" [ngModelOptions]="{standalone: true}" #managerRef="ngModel" [ngClass]="{'greyColor':!manager?.isEditable}"
+                    (ionFocus)="manager?.isEditable ? expandTextArea(manager.title, manager.titleValue, mangerIndex, 'managerFeildList', 'titleValue') : null"></ion-textarea>
+            </div>
+        </div>
+
+        <!-- Reviewer's appraisal rating section(Reviewer's rating to associates) -->
+        <div class="header-cont" *ngIf="reviewerOption">
+            <div class="header-kra fontSize1p5 font-weight500 font-color-blue">Reviewer Rating</div>
+            <div *ngFor="let reviewer of KRADetails?.reviewerFieldList;index as reviewerIndex" class="padding10">
+                <div class="label-Icon">
+                    <ion-label class="fontSize1p4">{{reviewer.title}} <img class="astrick" src="assets/imgs/asterisk.svg" />
+                    </ion-label>
+                    <ion-icon *ngIf="reviewer.tooltip" [tooltip]="reviewer.tooltip" positionV="bottom" hideOthers="true" [event]="tooltipEvent" class="formButtonIcon" clear color="dark" item-right>
+                        <img class="info-icon" src="assets/imgs/info.svg" />
+                    </ion-icon>
+                </div>
+                <ion-input *ngIf="reviewer?.fieldType=='text' && reviewer.regEx!=null" class="form-control borderBottom" [readonly]="!reviewer?.isEditable" #managerRef type="number" [(ngModel)]="reviewer.titleValue" [ngModelOptions]="{standalone: true}" #managerRef="ngModel"></ion-input>
+
+                <ion-input *ngIf="reviewer?.fieldType=='text' && reviewer.regEx==null" class="form-control borderBottom" #managerRef [readonly]="!reviewer?.isEditable" [(ngModel)]="reviewer.titleValue" [ngModelOptions]="{standalone: true}" #managerRef="ngModel">
+                </ion-input>
+
+                <ion-textarea *ngIf="reviewer?.fieldType=='textArea'" class="form-control borderBottom" #managerRef [(ngModel)]="reviewer.titleValue" [readonly]="!reviewer?.isEditable" [ngModelOptions]="{standalone: true}" #managerRef="ngModel" (ionFocus)="reviewer?.isEditable ? expandTextArea(reviewer?.title, reviewer?.titleValue, reviewerIndex, 'reviewerFieldList', 'titleValue') : null"></ion-textarea>
+            </div>
+        </div>
+    </form>
+
+</ion-content>
+
+
+<ion-footer class="footerBg">
+    <div *ngIf="kraId != '0'" class="saveResetFooter">
+        <div *ngIf="processType !='Mid-Term'">
+            <button class="resetbtn textCapitalize" ion-button round (click)="resetForm(kraId)">Reset</button>
+        </div>
+        <div *ngIf="processType =='Mid-Term'">
+            <button class="resetbtn textCapitalize" ion-button round (click)="resetMidTermForm()">Reset</button>
+        </div>
+        <div class="saveSubmitParent">
+            <!-- <button class="savebtn textCapitalize" ion-button round (click)="saveSubKra()">Save</button> -->
+            <button *ngIf="!showSaveKRA && processType !='Mid-Term'
+      && processType !='Annual' " class="submitKraBtn textCapitalize" ion-button round (click)="saveSubKra()">Add Sub
+        KRA</button>
+            <button *ngIf="showSaveKRA && processType !='Mid-Term' && processType !='Annual'" class="submitKraBtn textCapitalize" ion-button round (click)="saveSubKra()">Save Sub
+        KRA</button>
+            <button *ngIf="!showSaveKRA && (processType=='Mid-Term' || processType =='Annual')" class="submitKraBtn textCapitalize" ion-button round (click)="saveSubKraForMidterm()">Save Sub KRA
+      </button>
+            <button *ngIf="showSaveKRA && (processType=='Mid-Term' || processType =='Annual')" class="submitKraBtn textCapitalize" ion-button round (click)="saveSubKra()">Save Sub KRA
+      </button>
+        </div>
+    </div>
+</ion-footer>

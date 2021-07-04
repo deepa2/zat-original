@@ -1,0 +1,58 @@
+<!--
+  Generated template for the NonZensarianListPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+    <ion-navbar>
+        <ion-title>Non Zensarian List</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content class="non-zensarian-content" padding>
+    <div class="filter-container">
+        <div class="pass-status">
+            <img src="assets/zenAdmin/non-zensarian-assets/dashboard-interface.svg" class="filter-icon" />
+            <ion-item class="filter-options">
+                <ion-select [(ngModel)]="userStatus" class="status-select" (ionChange)="statusChange()">
+                    <ion-option value="All">All</ion-option>
+                    <ion-option value="Approved">Approved</ion-option>
+                    <ion-option value="Cancelled">Cancelled</ion-option>
+                </ion-select>
+                <ion-icon name="chevron-down-outline"></ion-icon>
+            </ion-item>
+        </div>
+    </div>
+    <div class="profile-info" *ngFor="let user of userList; let i of index"
+        (click)="redirectToDetailPage(user?.userId)">
+        <img class="user-icon" [src]="user?.userProfilePic" onerror="this.src='assets/imgs/dummy-profile.png'" />
+        <div class="user-details">
+            <div class="user-info-container">
+                <span class="username label-value">{{user?.userName}}</span>
+            </div>
+            <div class="label-key">Profile Created: {{user?.profileCreateDate}}</div>
+        </div>
+        <div class="contact-id-container">
+            <span class="id-card">
+                <img src="assets/zenAdmin/non-zensarian-assets/active_pass.svg" class="id-icon"
+                    *ngIf="user?.isApproved" />
+                <img src="assets/zenAdmin/cancelled-pass.svg" class="id-icon" *ngIf="user?.isCancelled" />
+            </span>
+            <span (click)="call($event, user?.contactNumber)">
+                <img class="call-users align-top" src="assets/zenAdmin/call-image.svg" />
+            </span>
+        </div>
+    </div>
+
+    <ion-infinite-scroll threshold="300px" (ionInfinite)="loadData($event)" *ngIf="resultPending">
+        <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">
+        </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+
+    <ion-fab right bottom (click)="addNewUser()">
+        <button ion-fab>
+            <ion-icon name="add"></ion-icon>
+        </button>
+    </ion-fab>
+</ion-content>

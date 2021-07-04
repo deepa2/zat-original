@@ -1,0 +1,47 @@
+page-search {
+  .searchHeader {
+    background-color: white;
+  }
+  //   ion-input {
+  //     font-size: 20px;
+  //     color: black;
+  //   }
+  input.searchbar-input {
+    box-shadow: none !important;
+  }
+  ion-navbar {
+    background: none !important;
+  }
+  ion-content {
+    background-color: white !important;
+  }
+  ion-icon.back-button-icon.icon.icon-md.back-button-icon-md.ion-md-arrow-back {
+    color: black;
+  }
+  .recentSearch {
+    background: rgba(211, 211, 211, 0.65);
+    padding: 8px;
+    font-size: 17px;
+  }
+  .text-left {
+    color: gray;
+    font-size: 14px;
+    padding-left: 17px;
+  }
+  .text-right {
+    color: color($colors, secondary);
+    font-size: 16px;
+    font-weight: bold;
+  }
+  ion-label.label.label-md {
+    color: color($colors, secondary);
+    font-size: 18px;
+    padding-left: 10px;
+  }
+  .list-md .item-block .item-inner {
+    border-bottom: 1.2px solid grey;
+  }
+  .status {
+    font-size: 16px;
+  }
+}

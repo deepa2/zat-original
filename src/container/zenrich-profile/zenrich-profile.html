@@ -1,0 +1,58 @@
+<!--
+  Generated template for the WowPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Profile</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="wow_content">
+  
+  <!-- <div class="create-new" (click)="createNewProfile()"> </div> -->
+  <div class="opening-card new" (click)="createNewProfile()">
+
+    <div class="job-wrapper">
+      <div class="job-icon">
+        <img class="newprof" src="assets/imgs/newProfile.svg">
+      </div>
+      <div class="job-info">
+        <div class="skills">New</div>
+      </div>
+
+    </div>
+
+  </div>
+  <div class="saved-wrapper">
+    <div class="ref-title">
+      <img class="newprof" src="assets/imgs/saved-before.svg">
+      <span>Saved Profile</span>
+    </div>
+  <div class="opening-card"  [ngClass]="{'graybg':item.isUserApplied}" *ngFor="let item of mainData">
+
+    <div class="job-wrapper" (click)="goToRefDetails(item.candidateProfileId, item)">
+      <div class="job-icon">
+        <img src="assets/imgs/Person.png" />
+      </div>
+      <div class="job-info">
+        <!-- <div class="job-title">{{item.jobTitle}}</div> -->
+        <div class="skills">{{item.candidateName}} 
+          <span *ngIf="item.isUserApplied" class="already-applied">Already Applied</span>
+        </div>
+        <!-- <div class="job-location info">Jobs Matche : {{item.jobMatch}}</div> -->
+      </div>
+
+    </div>
+
+  </div>
+</div>
+  <ion-infinite-scroll (ionInfinite)="loadProfiles($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

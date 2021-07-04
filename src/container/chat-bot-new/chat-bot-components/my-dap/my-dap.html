@@ -1,0 +1,17 @@
+<ion-slides *ngIf="myDAPData?.responseList" [slidesPerView]="slidePerView" class="chat-item-padding5-top0">
+    <ion-slide *ngFor="let item of myDAPData.responseList">
+        <ion-card>
+            <div class="text-left referral-detail">
+                <ion-row *ngFor="let subItem of item.list">
+                    <ion-col>
+                        <div>{{subItem?.key}}</div>
+                        <div>
+                            {{subItem?.value}}
+                        </div>
+                    </ion-col>
+                </ion-row>
+            </div>
+        </ion-card>
+    </ion-slide>
+</ion-slides>
+<div *ngIf="myDAPData?.message" class="text-wrapper">No Data Available</div>

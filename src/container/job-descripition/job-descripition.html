@@ -1,0 +1,148 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title class="pageTitile">
+      <div>Job Descripition</div>
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="presentOptions($event)">
+        <ion-icon name="more"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content no-bounce>
+
+
+  <div class="profileBackgroundOverlay"></div>
+
+
+  <div class="text-white padding10-20">
+    <div class="text-white clear-both font16" *ngIf="selectedJob?.requisitionNo">Job Code#:
+      {{selectedJob?.requisitionNo}} </div>
+
+  </div>
+  <div class="extra"></div>
+  <div *ngIf="!selectedJob">No Data Found</div>
+
+  <div class="padding10-20" *ngIf="selectedJob">
+    <div class="grid-cont text-lightGrey font16">
+
+
+      <div *ngIf="!selectedJob?.experience">
+        <ion-icon class="icon-size"><img src="assets/imgs/experience.svg" /></ion-icon>
+      </div>
+      <div *ngIf="!selectedJob?.experience">N/A</div>
+
+      <div *ngIf="selectedJob?.experience">
+        <ion-icon class="icon-size"><img src="assets/imgs/experience.svg" /></ion-icon>
+      </div>
+      <div *ngIf="selectedJob?.experience">{{selectedJob?.experience}}</div>
+
+      <div>
+        <ion-icon class="icon-size"><img src="assets/imgs/location.svg" /></ion-icon>
+      </div>
+      <div>{{selectedJob?.city}}<span *ngIf="selectedJob?.city">,</span> {{selectedJob?.country}}</div>
+
+      <div *ngIf="selectedJob?.primarySkill">
+        <ion-icon class="icon-size"><img src="assets/imgs/writing.svg" /></ion-icon>
+      </div>
+      <div>{{selectedJob?.primarySkill}}</div>
+    </div>
+    <div *ngIf="selectedJob?.project">
+      <div class="font16 padding-top5">Project</div>
+      <div class="text-lightGrey padding-top5">{{selectedJob?.project}}
+      </div>
+    </div>
+
+    <div *ngIf="selectedJob?.practice">
+      <div class="font16 padding-top10">Job Title</div>
+      <div class="text-lightGrey padding-top5">{{selectedJob?.practice}}
+      </div>
+    </div>
+
+    <div *ngIf="selectedJob?.grade">
+      <div class="font16 padding-top10">Grade / Band</div>
+      <div class="text-lightGrey padding-top5">{{selectedJob?.grade}}
+
+      </div>
+    </div>
+
+    <div *ngIf="selectedJob?.jobDescription">
+      <div class="font16 padding-top15">Job Descripition</div>
+      <p class="text-lightGrey margin5-0" [innerHTML]="selectedJob?.jobDescription">
+      </p>
+
+    </div>
+  </div>
+
+</ion-content>
+<ion-footer *ngIf="applybutton">
+  <div class="justify-cont-center"> <button ion-button class="margin3per border-radius20 width60"
+      (click)="gotoJobDescriptionPage()">Apply</button>
+  </div>
+</ion-footer>
+<!--  
+<ion-header>
+  <div class="bg-Img">
+    <ion-navbar>
+      <ion-title>Job Descripition</ion-title>
+    </ion-navbar>
+    <div class="text-white padding10-20">
+      <div class="font16">Job Code# : </div>
+      <div class="font16 padding-top5">Function: program exexutive office government- executive slicexuer project</div>
+    </div>
+  </div>
+</ion-header>
+
+<ion-content>
+  <div class="padding10-20">
+    <div class="grid-cont text-lightGrey font16">
+      <div>
+        <ion-icon name="briefcase"></ion-icon>
+      </div>
+      <div>2-3 Years</div>
+      <div>
+        <ion-icon name="pin"></ion-icon>
+      </div>
+      <div>Pune</div>
+      <div>
+        <ion-icon name="create"></ion-icon>
+      </div>
+      <div>Windows server and Client Operating System</div>
+    </div>
+
+    <div>
+      <div class="font16 padding-top15">Job Descripition</div>
+      <p class="text-lightGrey margin5-0">
+        Note that, * here means that you cannot override it with any other more specific rule because .test * would be
+        the
+        most specific rule for every child element. In other words, keep in mind that whatever you put inside .test *
+        cannot be overridden by any more specific css rule because test * is the most specific rule.
+      </p>
+    </div>
+    <div>
+      <div class="font16 padding-top5">Industry Type</div>
+      <div class="text-lightGrey padding-top5">IT-Software / Software Service
+
+      </div>
+    </div>
+    <div>
+      <div class="font16 padding-top10">Functional Area</div>
+      <div class="text-lightGrey padding-top5">IT-Software - Appliaction Programming Maintance
+
+      </div>
+    </div>
+    <div>
+      <div class="font16 padding-top10">Role</div>
+      <div class="text-lightGrey padding-top5">Graphic / Web Designer
+
+      </div>
+    </div>
+  </div>
+
+</ion-content>
+<ion-footer>
+  <button ion-button class="margin3per border-radius5 width94per" (click)="gotoJobDescriptionPage()">Apply</button>
+</ion-footer>  -->

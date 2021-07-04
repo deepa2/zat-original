@@ -1,0 +1,36 @@
+my-dap {
+    .card-md {
+        margin: 3px;
+        border-radius: 5px;
+        min-height: 183px;
+        width: calc(100% - 6px);
+        background-color: #e4f3ff;
+        box-shadow: none;
+    }
+
+    .referral-detail > div {
+        padding: 5px 0;
+    }
+
+    .referral-detail ion-row ion-col div:nth-child(odd) {
+        color: #858688;
+    }
+
+    .referral-detail ion-row ion-col {
+        display: flex;
+        padding: 0;
+    }
+    .referral-detail ion-row ion-col div {
+        width: 50%;
+        color: black;
+    }
+    .referral-detail ion-row {
+        border: 1px solid;
+        border-color: white;
+        background-color: #e4f3ff;
+        padding: 8px;
+    }
+    .referral-detail ion-row:last-child {
+        border-bottom: none;
+    }
+}

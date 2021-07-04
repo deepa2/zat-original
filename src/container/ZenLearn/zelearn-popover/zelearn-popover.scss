@@ -1,0 +1,35 @@
+page-zelearn-popover {
+  .filter-font {
+    font-size: 1.2em;
+    font-weight: 600;
+    padding: 6% 10%;
+  }
+  .filter-button {
+    background: #0e93c6;
+  }
+  .bottom-border {
+    border-bottom: 1px solid #c1b7b7;
+  }
+
+  ion-item.item-radio > .item-inner {
+    flex-direction: row-reverse;
+  }
+  .item-md .radio-md {
+    margin: 9px 35px 9px 5px;
+  }
+  .nodata{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    font-size: 1.2em;
+    font-weight: 600;
+  }
+.subItems{
+  padding-left: 20px;
+}
+  
+}
+.popover-md .popover-content {
+  width: 190px !important;
+}

@@ -1,0 +1,62 @@
+<ion-header no-border>
+
+    <ion-navbar>
+        <ion-title class="pageTitile">
+            Tag Query
+        </ion-title>
+    </ion-navbar>
+
+    <ion-toolbar>
+        <ion-searchbar *ngIf="showGroup" [(ngModel)]="searchTerm"></ion-searchbar>
+        <ion-searchbar *ngIf="showGroupMembers" [(ngModel)]="searchMember"></ion-searchbar>
+    </ion-toolbar>
+
+</ion-header>
+
+
+<ion-content>
+
+    <div *ngIf="showGroup">
+
+        <div text-center padding *ngIf="(group | search : 'value' :searchTerm).length === 0">
+            No matches
+        </div>
+
+        <ion-list>
+            <ion-card (click)="getMemberList(item.key)" *ngFor="let item of group | search : 'value' :searchTerm">
+                <ion-card-content>
+                    <ion-row>
+                        <ion-col class="deptName">
+                            {{item.value}}
+                        </ion-col>
+                        <ion-col col-2 text-right class="right-arrow deptName">
+                            <ion-icon name="arrow-forward"></ion-icon>
+                        </ion-col>
+                    </ion-row>
+                </ion-card-content>
+            </ion-card>
+        </ion-list>
+
+    </div>
+
+    <div *ngIf="showGroupMembers">
+
+        <div text-center padding *ngIf="(groupMember | search : 'employeeName' :searchMember).length === 0">
+            No members found
+        </div>
+
+        <ion-list>
+            <ion-card (click)="tagQuery(item)"
+                *ngFor="let item of groupMember | search : 'employeeName' : searchMember">
+                <ion-card-content class="tagItem">
+                    <ion-row>
+                        <ion-col>
+                            <profile-item [user]="item"></profile-item>
+                        </ion-col>
+                    </ion-row>
+                </ion-card-content>
+            </ion-card>
+        </ion-list>
+    </div>
+
+</ion-content>

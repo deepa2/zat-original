@@ -1,0 +1,50 @@
+<ion-slides slidesPerView="1.2"
+    (ionSlideReachEnd)="onlastSlideUpdateMyTimesheetList(chatListItem?.response?.responseList?.dataList)"
+    [ngStyle]="{'width': (showMoreArrowForMyTimesheetList  && ((chatList.length - 1)  == parentIndex)) ? '90%' : '100%'}">
+    <ion-slide *ngFor="let responseItem of chatListItem?.response?.responseList?.dataList | slice:0:5">
+        <ion-card class="myTimesheetCard">
+            <ion-row class="details">
+                <ion-col col-2>
+                    <div class="image" [ngClass]="getApproverStatusBoxType(responseItem.approvalStatusId)">
+                        <img [src]="getTimesheetTypeIcon(responseItem.approvalStatusId)" />
+                    </div>
+                </ion-col>
+                <ion-col col-10 text-left padding-left>
+                    <p><strong>{{responseItem?.taskName | titlecase}}</strong></p>
+                    <p><strong>Project: </strong><span>{{responseItem?.projectName | titlecase}}</span></p>
+                    <p>Date: <span>{{responseItem?.taskUpdateDate}}</span></p>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col text-left col-5>
+                    <strong>Efforts:</strong>
+                </ion-col>
+                <ion-col text-left col-7>
+                    <span>{{responseItem?.totalEfforts?.split('.')[0]}} Hrs</span>
+                    <span>{{responseItem?.totalEfforts?.split('.')[1]}}
+                        Mins</span>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col text-left col-5>
+                    <strong>Billability:</strong>
+                </ion-col>
+                <ion-col text-left col-7>
+                    <span>{{responseItem?.billablityFlag | titlecase}}</span>
+                </ion-col>
+            </ion-row>
+            <ion-row class="comments-row">
+                <ion-col text-left col-5 *ngIf="responseItem?.comments">
+                    <strong>Comments:</strong>
+                </ion-col>
+                <ion-col text-left class="comments">
+                    {{responseItem?.comments}}
+                </ion-col>
+            </ion-row>
+        </ion-card>
+    </ion-slide>
+</ion-slides>
+<div *ngIf="showMoreArrowForMyTimesheetList && ((chatList.length - 1)  == parentIndex)"
+    (click)="goToMyTimesheetsPage(chatListItem?.response?.responseList?.dataList)">
+    <ion-icon name="arrow-forward"></ion-icon>
+</div>

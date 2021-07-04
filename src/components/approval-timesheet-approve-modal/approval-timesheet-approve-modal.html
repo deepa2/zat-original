@@ -1,0 +1,83 @@
+<ion-content>
+    <div class="ApprovalTimsheetRoot">
+      <ion-grid class="UserDetails">
+        <ion-row class="username_row"> 
+          <ion-col col-2>
+            <ion-avatar>
+              <img [src]="data?.selectedItem.profilePicURL" class="staffProfilePic" onError="this.src='assets/imgs/user.png'"/>
+            </ion-avatar>
+          </ion-col>
+          <ion-col align-self-center class="font-title" col-9>
+            <span class="staffname">{{data?.selectedItem.staffName | titlecase}}</span>
+          </ion-col>
+          <ion-col no-padding (click)="closeModal()" align-self-center col-1>
+              <img class="closeIcon"  src="assets/imgs/close_white.svg" />
+            </ion-col>
+
+        </ion-row>
+  
+        <ion-row class = "row-border">
+          <ion-col class="font-subtitle" col-4>
+            <span><strong>Task Name</strong></span>
+          </ion-col>
+          <ion-col class="font-subtitle" col-8>
+           <span class="userdetails_modal">{{data?.selectedItem.taskName}}</span>
+          </ion-col>
+        </ion-row>
+  
+        <ion-row class = "row-border">
+          <ion-col class="font-subtitle" col-4>
+            <span><strong>Project</strong></span>
+          </ion-col>
+          <ion-col class="font-subtitle" col-8>
+           <span class="userdetails_modal">{{data?.selectedItem.projectName}}</span> 
+          </ion-col>
+        </ion-row>
+
+        <ion-row *ngIf="data?.selectedItem.milestoneName != '0'" class="row-padding">
+          <ion-col class="font-subtitle" col-4>
+            <strong>Milestone</strong>
+          </ion-col>
+          <ion-col class="font-subtitle" col-8>
+            {{data?.selectedItem.milestoneName != '0' ? data?.selectedItem.milestoneName : '-' }}
+          </ion-col>
+        </ion-row>
+  
+        <ion-row class = "row-border"> 
+          <ion-col class="font-subtitle" col-4>
+            <span><strong>Billability</strong></span>
+          </ion-col>
+          <ion-col class="font-subtitle" col-8>
+            <span class="userdetails_modal">{{data?.selectedItem.billablityFlag == 'YES' ? "Billable" : "Non Billable"}}</span>
+          </ion-col>
+        </ion-row>
+  
+        <ion-row class = "row-border">
+          <ion-col class="font-subtitle" col-4>
+            <span><strong>Total Effort</strong></span>
+          </ion-col>
+          <ion-col class="font-subtitle" col-8>
+            <span class="userdetails_modal">{{data?.selectedItem.viewEfforts}}</span>
+          </ion-col>
+        </ion-row>
+  
+        <ion-row class = "row-border">
+          <ion-col class="font-subtitle" col-4>
+            <span><strong>Date</strong></span>
+          </ion-col>
+          <ion-col class="font-subtitle" col-8>
+           <span class="userdetails_modal">{{data?.selectedItem.taskUpdatedDate}}</span>
+          </ion-col>
+        </ion-row>
+  
+        <ion-row *ngIf="data?.selectedItem.comments?.length > 0">
+          <ion-col class="font-subtitle" col-4>
+            <span><strong>Comment</strong></span>
+          </ion-col>
+          <ion-col class="font-subtitle" col-8>
+          <span class="userdetails_modal">{{data?.selectedItem.comments}}</span>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </ion-content>

@@ -1,0 +1,18 @@
+std-task-list-modal {
+    .ts-header{
+        .toolbar-content{
+            display: flex;
+            button{
+                color: white;
+            }
+        }
+    }
+    ion-item-divider{
+        background-color: #EFF5FF !important;
+    }
+    ion-item{
+        ion-label{
+            white-space: initial;
+        }
+    }
+}

@@ -1,0 +1,39 @@
+<div class="chat-list suggestionItem queryContent">
+    <span [innerHTML]="text|linky" (click)="checkLink(desc)"></span>
+    
+    <div *ngIf="UpdateProfileLinkData?.showLink">
+        Click
+        <span class="updateProfileLink" (click)="update(UpdateProfileLinkData)">here</span>
+        to update now.
+    </div>
+
+    <div *ngIf="moveToPage && actionName =='zenTalent.createDAP'">
+        Click <span class="updateProfileLink" (click)="_moveToPage()">here</span> to create
+        Development Action Plan
+    </div>
+    
+    <div *ngIf="moveToPage && actionName =='zenTalent.ijp'">
+        Click <span class="updateProfileLink" (click)="_moveToPage()">here</span> to apply
+        for IJP
+    </div>
+    
+    <div *ngIf="moveToPage && actionName =='referral.referYourFriend.yes.bonusPolicy.yes'">
+        Click <span class="updateProfileLink" (click)="_moveToPage()">here</span> to refer on
+        ZenRich
+    </div>
+    
+    <div *ngIf="moveToPage && actionName =='referrals.FAQs'">
+        Click <span class="updateProfileLink" (click)="_moveToPage()">here</span> for FAQs
+    </div>
+    
+    <div *ngIf="moveToPage && actionName =='referral.createFriendsProfile'">
+        Click <span class="updateProfileLink" (click)="_moveToPage()">here</span> to create friend's profile
+    </div>
+
+    <span *ngIf="showMoreSection && showToggle">
+        <span class="readMore" (click)="showMore(desc.length)" *ngIf="readMore">Show more</span>
+        <span class="readMore" (click)="showLess(150)" *ngIf="!readMore">Show less</span>
+    </span>
+</div>
+
+<!-- <p (click)="preventClick($event)" no-margin text-justify [innerHTML]="text | linky | emoji "></p> -->

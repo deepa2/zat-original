@@ -1,0 +1,106 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>Activity Details</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+    <div class="container-bg" *ngIf="sfDetailsData|| commentList">
+        <div class="display-flex  dig-deatils" *ngIf="sfDetailsData">
+            <div>
+                <img [src]=sfDetailsData?.icon />
+            </div>
+            <div class="deails-align width94per padding-left7">
+                <div class="title-styl">{{sfDetailsData?.dialogTitle}}</div>
+
+                <div class="details-list">
+                    <span class="grid-align">
+                        <span>
+                            <img src="assets/imgs/catgIcon.svg" />
+                        </span>
+                        <span class="catg-styl">Category:</span>
+                        <span>{{sfDetailsData?.dialogCategoryName}}</span>
+                    </span>
+                    <span class="grid-align">
+                        <span>
+                            <img src="assets/imgs/goalIcon.svg" />
+                        </span>
+                        <span class="catg-styl">Goal:</span>
+                        <span>{{sfDetailsData?.goalName}}</span>
+                    </span>
+                    <span class="grid-align">
+                        <span>
+                            <img src="assets/imgs/createIcon.svg" />
+                        </span>
+                        <span class="catg-styl">Created:</span>
+                        <span>{{_getFormatDate(sfDetailsData?.dialogCreatedDate)}}</span>
+                        <!-- {{craeteDate | date: 'dd MMM yyyy'}}  -->
+                    </span>
+                </div>
+            </div>
+        </div>
+        <!-- comments section -->
+        <div class="comments">
+            <div class="commnets-section">
+                <div class="heading-styl">Comment:
+
+                    <!-- Manager Comments -->
+                    <div class="manager-comments-section" *ngIf="commentList">
+                        <div class="manager-comments">
+                            <img class="manager-profile-pic" [src]=commentList?.commentatorProfilepicUrl>
+                        </div>
+
+                        <div class="manager">
+                            <div class="manager-name-section">
+                                <span class="manager-name">{{commentList?.commentatorName}}</span>
+                                <span class="date-stamp">{{_getFormatDate(commentList?.commentCreatedDate)}}</span>
+                            </div>
+
+                            <div class="manager-comment-text-section">
+                                <div class="manager-comments-text-view">
+                                    <div class="manager-comments-title" *ngIf="isAction">
+                                        <img src="assets/imgs/ManagerViewOperation.png" />
+                                        <span class="comments-title-text">Action:</span>
+                                    </div>
+
+                                    <div class="manager-comments-text" [ngClass]="{'padding15': isAction == false}">
+                                        <span [innerHTML]="commentData|linky" (click)="checkLink(commentData)"></span>
+                                    </div>
+
+                                    <div class="mark-as-complete"
+                                        *ngIf="!markComplete && isAction && currenTab ==='Activities'"
+                                        (click)="markCompletionData()">
+                                        <button class="mark-as-complete-btn" ion-button round>Mark as Complete</button>
+                                    </div>
+                                </div>
+
+                                <div class="activity-completed" *ngIf="markComplete">
+                                    <div class="bullet"></div>
+                                    <span class="completed-styl"> Activity Completed </span>
+                                </div>
+
+                                <div class="comment-updated-date" *ngIf="markComplete">
+                                    {{_getFormatDate(commentUpdatedDate)}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div *ngIf="!commentList" class="icon-styl">
+                    <img src="assets/imgs/noComment.svg" />
+                </div>
+                <span *ngIf="!commentList" class="aling-center">No Comment</span>
+            </div>
+        </div>
+    </div>
+    <div class="no-data-msg" *ngIf="sfDetailsData">{{errorMessage}}</div>
+
+</ion-content>
+
+<ion-footer *ngIf="!commentList?.commentCount && roleAcess && currenTab!='Activities'">
+    <div class="align-center" (click)="movetoAddComment()">
+        <button ion-button round>Add Comment</button>
+    </div>
+</ion-footer>

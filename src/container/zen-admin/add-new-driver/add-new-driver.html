@@ -1,0 +1,60 @@
+<!--
+  Generated template for the AddNewDriverPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+    <ion-navbar>
+        <ion-title>{{actionType}} List</ion-title>
+    </ion-navbar>
+
+    <!-- <ion-navbar *ngIf="!driverScreenOn">
+        <ion-searchbar [(ngModel)]="busInchargeSearch" animated placeholder="Search">
+        </ion-searchbar>
+    </ion-navbar> -->
+
+</ion-header>
+
+<ion-content>
+    <!-- first card with img and calling function for model -->
+    <ion-card class="add-new-driver" *ngIf="driverScreenOn">
+        <div class="center-align" (click)="addNewDriverModel()">
+            <img src="assets/zenAdmin/add-new-driver-img.svg" alt="" class="add-new-driver-img" onerror="this.src='assets/imgs/dummy-profile.png'" />
+        </div>
+
+        <div class="center-align">
+            <span class="title-new-driver">Add New {{actionType}}</span>
+        </div>
+
+        <!-- Card for driver details -->
+    </ion-card>
+
+    <ion-card class="driver-detail-card" *ngFor="let item of listToDisplay" [hidden]="driverScreenOn" (click)="selectedItem(item)">
+        <div class="driver-logo">
+            <img class="driver-img" [src]="item?.busInchargeProfilePic" alt="" onerror="this.src='assets/imgs/dummy-profile.png'" />
+        </div>
+
+        <div class="driver-details">
+            <div class="driver-name">{{item?.busInchargeName}}</div>
+            <div class="driver-id">{{item?.busRouteName ||'-'}}</div>
+        </div>
+
+    </ion-card>
+
+    <ion-card class="driver-detail-card" *ngFor="let item of listToDisplay; let i=index" [hidden]="!driverScreenOn" (click)="selectedItem(item)">
+        <div class="driver-logo">
+            <img class="driver-img" [src]="item?.driverProfilePic" alt="" onerror="this.src='assets/imgs/dummy-profile.png'" />
+        </div>
+
+        <div class="driver-details">
+            <div class="driver-name">{{item?.driverName}}</div>
+            <div class="driver-id">{{item?.busRouteName || '-'}}</div>
+        </div>
+
+        <div class="menu-icon">
+            <img src="assets/zenAdmin/three-dot.svg" alt="" class="three-dot" (click)="popOverMenu($event,item,i)" />
+        </div>
+    </ion-card>
+
+</ion-content>

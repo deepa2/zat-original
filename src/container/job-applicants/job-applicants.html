@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title class="pageTitile">Applicants</ion-title>
+
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <div class="jobs-wrapper">
+    <div class="jobs-list">
+      <div class="applied-count">Applied {{appliedCount}}</div>
+      <div class="job-item" *ngFor="let item of applicantsData" >
+        <div class="jobs-info-wrapper" (click)="goToprofilePage(item.userId)">
+          <div class="job-icon">
+            <img src="{{item.userPic}}">
+          </div>
+          <div class="job-info">
+            <div class="job-title">{{item.userName}}</div>
+            <div class="job-info-item">
+              <div class="">
+                <img  class="info-img" src="assets/imgs/Idicon.svg">
+              </div>
+              <div class="job-info-value">{{item.userId}}</div>
+            </div>
+            <div class="job-info-item">
+              <div class="">
+                <img class="info-img" src="assets/imgs/Project.svg">
+              </div>
+              <div class="job-info-value">{{item.allocation}}</div>
+            </div>
+           
+          </div>
+          <div class="job-info-item progress">
+            <circle-progress [percent]="item.machingPercent" [radius]="100" [outerStrokeWidth]="15"
+                  [innerStrokeWidth]="15" [space]="-14" [outerStrokeColor]="getfilledColor(item.machingPercent)"
+                  [innerStrokeColor]="'#DDDDDD'" [titleFontSize]="50" [unitsFontSize]="50" [showSubtitle]="false"
+                  [animation]="true" [animationDuration]="300" [responsive]="true">
+                </circle-progress>
+            <!-- <div class="job-info-value">{{item.machingPercent}} %</div> -->
+          </div>
+        </div>
+        <div class="applicants">
+          <div class="onboarding">
+            <img class="info-img" src="assets/imgs/alarm-clock.svg">
+            <span class="job-info-title">OnBoarding Time</span>
+            <span>{{item.onBoardingTime}} </span>
+          </div>
+          <div class="cv" (click)="previewCV()">
+            <img class="info-img" src="assets/imgs/curriculum.svg">
+            <span class="job-info-title">CV</span>
+            <span>View</span>
+            <img src="assets/imgs/Arrow-forward-blue.svg">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

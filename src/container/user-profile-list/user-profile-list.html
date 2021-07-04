@@ -1,0 +1,30 @@
+<!--
+  Generated template for the UserProfileListPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>
+      Search List
+    </ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <div class="contact">
+    <ion-card *ngFor="let item of searchedData" (click)="goToProfile(item)">
+      <div class="profile_img">
+        <img src="{{item?.profilePicUrl}}" onerror="this.src='assets/imgs/dummy-profile.png'" />
+      </div>
+      <div class="profile-info">
+        <h2>{{item.employeeName}}</h2>
+        <p>{{item.employeeId}}</p>
+      </div>
+    </ion-card>
+  </div>
+</ion-content>

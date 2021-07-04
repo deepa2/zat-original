@@ -1,0 +1,65 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title class="pageTitile">
+            Question Details
+        </ion-title>
+        <ion-buttons class="header-btns" end>
+            <button ion-button icon-only (click)="goToPage('SearchPage')">
+        <img class="headerSearchIcon" src="assets/imgs/Search.svg" />
+      </button>
+            <button class="notification-counter" ion-button icon-only (click)="goToPage('NotificationPage')">
+        <div *ngIf="notificationCount > 0 " class="notificationCount">
+          <span class="count">{{notificationCount}}</span>
+        </div>
+        <img class="headerIcons" src="assets/imgs/Notification.svg" />
+      </button>
+            <button ion-button icon-only (click)="presentOptions($event)">
+        <ion-icon name="more"></ion-icon>
+      </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+<ion-content id="scroll-custom-height">
+    <ion-spinner *ngIf="loading$ | async"></ion-spinner>
+    <div *ngIf="!(loading$ | async)">
+        <div class="margin-top5">
+            <query-item detail="true" [(showOptions)]="showQueryOption" [item]="items"></query-item>
+            <query-list detail="true" [type]='pageName' [(showOptions)]="showQueryListOptions" [items]="answers$">
+            </query-list>
+
+        </div>
+    </div>
+</ion-content>
+
+
+<ion-footer id="detail-footer">
+
+    <ion-row *ngIf="items?.isTransactionOnForAssociate">
+        <ion-col no-padding>
+            <button no-margin ion-button full large color="secondary" (click)="presentFeedback()">Close the Thread</button>
+        </ion-col>
+        <ion-col no-padding>
+            <button no-margin ion-button full large color="secondary" (click)="addAnswer('accept')">Reply to Query</button>
+        </ion-col>
+    </ion-row>
+
+    <ion-row *ngIf="items.isTransactionOnForAdmin">
+        <ion-col no-padding>
+            <button no-margin ion-button full large color="secondary" (click)="tag('HR')">Tag to HR</button>
+        </ion-col>
+        <ion-col no-padding>
+            <button no-margin ion-button full large color="secondary" (click)="addAnswer('reject')">Discard</button>
+        </ion-col>
+    </ion-row>
+
+    <ion-row *ngIf="items.isTransactionOnForHR">
+        <ion-col no-padding>
+            <button no-margin ion-button full large color="secondary" (click)="tag('Admin')">Tag to other HR</button>
+        </ion-col>
+        <ion-col no-padding>
+            <button no-margin ion-button full large color="secondary" (click)="addAnswer('accept')">Reply to Query</button>
+        </ion-col>
+    </ion-row>
+
+</ion-footer>

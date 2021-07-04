@@ -1,0 +1,78 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Return To Office</ion-title>
+    <ion-buttons end class="parentBtn">
+      <div [class.selected]="selected == 0" (click)="selectTab(0,'BU')">
+        <button [ngStyle]="{'color': selected == 0?'black':'white'}" ion-button style="text-transform: capitalize;">
+          BU
+        </button>
+      </div>
+      <div [class.selected]="selected == 1" (click)="selectTab(1,'week')">
+        <button [ngStyle]="{'color': selected == 1?'black':'white'}" ion-button style="text-transform: capitalize;">
+          Week
+        </button>
+      </div>
+    </ion-buttons>
+  </ion-navbar>
+  <ion-toolbar>
+    <ion-row align-items-center class="filterClass">
+      <ion-col>
+        <div class="queryLength">{{displayMonth}}</div>
+      </ion-col>
+      <ion-col center text-right>
+        <button class="filterIcon" ion-button icon-end clear small (click)="openFilter($event)">Filter
+          <ion-icon name="options"></ion-icon>
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content class="backgroundColor">
+
+
+  <ion-card *ngFor="let rtoPopulationDetails of rtoPopulationData" class="cardRadius">
+    <ion-card-header class="cardHeader" style="font-weight: 600; position: relative;">
+      <div *ngIf="rtoPopulationDetails?.month" class="displayFlex">
+        <span class="bgFlex">
+          <img class="parentImg" [src]="rtoPopulationDetails?.bgImg">
+          <!-- <img class="parentImg" src="assets/menu_icons/newIcon.svg"> -->
+          <span class="bgFlex bgImgPos">
+            <img class="calenderImg" [src]="rtoPopulationDetails?.icon">
+            <span class="monthName">{{rtoPopulationDetails?.month}}</span>
+          </span>
+        </span>
+        <span class="mrLeft">{{rtoPopulationDetails?.key}}</span>
+      </div>
+      <div *ngIf="!rtoPopulationDetails?.month" class="displayFlex">
+
+        <img class="parentImg" [src]="rtoPopulationDetails?.icon">
+        <span>{{rtoPopulationDetails?.key}}</span>
+      </div>
+      <span class="rRight">
+        {{rtoPopulationDetails?.totalCount }}
+      </span>
+    </ion-card-header>
+
+    <ion-card-content class="contentPadding">
+      <div class="gridView">
+        <div class="gridColoumn" [ngStyle]="{'background':rtopopluationValue?.color}"
+          *ngFor="let rtopopluationValue of rtoPopulationDetails.value">
+          <img class="imgStyle" [src]="rtopopluationValue?.icon">
+          <span class="rtoValues">
+            <span>
+              {{rtopopluationValue?.key}}
+            </span>
+            <span class="font11">
+              {{rtopopluationValue?.value}}
+            </span>
+          </span>
+        </div>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+
+
+</ion-content>

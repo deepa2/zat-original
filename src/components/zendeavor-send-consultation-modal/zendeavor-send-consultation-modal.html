@@ -1,0 +1,63 @@
+<!-- Generated template for the ZendeavorSendConsultationModalComponent component -->
+<!-- <ion-header>
+
+  <ion-navbar>
+    <ion-title>zendeavor-send-consultation</ion-title>
+  </ion-navbar>
+
+</ion-header> -->
+
+
+<ion-content>
+  <div>
+    <div class="consult-title-container" (click)="openAssociateSearchModal()">
+      <div class="consulTo-title">Consult To</div>
+      <div>
+        <!-- <ion-icon name="add"></ion-icon> -->
+        <img src="assets/imgs/ZenDeavour/addUserForConsult.svg" class="addImg">
+      </div>
+    </div>
+    <div *ngIf="associateDetailsList?.length==0" class="associateInfo-container no-associate-data">
+      <!-- <div class="userImg-container">
+        <img class="user-profile" [src]="getTeamListData?.currentMean?.icon" onerror="this.src='assets/imgs/dummy-profile.png'">
+      </div>
+      <div class="associateDetails-container">
+        <div>Deepa Nair</div>
+        <div>514372</div>
+      </div>
+      <div>
+        <img class="deleteImg" src="assets/imgs/ZenDeavour/consult-delete.svg">
+      </div> -->
+      Please select associate
+    </div>
+
+    <!--  -->
+    <div class="associateInfo-container" *ngFor="let associateItem of associateDetailsList;index as i">
+      <div class="userImg-container">
+        <img class="user-profile" [src]="associateItem?.employeeProfilePic" onerror="this.src='assets/imgs/dummy-profile.png'">
+      </div>
+      <div class="associateDetails-container">
+        <div>{{associateItem?.employeeName}}</div>
+        <div>{{associateItem?.employeeId}}</div>
+      </div>
+      <div (click)="deleteAssociate(associateItem,i)">
+        <!-- <ion-icon name="trash"></ion-icon> -->
+        <img class="deleteImg" src="assets/imgs/ZenDeavour/consult-delete.svg">
+      </div>
+    </div>
+    <!--  -->
+    <div class="msg-container">
+      <div class="msgTitle">
+        Message
+      </div>
+      <div class="msg-div">
+        <!-- <textarea class="msg-textarea" rows="6" cols="45" placeholder="" [(ngModel)]='consultationMessage' class="commtArea"></textarea> -->
+        <ion-textarea class="msgTextarea" placeholder="" rows="8" [(ngModel)]='consultationMessage'></ion-textarea>
+
+      </div>
+    </div>
+  </div>
+  <div class="consult-div">
+    <button class="consultBtn" ion-button round (click)="checkMsgAndAsscociateData()">Send for Consultation</button>
+  </div>
+</ion-content>

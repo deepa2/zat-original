@@ -1,0 +1,135 @@
+page-zendeavor-view-consultation {
+  .chat-container {
+    display: flex;
+
+    justify-content: flex-start;
+
+    padding: 10px;
+
+    // width: 80%;
+    align-content: center;
+    align-items: end;
+  }
+  .chat-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    // border: 1px solid #488cfc;
+    // padding: 2px;
+    border: 4px solid #c5dcf3;
+  }
+  .chat-imgContainer {
+    width: 13%;
+  }
+  .chat-message-container {
+    width: 80%;
+    /* background: red; */
+    display: flex;
+    flex-direction: column;
+  }
+  .chat-msg {
+    padding: 10px;
+    margin: 5px 0;
+    background: #e8e7e7;
+    /* border-top-right-radius: 10px; */
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    min-height: 45px;
+  }
+  .msg-date {
+    color: #bbb7b7;
+    text-align: left;
+  }
+  .chat-containerflex-end {
+    display: flex;
+
+    justify-content: flex-end;
+
+    // padding: 10px;
+
+    // width: 80%;
+    // align-content: center;
+    align-items: end;
+  }
+
+  // .chat-imgContainer-end {
+  //   // width: 18%;
+  // }
+  .chat-message-container-end {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+
+    align-items: flex-end;
+  }
+  .chat-msg-end {
+    padding: 10px;
+    margin: 5px 0;
+    background: #e8e7e7;
+    border-bottom-right-radius: 10px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    min-height: 45px;
+  }
+  .msg-date-end {
+    color: #bbb7b7;
+    text-align: right;
+    // margin: 0 10px;
+  }
+  .chat-username {
+    margin-bottom: 3px;
+    font-size: 1.1em;
+    color: gray;
+  }
+  .submitBtn {
+    text-align: center;
+    // background: #6363aa;
+    text-transform: capitalize;
+  }
+  .submitfooter {
+    text-align: center;
+  }
+  .textalignRight {
+    text-align: right;
+  }
+  .chat-img-end {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    // border: 1px solid #488cfc;
+    border: 4px solid #c5dcf3;
+    // padding: 2px;
+    margin: 0 10px;
+  }
+  .feedbacklist-container {
+    border-bottom: 1px solid grey;
+    padding: 10px 0;
+    margin-bottom: 10px;
+  }
+
+  .feedbackTitle {
+    // margin-left: 5px;
+    padding: 8px;
+    font-size: 1.1em;
+  }
+  .feedbackTextarea {
+    border: 1px solid grey;
+    // border-bottom: 1px solid grey;
+    border-radius: 25px;
+  }
+  .textareaSpan {
+    width: 90%;
+    margin: 0 10px;
+    
+  }
+  .textarea-container {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+  }
+  .sendBtn-parent{
+    font-size: 1.5em;
+    padding: 5px;
+  }
+}

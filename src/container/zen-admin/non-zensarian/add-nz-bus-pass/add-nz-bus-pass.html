@@ -1,0 +1,136 @@
+<!--
+  Generated template for the AddNewPassPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title *ngIf="!isPassSubmitted && passReqType=='bus'"
+      >New Bus Pass</ion-title
+    >
+    <ion-title *ngIf="isPassSubmitted">Confirmation</ion-title>
+    <ion-title *ngIf="passReqType=='shuttle'">Book Shuttle</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content
+  class="content-container"
+  [ngClass]="{'update-bg-color': isPassSubmitted}"
+>
+  <form [formGroup]="passForm" class="pass-form">
+    <ion-list>
+      <!-- Start Date -->
+      <ion-item no-lines>
+        <ion-label color="dark" class="form-label" stacked
+          >Start Date</ion-label
+        >
+        <ion-datetime
+          formControlName="startdate"
+          placeholder="Select start date"
+          min="{{currentDate}}"
+        ></ion-datetime>
+      </ion-item>
+
+      <ion-item>
+        <ion-label color="dark" class="form-label" stacked>Pass Type</ion-label>
+        <ion-select
+          formControlName="passtype"
+          placeholder="Select pass type"
+          (ionChange)="onPassTypeChange()"
+        >
+          <ion-option value="{{item}}" *ngFor="let item of busTypeList;"
+            >{{item}}</ion-option
+          >
+        </ion-select>
+      </ion-item>
+
+      <!-- Route Name -->
+      <ion-item>
+        <ion-label color="dark" class="form-label" stacked
+          >Route Name</ion-label
+        >
+        <ion-select
+          formControlName="routename"
+          placeholder="Select route name"
+          (ionChange)="getBusPassSummaryByRoute()"
+        >
+          <ion-option [value]="item" *ngFor="let item of routeList"
+            >{{item}}</ion-option
+          >
+        </ion-select>
+      </ion-item>
+
+      <!-- Pickup Points -->
+      <ion-item>
+        <ion-label color="dark" class="form-label" stacked
+          >Pickup Points</ion-label
+        >
+        <ion-select
+          formControlName="pickuppoint"
+          placeholder="Select pickup point"
+        >
+          <ion-option
+            [value]="item.pickupPointName"
+            *ngFor="let item of pickupPointList; let i = index"
+            (ionSelect)="selectedPickupIndex = i"
+            >{{item}}</ion-option
+          >
+        </ion-select>
+      </ion-item>
+
+      <!-- Comments -->
+      <ion-item>
+        <ion-label color="dark" class="form-label" stacked>Comments</ion-label>
+        <ion-textarea
+          formControlName="comments"
+          cols="20"
+          class="comment-area"
+        ></ion-textarea>
+      </ion-item>
+    </ion-list>
+  </form>
+  <div class="summry-container">
+    <div class="summary-header">
+      <span>
+        <img class="summry-img" src="assets/zenAdmin/summary-img.svg" />
+      </span>
+      <span class="summaryTitle">Summary</span>
+    </div>
+    <div class="grid-container">
+      <ion-row>
+        <ion-col col-4>
+          <img class="summaryImg" src="assets/zenAdmin/seats.svg" />
+        </ion-col>
+        <ion-col col-4>
+          <img class="summaryImg" src="assets/zenAdmin/money-img.svg"
+        /></ion-col>
+        <ion-col col-4>
+          <img class="summaryImg" src="assets/zenAdmin/calenderIcon.svg"
+        /></ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-4>Seats </ion-col>
+        <ion-col col-4>Amount</ion-col>
+        <ion-col col-4>{{passtype}} Pass</ion-col>
+      </ion-row>
+      <ion-row>
+        <!-- <ion-col col-4 class="available" [ngClass]="{'available': isSeatAvailable,'notAvailable': !isSeatAvailable}">{{checkSeatAvailability(this.selectedPickupPtDetails?.availableSeat)}}</ion-col> -->
+        <ion-col col-4 *ngIf="!isSeatAvailable" class="notAvailable"
+          >Not Available</ion-col
+        >
+        <ion-col
+          col-4
+          class="available"
+          *ngIf="isSeatAvailable"
+          class="available"
+          >Available</ion-col
+        >
+        <ion-col col-4>{{this.selectedPickupPtDetails?.amount}} INR</ion-col>
+        <ion-col col-4
+          >{{this.selectedPickupPtDetails?.busPassValidity}}</ion-col
+        >
+      </ion-row>
+    </div>
+  </div>
+</ion-content>

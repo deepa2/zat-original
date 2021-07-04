@@ -1,0 +1,1826 @@
+// http://ionicframework.com/docs/theming/
+// App Global Sass
+// --------------------------------------------------
+// Put style rules here that you want to apply globally. These
+// styles are for the entire app and not just one component.
+// Additionally, this file can be also used as an entry point
+// to import other Sass files to be included in the output CSS.
+//
+// Shared Sass variables, which can be used to adjust Ionic's
+// default Sass variables, belong in "theme/variables.scss".
+//
+// To declare rules for a specific mode, create a child rule
+// for the .md, .ios, or .wp mode classes. The mode class is
+// automatically applied to the <body> element in the app.
+$primary-color: #1586c7;
+$card-header-color: #d5f1f8;
+ion-content.content-md:not([padding]) .scroll-content {
+    padding-bottom: 0 !important;
+}
+
+// model
+ion-modal.inset-modal-capPage {
+    background-color: rgba(0, 0, 0, 0.5) !important;
+    transition: opacity 0.25s ease-in-out;
+    padding: 49vh 0px 0px;
+}
+
+// ion-modal.addComment-model {
+//   background-color: rgba(0, 0, 0, 0.5) !important;
+//   transition: opacity 0.25s ease-in-out;
+//   padding: 77vh 0px 0px;
+// }
+.addComment-model {
+    // background: rgba(14, 14, 14, 0.77);
+    ion-backdrop {
+        visibility: visible;
+        opacity: 0.75;
+        z-index: 0;
+    }
+    .modal-wrapper {
+        opacity: 1;
+        background: white;
+        transform: translateY(60vh) !important;
+        border-radius: 10px 10px 0 0;
+        // height: 30vh;
+    }
+}
+
+ion-modal.report-model {
+    background-color: rgba(0, 0, 0, 0.5) !important;
+    transition: opacity 0.25s ease-in-out;
+    // padding: 45vh 0px 0px;
+}
+
+ion-modal.report-drill-model {
+    background-color: rgba(0, 0, 0, 0.5) !important;
+    transition: opacity 0.25s ease-in-out;
+}
+
+.report-drill-model {
+    // background: rgba(14, 14, 14, 0.77);
+    ion-backdrop {
+        visibility: visible;
+        opacity: 0.75;
+        z-index: 0;
+    }
+    .modal-wrapper {
+        opacity: 1;
+        background: white;
+        transform: translateY(70vh) !important;
+        border-radius: 10px 10px 0 0;
+        height: 55vh;
+    }
+}
+
+ion-modal.add-driver-model {
+    background-color: rgba(0, 0, 0, 0.5) !important;
+    transition: opacity 0.25s ease-in-out;
+}
+
+ion-modal.detailDig-model {
+    background-color: rgba(0, 0, 0, 0.5) !important;
+    transition: opacity 0.25s ease-in-out;
+    padding: 70vh 0px 0px;
+}
+
+ion-modal.addDig-model {
+    background-color: rgba(0, 0, 0, 0.5) !important;
+    transition: opacity 0.25s ease-in-out;
+    padding: 34vh 0px 0px;
+}
+
+ion-modal.inset-modal-payslip {
+    background-color: rgba(0, 0, 0, 0.5) !important;
+    transition: opacity 0.25s ease-in-out;
+    padding: 72vh 0px 0px;
+}
+
+ion-label[floating]+ion-input {
+    input:not(:focus)::-webkit-input-placeholder {
+        color: transparent;
+    }
+    input:not(:focus):-moz-placeholder {
+        color: transparent;
+    }
+    input:not(:focus)::-moz-placeholder {
+        color: transparent;
+    }
+    input:not(:focus):-ms-input-placeholder {
+        color: transparent;
+    }
+}
+
+body {
+    padding-top: constant(safe-area-inset-top); //for iOS 11.2
+    padding-top: env(safe-area-inset-top); //for iOS 11.1
+}
+
+ion-navbar {
+    background: $ts-bg;
+}
+
+.ts-header {
+    ion-navbar {
+        background: $ts-bg;
+    }
+    ion-toolbar {
+        background: $ts-bg;
+    }
+}
+
+.zeno-header {
+    ion-navbar {
+        background: white;
+        color: $botTextColor;
+        min-height: 46px;
+    }
+    ion-title {
+        background: white;
+        color: $botTextColor;
+        .toolbar-title {
+            color: $botTextColor;
+            display: flex;
+            align-items: center;
+            padding-left: 0;
+        }
+    }
+    button {
+        color: $botTextColor;
+    }
+    // ion-navbar::after {
+    //   display: none;
+    // }
+}
+
+.zenoToastMsg {
+    .toast-wrapper {
+        background: color($colors, primary);
+    }
+}
+
+.timesheetToastMsg {
+    .toast-wrapper {
+        background: color($colors, primary);
+        .toast-message {
+            padding: 10px;
+        }
+    }
+}
+
+// ion-toolbar {
+//   background: $app-background;
+// }
+tooltip-box {
+    z-index: 100000;
+}
+
+ion-spinner {
+    display: block;
+    margin: auto;
+}
+
+ion-card {
+    // border-radius: 5px !important;
+    //box-shadow: 0px 1px 4px 1px rgba(105, 105, 105, 0.85) !important;
+    box-shadow: 0px 1px 1px 2px #dadfe0a8;
+}
+
+.alertCustomCss {
+    color: color($colors, primary);
+}
+
+page-detail .horizontal-timeline {
+    border-right: 1px solid grey !important;
+    border-right-style: dashed !important;
+    padding: 8px !important;
+    margin-top: 4px;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    // justify-content: space-around;
+}
+
+.justify-content-space-evenly {
+    justify-content: space-evenly;
+}
+
+.dis-flex-justify-spac-evenly {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.margin-top70 {
+    margin-top: 70%;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+}
+
+.justify-spac-ar-align-cent {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.justify-spac-bt-align-cent {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.justify-content-flex-end {
+    justify-content: flex-end;
+}
+
+.align-cont-cent {
+    display: flex;
+    align-items: center;
+}
+
+.align-cont-base {
+    display: flex;
+    align-items: baseline;
+}
+
+.justify-cont-center {
+    display: flex;
+    justify-content: center;
+}
+
+.align-item-flex-start {
+    align-items: flex-start;
+}
+
+.justify-content-flex-start {
+    justify-content: flex-start;
+}
+
+.center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.flex-dir-col-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.justify-content-space-btw {
+    display: flex;
+    justify-content: space-between;
+}
+
+.justify-cont-space-around {
+    display: flex;
+    justify-content: space-around;
+}
+
+.display-flex {
+    display: flex;
+}
+
+.height9 {
+    height: 9%;
+}
+
+// button.fab.fab-md {
+//   background: linear-gradient(to bottom right, rgb(254, 172, 110), rgb(248, 71, 115));
+// }
+button.fab.fab-md {
+    // background: linear-gradient(to right, #488cfc, #8264ff);
+    background: $primary-color;
+    margin-top: 15px;
+}
+
+.font1em {
+    font-size: 1em;
+}
+
+.font20 {
+    font-size: 20px;
+}
+
+.font16 {
+    font-size: 16px;
+}
+
+.font14 {
+    font-size: 14px;
+}
+
+.font13 {
+    font-size: 13px;
+}
+
+.font12 {
+    font-size: 12px;
+}
+
+.font11 {
+    font-size: 11px;
+}
+
+.font10 {
+    font-size: 10px;
+}
+
+.fontem {
+    font-size: 1.7em;
+}
+
+.font0-9 {
+    font-size: 0.9em;
+}
+
+// padding
+.padding0 {
+    padding: 0;
+}
+
+.padding1em {
+    padding: 1em;
+}
+
+.padding10 {
+    padding: 10px;
+}
+
+.padding11 {
+    padding: 11px;
+}
+
+.paddingTop0 {
+    padding-top: 0px;
+}
+
+.padding8 {
+    padding: 8px;
+}
+
+.padding-16 {
+    padding: 16px;
+}
+
+.padding5 {
+    padding: 5px;
+}
+
+.margin-top8 {
+    padding: 2px;
+}
+
+.margin-top10 {
+    padding: 10px;
+}
+
+.padding3 {
+    padding: 5px;
+}
+
+.padding-bottom10 {
+    padding-bottom: 10px;
+}
+
+.padding-bottom5 {
+    padding-bottom: 5px;
+}
+
+.padding12 {
+    padding: 12px;
+}
+
+.padding-top5 {
+    padding-top: 5px;
+}
+
+.padding-top8 {
+    padding-top: 8px;
+}
+
+.padding-top10 {
+    padding-top: 10px;
+}
+
+.padding-top15 {
+    padding-top: 15px;
+}
+
+.padding-top0 {
+    padding-top: 0;
+}
+
+.padding-left20 {
+    padding-left: 20px;
+}
+
+.padding-right7 {
+    padding-right: 7px;
+}
+
+.padding-right12 {
+    padding-right: 12px;
+}
+
+.padding-left7 {
+    padding-left: 7px;
+}
+
+.padding-left10 {
+    padding-left: 10px;
+}
+
+.padding5-0 {
+    padding: 5px 0;
+}
+
+.padding0-10 {
+    padding: 0 10px;
+}
+
+.padding10-20 {
+    padding: 10px 20px;
+}
+
+.padding16 {
+    padding: 16px;
+}
+
+.padding25 {
+    padding: 25px;
+}
+
+.margin3per {
+    margin: 3%;
+}
+
+.margin-top5 {
+    margin-top: 5px;
+}
+
+.margin-top12 {
+    margin-top: 12px;
+}
+
+.margin-right5 {
+    margin-right: 5px;
+}
+
+.margin-top8 {
+    margin-top: 8px;
+}
+
+.margin-left20 {
+    margin-left: 20px;
+}
+
+.margin-left10 {
+    margin-left: 10px;
+}
+
+.margin-left5 {
+    margin-left: 5px;
+}
+
+.margin5-0 {
+    margin: 5px 0;
+}
+
+.margin5 {
+    margin: 5px;
+}
+
+.margin8 {
+    margin: 8px;
+}
+
+.margin-bottom4per {
+    margin-bottom: 4%;
+}
+
+.margin-bottom3per {
+    margin-bottom: 3%;
+}
+
+.width100per {
+    width: 100%;
+}
+
+.width22per {
+    width: 22%;
+}
+
+.width54per {
+    width: 54%;
+}
+
+.width94per {
+    width: 94%;
+}
+
+.width90 {
+    width: 90%;
+}
+
+.width80 {
+    width: 80%;
+}
+
+.width85 {
+    width: 85%;
+}
+
+.width9 {
+    width: 9%;
+}
+
+.width50 {
+    width: 50%;
+}
+
+.width70 {
+    width: 70%;
+}
+
+.width60 {
+    width: 60%;
+}
+
+.width25 {
+    width: 25%;
+}
+
+.width30 {
+    width: 30%;
+}
+
+.width100 {
+    width: 100%;
+}
+
+.width55 {
+    width: 55%;
+}
+
+.width12 {
+    width: 12%;
+}
+
+.width28per {
+    width: 28%;
+}
+
+.width18 {
+    width: 18%;
+}
+
+.width20 {
+    width: 20%;
+}
+
+.text-red {
+    color: #a7464d;
+}
+
+.text-lightGrey {
+    color: grey;
+}
+
+.text-white {
+    color: white;
+}
+
+.text-justify {
+    text-align: justify;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-black {
+    color: black;
+}
+
+.text-grey {
+    color: #808080;
+}
+
+.iphoneXPadding {
+    padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+}
+
+// ion-modal.faq-modal {
+//   // height: 75vh;
+//   // margin-top: 50%;
+//   // border-top-left-radius:30px;
+//   // border-top-right-radius:30px;
+// }
+.modalCss .modal-wrapper {
+    opacity: 1;
+    transform: translateY(28%) !important;
+    border-radius: 20px 20px;
+}
+
+.modalCss {
+    background: rgba(14, 14, 14, 0.77);
+}
+
+.emailCSS .modal-wrapper {
+    opacity: 1;
+    transform: translateY(45%) !important;
+    border-radius: 20px 20px;
+    margin: 8px;
+}
+
+.emailCSS {
+    background: rgba(14, 14, 14, 0.77);
+}
+
+.infoModal {
+    background: white;
+}
+
+.ijpmodalCss .modal-wrapper {
+    opacity: 1;
+    transform: translateY(30%) !important;
+}
+
+.ijpmodalCss {
+    background: rgba(14, 14, 14, 0.77);
+}
+
+.ratingCSS {
+    background: rgba(14, 14, 14, 0.77);
+    .modal-wrapper {
+        opacity: 1;
+        transform: translateY(280px) !important;
+        height: 300px;
+        margin: 15px;
+        background: #fff;
+        border-radius: 10px;
+    }
+}
+
+.ratingCSS-report-process {
+    background: rgba(14, 14, 14, 0.77);
+    .modal-wrapper {
+        opacity: 1;
+        transform: translateY(280px) !important;
+        height: 30%;
+        margin: 15px;
+        background: #fff;
+        border-radius: 10px;
+    }
+}
+
+.calendermodel .modal-wrapper {
+    opacity: 1;
+    // transform: translateY(42%) !important;
+    transform: translateY(calc(100% - 350px)) !important;
+    // transform: translateY(35%) !important;
+    background: white;
+    // border-radius: 36px 36px;
+    border-radius: 20px;
+}
+
+.onTheJOb .modal-wrapper {
+    opacity: 1;
+    // transform: translateY(42%) !important;
+    transform: translateY(calc(100% - 430px)) !important;
+    // transform: translateY(35%) !important;
+    background: #fff;
+    border-radius: 7px 7px 0 0;
+    overflow: hidden;
+}
+
+.onTheJOb {
+    background: rgba(14, 14, 14, 0.77);
+}
+
+.empContactListModel {
+    background: white;
+}
+
+.pendingTimesheetListModal .modal-wrapper {
+    opacity: 1;
+    background: white;
+}
+
+.faq-modal {
+    // background: rgba(14, 14, 14, 0.77);
+    ion-backdrop {
+        visibility: visible;
+        opacity: 0.75;
+        z-index: 0;
+    }
+    .modal-wrapper {
+        opacity: 1;
+        background: white;
+        transform: translateY(50vh) !important;
+        border-radius: 10px 10px 0 0;
+        height: 50vh;
+    }
+}
+
+.chat-suggestion-modal {
+    // background: rgba(14, 14, 14, 0.77);
+    ion-backdrop {
+        visibility: visible;
+        opacity: 0.75;
+        z-index: 0;
+    }
+    .modal-wrapper {
+        opacity: 1;
+        background: white;
+        transform: translateY(35vh) !important;
+        border-radius: 10px 10px 0 0;
+        height: 65vh;
+    }
+}
+
+.calendermodel {
+    background: rgba(14, 14, 14, 0.77);
+}
+
+.chatModalCSS .modal-wrapper {
+    opacity: 1;
+    // transform: translateY(42%) !important;
+    transform: translateY(calc(100% - 280px)) !important;
+    // transform: translateY(35%) !important;
+    background: white;
+    // border-radius: 36px 36px;
+    border-radius: 20px;
+}
+
+.chatModalCSS {
+    ion-backdrop {
+        visibility: visible;
+        opacity: 0.75;
+        z-index: 0;
+    }
+    background: rgba(14, 14, 14, 0.77);
+}
+
+// css for new chatbot revamp modal
+.chatbot-popupCSS .modal-wrapper {
+    opacity: 1;
+    background: white;
+    position: absolute;
+    border-radius: 15px;
+    top: calc(50% - (40% / 2));
+    left: 10%;
+    right: 9%;
+    width: 80%;
+    height: 40%;
+}
+
+.chatbot-popupCSS {
+    ion-backdrop {
+        visibility: visible;
+        opacity: 0.75;
+        z-index: 0;
+    }
+    background: rgba(14, 14, 14, 0.77);
+}
+
+.chatbot-explorerCSS .modal-wrapper {
+    opacity: 1;
+    background: white;
+    position: absolute;
+    border-radius: 5px;
+    top: 3%;
+    left: 2%;
+    right: 2%;
+    width: 96%;
+    height: 96%;
+}
+
+.chatbot-popupCSS {
+    ion-backdrop {
+        visibility: visible;
+        opacity: 0.75;
+        z-index: 0;
+    }
+    background: rgba(14, 14, 14, 0.77);
+}
+
+// css for Update App alertbox
+.updateAppCSS .modal-wrapper {
+    opacity: 1;
+    background: white;
+    position: absolute;
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+    top: calc(50% - (60% / 2));
+    left: 8%;
+    right: 7%;
+    width: 85%;
+    height: 60%;
+}
+
+.updateAppCSS {
+    ion-backdrop {
+        visibility: visible;
+        opacity: 0.75 !important;
+        z-index: 0;
+    }
+}
+
+// corona safety guidelines alert
+ion-modal.corona-safetyAlertCss,
+ion-modal.leave-declration,
+ion-modal.reimburstment-declration {
+    background-color: rgba(0, 0, 0, 0.5) !important;
+    transition: opacity 0.25s ease-in-out;
+    padding: 20px 10px;
+    .modal-wrapper {
+        border-radius: 10px 10px 10px 10px;
+    }
+}
+
+// Asset/Visa Details modal
+.asset-details-modal {
+    // background: rgba(14, 14, 14, 0.77);
+    ion-backdrop {
+        visibility: visible;
+        opacity: 0.75;
+        z-index: 0;
+    }
+    .modal-wrapper {
+        opacity: 1;
+        background: white;
+        transform: translateY(50vh) !important;
+        border-radius: 10px 10px 0 0;
+        height: 50vh;
+    }
+}
+
+// ZenAdmin Calendar css
+.zenadmin-calender-css {
+    opacity: 1;
+    // // transform: translateY(42%) !important;
+    // transform: translateY(calc(100% - 350px)) !important;
+    // // transform: translateY(35%) !important;
+    // background: white;
+    // // border-radius: 36px 36px;
+    background-color: rgba(0, 0, 0, 0.5) !important;
+    .modal-wrapper {
+        border-radius: 15px;
+        position: absolute;
+        top: calc(50% - (60% / 2));
+        height: 40vh;
+        left: 3%;
+        /* right: 7%; */
+        width: 94%;
+        height: 52vh;
+    }
+}
+
+// Cancel pass modal-ZenAdmin
+.cancel-pass-modal,
+.report-model {
+    // background: rgba(14, 14, 14, 0.77);
+    ion-backdrop {
+        visibility: visible;
+        opacity: 0.75;
+        z-index: 0;
+    }
+    .modal-wrapper {
+        opacity: 1;
+        background: white;
+        transform: translateY(45vh) !important;
+        border-radius: 10px 10px 0 0;
+        height: 55vh;
+    }
+}
+
+// Admin-Add new pick up point modal-ZenAdmin
+.addNew-pickupPt-modal,
+.add-driver-model {
+    // background: rgba(14, 14, 14, 0.77);
+    ion-backdrop {
+        visibility: visible;
+        opacity: 0.75;
+        z-index: 0;
+    }
+    .modal-wrapper {
+        opacity: 1;
+        background: white;
+        transform: translateY(15vh) !important;
+        border-radius: 10px 10px 0 0;
+        height: 85vh;
+    }
+}
+
+.action-sheet-md .action-sheet-group:last-child {
+    padding-bottom: 0 !important;
+    background-color: lightgray !important;
+    .action-sheet-md .action-sheet-group .button-inner {
+        font-weight: bold !important;
+        justify-content: center !important;
+    }
+}
+
+.paddingLeft14 {
+    padding-left: 14px;
+}
+
+.padding-left-8 {
+    padding-left: 8px;
+}
+
+.back-button-md {
+    margin: 0px 0px !important;
+}
+
+.margin-right10 {
+    margin-right: 10px;
+}
+
+.margin-right8 {
+    margin-right: 8px;
+}
+
+.margin-right20 {
+    margin-right: 20px;
+}
+
+.margin12 {
+    margin-right: 12px;
+}
+
+.margin-bottom6 {
+    margin-bottom: 6px;
+}
+
+.fontSize9 {
+    font-size: 0.9em !important;
+}
+
+.fontSize8 {
+    font-size: 0.8em !important;
+}
+
+.fontSize1 {
+    font-size: 1rem;
+}
+
+.fontSize1p4 {
+    font-size: 1.4rem;
+}
+
+.fontSize1p1 {
+    font-size: 1.1em;
+}
+
+.fontSize1p8 {
+    font-size: 1.8em;
+}
+
+.font-size16 {
+    font-size: 16px;
+}
+
+.font-size1p6 {
+    font-size: 1.6em;
+}
+
+.margin-top16 {
+    margin-top: 16px;
+}
+
+.gallery-modal .close-button {
+    top: 25px !important;
+}
+
+.ion-md-arrow-forward:before {
+    padding-left: 20px;
+}
+
+.font-weight400 {
+    font-weight: 400;
+}
+
+.font-weight600 {
+    font-weight: 600;
+}
+
+.grid-bot {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.font-weight500 {
+    font-weight: 500;
+}
+
+.align-item-center {
+    align-items: center;
+}
+
+.margin0-5 {
+    margin: 0 5%;
+}
+
+.margin10 {
+    margin: 10px;
+}
+
+.margin-right1 {
+    margin-right: 1px;
+}
+
+.position-relative {
+    position: relative;
+}
+
+.navBg {
+    background: #eaeaea;
+}
+
+.titleClr {
+    color: darkgrey;
+}
+
+.borderBottom {
+    border-bottom: 1px solid;
+}
+
+.text-transform-none {
+    text-transform: none;
+}
+
+.padding6 {
+    padding: 6px;
+}
+
+ion-modal.kra-training-modal {
+    background-color: rgba(0, 0, 0, 0.5) !important;
+    transition: opacity 0.25s ease-in-out;
+    padding: 40vh 0px 0px;
+    .modal-wrapper {
+        border-radius: 10px 10px 0 0;
+    }
+}
+
+//suggestion list in chatbot
+.listModal {
+    .modal-wrapper {
+        transform: translateY(55vh) !important;
+        background: white;
+        border-radius: 20px 20px 0 0;
+        height: 45vh;
+    }
+    ion-backdrop {
+        visibility: visible;
+        z-index: 0;
+    }
+}
+
+// Zendeavor team-mean modal
+ion-modal.team-mean-modalCSS {
+    background-color: rgba(0, 0, 0, 0.5) !important;
+    transition: opacity 0.25s ease-in-out;
+    padding: 0px 0px 64vh 0px;
+    .modal-wrapper {
+        border-radius: 10px 10px 0 0;
+    }
+}
+
+// Zendeavor Send Consultation modal
+ion-modal.sendConsultation-modalCss {
+    background-color: rgba(0, 0, 0, 0.5) !important;
+    transition: opacity 0.25s ease-in-out;
+    // padding: 30vh 1vh 30vh 1vh;
+    // padding: 18vh 5vh 30vh 5vh;
+    .modal-wrapper {
+        border-radius: 6px;
+        //
+        position: fixed;
+        width: 90%;
+        height: 55%;
+        top: 20%;
+        bottom: 0;
+        left: 0px;
+        right: 0;
+        margin: 5%;
+    }
+}
+
+.sendConsultation-modalCss {
+    ion-backdrop {
+        visibility: visible;
+        opacity: 0.75;
+        z-index: 0;
+    }
+    background: rgba(14, 14, 14, 0.77);
+}
+
+// digital id card modal css
+.digitalIdCard-modalCss {
+    ion-backdrop {
+        visibility: visible;
+        opacity: 0.75;
+        z-index: 0;
+    }
+    background: rgba(14, 14, 14, 0.77);
+    padding-top: 45px;
+}
+
+// Zendeavor Goal Setting--redirect comments alert css
+.redirectedCommentsAlert {
+    .alert-head {
+        padding: 0;
+        margin: 0;
+        padding: 10px 15px;
+        color: black;
+        background: #bce1ea;
+    }
+    .alert-title {
+        font-size: 15px !important;
+    }
+    .alert-message {
+        // max-height: 240px;
+        font-size: 15px;
+        padding: 10px;
+        color: #484545;
+    }
+    .alert-button-default.alert-button-default-md {
+        color: white;
+        background: color($colors, secondary);
+        padding: 10px 20px;
+        border-radius: 20px;
+        /* width: 29%; */
+        margin: 10px;
+    }
+}
+
+.overflowX {
+    overflow-x: scroll;
+}
+
+.ionic-selectable-item {
+    ion-label {
+        white-space: initial !important;
+    }
+}
+
+ion-modal.bottom-sheet ion-backdrop {
+    visibility: visible !important;
+    z-index: 0;
+}
+
+ion-modal.bottom-sheet .modal-wrapper {
+    bottom: 0;
+    width: 100%;
+    height: 70%;
+    position: absolute;
+}
+
+// new profile common css added
+.profileIon-card {
+    background: linear-gradient(to right, #488cfc, #8264ff);
+}
+
+.flex {
+    display: flex;
+}
+
+.colorWhite {
+    color: white;
+}
+
+.colorGray {
+    color: gray;
+}
+
+ion-modal.custom-modal .modal-wrapper {
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.newMenu {
+    padding: 30px 0;
+    justify-content: center;
+    //height: 27vh;
+    background: url("../assets/imgs/landing_bg.svg") no-repeat;
+    background-size: cover;
+    background-position: 100% 100%;
+}
+
+.iconStyle {
+    // margin-left: 15px !important;
+    // margin-top: 11px !important;
+    // margin-bottom: 10px !important;
+    // margin-right: 25px !important;
+    height: 50px;
+    width: 50px;
+}
+
+.icon20-20 {
+    width: 20px;
+    height: 20px;
+}
+
+.icon40-40 {
+    height: 40px;
+    width: 40px;
+}
+
+.icon30-30 {
+    height: 30px;
+    width: 30px;
+}
+
+.mainDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .imgDiv {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .user-pic {
+            border-radius: 50%;
+            border: 2px solid white;
+            height: 70px;
+            width: 70px;
+            position: absolute;
+            top: 44px;
+            overflow: hidden;
+        }
+    }
+    .user-info {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: white;
+        .username {
+            margin-bottom: 5px;
+            font-size: 1.2em;
+            font-weight: 600;
+        }
+    }
+}
+
+.menu-list {
+    margin-top: 15px;
+    .menu-item {
+        margin: 5px;
+    }
+}
+
+.empDetails {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+}
+
+.empName {
+    margin-bottom: 5px;
+    margin-top: 5px;
+    font-size: 1.2em;
+    font-weight: 600;
+}
+
+.menu-list .item-md.item-block .item-inner {
+    padding-right: 8px !important;
+    border-bottom: 1px dotted #dedede !important;
+}
+
+// fonts start
+// @font-face {
+//   font-family: "Muli", sans-serif;
+//   src: url(../assets/fonts/muli/static/Muli-Regular.ttf) format("ttf");
+//   // font-weight: 200
+// }
+// body {
+//   font-family: "Muli", sans-serif !important;
+// }
+// ion-app.md {
+//   font-family: "Muli", sans-serif !important;
+// }
+@font-face {
+    font-family: "Open Sans", sans-serif;
+    src: url(../assets/fonts/open_san/OpenSans-Regular.ttf) format("ttf");
+    // font-weight: 200
+    font-size: 1em;
+}
+
+body {
+    font-family: "Open Sans", sans-serif !important;
+}
+
+ion-app.md {
+    font-family: "Open Sans", sans-serif !important;
+}
+
+// fonts end
+.error-alert-dialog {
+    .alert-sub-title {
+        overflow-wrap: unset;
+        word-wrap: break-word;
+        hyphens: inherit;
+    }
+}
+
+.menuBar>.scroll-content {
+    // background: red;
+    padding-top: 0 !important;
+}
+
+ion-slides.postImage-slider {
+    background: #000;
+}
+
+.footer-md::before {
+    background-image: none;
+}
+
+ion-fab[bottom] {
+    bottom: 38px;
+}
+
+.time-entry-modal {
+    ion-backdrop {
+        visibility: visible;
+        opacity: 0.45;
+        z-index: 0;
+    }
+    .modal-wrapper {
+        opacity: 1;
+        -webkit-transform: translateY(calc(100% - 21vh)) !important;
+        transform: translateY(calc(100% - 21vh)) !important;
+        background: #fff;
+        border-radius: 0;
+    }
+}
+
+
+/********** Css for Colorfull dashboard icons ***********/
+
+.marginCls {
+    margin-right: 10px !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+ion-content {
+    img.icon-texture {
+        width: auto;
+        height: 100%;
+        max-width: none;
+        position: absolute;
+        left: 0;
+        top: 0;
+        opacity: 0.6;
+    }
+    .grid-item {
+        background: linear-gradient(-45deg, #097acf, #65c1fe);
+    }
+    .grid-item.QuestionsPage {
+        background: linear-gradient(-45deg, #7290fb, #bfcbff);
+    }
+    .TimeEntryPage {
+        background: linear-gradient(-45deg, #fc656c, #febea3);
+    }
+    .Leaves {
+        background: linear-gradient(-45deg, #2f8ace, #82ceff);
+    }
+    .ApprovalDashboardPage {
+        background: linear-gradient(-45deg, #43b1ce, #93ebcf);
+    }
+    .MyAttendanceTimesheetPage {
+        background: linear-gradient(-45deg, #e15b7f, #f9b1e2);
+    }
+    .ZenDeavorDashboardPage {
+        background: linear-gradient(-45deg, #9a65fb, #d6c2fb);
+    }
+    .InternalJobPostingPage {
+        background: linear-gradient(-45deg, #21a2b8, #72effe);
+    }
+    .SkillPage {
+        background: linear-gradient(-45deg, #27cc7b, #9ef3cf);
+    }
+    .Zenlounge {
+        background: linear-gradient(-45deg, #f2a737, #fbea80);
+    }
+    .ZencontactsPage {
+        background: linear-gradient(-45deg, #ac7550, #fbd28c);
+    }
+    .AnnouncementPage {
+        background: linear-gradient(-45deg, #47a5c9, #e1bafc);
+    }
+    .FaqPage {
+        background: linear-gradient(-45deg, #2994db, #7bf3eb);
+    }
+    .ZenLearn {
+        background: linear-gradient(-45deg, #6ea238, #c0e673);
+    }
+    .AditionalHours {
+        background: linear-gradient(-45deg, #f88b2e, #fbd491);
+    }
+    .Corona {
+        background: linear-gradient(-45deg, #e42a00, #ffb897);
+    }
+    .GatePass {
+        background: linear-gradient(-45deg, #6fa339, #bee472);
+    }
+    .ICSS {
+        background: linear-gradient(-45deg, #e15b7f, #f9b1e2);
+    }
+    .zenwen {
+        background: linear-gradient(-45deg, #e15b7f, #f9b1e2);
+    }
+    .Manager {
+        background: linear-gradient(-45deg, #e48476, #b458e1);
+    }
+    .ChatBot {
+        background: linear-gradient(-45deg, #21a2b8, #72effe);
+    }
+    .ZenVerse {
+        background: linear-gradient(-45deg, #2f8ace, #82ceff);
+    }
+    .RTODashboard {
+        background: linear-gradient(-45deg, #f2a737, #fbea80);
+    }
+    .ZenRich {
+        background: linear-gradient(-45deg, #22a3b9, #6fecfc);
+    }
+    .Exit {
+        background: linear-gradient(-45deg, #e15b7f, #f9b1e2);
+    }
+    .ZenFinance {
+        background: linear-gradient(-45deg, #00b4ae, #1febe4);
+    }
+    .ZenAdmin {
+        background: linear-gradient(-45deg, #7290fb, #bfcbff);
+    }
+}
+
+img.zeno-img {
+    width: 100%;
+    position: absolute;
+    bottom: -25px;
+}
+
+.filter-icon {
+    .button {
+        background-color: transparent;
+        box-shadow: none;
+        margin: 0;
+    }
+}
+
+.filter-font {
+    font-size: 1.2em;
+    font-weight: 600;
+    padding: 6% 10%;
+}
+
+.no-data {
+    padding: 20px;
+    text-align: center;
+    color: gray;
+    font-size: 1.3em;
+}
+
+//jobfilter
+.zenRichJobFilter {
+    .modal-wrapper {
+        background: white;
+    }
+}
+
+//ZenWEN
+.zenwenEventModal {
+    .modal-wrapper {
+        transform: translateY(20vh) !important;
+        background: white;
+        border-radius: 20px 20px 0 0;
+        height: 80vh;
+    }
+    ion-backdrop {
+        visibility: visible;
+        z-index: 0;
+    }
+}
+
+.zenwenEventcomment {
+    .modal-wrapper {
+        transform: translateY(6vh) !important;
+        background: white;
+        border-radius: 20px 20px 0 0;
+        height: 95vh;
+    }
+}
+
+.segment-md .segment-button.activated,
+.segment-md .segment-button.segment-activated {
+    border-bottom: 2px solid $primary-color;
+    opacity: 1;
+    color: #000;
+}
+
+.segment-md .segment-button {
+    color: #2c2f33;
+}
+
+// App downloding Loader css
+.app-downloing {
+    ion-backdrop.backdrop-no-tappable {
+        opacity: 1 !important;
+        background-color: #fff;
+    }
+    .loading-wrapper {
+        background: transparent;
+        box-shadow: none;
+    }
+    frame {
+        width: 1px;
+        min-width: 100%;
+        *width: 100%;
+    }
+    .loaderDisplay {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+.competencyModal {
+    ion-backdrop {
+        visibility: visible;
+    }
+    .modal-wrapper {
+        width: 100%;
+        height: 50vh;
+        min-height: 220px;
+        position: absolute;
+        bottom: 0;
+    }
+}
+
+.read-more-modal {
+    ion-backdrop {
+        visibility: visible;
+    }
+    .modal-wrapper {
+        width: 92%;
+        height: 80%;
+        min-height: 220px;
+        position: absolute;
+        /* bottom: 0; */
+        /* margin: auto; */
+        top: 10%;
+        left: 4%;
+        border-radius: 10px;
+    }
+}
+
+.loaderContentText {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.textStyle {
+    font-weight: 500;
+    color: $primary-color;
+}
+
+.loader-progress-outer {
+    width: 96%;
+    margin: 10px 2%;
+    padding: 5px;
+    text-align: center;
+    background-color: #f4f4f4;
+    border: 1px solid #dcdcdc;
+    color: #fff;
+    border-radius: 20px;
+    font-size: 0.8em;
+}
+
+.loader-progress-inner {
+    white-space: nowrap;
+    overflow: hidden;
+    line-height: 20px;
+    border-radius: 20px;
+    background-color: $primary-color;
+}
+
+.loaderProgress {
+    position: absolute;
+    bottom: 50px;
+    width: 65%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.loaderText {
+    font-size: 0.8em;
+    color: $primary-color;
+}
+
+.niche-wrap {
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+}
+
+.b-r-4 {
+    border-radius: 4px;
+}
+
+.margin-a {
+    margin: auto;
+}
+
+.text-align-end {
+    text-align: end;
+}
+
+.chat-bg {
+    background: $chat-contentBg;
+}
+
+.topics-alert .modal-wrapper {
+    opacity: 1;
+    // transform: translateY(42%) !important;
+    transform: translateY(calc(100% - 80vh)) !important;
+    // transform: translateY(35%) !important;
+    background: #fff;
+    border-radius: 7px 7px 0 0;
+    overflow: hidden;
+}
+
+.display-grid {
+    display: grid;
+}
+
+.updateProfileLink {
+    // color: color($colors, primary);
+    color: #0b7ab9;
+}
+
+.finance-list-subitem {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-left: 8px;
+}
+
+.border-radius50 {
+    border-radius: 50%;
+}
+
+.addDig-alert {
+    .alert-wrapper {
+        border-radius: 10px;
+        // background-color: green;
+    }
+}
+
+.customizedAlertRTO {
+    .alert-head {
+        text-align: left;
+        text-align: start;
+        padding: 15px !important;
+        font-size: 1em;
+        background: #edf9fc;
+    }
+    .alert-title {
+        font-size: 17px !important;
+    }
+    .alert-button {
+        padding: 8px 15px;
+        background: #1586c7;
+        color: white;
+    }
+    .RTO-US-questions-title {
+        display: flex;
+        align-items: center;
+        span {
+            padding-left: 5px;
+            padding-top: 5px;
+        }
+        img {
+            width: 25px;
+            height: 25px;
+        }
+    }
+}
+
+.zenDeavorPopup {
+    .alert-title {
+        font-size: 17px !important;
+        //text-align: center;
+    }
+    .alert-head {
+        padding: 10px;
+        background: linear-gradient(to right, #0ea2c8, #0e7ac7);
+        color: #ffff;
+    }
+    .alert-message {
+        padding: 10px 10px 10px 15px;
+    }
+}
+
+.monthly-pass-container {
+    background: #ebf1fd;
+    padding: 10px 5px;
+    border-radius: 5px;
+    align-items: center;
+    width: calc(100% - 40%);
+}
+
+.confirmation-img {
+    width: 50%;
+    padding: 25px 10px 20px 20px;
+    /* height: 225px; */
+    // padding-top: 45px;
+    /* padding-left: 16px; */
+    // margin-left: 15px;
+}
+
+.bus-id-container {
+    width: 40%;
+    background: #ebf1fd;
+    padding: 5px 1px;
+    margin-right: 2%;
+    border-radius: 5px;
+    align-items: center;
+}
+
+.filter-icon {
+    width: 20%;
+}
+
+.container-raw {
+    display: flex;
+}
+
+svg>g[class^="raphael-group-"]>text {
+    display: none;
+}
+
+.action-sheet-wrapper {
+    height: 90%;
+    top: auto;
+}
+
+.label-key {
+    color: #7f7f7f;
+    font-size: 1em;
+    font-family: "Roboto";
+    font-weight: 300;
+}
+
+.label-value {
+    font-size: 1em;
+    font-family: "Roboto";
+    font-weight: 400;
+}
+
+// Leave Declration CSS
+leave-declaration.ion-page {
+    background: #fff;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 62%;
+    border-radius: 10px;
+}
+
+// Leave Declration CSS
+reimbursment-declaration.ion-page {
+    background: #fff;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 92%;
+    border-radius: 10px;
+}

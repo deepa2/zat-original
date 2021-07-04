@@ -1,0 +1,55 @@
+<!--
+  Generated template for the MyDaplistPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>My DAPs</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+  <div class="dap-list-item-con" *ngFor="let dapDetailedData of dapData?.responseList" (click)="viewDap(dapDetailedData)">
+    <div class="dap-list-item">
+
+    
+    <div class="containerItem-image">
+     
+      <!-- <img [src]="dapDetailedData?.icon"> -->
+    </div>
+    <div class="conatinerItem-list">
+      <ng-container *ngFor="let listData of dapDetailedData?.list">
+        <ion-row *ngIf="listData.key!= 'Manager Comments'">
+          <ion-col col-6>
+            {{listData?.key}}
+          </ion-col>
+          <ion-col class="value" col-6>
+            {{listData?.value}}
+          </ion-col>
+        </ion-row>
+      </ng-container>
+      
+    </div>
+  </div>
+  <ng-container *ngFor="let listData of dapDetailedData?.list">
+    <div class="not-aaproved" *ngIf="listData.key== 'Manager Comments' && listData?.value!=null && dapDetailedData.status=='Not Approved'">
+      <span class="r-title">Reason for Rejection  : </span>
+      <span class="reason">{{listData?.value}}</span>
+    </div>
+  </ng-container>
+  
+  </div>
+  <div *ngIf="noDataAvailable" class="noDataAvailable">
+      No DAPs created
+  </div>
+  <ion-fab  bottom right (click)="openCreateDap()">
+      <img src="assets/zenLearn-imgs/add-dap.svg" />
+  </ion-fab>
+
+</ion-content>

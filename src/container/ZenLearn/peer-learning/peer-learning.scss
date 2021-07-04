@@ -1,0 +1,115 @@
+peer-learning{
+  .scroll-content {
+    margin-top: 56px;
+    height: calc(100vh - 56px);
+    background: #E4EBF3;
+}
+  .assosiate-list-detail .learming-info {
+    margin-top: 0;
+    margin-bottom: 10px;
+    background: #fff;
+    padding: 10px 0;
+}
+  img.user-icon {
+    border-radius: 50%;
+    width: 60px;
+    margin-right: 5px;
+  }
+  .user-info {
+    margin: 5px 10px;
+    display: flex;
+    label.user-name {
+      font-size: 18px;
+    }
+    label.info-title {
+      min-width: 117px;
+      display: inline-block;
+    }
+    label.info-value {
+      color: #6d6d6d;
+    }
+  }
+  .msg-item {
+    padding: 5px 10px 10px;
+    background: #fff;
+    margin: 0 10px;
+    .msg-con {
+      display: flex;
+      align-items: center;
+        margin-bottom: 10px;
+      img.dap-icon {
+        width: 30px;
+        height: 30px;
+        margin-right: 10px;
+        border-radius: 50%;
+      }
+      .sender-info {
+        // margin-bottom: 10px;
+        .label {
+          margin: 5px 0;
+        }
+      }
+      .msg-time{
+        color: #6d6d6d;
+      }
+    }
+    .msg-text {
+      margin: 0 10px 10px;
+      margin-left: 40px;
+      border-radius: 5px;
+      padding: 10px;
+      background: #F5F8FB;
+      color: #2D2D2D;
+  }
+}
+button.mark-completed {
+  background: #0ea2c8;
+  padding: 7px 10px;
+  color: #fff;
+  border-radius: 15px;
+  margin-top: 10px;
+}
+.button-conainer {
+  box-shadow: 0 0 6px #bbbbbb;
+  background: #fff;
+  .button-con {
+    display: flex;
+    align-items: center;
+    padding: 5px 10px;
+  }
+  input.text-input {
+    background: #eaeaea;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 20px;
+  }
+  button {
+    height: 36px;
+    padding: 0 15px;
+    border-radius: 20px;
+    background: #00adda;
+    color: #fff;
+  }
+  img.dap-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+  }
+}
+.assosiate-list-detail {
+  height: 100%;
+  overflow-y: scroll;
+  padding-bottom: 60px;
+}
+
+.approveReject{
+  text-align: center;
+  padding:5px;
+}
+.btnStyle{
+  text-transform: capitalize;
+  border-radius: 25px;
+  margin-top: 10px;
+}
+  
+}

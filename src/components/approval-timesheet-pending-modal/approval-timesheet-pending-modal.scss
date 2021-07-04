@@ -1,0 +1,83 @@
+approval-timesheet-pending-modal {
+    background: #fff;
+    width: 100%;
+
+    .my-custom-modal-css .modal-wrapper {
+        height: 20%;
+        top: 80%;
+        position: absolute; 
+        display: block;  
+     }
+    .font-title{
+        font-size: 1.2em;
+    }
+    .font-subtitle{
+        font-size: 1em;
+    }
+    .smallBtn {
+    
+        button{
+            padding: 0px;
+            font-size: 1em;
+            width: 70px;
+            text-transform: capitalize;
+        }
+   
+        .approve-btn{
+            background:$ts-btn-green !important;
+            color: #ffffff !important;
+        }
+        .pending-btn{
+            background: #ffffff !important ;
+            border-color: $ts-secondary !important;
+            color:$ts-secondary !important;
+            box-shadow: none !important;
+            border: 1px solid;
+        }
+
+    }
+    .commentBox{
+       // background: lightgray;
+       border: 1px solid #e9ecef;
+    }
+    
+    .user-img{
+        width: 50px;
+        height: 50px;
+
+        img{
+            border-radius: 25px;
+            width: 50px;
+            height: 50px;
+            }
+    }
+    .staffName{
+        color: #fff;
+    }
+    .pending-grid{
+        padding: 0;
+        font-size: 0.85em;
+    }
+    .user-header{
+        background: #506FFF;  
+         .iconify{
+            width: 100% !important;
+            color: white;
+         }
+    }
+    .close-icon{
+        color: white;
+        font-size: 20px;
+    }
+    .row-padding{
+        margin-left: 10px;
+        margin-right: 10px;
+        padding-top:5px;
+        padding-bottom: 5px;
+        border-bottom : 1px solid #EDEEF3;
+
+    }
+    .error-text{
+        color:red;
+    }
+}

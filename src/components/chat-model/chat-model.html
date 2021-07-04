@@ -1,0 +1,50 @@
+<!-- Generated template for the ChatModelComponent component -->
+
+
+<div class="modal-mic-cont">
+
+
+  <ion-list id="ionChatList" #ionList class="padding5" no-lines>
+    <div #ionListDiv class="padding5">
+      <div class="row justify-content-flex-start align-item-center">
+
+        <!-- Show data from bot response -->
+        <div style="width: 100%;">
+          <img class="chat-item-profile-pic profileHtWT" src="./assets/imgs/chat/chatBot-icon.svg">
+        </div>
+
+        <div>
+          <div class="chat-list suggestionItem queryContent">{{userName}}</div>
+        </div>
+        <div class="horizontal-scroll sugesstion-cont align-cont-cent">
+          <!-- To show new items in suggestions in horizontal scroll -->
+          <div class="display-flex" *ngIf="suggestionList.newFeaturesList">
+            <button class="padding8 suggestion-list align-cont-cent" *ngFor="let item of suggestionList.newFeaturesList"
+              (click)="goToChatBot(item)">
+              <img class="new-item" src="./assets/imgs/chat/new-item.svg" />
+              {{item}}
+            </button>
+          </div><!-- To show suggestions in horizontal scroll -->
+          <div class="display-flex">
+            <button class="padding11 suggestion-list" *ngFor="let item of suggestionList.suggestionsList"
+              (click)="goToChatBot(item)">
+              {{item}}
+            </button>
+          </div>
+        </div>
+
+      </div>
+      <div class="margin-left10 margin-top16"
+        *ngIf="!(suggestionList.newFeaturesList.length > 0) || !(suggestionList.suggestionsList.length > 0)">
+        <img class="dots-loader" src="./assets/imgs/chat/loader_01.gif" />
+      </div>
+
+    </div>
+  </ion-list>
+  <div class="micCls">
+    <img class="iconStyle" *ngIf="!listening" (click)="_startListening()"
+      src="./assets/imgs/chat/microphone-icon.svg" />
+    <img class="allIcons" *ngIf="listening" src="./assets/imgs/chat/message-loader.gif" />
+  </div>
+
+</div>

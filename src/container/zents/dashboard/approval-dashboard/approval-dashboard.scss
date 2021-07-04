@@ -1,0 +1,290 @@
+page-approval-dashboard {
+
+    .smallBtn {
+        ion-button{
+            padding: 0px;
+            font-size: 0.7em;
+            float:right;
+        }
+    }
+    
+    .radio-group{
+        ion-item{
+            padding-left: 0;
+            border-bottom: none;
+       
+        }
+        .item-inner{
+            border-style: none !important;
+            border-bottom: none !important;
+        }
+        ion-radio{
+            margin: 0 5px 0 0 !important;
+        }
+
+    }
+    .approval-filter-main{
+        margin-top: 0;
+        .formheader{
+             padding: 4%;
+             .form-group{
+                margin-bottom: 0.8em;
+             }
+         }
+         .dateBody{
+            width: 50%;
+            border-bottom: 1px solid #dee2e6;
+            padding: 5px;
+            // margin-right: 10px;
+        }
+        .startDateInput{
+            margin-right: 10px;
+        }
+        .formBody{
+            display: flex;
+            // padding: 4%;
+            margin-top: 12px;
+        }
+        .dateIcon{
+            float: right;
+            background: none;
+            font-size: 0.5em;
+        }
+        .dateInput{
+            width: 75%;
+            border: none;
+        }
+        
+        .borderColor{
+            width: 100%;
+            border-bottom: 1px solid #dee2e6;  
+            padding-left: 0px;
+        }
+    
+       
+        .dateBorderColor{
+            border-bottom: 1px solid #dee2e6;  
+        }
+        .marginRight{
+            margin-right: 2%;
+        }
+        ion-select{
+            width: 100%;
+            max-width: none;
+        }
+        ion-item{
+            width: 100%;
+        }
+        ion-datetime{
+            font-size:1em;
+        }
+ 
+    }
+    .buttonColor{
+        background: $ts-secondary;
+        border-color: $ts-secondary !important;
+        color: white;
+        text-transform: capitalize;
+        // width: 110px;
+        height: 40px;
+    }
+    .submitBtn{
+        text-align: center;
+    }
+    .dateBody ngb-datepicker{
+        padding: 0px;
+        position: absolute;
+        top: 165px!important;
+        left: 34px!important;
+    }
+    
+
+    .list .item .item-inner{
+        border-bottom: none;
+        padding: 0 !important;
+    }
+
+
+    // 
+
+    .chart-section-parent{
+        background: #EDEEF3; //EDEEF3
+        padding: 10px;
+    }
+    .chart-section{
+        background: #ffffff; //EDEEF3
+        height: 320px;
+    }
+    .fusion-charts{
+        width: 100%;
+        // float: left;
+    }
+
+    .approvalStatus{
+        width: 100%;
+        // justify-content: center;
+        // // float: left;
+        // margin-top: 15%;
+
+        .rounded-box-parent{
+            width: 90%;
+            height: 60px;;
+            margin: 0 auto;
+            background: #F3F3F3;
+
+        }
+
+        .box-separator-line{
+            float: left;
+            width: 1px;
+            height: 30px;
+            background: #E3E4E9;
+            margin: 15px auto;
+        }
+        .rounded-box{
+            background: #EDEEF3;
+            width: 33%;
+            height: 60px;
+            // margin-bottom:10px;
+            // margin-top:10px;
+            // margin-left: 16px;
+            // position: relative;
+            // background: white;
+            border: none;
+            float: left;
+
+            .image{
+                height: 35px;
+                width: 35px;
+                position: relative;
+                img{
+                    height: 35px;
+                    width: 35px;
+                }
+            }
+
+            .count-text {
+                font-size: 1.2em;
+            }
+            .approve-text{
+                font-size: 0.8em;
+            }
+
+        }
+        
+        .parent{
+            display: flex;
+            justify-content: center;
+
+            // padding-left: 8%;
+            height: 100%;
+            align-items: center;
+
+            .text{
+                // width: 75%;
+                // padding: 12% 0% 18% 3%;
+                padding-left: 3%;
+                height: 35px;
+                
+                // h2{
+                //     font-size: 1.0em;
+                // }
+                // p{
+                //     font-size: 0.7em;
+                // }
+            }
+            .icon{
+                width: 25%;
+                padding: 2%;
+                font-size: 0.9em;
+                ion-icon{
+                    height: 100%;
+                    font-size: 1.5em;
+                }
+                svg{
+                    width:100% !important;
+                }
+            }
+
+        }
+            
+        .pending_status{
+            display: flex;
+            justify-content: center;
+            // padding-left: 8%;
+            border-radius: 12px;
+            height: 100%;
+            align-items: center;
+            .text{
+                // width: 75%;
+                // padding: 12% 0% 18% 3%;
+                padding-left: 3%;
+             }
+            .icon{
+                width: 25%;
+                padding: 2%;
+                font-size: 0.9em;
+                ion-icon{
+                    height: 100%;
+                    font-size: 1.5em;
+                }
+                svg{
+                    width:100% !important;
+                }
+            }
+
+        }
+    }
+        
+    .radio-checked {
+        .radio-inner {
+            background-color: #42C147 !important;
+            border-color: #42C147 !important;
+        }
+    }
+    .item-radio-checked.item-md ion-label {
+        color: #000000 !important;
+    }
+
+    .filter-section-parent{
+        background:#ffffff;
+        padding: 10px;
+    }
+    .filter-section{
+        padding: 0 10px 10px 10px;
+        border: 1px solid #EDEEF3;
+        border-radius: 10px;
+
+        ion-item{
+            font-size: 1em;
+        }
+    }
+
+    .segment-button.segment-activated {
+        border-color: #488CFC !important;
+        opacity: 1;
+    }
+ 
+    .segment-button{
+        color: #488CFC !important
+    
+    }
+    ion-segment{
+        ion-segment-button{
+            font-size: 1em !important;
+            text-transform: none !important;
+        }
+    }
+
+    .pre-filter-section {
+        margin-top: 24px;
+    }
+
+    .error-msg{
+        color: red;
+        margin-top: 2px;
+        margin-left: 10px;
+        display: block;
+    }
+
+}

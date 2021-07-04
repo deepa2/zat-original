@@ -1,0 +1,213 @@
+page-calendar {
+  .cal-header {
+    display: flex;
+    .date-title {
+      padding: 10px;
+      border-bottom: 1px solid #b5b5b5;
+      border-right: 1px solid #b5b5b5;
+      border-left: 0;
+      width: 76px;
+      text-align: center;
+    }
+    .events-title {
+      padding: 10px;
+      border: 1px solid #b5b5b5;
+      border-left: 0;
+      border-right: 0;
+      width: calc(100% - 50px);
+      display: flex;
+      align-items: self-end;
+      justify-content: space-between;
+      .month-list{
+        display: flex;
+        .month-item {
+          border: 1px solid #0d83c7;
+          border-radius: 10px;
+          padding: 2px 0;
+          margin: 0 5px;
+          .label {
+            margin: 0 10px;
+          }
+        }
+        .month-item.active {
+          background: #63d69b;
+      }
+        
+      }
+    }
+
+  }
+  .claendar-date {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    border-right: 1px solid #b5b5b5;
+    width: 76px;
+    .date::before {
+      content: "";
+      border: 2px solid #b9b9b9;
+      background: #fff;
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      right: -7px;
+  }
+}
+.date {
+  font-size: 20px;
+  font-weight: 600;
+}
+.is-today .claendar-date {
+  color: #21a9cc;
+  .date::before {
+    content: "";
+    border: 1px solid #ffffff;
+    background: #01C275;
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    right: -7px;
+    box-shadow: 0 0 10px #01C275;
+}
+}
+  .titleName {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: gray;
+    padding-bottom: 4px;
+  }
+  .subTitle {
+    font-size: 1em;
+    color: #213643;
+    padding: 1% 0;
+  }
+  .font1p1 {
+    font-size: 1.1em;
+  }
+  .padding2-0 {
+    padding: 2% 0;
+  }
+  .padding-right8 {
+    padding-right: 8px;
+  }
+  .padding-top3per {
+    padding-top: 3%;
+  }
+  .ion-card {
+    width: 100%;
+    border-radius: 5px;
+    box-shadow: none;
+    padding: 0;
+    display: flex;
+    margin: 0;
+    border: 0;
+  }
+  .flex-justify-content-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .padding-bottom2per {
+    padding-bottom: 2%;
+    font-weight: 300;
+  }
+  .font-weight500 {
+    font-weight: 500;
+  }
+  .color-gray {
+    color: gray;
+  }
+  .fontp9em{
+    font-size: .9em;
+  }
+  .nodata {
+    margin: 10px;
+    font-size: 1.2em;
+    background: white;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+  }
+  .image-style{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px;
+  }
+  .card-container{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left;
+    // background: #edf9fc;
+    width: calc(100% - 76px);
+    padding: 10px;
+    margin: 10px 10px 0;
+    border-radius: 7px;
+    span.learning-type {
+      color: #fff;
+      padding: 2px 5px;
+      padding-left: 13px;
+      position: absolute;
+      right: 0;
+      top: 0;
+  }
+  }
+  .heading-color{
+    color: #383838;
+  }
+  .Technical{
+    background: #eef3ff;
+    span.learning-type{
+      background: #8DB0F9;
+      &::before {
+        width: 0;
+        height: 0;
+        content: "";
+        border-style: solid;
+        border-width: 9px 0 9px 9px;
+        border-color: transparent transparent transparent #eef3ff;
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+    }
+    }
+  }
+  .Behavioural{
+    background: #e8ffe6;
+    span.learning-type{
+      background: #63D69B;
+      &::before {
+        width: 0;
+        height: 0;
+        content: "";
+        border-style: solid;
+        border-width: 9px 0 9px 9px;
+        border-color: transparent transparent transparent #e8ffe6;
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+    }
+    }
+  }
+
+  .band{
+    position: absolute;
+    right: 5px;
+    bottom: 10px;
+    font-size: 12px;
+  }
+}

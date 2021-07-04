@@ -1,0 +1,29 @@
+report-model-page {
+    .item-cover {
+        width: 0;
+        height: 0;
+    }
+    .borderBottom {
+        border: 1px solid lightgray;
+    }
+    .btn-style {
+        background-color: #0e82c7;
+        color: white;
+        font-size: 1.1em;
+    }
+    .flex-center {
+        display: flex;
+        align-items: center;
+        padding: 6px;
+    }
+    .icon-styl {
+        font-size: 1.3em;
+        color: #999999;
+    }
+    .toolbar-md {
+        padding: 0px !important;
+        min-height: 0px !important;
+        padding-top: 0 !important;
+        min-height: 56px !important;
+    }
+}

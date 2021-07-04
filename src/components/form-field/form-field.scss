@@ -1,0 +1,116 @@
+form-field {
+  ion-select {
+    max-width: 100%;
+  }
+
+  .error-msg p {
+    color: red;
+    font-size: 12px;
+  }
+
+  .errorMessage {
+    padding-bottom: 0;
+    margin: 0;
+    color: red;
+    padding-left: 16px;
+  }
+
+  .formButtonIcon {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    margin-right: 0 !important;
+
+    .form-icon {
+      width: 20px;
+      height: 20px;
+    }
+    .form-attachIcon {
+      width: 22px;
+      height: 22px;
+    }
+    .form-eyeIcon {
+      width: 22px;
+      height: 22px;
+    }
+
+    .info-icon {
+      width: 15px;
+      height: 15px;
+    }
+  }
+
+  .calendar {
+    right: 40px;
+  }
+  .calendarAttach {
+    right: 60px;
+  }
+
+  .showFile {
+    right: 80px;
+  }
+  .showonlyFile {
+    right: 40px;
+  }
+
+  ionic-selectable {
+    margin-right: 40px;
+  }
+  .item-label-floating .ionic-selectable-icon-inner {
+    top: 8px;
+    left: 30px;
+  }
+
+  //blink form-label if redirected from zeno to edit profile
+  .blink {
+    animation: blink-animation 1.5s steps(5, start) infinite;
+    -webkit-animation: blink-animation 1.5s steps(5, start) infinite;
+  }
+  @keyframes blink-animation {
+    to {
+      visibility: hidden;
+    }
+  }
+  @-webkit-keyframes blink-animation {
+    to {
+      visibility: hidden;
+    }
+  }
+
+  .fadeIn {
+    .item-inner {
+      background-color: #0e89c8 !important;
+      animation: fadeIn 1s steps(5, start) infinite;
+      -webkit-animation: fadeIn 1s steps(5, start) infinite;
+      ion-label,
+      ionic-selectable,
+      .ionic-selectable-icon-inner {
+        color: white !important;
+      }
+    }
+  }
+
+  @-webkit-keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  .validateExp {
+    .item-inner {
+      border-bottom-color: green !important;
+    }
+  }
+}

@@ -1,0 +1,289 @@
+<!--
+  Generated template for the PassDetailsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+    <ion-navbar>
+        <ion-title *ngIf="!isPassCancelled">Bus Pass Details</ion-title>
+        <ion-title *ngIf="isPassCancelled">Confirmation</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content [ngClass]="{'mb-65': (isCancelAvailable && !isPassCancelled)}">
+    <div class="no-data-container" *ngIf="showNoDataMsg">
+        {{noDataMsg}}
+    </div>
+    <div *ngIf="isPassCancelled">
+        <!-- *ngIf="passSuccessData" -->
+        <div class="confirmation-card">
+            <!-- <ion-row>
+          <ion-col> -->
+            <img src="assets/zenAdmin/pass-success-bg.svg" class="confirmation-img" />
+            <!-- </ion-col>
+          <ion-col>
+            Successful -->
+            <!-- </ion-col>
+        </ion-row> -->
+            <div class="success-msg-div">
+                <div class="colorRed successTxt">{{cancelMsg?.displayTextTitle}}</div>
+                <div>{{cancelMsg?.displayText}}</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="ticket-parent" *ngIf="!isPassCancelled && busDetails">
+        <div class="bus-pass-info-container" *ngIf="isPassCancelled">
+            <span class="mr-6"><img src="assets/zenAdmin/pass-id-icon.svg" class="width-25" /></span>
+            <span>Bus Pass</span>
+        </div>
+        <div>
+            <ion-card color="light" class="ion-card ion-text-center post-relative">
+                <div class="display-flex padding10 bus-details-parent">
+                    <div class="display-flex bus-id-container">
+                        <div class="width40px">
+                            <img class="calendar-icon" src="assets/zenAdmin/bus-pass-id.svg" />
+                        </div>
+                        <div>
+                            <div class="colorGrey busIDText">BusPass ID</div>
+                            <div class="bus-passId">{{busDetails?.busPassId}}</div>
+                        </div>
+                    </div>
+                    <div class="display-flex monthly-pass-container">
+                        <div class="width40px">
+                            <img class="calendar-icon" src="assets/zenAdmin/monthly-pass.svg" />
+                        </div>
+                        <div>
+                            <div class="dateValue colorGrey monthly-pass-title">
+                                {{busDetails?.passType}} Pass
+                            </div>
+                            <div class="month-pass-date">{{busDetails?.busPassValidity}}</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- associate list -->
+                <div class="userProfile-container">
+                    <div class="img-container">
+                        <img class="user-icon" [src]="busDetails?.userProfilePic" onerror="this.src='assets/imgs/dummy-profile.png'" />
+                    </div>
+                    <div class="user-info-container">
+                        <span class="associate-name">{{busDetails?.userName}}</span>
+                        <span class="key-value colorGrey">{{busDetails?.userId}}</span>
+                    </div>
+                </div>
+                <!-- approved/cancelled image -->
+                <div class="position-absolute ticket-status-parent">
+                    <img src="assets/zenAdmin/Approved.png" class="ticket-status-img" *ngIf="busDetails?.isApproved" />
+                    <img src="assets/zenAdmin/Cancelled.png" class="ticket-status-img" *ngIf="busDetails?.isCancelled" />
+                </div>
+
+                <div class="container-items">
+                    <div class="route-pic">
+                        <img class="route-img" src="assets/zenAdmin/route-icon.svg" />
+                        <!-- <img class="userpic-bg" src="assets/zenLearn-imgs/User_profile_BG.svg"> -->
+                    </div>
+                    <div class="route-container">
+                        <span class="associate-name colorGrey">Route</span>
+                        <span class="key-value fontWeight">{{busDetails?.routeName}}</span>
+                    </div>
+                </div>
+                <div class="pickup-point-card">
+                    <div class="pickup-details">
+                        <div class="route-pic">
+                            <img class="route-img" src="assets/zenAdmin/location.svg" />
+                            <!-- <img class="userpic-bg" src="assets/zenLearn-imgs/User_profile_BG.svg"> -->
+                        </div>
+                        <div class="displayFlex-col pickupName-card">
+                            <span class="associate-name colorGrey">Pickup Point</span>
+                            <span class="campus-name fontWeight">{{busDetails?.pickupPointName}}</span>
+                        </div>
+                    </div>
+                    <div class="pickup-time-card">
+                        <div class="">
+                            <img class="clock-img" src="assets/zenAdmin/clock-icon.svg" />
+                            <!-- <img class="userpic-bg" src="assets/zenLearn-imgs/User_profile_BG.svg"> -->
+                        </div>
+                        <div class="displayFlex-col">
+                            <span class="associate-name fontWeight">{{busDetails?.passSubType=='Drop'? '-':busDetails?.arrivalTime}}</span>
+                            <!-- <span class="key-value">Softawrr engineer</span> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="profile-wrapper"></div>
+                <div class="bus-info-container">
+                    <div class="user-pic">
+                        <img class="bus-img" src="assets/zenAdmin/bus-image.svg" />
+                    </div>
+                    <div class="route-container">
+                        <div class="associate-name colorGrey">Bus</div>
+                        <div class="key-value fontWeight">{{busDetails?.busNumber}}</div>
+                    </div>
+                </div>
+                <div class="driver-info-container">
+                    <!-- <div class="user-pic">
+            <img class="img-style" [src]="busDetails?.driverProfilePic">
+            <img class="userpic-bg" src="assets/zenLearn-imgs/User_profile_BG.svg">
+          </div> -->
+                    <div class="driver-img-container">
+                        <img class="user-icon" [src]="busDetails?.busInchargeProfilePic" onerror="this.src='assets/imgs/dummy-profile.png'" />
+                    </div>
+                    <div class="route-container">
+                        <span class="associate-name colorGrey">Bus Incharge</span>
+                        <span class="key-value fontWeight">
+                            {{busDetails?.busInchargeName}}</span>
+                    </div>
+                    <div (click)="call(busDetails?.busInchargeContactNo)">
+                        <img class="phone-image" src="assets/zenAdmin/call-image.svg" />
+                    </div>
+                </div>
+            </ion-card>
+        </div>
+    </div>
+    <div class="cost-details-container" *ngIf="!isPassCancelled && busDetails">
+        <div class="bus-info-container">
+            <div class="user-pic">
+                <img class="route-img" src="assets/zenAdmin/money-img.svg" />
+            </div>
+            <div class="amount-details">
+                <div class="associate-name fontWeight">Amount</div>
+                <div class="key-value colorGrey">{{otherDetails?.amount}} INR</div>
+            </div>
+        </div>
+    </div>
+    <div class="comment-details-container" *ngIf="!isPassCancelled && busDetails">
+        <div class="bus-info-container">
+            <div class="user-pic">
+                <img class="route-img" src="assets/zenAdmin/comments-icon.svg" />
+            </div>
+            <div class="amount-details">
+                <div class="associate-name fontWeight">Comments</div>
+                <div class="key-value colorGrey">
+                    {{otherDetails?.comments || 'NA'}}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="ticket-parent" *ngIf="isPassCancelled && cancelBusDetails">
+        <div *ngIf="isPassCancelled" class="bus-pass-container">
+            <span class="mr-6"><img src="assets/zenAdmin/pass-id-icon.svg" class="width-25" /></span>
+            <span>Bus Pass</span>
+        </div>
+        <div>
+            <ion-card color="light" class="ion-card ion-text-center margin5 post-relative">
+                <div class="display-flex padding10 bus-details-parent">
+                    <div class="display-flex bus-id-container">
+                        <div class="width40px">
+                            <img class="calendar-icon" src="assets/zenAdmin/bus-pass-id.svg" />
+                        </div>
+                        <div>
+                            <div class="colorGrey busIDText">BusPass ID</div>
+                            <div class="bus-passId">{{cancelBusDetails?.busPassId}}</div>
+                        </div>
+                    </div>
+                    <div class="display-flex monthly-pass-container">
+                        <div class="width40px">
+                            <img class="calendar-icon" src="assets/zenAdmin/monthly-pass.svg" />
+                        </div>
+                        <div>
+                            <div class="dateValue colorGrey monthly-pass-title">
+                                {{cancelBusDetails?.passType}} Pass
+                            </div>
+                            <div class="month-pass-date">
+                                {{cancelBusDetails?.busPassValidity}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- associate list -->
+                <div class="userProfile-container">
+                    <!-- <div class="user-pic">
+            <img class="img-style" [src]="cancelBusDetails?.userProfilePic">
+            <img class="userpic-bg" src="assets/zenLearn-imgs/User_profile_BG.svg">
+          </div> -->
+                    <div class="img-container">
+                        <img class="user-icon" [src]="cancelBusDetails?.userProfilePic" onerror="this.src='assets/imgs/dummy-profile.png'" />
+                    </div>
+                    <div class="user-info-container">
+                        <span class="associate-name">{{cancelBusDetails?.userName}}</span>
+                        <span class="key-value colorGrey">{{cancelBusDetails?.userId}}</span>
+                    </div>
+                </div>
+                <!-- approved/cancelled image -->
+                <div class="position-absolute ticket-status-parent">
+                    <!-- <img src="assets/zenAdmin/Approved.png" class="ticket-status-img" *ngIf="cancelBusDetails?.isApproved" /> -->
+                    <img src="assets/zenAdmin/Cancelled.png" class="ticket-status-img" *ngIf="cancelBusDetails?.isCancelled" />
+                </div>
+
+                <div class="container-items">
+                    <div class="route-pic">
+                        <img class="route-img" src="assets/zenAdmin/route-icon.svg" />
+                        <!-- <img class="userpic-bg" src="assets/zenLearn-imgs/User_profile_BG.svg"> -->
+                    </div>
+                    <div class="route-container">
+                        <span class="associate-name colorGrey">Route</span>
+                        <span class="key-value fontWeight">{{cancelBusDetails?.routeName}}</span>
+                    </div>
+                </div>
+                <div class="pickup-point-card">
+                    <div class="pickup-details">
+                        <div class="route-pic">
+                            <img class="route-img" src="assets/zenAdmin/location.svg" />
+                            <!-- <img class="userpic-bg" src="assets/zenLearn-imgs/User_profile_BG.svg"> -->
+                        </div>
+                        <div class="displayFlex-col pickupName-card">
+                            <span class="associate-name colorGrey">Pickup Point</span>
+                            <span class="campus-name fontWeight">{{cancelBusDetails?.pickupPointName}}</span>
+                        </div>
+                    </div>
+                    <div class="pickup-time-card">
+                        <div class="">
+                            <img class="clock-img" src="assets/zenAdmin/clock-icon.svg" />
+                            <!-- <img class="userpic-bg" src="assets/zenLearn-imgs/User_profile_BG.svg"> -->
+                        </div>
+                        <div class="displayFlex-col">
+                            <span class="associate-name fontWeight">{{cancelBusDetails?.passSubType=='Drop'? '-':cancelBusDetails?.arrivalTime}}</span>
+                            <!-- <span class="key-value">Softawrr engineer</span> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="profile-wrapper"></div>
+                <div class="bus-info-container">
+                    <div class="user-pic">
+                        <img class="bus-img" src="assets/zenAdmin/bus-image.svg" />
+                    </div>
+                    <div class="route-container">
+                        <div class="associate-name colorGrey">Bus</div>
+                        <div class="key-value fontWeight">
+                            {{cancelBusDetails?.busNumber}}
+                        </div>
+                    </div>
+                </div>
+                <div class="driver-info-container">
+                    <!-- <div class="user-pic">
+            <img class="img-style" [src]="cancelBusDetails?.driverProfilePic">
+            <img class="userpic-bg" src="assets/zenLearn-imgs/User_profile_BG.svg">
+          </div> -->
+                    <div class="driver-img-container">
+                        <img class="user-icon" [src]="cancelBusDetails?.driverProfilePic" onerror="this.src='assets/imgs/dummy-profile.png'" />
+                    </div>
+                    <div class="route-container">
+                        <span class="associate-name colorGrey">Driver</span>
+                        <span class="key-value fontWeight">
+                            {{cancelBusDetails?.driverName}}</span>
+                    </div>
+                    <div (click)="call(cancelBusDetails?.driverNumber)">
+                        <img class="phone-image" src="assets/zenAdmin/call-image.svg" />
+                    </div>
+                </div>
+            </ion-card>
+        </div>
+    </div>
+</ion-content>
+<ion-footer>
+    <div class="footer-content" *ngIf="isCancelAvailable && !isPassCancelled">
+        <button ion-button round class="cancelBtn" (click)="cancelPassReq()">
+            Cancellation Request
+        </button>
+    </div>
+</ion-footer>

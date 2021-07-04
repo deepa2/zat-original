@@ -1,0 +1,77 @@
+page-zenrich-profile {
+    .content {
+        background-color: #e7e8ee;
+    }
+    .saved-wrapper {
+        background: #E7E8EE;
+    }
+    .opening-card{
+        margin: 10px;
+        background: #fff;
+        border-radius: 7px;
+        .job-wrapper {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+        }
+        .save-job {
+            display: flex;
+            align-items: start;
+            padding: 10px 5px;
+            ion-icon {
+                padding: 0px 10px;
+                font-size: 22px;
+                color: #6d6d6d;
+            }
+        }
+        .job-info {
+            width: 100%;
+            padding: 0 10px;
+            .skills {
+                text-transform: capitalize;
+                display: flex;
+                justify-content: space-between;
+                span.already-applied {
+                    color: #ce0000;
+                }
+            }
+        }
+        .job-icon {
+            display: flex;
+            align-items: flex-start;
+            img {
+                height: 35px;
+                max-width: 35px;
+                border-radius: 50%;
+            }
+        }
+
+        .info {
+            margin: 10px 0;
+        }
+    }
+    
+
+    
+    .ref-title {
+        padding: 5px 10px;
+        font-size: 16px;
+        color: #333333;
+        img.newprof {
+            margin-right: 3px;
+        }
+    }
+    .create-new {
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        font-size: 16px;
+        color: #0f8ec8;
+        text-decoration: underline;
+    }
+    .graybg {
+        background: lightgrey;
+    }
+
+    
+}

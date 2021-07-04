@@ -1,0 +1,148 @@
+zenadmin-calender {
+  .item-cover {
+    width: 0;
+    height: 0;
+  }
+  .status-select {
+    padding: 5px 10px;
+    max-width: none;
+    .select-text {
+      padding-right: 5px;
+      font-size: 18px;
+    }
+    .select-icon {
+      color: #1586c7;
+    }
+    .select-icon-inner {
+      color: #1586c7 !important;
+    }
+  }
+  .date-container {
+    align-items: center;
+    display: flex;
+    color: $primary-color;
+    width: 90%;
+  }
+  .blue-dotted-border {
+    border-bottom: 1px dotted $primary-color;
+  }
+  .calendar-icon {
+    width: 30px;
+    margin-right: 4px;
+    padding: 2px;
+  }
+  .dateValue {
+    font-size: 0.96em;
+  }
+  .cancel-btn {
+    padding: 10px;
+    font-size: 25px;
+  }
+  .calendar-body {
+    margin-top: 5px;
+    margin-bottom: 15px;
+    .grid {
+      padding: 0;
+    }
+    .col:last-child {
+      border-right: none;
+    }
+    .calendar-weekday,
+    .calendar-date {
+      color: #1586c7;
+      text-align: center;
+      margin: 0;
+      .col {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        span {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 25px;
+          width: 25px !important;
+        }
+      }
+    }
+    .calendar-weekday {
+      font-weight: 500;
+    }
+  }
+  .hideDate {
+    opacity: 0;
+  }
+  .ts-color {
+    color: $ts-primary;
+  }
+  [col-1] {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 8.33333%;
+    -ms-flex: 0 0 8.33333%;
+    flex: 0 0 14.285714285714286%;
+    width: 14.285714285714286%;
+    max-width: 14.285714285714286%;
+  }
+  .col {
+    text-align: center;
+    // padding: 5px;
+  }
+  .confirmedPass {
+    font-weight: bold;
+    background-color: #2cbf6d;
+    color: white;
+    border-radius: 50%;
+  }
+  .cancelledPass {
+    font-weight: bold;
+    background-color: #f95454;
+    color: white;
+    border-radius: 50%;
+  }
+  .legends {
+    display: flex;
+    justify-content: space-evenly;
+    .legend-section {
+      display: flex;
+      align-items: center;
+      .circle {
+        width: 0.8em;
+        height: 0.8em;
+        border-radius: 50%;
+      }
+      span {
+        margin-left: 5px;
+      }
+      .red {
+        background-color: #f95454;
+      }
+      .grey {
+        background-color: #2cbf6d;
+      }
+    }
+  }
+  .bg-blue {
+    font-weight: bold;
+    border-radius: 50%;
+    background-color: #ebf2f9;
+  }
+  .calendar-icon {
+    width: 40px;
+    margin-right: 4px;
+    padding: 2px;
+  }
+  .date-header {
+    display: flex;
+    align-items: center;
+  }
+  .year-name {
+    font-size: 17px;
+    padding-left: 10px;
+  }
+  .opacity04 {
+    opacity: 0.4;
+  }
+  .fontwt600 {
+    font-weight: 600;
+  }
+}

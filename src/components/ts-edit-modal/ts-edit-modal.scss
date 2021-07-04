@@ -1,0 +1,69 @@
+ts-edit-modal {
+    
+.modalPage{
+    .toolbar-content{
+        display: flex;
+        ion-icon{
+            color: white;
+        }
+        .sub-title{
+            color: white;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+            width: 60%;
+        }
+    }
+}
+.form{
+    ion-list-header{
+        border-top: none;
+        padding-left: 13px !important;
+        ion-label{
+            white-space: initial;
+        }
+    }
+    .borderColor{
+        width: 100%;
+        border-bottom: 1px solid $ts-tertiary !important;
+        padding-left: 0px;
+        font-size: 1em;
+    }
+    ion-select{
+        width: 100%;
+        max-width: none;
+        .select-text{
+            white-space: initial;
+        }
+    }
+    ion-datetime{
+        width: 100%;
+    }
+    .list .item .item-inner{
+        border-bottom: none;
+    }
+    .error-msg{
+        color: red;
+        margin-top: 2px;
+        display: block;
+    }
+    .submitBtn{
+        button{
+            background-color: $ts-secondary;
+            color: white;
+            text-transform: capitalize;
+        }
+    }
+    .remarks{
+        background-color: #F9FAFB;
+        border-radius: 5px;
+        border: 1px solid $ts-tertiary !important;
+        ion-textarea{
+            .text-input{
+                margin: 13px !important;
+            }
+        }
+    }
+}
+
+}

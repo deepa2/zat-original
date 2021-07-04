@@ -1,0 +1,76 @@
+<ion-list class="card-shadow" *ngIf="type == 'time-entry'">
+  <ion-item-sliding #item>
+    <ion-item no-padding class="main-item">
+      <div class="parent-div">
+        <div class="first-block" (click)="openEditModal()">
+          <div class="image" [class.saved]="taskData.approvalStatus == '-1'"
+            [class.approved]="taskData.approvalStatus == '1'" [class.submitted]="taskData.approvalStatus == '2'"
+            [class.rejected]="taskData.approvalStatus == '3'" [class.task]="taskData.approvalStatus == '0'">
+            <img src="assets/zents-imgs/{{data?.iconName}}.svg" />
+          </div>
+          <div class="text-block">
+            <span class="taskname">{{data?.taskName}}</span>
+            <div class="text" *ngIf="timesheetData.isFixedBidProject == 'YES'">
+              <div class="title">Milestone:</div> {{editedData.milestoneName}}
+              <div class="name">{{editedData?.milestoneName}}</div>
+            </div>
+          </div>
+        </div>
+        <ion-list class="section">
+          <div class="bill">
+            <span>Billability :</span>
+            <ion-item no-padding>
+                <ion-select [disabled]="taskData?.approvalStatus == '1' || isTimesheetEditable == 'NO'" interface="action-sheet"
+                  placeholder="Select Billability" cancelText="Cancel" okText="Save" [(ngModel)]="editedData.billability"
+                  (ionChange)="onBillabilityChange($event)">
+                  <ion-option *ngFor="let b of billabilityList" [value]="b.value">{{b.name}}</ion-option>
+                </ion-select>
+              </ion-item>
+          </div>
+          <div class="efforts">
+            <span>Efforts :</span>
+            <ion-item no-padding>
+              <ion-datetime [disabled]="taskData?.approvalStatus == '1' || isTimesheetEditable == 'NO' || data?.editEfforts"
+                displayFormat="HH:mm" pickerFormat="HH:mm" [(ngModel)]="editedData.efforts" minuteValues="00,15,30,45"
+                (ionChange)="onEffortsChange($event)"></ion-datetime>
+            </ion-item>
+          </div>
+        </ion-list>
+      </div>
+    </ion-item>
+
+    <ion-item-options side="right"
+      *ngIf="taskData?.approvalStatus != '1' && taskData?.approvalStatus != '0' && taskData?.isTimesheetEditable != 'NO'">
+      <button class="deleteBtn" ion-button icon-only (click)="showDeleteConfirmAlert()">
+        <ion-icon name="trash"></ion-icon>
+      </button>
+    </ion-item-options>
+  </ion-item-sliding>
+</ion-list>
+
+<div class="parent-div card-shadow applied-hours" *ngIf="type == 'applied-hours'">
+  <div class="first-block">
+    <div class="image task">
+      <img src="assets/zents-imgs/ts-task-icon.svg" />
+    </div>
+    <div class="text-block">
+      <span class="taskname">{{item?.taskName}}</span>
+      <div class="text">
+        <span class="title">Project:</span>
+        <span class="name">{{item?.projectName}}</span>
+      </div>
+    </div>
+  </div>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-6 class="border">
+        <span>Applied Hours:</span>
+        <span class="value">{{item?.appliedHours}}</span>
+      </ion-col>
+      <ion-col col-6>
+        <span>Applied Date:</span>
+        <span class="value">{{item?.appliedDate}}</span>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</div>

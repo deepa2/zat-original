@@ -1,0 +1,51 @@
+<ion-content padding>
+
+    <ion-row>
+        <ion-col text-right>
+            <button (click)="dismiss(false)" class="close" ion-button icon-only round>
+                <ion-icon name="ios-close-outline"></ion-icon>
+            </button>
+        </ion-col>
+    </ion-row>
+
+    <ion-row>
+        <ion-col text-center>
+            <div class="title">{{feedbackTitle}}</div>
+        </ion-col>
+    </ion-row>
+
+    <rating [rating]="rating" (ratingChange)="onRatingChange($event)"></rating>
+
+    <ion-row *ngIf="rating > 0">
+        <ion-col text-center>
+            <div class="title">{{feedbackQuery}}</div>
+        </ion-col>
+    </ion-row>
+
+    <form id="ngForm" #feedbackForm="ngForm">
+
+        <ion-list>
+            <ion-item class="userRating" *ngFor="let item of userRateArray;index as i">
+                <ion-checkbox (ionChange)="CheckBoxChanged(i,$event)" item-right name="feedbackRating" [(ngModel)]="item.checked"></ion-checkbox>
+                <ion-label>{{item.value}}</ion-label>
+            </ion-item>
+        </ion-list>
+
+        <ion-textarea class="comment" name="feedbackComment" [(ngModel)]="addComment" placeholder="Add your comment">
+        </ion-textarea>
+
+    </form>
+
+
+</ion-content>
+
+<ion-footer>
+    <ion-row *ngIf="!(loading$ | async)">
+        <ion-col no-padding>
+            <button [disabled]="isenabled" no-margin ion-button full large color="secondary" (click)="submitFeedback()">Submit</button>
+        </ion-col>
+    </ion-row>
+    <ion-row color="danger" padding *ngIf="(loading$ | async)">
+        <ion-spinner></ion-spinner>
+    </ion-row>
+</ion-footer>

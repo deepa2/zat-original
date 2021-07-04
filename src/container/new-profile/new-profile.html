@@ -1,0 +1,273 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Profile</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="presentPopover($event)">
+        <ion-icon name="more"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content no-bounce class="contentBg">
+  <div>
+    <ion-card class="profileBgImg">
+      <div>
+        <div *ngIf="profileDetails" class="flex width100per padding8">
+          <div class="profileContainer">
+            <div class="flex-dir-col-center positionRelative">
+              <img *ngIf="!showUploadedImg" class="profileImg" [img-preloader]="profileDetails?.profilePic"
+                onErrorImage="assets/imgs/dummy-profile.png" defaultImage="assets/imgs/dummy-profile.png"
+                (click)="profileDetails?.isProfilePicUpdate ? uploadProfilepic() : false" tappable />
+              <!-- show immediately when user uploads new profile photo -->
+              <img *ngIf="showUploadedImg" class="profileImg" [src]="newIMagePath"
+                onErrorImage="assets/imgs/dummy-profile.png" defaultImage="assets/imgs/dummy-profile.png"
+                (click)="profileDetails?.isProfilePicUpdate ? uploadProfilepic() : false" tappable />
+              <!-- show edit icon for uploading profile pic -->
+              <div class="editImage-icon" (click)="uploadProfilepic()" *ngIf="profileDetails?.isProfilePicUpdate"
+                tappable>
+                <!-- <img class="editprofileImg" src="assets/imgs/Edit.svg" /> -->
+                <ion-icon class="pencilIcon-profile" md="md-create"></ion-icon>
+              </div>
+              <div class="center margin-top8">
+                <img class="iconID" src="assets/imgs/ID icon.svg" />
+                <div class="font0-9 text-white">{{profileDetails?.userId}}</div>
+              </div>
+            </div>
+          </div>
+          <div class="introContainer">
+
+            <div class="introSec">
+
+              <div class="line-height">
+
+                <div class="text-white font1em">{{profileDetails?.userName}}</div>
+
+                <div *ngIf="profileDetails?.designation" class="flex padding4 al-item-cen">
+                  <div style="width: 10%;"><img class="iconID" src="assets/imgs/designation.svg" /></div>
+                  <div class="font0-9 text-white  padding-left10 ">{{profileDetails?.designation}}</div>
+                </div>
+
+                <div *ngIf="profileDetails?.emailId" class="flex al-item-cen"
+                  (click)="goToMail(profileDetails?.emailId)">
+                  <div style="width: 10%;"><img class="mailD" src="assets/imgs/mail id.svg" /></div>
+                  <div class="font0-9 text-white padding-left10 mailEllipsis">{{profileDetails?.emailId}}</div>
+                </div>
+
+                <div *ngIf="profileDetails?.personalNumber" class="flex al-item-cen"
+                  (click)="call(profileDetails?.personalNumber)">
+                  <div class="width10">
+                    <img class="mailD" src="assets/imgs/personal no.svg" />
+                  </div>
+                  <div class="font0-9 text-white padding-left10 width90">{{profileDetails?.personalNumber}}</div>
+                </div>
+
+
+                <div *ngIf="profileDetails?.myExtension" class="flex al-item-cen"
+                  (click)="call(profileDetails?.myExtension)">
+                  <div class="width10">
+                    <img class="mailD" src="assets/imgs/office no.svg" />
+                  </div>
+                  <div class="font0-9 text-white padding-left10 width90">{{profileDetails?.myExtension}}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </ion-card>
+  </div>
+
+  <div>
+    <ion-slides id="slides" #ionSlides (ionSlideWillChange)="slideChanged()" pager>
+      <ion-slide *ngFor="let profiles of profileDetails?.userProfiledetails;index as j">
+        <div class="slideContainer">
+          <div class="cardHeading">
+            <div color="black_20">{{profiles.key}}</div>
+            <div class="" *ngIf="profiles.key == 'Personal' ">
+              <img class="" src="assets/imgs/Edit.svg" (click)="gotToEditProfile(profiles)" />
+            </div>
+          </div>
+          <div class="keyBorder"></div>
+
+          <ion-card *ngIf="profiles.key !='Records' && profiles.key !='Skills' && profiles.key !='ZenDeavor Profile'"
+            class="profile-details-card" text-left>
+            <div *ngFor="let profileItem of profiles.value" [ngSwitch]="profileItem.key">
+
+              <div [class.isRequested]="profileItem.hasRequested">
+                <div class="infoContent width100per">
+                  <div class="width25">
+                    <img class="infoImg" [src]="profileItem.icon" />
+                  </div>
+                  <div class="width74" (click)="action(profileItem)">
+                    <div class="column">
+                      <div class="text-grey font0-9">{{profileItem.key}}</div>
+
+                      <span class="text-black  font1em" *ngSwitchCase="'email'"
+                        [innerHTML]="profileItem.value | linky"></span>
+
+                      <span [ngClass]="profileItem.hasRequested ?'isRequested' : 'text-black'" class="font1em"
+                        *ngIf="profileItem.type == 'date'">{{formatDate(profileItem.value)
+                        | date}}</span>
+
+                      <span class="font1em text-black" style="text-decoration: underline; color:#0E7AC7;"
+                        (click)="viewResume(profileItem.value)" *ngIf="profileItem.key == 'Resume'"> View Resume</span>
+
+                      <span *ngSwitchDefault><span
+                          *ngIf="profileItem.type != 'date' && profileItem.key != 'Resume'">{{profileItem.value
+                          || '-'}}</span></span>
+                    </div>
+                  </div>
+                  <div class="width8">
+                    <p float-right *ngIf="profileItem.type=='call' && profileItem.value !='' && profileItem.value !='-'"
+                      (click)="call(profileItem.value)">
+                      <ion-icon class="call-icon" name="call"></ion-icon>
+                    </p>
+                    <p float-right *ngIf="profileItem.showArrow" (click)="openDigitalIDModal()">
+                      <ion-icon class="call-icon" name="ios-arrow-forward"></ion-icon>
+                    </p>
+                  </div>
+                </div>
+                <div class="border-bottom"></div>
+              </div>
+            </div>
+            <div *ngFor="let projectList of profiles.projectList ; index as i">
+
+              <div *ngFor="let projectDetails of projectList.projectFieldList">
+                <div class="infoContent width100per" style="margin-top: 10px;">
+                  <div class="width25">
+                    <img *ngIf="projectDetails.key == 'Project'" class="infoImg" [src]="projectDetails.icon" />
+                  </div>
+                  <div class="width74">
+                    <div class="column">
+                      <div class="text-grey font0-9">{{projectDetails.key}}</div>
+                      <span>{{projectDetails.value}}</span>
+                    </div>
+
+                  </div>
+                </div>
+
+              </div>
+              <div *ngIf="profiles.projectList.length > i+1" class="border-bottom profileMargin"></div>
+            </div>
+          </ion-card>
+          <!-- records code starts -->
+
+          <ion-card padding *ngIf="profiles.key=='Records'" class="profile-details-card card-contents" text-left>
+
+            <div *ngFor="let profileItem of profiles.value" [ngSwitch]="profileItem.type">
+
+              <div class="displayItems" [class.isRequested]="profileItem.hasRequested">
+
+
+                <div class="width25">
+                  <img class="infoImg" [src]="profileItem.icon" />
+                </div>
+                <div class="width70">
+                  <div class="text-grey font0-9" style="font-size: 1em">{{profileItem.key}}</div>
+                  <div class="width100  text-black  font1em" (click)="action(profileItem)">
+
+                    <span *ngSwitchCase="'email'" [innerHTML]="profileItem.value | linky"></span>
+
+
+
+                    <span class="text-black  font1em" [ngClass]="{'myclass':profileItem.id==23}"
+                      (click)="openCalenderModel(profileItem)">{{profileItem.value
+                      || '-'}}
+                      <ion-icon class="padding-calender" name="calendar" *ngIf="profileItem.id=='23'"
+                        [ngClass]="{'display':profileItem.value==0}">
+                      </ion-icon>
+                    </span>
+
+                    <p float-right *ngIf="profileItem.type=='call' && profileItem.type !='' && profileItem.value !='-'"
+                      (click)="call(profileItem.value)">
+                      <ion-icon class="call-icon" name="call"></ion-icon>
+                    </p>
+                  </div>
+                </div>
+                <p float-right (click)="openAssetDetailsModal(profileItem.bandWidth)" *ngIf="profileItem.showArrow">
+                  <ion-icon class="call-icon" name="ios-arrow-forward"></ion-icon>
+                </p>
+              </div>
+              <div class="border-bottomRec" style="margin-left: 25%;"></div>
+            </div>
+          </ion-card>
+
+          <!-- Skill slide  -->
+          <ion-card class="profile-details-card card-contents padding8" text-left  *ngIf="profiles.key=='Skills'">
+            <div>
+              <div *ngFor="let skillItems of profiles.value">
+                <div style="margin-top: 10px;">
+
+
+                  <div class="skillBg text-grey font0-9">
+                    <div style="width: 24%;"><img class="infoImg" [src]="skillItems.icon" /></div>
+                    <div style="width: 60%; display: flex; justify-content: left; align-items: center;">
+                      {{skillItems.key}}
+
+                      <img class="skillUpdateIcon" *ngIf="skillItems.toolTip"
+                        (click)="skillUpdationMessage(skillItems,$event)" src="assets/imgs/new_information.svg" />
+
+                    </div>
+                    <div *ngIf="!skillItems.hasRequested" (click)="goToMySkills(skillItems,'add')" clear item-end
+                      class="skillsBtn"><img class="addImg" src="assets/imgs/Add_skill.svg" /></div>
+                  </div>
+
+                  <!-- messege to show when no primary/secondary skills added -->
+                  <div class="skillMsg" *ngIf="!skillItems.value">No {{skillItems.key}} added</div>
+
+                  <ion-row *ngFor="let skillDetails of skillItems.value index as i" (click)="goToMySkills(skillDetails)"
+                    [class.isRequested]="skillDetails.hasRequested" class="skillsBtm">
+
+                    <ion-row>
+                      <ion-col class="font1em">{{skillDetails.key}}</ion-col>
+                    </ion-row>
+                    <!-- <div class="clearfix"></div> -->
+
+                    <ion-row class="skillsDispFlex">
+                      <ion-col *ngIf="skillItems.key!= 'Certification'"
+                        [class.skillsExpertise]="!skillDetails.hasRequested">
+                        {{skillDetails.value}}</ion-col>
+
+                    </ion-row>
+
+
+                  </ion-row>
+                  <!-- <div class="border-bottomRec"></div> -->
+                </div>
+              </div>
+            </div>
+          </ion-card>
+
+          <ion-card  *ngIf="profiles.key=='ZenDeavor Profile'" class="profile-details-card card-contents"
+            text-left>
+
+            <div *ngFor="let profileItem of profiles.value" [ngSwitch]="profileItem.type">
+
+              <div class="displayItems" [class.isRequested]="profileItem.hasRequested">
+
+
+                <div class="width25">
+                  <img class="infoImg" [src]="profileItem.icon" />
+                </div>
+                <div class="width70" (click)="openZendeavorProfile(profileItem)">
+                  <div class="text-grey font0-9" style="font-size: 1em">{{profileItem.key}}</div>
+                  <div class="width100  text-black  font1em">
+                    <span class="text-black  font1em">{{profileItem.value|| '-'}}
+                    </span>
+                  </div>
+                </div>
+                <p float-right *ngIf="profileItem.showArrow">
+                  <ion-icon class="call-icon" name="ios-arrow-forward"></ion-icon>
+                </p>
+              </div>
+              <div class="border-bottomRec" style="margin-left: 25%;"></div>
+            </div>
+          </ion-card>
+
+        </div>
+      </ion-slide>
+    </ion-slides>
+  </div>
+</ion-content>

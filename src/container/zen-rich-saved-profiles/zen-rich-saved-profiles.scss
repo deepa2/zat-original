@@ -1,0 +1,217 @@
+page-zen-rich-saved-profiles {
+    .bg-color {
+        background: #e7e8ee;
+    }
+    .selected {
+        border-bottom: 1px solid #0e7ac7;
+        font-weight: 600;
+    }
+    .opening-card {
+        margin: 10px;
+        border: 1px solid white;
+        border-radius: 7px;
+        background: #ffffff;
+
+        .job-wrapper {
+            display: flex;
+            padding: 10px 5px;
+        }
+        .save-job {
+            display: flex;
+            align-items: start;
+            //padding: 10px 5px;
+            ion-icon {
+                padding: 0px 8px;
+                font-size: 22px;
+                color: #6d6d6d;
+            }
+        }
+        .job-info {
+            width: 100%;
+            padding: 0 10px;
+            img {
+                height: 16px;
+                width: 16px;
+            }
+        }
+        .job-icon {
+            text-align: center;
+            margin-bottom: 10px;
+            flex-direction: column;
+            align-items: center;
+            background: linear-gradient(90deg, #79e893, #00c4c1);
+            color: #fff;
+            padding: 5px 0;
+            height: 50px;
+            font-size: 12px;
+            border-radius: 5px;
+            img {
+                height: 20px;
+                width: 20px;
+            }
+        }
+        .inr{
+            color: #00a200;
+        }
+        .job-footer {
+            display: flex;
+            justify-content: space-between;
+            border-top: 1px solid white;
+            background: #f5f9ff;
+            border-bottom-right-radius: 7px;
+            border-bottom-left-radius: 7px;
+            .experience {
+                padding: 5px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-left: 5px;
+                font-size: 12px;
+                font-weight: 300;
+                .experience-icon {
+                    width: 20px;
+                    margin-right: 10px;
+                }
+                img {
+                    height: 18px;
+                    width: 18px;
+                    margin-right: 5px;
+                }
+            }
+            .referral-Bonus {
+                padding: 5px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 60%;
+                img {
+                    height: 18px;
+                    width: 18px;
+                    margin-right: 5px;
+                }
+            }
+        }
+        .job-title,
+        .title {
+            font-size: 13px;
+            width: calc(100% - 35px);
+            white-space: normal;
+            // font-weight: 600;
+            color: #000000;
+        }
+        .info {
+            margin: 10px 0;
+            display: flex;
+            align-items: center;
+            font-size: 0.9em;
+            font-weight: 300;
+        }
+    }
+    .opening-card:nth-child(1) .job-icon {
+        background: linear-gradient(90deg, #79e893, #00c4c1);
+    }
+    .opening-card:nth-child(n + 2) .job-icon {
+        background: linear-gradient(90deg, #fe5897, #e459c6);
+    }
+    .opening-card:nth-child(n + 3) .job-icon {
+        background: linear-gradient(90deg, #c59dfe, #5b46dc);
+    }
+    .opening-card:nth-child(n + 4) .job-icon {
+        background: linear-gradient(90deg, #0fc1e7, #1e90ff);
+    }
+    .opening-card:nth-child(n + 5) .job-icon {
+        background: linear-gradient(90deg, #88a8ef, #4567c3);
+    }
+    .opening-card:nth-child(1n + 1) .job-icon {
+        background: linear-gradient(90deg, #79e893, #00c4c1);
+    }
+    .opening-card:nth-child(2n + 2) .job-icon {
+        background: linear-gradient(90deg, #fe5897, #e459c6);
+    }
+    .opening-card:nth-child(3n + 3) .job-icon {
+        background: linear-gradient(90deg, #c59dfe, #5b46dc);
+    }
+    .opening-card:nth-child(4n + 4) .job-icon {
+        background: linear-gradient(90deg, #0fc1e7, #1e90ff);
+    }
+    .opening-card:nth-child(5n + 5) .job-icon {
+        background: linear-gradient(90deg, #88a8ef, #4567c3);
+    }
+    .opening-card:nth-child(6n + 1) .job-icon {
+        background: linear-gradient(90deg, #fdcb5a, #ff861e);
+    }
+
+    .listImg {
+        height: 25px;
+        width: 25px;
+        margin: 5px;
+    }
+    .imgStyle {
+        height: 30px;
+        width: 30px;
+    }
+    .candidateName {
+        font-size: 1.1em;
+        text-transform: capitalize;
+    }
+
+    .profileImg {
+        border-radius: 50%;
+        height: 40px;
+        width: 40px;
+        margin-right: 10px;
+        padding: 2px;
+        border: 1px solid white;
+    }
+    .profilesection {
+        display: flex;
+        align-items: center;
+        margin: 10px 0;
+        padding-left: 5px;
+        color: white;
+    }
+    .profileConatiner {
+        padding: 5px;
+        font-size: 0.9em;
+        height: 75px;
+        background: linear-gradient(to right, #0ea2c8, #0e7ac7);
+    }
+    .tabContainer {
+        display: inline-block;
+        padding: 5px;
+        width: 50%;
+        text-align: center;
+    }
+    .noData {
+        text-align: center;
+        margin: 10px;
+        font-weight: 600;
+    }
+    .tab {
+        font-size: 0.9em;
+        background: white;
+        padding-top: 5px;
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+    .calWidth {
+        width: calc(100% - 15px);
+    }
+    .img-mar5 {
+        margin-right: 5px;
+    }
+    .tab-con{
+        padding: 10px;
+    }
+    .list{
+        border-radius: 7px;
+        overflow: hidden;
+        .item .item-inner {
+            border-bottom: 1px dotted #dedede;
+        }
+        ion-avatar img {
+            width: 50px;
+            height: 50px;
+        }
+    }
+}

@@ -1,0 +1,64 @@
+zenrich-star-points{
+  border-radius: 10px;
+  .close-icon{
+    text-align: right;
+    ion-icon{
+      margin: 10px;
+      color: #1586C7;
+      font-size: 25px;
+    }
+  }
+      .success-info{
+        text-align: center;
+        border-radius: 10px
+      }
+      .success{
+        font-size: 1.5em;
+        margin: 0 0 20px;
+        color: #1586C7;
+
+      }
+      ion-label.earned {
+        font-size: 16px;
+        color: #333333;
+        margin: 10px 0;
+      }
+      .success-wrap {
+        text-transform: uppercase;
+      }
+      ion-label.count{
+        font-size: 3em;
+        font-weight: bold;
+        color: #00C48C;
+        margin: 0;
+      }
+        @media only screen and (max-width: 767px) {
+            .md .modal-wrapper > .ion-page > ion-header > .toolbar.statusbar-padding:first-child {
+              padding-top: calc(20px + 4px) !important;
+              padding-top: calc(constant(safe-area-inset-top) + 4px) !important;
+              padding-top: calc(env(safe-area-inset-top) + 4px) !important;
+              min-height: calc(56px + 20px) !important;
+              min-height: calc(56px + constant(safe-area-inset-top)) !important;
+              min-height: calc(56px + env(safe-area-inset-top)) !important;
+            }
+          }
+}
+ion-modal.starModal {
+  // background: rgba(0 0 0 0.5);
+  ion-backdrop {
+    visibility: visible;
+    opacity: 0.6 !important;
+  }
+  .modal-wrapper {
+    width: 90%;
+    height: 65vh;
+    max-height: 470px;
+    margin: 0;
+    background: #fff;
+    border-radius: 10px;
+    transform: translate(-50%, -50%) !important;
+    position: relative;
+    left: 50%;
+    top: 50%;
+  }
+}

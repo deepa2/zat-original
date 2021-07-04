@@ -1,0 +1,101 @@
+<!--
+  Generated template for the ApplyjobPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Apply</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="presentOptions($event)">
+        <ion-icon name="more"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <!-- <div padding *ngIf="loading$ | async">
+    <ion-spinner></ion-spinner>
+  </div> -->
+  <div *ngIf="!(loading$ | async) ">
+    <div style="font-size: 1.2em;
+    margin-left: 2%;
+    border-bottom: 1px solid;">{{type}}</div>
+    <div style="padding-top: 10px">
+      <ion-grid>
+        <ion-row *ngFor="let details of personalDetails">
+          <ion-col col-6>
+            {{details.key}}
+          </ion-col>
+          <ion-col col-6>
+            {{details.value}}
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+      <ion-textarea #inputToFocus style="min-height:150px" name='addText' required placeholder="What makes you perfect for this position? "
+        [(ngModel)]="addText">
+      </ion-textarea>
+      <!-- <div *ngIf="showDownload" style="padding-top: 7px">
+        <div style="display: flex;
+        background: #eceaea;
+        height: 30px;
+        align-items: center;border-radius: 3px;">
+         
+          <ion-grid>
+            <ion-row>
+              <ion-col col-5>
+                <span style="padding: 5px">Zensar CV format</span>
+              </ion-col>
+              <ion-col col-7>
+                <div style="display: flex;">
+                  <span class="download" (click)="downloadResume()"><span>Download</span>
+                  </span>
+                  <span class="downloadIcon"><img class="down-img" src="assets/imgs/Download.svg"></span>
+                </div>
+
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </div>
+      </div> -->
+      <div style="padding-top: 7px">
+        <div style="display: flex;
+      background: #eceaea;
+      height: 30px;
+      align-items: center;
+      border-radius: 3px;">
+          <!--  <img class="passwordImg" src="assets/imgs/attach.svg" style="height: 20px;
+              width: 20px;" (click)="uploadDoc()"> -->
+          <ion-grid>
+            <ion-row>
+              <ion-col col-5>
+                <span style="padding: 5px">Upload resume</span>
+              </ion-col>
+              <ion-col col-7>
+                <div style="display: flex;">
+                  <span class="upload" (click)="uploadDoc()"><span style="padding: 10px;">Upload</span></span>
+                  <span class="uploadIcon"><img class="down-img" src="assets/imgs/Upload.svg"></span>
+                </div>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+
+
+        </div>
+      </div>
+
+
+    </div>
+
+  </div>
+  <div *ngIf="!(loading$ | async) && isDataAvailable" class="justify-cont-center"> <button ion-button
+      class="margin3per border-radius20 width60" style="border-radius: 50px;" (click)="submitForm()">Submit</button>
+  </div>
+
+</ion-content>

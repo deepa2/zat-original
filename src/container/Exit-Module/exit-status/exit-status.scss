@@ -1,0 +1,100 @@
+page-exit-status {
+    .exit-status {
+        background: #eff3ff;
+        margin: 7px 7px 2px;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+    }
+    .exit-status-Sub {
+        display: flex;
+        margin: 0px 6px;
+    }
+    .exit-status-container {
+        padding: 5px 10px;
+    }
+    .exit-status-flex {
+        display: flex;
+        align-items: center;
+    }
+    .exit-status-imgMargin {
+        margin-right: 5px;
+    }
+    .exit-status-subContainer {
+        width: 50%;
+        padding: 10px;
+        margin-right: 1px;
+        margin-left: 1px;
+        background: #e1e8ff;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .exit-sub-left {
+        margin-left: 1px;
+        border-bottom-right-radius: 5px;
+    }
+    .exit-sub-right {
+        margin-right: 1px;
+        border-bottom-left-radius: 5px;
+    }
+    .exit-status-subContainer-left {
+        float: left;
+        width: 50%;
+        display: flex;
+        align-items: center;
+    }
+    .exit-status-subContainer-right {
+        display: flex;
+        align-items: center;
+    }
+    .exit-status-checklist {
+        padding: 7px;
+    }
+    .exit-status-checklist-container {
+        display: flex;
+        align-self: center;
+        justify-content: space-between;
+        padding: 10px;
+    }
+    .exit-status-departments {
+        padding: 10px;
+
+        border: 1px solid #e5efff;
+        border-radius: 5px;
+    }
+    .exit-status-departments-info {
+        padding: 12px 0;
+    }
+
+    .underlinedText {
+        text-decoration: underline;
+        color: #0e7ac7;
+    }
+    .text-font {
+        font-weight: 600;
+    }
+    .ft-300 {
+        font-weight: 300;
+    }
+    .note {
+        padding: 0px 10px 10px 25px;
+        color: #0e7ac7;
+    }
+    .heading-width {
+        width: 165px;
+    }
+    .checklist {
+        height: 30px;
+        background: #0e7ac7;
+        text-align: center;
+        color: #fff;
+        border-radius: 25px;
+        display: flex;
+        align-items: center;
+        padding: 5px;
+    }
+    .faq {
+        display: flex;
+        align-items: center;
+    }
+}

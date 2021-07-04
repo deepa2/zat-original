@@ -1,0 +1,86 @@
+<!-- <ion-header>
+    <ion-navbar>
+      <ion-title class="pageTitile">Version History</ion-title>
+    </ion-navbar>
+  </ion-header> -->
+
+<ion-header>
+    <ion-navbar>
+        <ion-title class="pageTitile">Version History</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content class="gray-bg">
+    <div class="associateHead" *ngIf="versionData">
+        <div class="app-info">
+            <div class="profile">
+                <img src="assets/imgs/talent-logo-blue.svg" alt="taz icon" />
+            </div>
+            <div class="associateDetails">
+
+                <div class="user-name">{{appInfo?.title}}</div>
+
+                <div class="user-info">
+                    <div class="info-lable">Business Owner</div>
+                    <div class="user-info-value"><span>{{appInfo?.businessOwners}}</span></div>
+                </div>
+                <div class="user-info">
+                    <div class="info-lable">IT Owner</div>
+                    <div class="user-info-value">{{appInfo?.itOwners}}</div>
+                </div>
+            </div>
+            
+
+        </div>
+        <div class="version-info-con">
+            <div class="version-info">
+                <img src="assets/imgs/Version.svg" />
+                <div>
+                    <div class="version-title">Version</div>
+                    <div class="version-value">{{appInfo?.currentVersion}}</div>
+                </div>
+            </div>
+            <div class="version-info">
+                <img src="assets/imgs/AppStore.svg" />
+                <div>
+                    <div class="version-title">IOS</div>
+                    <div class="version-value">{{appInfo?.appStoreDownloads}}</div>
+                </div>
+            </div>
+            <div class="version-info">
+                <img src="assets/imgs/PlayStore.svg" />
+                <div>
+                    <div class="version-title">Android</div>
+                    <div class="version-value">{{appInfo?.playStoreDownloads}}</div>
+                </div>
+            </div>
+            <div class="version-info">
+                <img src="assets/imgs/Downloads.svg" />
+                <div>
+                    <div class="version-title">Downloads</div>
+                    <div class="version-value">{{appInfo?.totalDownloads}}</div>
+                </div>
+            </div>
+
+        </div>
+        <div *ngIf="versionData" class="versionData">
+
+            <div>
+                <ion-list class="list">
+                    <div class="content-margin" *ngFor="let item of releaseData">
+                        <div class="item-release">
+                            <div class="justify-cont-space-btw width100 release-info">
+                                <div class="color-Appdefault bold">{{item?.key}}</div>
+                                <div class="date-color fontp8em">{{item?.date }}</div>
+
+                            </div>
+                            <div class="whats-new" [innerHTML]="item?.value"></div>
+                        </div>
+                        <!-- <hr> -->
+
+                    </div>
+                </ion-list>
+            </div>
+        </div>
+        </div>
+</ion-content>

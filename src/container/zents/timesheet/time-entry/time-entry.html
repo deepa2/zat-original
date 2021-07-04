@@ -1,0 +1,88 @@
+<ion-header class="ts-header">
+  <ion-navbar>
+    <ion-title>{{pageTitle}}</ion-title>
+    <button ion-button icon-only clear (click)="getMonthwiseCompliancePercentage(months?.lastMonth,'lastMonth')">
+      <img src="assets/zents-imgs/calendar_white_icon.svg" />
+      <span>
+        {{utility.toTitleCase(months?.lastMonth?.substring(0, 3))}}
+      </span>
+    </button>
+    <div class="divider"></div>
+    <button class="current-month" ion-button icon-only clear
+      (click)="getMonthwiseCompliancePercentage(months?.currentMonth,'currentMonth')">
+      <img src="assets/zents-imgs/calendar_white_icon.svg" />
+      <span>{{utility.toTitleCase(months?.currentMonth?.substring(0, 3))}}</span>
+    </button>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+  <div class="timeEntry">
+    <div class="timeEntry-dates" *ngIf="calendarDates">
+      <ion-slides slidesPerView="6.2" dir="rtl">
+        <ion-slide *ngFor="let d of calendarDates;" (click)="onDateSelect(d)">
+          <ion-card [ngClass]="{'blur': d.isRejectedTimesheet == true, 'sel-date-bg': selectedDate == d.date}">
+            <span>{{datePipe.transform(d.date,'d')}}</span>
+            <p>{{d.day}}</p>
+          </ion-card>
+        </ion-slide>
+      </ion-slides>
+    </div>
+    <div class="hour-details" *ngIf="timesheetData">
+      <div>
+        <strong *ngIf="data?.loginDetails">In : </strong>
+        <span class="time">{{data?.loginDetails?.logInTimeHrsMin}} </span>
+        <strong class="padding-left-8" *ngIf="data?.loginDetails">Out : </strong>
+        <span class="time">{{data?.loginDetails?.logOutHrsMin}} </span>
+        <span class="time" *ngIf="data?.loginDetails">({{data?.loginDetails?.efforts}})</span>
+      </div>
+      <div class="submitBtn">
+        <button ion-button round small [disabled]="tsFlags?.disableSubmit"
+          (click)="showSubmitConfirmAlert(timesheetData.taskAndTimesheetDetails)">Submit</button>
+      </div>
+    </div>
+    <div class="timesheet-body">
+      <div class="timesheet-details" text-left
+        *ngFor="let timesheet of timesheetData?.taskAndTimesheetDetails;let i=index;">
+        <div class="project-name">
+          <span>{{utility.toTitleCase(timesheet.title)}}</span>
+        </div>
+        <span *ngFor="let task of timesheet.taskList"> 
+          <app-list-item [type]="data?.type" [taskData]="task" [timesheetData]="timesheet" [projIndex]='i'
+            [isTimesheetEditable]="timesheetData?.isTimesheetEditable"
+            [isPayrollToBeFilledZeroHours]="canFillZeroHoursFlag()"
+            (edit)="editAndSaveTimesheet($event,task,timesheetData?.taskAndTimesheetDetails)"
+            (open)="presentEditModal(task,timesheet,timesheetData?.taskAndTimesheetDetails)" (delete)="deleteTimesheet(task, timesheetData?.taskAndTimesheetDetails)" (refresh)="refreshTimesheet()">
+          </app-list-item>
+        </span>
+      </div>
+      <div padding text-center class="noTimesheetMsg"
+        *ngIf="timesheetData == 'null' || (timesheetData && timesheetData.taskAndTimesheetDetails.length == 0 && !tsFlags?.showZencoreMigratedMessage)">
+        There are no filled timesheets/tasks for the selected date.
+        <div class="inner-div">
+          click on <div class="add"> + </div> to add task.
+        </div>
+      </div>
+      <div padding class="migratedMsg"
+        *ngIf="timesheetData && timesheetData?.taskAndTimesheetDetails.length == 0 && tsFlags?.showZencoreMigratedMessage">
+        Your task for {{data.projectMigratedData.projectName}} are now being managed from ZenCore platform
+        effective {{data.projectMigratedData.zencoreMigratedDate}}.
+        Please get in touch with your manager to get task assigned in ZenCore.
+      </div>
+    </div>
+  </div>
+
+  <span class="ts-fab">
+    <ion-fab right bottom>
+      <button ion-fab (click)="openTimeEntryModal()">
+        <ion-icon name="apps"></ion-icon>
+      </button>
+      <button ion-fab (click)="addTask()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-fab>
+   
+  </span>
+
+</ion-content>

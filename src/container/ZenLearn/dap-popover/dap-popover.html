@@ -1,0 +1,23 @@
+<ion-label class="filter-font">Filter </ion-label>
+<ion-list>
+  <!-- <ion-item>
+    <ion-label>ALL</ion-label>
+    <ion-checkbox slot="start" [(ngModel)]="checkedAll" (click)="_selectAll()"></ion-checkbox>
+  </ion-item> -->
+
+  <ion-list *ngIf="!showAllFilters">
+    <ion-item *ngFor="let filter of filterArray.learningType"
+      [ngClass]="{'bottom-border': filter?.value == 'Behavioural'}">
+      <ion-label>{{filter?.value || 'N/A'}}</ion-label>
+      <ion-checkbox slot="start" [(ngModel)]="filter.checked"></ion-checkbox>
+    </ion-item>
+  </ion-list>
+  <ion-item *ngFor="let filter of filterArray.flowStatus" [ngClass]="{'bottom-border': filter?.value == 'Vlane'}">
+    <ion-label>{{filter?.value || 'N/A'}}</ion-label>
+    <ion-checkbox slot="start" [(ngModel)]="filter.checked"></ion-checkbox>
+  </ion-item>
+
+  <ion-buttons class="justify-cont-center">
+    <button ion-button class="filter-button" (click)="_applyChanges()">Apply</button>
+  </ion-buttons>
+</ion-list>

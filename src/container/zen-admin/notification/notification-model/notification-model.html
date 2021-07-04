@@ -1,0 +1,41 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>Notification/Announcements</ion-title>
+        <ion-buttons end>
+            <button class="btn-style" (click)="dismiss()" end>
+                <ion-icon name="close"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+<ion-content>
+    <div class="padding12">
+        <ion-item>
+            <ion-label  stacked color="primary">Subject</ion-label>
+            <ion-input type="text" placeholder="Subject Input" [(ngModel)]="subject"></ion-input>
+        </ion-item>
+
+        <div class="margin-btm-10">
+            <ion-label class="text-styl">Route</ion-label>
+            <ion-select placeholder="Select Route" interface="action-sheet" (ionChange)="onRouteChange($event)"
+                class="borderBottom margin10-rt-lf custom-select" style="max-width: 100%">
+                <ion-option [value]="item" *ngFor="let item of routes">{{item?.busRouteName}}</ion-option>
+            </ion-select>
+        </div>
+        <ion-item>
+            <ion-label color="primary" stacked>Email</ion-label>
+            <ion-textarea type="email"  rows="6"  placeholder="Email Input" [(ngModel)]="emailText"></ion-textarea>
+        </ion-item>
+    </div>
+</ion-content>
+<ion-footer>
+    <ion-toolbar>
+        <div class="space-btwn">
+            <ion-item>
+                <ion-label>Push Notification</ion-label>
+                <ion-checkbox color="dark" (ionChange)="checkboxClick($event)" checked="actionCheck"></ion-checkbox>
+            </ion-item>
+            <button ion-button round (click)="showConfirm()">Send</button>
+        </div>
+    </ion-toolbar>
+</ion-footer>

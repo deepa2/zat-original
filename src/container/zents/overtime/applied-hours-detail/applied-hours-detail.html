@@ -1,0 +1,38 @@
+<ion-header class="ts-header">
+
+  <ion-navbar>
+    <ion-title>Applied Hours Details</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="main">
+    <app-list-item [item]="data" [type]="dataObj?.type"></app-list-item>
+    <ion-list margin-top>
+        <span class="track">Track Status</span>
+        <ion-card *ngFor="let detail of dataObj?.overTimedetails;let i=index" no-margin>
+            <div class="profile-pic" item-start>
+              <img src="{{detail.profilePicURL}}" />
+            </div>
+            <div class="info">
+              <ion-label no-margin text-wrap>
+                <span class="name">{{detail.staffName}}</span>
+                <div class="type">{{detail.approverType}}</div>
+                <div class="status">Status: {{detail.status}}</div>
+              </ion-label>
+            </div>
+            <div class="icon">
+              <div *ngIf="detail.approverStatus == 1" class="image">
+                <img src="assets/zents-imgs/approve_unfill_tick.svg" />
+              </div>
+              <div *ngIf="detail.approverStatus == 2" class="image">
+                <img src="assets/zents-imgs/pending_icon.svg" />
+              </div>
+              <div *ngIf="detail.approverStatus == 3" class="image">
+                <img src="assets/zents-imgs/reject_icon.svg" />
+              </div>
+            </div>
+        </ion-card>
+      </ion-list>
+</ion-content>

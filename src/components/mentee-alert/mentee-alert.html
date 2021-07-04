@@ -1,0 +1,34 @@
+<ion-content>
+  <div class="mentee-item">
+    <img class="mentee-pic" [src]="menteeItem.profilePic">
+    <div class="mentee-info">
+      <div class="mentee-name">
+        {{menteeItem?.menteeName}}
+        <div class="dismissBtn" (click)="dismiss()">
+          <img src="assets/imgs/close_white.svg">
+        </div>
+      </div>
+      <div class="mentee-id">{{menteeItem?.menteeid}}<span class="status">{{menteeItem?.currentStatus}}</span></div>
+    </div>
+    
+  </div>
+  <div class="for-mentor-msg">
+    <ion-label>Message from your Mentee</ion-label>
+    <ion-label class="msg-text">{{information?.message}}</ion-label>
+  </div>
+  <div class="mentor-msg">
+    <ion-label>Message for your Mentee</ion-label>
+    <ion-textarea [(ngModel)]="mentorMsg">
+
+    </ion-textarea>
+  </div>
+</ion-content>
+
+<ion-footer>
+ 
+  <div  class="dismissBtn-parent">
+    <button ion-button round class="dismissBtn" (click)="sendAcceptance('accepted')">Accept</button>
+    <button ion-button round class="dismissBtn" (click)="sendAcceptance('rejected')">Reject Request</button>
+
+  </div>
+</ion-footer>

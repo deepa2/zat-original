@@ -1,0 +1,214 @@
+page-all-course-list {
+  .ftWT{
+    font-weight: 700;
+  }
+  .toolTipIcon{
+    margin-top: 2px;
+    margin-left: 4px;
+  }
+  .scroll-content {
+    background: #E4EBF3;
+}
+  .titleName {
+    font-size: 1.1em;
+    color: gray;
+    img {
+      width: 55px;
+    }
+  }
+  .course-title {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    img{
+      margin-top: 4px;
+  }
+}
+
+  .subTitle {
+    width: calc(100% - 60px);
+    font-size: 1em;
+    color: #213643;
+    padding: 2% 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  ion-label.course-title.label {
+    padding: 10px 10px 0;
+    font-size: 16px;
+  }
+  ion-label.view-all.label{
+    color: #0e7ac7;
+    padding: 10px 10px 0;
+    text-align: right;
+  }
+  
+  .font1p1 {
+    font-size: 1.1em;
+  }
+  .padding2-0 {
+    padding: 2% 0;
+  }
+  .padding-right8 {
+    padding-right: 8px;
+  }
+  .padding-top3per {
+    padding-top: 3%;
+  }
+  .ion-card {
+    width: calc(100% - 20px);
+    border-radius: 5px;
+    box-shadow: none;
+    background: #fff;
+    border: 1px solid #edf9fc;
+    display: flex;
+    align-items: self-end;
+    min-height: 150px;
+    margin: 0 0 10px 10px;
+    .card-data {
+      padding: 10px;
+    }
+  }
+  .title-con{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .view-all {
+      margin-right: 10px;
+      color: #1586C7;
+    text-decoration: underline;
+  }
+  }
+  .flex-justify-content-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .padding-bottom2per {
+    padding-bottom: 2%;
+  }
+  .font-weight500 {
+    font-weight: 500;
+  }
+  .color-gray {
+    color: gray;
+  }
+  .fontp9em{
+    font-size: .9em;
+  }
+  .nodata {
+    margin: 10px;
+    font-size: 1em;
+    background: white;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+  }
+  .image-style{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px;
+  }
+  .card-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left;
+    width: 100%;
+  }
+  .heading-color{
+    color: #383838;
+  }
+  .card-header.Online {
+    background: #e8ffe6;
+  }
+  .card-header.Classroom {
+    background: #f6f8ff;
+  }
+  .like-dislike-wrapper {
+    margin-top: 10px;
+  }
+  .practice-names {
+    margin-top: 10px;
+    span {
+      padding: 2px 5px;
+      margin: 0 2px;
+    }
+  }
+  .loader {
+    background: #fff;
+    text-align: center;
+    margin: 0 10px;
+    img {
+      height: 100px;
+  }
+  }
+  ion-icon {
+    display: inline-block;
+    font-size: 1.2em;
+    margin-left: 5px;
+}
+.card-header {
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.V.Learn {
+  background: #fffaee;
+  span.learning-type {
+    background: #f5c656;
+  }
+  span.learning-type::before {
+    width: 0;
+    height: 0;
+    content: "";
+    border-style: solid;
+    border-width: 9px 0 9px 9px;
+    border-color: transparent transparent transparent #fffaee;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+  }
+}
+.Classroom {
+  background: #f6f8ff;
+  span.learning-type {
+    background: #8db0f9;
+  }
+}
+.Online {
+  background: #e8ffe6;
+  span.learning-type {
+    background: #63d69b;
+  }
+}
+.card-data {
+  padding: 5px;
+}
+.card-header {
+  background: #b8edef;
+}
+
+.like-dislike-wrapper {
+  display: flex;
+  color: #929292;
+  margin-top: 10px;
+  img {
+    width: 30px;
+    margin-right: 5px;
+  }
+  .like,
+  .dislike {
+    display: flex;
+    align-items: center;
+    margin-right: 15px;
+  }
+}
+}

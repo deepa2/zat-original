@@ -1,0 +1,21 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>Reports</ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content class="contanier-bg">
+
+    <div *ngIf="!loaderOn && reportList?.length <= 0" class="no-data">No Data Available</div>
+
+    <ion-card *ngFor="let item of reportList" class="card-desn" (click)="movetoReortModel(item?.reportTitle)">
+        <div class="align-cont-cent">
+            <span class="reprt-icon-styl"><img src="assets/imgs/{{item?.reportIcon}}" /></span>
+            <span class="title-styl">{{item?.reportTitle}}</span>
+        </div>
+        <div class="date-list-styl">
+            <span><img src="assets/imgs/reprtGenrate.svg" /></span>
+            <span class="genrate-styl">Last Report Genrated On:</span>
+            <span class="date-styl">{{item?.reportDate}}</span>
+        </div>
+    </ion-card>
+</ion-content>

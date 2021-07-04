@@ -1,0 +1,88 @@
+page-exit-dashboard {
+    .exit-Details-Conatiner {
+        padding-top: 15px;
+        height: 80%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border: 1px thin;
+        border: 1px solid #e5efff;
+        border-radius: 5px;
+    }
+    .exit-Dashboard-Img-Conatiner {
+        height: 85%;
+        img {
+            height: 100%;
+            width: 100%;
+        }
+    }
+    .exit-Dashboard-Dates-Conatiner {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .exit-Resigned {
+        display: flex;
+        align-items: center;
+        img {
+            margin: 10px;
+        }
+    }
+    .exit-FW {
+        font-weight: 300;
+    }
+    .exit-ResignedColor {
+        color: #0e7ac7;
+        font-weight: 600;
+    }
+    .exit-LwdColor {
+        color: #f95454;
+        font-weight: 600;
+    }
+    .personalDetails {
+        background: url("../assets/ZenExit-Imgs/personalBG.svg") no-repeat;
+        background-size: cover;
+        background-position: 100% 100%;
+    }
+    .exit-sub-details {
+        height: 20%;
+        display: flex;
+        margin-top: 10px;
+        align-items: flex-start;
+    }
+    .personal-container {
+        width: 50%;
+        margin-right: 2px;
+    }
+    .exit-tracker {
+        width: 50%;
+        margin-left: 2px;
+    }
+    //    .person-details {
+    //     display: flex;
+    //     align-items: center;
+    //     flex-direction: column;
+    //     justify-content: center;
+    // }
+    // .personal-detailed-data {
+    //     display: flex;
+    //     align-items: center;
+    //     flex-direction: column;
+    //     position: absolute;
+    //     color: #fff;
+    // }
+
+    .person-details {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .person-details-container {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        position: absolute;
+        color: #fff;
+    }
+}

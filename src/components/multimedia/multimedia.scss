@@ -1,0 +1,115 @@
+multimedia {
+  .cut-text {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 160px;
+    height: 1.2em;
+    white-space: nowrap;
+  }
+
+  .post-img-one {
+    div {
+      width: 100%;
+      &:nth-child(2) {
+        margin-top: 4px;
+      }
+      &:nth-child(3) {
+        margin-top: 4px;
+      }
+    }
+  }
+
+  .post-img-three div {
+    &:nth-child(1) {
+      width: 100% !important;
+    }
+    &:nth-child(2) {
+      margin-right: 4px;
+    }
+    &:nth-child(3) {
+      margin-right: 0px;
+    }
+  }
+
+  .post-img-four div:nth-child(2) img:nth-child(1) {
+    padding-bottom: 3px;
+  }
+
+  .wrap {
+    width: calc(50% - 4px);
+    display: inline-block;
+    margin-right: 4px;
+    margin-bottom: 4px;
+    vertical-align: top;
+  }
+
+  .grumpy-image-wrapper1 {
+    width: 100%;
+    height: 0;
+    padding-bottom: 77%;
+    position: relative;
+  }
+
+  .grumpy-image {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    display: block;
+    max-width: 100%;
+    max-height: 100%;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    margin-top: 0;
+  }
+
+  .loader-wrapper {
+    background-color: color($colors, light);
+  }
+
+  .image-wrapper {
+    object-fit: fill;
+    background-size: cover;
+    background-position: 50% 50%;
+  }
+
+  .imageName,
+  .downloadIcon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .downloadIcon {
+    font-size: 20px;
+  }
+
+  .listImages {
+    background-color: color($colors, light);
+  }
+
+  .multimediaImg {
+    opacity: 0.5;
+  }
+
+  .searchIcon {
+    width: 21px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .loader-wrapper {
+    background-color: rgba(0, 0, 0, 0.9);
+  }
+  .button-md .gallery-modal .close-button{
+    top: 25px;
+  }
+  .image-container{
+    width:100%;
+    height: 100%;
+  }
+}

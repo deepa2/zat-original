@@ -1,0 +1,76 @@
+page-exit-faq {
+    .faq-conatiner {
+        background: #eff3ff;
+        width: 100%;
+        padding: 10px;
+        overflow: auto;
+        font-size: 1.1em;
+    }
+    .faq-conatiner-left {
+        width: 50%;
+        float: left;
+        display: block;
+    }
+    .faq-conatiner-right {
+        width: 50%;
+        float: right;
+    }
+    .faq-bottom {
+        display: flex;
+        flex-direction: column;
+        font-weight: 600;
+        padding-left: 50px;
+        padding-right: 50px;
+        color: #054a73;
+    }
+    .faq-text {
+        text-align: center;
+    }
+    .faq-bottom-conatiner {
+        display: flex;
+        margin: 5px;
+        align-items: center;
+        justify-content: center;
+        font-weight: 600;
+    }
+
+    .search-box {
+        padding: 5px;
+        display: flex;
+        align-items: center;
+        background: #fff;
+        border: 1px solid lightgrey;
+        border-radius: 5px;
+    }
+    .input-props {
+        width: 90%;
+        border: 0;
+        //height: 35px;
+        // background: #ffff;
+        // border-radius: 5px;
+        // border: 1px solid lightgray;
+        padding: 5px;
+    }
+    .no-data {
+        text-align: center;
+        margin: 20px;
+        font-weight: 600;
+    }
+    .text-style {
+        height: 20px;
+        background: #0e7ac7;
+        padding: 5px;
+        display: flex;
+        align-items: center;
+        border-radius: 25px;
+        color: #fff;
+    }
+    ion-icon {
+        display: inline-block;
+        font-size: 1.4em;
+    }
+    .search-container {
+        background: #eff3ff;
+        padding: 5px;
+    }
+}

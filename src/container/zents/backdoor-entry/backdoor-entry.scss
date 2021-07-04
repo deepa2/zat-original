@@ -1,0 +1,22 @@
+page-backdoor-entry {
+    .border{
+        border: 1px solid #989aa2;
+    }
+    .smallBtn{
+        display: flex;
+        justify-content: center;
+    
+        button{
+            padding: 5%;
+            border-radius: 50px;
+            width: 40%;
+            color:white;
+            background-color: #86888f;
+        }
+        
+        .active{
+            color: white;       
+            background-color: #444;
+        }
+    }
+}

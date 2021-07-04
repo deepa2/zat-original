@@ -1,0 +1,50 @@
+page-vision {
+    ion-header{
+        background-color: white;
+        // ion-segment-button{
+        //     text-transform: capitalize !important;
+        // }
+    }
+    .vision_content{
+        background-color: #ebebeb;
+        ion-card{
+            border-radius: 5px;
+            box-shadow: none;
+            p{
+                color: #0E7AC7;
+            }
+            img{
+                border-radius: 5px;
+                margin-top: 10px;
+            }
+            .emailAddr{
+                padding-top: 10px;
+                a{
+                    text-decoration: none;
+                    color: #0E7AC7;
+                }
+            }
+            read-more{
+                .chat-list{
+                    background-color: white;
+                    box-shadow: none;
+                    padding: 0;
+                }
+            }
+        }
+        .zenwenVision{
+            p{
+                color:#666;
+                white-space: initial !important;
+                margin-top : 5px; 
+            }
+           
+        }
+    }
+    .segment-md .segment-button {
+        border-bottom-color: transparent;
+    }
+    b, strong{
+        color: #222;
+    }
+}

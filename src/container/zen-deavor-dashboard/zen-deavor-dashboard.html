@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Dashboard</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <!-- for demo purpose use this code -->
+  <!-- <div *ngIf="userID=='47375'">
+ <ion-card style="margin-top: 5px;" [ngClass]="{'bgKraImgCard':dashboardItem.value == 'KRA','bgAppraisalImgCard': dashboardItem.value == 'Appraisal',
+ 'bgAppraiserImgCard': dashboardItem.value == 'Appraiser'}" [hidden]="(dashboardItem.value == 'Appraisal')" *ngFor="let dashboardItem of responseList; index as i">
+ <kralist [item]="dashboardItem" (goToKra)="goToKRA(dashboardItem.value,dashboardItem.role,$event,dashboardItem.offerList[i])"></kralist>
+ </ion-card>
+ </div> -->
+
+  <!-- for production use this code -->
+  <div>
+    <ion-card [ngClass]="{'bgKraImgCard':dashboardItem.dashboardId == '1','bgAppraisalImgCard': dashboardItem.dashboardId == '2',
+  'bgAppraiserImgCard': dashboardItem.dashboardId == '3', 'bgReviewerImgCard' : dashboardItem.dashboardId == '4',
+  'bgConsultationImgCard' : dashboardItem.dashboardId == '5'}" *ngFor="let dashboardItem of responseList; index as i">
+      <kralist [item]="dashboardItem"
+        (goToKra)="goToKRA(dashboardItem.dashboardId,dashboardItem.role,$event,dashboardItem.offerList[i])"></kralist>
+    </ion-card>
+
+  </div>
+</ion-content>

@@ -1,0 +1,20 @@
+<ion-header class="ts-header">
+
+  <ion-navbar>
+    <ion-title>Applied Hours List</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="main">
+  <span *ngIf="dataObj?.showData && dataObj?.appliedHourData.length > 0">
+    <span *ngFor="let item of dataObj?.appliedHourData" (click)="goToNextPage(item)">
+      <app-list-item [item]="item" [type]="dataObj?.type"></app-list-item>
+    </span>
+  </span>
+
+  <div text-center padding *ngIf="dataObj?.showData && dataObj?.appliedHourData.length == 0">
+    <p>No records to show.</p>
+  </div>
+</ion-content>

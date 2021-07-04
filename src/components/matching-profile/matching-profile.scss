@@ -1,0 +1,39 @@
+matching-profile {
+    .card-md {
+        margin: 3px;
+        border-radius: 5px;
+        width: calc(100% - 6px);
+        background-color: #e4f3ff;
+        box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 0px 1px -5px rgba(0, 0, 0, 0.2), 0 1px 0px 0 rgba(0, 0, 0, 0.12);
+    }
+
+    .referral-detail > div {
+        padding: 5px 0;
+    }
+
+    .referral-detail :nth-child(odd),
+    .referral-header :nth-child(odd) {
+        color: #858688;
+    }
+
+    .gridp8-1 {
+        display: grid;
+        grid-template-columns: 0.8fr 1fr;
+    }
+
+    .more-referral {
+        color: #1586c7;
+        font-size: 15px;
+        margin: 5px;
+        text-decoration: underline;
+    }
+    .img30 {
+        height: 30px;
+        width: 30px;
+    }
+    .width90 {
+        margin: auto;
+        border: 1px solid;
+        border-color: white;
+    }
+}

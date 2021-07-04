@@ -1,0 +1,27 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title class="pageTitle">Notifications</ion-title>
+    <ion-buttons end>
+      <button *ngIf="notificationCount > 0" class="clear" ion-button icon-only (click)="readAll()">
+        Mark As Read
+      </button>
+
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+
+  <ion-spinner *ngIf="loading$ | async"></ion-spinner>
+
+  <div text-center *ngIf="!(loading$ | async) && itemsLength == 0">No results found</div>
+
+  <query-list (gotToDetail)="gotToListDetail($event)" [type]="type" [items]="notificationList$"></query-list>
+
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+</ion-content>

@@ -1,0 +1,101 @@
+<!--
+  Generated template for the BusPassPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+    <ion-navbar>
+        <ion-title>Bus Pass</ion-title>
+        <ion-buttons end>
+            <ion-select [(ngModel)]="bookingStatus" class="status-select" [selectOptions]="selectOptions" (ionChange)="onFilterChange()">
+                <ion-option value="All">All</ion-option>
+                <ion-option value="Approved">Approved</ion-option>
+                <ion-option value="Cancelled">Cancelled</ion-option>
+            </ion-select>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+<ion-content class="ion-container">
+    <div *ngIf="!showNoPasstxt">
+        <div class="ticket-parent" *ngFor="let busDetailsItem of busDetails;let i = index;" [ngClass]="{'first-container': i==0}">
+            <div class="date-container">
+                <div>
+                    <img class="calendar-icon" src="assets/zenAdmin/calendar-img.svg" />
+                </div>
+                <div>
+                    <div class="dateValue">{{busDetailsItem.monthYear}}</div>
+                </div>
+            </div>
+            <div>
+                <div *ngFor="let busItem of busDetailsItem.busPassDetailDOs">
+                    <ion-card color="light" class="ion-card ion-text-center post-relative marginBottom-10" (click)="moveToPassDetails(busItem?.busPassId)">
+                        <div class="display-flex bus-info-container">
+                            <div class="display-flex bus-id-container">
+                                <div class="width40px"><img class="bus-icon" src="assets/zenAdmin/bus-pass-id.svg" /></div>
+                                <div class="bus-id-details">
+                                    <div class="colorGrey busIDText">BusPass ID</div>
+                                    <div class="bus-passId">{{busItem?.busPassId}}</div>
+                                </div>
+                            </div>
+                            <div class="display-flex monthly-pass-container">
+                                <div class="width40px"><img class="calendar-icon" src="assets/zenAdmin/monthly-pass.svg" /></div>
+                                <div class="bus-validity-container">
+                                    <div class="dateValue colorGrey monthly-pass-title">{{busItem?.passType}} Pass<span class="auto-renew-text" *ngIf="busItem?.passType=='Monthly'">(AutoRenew)</span></div>
+                                    <div class="month-pass-date">{{busItem?.busPassValidity}}</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="profile-wrapper"></div>
+                        <div class="container-items">
+                            <div class="route-pic">
+                                <img class="route-img" src="assets/zenAdmin/route-icon.svg" />
+                            </div>
+                            <div class="route-name">
+                                <div class="associate-name colorGrey">Route</div>
+                                <div class="key-value fontWeight">{{busItem.routeName}}</div>
+                            </div>
+                            <div class="filter-icon">
+                                <img *ngIf="busItem?.isCancelled" src="assets/zenAdmin/Cancelled.png" />
+                                <img *ngIf="!busItem?.isCancelled" src="assets/zenAdmin/Approved.png" />
+                            </div>
+                        </div>
+                        <div class="container-items pickup-point-card">
+                            <div class="route-pic">
+                                <img class="route-img" src="assets/zenAdmin/location.svg" />
+                            </div>
+                            <div class="pick-up-point">
+                                <div class="associate-name colorGrey">Pickup/Drop Point</div>
+                                <div class="key-value fontWeight">{{busItem?.pickupPointName}}</div>
+                            </div>
+                            <div class="pickup-time-card">
+                                <div class="user-pic">
+                                    <img class="clock-img" src="assets/zenAdmin/clock-icon.svg" />
+                                </div>
+                                <div class="displayFlex-col width-100">
+                                    <span class="associate-name">{{busItem?.passSubType=='Drop'? '-':busItem?.arrivalTime}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </ion-card>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="showNoPasstxt">
+        <!-- No bus pass available. -->
+        <div class="add-float-with-bg-suggestion-text" *ngIf="!isFilterApplied">
+            Click on
+            <img class="add-float-with-bg-suggestion-icon" src="assets/zenAdmin/add-float-with-bg.svg" /> to add new
+            pass.
+        </div>
+        <div class="no-data" *ngIf="isFilterApplied && bookingStatus!='All'">No {{bookingStatus}} Pass Available.</div>
+    </div>
+    <ion-fab [ngClass]="{'customFab': isAvailableForFinalSubmit}" right bottom (click)="addNewPass('bus')">
+        <button ion-fab>
+            <ion-icon name="add"></ion-icon>
+        </button>
+    </ion-fab>
+</ion-content>

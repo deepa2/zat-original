@@ -1,0 +1,65 @@
+<div class="commentsModalheader" padding>
+  <div class="title">
+    Comments
+  </div>
+  <div class="cross-icon" (click)="closeModal()">
+    <ion-icon name="close"></ion-icon>
+  </div>
+</div>
+
+<div class="commentsModalContent" padding>
+  <form [formGroup]="addCommentForm" (ngSubmit)="onSubmit()">
+    <ion-list>
+      <ion-item no-lines *ngIf="type == 'post'">
+        <ion-label>To:</ion-label>
+        <ion-input formControlName="to" type="text"></ion-input>
+      </ion-item>
+      <ul *ngIf="userList" [ngStyle]="{'display': showList ? 'block' : 'none'}">
+        <li *ngFor="let user of userList | slice:0:9" (click)="setUser(user)">
+          <a>
+            {{ user?.userName }}
+          </a>
+        </li>
+      </ul>
+
+      <!-- <div class="ng-autocomplete">
+        <ng-autocomplete [data]="data" [searchKeyword]="keyword">
+        </ng-autocomplete>
+
+        <ng-template #itemTemplate let-item>
+          <a [innerHTML]="item.name"></a>
+        </ng-template>
+
+        <ng-template #notFoundTemplate let-notFound>
+          <div [innerHTML]="notFound"></div>
+        </ng-template>
+      </div> -->
+
+      <ion-item no-lines class="input-comment">
+        <ion-textarea formControlName="comment" type="text" placeholder="Write your comment..."></ion-textarea>
+      </ion-item>
+
+      <div class="SubmitBtn">
+        <!-- <img src="assets/zenwen-imgs/attach_image.svg" /> -->
+        <button ion-button color="secondary" round>Submit</button>
+      </div>
+    </ion-list>
+  </form>
+
+  <div class="comment-list" *ngIf="type == 'comment'">
+    <ion-item *ngFor="let comment of commentList">
+      <ion-avatar item-start>
+        <img src="{{imgUrl + comment?.profilePic}}" onerror="this.src='assets/imgs/dummy-profile.png'" />
+      </ion-avatar>
+      <div class="comment-section-card-content">
+        <h2>From : {{comment?.fullName}}</h2>
+        <p [innerHTML]="comment?.commentText | emoji"></p>
+        <ion-note>
+          {{dateConversion(comment?.postDate)}}
+        </ion-note>
+      </div>
+      
+    </ion-item>
+
+  </div>
+</div>

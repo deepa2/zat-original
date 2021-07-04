@@ -1,0 +1,87 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title class="pageTitile">Peer Learning</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content class="backgrnd-white">
+  <div class="assosiate-list-detail">
+    <div class="Dap-tab">
+      <div class="learming-info">
+        <div class="dap-item">
+          <div class="dap-con">
+            <img class="user-icon" src="{{peerData?.profilePic}}">
+            <div class="user-info-con">
+              <div class="user-info">
+                <label class="user-name">{{peerData?.menteeName}}</label>
+              </div>
+              <div class="user-info">
+                <label class="info-title">Mentor Name</label>
+                <label class="info-value">{{peerData?.mentorName}}</label>
+              </div>
+              <div class="user-info">
+                <label class="info-title">Milestone Date</label>
+                <label class="info-value">{{dateConversion(peerData?.milestoneDate)}}</label>
+              </div>
+              <div class="user-info">
+                <label class="info-title">Status</label>
+                <label class="info-value">{{peerData?.statusDescription}}</label>
+              </div>
+              <button *ngIf="peerData?.markComplete" class="mark-completed" (click)="markAsCompletedM()">Mark
+                Complete</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="msg-item" *ngFor="let item of peerData?.messageList">
+        <div class="msg-con">
+          <img class="dap-icon" src="{{item.profilePic}}">
+          <div class="sender-info">
+            <ion-label>{{item?.name}}</ion-label>
+            <ion-label class="msg-time">{{formateDate(item?.time)}}</ion-label>
+          </div>
+          
+          <!-- <ion-label *ngIf="i==0 && item.name==peerData.menteeName" class="mentee-status sent">Request Sent</ion-label>
+          <ion-label *ngIf="i==1 && !peerData.newRequest && item.name ==peerData.mentorName" class="mentee-status accepted">Request Accepted</ion-label>
+          <ion-label *ngIf="i==1 && peerData.newRequest && item.name ==peerData.mentorName"class="mentee-status calcelled">Request Cancelled</ion-label> -->
+        </div>
+        <div class="msg-text">{{item?.message}}</div>
+      </div>
+      <div *ngIf="newmessageList.length!=0">
+        <div class="msg-item" *ngFor="let item of newmessageList">
+          <div class="msg-con">
+            <img class="dap-icon" src="{{item.profilePic}}">
+            <div class="sender-info">
+              <ion-label>{{item?.name}}</ion-label>
+              <ion-label class="msg-time">{{formateDate(item?.time)}}</ion-label>
+            </div></div>
+          <div class="msg-text">{{item?.message}}</div>
+        </div>
+      </div>
+      
+      
+      <div class="msg-item" *ngIf="peerData?.newRequest">
+        <div class="msg-text">
+          <div>
+            Your request has cancelled.
+          </div>
+          <button ion-button class="btnStyle" (click)="newRequest()"> New Request</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <ion-footer style="background-color: white;">
+    <div class="button-conainer" *ngIf="peerData?.send">
+      <div class="button-con">
+        <img class="dap-icon" src="{{userData?.employeeProfilePic}}">
+        <ion-input type="text" [(ngModel)]="inputMsg"></ion-input>
+        <button (click)="sendMsg()">Send</button>
+      </div>
+    </div>
+    <div *ngIf="role == 'manager' && this.previousItem?.dapStatus" class="approveReject">
+      <button ion-button class="btnStyle" (click)="approveReject(false)"> Approve</button>
+      <button ion-button class="btnStyle" (click)="approveReject(true)"> Reject</button>
+    </div>
+
+  </ion-footer>
+</ion-content>

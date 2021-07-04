@@ -1,0 +1,222 @@
+page-rto-home {
+    .contentBackgroud {
+        background-color: #ebebeb;
+    }
+    .rtoCardHeader {
+        display: flex;
+        align-items: center;
+        padding: 0px;
+    }
+    .rtoHeadImage {
+        height: 45px;
+        width: 45px;
+        padding-left: 0px;
+    }
+    .rtoImage {
+        height: 45px;
+        width: 45px;
+        padding-left: 0px;
+    }
+    .cardPadding {
+        padding: 5px;
+    }
+    .combinedGridContent {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+    .rtoGridData {
+        display: flex;
+        align-items: center;
+        padding: 5px 5px 0px 5px;
+    }
+    .countryIcon {
+        height: 55px;
+        width: 55px;
+    }
+    .countryDetails {
+        padding: 8px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .countryFlex {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .arrImg {
+        height: 12px;
+        width: 12px;
+    }
+    .borderBtm {
+        border-bottom: 1px solid white;
+        margin-left: 8px;
+        margin-right: 8px;
+    }
+    .flexDisplay {
+        display: flex;
+        padding: 5px;
+        align-items: center;
+    }
+    .rtoGraph {
+        width: 60%;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .rtoGraphData {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: absolute;
+    }
+    .rtoPopulationIcon {
+        height: 40px;
+        width: 40px;
+    }
+    .rtoPoplutionData {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .width40 {
+        width: 40%;
+    }
+    .rtoBUWiseData {
+        display: flex;
+        margin-bottom: 10px;
+        padding: 5px;
+        align-items: center;
+        border-radius: 5px;
+    }
+    .rtoBUWiseDetails {
+        display: flex;
+        flex-direction: column;
+        margin: 4px;
+        width: 60%;
+        font-size: 0.8em;
+    }
+    .rtoEngagement {
+        display: grid;
+        grid-template-columns: 50% 35% 15%;
+        padding: 0px;
+    }
+    .rtoEngagementList {
+        display: flex;
+        align-items: center;
+        background: #e4edff;
+        margin: 2px;
+        border-radius: 5px;
+    }
+    .rtoEnagegmentFlex {
+        display: flex;
+        flex-direction: column;
+        padding: 5px;
+    }
+    .rtoEngagementImg {
+        height: 55px;
+        width: 55px;
+    }
+    .fontWeight600 {
+        font-weight: 600;
+    }
+    .fontWeight500 {
+        font-weight: 500;
+    }
+    .fontWeight600 {
+        font-weight: 600;
+    }
+    .textColor {
+        color: #ffffff;
+    }
+    .padding5 {
+        padding: 5px;
+    }
+    .font1em {
+        font-size: 1em;
+    }
+    .font9 {
+        font-size: 0.9em;
+    }
+    .mr5 {
+        margin: 5px;
+    }
+    .font8 {
+        font-size: 0.8em;
+    }
+    .margin1 {
+        margin: 4px;
+        color: #ffffff;
+    }
+    .border10 {
+        border-radius: 5px;
+    }
+    .fontStyle {
+        font-weight: 600;
+        font-size: 0.9em;
+    }
+    .bdIndia {
+        background: linear-gradient(to right, #c3b0ff, #ada1ff);
+    }
+    .bdUK {
+        background: linear-gradient(to right, #ffc157, #ffa961);
+    }
+    .bdUS {
+        background: linear-gradient(to right, #ffa88f, #ff8c82);
+    }
+    .bdSA {
+        background: linear-gradient(to right, #9beb93, #72dc67);
+    }
+    .rtoGraphIcon {
+        height: 30px;
+        width: 30px;
+    }
+    .corporate {
+        background: linear-gradient(to right, #8dc1ff, #afa1ff);
+    }
+    .ads {
+        background: linear-gradient(to right, #79e893, #00c4c1);
+    }
+    .cis {
+        background: linear-gradient(to right, #49cdff, #2eb9f8);
+    }
+    .cardSize {
+        margin: 0px;
+        width: 100%;
+    }
+    .cardHeader {
+        margin-left: 5px;
+        margin-top: 5px;
+    }
+    .circleImg {
+        height: 10px;
+        width: 10px;
+        display: inline-block;
+        border-bottom: 50%;
+        border-radius: 50%;
+    }
+    .mrLeft {
+        margin-left: 5px;
+    }
+    .mrRight {
+        margin-right: 5px;
+    }
+    .pd3 {
+        padding: 3px;
+    }
+    .txtColor {
+        color: #5288e9;
+    }
+    .populationHeader {
+        padding: 0px;
+        margin-left: 5px;
+        margin-top: 5px;
+    }
+    .toolTipImg {
+        height: 15px;
+        width: 20px;
+        margin: 2px;
+    }
+}

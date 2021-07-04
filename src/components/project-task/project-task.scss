@@ -1,0 +1,86 @@
+project-task {    
+    .iconify {
+        height: 2em;
+        width: 2em;
+    }
+
+    .formheader{
+        .form-group{
+            margin-bottom: 0;
+        }
+    }
+    .dateInput{
+        width: 75%;
+        border: none;
+    }
+
+    .borderColor{
+        width: 100%;
+        border-bottom: 1px solid $ts-tertiary !important;
+        padding-left: 0px;
+        font-size: 1em;
+    }
+
+    .dateBody{
+        width: 50%;
+        border: 1px solid #dee2e6;
+        padding: 5px;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+    .dateIcon{
+        float: right;
+        background: none;
+        font-size: 0.5em;
+    }
+    .formBody{
+        display: flex;
+        // padding: 4%;
+    }
+    .submitBtn{
+        button{
+            background-color: $ts-secondary;
+            color: white;
+            text-transform: capitalize;
+        }
+    }
+    .endDateError{
+        width: 50%;
+        margin-left: 50%;
+    }
+
+    //Newly added CSS
+    .list .item .item-inner{
+        border-bottom: none;
+        padding: 0 !important;
+    }
+    .error-msg{
+        color: red;
+        margin-top: 2px;
+        display: block;
+    }
+    ion-select{
+        width: 100%;
+        max-width: none;
+    }
+    .dateBorderColor{
+        border-bottom: 1px solid $ts-tertiary;  
+    }
+    .marginRight{
+        margin-right: 2%;
+    }
+    .remarks{
+        background-color: #F9FAFB;
+        border-radius: 5px;
+        border: 1px solid $ts-tertiary !important;
+    }
+    ion-textarea{
+        textarea.text-input{
+            margin: 13px !important;
+        }
+    }
+    ion-datetime{
+        font-size: 1em;
+    }
+}

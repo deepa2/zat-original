@@ -1,0 +1,111 @@
+// Ionic Variables and Theming. For more info, please see:
+// http://ionicframework.com/docs/theming/
+
+// Font path is used to include ionicons,
+// roboto, and noto sans fonts
+$font-path: "../assets/fonts";
+
+// The app direction is used to include
+// rtl styles in your app. For more info, please see:
+// http://ionicframework.com/docs/theming/rtl-support/
+$app-direction: ltr;
+
+@import "ionic.globals";
+
+// Shared Variables
+// --------------------------------------------------
+// To customize the look and feel of this app, you can override
+// the Sass variables found in Ionic's source scss files.
+// To view all the possible Ionic variables, see:
+// http://ionicframework.com/docs/theming/overriding-ionic-variables/
+
+// Named Color Variables
+// --------------------------------------------------
+// Named colors makes it easy to reuse colors on various components.
+// It's highly recommended to change the default colors
+// to match your app's branding. Ionic uses a Sass map of
+// colors so you can add, rename and remove colors as needed.
+// The "primary" color is the only required color in the map.
+
+$colors: (
+  primary: #0ea2c8,
+  secondary: #0e7ac7,
+  danger: #f53d3d,
+  light: #d8d5d5,
+  dark: #222222,
+  grey: #808080,
+  white: #ffffff,
+  subfooter: #ddddbb,
+  lightGreen: #aaffaa,
+  red: #ff0000,
+  black_20: #000000,
+  postBackgroundColor: #595656,
+  selectColor: #025ba2,
+);
+
+// App iOS Variables
+// --------------------------------------------------
+// iOS only Sass variables can go here
+
+// App Material Design Variables
+// --------------------------------------------------
+// Material Design only Sass variables can go here
+
+// App Windows Variables
+// --------------------------------------------------
+// Windows only Sass variables can go here
+
+// App Theme
+// --------------------------------------------------
+// Ionic apps can have different themes applied, which can
+// then be future customized. This import comes last
+// so that the above variables are used and Ionic's
+// default are overridden.
+
+@import "ionic.theme.default";
+
+// Ionicons
+// --------------------------------------------------
+// The premium icon font for Ionic. For more info, please see:
+// http://ionicframework.com/docs/ionicons/
+
+@import "ionic.ionicons";
+
+// Fonts
+// --------------------------------------------------
+
+@import "roboto";
+@import "noto-sans";
+
+//$app-background: linear-gradient(to right, #ffb96d 2%, #fc916f 76%);
+$app-background: linear-gradient(to right, #0ea2c8, #0e7ac7);
+$toolbar-background: transparent;
+$button-ios-background-color: #0e7ac7;
+$button-md-background-color: #0e7ac7;
+$background-color: #fff;
+$font-color: black;
+$bg-color: #eeebdc;
+$ribbon-color: #fa5072;
+$fold-color: darken(#fa5072, 18%);
+
+$ts-bg: linear-gradient(to right, #0ea2c8, #0e7ac7);
+$ts-primary: #0ea2c8;
+$ts-secondary: #0e7ac7;
+$ts-btn-green: #2cbf6d;
+$ts-tertiary: #d5f1f8;
+$ts-light: #eff5ff;
+// $ts-light:#EDF9FC;
+$ts-blue: #488cfc;
+$ts-grey: #7090c6;
+$ts-orange: #f4b432;
+$ts-red: #f95454;
+
+$dark-blue: #8264ff;
+
+$botBubbleColor: #dde1f9;
+$userBubbleColor: #52d28e;
+$userTextColor: white;
+$botTextColor: #333333;
+$chatBot-primary: #0059a4;
+$chatBot-borderColor: #a4a9bc;
+$chat-contentBg: #eff1ff;

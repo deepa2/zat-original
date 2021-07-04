@@ -1,0 +1,88 @@
+page-job-descripition {
+  // ion-header {
+  //   background-image: url(../assets/imgs/BG.jpg);
+  //   background-position: center;
+  //   background-repeat: no-repeat;
+  //   background-size: cover;
+  // }
+  // ion-navbar {
+  //   background: none;
+  // }
+  //   .ion-content {
+  //     padding: 10px 20px;
+  //   }
+  ion-header::after {
+    display: none;
+  }
+  .bg-Img {
+    background: linear-gradient(to right, rgba(254, 172, 110, 0.9), rgba(248, 71, 115, 0.9));
+  }
+  .grid-cont {
+    display: grid;
+    grid-template-columns: 35px auto;
+  }
+  // .descpContent{
+
+  // }
+  .grid-cont > div {
+    padding-top: 10px;
+  }
+  .border-radius20 {
+    border-radius: 20px;
+  }
+  .icon-size {
+    width: 15px;
+    height: 15px;
+  }
+  //New
+  .profileBackground {
+    position: relative;
+    height: 20vh;
+    background: url("../assets/imgs/BG.jpg") no-repeat center center;
+    background-size: cover;
+    z-index: -1;
+  }
+
+  .profileBackgroundOverlay {
+    // position: absolute;
+    // top: 0;
+    // left: 0;
+    // width: 100%;
+    // height: 100%;
+    // background: $app-background;
+    // padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+    // .extra {
+    //   flex: 1;
+    height: 6vh;
+    top: 0;
+    z-index: -1;
+    left: 0;
+    width: 100%;
+    background: $app-background;
+   // padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+    position: absolute;
+    
+
+    .left-item {
+      float: left;
+    }
+
+    .right-item {
+      float: right;
+    }
+
+    .left-item,
+    .right-item {
+      color: white;
+      font-size: 20px;
+    }
+    .clear-both {
+      display: block;
+      clear: both;
+    }
+  }
+
+  .pageTitile{
+    margin-left: -15px;
+  }
+}

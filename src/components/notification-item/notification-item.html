@@ -1,0 +1,34 @@
+<button ion-item class="notificationItemBtn">
+    <ion-item class="padding10" [ngClass]="{'unread': !item.isRead}">
+        <ion-row>
+            <ion-col class="img-section" col-2>
+                <img class="image" [src]="item.notificationIconURL">
+            </ion-col>
+            <ion-col class="msg-col">
+                <ion-row>
+                    <p class="notificationMsg">{{item.notificationMsg}}</p>
+                </ion-row>
+                <!-- <ion-row>
+                    <ion-col class="date-section">
+                        <span float-left>Date {{formatDate(item.activityDate) | date}}</span>
+                        <span float-right>{{formatDate(item.activityDate) | date:'shortTime' }}</span>
+                    </ion-col>
+                </ion-row> -->
+
+                <div class="flex">
+                        <div class="flex" center text-left>
+                            <span> <img class="imageSize" src="assets/imgs/Calender.svg" /></span>
+                            <div class="date">Date {{formatDate(item.activityDate) | date}}</div>
+                        </div>
+                        <div>
+                            <div class="date">
+                                    {{formatDate(item.activityDate) | date:'shortTime' }}
+                            </div>
+                        </div>
+                    </div>
+
+            </ion-col>
+        </ion-row>
+
+    </ion-item>
+</button>

@@ -1,0 +1,30 @@
+page-zen-deavor-dashboard {
+  .bgKraImgCard {
+    background: url("../assets/imgs/ZenDeavour/1.svg") no-repeat;
+    background-size: cover;
+  }
+  .bgAppraisalImgCard {
+    background: url("../assets/imgs/ZenDeavour/2.svg") no-repeat;
+    background-size: cover;
+  }
+  .bgAppraiserImgCard {
+    background: url("../assets/imgs/ZenDeavour/3.svg") no-repeat;
+    background-size: cover;
+  }
+  .bgReviewerImgCard{
+    background: url("../assets/imgs/ZenDeavour/4.svg") no-repeat;
+    background-size: cover;
+  }
+  .bgConsultationImgCard{
+    background: url("../assets/imgs/ZenDeavour/5.svg") no-repeat;
+    background-size: cover;
+  }
+  .headerBackground {
+    background: linear-gradient(to right, #488cfc, #8264ff);
+  }
+
+  .card-md {
+    border-radius: 10px;
+    min-height: 110px;
+  }
+}

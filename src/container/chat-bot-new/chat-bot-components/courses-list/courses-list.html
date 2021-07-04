@@ -1,0 +1,10 @@
+<div *ngIf="courseList">
+  <div class="dap-cont" *ngFor="let item of courseList?.responseList">
+    <div class="padding10">{{item?.title}}<div class="font-weight600 padding-top5">{{item?.startDate |
+        date:'d MMM'}} to {{item?.endDate | date:'d MMM yyyy'}}
+      </div>
+    </div>
+    <div class="dap-button" (click)="_viewAll(item)">View</div>
+  </div>
+</div>
+<div *ngIf="!courseList?.responseList" class="text-wrapper">No Data Available</div>

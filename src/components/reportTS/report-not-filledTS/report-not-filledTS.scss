@@ -1,0 +1,20 @@
+report-not-filledTS {
+    .disabled-css {
+        color: lightgray;
+    }
+    .ts-status {
+        border: 1px solid lightgray;
+        padding: 2px 8px;
+        border-radius: 8px;
+    }
+    .asso-input {
+        border: 1px solid lightgray;
+        background: transparent;
+        border-radius: 6px;
+        width: 25%;
+        margin-left: 10px;
+    }
+    .icon {
+        display: inline;
+    }
+}
